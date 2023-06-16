@@ -19,7 +19,9 @@ i2c_config_t conf = {
     .master.clk_speed = 10000,  // select frequency specific to your project
     .clk_flags = 0,                          // optional; you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here
 };
+
 uint8_t buf_i2c_rx[2];
+uint8_t buf_i2c_tx[2];
 
 void app_main(void)
 {
@@ -78,17 +80,22 @@ void app_main(void)
     err_esp = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
     printf("err_esp %d\n", (int)err_esp);
 
-    err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
-    printf("err_esp %d\n", (int)err_esp);
-    printf("buf %d%d\n", buf_i2c_rx[0], buf_i2c_rx[1]);
-
     while(1)
     {
         printf("%d, %d, %d\n", counter, buf_i2c_rx[0], buf_i2c_rx[1]);
         counter++;
 
         err_esp = gpio_set_level(27u, counter % 2);
+
+        buf_i2c_tx[0] = 0b00100011;
+        err_esp = i2c_master_write_to_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_tx, 1, 100);
         printf("err_esp %d\n", (int)err_esp);
+
+        vTaskDelay(3);
+
+        err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
+        printf("err_esp %d\n", (int)err_esp);
+        printf("buf 0x%x%x\n", buf_i2c_rx[0], buf_i2c_rx[1]);
 
         vTaskDelay(100);
         // vTaskDelay(1000 / portTICK_PERIOD_MS);
