@@ -1,49 +1,57 @@
-/*
- * SPDX-FileCopyrightText: 2010-2022 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: CC0-1.0
- */
 
-#include <stdio.h>
-#include <inttypes.h>
-#include "sdkconfig.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "esp_chip_info.h"
-#include "esp_flash.h"
+#include <stdint.h>
+#include <driver/gpio.h>
+#include <esp_adc/adc_oneshot.h>
+#include <driver/i2c.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+
+uint8_t counter = 0;
+esp_err_t err_esp = 0;
+
+i2c_port_t i2c_master_port = 0;
+i2c_config_t conf = {
+    .mode = I2C_MODE_MASTER,
+    .sda_io_num = 21,         // select SDA GPIO specific to your project
+    .sda_pullup_en = GPIO_PULLUP_ENABLE,
+    .scl_io_num = 22,         // select SCL GPIO specific to your project
+    .scl_pullup_en = GPIO_PULLUP_ENABLE,
+    .master.clk_speed = 10000,  // select frequency specific to your project
+    .clk_flags = 0,                          // optional; you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here
+};
+uint8_t buf_i2c_rx[2];
 
 void app_main(void)
 {
-    printf("Hello world!\n");
+    printf("hello\n");
+    // esp_err_t adc_oneshot_new_unit(const adc_oneshot_unit_init_cfg_t *init_config, adc_oneshot_unit_handle_t *ret_unit);
+    // esp_err_t adc_oneshot_config_channel(adc_oneshot_unit_handle_t handle, adc_channel_t channel, const adc_oneshot_chan_cfg_t *config);
+    // esp_err_t adc_oneshot_read(adc_oneshot_unit_handle_t handle, adc_channel_t chan, int *out_raw);
 
-    /* Print chip information */
-    esp_chip_info_t chip_info;
-    uint32_t flash_size;
-    esp_chip_info(&chip_info);
-    printf("This is %s chip with %d CPU core(s), WiFi%s%s, ",
-           CONFIG_IDF_TARGET,
-           chip_info.cores,
-           (chip_info.features & CHIP_FEATURE_BT) ? "/BT" : "",
-           (chip_info.features & CHIP_FEATURE_BLE) ? "/BLE" : "");
+    // esp_err_t gpio_config(const gpio_config_t *pGPIOConfig);
+    // esp_err_t gpio_set_level(gpio_num_t gpio_num, uint32_t level);
+    
+    /* Read light sensor */
+    err_esp = i2c_param_config(i2c_master_port, &conf);
+    printf("err_esp %d\n", (int)err_esp);
 
-    unsigned major_rev = chip_info.revision / 100;
-    unsigned minor_rev = chip_info.revision % 100;
-    printf("silicon revision v%d.%d, ", major_rev, minor_rev);
-    if(esp_flash_get_size(NULL, &flash_size) != ESP_OK) {
-        printf("Get flash size failed");
-        return;
-    }
+    err_esp = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
+    printf("err_esp %d\n", (int)err_esp);
 
-    printf("%" PRIu32 "MB %s flash\n", flash_size / (uint32_t)(1024 * 1024),
-           (chip_info.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
+    // if (ESP_OK != i2c_master_write_to_device(i2c_port_t i2c_num, uint8_t device_address,
+    //                                  const uint8_t* write_buffer, size_t write_size,
+    //                                  TickType_t ticks_to_wait))
+    // {
+    //     return;
+    // }
 
-    printf("Minimum free heap size: %" PRIu32 " bytes\n", esp_get_minimum_free_heap_size());
+    err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
+    printf("err_esp %d\n", (int)err_esp);
 
-    for (int i = 10; i >= 0; i--) {
-        printf("Restarting in %d seconds...\n", i);
+    while(1)
+    {
+        printf("%d, %d, %d\n", counter, buf_i2c_rx[0], buf_i2c_rx[1]);
+        counter++;
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
-    printf("Restarting now.\n");
-    fflush(stdout);
-    esp_restart();
 }
