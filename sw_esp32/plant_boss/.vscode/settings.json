@@ -16,6 +16,7 @@
     "idf.toolsPath": "/home/arvydas/.espressif",
     "idf.flashType": "JTAG",
     "files.associations": {
-        "freertos.h": "c"
+        "freertos.h": "c",
+        "gpio.h": "c"
     }
 }

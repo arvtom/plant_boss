@@ -21,6 +21,9 @@ i2c_config_t conf = {
 };
 uint8_t buf_i2c_rx[2];
 
+#define GPIO_OUTPUT_IO_27    27u
+#define GPIO_OUTPUT_PIN_SEL  (1ULL<<GPIO_OUTPUT_IO_27)
+
 void app_main(void)
 {
     printf("hello\n");
@@ -30,13 +33,30 @@ void app_main(void)
 
     // esp_err_t gpio_config(const gpio_config_t *pGPIOConfig);
     // esp_err_t gpio_set_level(gpio_num_t gpio_num, uint32_t level);
-    
-    /* Read light sensor */
-    err_esp = i2c_param_config(i2c_master_port, &conf);
+
+    //zero-initialize the config structure.
+    gpio_config_t io_conf = {};
+    //disable interrupt
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    //set as output mode
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    //bit mask of the pins that you want to set,e.g.GPIO18/19
+    io_conf.pin_bit_mask = GPIO_OUTPUT_PIN_SEL;
+    //disable pull-down mode
+    io_conf.pull_down_en = 0;
+    //disable pull-up mode
+    io_conf.pull_up_en = 0;
+    //configure GPIO with the given settings
+    err_esp = gpio_config(&io_conf);
     printf("err_esp %d\n", (int)err_esp);
 
-    err_esp = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
-    printf("err_esp %d\n", (int)err_esp);
+
+    // /* Read light sensor */
+    // err_esp = i2c_param_config(i2c_master_port, &conf);
+    // printf("err_esp %d\n", (int)err_esp);
+
+    // err_esp = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
+    // printf("err_esp %d\n", (int)err_esp);
 
     // if (ESP_OK != i2c_master_write_to_device(i2c_port_t i2c_num, uint8_t device_address,
     //                                  const uint8_t* write_buffer, size_t write_size,
@@ -45,13 +65,17 @@ void app_main(void)
     //     return;
     // }
 
-    err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
-    printf("err_esp %d\n", (int)err_esp);
+    // err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
+    // printf("err_esp %d\n", (int)err_esp);
 
     while(1)
     {
         printf("%d, %d, %d\n", counter, buf_i2c_rx[0], buf_i2c_rx[1]);
         counter++;
+
+        err_esp = gpio_set_level(GPIO_OUTPUT_IO_27, counter % 2);
+        printf("err_esp %d\n", (int)err_esp);
+
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
