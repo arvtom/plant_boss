@@ -14,5 +14,8 @@
     "idf.port": "/dev/ttyUSB1",
     "idf.pythonBinPath": "/home/arvydas/.espressif/python_env/idf5.0_py3.10_env/bin/python",
     "idf.toolsPath": "/home/arvydas/.espressif",
-    "idf.flashType": "JTAG"
+    "idf.flashType": "JTAG",
+    "files.associations": {
+        "freertos.h": "c"
+    }
 }
