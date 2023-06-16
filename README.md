@@ -3,6 +3,12 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
+# Debugging using ESP-PROG
+To improve reliability of debugging session, thread aware debugging should be turned off by giving additional argument to openocd call: -c 'set ESP_RTOS none'.
+
+Full openocd command:
+-s ${openocd_path}/share/openocd/scripts -c 'set ESP32_FLASH_VOLTAGE 3.3' -c 'set ESP_RTOS none' -f interface/ftdi/esp32_devkitj_v1.cfg -f target/esp32.cfg
+
 # Client / esp32 requirements
 
 Management Rx -> system Rx.x -> Hardware (Rx.x.xHW) / software (Rx.x.xSW) requirements:  

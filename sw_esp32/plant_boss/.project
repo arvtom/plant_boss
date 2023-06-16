@@ -24,6 +24,11 @@
 			<location>/home/arvydas/github/esp-idf-v4.4.5/components/app_trace/app_trace.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/app_trace/app_trace_membufs_proto.c</name>
+			<type>1</type>
+			<location>/home/arvydas/github/esp-idf-v4.4.5/components/app_trace/app_trace_membufs_proto.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/app_trace/app_trace_util.c</name>
 			<type>1</type>
 			<location>/home/arvydas/github/esp-idf-v4.4.5/components/app_trace/app_trace_util.c</location>
@@ -2142,6 +2147,11 @@
 			<name>build/ide/esp_idf_components/wpa_supplicant/port/os_xtensa.c</name>
 			<type>1</type>
 			<location>/home/arvydas/github/esp-idf-v4.4.5/components/wpa_supplicant/port/os_xtensa.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/app_trace/port/xtensa/port.c</name>
+			<type>1</type>
+			<location>/home/arvydas/github/esp-idf-v4.4.5/components/app_trace/port/xtensa/port.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/bootloader_support/src/idf/bootloader_sha.c</name>
