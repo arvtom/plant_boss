@@ -4,8 +4,11 @@
 
 void app_main(void)
 {
-    while (true) {
+	unsigned char i = 0;
+
+    while (1) {
         printf("Hello from app_main!\n");
+        printf("%d\n", i);
         sleep(1);
     }
 }
