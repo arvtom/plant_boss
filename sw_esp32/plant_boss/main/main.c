@@ -52,8 +52,13 @@ void app_main(void)
     err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config);
     printf("err_esp %d\n", (int)err_esp);
 
+    /* battery */
+    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_7, &config);
+    printf("err_esp %d\n", (int)err_esp);
+
     int adc_raw_temperature = 0;
     int adc_raw_humidity = 0;
+    int adc_raw_battery = 0;
 
     /* external led pin */
     gpio_config_t io_conf_27 = {};
@@ -157,6 +162,11 @@ void app_main(void)
         err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &adc_raw_humidity);
         printf("err_esp %d\n", (int)err_esp);
         printf("adc_raw_humidity %d\n", adc_raw_humidity);
+
+        /* battery */
+        err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_7, &adc_raw_battery);
+        printf("err_esp %d\n", (int)err_esp);
+        printf("adc_raw_battery %d\n", adc_raw_battery);
 
         vTaskDelay(100);
         // vTaskDelay(1000 / portTICK_PERIOD_MS);

@@ -109,8 +109,8 @@ Voltage regulator output voltage could be 2.5V (AP7343Q-25W5-7):
 * It is lower than battery voltage of 3 V
 * It accomodates voltage regulator drop out voltage of up to 0.5V.
 
+Actually esp32 starts rebooting at power supply voltage lower than 2.5V. So 2.55 or 2.6V should be used.
+
 To measure battery voltage, voltage divider will be needed in either case, because adc reference voltage is 1.1V.
 
-# BOM
-T491A105K010AT, https://eu.mouser.com/ProductDetail/KEMET/T491A105K010AT?qs=AaRlLUpeMswm%2FLee9GNRtw%3D%3D
-
+Voltage divider series resistance of 1 MOhm would mean up to 4.2 uA current. 750 kOhm and 240 kOhm will divide 4.2V battery voltage by 4, so up to 1.05 V will be applied to ADC input.
