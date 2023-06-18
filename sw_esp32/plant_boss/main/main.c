@@ -44,10 +44,16 @@ void app_main(void)
         .atten = ADC_ATTEN_DB_11,
     };
 
+    /* temperature */
     err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_3, &config);
     printf("err_esp %d\n", (int)err_esp);
 
-    int adc_raw = 0;
+    /* humidity */
+    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config);
+    printf("err_esp %d\n", (int)err_esp);
+
+    int adc_raw_temperature = 0;
+    int adc_raw_humidity = 0;
 
     /* external led pin */
     gpio_config_t io_conf_27 = {};
@@ -79,7 +85,6 @@ void app_main(void)
     err_esp = gpio_config(&io_conf_17);
     printf("err_esp %d\n", (int)err_esp);
 
-#warning rewire_temperature_vcc_to_io32
     /* temperature sensor power supply pin */
     gpio_config_t io_conf_32 = {};
     io_conf_32.intr_type = GPIO_INTR_DISABLE;
@@ -90,9 +95,20 @@ void app_main(void)
     err_esp = gpio_config(&io_conf_32);
     printf("err_esp %d\n", (int)err_esp);
 
-
+    /* humidity sensor power supply pin */
+    gpio_config_t io_conf_33 = {};
+    io_conf_33.intr_type = GPIO_INTR_DISABLE;
+    io_conf_33.mode = GPIO_MODE_OUTPUT;
+    io_conf_33.pin_bit_mask = (1ULL<<33u);
+    io_conf_33.pull_down_en = 0;
+    io_conf_33.pull_up_en = 0;
+    err_esp = gpio_config(&io_conf_33);
+    printf("err_esp %d\n", (int)err_esp);
 
     err_esp = gpio_set_level(32u, 1);
+    printf("err_esp %d\n", (int)err_esp); 
+
+    err_esp = gpio_set_level(33u, 1);
     printf("err_esp %d\n", (int)err_esp); 
 
     err_esp = gpio_set_level(4u, 1);
@@ -132,9 +148,15 @@ void app_main(void)
         printf("err_esp %d\n", (int)err_esp);
         printf("buf_i2c_rx 0x%x%x\n", buf_i2c_rx[0], buf_i2c_rx[1]);
 
-        err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_3, &adc_raw);
+        /* temperature */
+        err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_3, &adc_raw_temperature);
         printf("err_esp %d\n", (int)err_esp);
-        printf("adc_raw %d\n", adc_raw);
+        printf("adc_raw_temperature %d\n", adc_raw_temperature);
+
+        /* humidity */
+        err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &adc_raw_humidity);
+        printf("err_esp %d\n", (int)err_esp);
+        printf("adc_raw_humidity %d\n", adc_raw_humidity);
 
         vTaskDelay(100);
         // vTaskDelay(1000 / portTICK_PERIOD_MS);
