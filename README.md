@@ -3,6 +3,22 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
+# TODOs
+* Test sensors with low, medium, high values.
+* Implement HW changes in pcba design:
+	* Jumpers for boot strapping pins
+	* Big jumper for reset (EN) pin
+	* Battery holder terminals
+	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
+	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
+	* Not all GPIO pins can be outputs. Change temperature and humidity vcc pins.
+	* 1.27 mm connectors.
+	* ESP32 placement with regard to light sensor.
+	* Reverse polarity protection.
+	* Protection of gpio pins, used as power supply. Consider using mosfets.
+	* Consider using esp32 chip without WROOM package.
+	* Consider placing humidity sensor on the same pcba.
+
 # Debugging using ESP-PROG
 To improve reliability of debugging session, thread aware debugging should be turned off by giving additional argument to openocd call: -c 'set ESP_RTOS none'.
 
@@ -109,8 +125,27 @@ Voltage regulator output voltage could be 2.5V (AP7343Q-25W5-7):
 * It is lower than battery voltage of 3 V
 * It accomodates voltage regulator drop out voltage of up to 0.5V.
 
+Actually esp32 starts rebooting at power supply voltage lower than 2.5V. This is because lowest available brownout reset threshold voltage is 2.44 +- 0.05 V. Also ESP32-WROOM-32E-N4 contains external flash. For this reason minimal voltage for esp32 is 3V. Also current draw can be as high as 500 mA, so better voltage regulator needs to be chosen.
+
 To measure battery voltage, voltage divider will be needed in either case, because adc reference voltage is 1.1V.
 
-# BOM
-T491A105K010AT, https://eu.mouser.com/ProductDetail/KEMET/T491A105K010AT?qs=AaRlLUpeMswm%2FLee9GNRtw%3D%3D
+Voltage divider series resistance of 1 MOhm would mean up to 4.2 uA current. 750 kOhm and 240 kOhm will divide 4.2V battery voltage by 4, so up to 1.05 V will be applied to ADC input.
 
+# Testing sensors and input signals
+* Light sensor
+	* Low value: device is placed in completely dark space. Expected to see around 0 lx.
+	* Medium value: device is placed under office lights. Expected to see around 200-500 lx.
+	* High value: device is placed under direct sunlight on sunny day. Expected to see around 65000-100 000 lx depending on measurement mode.
+* Temperature sensor:
+	* Low value: device is placed inside fridge. Expected to see around 5-8 C temperature.
+	* Medium value: device is placed in room temperature, expected to see around 21 C.
+	* High value: device is placed under hot air station. Expected to see 100 C temperature.
+* Humidity sensor:
+	* Low value: device is placed on the table, only air surrounding sensor itself. Expected to see 0 % humidity.
+	* Medium value: device is placed in flowerpot soil. Expected to see 20-60 % humidity.
+	* High value: device is placed in glass of water. Expected to see 100 % humidity.
+	* Minimum power supply voltage: should be as low as 2 V.
+* Battery input voltage:
+	* Low value: minimum 18650 li-ion cell voltage around 3 V.
+	* Medium value: storage voltage around 3.7 V.
+	* High value: fully charged voltage around 4.2 V.
