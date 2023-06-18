@@ -1,10 +1,14 @@
 
 #include <stdint.h>
+#include <math.h>
 #include <driver/gpio.h>
 #include <esp_adc/adc_oneshot.h>
 #include <driver/i2c.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
+
+#define ADC_REFERENCE_VOLTAGE   1.1
+#define ADC_12BIT_MAX_VALUE     4095
 
 uint8_t counter = 0;
 esp_err_t err_esp = 0;
@@ -20,12 +24,15 @@ i2c_config_t conf = {
     .clk_flags = 0,                          // optional; you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here
 };
 
-uint8_t buf_i2c_rx[2];
-uint8_t buf_i2c_tx[2];
+uint8_t buf_i2c_rx[2] = {0, 0};
+uint8_t buf_i2c_tx[2] = {0, 0};
 
 int adc_raw_temperature = 0;
 int adc_raw_humidity = 0;
 int adc_raw_battery = 0;
+
+float adc_voltage_temperature = 0; /* mV */
+float temperature = 0;
 
 float light = 0;
 
@@ -45,21 +52,31 @@ void app_main(void)
     err_esp = adc_oneshot_new_unit(&init_config1, &adc1_handle);
     printf("err_esp %d\n", (int)err_esp);
 
-    adc_oneshot_chan_cfg_t config = {
-        .bitwidth = ADC_BITWIDTH_DEFAULT,
+    adc_oneshot_chan_cfg_t config_ch3 = {
+        .bitwidth = ADC_BITWIDTH_12,
+        .atten = ADC_ATTEN_DB_6,
+    };
+
+    adc_oneshot_chan_cfg_t config_ch6 = {
+        .bitwidth = ADC_BITWIDTH_12,
+        .atten = ADC_ATTEN_DB_11,
+    };
+
+    adc_oneshot_chan_cfg_t config_ch7 = {
+        .bitwidth = ADC_BITWIDTH_12,
         .atten = ADC_ATTEN_DB_11,
     };
 
     /* temperature */
-    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_3, &config);
+    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_3, &config_ch3);
     printf("err_esp %d\n", (int)err_esp);
 
     /* humidity */
-    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config);
+    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_6, &config_ch6);
     printf("err_esp %d\n", (int)err_esp);
 
     /* battery */
-    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_7, &config);
+    err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_7, &config_ch7);
     printf("err_esp %d\n", (int)err_esp);
 
     /* external led pin */
@@ -153,9 +170,7 @@ void app_main(void)
         vTaskDelay(3);
 
         err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
-
         printf("err_esp %d\n", (int)err_esp);
-        // printf("buf_i2c_rx 0x%x%x\n", buf_i2c_rx[0], buf_i2c_rx[1]);
 
         light = (float)(((uint16_t)buf_i2c_rx[0] << 8) | (uint16_t)buf_i2c_rx[1]) / 1.2;
         printf("light %f\n", light);
@@ -163,7 +178,15 @@ void app_main(void)
         /* temperature */
         err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_3, &adc_raw_temperature);
         printf("err_esp %d\n", (int)err_esp);
-        printf("adc_raw_temperature %d\n", adc_raw_temperature);
+
+
+        /* Input voltage was attenuated, so multiply by 2. */
+        adc_voltage_temperature = (float)adc_raw_temperature * 2 / (float)ADC_12BIT_MAX_VALUE * ADC_REFERENCE_VOLTAGE;
+
+        temperature = -1481.96 + 
+            sqrt(2.1962 * pow(10, 6) + ((1.8639 - adc_voltage_temperature) / (3.88 * pow(10, -6))));
+
+        printf("adc_raw_temperature %d, adc_voltage_temperature %f, temperature %f\n", adc_raw_temperature, adc_voltage_temperature, temperature);
 
         /* humidity */
         err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_6, &adc_raw_humidity);

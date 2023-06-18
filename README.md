@@ -11,6 +11,7 @@ Different soil characteristics monitoring and sending to sqlite database using e
 	* Battery holder terminals
 	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
 	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
+	* Consider using attenuation of adc channel. This way higher voltage can come to adc input, there would be better s/n ratio.
 	* Not all GPIO pins can be outputs. Change temperature and humidity vcc pins.
 	* 1.27 mm connectors.
 	* ESP32 placement with regard to light sensor.
@@ -19,6 +20,9 @@ Different soil characteristics monitoring and sending to sqlite database using e
 	* Consider using esp32 chip without WROOM package.
 	* Consider placing humidity sensor on the same pcba.
 	* Rewire external vcc to voltage regulator input
+	* Low pass filters on adc inputs.
+	* Series resistors on i2c to slow down edges.
+	* Use possibility to route adc ref voltage to gpio pin for calibration purposes.
 
 # Debugging using ESP-PROG
 To improve reliability of debugging session, thread aware debugging should be turned off by giving additional argument to openocd call: -c 'set ESP_RTOS none'.
