@@ -23,6 +23,12 @@ i2c_config_t conf = {
 uint8_t buf_i2c_rx[2];
 uint8_t buf_i2c_tx[2];
 
+int adc_raw_temperature = 0;
+int adc_raw_humidity = 0;
+int adc_raw_battery = 0;
+
+float light = 0;
+
 void app_main(void)
 {
     printf("hello\n");
@@ -55,10 +61,6 @@ void app_main(void)
     /* battery */
     err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_7, &config);
     printf("err_esp %d\n", (int)err_esp);
-
-    int adc_raw_temperature = 0;
-    int adc_raw_humidity = 0;
-    int adc_raw_battery = 0;
 
     /* external led pin */
     gpio_config_t io_conf_27 = {};
@@ -138,11 +140,12 @@ void app_main(void)
 
     while(1)
     {
-        printf("%d, %d, %d\n", counter, buf_i2c_rx[0], buf_i2c_rx[1]);
+        // printf("%d, %d, %d\n", counter, buf_i2c_rx[0], buf_i2c_rx[1]);
         counter++;
 
         err_esp = gpio_set_level(27u, counter % 2);
 
+        /* Low resolution mode. Needs 24 ms to finish sampling. */
         buf_i2c_tx[0] = 0b00100011;
         err_esp = i2c_master_write_to_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_tx, 1, 100);
         printf("err_esp %d\n", (int)err_esp);
@@ -150,8 +153,12 @@ void app_main(void)
         vTaskDelay(3);
 
         err_esp = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
+
         printf("err_esp %d\n", (int)err_esp);
-        printf("buf_i2c_rx 0x%x%x\n", buf_i2c_rx[0], buf_i2c_rx[1]);
+        // printf("buf_i2c_rx 0x%x%x\n", buf_i2c_rx[0], buf_i2c_rx[1]);
+
+        light = (float)(((uint16_t)buf_i2c_rx[0] << 8) | (uint16_t)buf_i2c_rx[1]) / 1.2;
+        printf("light %f\n", light);
 
         /* temperature */
         err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_3, &adc_raw_temperature);

@@ -18,6 +18,7 @@ Different soil characteristics monitoring and sending to sqlite database using e
 	* Protection of gpio pins, used as power supply. Consider using mosfets.
 	* Consider using esp32 chip without WROOM package.
 	* Consider placing humidity sensor on the same pcba.
+	* Rewire external vcc to voltage regulator input
 
 # Debugging using ESP-PROG
 To improve reliability of debugging session, thread aware debugging should be turned off by giving additional argument to openocd call: -c 'set ESP_RTOS none'.
@@ -132,6 +133,7 @@ To measure battery voltage, voltage divider will be needed in either case, becau
 Voltage divider series resistance of 1 MOhm would mean up to 4.2 uA current. 750 kOhm and 240 kOhm will divide 4.2V battery voltage by 4, so up to 1.05 V will be applied to ADC input.
 
 # Testing sensors and input signals
+Following tests will be done with power supply voltage of 3 V.
 * Light sensor
 	* Low value: device is placed in completely dark space. Expected to see around 0 lx.
 	* Medium value: device is placed under office lights. Expected to see around 200-500 lx.
