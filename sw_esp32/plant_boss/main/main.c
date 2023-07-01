@@ -32,6 +32,52 @@ TaskHandle_t addr_thread_output = NULL;
 TaskHandle_t addr_thread_network = NULL;
 TaskHandle_t addr_thread_memory = NULL;
 
+void thread_app(void *arg)
+{
+    thread_app_init();
+    
+    while(1)
+    {
+        thread_app_handle();
+    }
+}
+
+void thread_input(void *arg)
+{
+    while(1)
+    {
+        printf("input\n");
+        vTaskDelay(100);
+    }
+}
+
+void thread_memory(void *arg)
+{
+    while(1)
+    {
+        printf("memory\n");
+        vTaskDelay(100);
+    }
+}
+
+void thread_network(void *arg)
+{
+    while(1)
+    {
+        printf("network\n");
+        vTaskDelay(100);
+    }
+}
+
+void thread_output(void *arg)
+{
+    while(1)
+    {
+        printf("output\n");
+        vTaskDelay(100);
+    }
+}
+
 void app_main(void)
 {
     xTaskCreate(thread_app, "thread_app", 

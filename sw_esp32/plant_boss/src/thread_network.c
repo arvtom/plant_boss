@@ -7,14 +7,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_network(void *arg)
-{
-    while(1)
-    {
-        printf("network\n");
-        vTaskDelay(100);
-    }
-}
+
 
 /* ---------------------------- Private functions ---------------------------- */
 

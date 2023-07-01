@@ -7,13 +7,15 @@
 /* ---------------------------- Global variables ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_app(void *arg)
+void thread_app_init(void)
 {
-    while(1)
-    {
-        printf("app\n");
-        vTaskDelay(100);
-    }
+    
+}
+
+void thread_app_handle(void)
+{
+    printf("app\n");
+    vTaskDelay(100);
 }
 
 /* ---------------------------- Private functions ---------------------------- */

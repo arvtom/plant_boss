@@ -7,14 +7,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_output(void *arg)
-{
-    while(1)
-    {
-        printf("output\n");
-        vTaskDelay(100);
-    }
-}
+
 
 /* ---------------------------- Private functions ---------------------------- */
 

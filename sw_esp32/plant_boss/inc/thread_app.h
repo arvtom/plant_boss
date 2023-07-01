@@ -10,7 +10,8 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_app(void *arg);
+void thread_app_init(void);
+void thread_app_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 

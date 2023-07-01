@@ -7,14 +7,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_memory(void *arg)
-{
-    while(1)
-    {
-        printf("memory\n");
-        vTaskDelay(100);
-    }
-}
+
 
 /* ---------------------------- Private functions ---------------------------- */
 
