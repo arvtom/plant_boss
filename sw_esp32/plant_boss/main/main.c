@@ -61,9 +61,9 @@ void thread_app_handle(void)
 
         xSemaphoreTake(SimpleMutex, portMAX_DELAY);
 
-        /* Critical section, which cannot be interrupted by other threads */
+        /* Critical section, which is protected from other threads by using mutex */
         printf("measuring\n");
-        
+
         xSemaphoreGive(SimpleMutex);
 
         sprintf(txBuffer, "Hello from Demo_Task 1\n");
