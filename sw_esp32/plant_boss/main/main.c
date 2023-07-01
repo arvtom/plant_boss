@@ -8,6 +8,11 @@
 // #include <driver/i2c.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
+#include "thread_app.h"
+#include "thread_input.h"
+#include "thread_output.h"
+#include "thread_network.h"
+#include "thread_memory.h"
 
 #define STACK_THREAD_APP            4096u
 #define STACK_THREAD_INPUT          4096u
@@ -26,51 +31,6 @@ TaskHandle_t addr_thread_input = NULL;
 TaskHandle_t addr_thread_output = NULL;
 TaskHandle_t addr_thread_network = NULL;
 TaskHandle_t addr_thread_memory = NULL;
-
-void thread_app(void *arg)
-{
-    while(1)
-    {
-        printf("app\n");
-        vTaskDelay(100);
-    }
-}
-
-void thread_input(void *arg)
-{
-    while(1)
-    {
-        printf("input\n");
-        vTaskDelay(100);
-    }
-}
-
-void thread_output(void *arg)
-{
-    while(1)
-    {
-        printf("output\n");
-        vTaskDelay(100);
-    }
-}
-
-void thread_network(void *arg)
-{
-    while(1)
-    {
-        printf("network\n");
-        vTaskDelay(100);
-    }
-}
-
-void thread_memory(void *arg)
-{
-    while(1)
-    {
-        printf("memory\n");
-        vTaskDelay(100);
-    }
-}
 
 void app_main(void)
 {

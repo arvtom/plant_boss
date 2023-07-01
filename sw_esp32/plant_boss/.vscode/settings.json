@@ -18,6 +18,8 @@
     "files.associations": {
         "freertos.h": "c",
         "gpio.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "thread_app.h": "c",
+        "thread_input.h": "c"
     }
 }
