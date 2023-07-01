@@ -10,8 +10,6 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_memory_init(void);
-void thread_memory_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 

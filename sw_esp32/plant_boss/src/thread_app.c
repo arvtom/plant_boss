@@ -7,16 +7,6 @@
 /* ---------------------------- Global variables ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_app_init(void)
-{
-    
-}
-
-void thread_app_handle(void)
-{
-    printf("app\n");
-    vTaskDelay(100);
-}
 
 /* ---------------------------- Private functions ---------------------------- */
 

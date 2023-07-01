@@ -10,8 +10,6 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-void thread_output_init(void);
-void thread_output_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 

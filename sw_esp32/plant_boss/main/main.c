@@ -38,6 +38,61 @@ TaskHandle_t addr_thread_memory = NULL;
 // void thread_network(void *arg);
 // void thread_memory(void *arg);
 
+void thread_app_init(void)
+{
+    
+}
+
+void thread_app_handle(void)
+{
+    printf("app\n");
+    vTaskDelay(100);
+}
+
+void thread_input_init(void)
+{
+    
+}
+
+void thread_input_handle(void)
+{
+    printf("input\n");
+    vTaskDelay(100);
+}
+
+void thread_output_init(void)
+{
+    
+}
+
+void thread_output_handle(void)
+{
+    printf("output\n");
+    vTaskDelay(100);
+}
+
+void thread_network_init(void)
+{
+    
+}
+
+void thread_network_handle(void)
+{
+    printf("network\n");
+    vTaskDelay(100);
+}
+
+void thread_memory_init(void)
+{
+    
+}
+
+void thread_memory_handle(void)
+{
+    printf("memory\n");
+    vTaskDelay(100);
+}
+
 void thread_app(void *arg)
 {
     thread_app_init();
