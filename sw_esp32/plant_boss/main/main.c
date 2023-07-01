@@ -71,6 +71,8 @@ void app_main(void)
     err_esp = adc_oneshot_config_channel(adc1_handle, ADC_CHANNEL_3, &config_ch3);
     printf("err_esp %d\n", (int)err_esp);
 
+    
+
     /* Available calibration scheme is ADC_CALI_SCHEME_VER_LINE_FITTING.
         Characterization based on reference voltage stored in eFuse: ADC_CALI_LINE_FITTING_EFUSE_VAL_EFUSE_VREF. */
     adc_cali_line_fitting_config_t adc_calibration_config_ch3_s = 

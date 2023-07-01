@@ -4,14 +4,13 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
 # TODOs
-* Test sensors with low, medium, high values.
+* Test sensors with low, medium, high values - OK.
 * Implement HW changes in pcba design:
+	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
+	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
 	* Jumpers for boot strapping pins
 	* Big jumper for reset (EN) pin
 	* Battery holder terminals
-	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
-	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
-	* Consider using attenuation of adc channel. This way higher voltage can come to adc input, there would be better s/n ratio.
 	* Not all GPIO pins can be outputs. Change temperature and humidity vcc pins.
 	* 1.27 mm connectors.
 	* ESP32 placement with regard to light sensor.
