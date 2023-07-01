@@ -8,6 +8,8 @@
 // #include <driver/i2c.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
+#include <freertos/queue.h>
+
 #include "thread_app.h"
 #include "thread_input.h"
 #include "thread_output.h"
@@ -32,115 +34,115 @@ TaskHandle_t addr_thread_output = NULL;
 TaskHandle_t addr_thread_network = NULL;
 TaskHandle_t addr_thread_memory = NULL;
 
+QueueHandle_t queue;
+char txBuffer[50];
+
 // void thread_app(void *arg);
 // void thread_input(void *arg);
 // void thread_output(void *arg);
 // void thread_network(void *arg);
 // void thread_memory(void *arg);
 
-void thread_app_init(void)
-{
-    
-}
-
 void thread_app_handle(void)
 {
-    printf("app\n");
-    vTaskDelay(100);
-}
-
-void thread_input_init(void)
-{
+    char txBuffer[50];
+    queue = xQueueCreate(5, sizeof(txBuffer)); 
+    if (queue == 0)
+    {
+     printf("Failed to create queue= %p\n", queue);
+    }
     
+    while (1)
+    {
+        // printf("app\n");
+
+        sprintf(txBuffer, "Hello from Demo_Task 1\n");
+        xQueueSend(queue, (void*)txBuffer, (TickType_t)0);
+
+        sprintf(txBuffer, "Hello from Demo_Task 2\n");
+        xQueueSend(queue, (void*)txBuffer, (TickType_t)0); 
+
+        vTaskDelay(100);
+    }
 }
 
 void thread_input_handle(void)
 {
-    printf("input\n");
-    vTaskDelay(100);
-}
+    // printf("input\n");
+    // vTaskDelay(100);
 
-void thread_output_init(void)
-{
-    
+    while (1)
+    {
+        vTaskDelay(100);
+        // taskYIELD();
+    }
 }
 
 void thread_output_handle(void)
 {
-    printf("output\n");
-    vTaskDelay(100);
-}
+    // printf("output\n");
+    // vTaskDelay(100);
 
-void thread_network_init(void)
-{
-    
+    while (1)
+    {
+        vTaskDelay(100);
+        // taskYIELD();
+    }
 }
 
 void thread_network_handle(void)
 {
-    printf("network\n");
-    vTaskDelay(100);
-}
+    // printf("network\n");
+    // vTaskDelay(100);
+    char rxBuffer[50];
 
-void thread_memory_init(void)
-{
-    
+    while (1)
+    {
+        if (xQueueReceive(queue, &(rxBuffer), (TickType_t)5))
+        {
+            printf("Received data from queue == %s\n", rxBuffer);
+            vTaskDelay(10);
+        }
+    }
 }
 
 void thread_memory_handle(void)
 {
-    printf("memory\n");
-    vTaskDelay(100);
+    // printf("memory\n");
+    // vTaskDelay(100);
+
+    while (1)
+    {
+        vTaskDelay(100);
+        // taskYIELD();
+    }
 }
+
+
 
 void thread_app(void *arg)
 {
-    thread_app_init();
-    
-    while(1)
-    {
-        thread_app_handle();
-    }
+    thread_app_handle();
 }
 
 void thread_input(void *arg)
 {
-    thread_input_init();
-    
-    while(1)
-    {
-        thread_input_handle();
-    }
-}
-
-void thread_memory(void *arg)
-{
-    thread_memory_init();
-    
-    while(1)
-    {
-        thread_memory_handle();
-    }
-}
-
-void thread_network(void *arg)
-{
-    thread_network_init();
-    
-    while(1)
-    {
-        thread_network_handle();
-    }
+    thread_input_handle();
 }
 
 void thread_output(void *arg)
 {
-    thread_output_init();
-    
-    while(1)
-    {
-        thread_output_handle();
-    }
+    thread_output_handle();
+}
+
+void thread_network(void *arg)
+{
+    thread_network_handle();
+}
+
+void thread_memory(void *arg)
+{
+    thread_memory_handle();
 }
 
 void app_main(void)
