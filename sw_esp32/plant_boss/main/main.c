@@ -9,6 +9,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <freertos/queue.h>
+#include <freertos/semphr.h>
 
 #include "thread_app.h"
 #include "thread_input.h"
@@ -37,6 +38,8 @@ TaskHandle_t addr_thread_memory = NULL;
 QueueHandle_t queue;
 char txBuffer[50];
 
+SemaphoreHandle_t SimpleMutex;
+
 // void thread_app(void *arg);
 // void thread_input(void *arg);
 // void thread_output(void *arg);
@@ -55,6 +58,13 @@ void thread_app_handle(void)
     while (1)
     {
         // printf("app\n");
+
+        xSemaphoreTake(SimpleMutex, portMAX_DELAY);
+
+        /* Critical section, which cannot be interrupted by other threads */
+        printf("measuring\n");
+        
+        xSemaphoreGive(SimpleMutex);
 
         sprintf(txBuffer, "Hello from Demo_Task 1\n");
         xQueueSend(queue, (void*)txBuffer, (TickType_t)0);
@@ -147,6 +157,8 @@ void thread_memory(void *arg)
 
 void app_main(void)
 {
+    SimpleMutex = xSemaphoreCreateMutex();
+    
     xTaskCreate(thread_app, "thread_app", 
         STACK_THREAD_APP, NULL, PRIORITY_THREAD_APP, &addr_thread_app);
     xTaskCreate(thread_input, "thread_input", 
