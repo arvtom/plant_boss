@@ -10,7 +10,8 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
-
+void thread_network_init(void);
+void thread_network_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 
