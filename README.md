@@ -4,6 +4,7 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
 # TODOs
+* Use mutex, semaphore, queue, timer.
 * Test sensors with low, medium, high values - OK.
 * Implement HW changes in pcba design:
 	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.

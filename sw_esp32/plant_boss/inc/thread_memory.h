@@ -1,6 +1,6 @@
 
-#ifndef THREAD_APP_H
-#define THREAD_APP_H
+#ifndef THREAD_MEMORY_H
+#define THREAD_MEMORY_H
 
 /* ---------------------------- Includes ---------------------------- */
 #include <stdio.h>
@@ -10,6 +10,9 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Public functions ---------------------------- */
+void thread_memory(void *arg);
+bool thread_memory_init(void);
+void thread_memory_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 

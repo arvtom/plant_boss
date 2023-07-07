@@ -8,8 +8,6 @@
 // #include <driver/i2c.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
-#include <freertos/queue.h>
-#include <freertos/semphr.h>
 
 #include "thread_app.h"
 #include "thread_input.h"
@@ -35,130 +33,8 @@ TaskHandle_t addr_thread_output = NULL;
 TaskHandle_t addr_thread_network = NULL;
 TaskHandle_t addr_thread_memory = NULL;
 
-QueueHandle_t queue;
-char txBuffer[50];
-
-SemaphoreHandle_t SimpleMutex;
-
-// void thread_app(void *arg);
-// void thread_input(void *arg);
-// void thread_output(void *arg);
-// void thread_network(void *arg);
-// void thread_memory(void *arg);
-
-void thread_app_handle(void)
-{
-    char txBuffer[50];
-    queue = xQueueCreate(5, sizeof(txBuffer)); 
-    if (queue == 0)
-    {
-     printf("Failed to create queue= %p\n", queue);
-    }
-    
-    while (1)
-    {
-        // printf("app\n");
-
-        xSemaphoreTake(SimpleMutex, portMAX_DELAY);
-
-        /* Critical section, which is protected from other threads by using mutex */
-        printf("measuring\n");
-
-        xSemaphoreGive(SimpleMutex);
-
-        sprintf(txBuffer, "Hello from Demo_Task 1\n");
-        xQueueSend(queue, (void*)txBuffer, (TickType_t)0);
-
-        sprintf(txBuffer, "Hello from Demo_Task 2\n");
-        xQueueSend(queue, (void*)txBuffer, (TickType_t)0); 
-
-        vTaskDelay(100);
-    }
-}
-
-void thread_input_handle(void)
-{
-    // printf("input\n");
-    // vTaskDelay(100);
-
-    while (1)
-    {
-        vTaskDelay(100);
-        // taskYIELD();
-    }
-}
-
-void thread_output_handle(void)
-{
-    // printf("output\n");
-    // vTaskDelay(100);
-
-    while (1)
-    {
-        vTaskDelay(100);
-        // taskYIELD();
-    }
-}
-
-void thread_network_handle(void)
-{
-    // printf("network\n");
-    // vTaskDelay(100);
-    char rxBuffer[50];
-
-    while (1)
-    {
-        if (xQueueReceive(queue, &(rxBuffer), (TickType_t)5))
-        {
-            printf("Received data from queue == %s\n", rxBuffer);
-            vTaskDelay(10);
-        }
-    }
-}
-
-void thread_memory_handle(void)
-{
-    // printf("memory\n");
-    // vTaskDelay(100);
-
-    while (1)
-    {
-        vTaskDelay(100);
-        // taskYIELD();
-    }
-}
-
-
-
-void thread_app(void *arg)
-{
-    thread_app_handle();
-}
-
-void thread_input(void *arg)
-{
-    thread_input_handle();
-}
-
-void thread_output(void *arg)
-{
-    thread_output_handle();
-}
-
-void thread_network(void *arg)
-{
-    thread_network_handle();
-}
-
-void thread_memory(void *arg)
-{
-    thread_memory_handle();
-}
-
 void app_main(void)
-{
-    SimpleMutex = xSemaphoreCreateMutex();
-    
+{   
     xTaskCreate(thread_app, "thread_app", 
         STACK_THREAD_APP, NULL, PRIORITY_THREAD_APP, &addr_thread_app);
     xTaskCreate(thread_input, "thread_input", 
