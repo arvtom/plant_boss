@@ -9,6 +9,7 @@ char buffer_rx_queue_message_wifi[50];
 QueueHandle_t queue_message_wifi;
 esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
+bool b_ready_wifi = false;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
@@ -57,7 +58,10 @@ void thread_network_handle(void)
         vTaskDelay(10);
     }
 
-    post_rest_function();
+    if (true == b_ready_wifi)
+    {
+        post_rest_function();
+    }
     
     vTaskDelay(100);
 }
@@ -131,6 +135,14 @@ bool wifi_connection()
         return false;
     }
 
+    err_thread_network = esp_wifi_set_mode(WIFI_MODE_STA);
+    if (ESP_OK != err_thread_network)
+    {
+        printf("err esp_wifi_set_mode\n");
+
+        return false;
+    }
+
     wifi_config_t wifi_configuration = {
         .sta = {
             .ssid = SSID,
@@ -139,7 +151,7 @@ bool wifi_connection()
     err_thread_network = esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration);
     if (ESP_OK != err_thread_network)
     {
-        printf("err esp_wifi_set_config\n");
+        printf("err esp_wifi_set_config %d\n", err_thread_network);
 
         return false;
     }
@@ -161,6 +173,8 @@ bool wifi_connection()
 
         return false;
     }
+
+    b_ready_wifi = true;
 
     return true;
 }
