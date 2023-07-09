@@ -203,14 +203,26 @@ static void post_rest_function()
         
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
-    // char  *post_data = "test ...";
-    char  post_data[] = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
-    // char  *post_data = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
-    
+    uint8_t device_id = 0u;
+    float humidity = 60.5;
+    float light = 80.5;
+    float temperature = 23.3;
+    float bat_voltage = 3.7;
+    uint8_t rssi_wifi = 103;
+
+    char post_data[18];
+    post_data[0] = device_id;                   /* device id */
+    memcpy(&post_data[1], &humidity, 4);        /* humidity */
+    memcpy(&post_data[5], &light, 4);           /* light */
+    memcpy(&post_data[9], &temperature, 4);     /* temperature */
+    memcpy(&post_data[13], &bat_voltage, 4);    /* bat_voltage */
+    post_data[17] = rssi_wifi;  
+
+    // char  post_data[] = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";   
 
     esp_err_t err_wifi[3];
 
-    err_wifi[0] = esp_http_client_set_post_field(client, &post_data[0], strlen(post_data));
+    err_wifi[0] = esp_http_client_set_post_field(client, &post_data[0], 18);
     err_wifi[1] = esp_http_client_perform(client);
     err_wifi[2] = esp_http_client_cleanup(client);
 
