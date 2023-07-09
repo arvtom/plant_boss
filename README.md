@@ -4,6 +4,7 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
 # TODOs
+* Packages to enable database and webpage on pi zero w: sqlite3, build-essential, python3, pip install uwsgi, 
 * Use mutex, semaphore, queue, timer.
 * Test sensors with low, medium, high values - OK.
 * Implement HW changes in pcba design:
