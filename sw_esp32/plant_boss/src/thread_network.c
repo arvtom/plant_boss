@@ -204,11 +204,13 @@ static void post_rest_function()
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
     // char  *post_data = "test ...";
-    char  *post_data = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
+    char  post_data[] = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
+    // char  *post_data = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
+    
 
     esp_err_t err_wifi[3];
 
-    err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
+    err_wifi[0] = esp_http_client_set_post_field(client, &post_data[0], strlen(post_data));
     err_wifi[1] = esp_http_client_perform(client);
     err_wifi[2] = esp_http_client_cleanup(client);
 
