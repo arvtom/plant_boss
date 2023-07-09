@@ -63,7 +63,7 @@ void thread_network_handle(void)
         post_rest_function();
     }
     
-    vTaskDelay(100);
+    vTaskDelay(1000);
 }
 
 /* ---------------------------- Private functions ---------------------------- */
@@ -204,7 +204,7 @@ static void post_rest_function()
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
     // char  *post_data = "test ...";
-    char  *post_data = "region=R4&device=D3&amount=1.2&tstamp=1.1";
+    char  *post_data = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
 
     esp_err_t err_wifi[3];
 
