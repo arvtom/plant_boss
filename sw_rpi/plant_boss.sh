@@ -1,6 +1,6 @@
 #Init server which writes/reads from database
 
-uwsgi --http 0.0.0.0:9999 --wsgi-file /home/pi/plant_boss/requestHandler.py
+uwsgi --http 0.0.0.0:9999 --wsgi-file /home/pi/github/plant_boss/sw_rpi/request_handler.py
 
 #Check if server accepts data from other devices
 

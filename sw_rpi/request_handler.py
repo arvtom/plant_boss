@@ -1,7 +1,9 @@
 import sqlite3
 import cgi
 
-PATH_2_DB = '/home/pi/plant_boss/plant_boss.db'
+PATH_2_DB = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
+TABLE_NAME = 'plant_boss_test_2'
+ROWS_TO_KEEP = '100'
 
 ## Dispatches HTTP requests to the appropriate handler.
 def application(env, start_line):
@@ -46,7 +48,7 @@ def handle_post(env, start_line):
 def handle_get(start_line):
     conn = sqlite3.connect(PATH_2_DB)        ## connect to DB
     cursor = conn.cursor()                   ## get a cursor
-    cursor.execute("select * from plant_boss_test_2")
+    cursor.execute("select * from " + TABLE_NAME)
 
     response_body = "<h3>plant_boss report</h3><ul>"
     rows = cursor.fetchall()
@@ -72,8 +74,16 @@ def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rss
     conn = sqlite3.connect(PATH_2_DB)      ## connect to DB
     cursor = conn.cursor()                 ## get a cursor
 
-    sql = "INSERT INTO plant_boss_test_2(timestamp,device,humidity,light,temperature,bat_voltage,rssi_wifi) values (?,?,?,?,?,?,?)"
+    print("Count of Rows")
+    cursor.execute("select * from " + TABLE_NAME)
+    number_rows = len(cursor.fetchall())
+    print(number_rows)
+
+    sql = "INSERT INTO " + TABLE_NAME + "(timestamp,device,humidity,light,temperature,bat_voltage,rssi_wifi) values (?,?,?,?,?,?,?)"
     cursor.execute(sql, (timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi)) ## execute INSERT 
+
+    sql = "DELETE FROM " + TABLE_NAME +  " WHERE ROWID IN (SELECT ROWID FROM " + TABLE_NAME + " ORDER BY ROWID DESC LIMIT -1 OFFSET "+ ROWS_TO_KEEP +")"
+    cursor.execute(sql)
 
     conn.commit()  ## commit
     conn.close()   ## cleanup
