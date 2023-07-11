@@ -3,7 +3,7 @@ import cgi
 
 PATH_2_DB = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_2'
-ROWS_TO_KEEP = '100'
+ROWS = 100
 
 ## Dispatches HTTP requests to the appropriate handler.
 def application(env, start_line):
@@ -76,9 +76,9 @@ def handle_get(start_line):
                 """
 
     rows = cursor.fetchall()
-    print("rows number " + str(len(rows)))
-    
-    for row in rows:
+
+    for i in range(ROWS, 0, -1):
+        row = rows[i]
         response_body += "<tr>"
         response_body += "<td>" + str(row[0]) + "</td>"     ## id
         response_body += "<td>" + str(row[1]) + "</td>"     ## timestamp
@@ -115,7 +115,7 @@ def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rss
     sql = "INSERT INTO " + TABLE_NAME + "(timestamp,device,humidity,light,temperature,bat_voltage,rssi_wifi) values (?,?,?,?,?,?,?)"
     cursor.execute(sql, (timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi)) ## execute INSERT 
 
-    sql = "DELETE FROM " + TABLE_NAME +  " WHERE ROWID IN (SELECT ROWID FROM " + TABLE_NAME + " ORDER BY ROWID DESC LIMIT -1 OFFSET "+ ROWS_TO_KEEP +")"
+    sql = "DELETE FROM " + TABLE_NAME +  " WHERE ROWID IN (SELECT ROWID FROM " + TABLE_NAME + " ORDER BY ROWID DESC LIMIT -1 OFFSET "+ str(ROWS) +")"
     cursor.execute(sql)
 
     conn.commit()  ## commit
