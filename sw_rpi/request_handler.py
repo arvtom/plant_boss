@@ -53,15 +53,56 @@ def handle_get(start_line):
     response_body = "<h3>plant_boss report</h3><ul>"
     rows = cursor.fetchall()
     for row in rows:
-        response_body += "<li>" + str(row[0]) + '|'  ## id
-        response_body += str(row[1]) + '|'                ## timestamp
-        response_body += str(row[2]) + '|'                ## device
-        response_body += str(row[3]) + '|'           ## humidity
-        response_body += str(row[4]) + '|' #light
-        response_body += str(row[5]) + '|' #temperature
-        response_body += str(row[6]) + '|' #bat_voltage
-        response_body += str(row[7]) + "</li>"       ## rssi_wifi
-        response_body += "</ul>"
+        response_body += "<ul><li>"
+        response_body += str(row[0]) + ' | '  ## id
+        response_body += str(row[1]) + ' | '                ## timestamp
+        response_body += str(row[2]) + ' | '                ## device
+        response_body += str(row[3]) + ' | '           ## humidity
+        response_body += str(row[4]) + ' | ' #light
+        response_body += str(row[5]) + ' | ' #temperature
+        response_body += str(row[6]) + ' | ' #bat_voltage
+        response_body += str(row[7])       ## rssi_wifi
+        response_body += "</li></ul>"
+
+    response_body = """
+    <!DOCTYPE html>
+    <html>
+    <style>
+    table, th, td {
+     border:1px solid black;
+    }
+    </style>
+    <body>
+
+    <h2>A basic HTML table</h2>
+
+    <table style="width:100%">
+    <tr>
+       """
+    response_body +=  """ 
+    <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+    </tr>
+    
+    <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    </tr>
+    <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+    </tr>
+    </table>
+
+<p>To understand the example better, we have added borders to the table.</p>
+
+</body>
+</html>
+
+    """
 
     conn.commit()  ## commit
     conn.close()   ## cleanup
