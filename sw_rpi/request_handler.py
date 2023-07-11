@@ -77,14 +77,14 @@ def handle_get(start_line):
 
     rows = cursor.fetchall()
     for row in rows:
-        response_body += "<td>" + str(row[0]) + "<td/>"     ## id
-        response_body += "<td>" + str(row[1]) + "<td/>"     ## timestamp
-        response_body += "<td>" + str(row[2]) + "<td/>"     ## device
-        response_body += "<td>" + str(row[3]) + "<td/>"     ## humidity
-        response_body += "<td>" + str(row[4]) + "<td/>"     #light
-        response_body += "<td>" + str(row[5]) + "<td/>"     #temperature
-        response_body += "<td>" + str(row[6]) + "<td/>"     #bat_voltage
-        response_body += "<td>" + str(row[7]) + "<td/>"     ## rssi_wifi
+        response_body += "<td>" + str(row[0]) + "</td>"     ## id
+        response_body += "<td>" + str(row[1]) + "</td>"     ## timestamp
+        response_body += "<td>" + str(row[2]) + "</td>"     ## device
+        response_body += "<td>" + str(row[3]) + "</td>"     ## humidity
+        response_body += "<td>" + str(row[4]) + "</td>"     #light
+        response_body += "<td>" + str(row[5]) + "</td>"     #temperature
+        response_body += "<td>" + str(row[6]) + "</td>"     #bat_voltage
+        response_body += "<td>" + str(row[7]) + "</td>"     ## rssi_wifi
 
     response_body += """
                 </tr>
