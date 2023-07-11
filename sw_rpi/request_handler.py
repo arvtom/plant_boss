@@ -49,6 +49,7 @@ def handle_get(start_line):
     conn = sqlite3.connect(PATH_2_DB)        ## connect to DB
     cursor = conn.cursor()                   ## get a cursor
     cursor.execute("select * from " + TABLE_NAME)
+    rows = cursor.fetchall()
 
     response_body = """
         <!DOCTYPE html>
@@ -75,9 +76,7 @@ def handle_get(start_line):
                 </tr>
                 """
 
-    rows = cursor.fetchall()
-
-    for i in range(ROWS, 0, -1):
+    for i in range(ROWS-1, 0, -1):
         print(i)
         row = rows[i]
         response_body += "<tr>"
