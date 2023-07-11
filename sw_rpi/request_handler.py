@@ -25,13 +25,13 @@ def handle_post(env, start_line):
     form = get_field_storage(env)  # body of an HTTP POST request
     
     # Extract fields from POST form.
-    timestamp = form.getvalue('timestamp')
-    device = form.getvalue('device')
-    humidity = form.getvalue('humidity')
-    light = form.getvalue('light')
-    temperature = form.getvalue('temperature')
-    bat_voltage = form.getvalue('bat_voltage')
-    rssi_wifi = form.getvalue('rssi_wifi')
+    timestamp = form.getvalue('a1')
+    device = form.getvalue('a2')
+    humidity = form.getvalue('a3')
+    light = form.getvalue('a4')
+    temperature = form.getvalue('a5')
+    bat_voltage = form.getvalue('a6')
+    rssi_wifi = form.getvalue('a7')
 
     # Check if there is missing data
     if (timestamp is not None and

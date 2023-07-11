@@ -203,8 +203,15 @@ static void post_rest_function()
         
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
-    // char  *post_data = "test ...";
-    char  *post_data = "timestamp=1.39&device=1&humidity=1.49&light=1.59&temperature=1.69&bat_voltage=1.79&rssi_wifi=1.89";
+    /* a1 timestamp */
+    /* a2 timestamp */
+    /* a3 timestamp */
+    /* a4 timestamp */
+    /* a5 timestamp */
+    /* a6 timestamp */
+    /* a7 timestamp */
+
+    char  *post_data = "a1=1.39&a2=1&a3=1.49&a4=1.59&a5=1.69&a6=1.79&a7=1.89";
 
     esp_err_t err_wifi[3];
 
