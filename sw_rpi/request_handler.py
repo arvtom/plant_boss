@@ -76,6 +76,8 @@ def handle_get(start_line):
                 """
 
     rows = cursor.fetchall()
+    print("rows number " + str(len(rows)))
+    
     for row in rows:
         response_body += "<tr>"
         response_body += "<td>" + str(row[0]) + "</td>"     ## id
