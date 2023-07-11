@@ -11,6 +11,12 @@ esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
 bool b_ready_wifi = false;
 
+/* temporary global variables for testing */
+extern float light;
+extern float temperature;
+extern int adc_raw_humidity;
+extern int adc_raw_battery;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
 {
@@ -204,20 +210,43 @@ static void post_rest_function()
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
     /* a1 timestamp */
-    /* a2 timestamp */
-    /* a3 timestamp */
-    /* a4 timestamp */
-    /* a5 timestamp */
-    /* a6 timestamp */
-    /* a7 timestamp */
+    /* a2 device */
+    /* a3 humidity */
+    /* a4 light */
+    /* a5 temperature */
+    /* a6 bat_voltage */
+    /* a7 rssi_wifi */
 
-    char  *post_data = "a1=1.39&a2=1&a3=1.49&a4=1.59&a5=1.69&a6=1.79&a7=1.89";
+    // extern float light;
+    // extern float temperature;
+    // extern int adc_raw_humidity;
+    // extern int adc_raw_battery;
 
     esp_err_t err_wifi[3];
 
-    err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
-    err_wifi[1] = esp_http_client_perform(client);
-    err_wifi[2] = esp_http_client_cleanup(client);
+    // char  *post_data = "a1=1.39&a2=1&a3=1.49&a4=1.59&a5=1.69&a6=1.79&a7=1.89";
+    // err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
+
+    char buffer [100];
+    int ret = snprintf(buffer, 100, "a1=%2.2f&a2=%d&a3=%d&a4=%5.1f&a5=%2.1f&a6=%d&a7=%d", 
+        1.0,
+        1,
+        adc_raw_humidity,
+        light,
+        temperature,
+        adc_raw_battery,
+        120);
+
+    if (ret <= 0)
+    {
+        printf("snprintf_error");
+    }
+    else
+    {
+        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
+        err_wifi[1] = esp_http_client_perform(client);
+        err_wifi[2] = esp_http_client_cleanup(client);
+    }
 
     printf("err_wifi=%d,%d,%d\n", err_wifi[0], err_wifi[1], err_wifi[2]);
 }
