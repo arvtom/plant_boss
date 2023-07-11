@@ -1,7 +1,7 @@
 import sqlite3
 import cgi
 
-PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.database'
+PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_2'
 ROWS = 100
 
@@ -133,5 +133,5 @@ def get_field_storage(env):
         return form[2]
 
     fs = cgi.FieldStorage(fp = input, environ = env, keep_blank_values = 1)
-    
+
     return fs
