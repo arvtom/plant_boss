@@ -73,10 +73,11 @@ def handle_get(start_line):
                     <th>bat_voltage</th>
                     <th>rssi_wifi</th>
                 </tr>
-                <tr> """
+                """
 
     rows = cursor.fetchall()
     for row in rows:
+        response_body += "<tr>"
         response_body += "<td>" + str(row[0]) + "</td>"     ## id
         response_body += "<td>" + str(row[1]) + "</td>"     ## timestamp
         response_body += "<td>" + str(row[2]) + "</td>"     ## device
@@ -85,9 +86,9 @@ def handle_get(start_line):
         response_body += "<td>" + str(row[5]) + "</td>"     #temperature
         response_body += "<td>" + str(row[6]) + "</td>"     #bat_voltage
         response_body += "<td>" + str(row[7]) + "</td>"     ## rssi_wifi
+        response_body += "</tr>"
 
     response_body += """
-                </tr>
                 </table>
             </body>
         </html>
