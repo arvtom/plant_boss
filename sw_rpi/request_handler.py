@@ -78,6 +78,7 @@ def handle_get(start_line):
     rows = cursor.fetchall()
 
     for i in range(ROWS, 0, -1):
+        print(i)
         row = rows[i]
         response_body += "<tr>"
         response_body += "<td>" + str(row[0]) + "</td>"     ## id
