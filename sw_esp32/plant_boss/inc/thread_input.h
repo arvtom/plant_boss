@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
-#include <driver/gpio.h>
 #include <driver/i2c.h>
 
 #include "error.h"
 #include "adc_wrapper.h"
+#include "gpio_wrapper.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
