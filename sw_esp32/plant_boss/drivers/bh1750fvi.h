@@ -6,9 +6,16 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+#include <stdio.h>
 #include "i2c_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
+#define BH1750FVI_I2C_ADDR_MEASURE          0x23
+#define BH1750FVI_I2C_ADDR_RESULT           0x23
+
+#define BH1750FVI_I2C_COMMAND_MEASURE       0x23
+
+#define BH1750FVI_I2C_TIMEOUT               100u
 
 /*------------------------------Structures / enumerators------------------------------*/
 // typedef enum

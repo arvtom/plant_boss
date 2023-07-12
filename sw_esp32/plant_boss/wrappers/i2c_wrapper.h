@@ -51,4 +51,7 @@
 bool i2c_init(void);
 bool i2c_handle(void);
 
+bool i2c_handle_write(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout);
+bool i2c_handle_read(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout);
+
 /*------------------------------Private function prototypes------------------------------*/

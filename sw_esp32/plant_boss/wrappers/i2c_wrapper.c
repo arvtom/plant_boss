@@ -22,11 +22,6 @@ i2c_config_t conf = {
     .clk_flags = 0,                          // optional; you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here
 };
 
-uint8_t buf_i2c_rx[2] = {0, 0};
-uint8_t buf_i2c_tx[2] = {0, 0};
-
-float light = 0;
-
 /*------------------------------Public functions------------------------------*/
 bool i2c_init(void)
 {
@@ -50,24 +45,30 @@ bool i2c_init(void)
 
 bool i2c_handle(void)
 {
-    /* Low resolution mode. Needs 24 ms to finish sampling. */
-    buf_i2c_tx[0] = 0b00100011;
-    err_i2c_drv = i2c_master_write_to_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_tx, 1, 100);
+
+    return true;
+}
+
+bool i2c_handle_write(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout)
+{
+    err_i2c_drv = i2c_master_write_to_device(i2c_master_port, addr, p_buf, count, timeout);
     if (ESP_OK != err_i2c_drv)
     {
+        printf("error i2c write %d\n", err_i2c_drv);
         return false;
     }   
 
-    vTaskDelay(3);
+    return true;
+}
 
-    err_i2c_drv = i2c_master_read_from_device(i2c_master_port, 0b0100011, (uint8_t *)buf_i2c_rx, 2, 100);
+bool i2c_handle_read(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout)
+{
+    err_i2c_drv = i2c_master_read_from_device(i2c_master_port, addr, p_buf, count, timeout);
     if (ESP_OK != err_i2c_drv)
     {
+        printf("error i2c read\n");
         return false;
     }
-
-    light = (float)(((uint16_t)buf_i2c_rx[0] << 8) | (uint16_t)buf_i2c_rx[1]) / 1.2;
-    printf("light %f\n", light);
 
     return true;
 }

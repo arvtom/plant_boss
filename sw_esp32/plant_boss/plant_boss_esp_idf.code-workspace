@@ -20,7 +20,12 @@
 			"adc_oneshot.h": "c",
 			"esp_wifi.h": "c",
 			"stdio.h": "c",
-			"i2c_wrapper.h": "c"
+			"i2c_wrapper.h": "c",
+			"bitset": "c",
+			"chrono": "c",
+			"algorithm": "c",
+			"condition_variable": "c",
+			"future": "c"
 		}
 	}
 }
