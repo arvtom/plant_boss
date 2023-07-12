@@ -9,6 +9,8 @@ esp_err_t err_esp = 0;
 
 adc_oneshot_unit_handle_t adc1_handle;
 adc_cali_handle_t adc_calibration_handle_ch3_s;
+adc_cali_handle_t adc_calibration_handle_ch6_s;
+adc_cali_handle_t adc_calibration_handle_ch7_s;
 
 i2c_port_t i2c_master_port = 0;
 i2c_config_t conf = {
@@ -31,6 +33,8 @@ int adc_raw_battery = 0;
 float adc_voltage_temperature_f = 0;
 float temperature = 0;
 int adc_voltage_temperature_s32 = 0;
+int adc_voltage_humidity_s32 = 0;
+int adc_voltage_battery_s32 = 0;
 
 float light = 0;
 
@@ -87,7 +91,20 @@ bool thread_input_init(void)
         .unit_id = ADC_UNIT_1,
         .atten = ADC_ATTEN_DB_6,
         .bitwidth = ADC_BITWIDTH_12,
-        /*.default_vref = 1.1, */
+    };
+
+    adc_cali_line_fitting_config_t adc_calibration_config_ch6_s = 
+    {
+        .unit_id = ADC_UNIT_1,
+        .atten = ADC_ATTEN_DB_11,
+        .bitwidth = ADC_BITWIDTH_12,
+    };
+
+    adc_cali_line_fitting_config_t adc_calibration_config_ch7_s = 
+    {
+        .unit_id = ADC_UNIT_1,
+        .atten = ADC_ATTEN_DB_11,
+        .bitwidth = ADC_BITWIDTH_12,
     };
 
     /* light sensor power supply pin */
@@ -164,6 +181,22 @@ bool thread_input_init(void)
 
         return false;
     }   
+
+    err_esp = adc_cali_create_scheme_line_fitting(&adc_calibration_config_ch6_s, &adc_calibration_handle_ch6_s);
+    if (ESP_OK != err_esp)
+    {
+        error_set_u32(&s_thread_input.err, THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_HUMIDITY);
+
+        return false;
+    }   
+
+    err_esp = adc_cali_create_scheme_line_fitting(&adc_calibration_config_ch7_s, &adc_calibration_handle_ch7_s);
+    if (ESP_OK != err_esp)
+    {
+        error_set_u32(&s_thread_input.err, THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_BATTERY);
+
+        return false;
+    }  
 
     /* light sensor power supply pin */
     err_esp = gpio_config(&io_conf_4);
@@ -324,8 +357,16 @@ bool thread_input_handle(void)
 
         return false;
     }
+
+    err_esp = adc_cali_raw_to_voltage(adc_calibration_handle_ch6_s, adc_raw_humidity, &adc_voltage_humidity_s32);
+    if (ESP_OK != err_esp)
+    {
+        error_set_u32(&s_thread_input.err, THREAD_INPUT_ERROR_HANDLE_ADC);
+
+        return false;
+    }
     
-    printf("adc_raw_humidity %d\n", adc_raw_humidity);
+    printf("adc_voltage_humidity_s32 %d\n", adc_voltage_humidity_s32);
 
     /* battery */
     err_esp = adc_oneshot_read(adc1_handle, ADC_CHANNEL_7, &adc_raw_battery);
@@ -336,7 +377,15 @@ bool thread_input_handle(void)
         return false;
     }
 
-    printf("adc_raw_battery %d\n", adc_raw_battery);
+    err_esp = adc_cali_raw_to_voltage(adc_calibration_handle_ch7_s, adc_raw_battery, &adc_voltage_battery_s32);
+    if (ESP_OK != err_esp)
+    {
+        error_set_u32(&s_thread_input.err, THREAD_INPUT_ERROR_HANDLE_ADC);
+
+        return false;
+    }
+    
+    printf("adc_voltage_battery_s32 %d\n", adc_voltage_battery_s32);
     
     vTaskDelay(100);
 
