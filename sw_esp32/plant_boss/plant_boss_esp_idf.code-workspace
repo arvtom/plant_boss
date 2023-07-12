@@ -16,7 +16,10 @@
 			"esp_err.h": "c",
 			"complex": "c",
 			"adc_wrapper.h": "c",
-			"error.h": "c"
+			"error.h": "c",
+			"adc_oneshot.h": "c",
+			"esp_wifi.h": "c",
+			"stdio.h": "c"
 		}
 	}
 }

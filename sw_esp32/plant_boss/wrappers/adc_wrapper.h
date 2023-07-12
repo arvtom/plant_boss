@@ -6,6 +6,11 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+#include <esp_adc/adc_oneshot.h>
+#include <esp_adc/adc_cali.h>
+#include <esp_adc/adc_cali_scheme.h>
+#include <esp_err.h>
+#include <math.h>
 
 /*------------------------------Defines------------------------------*/
 
@@ -51,3 +56,4 @@ bool adc_init(void);
 bool adc_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+bool adc_init_channels(void);
