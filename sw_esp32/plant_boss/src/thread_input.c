@@ -41,7 +41,7 @@ bool thread_input_init(void)
         return false;
     }
 
-    if (true != i2c_init())
+    if (true != bh1750fvi_init())
     {
         printf("error\n");
         return false;
@@ -52,7 +52,7 @@ bool thread_input_init(void)
 
 bool thread_input_handle(void)
 {
-    if (true != i2c_handle())
+    if (true != bh1750fvi_handle())
     {
         return false;
     }

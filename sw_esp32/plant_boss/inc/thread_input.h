@@ -10,7 +10,7 @@
 #include "error.h"
 #include "adc_wrapper.h"
 #include "gpio_wrapper.h"
-#include "i2c_wrapper.h"
+#include "bh1750fvi.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
