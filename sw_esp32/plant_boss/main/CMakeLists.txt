@@ -6,4 +6,10 @@ idf_component_register(
     "../src/thread_network.c" 
     "../src/thread_memory.c" 
     "../src/error_wrapper.c" 
+    "../src/adc_wrapper.c" 
+    "../src/gpio_wrapper.c" 
+    "../src/i2c_wrapper.c" 
+    "../src/nvs_wrapper.c" 
+    "../src/uart_wrapper.c" 
+    "../src/wifi_wrapper.c" 
     INCLUDE_DIRS "../inc")
