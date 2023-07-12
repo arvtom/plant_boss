@@ -7,6 +7,9 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <stdio.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+
 #include "i2c_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
@@ -18,10 +21,10 @@
 #define BH1750FVI_I2C_TIMEOUT               100u
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
-    // ERROR_BIT = 0x00000002U,
+typedef enum
+{
+    BH1750FVI_ERROR_INIT        = 0x00000001U,
+    BH1750FVI_ERROR_HANDLE      = 0x00000002U,
     // ERROR_BIT = 0x00000004U,
     // ERROR_BIT = 0x00000008U,
     // ERROR_BIT = 0x00000010U,
@@ -52,7 +55,7 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }bh1750fvi_error_t;
+}bh1750fvi_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool bh1750fvi_init(void);

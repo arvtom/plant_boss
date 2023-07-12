@@ -15,8 +15,8 @@
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
 {
-    // THREAD_INPUT_ERROR_INIT_ADC_1                           = 0x00000001U,
-    // THREAD_INPUT_ERROR_INIT_ADC_CHANNEL_TEMPERATURE         = 0x00000002U,
+    THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR                    = 0x00000001U,
+    THREAD_INPUT_ERROR_HANDLE_LIGHT_SENSOR                  = 0x00000002U,
     // THREAD_INPUT_ERROR_INIT_ADC_CHANNEL_HUMIDITY            = 0x00000004U,
     // THREAD_INPUT_ERROR_INIT_ADC_CHANNEL_BATTERY             = 0x00000008U,
     // THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_TEMPERATURE     = 0x00000010U,

@@ -25,7 +25,8 @@
 			"chrono": "c",
 			"algorithm": "c",
 			"condition_variable": "c",
-			"future": "c"
+			"future": "c",
+			"bh1750fvi.h": "c"
 		}
 	}
 }

@@ -10,7 +10,9 @@
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Variables / Macro calls------------------------------*/
+uint32_t err_i2c = 0u;
 int err_i2c_drv = 0;
+
 i2c_port_t i2c_master_port = 0;
 i2c_config_t conf = {
     .mode = I2C_MODE_MASTER,
@@ -29,6 +31,7 @@ bool i2c_init(void)
     err_i2c_drv = i2c_param_config(i2c_master_port, &conf);
     if (ESP_OK != err_i2c_drv)
     {
+        error_set_u32(&err_i2c, I2C_ERROR_INIT);
 
         return false;
     }   
@@ -36,6 +39,7 @@ bool i2c_init(void)
     err_i2c_drv = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
     if (ESP_OK != err_i2c_drv)
     {
+        error_set_u32(&err_i2c, I2C_ERROR_INIT);
 
         return false;
     }   
@@ -43,18 +47,19 @@ bool i2c_init(void)
     return true;
 }
 
-bool i2c_handle(void)
-{
+// bool i2c_handle(void)
+// {
 
-    return true;
-}
+//     return true;
+// }
 
 bool i2c_handle_write(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout)
 {
     err_i2c_drv = i2c_master_write_to_device(i2c_master_port, addr, p_buf, count, timeout);
     if (ESP_OK != err_i2c_drv)
     {
-        printf("error i2c write %d\n", err_i2c_drv);
+        error_set_u32(&err_i2c, I2C_ERROR_HANDLE_WRITE);
+
         return false;
     }   
 
@@ -66,7 +71,8 @@ bool i2c_handle_read(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeou
     err_i2c_drv = i2c_master_read_from_device(i2c_master_port, addr, p_buf, count, timeout);
     if (ESP_OK != err_i2c_drv)
     {
-        printf("error i2c read\n");
+        error_set_u32(&err_i2c, I2C_ERROR_HANDLE_READ);
+
         return false;
     }
 

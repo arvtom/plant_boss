@@ -19,7 +19,7 @@ void error_set_u32(uint32_t *p_err_var, uint32_t err_bit)
 {
     *p_err_var |= err_bit;
 
-    printf("err= 0x%x", (unsigned int)*p_err_var);
+    printf("err 0x%x, addr 0x%x\n", (unsigned int)*p_err_var, (unsigned int)p_err_var);
 }
 
 /**
@@ -49,6 +49,7 @@ void error_handle(void)
 {
     /* periodically send errors on uart and wifi */
     
+    vTaskDelay(100);
 }
 
 /*------------------------------Private functions------------------------------*/

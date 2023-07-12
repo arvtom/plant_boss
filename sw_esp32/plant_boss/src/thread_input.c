@@ -9,6 +9,8 @@ esp_err_t err_esp = 0;
 
 thread_input_t s_thread_input;
 
+uint32_t err_thread_input = 0u;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
@@ -43,7 +45,8 @@ bool thread_input_init(void)
 
     if (true != bh1750fvi_init())
     {
-        printf("error\n");
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR);
+        
         return false;
     }
 
@@ -54,6 +57,8 @@ bool thread_input_handle(void)
 {
     if (true != bh1750fvi_handle())
     {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR);
+
         return false;
     }
 

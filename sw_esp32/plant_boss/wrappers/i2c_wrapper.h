@@ -8,15 +8,17 @@
 #include <stdbool.h>
 #include <driver/i2c.h>
 
+#include "error.h"
+
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
-    // ERROR_BIT = 0x00000002U,
-    // ERROR_BIT = 0x00000004U,
-    // ERROR_BIT = 0x00000008U,
+typedef enum
+{
+    I2C_ERROR_INIT              = 0x00000001U,
+    I2C_ERROR_HANDLE            = 0x00000002U,
+    I2C_ERROR_HANDLE_WRITE      = 0x00000004U,
+    I2C_ERROR_HANDLE_READ       = 0x00000008U,
     // ERROR_BIT = 0x00000010U,
     // ERROR_BIT = 0x00000020U,
     // ERROR_BIT = 0x00000040U,
@@ -45,11 +47,11 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }i2c_error_t;
+}i2c_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool i2c_init(void);
-bool i2c_handle(void);
+// bool i2c_handle(void);
 
 bool i2c_handle_write(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout);
 bool i2c_handle_read(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout);
