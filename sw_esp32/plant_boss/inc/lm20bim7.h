@@ -1,18 +1,15 @@
 /**
-*  \file    error_wrapper.h
-*  \brief   Error wrapper, which uses individual bits to represent errors.
+*  \file    lm20bim7.h
+*  \brief   This file contains functions for reading temperature sensor lm20bim7 data.
 *  \author  arvtom
 */
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
 
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-/* 32bit error enumerator */
 // typedef enum
 // {
     // ERROR_BIT = 0x00000001U,
@@ -47,12 +44,10 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }pcf8591_error_t;
+// }lm20bim7_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
-void error_set_u32(uint32_t *p_err_var, uint32_t err_bit);
-void error_clear_u32(uint32_t *p_err_var, uint32_t err_bit);
-bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit);
-void error_handle(void);
+bool lm20bim7_init(void);
+bool lm20bim7_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/

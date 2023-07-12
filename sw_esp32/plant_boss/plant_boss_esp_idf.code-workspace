@@ -14,7 +14,9 @@
 			"thread_network.h": "c",
 			"thread_output.h": "c",
 			"esp_err.h": "c",
-			"complex": "c"
+			"complex": "c",
+			"adc_wrapper.h": "c",
+			"error.h": "c"
 		}
 	}
 }

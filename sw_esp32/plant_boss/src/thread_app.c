@@ -1,3 +1,6 @@
+/* File purpose is to control operating modes: 
+    normal with sleep
+    real time */
 
 /* ---------------------------- Includes ---------------------------- */
 #include "thread_app.h"

@@ -9,7 +9,7 @@
 #include <freertos/task.h>
 #include <driver/gpio.h>
 
-#include "error_wrapper.h"
+#include "error.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum

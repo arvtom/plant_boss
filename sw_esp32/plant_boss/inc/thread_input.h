@@ -13,7 +13,7 @@
 #include <driver/i2c.h>
 #include <math.h>
 
-#include "error_wrapper.h"
+#include "error.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum

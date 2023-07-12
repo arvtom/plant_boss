@@ -1,11 +1,11 @@
 /**
-*  \file    error_wrapper.c
-*  \brief   Error wrapper, which uses individual bits to represent errors.
+*  \file    error.c
+*  \brief   Error management functions, which use individual bits to represent errors.
 *  \author  arvtom
 */
 
 /*------------------------------Includes------------------------------*/
-#include "error_wrapper.h"
+#include "error.h"
 
 /*------------------------------Defines------------------------------*/
 
