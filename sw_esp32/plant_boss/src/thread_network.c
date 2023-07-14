@@ -65,6 +65,15 @@ void thread_network_handle(void)
     if (true == b_ready_wifi)
     {
         // post_rest_function();
+        wifi_ap_record_t ap_info;
+        if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
+        {
+            printf("error checking wifi info\n");
+        }
+        else
+        {
+            printf("rssi=%d\n", ap_info.rssi);
+        }
     }
     
     vTaskDelay(100);
