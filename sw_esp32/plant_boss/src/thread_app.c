@@ -12,6 +12,11 @@ SemaphoreHandle_t not_so_simple_mutex;
 extern QueueHandle_t queue_message_wifi;
 char buffer_tx_queue_message_wifi[50];
 
+extern QueueHandle_t queue_input;
+uint8_t buf_rx_queue_input[4];
+
+extern bool b_ready_thread_input;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -51,6 +56,15 @@ void thread_app_handle(void)
 
     // uint8_t res = app_function();
     // printf("res=%d\n", res+1);
+
+    if (true == b_ready_thread_input)
+    {
+        if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
+        {
+            printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
+            vTaskDelay(10);
+        }
+    }
 
     vTaskDelay(100);
 }

@@ -14,6 +14,8 @@ uint32_t err_thread_input = 0u;
 QueueHandle_t queue_input;
 uint8_t buf_tx_queue_input[4];
 
+bool b_ready_thread_input = false;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
@@ -58,6 +60,8 @@ bool thread_input_init(void)
     {
      printf("Failed to create queue= %p\n", queue_input);
     }
+
+    b_ready_thread_input = true;
 
     return true;
 }
