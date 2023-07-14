@@ -37,7 +37,7 @@ bool thread_app_init(void)
     return true;
 }
 
-void thread_app_handle(void)
+bool thread_app_handle(void)
 {
         // printf("app\n");
 
@@ -57,16 +57,20 @@ void thread_app_handle(void)
     // uint8_t res = app_function();
     // printf("res=%d\n", res+1);
 
-    if (true == b_ready_thread_input)
+    if (false == b_ready_thread_input)
     {
-        if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
-        {
-            printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
-            vTaskDelay(10);
-        }
+        return true;
+    }
+
+    if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
+    {
+        printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
+        vTaskDelay(10);
     }
 
     vTaskDelay(100);
+
+    return true;
 }
 
 uint8_t app_function(void)

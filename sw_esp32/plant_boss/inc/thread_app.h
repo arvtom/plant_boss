@@ -18,7 +18,7 @@
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg);
 bool thread_app_init(void);
-void thread_app_handle(void);
+bool thread_app_handle(void);
 uint8_t app_function(void);
 
 /* ---------------------------- Private functions ---------------------------- */
