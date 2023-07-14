@@ -55,6 +55,13 @@ bool thread_input_init(void)
         return false;
     }
 
+    if (true != lm20bim7_init())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_TEMPERATURE_SENSOR);
+        
+        return false;
+    }
+
     queue_input = xQueueCreate(1, sizeof(buf_tx_queue_input)); 
     if (queue_input == 0)
     {
@@ -70,7 +77,7 @@ bool thread_input_handle(void)
 {
     if (true != bh1750fvi_handle())
     {
-        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR);
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_LIGHT_SENSOR);
 
         return false;
     }
@@ -79,6 +86,13 @@ bool thread_input_handle(void)
 
     if (true != adc_handle())
     {
+        return false;
+    }
+
+    if (true != lm20bim7_handle())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_TEMPERATURE_SENSOR);
+        
         return false;
     }
 

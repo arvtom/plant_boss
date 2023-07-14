@@ -55,5 +55,9 @@
 bool adc_init(void);
 bool adc_handle(void);
 
+bool adc_init_channel(adc_oneshot_chan_cfg_t* p_channel_config, adc_cali_line_fitting_config_t* p_calibration_config,
+    adc_cali_handle_t* p_calibration_handle, adc_channel_t channel);
+bool adc_handle_channel(adc_cali_handle_t* p_calibration_handle, int* p_adc_voltage, adc_channel_t channel);
+
 /*------------------------------Private function prototypes------------------------------*/
 bool adc_init_channels(void);

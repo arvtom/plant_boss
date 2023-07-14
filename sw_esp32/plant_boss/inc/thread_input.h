@@ -14,14 +14,15 @@
 #include "adc_wrapper.h"
 #include "gpio_wrapper.h"
 #include "bh1750fvi.h"
+#include "lm20bim7.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
 {
     THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR                    = 0x00000001U,
     THREAD_INPUT_ERROR_HANDLE_LIGHT_SENSOR                  = 0x00000002U,
-    // THREAD_INPUT_ERROR_INIT_ADC_CHANNEL_HUMIDITY            = 0x00000004U,
-    // THREAD_INPUT_ERROR_INIT_ADC_CHANNEL_BATTERY             = 0x00000008U,
+    THREAD_INPUT_ERROR_INIT_TEMPERATURE_SENSOR              = 0x00000004U,
+    THREAD_INPUT_ERROR_HANDLE_TEMPERATURE_SENSOR            = 0x00000008U,
     // THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_TEMPERATURE     = 0x00000010U,
     // THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_HUMIDITY        = 0x00000020U,
     // THREAD_INPUT_ERROR_INIT_ADC_CALIBRATION_BATTERY         = 0x00000040U,
