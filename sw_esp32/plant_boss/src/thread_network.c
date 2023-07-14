@@ -6,7 +6,7 @@
 
 /* ---------------------------- Global variables ---------------------------- */
 QueueHandle_t queue_wifi;
-char buf_rx_queue_wifi[50];
+char buf_rx_queue_wifi[100];
 
 esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;

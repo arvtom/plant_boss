@@ -10,7 +10,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 SemaphoreHandle_t not_so_simple_mutex;
 extern QueueHandle_t queue_wifi;
-char buf_tx_queue_wifi[50];
+char buf_tx_queue_wifi[100];
 
 extern QueueHandle_t queue_input;
 uint8_t buf_rx_queue_input[16];
@@ -76,9 +76,12 @@ bool thread_app_handle(void)
         memcpy(&humidity_input, &buf_rx_queue_input[8], 4);
         memcpy(&voltage_battery_input, &buf_rx_queue_input[12], 4);
 
-        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&a2=%.1f&a3=%.1f&a4=%.1f", 
-            light_input, temperature_input, humidity_input, voltage_battery_input);
-        if (ret < 0 || ret > 50)
+        float timestamp = 100.3;
+        uint8_t device_id = 1u;
+
+        int ret = snprintf(&buf_tx_queue_wifi[0], 100, "a1=%.1f&a2=%d&a3=%.1f&a4=%.1f&a5=%.1f&a6=%.1f", 
+            timestamp, device_id, light_input, temperature_input, humidity_input, voltage_battery_input);
+        if (ret < 0 || ret > 100)
         {
             return false;
         }
