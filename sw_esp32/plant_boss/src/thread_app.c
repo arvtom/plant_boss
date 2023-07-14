@@ -69,7 +69,7 @@ bool thread_app_handle(void)
         float light;
         memcpy(&light, &buf_rx_queue_input, 4);
 
-        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1%5.1f", light);
+        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&", light);
         if (ret < 0 || ret > 50)
         {
             return false;
