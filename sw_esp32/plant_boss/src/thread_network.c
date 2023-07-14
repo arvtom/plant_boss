@@ -78,7 +78,7 @@ void thread_network_handle(void)
         post_rest_function();
     }
     
-    vTaskDelay(1000);
+    vTaskDelay(100);
 }
 
 /* ---------------------------- Private functions ---------------------------- */
