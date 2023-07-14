@@ -69,12 +69,15 @@ bool thread_app_handle(void)
         float light_input;
         float temperature_input;
         float humidity_input;
+        float voltage_battery_input;
 
         memcpy(&light_input, &buf_rx_queue_input, 4);
         memcpy(&temperature_input, &buf_rx_queue_input[4], 4);
         memcpy(&humidity_input, &buf_rx_queue_input[8], 4);
+        memcpy(&voltage_battery_input, &buf_rx_queue_input[12], 4);
 
-        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&a2=%.1f&a3=%.1f", light_input, temperature_input, humidity_input);
+        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&a2=%.1f&a3=%.1f&a4=%.1f", 
+            light_input, temperature_input, humidity_input, voltage_battery_input);
         if (ret < 0 || ret > 50)
         {
             return false;

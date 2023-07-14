@@ -69,6 +69,13 @@ bool thread_input_init(void)
         return false;
     }
 
+    if (true != battery_init())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_BATTERY);
+        
+        return false;
+    }
+
     queue_input = xQueueCreate(1, sizeof(buf_tx_queue_input)); 
     if (queue_input == 0)
     {
@@ -82,6 +89,11 @@ bool thread_input_init(void)
 
 bool thread_input_handle(void)
 {
+    float light_bh1750fvi;
+    float temperature_lm20bim7;
+    float humidity_hw390;
+    float voltage_battery;
+    
     if (true != bh1750fvi_handle())
     {
         error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_LIGHT);
@@ -89,12 +101,7 @@ bool thread_input_handle(void)
         return false;
     }
 
-    float light_bh1750fvi = bh1750fvi_get_light_value();
-
-    if (true != adc_handle())
-    {
-        return false;
-    }
+    light_bh1750fvi = bh1750fvi_get_light_value();
 
     if (true != lm20bim7_handle())
     {
@@ -103,7 +110,7 @@ bool thread_input_handle(void)
         return false;
     }
 
-    float temperature_lm20bim7 = lm20bim7_get_temperature_value();
+    temperature_lm20bim7 = lm20bim7_get_temperature_value();
 
     if (true != hw390_handle())
     {
@@ -112,14 +119,21 @@ bool thread_input_handle(void)
         return false;
     }
 
-    float humidity_hw390 = hw390_get_humidity_value();
+    humidity_hw390 = hw390_get_humidity_value();
 
+    if (true != battery_handle())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_BATTERY);
+        
+        return false;
+    }
 
+    voltage_battery = battery_get_voltage_value();
 
     memcpy(&buf_tx_queue_input, &light_bh1750fvi, 4);
     memcpy(&buf_tx_queue_input[4], &temperature_lm20bim7, 4);
     memcpy(&buf_tx_queue_input[8], &humidity_hw390, 4);
-    // memcpy(&buf_tx_queue_input[12], &voltage_battery, 4);
+    memcpy(&buf_tx_queue_input[12], &voltage_battery, 4);
 
     xQueueSend(queue_input, (void*)buf_tx_queue_input, (TickType_t)0);
     

@@ -13,10 +13,6 @@ bool b_err_thread_network = false;
 bool b_ready_wifi = false;
 
 /* temporary global variables for testing */
-extern float light;
-extern float temperature;
-extern int adc_raw_humidity;
-extern int adc_raw_battery;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
@@ -68,7 +64,7 @@ void thread_network_handle(void)
 
     if (true == b_ready_wifi)
     {
-        post_rest_function();
+        // post_rest_function();
     }
     
     vTaskDelay(100);
@@ -230,25 +226,25 @@ static void post_rest_function()
     // err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
 
     char buffer [100];
-    int ret = snprintf(buffer, 100, "a1=%2.2f&a2=%d&a3=%d&a4=%5.1f&a5=%2.1f&a6=%d&a7=%d", 
-        1.0,
-        1,
-        adc_raw_humidity,
-        light,
-        temperature,
-        adc_raw_battery,
-        120);
+    // int ret = snprintf(buffer, 100, "a1=%2.2f&a2=%d&a3=%d&a4=%5.1f&a5=%2.1f&a6=%d&a7=%d", 
+    //     1.0,
+    //     1,
+    //     adc_raw_humidity,
+    //     light,
+    //     temperature,
+    //     adc_raw_battery,
+    //     120);
 
-    if (ret <= 0)
-    {
-        printf("snprintf_error");
-    }
-    else
-    {
-        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
-        err_wifi[1] = esp_http_client_perform(client);
-        err_wifi[2] = esp_http_client_cleanup(client);
-    }
+    // if (ret <= 0)
+    // {
+    //     printf("snprintf_error");
+    // }
+    // else
+    // {
+    //     err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
+    //     err_wifi[1] = esp_http_client_perform(client);
+    //     err_wifi[2] = esp_http_client_cleanup(client);
+    // }
 
     printf("err_wifi=%d,%d,%d\n", err_wifi[0], err_wifi[1], err_wifi[2]);
 }

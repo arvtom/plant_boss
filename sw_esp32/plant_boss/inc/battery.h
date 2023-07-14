@@ -7,6 +7,8 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
+#include "adc_wrapper.h"
+
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
@@ -49,5 +51,7 @@
 /*------------------------------Public function prototypes------------------------------*/
 bool battery_init(void);
 bool battery_handle(void);
+
+float battery_get_voltage_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/
