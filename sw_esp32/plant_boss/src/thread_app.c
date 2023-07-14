@@ -9,8 +9,8 @@
 
 /* ---------------------------- Global variables ---------------------------- */
 SemaphoreHandle_t not_so_simple_mutex;
-extern QueueHandle_t queue_message_wifi;
-char buffer_tx_queue_message_wifi[50];
+extern QueueHandle_t queue_wifi;
+char buf_tx_queue_wifi[50];
 
 extern QueueHandle_t queue_input;
 uint8_t buf_rx_queue_input[4];
@@ -64,7 +64,19 @@ bool thread_app_handle(void)
 
     if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
     {
-        printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
+        // printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
+
+        float light;
+        memcpy(&light, &buf_rx_queue_input, 4);
+
+        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1%5.1f", light);
+        if (ret < 0 || ret > 50)
+        {
+            return false;
+        }
+
+        xQueueSend(queue_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
+
         vTaskDelay(10);
     }
 

@@ -5,8 +5,9 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
-char buffer_rx_queue_message_wifi[50];
-QueueHandle_t queue_message_wifi;
+QueueHandle_t queue_wifi;
+char buf_rx_queue_wifi[50];
+
 esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
 bool b_ready_wifi = false;
@@ -34,10 +35,10 @@ void thread_network(void *arg)
 
 bool thread_network_init(void)
 {
-    queue_message_wifi = xQueueCreate(5, sizeof(buffer_rx_queue_message_wifi)); 
-    if (queue_message_wifi == 0)
+    queue_wifi = xQueueCreate(5, sizeof(buf_rx_queue_wifi)); 
+    if (queue_wifi == 0)
     {
-     printf("Failed to create queue= %p\n", queue_message_wifi);
+        printf("Failed to create queue= %p\n", queue_wifi);
     }
 
     /* Enable nvs, which is also used for wifi*/
@@ -58,9 +59,9 @@ bool thread_network_init(void)
 
 void thread_network_handle(void)
 {
-    if (xQueueReceive(queue_message_wifi, &(buffer_rx_queue_message_wifi), (TickType_t)5))
+    if (xQueueReceive(queue_wifi, &(buf_rx_queue_wifi), (TickType_t)5))
     {
-        printf("thread_network sending data to wifi: %s\n", buffer_rx_queue_message_wifi);
+        printf("thread_network sending data to wifi: %s\n", buf_rx_queue_wifi);
         vTaskDelay(10);
     }
 

@@ -8,6 +8,7 @@
 #include <freertos/task.h>
 #include <freertos/semphr.h>
 #include <freertos/queue.h>
+#include <string.h>
 
 /* ---------------------------- Typedefs ---------------------------- */
 // typedef struct
