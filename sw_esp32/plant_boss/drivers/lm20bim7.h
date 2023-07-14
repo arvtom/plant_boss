@@ -52,4 +52,6 @@
 bool lm20bim7_init(void);
 bool lm20bim7_handle(void);
 
+float lm20bim7_get_temperature_value(void);
+
 /*------------------------------Private function prototypes------------------------------*/

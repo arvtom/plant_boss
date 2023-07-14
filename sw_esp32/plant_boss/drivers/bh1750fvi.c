@@ -57,7 +57,7 @@ bool bh1750fvi_handle(void)
     return true;
 }
 
-float bh1750fvi_get_light_value()
+float bh1750fvi_get_light_value(void)
 {
     return light;
 }

@@ -71,4 +71,9 @@ bool lm20bim7_handle(void)
     return true;
 }
 
+float lm20bim7_get_temperature_value(void)
+{
+    return temperature;
+}
+
 /*------------------------------Private functions------------------------------*/

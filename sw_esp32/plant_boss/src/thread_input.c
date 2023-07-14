@@ -12,7 +12,7 @@ thread_input_t s_thread_input;
 uint32_t err_thread_input = 0u;
 
 QueueHandle_t queue_input;
-uint8_t buf_tx_queue_input[4];
+uint8_t buf_tx_queue_input[8];
 
 bool b_ready_thread_input = false;
 
@@ -82,7 +82,7 @@ bool thread_input_handle(void)
         return false;
     }
 
-    float sensor_light = bh1750fvi_get_light_value();
+    float light_bh1750fvi = bh1750fvi_get_light_value();
 
     if (true != adc_handle())
     {
@@ -96,9 +96,11 @@ bool thread_input_handle(void)
         return false;
     }
 
-    printf("\n");
+    float temperature_lm20bim7 = lm20bim7_get_temperature_value();
 
-    memcpy(&buf_tx_queue_input, &sensor_light, 4);
+    memcpy(&buf_tx_queue_input, &light_bh1750fvi, 4);
+    memcpy(&buf_tx_queue_input[4], &temperature_lm20bim7, 4);
+
     xQueueSend(queue_input, (void*)buf_tx_queue_input, (TickType_t)0);
     
     vTaskDelay(100);
