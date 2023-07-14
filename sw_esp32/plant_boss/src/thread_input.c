@@ -11,6 +11,9 @@ thread_input_t s_thread_input;
 
 uint32_t err_thread_input = 0u;
 
+QueueHandle_t queue_input;
+uint8_t buf_tx_queue_input[4];
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
@@ -50,6 +53,12 @@ bool thread_input_init(void)
         return false;
     }
 
+    queue_input = xQueueCreate(1, sizeof(buf_tx_queue_input)); 
+    if (queue_input == 0)
+    {
+     printf("Failed to create queue= %p\n", queue_input);
+    }
+
     return true;
 }
 
@@ -62,12 +71,17 @@ bool thread_input_handle(void)
         return false;
     }
 
+    float sensor_light = bh1750fvi_get_light_value();
+
     if (true != adc_handle())
     {
         return false;
     }
 
     printf("\n");
+
+    memcpy(&buf_tx_queue_input, &sensor_light, 4);
+    xQueueSend(queue_input, (void*)buf_tx_queue_input, (TickType_t)0);
     
     vTaskDelay(100);
 

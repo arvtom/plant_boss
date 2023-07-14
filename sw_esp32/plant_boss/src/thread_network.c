@@ -17,6 +17,9 @@ extern float temperature;
 extern int adc_raw_humidity;
 extern int adc_raw_battery;
 
+extern QueueHandle_t queue_input;
+uint8_t buf_rx_queue_input[4];
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
 {
@@ -61,6 +64,12 @@ void thread_network_handle(void)
     if (xQueueReceive(queue_message_wifi, &(buffer_rx_queue_message_wifi), (TickType_t)5))
     {
         printf("thread_network sending data to wifi: %s\n", buffer_rx_queue_message_wifi);
+        vTaskDelay(10);
+    }
+
+    if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
+    {
+        printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
         vTaskDelay(10);
     }
 

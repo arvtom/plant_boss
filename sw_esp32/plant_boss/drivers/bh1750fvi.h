@@ -61,4 +61,6 @@ typedef enum
 bool bh1750fvi_init(void);
 bool bh1750fvi_handle(void);
 
+float bh1750fvi_get_light_value();
+
 /*------------------------------Private function prototypes------------------------------*/

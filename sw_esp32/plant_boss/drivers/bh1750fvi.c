@@ -29,7 +29,7 @@ bool bh1750fvi_init(void)
 bool bh1750fvi_handle(void)
 {
     /* Low resolution mode. Needs 24 ms to finish sampling. */
-    uint8_t buf_tx[2];
+    uint8_t buf_tx[1];
     buf_tx[0] = BH1750FVI_I2C_COMMAND_MEASURE;
 
     if (true != i2c_handle_write(BH1750FVI_I2C_ADDR_MEASURE, (uint8_t *)buf_tx, 1, BH1750FVI_I2C_TIMEOUT))
@@ -55,6 +55,11 @@ bool bh1750fvi_handle(void)
     printf("light %f\n", light);
 
     return true;
+}
+
+float bh1750fvi_get_light_value()
+{
+    return light;
 }
 
 /*------------------------------Private functions------------------------------*/
