@@ -52,7 +52,6 @@ bool bh1750fvi_handle(void)
     }
 
     light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[1]) / 1.2;
-    printf("light %f\n", light);
 
     return true;
 }

@@ -41,20 +41,6 @@ bool lm20bim7_init(void)
 
 bool lm20bim7_handle(void)
 {
-    // /* temperature */
-    // err_adc_drv = adc_oneshot_read(adc1_handle, ADC_CHANNEL_3, &adc_raw_temperature);
-    // if (ESP_OK != err_adc_drv)
-    // {
-    //     return false;
-    // }
-
-    // /* Use manufacturer provided calibration */
-    // err_adc_drv = adc_cali_raw_to_voltage(adc_calibration_handle_ch3_s, adc_raw_temperature, &adc_voltage_temperature_s32);
-    // if (ESP_OK != err_adc_drv)
-    // {
-    //     return false;
-    // }
-
     int adc_voltage;
 
     if (true != adc_handle_channel(&adc_calibration_handle_temperature, &adc_voltage, ADC_CHANNEL_3))
@@ -62,11 +48,8 @@ bool lm20bim7_handle(void)
         return false;
     }
 
-    // adc_voltage_temperature_f = (float)adc_voltage / 1000;
-
     temperature = -1481.96 + 
         sqrt(2.1962 * pow(10, 6) + ((1.8639 - ((float)adc_voltage / 1000)) / (3.88 * pow(10, -6))));
-    printf("temperature %f\n", temperature);
 
     return true;
 }
