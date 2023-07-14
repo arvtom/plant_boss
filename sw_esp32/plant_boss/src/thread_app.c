@@ -13,7 +13,7 @@ extern QueueHandle_t queue_wifi;
 char buf_tx_queue_wifi[50];
 
 extern QueueHandle_t queue_input;
-uint8_t buf_rx_queue_input[8];
+uint8_t buf_rx_queue_input[16];
 
 extern bool b_ready_thread_input;
 
@@ -68,11 +68,13 @@ bool thread_app_handle(void)
 
         float light_input;
         float temperature_input;
+        float humidity_input;
 
         memcpy(&light_input, &buf_rx_queue_input, 4);
         memcpy(&temperature_input, &buf_rx_queue_input[4], 4);
+        memcpy(&humidity_input, &buf_rx_queue_input[8], 4);
 
-        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&a2=%.1f", light_input, temperature_input);
+        int ret = snprintf(&buf_tx_queue_wifi[0], 50, "a1=%.1f&a2=%.1f&a3=%.1f", light_input, temperature_input, humidity_input);
         if (ret < 0 || ret > 50)
         {
             return false;

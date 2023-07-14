@@ -7,6 +7,8 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
+#include "adc_wrapper.h"
+
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
@@ -49,5 +51,7 @@
 /*------------------------------Public function prototypes------------------------------*/
 bool hw390_init(void);
 bool hw390_handle(void);
+
+float hw390_get_humidity_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/

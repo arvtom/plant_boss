@@ -61,7 +61,7 @@ void thread_network_handle(void)
 {
     if (xQueueReceive(queue_wifi, &(buf_rx_queue_wifi), (TickType_t)5))
     {
-        printf("thread_network sending data to wifi: %s\n", buf_rx_queue_wifi);
+        printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
         vTaskDelay(10);
     }
 

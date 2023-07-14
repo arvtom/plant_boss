@@ -27,7 +27,8 @@
 			"condition_variable": "c",
 			"future": "c",
 			"bh1750fvi.h": "c",
-			"lm20bim7.h": "c"
+			"lm20bim7.h": "c",
+			"hw390.h": "c"
 		}
 	}
 }

@@ -12,7 +12,7 @@ thread_input_t s_thread_input;
 uint32_t err_thread_input = 0u;
 
 QueueHandle_t queue_input;
-uint8_t buf_tx_queue_input[8];
+uint8_t buf_tx_queue_input[16];
 
 bool b_ready_thread_input = false;
 
@@ -50,14 +50,21 @@ bool thread_input_init(void)
 
     if (true != bh1750fvi_init())
     {
-        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT_SENSOR);
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT);
         
         return false;
     }
 
     if (true != lm20bim7_init())
     {
-        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_TEMPERATURE_SENSOR);
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_TEMPERATURE);
+        
+        return false;
+    }
+
+    if (true != hw390_init())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_HUMIDITY);
         
         return false;
     }
@@ -77,7 +84,7 @@ bool thread_input_handle(void)
 {
     if (true != bh1750fvi_handle())
     {
-        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_LIGHT_SENSOR);
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_LIGHT);
 
         return false;
     }
@@ -91,15 +98,28 @@ bool thread_input_handle(void)
 
     if (true != lm20bim7_handle())
     {
-        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_TEMPERATURE_SENSOR);
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_TEMPERATURE);
         
         return false;
     }
 
     float temperature_lm20bim7 = lm20bim7_get_temperature_value();
 
+    if (true != hw390_handle())
+    {
+        error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_HANDLE_HUMIDITY);
+        
+        return false;
+    }
+
+    float humidity_hw390 = hw390_get_humidity_value();
+
+
+
     memcpy(&buf_tx_queue_input, &light_bh1750fvi, 4);
     memcpy(&buf_tx_queue_input[4], &temperature_lm20bim7, 4);
+    memcpy(&buf_tx_queue_input[8], &humidity_hw390, 4);
+    // memcpy(&buf_tx_queue_input[12], &voltage_battery, 4);
 
     xQueueSend(queue_input, (void*)buf_tx_queue_input, (TickType_t)0);
     
