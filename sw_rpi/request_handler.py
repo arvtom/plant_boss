@@ -95,11 +95,11 @@ def handle_get(start_line):
                     <th>id</th>
                     <th>timestamp</th>
                     <th>device</th>
-                    <th>humidity</th>
-                    <th>light</th>
-                    <th>temperature</th>
-                    <th>bat_voltage</th>
-                    <th>rssi_wifi</th>
+                    <th>humidity, %</th>
+                    <th>light, lx</th>
+                    <th>temperature, </th>
+                    <th>bat_voltage, V</th>
+                    <th>rssi_wifi, dBm</th>
                     <th>mode</th>
                     <th>bat_low_flag</th>
                     <th>error_app</th>
