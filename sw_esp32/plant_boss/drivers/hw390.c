@@ -16,7 +16,6 @@ float humidity;
 /*------------------------------Public functions------------------------------*/
 bool hw390_init(void)
 {
-    #warning better_pass_as_argments
     adc_oneshot_chan_cfg_t adc_channel_config_humidity = 
     {
         .bitwidth = ADC_BITWIDTH_12,

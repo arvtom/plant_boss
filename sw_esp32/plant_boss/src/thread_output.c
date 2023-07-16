@@ -15,8 +15,6 @@ thread_output_t s_thread_output;
 
 bool b_ready_sensor_power;
 
-uint32_t err_thread_output = 0u;
-
 /* ---------------------------- Public functions ---------------------------- */
 void thread_output(void *arg)
 {
@@ -38,8 +36,23 @@ void thread_output(void *arg)
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_output_init(void)
 {
-    if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
-        GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
+    /* external led pin */
+    gpio_config_t io_conf_27 = {};
+    io_conf_27.intr_type = GPIO_INTR_DISABLE;
+    io_conf_27.mode = GPIO_MODE_OUTPUT;
+    io_conf_27.pin_bit_mask = (1ULL<<27u);
+    io_conf_27.pull_down_en = 0;
+    io_conf_27.pull_up_en = 0;
+
+    err_esp_output = gpio_config(&io_conf_27);
+    if (ESP_OK != err_esp_output)
+    {
+        error_set_u32(&s_thread_output.err, THREAD_OUTPUT_ERROR_INIT_EXT_LED_PIN);
+
+        return false;
+    }
+
+    if (true != gpio_init())
     {
         printf("error\n");
         return false;
@@ -54,9 +67,11 @@ bool thread_output_handle(void)
 {
     counter++;
 
-    if (true != gpio_handle_pin_output(27u, counter % 2))
+    err_esp_output = gpio_set_level(27u, counter % 2);
+    if (ESP_OK != err_esp_output)
     {
-        printf("error\n");
+        error_set_u32(&s_thread_output.err, THREAD_OUTPUT_ERROR_HANDLE_EXT_LED_PIN);
+
         return false;
     }
     

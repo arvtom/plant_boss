@@ -8,11 +8,9 @@
 QueueHandle_t queue_wifi;
 char buf_rx_queue_wifi[100];
 
-esp_err_t err_wifi_drv = ESP_OK;
+esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
 bool b_ready_wifi = false;
-
-uint32_t err_thread_network = 0u;
 
 /* temporary global variables for testing */
 
@@ -40,14 +38,14 @@ bool thread_network_init(void)
     }
 
     /* Enable nvs, which is also used for wifi*/
-    err_wifi_drv = nvs_flash_init();
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = nvs_flash_init();
+    if (ESP_OK != err_thread_network)
     {
         printf("err nvs_flash_init\n");
     }
 
-    err_wifi_drv = wifi_connection();
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = wifi_connection();
+    if (ESP_OK != err_thread_network)
     {
         printf("err wifi_connection\n");
     }
@@ -106,16 +104,16 @@ static void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_b
 bool wifi_connection()
 {
     // 1 - Wi-Fi/LwIP Init Phase
-    err_wifi_drv = esp_netif_init();                    // TCP/IP initiation 					s1.1
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_netif_init();                    // TCP/IP initiation 					s1.1
+    if (ESP_OK != err_thread_network)
     {
         printf("err erresp_netif_init\n");
 
         return false;
     }
 
-    err_wifi_drv = esp_event_loop_create_default();     // event loop 			                s1.2
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_event_loop_create_default();     // event loop 			                s1.2
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_event_loop_create_default\n");
 
@@ -125,8 +123,8 @@ bool wifi_connection()
     esp_netif_create_default_wifi_sta(); // WiFi station 	                    s1.3
     wifi_init_config_t wifi_initiation = WIFI_INIT_CONFIG_DEFAULT();
 
-    err_wifi_drv = esp_wifi_init(&wifi_initiation); // 					                    s1.4
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_wifi_init(&wifi_initiation); // 					                    s1.4
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_wifi_init\n");
 
@@ -134,24 +132,24 @@ bool wifi_connection()
     }
 
     // 2 - Wi-Fi Configuration Phase
-    err_wifi_drv = esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, wifi_event_handler, NULL);
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, wifi_event_handler, NULL);
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_event_handler_register\n");
 
         return false;
     }
 
-    err_wifi_drv = esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, wifi_event_handler, NULL);
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, wifi_event_handler, NULL);
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_event_handler_register\n");
 
         return false;
     }
 
-    err_wifi_drv = esp_wifi_set_mode(WIFI_MODE_STA);
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_wifi_set_mode(WIFI_MODE_STA);
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_wifi_set_mode\n");
 
@@ -163,17 +161,17 @@ bool wifi_connection()
             .ssid = SSID,
             .password = PASS}};
 
-    err_wifi_drv = esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration);
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration);
+    if (ESP_OK != err_thread_network)
     {
-        printf("err esp_wifi_set_config %d\n", err_wifi_drv);
+        printf("err esp_wifi_set_config %d\n", err_thread_network);
 
         return false;
     }
 
     // 3 - Wi-Fi Start Phase
-    err_wifi_drv = esp_wifi_start();
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_wifi_start();
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_wifi_start\n");
 
@@ -181,8 +179,8 @@ bool wifi_connection()
     }
 
     // 4- Wi-Fi Connect Phase
-    err_wifi_drv = esp_wifi_connect();
-    if (ESP_OK != err_wifi_drv)
+    err_thread_network = esp_wifi_connect();
+    if (ESP_OK != err_thread_network)
     {
         printf("err esp_wifi_connect\n");
 

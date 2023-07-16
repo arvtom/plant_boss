@@ -17,14 +17,6 @@ uint8_t buf_rx_queue_input[16];
 
 extern bool b_ready_thread_input;
 
-uint32_t err_thread_app = 0u;
-
-extern uint32_t err_thread_app;
-extern uint32_t err_thread_input;
-extern uint32_t err_thread_output;
-extern uint32_t err_thread_network;
-extern uint32_t err_thread_memory;
-
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -41,12 +33,6 @@ bool thread_app_init(void)
 {
     uint8_t res = app_function();
     printf("res=%d\n", res);
-
-    printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
-    printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
-    printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
-    printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
-    printf("addr err_thread_memory 0x%x\n\n", (unsigned int)&err_thread_memory);
 
     return true;
 }
