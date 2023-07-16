@@ -11,10 +11,29 @@ First webpage/database prototype photos:
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
 
 # TODOs
-* Packages to enable database and webpage on pi zero w: sqlite3, build-essential, python3, pip install uwsgi, 
-* Use mutex, semaphore, queue, timer.
-* Test sensors with low, medium, high values - OK.
-* Implement HW changes in pcba design:
+* Software rpi:
+	* Debug custom built linux distro using buildroot. At the moment device boots up with no errors, but wifi driver is not found.
+	* Notification
+	* Webpage
+		* Plots
+		* Filter abstracted / debugging data
+		* Possibility to change esp32 mode
+* Embedded software ESP32:
+	* Error management for every object using individual bits.
+	* Pointers to improve freeRTOS queue efficiency.
+	* Dedicated thread sinchronization functions from freeRTOS during init.
+	* Limit function and variable scope using static. Minimise global variables.
+	* Use unions to access queue elements.
+	* Use doxygen to check architecture and includes.
+	* Architecture diagram with data flow.
+	* Prevent multiple header inclusions using ifdef.
+	* Sensors were tested with low, medium, high values. Now need to calibrate and test more accurately.
+	* Get timer value, which stays on during sleep mode.
+	* Real time / sleep modes.
+	* Power from battery.
+	* Current concumption optimisation.
+	* Use mutexes / semaphores to protect critical code sections from other threads.
+* HW changes in pcba design:
 	* Reset pin does not properly work, getting SPI flash errors.
 	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
 	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
