@@ -1,5 +1,6 @@
 import sqlite3
 import cgi
+import datetime
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_3'
@@ -25,7 +26,7 @@ def handle_post(env, start_line):
     form = get_field_storage(env)  # body of an HTTP POST request
     
     # Extract fields from POST form.
-    timestamp = 
+    timestamp = datetime.now()
     device = form.getvalue('a1')
     humidity = form.getvalue('a2')
     light = form.getvalue('a3')
