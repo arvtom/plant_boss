@@ -11,7 +11,7 @@
 
 #Create new table in database
 
-# CREATE TABLE plant_boss_table_3 (
+# CREATE TABLE plant_boss_test_3 (
 # id INTEGER PRIMARY KEY AUTOINCREMENT,
 # timestamp TEXT NOT NULL, 
 # device INTEGER NOT NULL, 
