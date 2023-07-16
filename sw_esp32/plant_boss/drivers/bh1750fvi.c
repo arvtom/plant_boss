@@ -16,6 +16,8 @@ float light = 0.0;
 /*------------------------------Public functions------------------------------*/
 bool bh1750fvi_init(void)
 {
+    printf("addr err_bh1750fvi 0x%x\n", (unsigned int)&err_bh1750fvi);
+
     if (true != i2c_init())
     {
         error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_INIT);

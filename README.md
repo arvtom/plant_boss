@@ -8,6 +8,7 @@ Different soil characteristics monitoring and sending to sqlite database using e
 * Use mutex, semaphore, queue, timer.
 * Test sensors with low, medium, high values - OK.
 * Implement HW changes in pcba design:
+	* Reset pin does not properly work, getting SPI flash errors.
 	* Choose new voltage regulator, which can supply 3V, have dropout voltage less than 0.3V and output current of 500 mA.
 	* Voltage divider to measure battery voltage. Consider using mosfets, to prevent constant current draw through divider. Optimise divider series resistance.
 	* Jumpers for boot strapping pins

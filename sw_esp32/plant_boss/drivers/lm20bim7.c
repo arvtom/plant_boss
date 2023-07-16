@@ -17,6 +17,8 @@ float temperature;
 /*------------------------------Public functions------------------------------*/
 bool lm20bim7_init(void)
 {
+    printf("addr err_lm20bim7 0x%x\n", (unsigned int)&err_lm20bim7);
+
     adc_oneshot_chan_cfg_t adc_channel_config_temperature = 
     {
         .bitwidth = ADC_BITWIDTH_12,
