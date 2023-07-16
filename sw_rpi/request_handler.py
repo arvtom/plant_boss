@@ -97,7 +97,7 @@ def handle_get(start_line):
                     <th>device</th>
                     <th>humidity, %</th>
                     <th>light, lx</th>
-                    <th>temperature, °C</th>
+                    <th>temperature, C</th>
                     <th>bat_voltage, V</th>
                     <th>rssi_wifi, dBm</th>
                     <th>mode</th>
