@@ -14,6 +14,7 @@
 // #include <esp_http_client.h>
 
 #include "wifi_wrapper.h"
+#include "uart_wrapper.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 

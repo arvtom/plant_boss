@@ -72,6 +72,7 @@ bool thread_network_handle(void)
         {
             return false;
         }
+        // uart_handle();
     }
     
     vTaskDelay(100);
