@@ -9,7 +9,7 @@ idf_component_register(
     "../wrappers/adc_wrapper.c" 
     "../wrappers/gpio_wrapper.c" 
     "../wrappers/i2c_wrapper.c" 
-    "../wrappers/nvs_wrapper.c" 
+    "../wrappers/nvm_wrapper.c" 
     "../wrappers/uart_wrapper.c" 
     "../wrappers/wifi_wrapper.c" 
     "../src/error.c" 

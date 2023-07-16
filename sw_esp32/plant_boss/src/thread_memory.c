@@ -6,7 +6,6 @@
 
 /* ---------------------------- Global variables ---------------------------- */
 uint32_t err_thread_memory = 0u;
-int err_nvs_drv = 0;
 
 bool b_ready_thread_memory = false;
 
@@ -26,10 +25,9 @@ bool thread_memory_init(void)
 {
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
-    err_nvs_drv = nvs_flash_init();
-    if (ESP_OK != err_nvs_drv)
+    if (true != nvm_init())
     {
-        printf("err nvs_flash_init\n");
+        return false;
     }
 
     b_ready_thread_memory = true;

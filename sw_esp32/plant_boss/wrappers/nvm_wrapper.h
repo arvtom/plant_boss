@@ -1,11 +1,13 @@
 /**
-*  \file    nvs_wrapper.h
+*  \file    nvm_wrapper.h
 *  \brief   This file wraps around esp32 nvs driver.
 *  \author  arvtom
 */
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+
+#include <nvs_flash.h>
 
 /*------------------------------Defines------------------------------*/
 
@@ -47,7 +49,7 @@
 // }nvs_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
-bool nvs_init(void);
-bool nvs_handle(void);
+bool nvm_init(void);
+bool nvm_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/

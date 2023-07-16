@@ -29,7 +29,8 @@
 			"bh1750fvi.h": "c",
 			"lm20bim7.h": "c",
 			"hw390.h": "c",
-			"thread_memory.h": "c"
+			"thread_memory.h": "c",
+			"nvs_wrapper.h": "c"
 		}
 	}
 }
