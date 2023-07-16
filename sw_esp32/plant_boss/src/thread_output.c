@@ -13,6 +13,8 @@ uint8_t counter = 0;
 
 thread_output_t s_thread_output;
 
+bool b_ready_sensor_power;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_output(void *arg)
 {
@@ -49,6 +51,14 @@ bool thread_output_init(void)
 
         return false;
     }
+
+    if (true != gpio_init())
+    {
+        printf("error\n");
+        return false;
+    }
+
+    b_ready_sensor_power = true;
 
     return true;
 }

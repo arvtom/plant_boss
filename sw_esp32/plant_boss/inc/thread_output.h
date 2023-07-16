@@ -10,6 +10,7 @@
 #include <driver/gpio.h>
 
 #include "error.h"
+#include "gpio_wrapper.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum

@@ -16,6 +16,8 @@ uint8_t buf_tx_queue_input[16];
 
 bool b_ready_thread_input = false;
 
+extern bool b_ready_sensor_power;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
@@ -42,10 +44,9 @@ bool thread_input_init(void)
         return false;
     }
 
-    if (true != gpio_init())
+    while (false == b_ready_sensor_power)
     {
-        printf("error\n");
-        return false;
+        vTaskDelay(100);
     }
 
     if (true != bh1750fvi_init())
