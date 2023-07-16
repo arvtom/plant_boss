@@ -64,7 +64,7 @@ void thread_network_handle(void)
 
     if (true == b_ready_wifi)
     {
-        // post_rest_function();
+        post_rest_function();
         wifi_ap_record_t ap_info;
         if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
         {
@@ -234,26 +234,40 @@ static void post_rest_function()
     // char  *post_data = "a1=1.39&a2=1&a3=1.49&a4=1.59&a5=1.69&a6=1.79&a7=1.89";
     // err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
 
-    char buffer [100];
-    // int ret = snprintf(buffer, 100, "a1=%2.2f&a2=%d&a3=%d&a4=%5.1f&a5=%2.1f&a6=%d&a7=%d", 
-    //     1.0,
-    //     1,
-    //     adc_raw_humidity,
-    //     light,
-    //     temperature,
-    //     adc_raw_battery,
-    //     120);
+    // device = form.getvalue('a1')
+    // humidity = form.getvalue('a2')
+    // light = form.getvalue('a3')
+    // temperature = form.getvalue('a4')
+    // bat_voltage = form.getvalue('a5')
+    // rssi_wifi = form.getvalue('a6')
+    // mode = form.getvalue('a7')
+    // bat_low_flag = form.getvalue('a8')
+    // error_app = form.getvalue('a9')
+    // error_input = form.getvalue('a10')
+    // error_output = form.getvalue('a11')
+    // error_network = form.getvalue('a12')
+    // error_memory = form.getvalue('a13')
+    // sw_version = form.getvalue('a14')
+    // timer_or_period = form.getvalue('a15')
 
-    // if (ret <= 0)
-    // {
-    //     printf("snprintf_error");
-    // }
-    // else
-    // {
-    //     err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
-    //     err_wifi[1] = esp_http_client_perform(client);
-    //     err_wifi[2] = esp_http_client_cleanup(client);
-    // }
+
+    char buffer [100];
+    int ret = snprintf(buffer, 100, 
+        "a1=%d&a2=%1.1f&a3=%1.1f&a4=%1.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=%d&a10=%d&a11=%d&a12=%d&a13=%d&a14=%d&a15=%d",
+        1u, 9.1, 8.1, 7.1, 6.1,
+        2u, 3u, 4u, 5u, 6u,
+        7u, 8u, 9u, 10u, 11u);
+
+    if (ret <= 0)
+    {
+        printf("snprintf_error");
+    }
+    else
+    {
+        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
+        err_wifi[1] = esp_http_client_perform(client);
+        err_wifi[2] = esp_http_client_cleanup(client);
+    }
 
     printf("err_wifi=%d,%d,%d\n", err_wifi[0], err_wifi[1], err_wifi[2]);
 }

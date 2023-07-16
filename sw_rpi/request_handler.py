@@ -1,6 +1,6 @@
 import sqlite3
 import cgi
-import datetime
+from datetime import datetime
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_3'
