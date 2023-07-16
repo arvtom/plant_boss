@@ -76,24 +76,6 @@ bool thread_app_handle(void)
 
     if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
     {
-        // printf("light: 0x%x%x%x%x\n", buf_rx_queue_input[0], buf_rx_queue_input[1], buf_rx_queue_input[2], buf_rx_queue_input[3]);
-
-        // device = form.getvalue('a1')
-        // humidity = form.getvalue('a2')
-        // light = form.getvalue('a3')
-        // temperature = form.getvalue('a4')
-        // bat_voltage = form.getvalue('a5')
-        // rssi_wifi = form.getvalue('a6')
-        // mode = form.getvalue('a7')
-        // bat_low_flag = form.getvalue('a8')
-        // error_app = form.getvalue('a9')
-        // error_input = form.getvalue('a10')
-        // error_output = form.getvalue('a11')
-        // error_network = form.getvalue('a12')
-        // error_memory = form.getvalue('a13')
-        // sw_version = form.getvalue('a14')
-        // timer_or_period = form.getvalue('a15')
-
         float light_input;
         float temperature_input;
         float humidity_input;
@@ -108,13 +90,6 @@ bool thread_app_handle(void)
         int8_t rssi_wifi = wifi_get_rssi_value();
         uint8_t mode = 0u;
         uint8_t bat_low_flag = 0u;
-
-//         uint32_t err_thread_app = 0u;
-
-// extern uint32_t err_thread_input;
-// extern uint32_t err_thread_output;
-// extern uint32_t err_thread_network;
-// extern uint32_t err_thread_memory;
         uint32_t sw_version = 20230816;
         uint32_t timer = (uint32_t)xTaskGetTickCount();
 
@@ -137,6 +112,7 @@ bool thread_app_handle(void)
 
             total                       55 + 35 = 90   
             */
+           
         int ret = snprintf(buf_tx_queue_wifi, 150, 
             "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%x&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
             device_id, humidity_input, light_input, temperature_input, voltage_battery_input,
