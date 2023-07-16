@@ -12,6 +12,8 @@ esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
 bool b_ready_wifi = false;
 
+extern bool b_ready_thread_memory;
+
 /* temporary global variables for testing */
 
 /* ---------------------------- Public functions ---------------------------- */
@@ -39,11 +41,9 @@ bool thread_network_init(void)
         printf("Failed to create queue= %p\n", queue_wifi);
     }
 
-    /* Enable nvs, which is also used for wifi*/
-    err_thread_network = nvs_flash_init();
-    if (ESP_OK != err_thread_network)
+    while (false == b_ready_thread_memory)
     {
-        printf("err nvs_flash_init\n");
+        vTaskDelay(1);
     }
 
     err_thread_network = wifi_connection();
