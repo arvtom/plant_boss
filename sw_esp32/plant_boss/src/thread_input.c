@@ -5,11 +5,11 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
+uint32_t err_thread_input = 0u;
+
 esp_err_t err_esp = 0;
 
 thread_input_t s_thread_input;
-
-uint32_t err_thread_input = 0u;
 
 QueueHandle_t queue_input;
 uint8_t buf_tx_queue_input[16];
@@ -38,6 +38,8 @@ void thread_input(void *arg)
 
 bool thread_input_init(void)
 {
+    printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
+
     if (true != adc_init())
     {
         printf("error\n");

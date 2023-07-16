@@ -31,6 +31,8 @@ void thread_network(void *arg)
 
 bool thread_network_init(void)
 {
+    printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
+    
     queue_wifi = xQueueCreate(5, sizeof(buf_rx_queue_wifi)); 
     if (queue_wifi == 0)
     {

@@ -10,12 +10,16 @@
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Variables / Macro calls------------------------------*/
+uint32_t err_battery = 0u;
+
 adc_cali_handle_t adc_calibration_handle_voltage_battery;
 float voltage_battery;
 
 /*------------------------------Public functions------------------------------*/
 bool battery_init(void)
 {
+    printf("addr err_battery 0x%x\n", (unsigned int)&err_battery);
+
     adc_oneshot_chan_cfg_t adc_channel_config_voltage_battery = 
     {
         .bitwidth = ADC_BITWIDTH_12,

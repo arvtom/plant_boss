@@ -8,6 +8,8 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
+uint32_t err_thread_app = 0u;
+
 SemaphoreHandle_t not_so_simple_mutex;
 extern QueueHandle_t queue_wifi;
 char buf_tx_queue_wifi[100];
@@ -31,6 +33,8 @@ void thread_app(void *arg)
 
 bool thread_app_init(void)
 {
+    printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
+    
     uint8_t res = app_function();
     printf("res=%d\n", res);
 

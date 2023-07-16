@@ -8,6 +8,8 @@
 #warning issue_with_esp_err_t_where_not_allowed_variables_with_same_name_in_different_src
 #warning reading_sensors_also_contains_power_outputs
 
+uint32_t err_thread_output = 0u;
+
 esp_err_t err_esp_output = ESP_OK;
 uint8_t counter = 0;
 
@@ -36,6 +38,8 @@ void thread_output(void *arg)
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_output_init(void)
 {
+    printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
+
     if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {

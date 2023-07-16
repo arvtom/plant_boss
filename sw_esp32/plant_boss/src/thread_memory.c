@@ -5,6 +5,7 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
+uint32_t err_thread_memory = 0u;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
@@ -20,6 +21,7 @@ void thread_memory(void *arg)
 
 bool thread_memory_init(void)
 {
+    printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
     return true;
 }
