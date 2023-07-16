@@ -16,6 +16,8 @@ int err_tcp_drv = 0;
 extern char buf_rx_queue_wifi[150];
 extern uint16_t length_buf_tx_queue_wifi;
 
+int8_t rssi_wifi = 0;
+
 /*------------------------------Public functions------------------------------*/
 bool wifi_init(void)
 {
@@ -35,13 +37,17 @@ bool wifi_handle(void)
     if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
     {
         printf("error checking wifi info\n");
-    }
-    else
-    {
-        printf("rssi=%d\n", ap_info.rssi);
+        return false;
     }
 
+    rssi_wifi = ap_info.rssi;
+
     return true;
+}
+
+int8_t wifi_get_rssi_value(void)
+{
+    return rssi_wifi;
 }
 
 /*------------------------------Private functions------------------------------*/

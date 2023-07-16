@@ -105,7 +105,7 @@ bool thread_app_handle(void)
         memcpy(&voltage_battery_input, &buf_rx_queue_input[12], 4);
 
         uint8_t device_id = 1u;
-        int8_t rssi_wifi = -100;
+        int8_t rssi_wifi = wifi_get_rssi_value();
         uint8_t mode = 0u;
         uint8_t bat_low_flag = 0u;
 

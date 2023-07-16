@@ -10,6 +10,8 @@
 #include <freertos/queue.h>
 #include <string.h>
 
+#include "wifi_wrapper.h"
+
 /* ---------------------------- Typedefs ---------------------------- */
 // typedef struct
 // {
