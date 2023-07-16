@@ -1,7 +1,7 @@
 # plant_boss
 The purpose of this project is to demonstrate my skills as Embedded software engineer and Technical lead. I wanted to learn SW development on ESP32 with freeRTOS, power saving techniques, requirements engineering.  
 
-Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
+Plant environment (soil humidity, temperature, light) monitoring using custom built battery powered esp32 device. Raspberry pi zero with custom linux will be used as a database, webpage, notification server.
 
 First device prototype photos:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png)  
