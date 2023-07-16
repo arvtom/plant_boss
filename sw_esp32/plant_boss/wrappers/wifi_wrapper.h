@@ -7,6 +7,12 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
+#include <esp_wifi.h>
+#include <esp_netif.h>
+#include <esp_http_client.h>
+
+#include "settings_wifi.h"
+
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
@@ -51,3 +57,6 @@ bool wifi_init(void);
 bool wifi_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
+bool wifi_connection();
+void post_rest_function(void);
