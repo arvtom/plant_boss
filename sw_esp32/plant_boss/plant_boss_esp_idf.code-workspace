@@ -32,7 +32,8 @@
 			"thread_memory.h": "c",
 			"nvs_wrapper.h": "c",
 			"wifi_wrapper.h": "c",
-			"esp_netif.h": "c"
+			"esp_netif.h": "c",
+			"uart_wrapper.h": "c"
 		}
 	}
 }
