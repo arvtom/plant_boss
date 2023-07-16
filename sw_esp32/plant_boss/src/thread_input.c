@@ -38,7 +38,7 @@ void thread_input(void *arg)
 
 bool thread_input_init(void)
 {
-    printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
+    // printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
     if (true != adc_init())
     {
