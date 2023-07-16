@@ -51,8 +51,8 @@
 // }gpio_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
-bool gpio_init(void);
-bool gpio_handle(void);
+// bool gpio_init(void);
+// bool gpio_handle(void);
 
 bool gpio_init_pin(uint8_t pin, gpio_mode_t mode, gpio_pullup_t pull_up, gpio_pulldown_t pull_down, gpio_int_type_t intr);
 bool gpio_handle_pin_output(uint8_t pin, bool level);

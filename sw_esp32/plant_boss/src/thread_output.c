@@ -36,22 +36,6 @@ void thread_output(void *arg)
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_output_init(void)
 {
-    // /* external led pin */
-    // gpio_config_t io_conf_27 = {};
-    // io_conf_27.intr_type = GPIO_INTR_DISABLE;
-    // io_conf_27.mode = GPIO_MODE_OUTPUT;
-    // io_conf_27.pin_bit_mask = (1ULL<<27u);
-    // io_conf_27.pull_down_en = 0;
-    // io_conf_27.pull_up_en = 0;
-
-    // err_esp_output = gpio_config(&io_conf_27);
-    // if (ESP_OK != err_esp_output)
-    // {
-    //     error_set_u32(&s_thread_output.err, THREAD_OUTPUT_ERROR_INIT_EXT_LED_PIN);
-
-    //     return false;
-    // }
-
     if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
@@ -60,9 +44,78 @@ bool thread_output_init(void)
         return false;
     }
 
-    if (true != gpio_init())
+    /* light sensor power supply pin */
+    if (true != gpio_init_pin(4u, GPIO_MODE_OUTPUT, 
+        GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
         printf("error\n");
+
+        return false;
+    }
+
+    if (true != gpio_handle_pin_output(4u, true))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    /* light sensor reset pin */
+    if (true != gpio_init_pin(17u, GPIO_MODE_OUTPUT, 
+        GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    if (true != gpio_handle_pin_output(17u, false))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    vTaskDelay(2);
+
+    if (true != gpio_handle_pin_output(17u, true))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    vTaskDelay(2);
+
+    /* temperature sensor power supply pin */
+    if (true != gpio_init_pin(32u, GPIO_MODE_OUTPUT, 
+        GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    if (true != gpio_handle_pin_output(32u, true))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    /* humidity sensor power supply pin */
+    if (true != gpio_init_pin(33u, GPIO_MODE_OUTPUT, 
+        GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
+    {
+        printf("error\n");
+
+        return false;
+    }
+
+    if (true != gpio_handle_pin_output(33u, true))
+    {
+        printf("error\n");
+
         return false;
     }
 
