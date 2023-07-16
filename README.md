@@ -3,12 +3,12 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 
 Different soil characteristics monitoring and sending to sqlite database using esp32. Raspberry pi will be used as a database, webpage on local network, notification server.
 
-First device prototype photos:
-![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png) 
-![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_2_plant_boss.png) 
+First device prototype photos:  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png)  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_2_plant_boss.png)  
 
-First webpage/database prototype photos:
-![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png) 
+First webpage/database prototype photos:  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
 
 # TODOs
 * Packages to enable database and webpage on pi zero w: sqlite3, build-essential, python3, pip install uwsgi, 
