@@ -15,6 +15,8 @@ extern uint32_t err_thread_output;
 extern uint32_t err_thread_network;
 extern uint32_t err_thread_memory;
 
+uint16_t length_buf_tx_queue_wifi = 0u;
+
 SemaphoreHandle_t not_so_simple_mutex;
 extern QueueHandle_t queue_wifi;
 char buf_tx_queue_wifi[150];
@@ -146,6 +148,8 @@ bool thread_app_handle(void)
         {
             return false;
         }
+
+        length_buf_tx_queue_wifi = (uint16_t)ret;
 
         xQueueSend(queue_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
 

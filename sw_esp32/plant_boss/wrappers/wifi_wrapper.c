@@ -13,6 +13,9 @@
 int err_wifi_drv = 0;
 int err_tcp_drv = 0;
 
+extern char buf_rx_queue_wifi[150];
+extern uint16_t length_buf_tx_queue_wifi;
+
 /*------------------------------Public functions------------------------------*/
 bool wifi_init(void)
 {
@@ -211,23 +214,24 @@ void post_rest_function(void)
     // timer_or_period = form.getvalue('a15')
 
 
-    char buffer [100];
-    int ret = snprintf(buffer, 100, 
-        "a1=%d&a2=%1.1f&a3=%1.1f&a4=%1.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=%d&a10=%d&a11=%d&a12=%d&a13=%d&a14=%d&a15=%d",
-        1u, 9.1, 8.1, 7.1, 6.1,
-        2u, 3u, 4u, 5u, 6u,
-        7u, 8u, 9u, 10u, 11u);
+    // char buffer [100];
+    // int ret = snprintf(buffer, 100, 
+    //     "a1=%d&a2=%1.1f&a3=%1.1f&a4=%1.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=%d&a10=%d&a11=%d&a12=%d&a13=%d&a14=%d&a15=%d",
+    //     1u, 9.1, 8.1, 7.1, 6.1,
+    //     2u, 3u, 4u, 5u, 6u,
+    //     7u, 8u, 9u, 10u, 11u);
 
-    if (ret <= 0)
-    {
-        printf("snprintf_error");
-    }
-    else
-    {
-        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
+    // if (ret <= 0)
+    // {
+    //     printf("snprintf_error");
+    // }
+    // else
+    // {
+        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi);
+        // err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
         err_wifi[1] = esp_http_client_perform(client);
         err_wifi[2] = esp_http_client_cleanup(client);
-    }
+    // }
 
     printf("err_wifi=%d,%d,%d\n", err_wifi[0], err_wifi[1], err_wifi[2]);
 }
