@@ -11,15 +11,24 @@
 
 #Create new table in database
 
-#CREATE TABLE plant_boss_table_x (
-#id INTEGER PRIMARY KEY AUTOINCREMENT,
-#timestamp DECIMAL NOT NULL, 
-#device DECIMAL NOT NULL, 
-#humidity DECIMAL NOT NULL, 
-#light DECIMAL NOT NULL, 
-#temperature DECIMAL NOT NULL,
-#bat_voltage DECIMAL NOT NULL,
-#rssi_wifi DECIMAL NOT NULL);
+# CREATE TABLE plant_boss_table_3 (
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# timestamp TEXT NOT NULL, 
+# device INTEGER NOT NULL, 
+# humidity DECIMAL NOT NULL, 
+# light DECIMAL NOT NULL, 
+# temperature DECIMAL NOT NULL,
+# bat_voltage DECIMAL NOT NULL,
+# rssi_wifi INTEGER NOT NULL,
+# mode INTEGER NOT NULL,
+# bat_low_flag INTEGER NOT NULL,
+# error_app INTEGER NOT NULL,
+# error_input INTEGER NOT NULL,
+# error_output INTEGER NOT NULL,
+# error_network INTEGER NOT NULL,
+# error_memory INTEGER NOT NULL,
+# sw_version INTEGER NOT NULL,
+# timer_or_period INTEGER NOT NULL);
 
 #Show database structure
 
