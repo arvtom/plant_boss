@@ -125,6 +125,8 @@ bool thread_output_init(void)
 
     b_ready_sensor_power = true;
 
+    vTaskDelay(1);
+
     return true;
 }
 

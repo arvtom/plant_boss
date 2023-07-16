@@ -52,6 +52,8 @@ bool thread_network_init(void)
         printf("err wifi_connection\n");
     }
 
+    vTaskDelay(1);
+
     return true;
 }
 

@@ -22,7 +22,6 @@ extern bool b_ready_thread_input;
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
-    // thread_app();
     thread_app_init();
 
     while (1)
@@ -37,6 +36,8 @@ bool thread_app_init(void)
     
     uint8_t res = app_function();
     printf("res=%d\n", res);
+
+    vTaskDelay(1);
 
     return true;
 }

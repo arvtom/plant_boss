@@ -23,6 +23,8 @@ bool thread_memory_init(void)
 {
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
+    vTaskDelay(1);
+
     return true;
 }
 
