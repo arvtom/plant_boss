@@ -10,7 +10,7 @@ char buf_rx_queue_wifi[150];
 
 esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
-bool b_ready_wifi = false;
+bool b_ready_network = false;
 
 extern bool b_ready_thread_memory;
 
@@ -51,7 +51,7 @@ bool thread_network_init(void)
         return false;
     }
 
-    b_ready_wifi = true;
+    b_ready_network = true;
 
     vTaskDelay(1);
 
@@ -66,7 +66,7 @@ bool thread_network_handle(void)
         vTaskDelay(10);
     }
 
-    if (true == b_ready_wifi)
+    if (true == b_ready_network)
     {
         if (true != wifi_handle())
         {

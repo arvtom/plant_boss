@@ -58,6 +58,7 @@ bool wifi_handle(void);
 
 int8_t wifi_get_rssi_value(void);
 /*------------------------------Private function prototypes------------------------------*/
+bool wifi_handle_http_post(void);
 void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
 bool wifi_connection();
-void post_rest_function(void);
+esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt);

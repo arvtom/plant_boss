@@ -12,11 +12,16 @@
 /*------------------------------Variables / Macro calls------------------------------*/
 int err_wifi_drv = 0;
 int err_tcp_drv = 0;
+int err_http_drv = 0;
 
 extern char buf_rx_queue_wifi[150];
 extern uint16_t length_buf_tx_queue_wifi;
 
 int8_t rssi_wifi = 0;
+
+bool b_ready_wifi = false;
+
+esp_http_client_config_t config_post;
 
 /*------------------------------Public functions------------------------------*/
 bool wifi_init(void)
@@ -26,21 +31,34 @@ bool wifi_init(void)
     {
         printf("err wifi_connection\n");
     }
+
+    config_post.url = "http://192.168.8.139:9999";
+    config_post.method = HTTP_METHOD_POST;
+    config_post.cert_pem = NULL;
+    config_post.event_handler = client_event_post_handler;
     
     return true;
 }
 
 bool wifi_handle(void)
 {
-    post_rest_function();
-    wifi_ap_record_t ap_info;
-    if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
+    if (true == b_ready_wifi)
     {
-        printf("error checking wifi info\n");
-        return false;
+        if (true != wifi_handle_http_post())
+        {
+            return false;
+        }
+
+        wifi_ap_record_t ap_info;
+        if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
+        {
+            printf("error checking wifi info\n");
+            return false;
+        }
+
+        rssi_wifi = ap_info.rssi;
     }
 
-    rssi_wifi = ap_info.rssi;
 
     return true;
 }
@@ -51,6 +69,31 @@ int8_t wifi_get_rssi_value(void)
 }
 
 /*------------------------------Private functions------------------------------*/
+bool wifi_handle_http_post(void)
+{
+    esp_http_client_handle_t client = esp_http_client_init(&config_post);
+
+    err_http_drv = esp_http_client_set_post_field(client, (char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi);
+    if (ESP_OK != err_http_drv)
+    {
+        return false;
+    }
+
+    err_http_drv = esp_http_client_perform(client);
+    if (ESP_OK != err_http_drv)
+    {
+        // return false;
+    }
+
+    err_http_drv = esp_http_client_cleanup(client);
+    if (ESP_OK != err_http_drv)
+    {
+        return false;
+    }
+
+    return true;
+}
+
 void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
     switch (event_id)
@@ -63,9 +106,11 @@ void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, in
         break;
     case WIFI_EVENT_STA_DISCONNECTED:
         printf("WiFi lost connection ... \n");
+        b_ready_wifi = false;
         break;
     case IP_EVENT_STA_GOT_IP:
         printf("WiFi got IP ... \n\n");
+        b_ready_wifi = true;
         break;
     default:
         break;
@@ -173,71 +218,4 @@ esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
         break;
     }
     return ESP_OK;
-}
-
-void post_rest_function(void)
-{
-    esp_http_client_config_t config_post = {
-        .url = "http://192.168.8.139:9999",
-        .method = HTTP_METHOD_POST,
-        .cert_pem = NULL,
-        .event_handler = client_event_post_handler};
-        
-    esp_http_client_handle_t client = esp_http_client_init(&config_post);
-
-    /* a1 timestamp */
-    /* a2 device */
-    /* a3 humidity */
-    /* a4 light */
-    /* a5 temperature */
-    /* a6 bat_voltage */
-    /* a7 rssi_wifi */
-
-    // extern float light;
-    // extern float temperature;
-    // extern int adc_raw_humidity;
-    // extern int adc_raw_battery;
-
-    esp_err_t err_wifi[3];
-
-    // char  *post_data = "a1=1.39&a2=1&a3=1.49&a4=1.59&a5=1.69&a6=1.79&a7=1.89";
-    // err_wifi[0] = esp_http_client_set_post_field(client, post_data, strlen(post_data));
-
-    // device = form.getvalue('a1')
-    // humidity = form.getvalue('a2')
-    // light = form.getvalue('a3')
-    // temperature = form.getvalue('a4')
-    // bat_voltage = form.getvalue('a5')
-    // rssi_wifi = form.getvalue('a6')
-    // mode = form.getvalue('a7')
-    // bat_low_flag = form.getvalue('a8')
-    // error_app = form.getvalue('a9')
-    // error_input = form.getvalue('a10')
-    // error_output = form.getvalue('a11')
-    // error_network = form.getvalue('a12')
-    // error_memory = form.getvalue('a13')
-    // sw_version = form.getvalue('a14')
-    // timer_or_period = form.getvalue('a15')
-
-
-    // char buffer [100];
-    // int ret = snprintf(buffer, 100, 
-    //     "a1=%d&a2=%1.1f&a3=%1.1f&a4=%1.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=%d&a10=%d&a11=%d&a12=%d&a13=%d&a14=%d&a15=%d",
-    //     1u, 9.1, 8.1, 7.1, 6.1,
-    //     2u, 3u, 4u, 5u, 6u,
-    //     7u, 8u, 9u, 10u, 11u);
-
-    // if (ret <= 0)
-    // {
-    //     printf("snprintf_error");
-    // }
-    // else
-    // {
-        err_wifi[0] = esp_http_client_set_post_field(client, (char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi);
-        // err_wifi[0] = esp_http_client_set_post_field(client, (char *)buffer, ret);
-        err_wifi[1] = esp_http_client_perform(client);
-        err_wifi[2] = esp_http_client_cleanup(client);
-    // }
-
-    printf("err_wifi=%d,%d,%d\n", err_wifi[0], err_wifi[1], err_wifi[2]);
 }
