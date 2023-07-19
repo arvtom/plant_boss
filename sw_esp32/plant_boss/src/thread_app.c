@@ -44,6 +44,18 @@ bool thread_app_init(void)
     uint8_t res = app_function();
     printf("res=%d\n", res);
 
+    uint32_t value_notification;
+    xTaskNotifyWait(0u, 0u, &value_notification, portMAX_DELAY);
+
+    if (THREAD_APP_TO_NETWORK_REQUEST_INIT != value_notification)
+    {
+        printf("error, unknown notification\n");
+
+        return false;
+    }
+
+    printf("notification received\n");
+
     vTaskDelay(1);
 
     return true;

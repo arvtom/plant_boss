@@ -43,6 +43,17 @@ bool thread_memory_init(void)
         return false;
     }
 
+    TaskHandle_t handle_app = xTaskGetHandle("thread_app");
+    if (NULL == handle_app)
+    {
+        return false;
+    }
+
+    if (pdPASS != xTaskNotify(handle_app, THREAD_MEMORY_TO_APP_RESULT_INIT, eSetBits))
+    {
+        return false;
+    }
+
     vTaskDelay(1);
 
     return true;

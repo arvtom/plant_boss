@@ -11,6 +11,7 @@
 #include <string.h>
 
 #include "wifi_wrapper.h"
+#include "common_thread.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 // typedef struct
