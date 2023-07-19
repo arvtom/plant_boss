@@ -62,7 +62,7 @@ def handle_post(env, start_line):
 
         add_record(timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi, mode, bat_low_flag, \
             error_app, error_input, error_output, error_network, error_memory, sw_version, timer_or_period)
-        response_body = "POST request handled.\n"
+        response_body = "OK\n"
         start_line('201 OK', [('Content-Type', 'text/plain')])
 
     else:
