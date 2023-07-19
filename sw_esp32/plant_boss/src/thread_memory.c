@@ -7,7 +7,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 uint32_t err_thread_memory = 0u;
 
-bool b_ready_thread_memory = false;
+// bool b_ready_thread_memory = false;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
@@ -30,7 +30,18 @@ bool thread_memory_init(void)
         return false;
     }
 
-    b_ready_thread_memory = true;
+    // b_ready_thread_memory = true;
+
+    TaskHandle_t handle_network = xTaskGetHandle("thread_network");
+    if (NULL == handle_network)
+    {
+        return false;
+    }
+
+    if (pdPASS != xTaskNotify(handle_network, 0, eNoAction))
+    {
+        return false;
+    }
 
     vTaskDelay(1);
 

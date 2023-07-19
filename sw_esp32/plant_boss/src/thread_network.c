@@ -12,7 +12,7 @@ esp_err_t err_thread_network = ESP_OK;
 bool b_err_thread_network = false;
 bool b_ready_network = false;
 
-extern bool b_ready_thread_memory;
+// extern bool b_ready_thread_memory;
 
 /* temporary global variables for testing */
 
@@ -41,10 +41,14 @@ bool thread_network_init(void)
         printf("Failed to create queue= %p\n", queue_wifi);
     }
 
-    while (false == b_ready_thread_memory)
-    {
-        vTaskDelay(1);
-    }
+    // while (false == b_ready_thread_memory)
+    // {
+    //     vTaskDelay(1);
+    // }
+
+    uint32_t value_notification = 0;
+
+    xTaskNotifyWait(0x00, 0x00, &value_notification, portMAX_DELAY);
 
     if (true != wifi_init())
     {
