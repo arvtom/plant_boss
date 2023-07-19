@@ -20,6 +20,7 @@ extern uint16_t length_buf_tx_queue_wifi;
 int8_t rssi_wifi = 0;
 
 bool b_ready_wifi = false;
+bool b_err_database = false;
 
 esp_http_client_config_t config_post;
 
@@ -42,7 +43,7 @@ bool wifi_init(void)
 
 bool wifi_handle(void)
 {
-    if (true == b_ready_wifi)
+    if (true == b_ready_wifi && false == b_err_database)
     {
         if (true != wifi_handle_http_post())
         {
@@ -211,7 +212,15 @@ esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
     switch (evt->event_id)
     {
     case HTTP_EVENT_ON_DATA:
-        printf("HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
+        char response[30];
+        memcpy(&response, evt->data, evt->data_len);
+
+        if (0x4F != response[0] && 0x4B != response[1])
+        {
+            b_err_database = true;
+
+            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
+        }
         break;
 
     default:
