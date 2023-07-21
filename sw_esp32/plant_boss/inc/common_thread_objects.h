@@ -17,15 +17,32 @@
 #define THREAD_APP_TO_NETWORK_REQUEST_INIT      0x00000002
 #define THREAD_NETWORK_TO_APP_RESULT_INIT       0x00000004
 
-// #define NOTIFY_APP_TO_INPUT_REQ_INIT
-// #define NOTIFY_APP_TO_OUTPUT_REQ_INIT
-// #define NOTIFY_APP_TO_NETWORK_REQ_INIT
-// #define NOTIFY_APP_TO_MEMORY_REQ_INIT
+#define NOTIFY_REQ_INIT_INPUT
+#define NOTIFY_REQ_INIT_OUTPUT
+#define NOTIFY_REQ_INIT_NETWORK
+#define NOTIFY_REQ_INIT_MEMORY
 
-// #define NOTIFY_APP_TO_INPUT_REQ_HANDLE
-// #define
+#define NOTIFY_RES_INIT_INPUT
+#define NOTIFY_RES_INIT_OUTPUT
+#define NOTIFY_RES_INIT_NETWORK
+#define NOTIFY_RES_INIT_MEMORY
+
+#define NOTIFY_REQ_HANDLE_INPUT
+/* result is arrived queue */
+
+#define NOTIFY_REQ_HANDLE_INPUT_BATTERY
+/* result is arrived queue */
+
+#define NOTIFY_REQ_HANDLE_OUTPUT_PWR_HUMIDITY
+#define NOTIFY_REQ_HANDLE_OUTPUT_PWR_TEMPERATURE
+#define NOTIFY_REQ_HANDLE_OUTPUT_PWR_LIGHT
+
+#define NOTIFY_RES_HANDLE_OUTPUT_PWR_HUMIDITY
+#define NOTIFY_RES_HANDLE_OUTPUT_PWR_TEMPERATURE
+#define NOTIFY_RES_HANDLE_OUTPUT_PWR_LIGHT
 
 /* ---------------------------- Public functions ---------------------------- */
+bool common_thread_objects_init(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 

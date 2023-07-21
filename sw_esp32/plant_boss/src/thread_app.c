@@ -41,6 +41,11 @@ bool thread_app_init(void)
 {
     vTaskDelay(100);
     printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
+
+    if (true != common_thread_objects_init())
+    {
+        return false;
+    }
     
     uint8_t res = app_function();
     printf("res=%d\n", res);

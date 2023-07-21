@@ -8,6 +8,8 @@
 uint32_t err_thread_memory = 0u;
 
 // bool b_ready_thread_memory = false;
+extern TaskHandle_t handle_network;
+extern TaskHandle_t handle_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
@@ -32,19 +34,7 @@ bool thread_memory_init(void)
 
     // b_ready_thread_memory = true;
 
-    TaskHandle_t handle_network = xTaskGetHandle("thread_network");
-    if (NULL == handle_network)
-    {
-        return false;
-    }
-
     if (pdPASS != xTaskNotify(handle_network, 0, eNoAction))
-    {
-        return false;
-    }
-
-    TaskHandle_t handle_app = xTaskGetHandle("thread_app");
-    if (NULL == handle_app)
     {
         return false;
     }
