@@ -11,7 +11,7 @@ esp_err_t err_esp = 0;
 
 thread_input_t s_thread_input;
 
-QueueHandle_t queue_input;
+extern QueueHandle_t queue_input;
 uint8_t buf_tx_queue_input[16];
 
 bool b_ready_thread_input = false;

@@ -15,6 +15,7 @@
 
 #include "wifi_wrapper.h"
 #include "uart_wrapper.h"
+#include "common_thread_objects.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 

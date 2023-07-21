@@ -9,7 +9,7 @@
 #include <freertos/task.h>
 
 #include "nvm_wrapper.h"
-#include "common_thread.h"
+#include "common_thread_objects.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 

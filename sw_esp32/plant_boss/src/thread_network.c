@@ -5,7 +5,7 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
-QueueHandle_t queue_wifi;
+extern QueueHandle_t queue_wifi;
 char buf_rx_queue_wifi[150];
 
 esp_err_t err_thread_network = ESP_OK;

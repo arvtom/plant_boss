@@ -6,6 +6,7 @@ idf_component_register(
     "../src/thread_output.c" 
     "../src/thread_network.c" 
     "../src/thread_memory.c" 
+    "../src/common_thread_objects.c" 
     "../wrappers/adc_wrapper.c" 
     "../wrappers/gpio_wrapper.c" 
     "../wrappers/i2c_wrapper.c" 

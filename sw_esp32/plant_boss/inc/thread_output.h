@@ -11,6 +11,7 @@
 
 #include "error.h"
 #include "gpio_wrapper.h"
+#include "common_thread_objects.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum

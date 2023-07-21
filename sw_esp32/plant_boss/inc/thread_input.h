@@ -17,6 +17,7 @@
 #include "lm20bim7.h"
 #include "hw390.h"
 #include "battery.h"
+#include "common_thread_objects.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
