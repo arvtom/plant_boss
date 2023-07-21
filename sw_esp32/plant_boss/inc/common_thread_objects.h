@@ -17,6 +17,7 @@
 #define THREAD_APP_TO_NETWORK_REQUEST_INIT      0x00000002
 #define THREAD_NETWORK_TO_APP_RESULT_INIT       0x00000004
 
+/* Try to group according who is receiving thread, because only these message values cannot repeat. Perhaps use typedef enum for this. */
 #define NOTIFY_REQ_INIT_INPUT
 #define NOTIFY_REQ_INIT_OUTPUT
 #define NOTIFY_REQ_INIT_NETWORK
