@@ -7,6 +7,9 @@ First device prototype photos:
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png)  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_2_plant_boss.png)  
 
+Embedded software ESP32 architecture:  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/sw_esp32/architecture_plant_boss.png)  
+
 First webpage/database prototype photos:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
 
