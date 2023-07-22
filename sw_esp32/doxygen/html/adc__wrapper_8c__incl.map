@@ -1,0 +1,17 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/adc_wrapper.c" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/adc_wrapper.c">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 adc driver." alt="" coords="387,5,573,75"/>
+<area shape="rect" id="Node000002" href="$adc__wrapper_8h.html" title="This file wraps around esp32 adc driver." alt="" coords="422,123,538,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="483,75,483,109,477,109,477,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,88,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,147,281,168,102,198,101,193,280,163,422,142"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="112,196,285,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="435,151,258,195,257,190,434,145"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="309,196,453,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="466,150,410,190,407,186,463,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="477,196,680,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="497,146,553,186,550,190,494,150"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="705,196,786,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="523,145,692,190,690,195,522,151"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="810,196,878,221"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="539,144,797,193,796,198,538,149"/>
+</map>

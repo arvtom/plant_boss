@@ -1,0 +1,18 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/inc/battery.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/inc/battery.h">
+<area shape="rect" id="Node000001" title="This file contains functions for battery management." alt="" coords="125,5,305,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,88,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,62,71,174,67,170,185,58"/>
+<area shape="rect" id="Node000003" href="$adc__wrapper_8h.html" title="This file wraps around esp32 adc driver." alt="" coords="323,108,439,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,58,348,99,346,104,264,62"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="328,136,102,184,101,178,327,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="112,181,285,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="353,136,242,179,240,174,351,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="309,181,453,207"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="384,134,384,168,379,168,379,134"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="477,181,680,207"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="414,131,534,174,533,179,412,136"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="705,181,786,207"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="440,130,692,179,691,184,439,135"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="810,181,878,207"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="440,126,597,146,797,179,796,184,596,151,439,131"/>
+</map>

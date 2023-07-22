@@ -1,0 +1,11 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/drivers/lm20bim7.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/drivers/lm20bim7.h">
+<area shape="rect" id="Node000001" title="This file contains functions for reading temperature sensor lm20bim7 data." alt="" coords="115,5,341,60"/>
+<area shape="rect" id="Node000002" href="$lm20bim7_8c.html" title="This file contains functions for reading temperature sensor lm20bim7 data." alt="" coords="5,115,232,170"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,72,147,117,144,113,190,68"/>
+<area shape="rect" id="Node000003" href="$thread__input_8h_source.html" title=" " alt="" coords="256,108,421,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,68,306,106,302,110,263,72"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="149,233,331,287"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="303,190,265,234,261,231,299,186"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="355,225,520,295"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="378,186,410,223,406,227,374,190"/>
+</map>

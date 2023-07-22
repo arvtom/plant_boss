@@ -1,0 +1,15 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.h">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 i2c driver." alt="" coords="251,5,433,75"/>
+<area shape="rect" id="Node000002" href="$bh1750fvi_8h.html" title="This file contains functions for reading light sensor bh1750fvi data." alt="" coords="114,130,341,185"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,87,255,132,252,128,297,83"/>
+<area shape="rect" id="Node000007" href="$i2c__wrapper_8c.html" title="This file wraps around esp32 i2c driver." alt="" coords="365,123,548,192"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="387,83,425,121,421,124,384,87"/>
+<area shape="rect" id="Node000003" href="$bh1750fvi_8c.html" title="This file contains functions for reading light sensor bh1750fvi data." alt="" coords="5,247,231,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,197,145,249,141,245,191,193"/>
+<area shape="rect" id="Node000004" href="$thread__input_8h_source.html" title=" " alt="" coords="254,240,419,309"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="264,193,306,238,303,241,260,197"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="147,365,329,419"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="301,322,263,366,259,363,297,318"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="353,357,518,427"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="376,318,408,355,404,359,372,322"/>
+</map>

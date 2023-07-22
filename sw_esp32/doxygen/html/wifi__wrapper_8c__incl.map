@@ -1,0 +1,15 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/wifi_wrapper.c" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/wifi_wrapper.c">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 wifi driver." alt="" coords="177,5,364,75"/>
+<area shape="rect" id="Node000002" href="$wifi__wrapper_8h.html" title="This file wraps around esp32 wifi driver." alt="" coords="213,123,329,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="273,75,273,109,268,109,268,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,196,88,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,151,97,194,95,189,234,145"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="113,196,199,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="254,150,188,191,185,186,251,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="224,196,317,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="273,148,273,182,268,182,268,148"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="341,196,475,221"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="294,146,375,187,372,192,292,150"/>
+<area shape="rect" id="Node000007" href="$settings__wifi_8h_source.html" title=" " alt="" coords="499,196,615,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="317,145,498,190,497,195,316,151"/>
+</map>

@@ -1,0 +1,26 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/adc_wrapper.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/adc_wrapper.h">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 adc driver." alt="" coords="372,5,559,75"/>
+<area shape="rect" id="Node000002" href="$hw390_8h.html" title="This file contains functions for reading soil moisture sensor hw390 data." alt="" coords="73,130,277,185"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="369,82,242,132,240,127,367,77"/>
+<area shape="rect" id="Node000004" href="$thread__input_8h_source.html" title=" " alt="" coords="232,240,397,309"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="382,85,360,103,342,124,329,152,320,182,316,240,310,239,315,182,324,150,338,121,356,99,379,81"/>
+<area shape="rect" id="Node000007" href="$lm20bim7_8h.html" title="This file contains functions for reading temperature sensor lm20bim7 data." alt="" coords="352,130,579,185"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="468,89,468,130,463,130,463,89"/>
+<area shape="rect" id="Node000009" href="$battery_8h.html" title="This file contains functions for battery management." alt="" coords="603,130,783,185"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="545,79,643,128,640,132,543,83"/>
+<area shape="rect" id="Node000011" href="$adc__wrapper_8c.html" title="This file wraps around esp32 adc driver." alt="" coords="808,123,995,192"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="573,63,797,120,809,123,807,129,795,125,571,68"/>
+<area shape="rect" id="Node000003" href="$hw390_8c.html" title="This file contains functions for reading soil moisture sensor hw390 data." alt="" coords="5,247,208,302"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,198,125,248,120,246,150,195"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,191,275,238,272,242,215,196"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="125,365,307,419"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="279,322,241,366,237,363,275,318"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="331,357,496,427"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="354,318,386,355,382,359,350,322"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="422,195,361,242,357,237,419,191"/>
+<area shape="rect" id="Node000008" href="$lm20bim7_8c.html" title="This file contains functions for reading temperature sensor lm20bim7 data." alt="" coords="421,247,648,302"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="490,195,521,246,516,248,486,198"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="602,191,591,195,501,218,410,243,398,246,397,241,409,237,499,213,590,189,601,186"/>
+<area shape="rect" id="Node000010" href="$battery_8c.html" title="This file contains functions for battery management." alt="" coords="672,247,851,302"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="718,195,748,246,743,248,713,198"/>
+</map>

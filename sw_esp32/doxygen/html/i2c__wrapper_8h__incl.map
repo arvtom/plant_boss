@@ -1,0 +1,18 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.h">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 i2c driver." alt="" coords="45,5,227,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,196,88,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,77,78,124,55,184,50,182,74,121,105,74"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,123,183,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,75,139,109,133,109,133,75"/>
+<area shape="rect" id="Node000004" href="$error_8h.html" title="Error management functions, which use individual bits to represent errors." alt="" coords="208,123,272,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,73,218,111,215,115,172,77"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="210,151,92,194,90,189,208,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="113,196,183,221"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="227,150,175,190,172,185,224,146"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="208,196,275,221"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="243,148,244,182,238,183,238,148"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="299,196,450,221"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="263,146,342,187,339,192,260,150"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="475,196,592,221"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="273,142,474,190,472,195,272,147"/>
+</map>

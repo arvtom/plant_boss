@@ -1,0 +1,20 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.c" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/wrappers/i2c_wrapper.c">
+<area shape="rect" id="Node000001" title="This file wraps around esp32 i2c driver." alt="" coords="45,5,227,75"/>
+<area shape="rect" id="Node000002" href="$i2c__wrapper_8h.html" title="This file wraps around esp32 i2c driver." alt="" coords="80,123,192,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,75,139,109,133,109,133,75"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,269,88,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,150,100,171,78,197,64,227,55,257,50,255,59,225,74,195,96,167,119,146"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="89,196,183,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="139,148,139,182,133,182,133,148"/>
+<area shape="rect" id="Node000005" href="$error_8h.html" title="Error management functions, which use individual bits to represent errors." alt="" coords="208,196,272,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="154,146,213,186,210,190,151,150"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="210,224,92,267,90,262,208,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="113,269,183,295"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="227,223,175,263,172,259,224,219"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="208,269,275,295"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="243,222,244,256,238,256,238,222"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="299,269,450,295"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="263,219,342,260,339,265,260,224"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="475,269,592,295"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="273,215,474,264,472,269,272,220"/>
+</map>

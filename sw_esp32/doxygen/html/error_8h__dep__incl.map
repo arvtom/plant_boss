@@ -1,0 +1,25 @@
+<map id="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/inc/error.h" name="/home/arvydas/github/plant_boss/sw_esp32/plant_boss/inc/error.h">
+<area shape="rect" id="Node000001" title="Error management functions, which use individual bits to represent errors." alt="" coords="344,5,509,60"/>
+<area shape="rect" id="Node000002" href="$thread__input_8h_source.html" title=" " alt="" coords="5,343,171,412"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="331,53,255,74,174,109,136,132,100,159,70,190,45,226,37,255,41,285,51,315,66,341,61,343,46,317,35,287,32,255,40,224,66,187,97,155,133,127,171,104,253,69,330,48"/>
+<area shape="rect" id="Node000005" href="$thread__output_8h_source.html" title=" " alt="" coords="444,108,609,177"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="462,69,497,106,493,110,459,72"/>
+<area shape="rect" id="Node000007" href="$error_8c.html" title="Error management functions, which use individual bits to represent errors." alt="" coords="634,115,798,170"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="511,62,647,113,645,118,509,67"/>
+<area shape="rect" id="Node000008" href="$i2c__wrapper_8h.html" title="This file wraps around esp32 i2c driver." alt="" coords="237,108,419,177"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="395,73,361,110,357,106,391,69"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="280,467,461,522"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="184,415,307,465,305,470,182,420"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,460,171,529"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="91,426,91,460,85,460,85,426"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="526,192,518,242,504,296,481,347,452,395,396,469,392,466,447,392,476,344,499,294,513,241,521,191"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="564,225,729,295"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="574,185,613,223,610,227,570,189"/>
+<area shape="rect" id="Node000009" href="$bh1750fvi_8h.html" title="This file contains functions for reading light sensor bh1750fvi data." alt="" coords="55,233,281,287"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="272,188,206,235,203,230,269,183"/>
+<area shape="rect" id="Node000011" href="$i2c__wrapper_8c.html" title="This file wraps around esp32 i2c driver." alt="" coords="306,225,489,295"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="358,188,379,224,375,227,353,191"/>
+<area shape="poly" id="edge11_Node000009_Node000002" title=" " alt="" coords="144,300,114,344,109,341,140,297"/>
+<area shape="rect" id="Node000010" href="$bh1750fvi_8c.html" title="This file contains functions for reading light sensor bh1750fvi data." alt="" coords="195,350,421,405"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="212,294,278,348,274,352,209,298"/>
+</map>
