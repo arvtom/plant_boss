@@ -1,0 +1,44 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/wifi\+\_\+wrapper.h File Reference}
+\hypertarget{wifi__wrapper_8h}{}\label{wifi__wrapper_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/wifi\_wrapper.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/wifi\_wrapper.h}}
+
+
+This file wraps around esp32 wifi driver.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+wifi.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+netif.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+http\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include \"{}settings\+\_\+wifi.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wifi__wrapper_8h_acab6a9a7919247ff39a02fc383624f58}\label{wifi__wrapper_8h_acab6a9a7919247ff39a02fc383624f58} 
+bool {\bfseries wifi\+\_\+init} (void)
+\item 
+\Hypertarget{wifi__wrapper_8h_afc32cd177540ed101bf9b768806dd02d}\label{wifi__wrapper_8h_afc32cd177540ed101bf9b768806dd02d} 
+bool {\bfseries wifi\+\_\+handle} (void)
+\item 
+\Hypertarget{wifi__wrapper_8h_a5152dbd13ff10a4c0bed8fa4c1061744}\label{wifi__wrapper_8h_a5152dbd13ff10a4c0bed8fa4c1061744} 
+int8\+\_\+t {\bfseries wifi\+\_\+get\+\_\+rssi\+\_\+value} (void)
+\item 
+\Hypertarget{wifi__wrapper_8h_a431084d4100207255cbd61d65e29b43e}\label{wifi__wrapper_8h_a431084d4100207255cbd61d65e29b43e} 
+bool {\bfseries wifi\+\_\+handle\+\_\+http\+\_\+post} (void)
+\item 
+\Hypertarget{wifi__wrapper_8h_a1bf0f336e40802eef4797b2e1c146a4d}\label{wifi__wrapper_8h_a1bf0f336e40802eef4797b2e1c146a4d} 
+void {\bfseries wifi\+\_\+event\+\_\+handler} (void \texorpdfstring{$\ast$}{*}event\+\_\+handler\+\_\+arg, esp\+\_\+event\+\_\+base\+\_\+t event\+\_\+base, int32\+\_\+t event\+\_\+id, void \texorpdfstring{$\ast$}{*}event\+\_\+data)
+\item 
+\Hypertarget{wifi__wrapper_8h_a44387535b08e8079d007a11fc49e4750}\label{wifi__wrapper_8h_a44387535b08e8079d007a11fc49e4750} 
+bool {\bfseries wifi\+\_\+connection} ()
+\item 
+\Hypertarget{wifi__wrapper_8h_ad3741c6f409bdd3032dc43efff2d7019}\label{wifi__wrapper_8h_ad3741c6f409bdd3032dc43efff2d7019} 
+esp\+\_\+err\+\_\+t {\bfseries client\+\_\+event\+\_\+post\+\_\+handler} (esp\+\_\+http\+\_\+client\+\_\+event\+\_\+handle\+\_\+t evt)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 wifi driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

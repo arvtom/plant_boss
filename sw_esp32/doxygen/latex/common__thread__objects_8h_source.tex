@@ -1,0 +1,53 @@
+\doxysection{common\+\_\+thread\+\_\+objects.\+h}
+\hypertarget{common__thread__objects_8h_source}{}\label{common__thread__objects_8h_source}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/common\_thread\_objects.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/common\_thread\_objects.h}}
+\mbox{\hyperlink{common__thread__objects_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ COMMON\_THREAD\_OBJECTS\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ COMMON\_THREAD\_OBJECTS\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Includes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <freertos/FreeRTOS.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <freertos/queue.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Typedefs\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ THREAD\_MEMORY\_TO\_APP\_RESULT\_INIT\ \ \ \ \ \ \ \ 0x00000001}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ THREAD\_APP\_TO\_NETWORK\_REQUEST\_INIT\ \ \ \ \ \ 0x00000002}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ THREAD\_NETWORK\_TO\_APP\_RESULT\_INIT\ \ \ \ \ \ \ 0x00000004}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ Try\ to\ group\ according\ who\ is\ receiving\ thread,\ because\ only\ these\ message\ values\ cannot\ repeat.\ Perhaps\ use\ typedef\ enum\ for\ this.\ */}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_INIT\_INPUT}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_INIT\_OUTPUT}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_INIT\_NETWORK}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_INIT\_MEMORY}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_INIT\_INPUT}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_INIT\_OUTPUT}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_INIT\_NETWORK}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_INIT\_MEMORY}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_HANDLE\_INPUT}}
+\DoxyCodeLine{00032\ \textcolor{comment}{/*\ result\ is\ arrived\ queue\ */}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_HANDLE\_INPUT\_BATTERY}}
+\DoxyCodeLine{00035\ \textcolor{comment}{/*\ result\ is\ arrived\ queue\ */}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_HANDLE\_OUTPUT\_PWR\_HUMIDITY}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_HANDLE\_OUTPUT\_PWR\_TEMPERATURE}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ NOTIFY\_REQ\_HANDLE\_OUTPUT\_PWR\_LIGHT}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_HANDLE\_OUTPUT\_PWR\_HUMIDITY}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_HANDLE\_OUTPUT\_PWR\_TEMPERATURE}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ NOTIFY\_RES\_HANDLE\_OUTPUT\_PWR\_LIGHT}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Public\ functions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{bool}\ common\_thread\_objects\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Private\ functions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Interrupt\ callbacks\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

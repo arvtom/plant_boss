@@ -1,0 +1,28 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/gpio\+\_\+wrapper.h File Reference}
+\hypertarget{gpio__wrapper_8h}{}\label{gpio__wrapper_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/gpio\_wrapper.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/gpio\_wrapper.h}}
+
+
+This file wraps around esp32 gpio driver.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/task.\+h$>$}\newline
+{\ttfamily \#include $<$driver/gpio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gpio__wrapper_8h_aafdd07555916768fd848e5c90d9bbc24}\label{gpio__wrapper_8h_aafdd07555916768fd848e5c90d9bbc24} 
+bool {\bfseries gpio\+\_\+init\+\_\+pin} (uint8\+\_\+t pin, gpio\+\_\+mode\+\_\+t mode, gpio\+\_\+pullup\+\_\+t pull\+\_\+up, gpio\+\_\+pulldown\+\_\+t pull\+\_\+down, gpio\+\_\+int\+\_\+type\+\_\+t intr)
+\item 
+\Hypertarget{gpio__wrapper_8h_ae0525278d67af0e57fce38120e72a769}\label{gpio__wrapper_8h_ae0525278d67af0e57fce38120e72a769} 
+bool {\bfseries gpio\+\_\+handle\+\_\+pin\+\_\+output} (uint8\+\_\+t pin, bool level)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 gpio driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

@@ -1,0 +1,40 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/i2c\+\_\+wrapper.h File Reference}
+\hypertarget{i2c__wrapper_8h}{}\label{i2c__wrapper_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/i2c\_wrapper.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/i2c\_wrapper.h}}
+
+
+This file wraps around esp32 i2c driver.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$driver/i2c.\+h$>$}\newline
+{\ttfamily \#include \"{}error.\+h\"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{i2c__wrapper_8h_a4e07871ca4ae83f158fa20d135b309b2}\label{i2c__wrapper_8h_a4e07871ca4ae83f158fa20d135b309b2} 
+enum {\bfseries i2c\+\_\+error\+\_\+t} \{ {\bfseries I2\+C\+\_\+\+ERROR\+\_\+\+INIT} = 0x00000001U
+, {\bfseries I2\+C\+\_\+\+ERROR\+\_\+\+HANDLE} = 0x00000002U
+, {\bfseries I2\+C\+\_\+\+ERROR\+\_\+\+HANDLE\+\_\+\+WRITE} = 0x00000004U
+, {\bfseries I2\+C\+\_\+\+ERROR\+\_\+\+HANDLE\+\_\+\+READ} = 0x00000008U
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{i2c__wrapper_8h_ad65f4e33df67b1746135cc8fb53a6832}\label{i2c__wrapper_8h_ad65f4e33df67b1746135cc8fb53a6832} 
+bool {\bfseries i2c\+\_\+init} (void)
+\item 
+\Hypertarget{i2c__wrapper_8h_a91d8f158251003837a0622276458c17f}\label{i2c__wrapper_8h_a91d8f158251003837a0622276458c17f} 
+bool {\bfseries i2c\+\_\+handle\+\_\+write} (uint8\+\_\+t addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+buf, uint8\+\_\+t count, uint8\+\_\+t timeout)
+\item 
+\Hypertarget{i2c__wrapper_8h_aa1d8a32e08fb008e89841d8ea62bc872}\label{i2c__wrapper_8h_aa1d8a32e08fb008e89841d8ea62bc872} 
+bool {\bfseries i2c\+\_\+handle\+\_\+read} (uint8\+\_\+t addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+buf, uint8\+\_\+t count, uint8\+\_\+t timeout)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 i2c driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

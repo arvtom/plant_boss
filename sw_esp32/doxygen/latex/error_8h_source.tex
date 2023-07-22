@@ -1,0 +1,61 @@
+\doxysection{error.\+h}
+\hypertarget{error_8h_source}{}\label{error_8h_source}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/error.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/error.h}}
+\mbox{\hyperlink{error_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Includes-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <freertos/FreeRTOS.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <freertos/task.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Defines-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Structures\ /\ enumerators-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{/*\ 32bit\ error\ enumerator\ */}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ typedef\ enum}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000001U,}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000002U,}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000004U,}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000008U,}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000010U,}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000020U,}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000040U,}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000080U,}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000100U,}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000200U,}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000400U,}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00000800U,}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00001000U,}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00002000U,}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00004000U,}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00008000U,}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00010000U,}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00020000U,}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00040000U,}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00080000U,}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00100000U,}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00200000U,}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00400000U,}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x00800000U,}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x01000000U,}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x02000000U,}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x04000000U,}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x08000000U,}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x10000000U,}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x20000000U,}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x40000000U,}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ ERROR\_BIT\ =\ 0x80000000U,}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \}pcf8591\_error\_t;}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Public\ function\ prototypes-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{error_8h_ae08cb0d514778884e98f0042282852be}{error\_set\_u32}}(uint32\_t\ *p\_err\_var,\ uint32\_t\ err\_bit);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{error_8h_a52f887f2f76541474069dfd814fa5b98}{error\_clear\_u32}}(uint32\_t\ *p\_err\_var,\ uint32\_t\ err\_bit);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{error_8h_afbfddf9c602a3c0deb19811014165f2c}{error\_check\_u32}}(uint32\_t\ *p\_err\_var,\ uint32\_t\ err\_bit);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ error\_handle(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Private\ function\ prototypes-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+
+\end{DoxyCode}

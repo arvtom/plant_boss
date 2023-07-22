@@ -1,0 +1,40 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/drivers/hw390.c File Reference}
+\hypertarget{hw390_8c}{}\label{hw390_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/hw390.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/hw390.c}}
+
+
+This file contains functions for reading soil moisture sensor hw390 data.  
+
+
+{\ttfamily \#include \"{}hw390.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{hw390_8c_afd4837413962b7446ff9ad2e33c81373}\label{hw390_8c_afd4837413962b7446ff9ad2e33c81373} 
+bool {\bfseries hw390\+\_\+init} (void)
+\item 
+\Hypertarget{hw390_8c_a9ec455dd489442cda8f01e42b5099386}\label{hw390_8c_a9ec455dd489442cda8f01e42b5099386} 
+bool {\bfseries hw390\+\_\+handle} (void)
+\item 
+\Hypertarget{hw390_8c_ad8dbec8a03bd0764388ec520e4fa79f0}\label{hw390_8c_ad8dbec8a03bd0764388ec520e4fa79f0} 
+float {\bfseries hw390\+\_\+get\+\_\+humidity\+\_\+value} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{hw390_8c_ac05acc0e4bf52207c8874ec2f49ced11}\label{hw390_8c_ac05acc0e4bf52207c8874ec2f49ced11} 
+adc\+\_\+cali\+\_\+handle\+\_\+t {\bfseries adc\+\_\+calibration\+\_\+handle\+\_\+humidity}
+\item 
+\Hypertarget{hw390_8c_a6a87b2b0cff24d38b367ccd34843a206}\label{hw390_8c_a6a87b2b0cff24d38b367ccd34843a206} 
+float {\bfseries humidity}
+\item 
+\Hypertarget{hw390_8c_a58362b28e424632c79416a0177a24db6}\label{hw390_8c_a58362b28e424632c79416a0177a24db6} 
+uint32\+\_\+t {\bfseries err\+\_\+hw390} = 0u
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains functions for reading soil moisture sensor hw390 data. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

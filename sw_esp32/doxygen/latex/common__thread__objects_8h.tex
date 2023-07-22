@@ -1,0 +1,83 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/inc/common\+\_\+thread\+\_\+objects.h File Reference}
+\hypertarget{common__thread__objects_8h}{}\label{common__thread__objects_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/common\_thread\_objects.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/common\_thread\_objects.h}}
+
+
+This file contains common thread objects\+: notifications and queues.  
+
+
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/queue.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{common__thread__objects_8h_a57bb2207471ccbcd6b627ca037502442}\label{common__thread__objects_8h_a57bb2207471ccbcd6b627ca037502442} 
+\#define {\bfseries THREAD\+\_\+\+MEMORY\+\_\+\+TO\+\_\+\+APP\+\_\+\+RESULT\+\_\+\+INIT}~0x00000001
+\item 
+\Hypertarget{common__thread__objects_8h_a8b1310f6a18d70fa7043ee5912b0c389}\label{common__thread__objects_8h_a8b1310f6a18d70fa7043ee5912b0c389} 
+\#define {\bfseries THREAD\+\_\+\+APP\+\_\+\+TO\+\_\+\+NETWORK\+\_\+\+REQUEST\+\_\+\+INIT}~0x00000002
+\item 
+\Hypertarget{common__thread__objects_8h_af206ad16cac337e7a7845dad72ca4669}\label{common__thread__objects_8h_af206ad16cac337e7a7845dad72ca4669} 
+\#define {\bfseries THREAD\+\_\+\+NETWORK\+\_\+\+TO\+\_\+\+APP\+\_\+\+RESULT\+\_\+\+INIT}~0x00000004
+\item 
+\Hypertarget{common__thread__objects_8h_ae0a372c151b48c1bcf66f2e3d1cb3898}\label{common__thread__objects_8h_ae0a372c151b48c1bcf66f2e3d1cb3898} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+INIT\+\_\+\+INPUT}
+\item 
+\Hypertarget{common__thread__objects_8h_a79bd198b3a3c70fe5951f8843a3ff1a7}\label{common__thread__objects_8h_a79bd198b3a3c70fe5951f8843a3ff1a7} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+INIT\+\_\+\+OUTPUT}
+\item 
+\Hypertarget{common__thread__objects_8h_a4b952134943992be43643e4d99fc1277}\label{common__thread__objects_8h_a4b952134943992be43643e4d99fc1277} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+INIT\+\_\+\+NETWORK}
+\item 
+\Hypertarget{common__thread__objects_8h_a1cd176d64542aafe2ca38185cea11478}\label{common__thread__objects_8h_a1cd176d64542aafe2ca38185cea11478} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+INIT\+\_\+\+MEMORY}
+\item 
+\Hypertarget{common__thread__objects_8h_a370ad1d9f28bc240c4c3068c01875acb}\label{common__thread__objects_8h_a370ad1d9f28bc240c4c3068c01875acb} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+INIT\+\_\+\+INPUT}
+\item 
+\Hypertarget{common__thread__objects_8h_a8c7acf1e4e4b1b4ba0631fed17dc567b}\label{common__thread__objects_8h_a8c7acf1e4e4b1b4ba0631fed17dc567b} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+INIT\+\_\+\+OUTPUT}
+\item 
+\Hypertarget{common__thread__objects_8h_a36b66b1cf0dcfd851569f79599965b62}\label{common__thread__objects_8h_a36b66b1cf0dcfd851569f79599965b62} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+INIT\+\_\+\+NETWORK}
+\item 
+\Hypertarget{common__thread__objects_8h_a81b2b23dff96ca56f228052ecf9a116f}\label{common__thread__objects_8h_a81b2b23dff96ca56f228052ecf9a116f} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+INIT\+\_\+\+MEMORY}
+\item 
+\Hypertarget{common__thread__objects_8h_a5fc0dc6ca6e209ea323e0aacbfc77dec}\label{common__thread__objects_8h_a5fc0dc6ca6e209ea323e0aacbfc77dec} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+HANDLE\+\_\+\+INPUT}
+\item 
+\Hypertarget{common__thread__objects_8h_a82f732174cb13a9d96b5f6cf6b774fd8}\label{common__thread__objects_8h_a82f732174cb13a9d96b5f6cf6b774fd8} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+HANDLE\+\_\+\+INPUT\+\_\+\+BATTERY}
+\item 
+\Hypertarget{common__thread__objects_8h_aef618c0a939467244dc9c07205ad5940}\label{common__thread__objects_8h_aef618c0a939467244dc9c07205ad5940} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+HUMIDITY}
+\item 
+\Hypertarget{common__thread__objects_8h_a41cb35ab429e69d0a4c8df8cd9e8b710}\label{common__thread__objects_8h_a41cb35ab429e69d0a4c8df8cd9e8b710} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+TEMPERATURE}
+\item 
+\Hypertarget{common__thread__objects_8h_a067ac93a77a347400547b150bfaf2267}\label{common__thread__objects_8h_a067ac93a77a347400547b150bfaf2267} 
+\#define {\bfseries NOTIFY\+\_\+\+REQ\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+LIGHT}
+\item 
+\Hypertarget{common__thread__objects_8h_add48051399e7d74faf309d35bf72763e}\label{common__thread__objects_8h_add48051399e7d74faf309d35bf72763e} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+HUMIDITY}
+\item 
+\Hypertarget{common__thread__objects_8h_a2fa88dda4924294dc92360721b261be7}\label{common__thread__objects_8h_a2fa88dda4924294dc92360721b261be7} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+TEMPERATURE}
+\item 
+\Hypertarget{common__thread__objects_8h_a676abf6af2f449b96531fff7106569c9}\label{common__thread__objects_8h_a676abf6af2f449b96531fff7106569c9} 
+\#define {\bfseries NOTIFY\+\_\+\+RES\+\_\+\+HANDLE\+\_\+\+OUTPUT\+\_\+\+PWR\+\_\+\+LIGHT}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{common__thread__objects_8h_ade18b42e64cd27877afdd1c2c00fd2c7}\label{common__thread__objects_8h_ade18b42e64cd27877afdd1c2c00fd2c7} 
+bool {\bfseries common\+\_\+thread\+\_\+objects\+\_\+init} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains common thread objects\+: notifications and queues. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

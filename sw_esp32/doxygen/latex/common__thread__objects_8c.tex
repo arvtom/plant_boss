@@ -1,0 +1,55 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/src/common\+\_\+thread\+\_\+objects.c File Reference}
+\hypertarget{common__thread__objects_8c}{}\label{common__thread__objects_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/src/common\_thread\_objects.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/src/common\_thread\_objects.c}}
+
+
+This file contains common thread objects\+: notifications and queues.  
+
+
+{\ttfamily \#include \"{}common\+\_\+thread\+\_\+objects.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{common__thread__objects_8c_ade18b42e64cd27877afdd1c2c00fd2c7}\label{common__thread__objects_8c_ade18b42e64cd27877afdd1c2c00fd2c7} 
+bool {\bfseries common\+\_\+thread\+\_\+objects\+\_\+init} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{common__thread__objects_8c_a7a136c865f74af320c0e725005166077}\label{common__thread__objects_8c_a7a136c865f74af320c0e725005166077} 
+Task\+Handle\+\_\+t {\bfseries handle\+\_\+input}
+\item 
+\Hypertarget{common__thread__objects_8c_adff6f062f787b72621a588bff004fc09}\label{common__thread__objects_8c_adff6f062f787b72621a588bff004fc09} 
+Task\+Handle\+\_\+t {\bfseries handle\+\_\+output}
+\item 
+\Hypertarget{common__thread__objects_8c_a8fa5cccef7ba1a8cb790256d56676486}\label{common__thread__objects_8c_a8fa5cccef7ba1a8cb790256d56676486} 
+Task\+Handle\+\_\+t {\bfseries handle\+\_\+app}
+\item 
+\Hypertarget{common__thread__objects_8c_a977dc8dd036b1fad80c49ee2efe9365b}\label{common__thread__objects_8c_a977dc8dd036b1fad80c49ee2efe9365b} 
+Task\+Handle\+\_\+t {\bfseries handle\+\_\+network}
+\item 
+\Hypertarget{common__thread__objects_8c_aa4dcc72426b6e0ac8c176159b715db45}\label{common__thread__objects_8c_aa4dcc72426b6e0ac8c176159b715db45} 
+Task\+Handle\+\_\+t {\bfseries handle\+\_\+memory}
+\item 
+\Hypertarget{common__thread__objects_8c_af9042811b080a6fb7d89583150f11c2e}\label{common__thread__objects_8c_af9042811b080a6fb7d89583150f11c2e} 
+Queue\+Handle\+\_\+t {\bfseries queue\+\_\+input\+\_\+to\+\_\+app}
+\item 
+\Hypertarget{common__thread__objects_8c_ae89dc06e4c4b7f4ec12fcd7be6b3b12f}\label{common__thread__objects_8c_ae89dc06e4c4b7f4ec12fcd7be6b3b12f} 
+Queue\+Handle\+\_\+t {\bfseries queue\+\_\+app\+\_\+to\+\_\+wifi}
+\item 
+\Hypertarget{common__thread__objects_8c_a9c80674d71a51cf01ded597bb7f585b4}\label{common__thread__objects_8c_a9c80674d71a51cf01ded597bb7f585b4} 
+Queue\+Handle\+\_\+t {\bfseries queue\+\_\+app\+\_\+to\+\_\+memory}
+\item 
+\Hypertarget{common__thread__objects_8c_ae92fa996a819df4003f204173b913bff}\label{common__thread__objects_8c_ae92fa996a819df4003f204173b913bff} 
+Queue\+Handle\+\_\+t {\bfseries queue\+\_\+wifi\+\_\+to\+\_\+app}
+\item 
+\Hypertarget{common__thread__objects_8c_a63c2fa31ccbe0a4b6d11207cb486ebd8}\label{common__thread__objects_8c_a63c2fa31ccbe0a4b6d11207cb486ebd8} 
+Queue\+Handle\+\_\+t {\bfseries queue\+\_\+memory\+\_\+to\+\_\+app}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains common thread objects\+: notifications and queues. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

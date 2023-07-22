@@ -1,0 +1,37 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/adc\+\_\+wrapper.c File Reference}
+\hypertarget{adc__wrapper_8c}{}\label{adc__wrapper_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/adc\_wrapper.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/adc\_wrapper.c}}
+
+
+This file wraps around esp32 adc driver.  
+
+
+{\ttfamily \#include \"{}adc\+\_\+wrapper.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc__wrapper_8c_acc984c585eda9fd45b0d472c45f5f01f}\label{adc__wrapper_8c_acc984c585eda9fd45b0d472c45f5f01f} 
+bool {\bfseries adc\+\_\+init} (void)
+\item 
+\Hypertarget{adc__wrapper_8c_a9b69177971678d403a30160f5592f494}\label{adc__wrapper_8c_a9b69177971678d403a30160f5592f494} 
+bool {\bfseries adc\+\_\+init\+\_\+channel} (adc\+\_\+oneshot\+\_\+chan\+\_\+cfg\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+channel\+\_\+config, adc\+\_\+cali\+\_\+line\+\_\+fitting\+\_\+config\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+config, adc\+\_\+cali\+\_\+handle\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+handle, adc\+\_\+channel\+\_\+t channel)
+\item 
+\Hypertarget{adc__wrapper_8c_af8710d1a06a80a73c6226efc8ffe8e23}\label{adc__wrapper_8c_af8710d1a06a80a73c6226efc8ffe8e23} 
+bool {\bfseries adc\+\_\+handle\+\_\+channel} (adc\+\_\+cali\+\_\+handle\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+handle, int \texorpdfstring{$\ast$}{*}p\+\_\+adc\+\_\+voltage, adc\+\_\+channel\+\_\+t channel)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc__wrapper_8c_aaabf143c95c669d3836e9dc3b9e4f46e}\label{adc__wrapper_8c_aaabf143c95c669d3836e9dc3b9e4f46e} 
+int {\bfseries err\+\_\+adc\+\_\+drv} = 0
+\item 
+\Hypertarget{adc__wrapper_8c_a0b95b5937de8bdf11f73c2636d897c49}\label{adc__wrapper_8c_a0b95b5937de8bdf11f73c2636d897c49} 
+adc\+\_\+oneshot\+\_\+unit\+\_\+handle\+\_\+t {\bfseries adc1\+\_\+handle}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 adc driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

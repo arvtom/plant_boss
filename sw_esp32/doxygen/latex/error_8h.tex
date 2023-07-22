@@ -1,0 +1,35 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/inc/error.h File Reference}
+\hypertarget{error_8h}{}\label{error_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/error.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/inc/error.h}}
+
+
+Error management functions, which use individual bits to represent errors.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/task.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{error_8h_ae08cb0d514778884e98f0042282852be}\label{error_8h_ae08cb0d514778884e98f0042282852be} 
+void {\bfseries error\+\_\+set\+\_\+u32} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+err\+\_\+var, uint32\+\_\+t err\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Set requested error bit in error variable. \end{DoxyCompactList}\item 
+\Hypertarget{error_8h_a52f887f2f76541474069dfd814fa5b98}\label{error_8h_a52f887f2f76541474069dfd814fa5b98} 
+void {\bfseries error\+\_\+clear\+\_\+u32} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+err\+\_\+var, uint32\+\_\+t err\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Clear requested error bit in error variable. \end{DoxyCompactList}\item 
+\Hypertarget{error_8h_afbfddf9c602a3c0deb19811014165f2c}\label{error_8h_afbfddf9c602a3c0deb19811014165f2c} 
+bool {\bfseries error\+\_\+check\+\_\+u32} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+err\+\_\+var, uint32\+\_\+t err\+\_\+bit)
+\begin{DoxyCompactList}\small\item\em Check if requested error bit is set in error variable. \end{DoxyCompactList}\item 
+\Hypertarget{error_8h_afedf29d3cda231392c0aeafa1c0184cb}\label{error_8h_afedf29d3cda231392c0aeafa1c0184cb} 
+void {\bfseries error\+\_\+handle} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Error management functions, which use individual bits to represent errors. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

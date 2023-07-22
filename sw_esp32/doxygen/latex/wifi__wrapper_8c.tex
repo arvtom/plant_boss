@@ -1,0 +1,70 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/wifi\+\_\+wrapper.c File Reference}
+\hypertarget{wifi__wrapper_8c}{}\label{wifi__wrapper_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/wifi\_wrapper.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/wifi\_wrapper.c}}
+
+
+This file wraps around esp32 wifi driver.  
+
+
+{\ttfamily \#include \"{}wifi\+\_\+wrapper.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wifi__wrapper_8c_acab6a9a7919247ff39a02fc383624f58}\label{wifi__wrapper_8c_acab6a9a7919247ff39a02fc383624f58} 
+bool {\bfseries wifi\+\_\+init} (void)
+\item 
+\Hypertarget{wifi__wrapper_8c_afc32cd177540ed101bf9b768806dd02d}\label{wifi__wrapper_8c_afc32cd177540ed101bf9b768806dd02d} 
+bool {\bfseries wifi\+\_\+handle} (void)
+\item 
+\Hypertarget{wifi__wrapper_8c_a5152dbd13ff10a4c0bed8fa4c1061744}\label{wifi__wrapper_8c_a5152dbd13ff10a4c0bed8fa4c1061744} 
+int8\+\_\+t {\bfseries wifi\+\_\+get\+\_\+rssi\+\_\+value} (void)
+\item 
+\Hypertarget{wifi__wrapper_8c_a431084d4100207255cbd61d65e29b43e}\label{wifi__wrapper_8c_a431084d4100207255cbd61d65e29b43e} 
+bool {\bfseries wifi\+\_\+handle\+\_\+http\+\_\+post} (void)
+\item 
+\Hypertarget{wifi__wrapper_8c_a1bf0f336e40802eef4797b2e1c146a4d}\label{wifi__wrapper_8c_a1bf0f336e40802eef4797b2e1c146a4d} 
+void {\bfseries wifi\+\_\+event\+\_\+handler} (void \texorpdfstring{$\ast$}{*}event\+\_\+handler\+\_\+arg, esp\+\_\+event\+\_\+base\+\_\+t event\+\_\+base, int32\+\_\+t event\+\_\+id, void \texorpdfstring{$\ast$}{*}event\+\_\+data)
+\item 
+\Hypertarget{wifi__wrapper_8c_a44387535b08e8079d007a11fc49e4750}\label{wifi__wrapper_8c_a44387535b08e8079d007a11fc49e4750} 
+bool {\bfseries wifi\+\_\+connection} ()
+\item 
+\Hypertarget{wifi__wrapper_8c_ad3741c6f409bdd3032dc43efff2d7019}\label{wifi__wrapper_8c_ad3741c6f409bdd3032dc43efff2d7019} 
+esp\+\_\+err\+\_\+t {\bfseries client\+\_\+event\+\_\+post\+\_\+handler} (esp\+\_\+http\+\_\+client\+\_\+event\+\_\+handle\+\_\+t evt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wifi__wrapper_8c_a443b98a8dbbd55a4e50abf722e64f9e7}\label{wifi__wrapper_8c_a443b98a8dbbd55a4e50abf722e64f9e7} 
+int {\bfseries err\+\_\+wifi\+\_\+drv} = 0
+\item 
+\Hypertarget{wifi__wrapper_8c_a708d776c7f66faed6134d233c042ade4}\label{wifi__wrapper_8c_a708d776c7f66faed6134d233c042ade4} 
+int {\bfseries err\+\_\+tcp\+\_\+drv} = 0
+\item 
+\Hypertarget{wifi__wrapper_8c_a281862591c531d675fcc4181ed461574}\label{wifi__wrapper_8c_a281862591c531d675fcc4181ed461574} 
+int {\bfseries err\+\_\+http\+\_\+drv} = 0
+\item 
+\Hypertarget{wifi__wrapper_8c_a95ae23ea2b81564f78419fcd7ad10db7}\label{wifi__wrapper_8c_a95ae23ea2b81564f78419fcd7ad10db7} 
+char {\bfseries buf\+\_\+rx\+\_\+queue\+\_\+wifi} \mbox{[}150\mbox{]}
+\item 
+\Hypertarget{wifi__wrapper_8c_a9aa97cf0f7f2d115b761366b1b1673f2}\label{wifi__wrapper_8c_a9aa97cf0f7f2d115b761366b1b1673f2} 
+uint16\+\_\+t {\bfseries length\+\_\+buf\+\_\+tx\+\_\+queue\+\_\+wifi}
+\item 
+\Hypertarget{wifi__wrapper_8c_a430906af0f5d9321c83d3e73fa1da6d7}\label{wifi__wrapper_8c_a430906af0f5d9321c83d3e73fa1da6d7} 
+int8\+\_\+t {\bfseries rssi\+\_\+wifi} = 0
+\item 
+\Hypertarget{wifi__wrapper_8c_a48be0b4e4bdf821b56834c17f9382c61}\label{wifi__wrapper_8c_a48be0b4e4bdf821b56834c17f9382c61} 
+bool {\bfseries b\+\_\+ready\+\_\+wifi} = false
+\item 
+\Hypertarget{wifi__wrapper_8c_a19e584dd2d82504204f55cc9806308a7}\label{wifi__wrapper_8c_a19e584dd2d82504204f55cc9806308a7} 
+bool {\bfseries b\+\_\+err\+\_\+database} = false
+\item 
+\Hypertarget{wifi__wrapper_8c_ab7aae3c173cc9e46c4a0d9374a1351fc}\label{wifi__wrapper_8c_ab7aae3c173cc9e46c4a0d9374a1351fc} 
+esp\+\_\+http\+\_\+client\+\_\+config\+\_\+t {\bfseries config\+\_\+post}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 wifi driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

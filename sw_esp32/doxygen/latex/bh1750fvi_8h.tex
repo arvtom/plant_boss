@@ -1,0 +1,55 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/drivers/bh1750fvi.h File Reference}
+\hypertarget{bh1750fvi_8h}{}\label{bh1750fvi_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/bh1750fvi.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/bh1750fvi.h}}
+
+
+This file contains functions for reading light sensor bh1750fvi data.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/task.\+h$>$}\newline
+{\ttfamily \#include \"{}i2c\+\_\+wrapper.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bh1750fvi_8h_a1263cddb9c7379a91618e16a03ac3aeb}\label{bh1750fvi_8h_a1263cddb9c7379a91618e16a03ac3aeb} 
+\#define {\bfseries BH1750\+FVI\+\_\+\+I2\+C\+\_\+\+ADDR\+\_\+\+MEASURE}~0x23
+\item 
+\Hypertarget{bh1750fvi_8h_ab0d4dbe2400d4b4520bbfd6d337e6c4e}\label{bh1750fvi_8h_ab0d4dbe2400d4b4520bbfd6d337e6c4e} 
+\#define {\bfseries BH1750\+FVI\+\_\+\+I2\+C\+\_\+\+ADDR\+\_\+\+RESULT}~0x23
+\item 
+\Hypertarget{bh1750fvi_8h_afe9f3654420b882463219ce8e731715e}\label{bh1750fvi_8h_afe9f3654420b882463219ce8e731715e} 
+\#define {\bfseries BH1750\+FVI\+\_\+\+I2\+C\+\_\+\+COMMAND\+\_\+\+MEASURE}~0x23
+\item 
+\Hypertarget{bh1750fvi_8h_a892fb1581c0fb672de9255afecb60137}\label{bh1750fvi_8h_a892fb1581c0fb672de9255afecb60137} 
+\#define {\bfseries BH1750\+FVI\+\_\+\+I2\+C\+\_\+\+TIMEOUT}~100u
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bh1750fvi_8h_a1ca2c7994cd396d51840882851eb66a7}\label{bh1750fvi_8h_a1ca2c7994cd396d51840882851eb66a7} 
+enum {\bfseries bh1750fvi\+\_\+error\+\_\+t} \{ {\bfseries BH1750\+FVI\+\_\+\+ERROR\+\_\+\+INIT} = 0x00000001U
+, {\bfseries BH1750\+FVI\+\_\+\+ERROR\+\_\+\+HANDLE} = 0x00000002U
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bh1750fvi_8h_aeee7326831da7bece2ffc7e46ead9802}\label{bh1750fvi_8h_aeee7326831da7bece2ffc7e46ead9802} 
+bool {\bfseries bh1750fvi\+\_\+init} (void)
+\item 
+\Hypertarget{bh1750fvi_8h_a20b925309e3072c101745010f172adcc}\label{bh1750fvi_8h_a20b925309e3072c101745010f172adcc} 
+bool {\bfseries bh1750fvi\+\_\+handle} (void)
+\item 
+\Hypertarget{bh1750fvi_8h_a05996d8c9a976107bbb92043a203493f}\label{bh1750fvi_8h_a05996d8c9a976107bbb92043a203493f} 
+float {\bfseries bh1750fvi\+\_\+get\+\_\+light\+\_\+value} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains functions for reading light sensor bh1750fvi data. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

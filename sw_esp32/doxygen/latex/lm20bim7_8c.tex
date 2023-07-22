@@ -1,0 +1,40 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/drivers/lm20bim7.c File Reference}
+\hypertarget{lm20bim7_8c}{}\label{lm20bim7_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/lm20bim7.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/drivers/lm20bim7.c}}
+
+
+This file contains functions for reading temperature sensor lm20bim7 data.  
+
+
+{\ttfamily \#include \"{}lm20bim7.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{lm20bim7_8c_a6023769ae1afc41f5ce8d7c774425c94}\label{lm20bim7_8c_a6023769ae1afc41f5ce8d7c774425c94} 
+bool {\bfseries lm20bim7\+\_\+init} (void)
+\item 
+\Hypertarget{lm20bim7_8c_a8330c23ef378a05f15ccdb1fcec88aa2}\label{lm20bim7_8c_a8330c23ef378a05f15ccdb1fcec88aa2} 
+bool {\bfseries lm20bim7\+\_\+handle} (void)
+\item 
+\Hypertarget{lm20bim7_8c_a1a92edf44ebf333abb7d4ce38b54280f}\label{lm20bim7_8c_a1a92edf44ebf333abb7d4ce38b54280f} 
+float {\bfseries lm20bim7\+\_\+get\+\_\+temperature\+\_\+value} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{lm20bim7_8c_a434effe50a75d833a9ea570448b4b463}\label{lm20bim7_8c_a434effe50a75d833a9ea570448b4b463} 
+uint32\+\_\+t {\bfseries err\+\_\+lm20bim7} = 0u
+\item 
+\Hypertarget{lm20bim7_8c_a240961d19743cafbca807a1401880f43}\label{lm20bim7_8c_a240961d19743cafbca807a1401880f43} 
+adc\+\_\+cali\+\_\+handle\+\_\+t {\bfseries adc\+\_\+calibration\+\_\+handle\+\_\+temperature}
+\item 
+\Hypertarget{lm20bim7_8c_afc1d28cfbce795d6ea954ebe725241f5}\label{lm20bim7_8c_afc1d28cfbce795d6ea954ebe725241f5} 
+float {\bfseries temperature}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains functions for reading temperature sensor lm20bim7 data. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

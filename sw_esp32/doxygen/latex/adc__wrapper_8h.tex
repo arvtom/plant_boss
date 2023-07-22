@@ -1,0 +1,33 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/adc\+\_\+wrapper.h File Reference}
+\hypertarget{adc__wrapper_8h}{}\label{adc__wrapper_8h}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/adc\_wrapper.h@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/adc\_wrapper.h}}
+
+
+This file wraps around esp32 adc driver.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+adc/adc\+\_\+oneshot.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+adc/adc\+\_\+cali.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+adc/adc\+\_\+cali\+\_\+scheme.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+err.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc__wrapper_8h_acc984c585eda9fd45b0d472c45f5f01f}\label{adc__wrapper_8h_acc984c585eda9fd45b0d472c45f5f01f} 
+bool {\bfseries adc\+\_\+init} (void)
+\item 
+\Hypertarget{adc__wrapper_8h_a9b69177971678d403a30160f5592f494}\label{adc__wrapper_8h_a9b69177971678d403a30160f5592f494} 
+bool {\bfseries adc\+\_\+init\+\_\+channel} (adc\+\_\+oneshot\+\_\+chan\+\_\+cfg\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+channel\+\_\+config, adc\+\_\+cali\+\_\+line\+\_\+fitting\+\_\+config\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+config, adc\+\_\+cali\+\_\+handle\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+handle, adc\+\_\+channel\+\_\+t channel)
+\item 
+\Hypertarget{adc__wrapper_8h_af8710d1a06a80a73c6226efc8ffe8e23}\label{adc__wrapper_8h_af8710d1a06a80a73c6226efc8ffe8e23} 
+bool {\bfseries adc\+\_\+handle\+\_\+channel} (adc\+\_\+cali\+\_\+handle\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+calibration\+\_\+handle, int \texorpdfstring{$\ast$}{*}p\+\_\+adc\+\_\+voltage, adc\+\_\+channel\+\_\+t channel)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 adc driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

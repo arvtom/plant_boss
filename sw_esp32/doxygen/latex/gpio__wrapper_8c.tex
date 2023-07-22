@@ -1,0 +1,31 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/gpio\+\_\+wrapper.c File Reference}
+\hypertarget{gpio__wrapper_8c}{}\label{gpio__wrapper_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/gpio\_wrapper.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/gpio\_wrapper.c}}
+
+
+This file wraps around esp32 gpio driver.  
+
+
+{\ttfamily \#include \"{}gpio\+\_\+wrapper.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gpio__wrapper_8c_aafdd07555916768fd848e5c90d9bbc24}\label{gpio__wrapper_8c_aafdd07555916768fd848e5c90d9bbc24} 
+bool {\bfseries gpio\+\_\+init\+\_\+pin} (uint8\+\_\+t pin, gpio\+\_\+mode\+\_\+t mode, gpio\+\_\+pullup\+\_\+t pull\+\_\+up, gpio\+\_\+pulldown\+\_\+t pull\+\_\+down, gpio\+\_\+int\+\_\+type\+\_\+t intr)
+\item 
+\Hypertarget{gpio__wrapper_8c_ae0525278d67af0e57fce38120e72a769}\label{gpio__wrapper_8c_ae0525278d67af0e57fce38120e72a769} 
+bool {\bfseries gpio\+\_\+handle\+\_\+pin\+\_\+output} (uint8\+\_\+t pin, bool level)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gpio__wrapper_8c_a5fb196c9adec72c73360618009c7afed}\label{gpio__wrapper_8c_a5fb196c9adec72c73360618009c7afed} 
+int {\bfseries err\+\_\+gpio\+\_\+drv} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 gpio driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}

@@ -1,0 +1,64 @@
+\doxysection{/home/arvydas/github/plant\+\_\+boss/sw\+\_\+esp32/plant\+\_\+boss/wrappers/i2c\+\_\+wrapper.c File Reference}
+\hypertarget{i2c__wrapper_8c}{}\label{i2c__wrapper_8c}\index{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/i2c\_wrapper.c@{/home/arvydas/github/plant\_boss/sw\_esp32/plant\_boss/wrappers/i2c\_wrapper.c}}
+
+
+This file wraps around esp32 i2c driver.  
+
+
+{\ttfamily \#include \"{}i2c\+\_\+wrapper.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{i2c__wrapper_8c_ad65f4e33df67b1746135cc8fb53a6832}\label{i2c__wrapper_8c_ad65f4e33df67b1746135cc8fb53a6832} 
+bool {\bfseries i2c\+\_\+init} (void)
+\item 
+\Hypertarget{i2c__wrapper_8c_a91d8f158251003837a0622276458c17f}\label{i2c__wrapper_8c_a91d8f158251003837a0622276458c17f} 
+bool {\bfseries i2c\+\_\+handle\+\_\+write} (uint8\+\_\+t addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+buf, uint8\+\_\+t count, uint8\+\_\+t timeout)
+\item 
+\Hypertarget{i2c__wrapper_8c_aa1d8a32e08fb008e89841d8ea62bc872}\label{i2c__wrapper_8c_aa1d8a32e08fb008e89841d8ea62bc872} 
+bool {\bfseries i2c\+\_\+handle\+\_\+read} (uint8\+\_\+t addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}p\+\_\+buf, uint8\+\_\+t count, uint8\+\_\+t timeout)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{i2c__wrapper_8c_a87b5a411818cddbb149eb3f55d0bba0d}\label{i2c__wrapper_8c_a87b5a411818cddbb149eb3f55d0bba0d} 
+uint32\+\_\+t {\bfseries err\+\_\+i2c} = 0u
+\item 
+\Hypertarget{i2c__wrapper_8c_a00efab7179e07f36b863ca098f702d26}\label{i2c__wrapper_8c_a00efab7179e07f36b863ca098f702d26} 
+int {\bfseries err\+\_\+i2c\+\_\+drv} = 0
+\item 
+\Hypertarget{i2c__wrapper_8c_ad236862a4fa624545ad3b84d22030066}\label{i2c__wrapper_8c_ad236862a4fa624545ad3b84d22030066} 
+i2c\+\_\+port\+\_\+t {\bfseries i2c\+\_\+master\+\_\+port} = 0
+\item 
+i2c\+\_\+config\+\_\+t \mbox{\hyperlink{i2c__wrapper_8c_aa09ddc709367c497fc081a29aa2d12fe}{conf}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file wraps around esp32 i2c driver. 
+
+\begin{DoxyAuthor}{Author}
+arvtom 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{i2c__wrapper_8c_aa09ddc709367c497fc081a29aa2d12fe}\label{i2c__wrapper_8c_aa09ddc709367c497fc081a29aa2d12fe} 
+\index{i2c\_wrapper.c@{i2c\_wrapper.c}!conf@{conf}}
+\index{conf@{conf}!i2c\_wrapper.c@{i2c\_wrapper.c}}
+\doxysubsubsection{\texorpdfstring{conf}{conf}}
+{\footnotesize\ttfamily i2c\+\_\+config\+\_\+t conf}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .mode\ =\ I2C\_MODE\_MASTER,}
+\DoxyCodeLine{\ \ \ \ .sda\_io\_num\ =\ 21,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ .sda\_pullup\_en\ =\ GPIO\_PULLUP\_ENABLE,}
+\DoxyCodeLine{\ \ \ \ .scl\_io\_num\ =\ 22,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ .scl\_pullup\_en\ =\ GPIO\_PULLUP\_ENABLE,}
+\DoxyCodeLine{\ \ \ \ .master.clk\_speed\ =\ 10000,\ \ }
+\DoxyCodeLine{\ \ \ \ .clk\_flags\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
