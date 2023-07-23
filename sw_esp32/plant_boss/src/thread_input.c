@@ -13,16 +13,15 @@ thread_input_t s_thread_input;
 
 uint8_t buf_tx_queue_input[16];
 
-bool b_ready_thread_input = false;
-
-extern bool b_ready_sensor_power;
+uint32_t notification_input = 0u;
 
 extern QueueHandle_t queue_input_to_app;
+
+extern TaskHandle_t handle_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
-    // thread_app();
     if (true != thread_input_init())
     {
         error_handle();
@@ -41,15 +40,16 @@ bool thread_input_init(void)
 {
     printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
+    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_INIT, 0u, &notification_input, portMAX_DELAY);
+    if ((notification_input & NOTIFICATION_TO_INPUT_REQ_INIT) == 0u)
+    {
+        return false;
+    }
+
     if (true != adc_init())
     {
         printf("error\n");
         return false;
-    }
-
-    while (false == b_ready_sensor_power)
-    {
-        vTaskDelay(1);
     }
 
     if (true != bh1750fvi_init())
@@ -80,8 +80,14 @@ bool thread_input_init(void)
         return false;
     }
 
-    b_ready_thread_input = true;
+    if (pdPASS != xTaskNotify(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT, eSetBits))
+    {
+        return false;
+    }
 
+    printf("thread_input init ok\n");
+
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
@@ -89,6 +95,12 @@ bool thread_input_init(void)
 
 bool thread_input_handle(void)
 {
+    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, 0u, &notification_input, portMAX_DELAY);
+    if ((notification_input & NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS) == 0u)
+    {
+        return false;
+    }
+    
     float light_bh1750fvi;
     float temperature_lm20bim7;
     float humidity_hw390;
@@ -136,6 +148,8 @@ bool thread_input_handle(void)
     memcpy(&buf_tx_queue_input[12], &voltage_battery, 4);
 
     xQueueSend(queue_input_to_app, (void*)buf_tx_queue_input, (TickType_t)0);
+
+    printf("thread_input handle ok\n");
     
     vTaskDelay(100);
 

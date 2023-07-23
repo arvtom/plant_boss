@@ -7,19 +7,27 @@
 /* ---------------------------- Global variables ---------------------------- */
 uint32_t err_thread_memory = 0u;
 
-// bool b_ready_thread_memory = false;
-extern TaskHandle_t handle_network;
+uint32_t notification_memory = 0u;
+
+extern QueueHandle_t queue_app_to_memory;
+extern QueueHandle_t queue_memory_to_app;
+
 extern TaskHandle_t handle_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
 {
-    // thread_app();
-    thread_memory_init();
+    if (true != thread_memory_init())
+    {
+        error_handle();
+    }
 
     while (1)
     {
-        thread_memory_handle();
+        if (true != thread_memory_handle())
+        {
+            error_handle();
+        }
     }
 }
 
@@ -27,14 +35,13 @@ bool thread_memory_init(void)
 {
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
-    if (true != nvm_init())
+    xTaskNotifyWait(NOTIFICATION_TO_MEMORY_REQ_INIT, 0u, &notification_memory, portMAX_DELAY);
+    if ((notification_memory & NOTIFICATION_TO_MEMORY_REQ_INIT) == 0u)
     {
         return false;
     }
 
-    // b_ready_thread_memory = true;
-
-    if (pdPASS != xTaskNotify(handle_network, 0, eNoAction))
+    if (true != nvm_init())
     {
         return false;
     }
@@ -44,16 +51,25 @@ bool thread_memory_init(void)
         return false;
     }
 
+    /* TODO: read mode from nvm */
+
+    printf("thread_memory init ok\n");
+
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
 }
 
-void thread_memory_handle(void)
+bool thread_memory_handle(void)
 {
-    
+    /* TODO: check if there was request to read/write to nvm */
+
+    // printf("thread_memory handle ok\n");
     
     vTaskDelay(100);
+
+    return true;
 }
 
 /* ---------------------------- Private functions ---------------------------- */

@@ -10,33 +10,42 @@
 /* ---------------------------- Global variables ---------------------------- */
 uint32_t err_thread_app = 0u;
 
+uint16_t length_buf_tx_queue_wifi = 0u;
+char buf_tx_queue_wifi[150];
+uint8_t buf_rx_queue_input[16];
+
+uint32_t notification_app = 0u;
+
 extern uint32_t err_thread_input;
 extern uint32_t err_thread_output;
 extern uint32_t err_thread_network;
 extern uint32_t err_thread_memory;
 
-uint16_t length_buf_tx_queue_wifi = 0u;
-
-SemaphoreHandle_t not_so_simple_mutex;
-
-char buf_tx_queue_wifi[150];
-
-
-uint8_t buf_rx_queue_input[16];
-
-extern bool b_ready_thread_input;
-
-extern QueueHandle_t queue_app_to_wifi;
 extern QueueHandle_t queue_input_to_app;
+extern QueueHandle_t queue_wifi_to_app;
+extern QueueHandle_t queue_memory_to_app;
+extern QueueHandle_t queue_app_to_wifi;
+extern QueueHandle_t queue_app_to_memory;
+
+extern TaskHandle_t handle_input;
+extern TaskHandle_t handle_output;
+extern TaskHandle_t handle_network;
+extern TaskHandle_t handle_memory;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
-    thread_app_init();
+    if (true != thread_app_init())
+    {
+        error_handle();
+    }
 
     while (1)
     {
-        thread_app_handle();
+        if (true != thread_app_handle())
+        {
+            error_handle();
+        }
     }
 }
 
@@ -49,22 +58,64 @@ bool thread_app_init(void)
     {
         return false;
     }
-    
-    uint8_t res = app_function();
-    printf("res=%d\n", res);
 
-    uint32_t value_notification;
-    xTaskNotifyWait(0u, 0u, &value_notification, portMAX_DELAY);
-
-    if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != value_notification)
+    /* Init thread_memory first, because it is needed by wifi. */
+    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT, eSetBits))
     {
-        printf("error, unknown notification %lx\n", value_notification);
-
         return false;
     }
 
-    printf("notification received\n");
+    /* Wait until thread_memory is init. */
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
+    {
+        return false;
+    }
 
+    /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
+    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
+    {
+        return false;
+    }
+
+    /* Wait until thread_network is init */
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
+    {
+        return false;
+    }
+
+    /* Init thread_output */
+    if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
+    {
+        return false;
+    }
+
+    /* Wait until thread_output is init */
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
+    {
+        return false;
+    }
+
+    /* Init thread_input */
+    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
+    {
+        return false;
+    }
+
+    /* Wait until thread_input is init */
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
+    {
+        return false;
+    }
+
+    /* TODO: read mode from nvm */
+
+    printf("thread_app init ok\n");
+
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
@@ -72,30 +123,14 @@ bool thread_app_init(void)
 
 bool thread_app_handle(void)
 {
-        // printf("app\n");
-
-    // xSemaphoreTake(sys.rtos.mutex_measure_humidity, portMAX_DELAY);
-
-    // /* Critical section, which is protected from other threads by using mutex */
-    // printf("measuring\n");
-
-    // xSemaphoreGive(sys.rtos.mutex_measure_humidity);
-
-    // sprintf(buffer_tx_queue_message_wifi, "Hello from Demo_Task 1\n");
-    // xQueueSend(queue_message_wifi, (void*)buffer_tx_queue_message_wifi, (TickType_t)0);
-
-    // sprintf(buffer_tx_queue_message_wifi, "Hello from Demo_Task 2\n");
-    // xQueueSend(queue_message_wifi, (void*)buffer_tx_queue_message_wifi, (TickType_t)0); 
-
-    // uint8_t res = app_function();
-    // printf("res=%d\n", res+1);
-
-    if (false == b_ready_thread_input)
+    /* Request data from thread_input */
+    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, eSetBits))
     {
-        return true;
+        return false;
     }
 
-    if (xQueueReceive(queue_input_to_app, &(buf_rx_queue_input), (TickType_t)5))
+    /* Wait for data to arrive from thread_input */
+    if (xQueueReceive(queue_input_to_app, &(buf_rx_queue_input), portMAX_DELAY))
     {
         float light_input;
         float temperature_input;
@@ -153,22 +188,27 @@ bool thread_app_handle(void)
         vTaskDelay(10);
     }
 
+    /* TODO: 
+        check queue from network, if mode needs to be changed. If yes, write to nvm. 
+        enter to sleep depending on mode
+    */
+
+    if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, eSetBits))
+    {
+        return false;
+    }
+
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
+    {
+        return false;
+    }
+
+    printf("thread_app handle ok\n");
+
     vTaskDelay(100);
 
     return true;
-}
-
-uint8_t app_function(void)
-{
-    not_so_simple_mutex = xSemaphoreCreateMutex();
-    xSemaphoreTake(not_so_simple_mutex, portMAX_DELAY);
-
-    /* Critical section, which is protected from other threads by using mutex */
-    // printf("calculating\n");
-
-    xSemaphoreGive(not_so_simple_mutex);
-
-    return 2u;
 }
 
 /* ---------------------------- Private functions ---------------------------- */

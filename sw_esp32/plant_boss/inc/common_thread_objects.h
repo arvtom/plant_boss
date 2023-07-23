@@ -14,10 +14,10 @@
 
 /* ---------------------------- Defines ---------------------------- */
 #define SIZE_QUEUE_INPUT_TO_APP         16
-#define SIZE_QUEUE_WIFI_TO_APP          0
-#define SIZE_QUEUE_MEMORY_TO_APP        0
+#define SIZE_QUEUE_WIFI_TO_APP          1
+#define SIZE_QUEUE_MEMORY_TO_APP        1
 #define SIZE_QUEUE_APP_TO_WIFI          150
-#define SIZE_QUEUE_APP_TO_MEMORY        0
+#define SIZE_QUEUE_APP_TO_MEMORY        1
 
 /* ---------------------------- Typedefs ---------------------------- */
 typedef enum
