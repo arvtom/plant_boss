@@ -36,7 +36,7 @@ bool thread_memory_init(void)
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
     xTaskNotifyWait(NOTIFICATION_TO_MEMORY_REQ_INIT, 0u, &notification_memory, portMAX_DELAY);
-    if (notification_memory != NOTIFICATION_TO_MEMORY_REQ_INIT)
+    if ((notification_memory & NOTIFICATION_TO_MEMORY_REQ_INIT) == 0u)
     {
         return false;
     }
@@ -65,7 +65,7 @@ bool thread_memory_handle(void)
 {
     /* TODO: check if there was request to read/write to nvm */
 
-    printf("thread_memory handle ok\n");
+    // printf("thread_memory handle ok\n");
     
     vTaskDelay(100);
 

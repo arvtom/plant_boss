@@ -41,7 +41,7 @@ bool thread_input_init(void)
     printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
     xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_INIT, 0u, &notification_input, portMAX_DELAY);
-    if (notification_input != NOTIFICATION_TO_INPUT_REQ_INIT)
+    if ((notification_input & NOTIFICATION_TO_INPUT_REQ_INIT) == 0u)
     {
         return false;
     }
@@ -96,7 +96,7 @@ bool thread_input_init(void)
 bool thread_input_handle(void)
 {
     xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, 0u, &notification_input, portMAX_DELAY);
-    if (notification_input != NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS)
+    if ((notification_input & NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS) == 0u)
     {
         return false;
     }

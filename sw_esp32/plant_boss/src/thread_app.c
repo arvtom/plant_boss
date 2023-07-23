@@ -67,7 +67,7 @@ bool thread_app_init(void)
 
     /* Wait until thread_memory is init. */
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &notification_app, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != notification_app)
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
     {
         return false;
     }
@@ -80,7 +80,7 @@ bool thread_app_init(void)
 
     /* Wait until thread_network is init */
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &notification_app, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_NETWORK != notification_app)
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
     {
         return false;
     }
@@ -93,7 +93,7 @@ bool thread_app_init(void)
 
     /* Wait until thread_output is init */
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &notification_app, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_OUTPUT != notification_app)
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
     {
         return false;
     }
@@ -106,7 +106,7 @@ bool thread_app_init(void)
 
     /* Wait until thread_input is init */
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &notification_app, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_INPUT != notification_app)
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
     {
         return false;
     }
