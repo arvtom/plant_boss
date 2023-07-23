@@ -16,6 +16,9 @@ TaskHandle_t handle_app;
 TaskHandle_t handle_network;
 TaskHandle_t handle_memory;
 
+SemaphoreHandle_t mutex_nvm;
+SemaphoreHandle_t mutex_uart;
+
 QueueHandle_t queue_input_to_app;       /* 
                                             read sensor values 
                                         */
@@ -67,6 +70,48 @@ bool common_thread_objects_init(void)
 
     handle_memory = xTaskGetHandle("thread_memory");
     if (NULL == handle_memory)
+    {
+        return false;
+    }
+
+    mutex_nvm = xSemaphoreCreateMutex();
+    if (NULL == mutex_nvm)
+    {
+        return false;
+    }
+
+    mutex_uart = xSemaphoreCreateMutex();
+    if (NULL == mutex_uart)
+    {
+        return false;
+    }
+
+    queue_input_to_app = xQueueCreate(1, SIZE_QUEUE_INPUT_TO_APP); 
+    if (queue_input_to_app == NULL)
+    {
+        return false;
+    }
+
+    queue_wifi_to_app = xQueueCreate(1, SIZE_QUEUE_WIFI_TO_APP); 
+    if (queue_wifi_to_app == NULL)
+    {
+        return false;
+    }
+
+    queue_memory_to_app = xQueueCreate(1, SIZE_QUEUE_MEMORY_TO_APP); 
+    if (queue_memory_to_app == NULL)
+    {
+        return false;
+    }
+
+    queue_app_to_wifi = xQueueCreate(1, SIZE_QUEUE_APP_TO_WIFI); 
+    if (queue_app_to_wifi == NULL)
+    {
+        return false;
+    }
+
+    queue_app_to_memory = xQueueCreate(1, SIZE_QUEUE_APP_TO_MEMORY); 
+    if (queue_app_to_memory == NULL)
     {
         return false;
     }
