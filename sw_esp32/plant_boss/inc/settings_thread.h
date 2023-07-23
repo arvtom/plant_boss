@@ -16,11 +16,11 @@
 #define STACK_THREAD_NETWORK        4096u
 #define STACK_THREAD_MEMORY         4096u
 
-#define PRIORITY_THREAD_APP         10u
-#define PRIORITY_THREAD_INPUT       10u
-#define PRIORITY_THREAD_OUTPUT      10u
-#define PRIORITY_THREAD_NETWORK     10u
-#define PRIORITY_THREAD_MEMORY      10u
+#define PRIORITY_THREAD_APP         2u
+#define PRIORITY_THREAD_INPUT       5u
+#define PRIORITY_THREAD_OUTPUT      5u
+#define PRIORITY_THREAD_NETWORK     3u
+#define PRIORITY_THREAD_MEMORY      4u
 
 #define SIZE_QUEUE_INPUT_TO_APP         16
 #define SIZE_QUEUE_WIFI_TO_APP          1
