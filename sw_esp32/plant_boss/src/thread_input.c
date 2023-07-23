@@ -151,7 +151,7 @@ bool thread_input_handle(void)
 
     printf("thread_input handle ok\n");
     
-    vTaskDelay(100);
+    vTaskDelay(DELAY_HANDLE_THREAD_INPUT);
 
     return true;
 }

@@ -184,8 +184,6 @@ bool thread_app_handle(void)
         length_buf_tx_queue_wifi = (uint16_t)ret;
 
         xQueueSend(queue_app_to_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
-
-        vTaskDelay(10);
     }
 
     /* TODO: 
@@ -206,7 +204,7 @@ bool thread_app_handle(void)
 
     printf("thread_app handle ok\n");
 
-    vTaskDelay(100);
+    vTaskDelay(DELAY_HANDLE_THREAD_APP);
 
     return true;
 }

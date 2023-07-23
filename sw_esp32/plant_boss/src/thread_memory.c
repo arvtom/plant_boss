@@ -67,7 +67,7 @@ bool thread_memory_handle(void)
 
     // printf("thread_memory handle ok\n");
     
-    vTaskDelay(100);
+    vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
 
     return true;
 }

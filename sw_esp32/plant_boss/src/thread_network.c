@@ -70,21 +70,21 @@ bool thread_network_init(void)
 
 bool thread_network_handle(void)
 {
-    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 0u))
+    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), portMAX_DELAY))
     {
         printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
-    }
 
-    if (true != wifi_handle())
-    {
-        return false;
+        if (true != wifi_handle())
+        {
+            return false;
+        }
     }
 
     /* TODO: Check if there was request to change mode from webpage. */
 
     printf("thread_network handle ok\n");
     
-    vTaskDelay(100);
+    vTaskDelay(DELAY_HANDLE_THREAD_NETWORK);
 
     return true;
 }

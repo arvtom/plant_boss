@@ -169,7 +169,7 @@ bool thread_output_handle(void)
 
     printf("thread_output handle ok\n");
     
-    vTaskDelay(100);
+    vTaskDelay(DELAY_HANDLE_THREAD_OUTPUT);
 
     return true;
 }
