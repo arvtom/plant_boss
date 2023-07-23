@@ -19,6 +19,7 @@ idf_component_register(
     "../drivers/hw390.c" 
     "../drivers/lm20bim7.c" 
     INCLUDE_DIRS 
+    "../main"
     "../drivers"
     "../wrappers"
     "../inc")
