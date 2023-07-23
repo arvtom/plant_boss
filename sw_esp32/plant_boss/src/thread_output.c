@@ -162,6 +162,11 @@ bool thread_output_handle(void)
         return false;
     }
 
+    if (pdPASS != xTaskNotify(handle_app, NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, eSetBits))
+    {
+        return false;
+    }
+
     printf("thread_output handle ok\n");
     
     vTaskDelay(100);

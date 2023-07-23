@@ -199,7 +199,7 @@ bool thread_app_handle(void)
     }
 
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED != notification_app)
+    if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
     {
         return false;
     }
