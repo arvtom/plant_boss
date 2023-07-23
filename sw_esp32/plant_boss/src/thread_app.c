@@ -18,13 +18,16 @@ extern uint32_t err_thread_memory;
 uint16_t length_buf_tx_queue_wifi = 0u;
 
 SemaphoreHandle_t not_so_simple_mutex;
-extern QueueHandle_t queue_wifi;
+
 char buf_tx_queue_wifi[150];
 
-extern QueueHandle_t queue_input;
+
 uint8_t buf_rx_queue_input[16];
 
 extern bool b_ready_thread_input;
+
+extern QueueHandle_t queue_app_to_wifi;
+extern QueueHandle_t queue_input_to_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
@@ -53,7 +56,7 @@ bool thread_app_init(void)
     uint32_t value_notification;
     xTaskNotifyWait(0u, 0u, &value_notification, portMAX_DELAY);
 
-    if (THREAD_MEMORY_TO_APP_RESULT_INIT != value_notification)
+    if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != value_notification)
     {
         printf("error, unknown notification %lx\n", value_notification);
 
@@ -92,7 +95,7 @@ bool thread_app_handle(void)
         return true;
     }
 
-    if (xQueueReceive(queue_input, &(buf_rx_queue_input), (TickType_t)5))
+    if (xQueueReceive(queue_input_to_app, &(buf_rx_queue_input), (TickType_t)5))
     {
         float light_input;
         float temperature_input;
@@ -145,7 +148,7 @@ bool thread_app_handle(void)
 
         length_buf_tx_queue_wifi = (uint16_t)ret;
 
-        xQueueSend(queue_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
+        xQueueSend(queue_app_to_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
 
         vTaskDelay(10);
     }

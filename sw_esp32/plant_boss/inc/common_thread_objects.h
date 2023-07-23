@@ -10,9 +10,16 @@
 /* ---------------------------- Includes ---------------------------- */
 #include <freertos/FreeRTOS.h>
 #include <freertos/queue.h>
+#include <freertos/semphr.h>
+
+/* ---------------------------- Defines ---------------------------- */
+#define SIZE_QUEUE_INPUT_TO_APP         16
+#define SIZE_QUEUE_WIFI_TO_APP          0
+#define SIZE_QUEUE_MEMORY_TO_APP        0
+#define SIZE_QUEUE_APP_TO_WIFI          150
+#define SIZE_QUEUE_APP_TO_MEMORY        0
 
 /* ---------------------------- Typedefs ---------------------------- */
-
 typedef enum
 {
     NOTIFICATION_TO_INPUT_REQ_INIT                      = 0x00000001,     /* bit 0 */

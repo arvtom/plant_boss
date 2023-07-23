@@ -11,12 +11,13 @@ esp_err_t err_esp = 0;
 
 thread_input_t s_thread_input;
 
-extern QueueHandle_t queue_input;
 uint8_t buf_tx_queue_input[16];
 
 bool b_ready_thread_input = false;
 
 extern bool b_ready_sensor_power;
+
+extern QueueHandle_t queue_input_to_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
@@ -79,12 +80,6 @@ bool thread_input_init(void)
         return false;
     }
 
-    queue_input = xQueueCreate(1, sizeof(buf_tx_queue_input)); 
-    if (queue_input == 0)
-    {
-     printf("Failed to create queue= %p\n", queue_input);
-    }
-
     b_ready_thread_input = true;
 
     vTaskDelay(1);
@@ -140,7 +135,7 @@ bool thread_input_handle(void)
     memcpy(&buf_tx_queue_input[8], &humidity_hw390, 4);
     memcpy(&buf_tx_queue_input[12], &voltage_battery, 4);
 
-    xQueueSend(queue_input, (void*)buf_tx_queue_input, (TickType_t)0);
+    xQueueSend(queue_input_to_app, (void*)buf_tx_queue_input, (TickType_t)0);
     
     vTaskDelay(100);
 

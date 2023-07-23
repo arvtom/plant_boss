@@ -5,7 +5,6 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
-extern QueueHandle_t queue_wifi;
 char buf_rx_queue_wifi[150];
 
 esp_err_t err_thread_network = ESP_OK;
@@ -13,6 +12,7 @@ bool b_err_thread_network = false;
 bool b_ready_network = false;
 
 // extern bool b_ready_thread_memory;
+extern QueueHandle_t queue_app_to_wifi;
 
 /* temporary global variables for testing */
 
@@ -34,12 +34,6 @@ void thread_network(void *arg)
 bool thread_network_init(void)
 {
     printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
-    
-    queue_wifi = xQueueCreate(5, sizeof(buf_rx_queue_wifi)); 
-    if (queue_wifi == 0)
-    {
-        printf("Failed to create queue= %p\n", queue_wifi);
-    }
 
     // while (false == b_ready_thread_memory)
     // {
@@ -64,7 +58,7 @@ bool thread_network_init(void)
 
 bool thread_network_handle(void)
 {
-    if (xQueueReceive(queue_wifi, &(buf_rx_queue_wifi), (TickType_t)5))
+    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), (TickType_t)5))
     {
         printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
         vTaskDelay(10);

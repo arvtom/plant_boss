@@ -39,7 +39,7 @@ bool thread_memory_init(void)
         return false;
     }
 
-    if (pdPASS != xTaskNotify(handle_app, THREAD_MEMORY_TO_APP_RESULT_INIT, eSetBits))
+    if (pdPASS != xTaskNotify(handle_app, NOTIFICATION_TO_APP_RES_INIT_MEMORY, eSetBits))
     {
         return false;
     }
