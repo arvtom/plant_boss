@@ -7,12 +7,8 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <freertos/queue.h>
-// #include <freertos/semphr.h>
-// #include "settings_wifi.h"
-// #include <esp_wifi.h>
-// #include <esp_netif.h>
-// #include <esp_http_client.h>
 
+#include "error.h"
 #include "wifi_wrapper.h"
 #include "uart_wrapper.h"
 #include "common_thread_objects.h"

@@ -5,29 +5,31 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
+esp_err_t err_thread_network = ESP_OK;
+
 char buf_rx_queue_wifi[150];
 
-esp_err_t err_thread_network = ESP_OK;
-bool b_err_thread_network = false;
-bool b_ready_network = false;
+uint32_t value_notification = 0;
 
-// extern bool b_ready_thread_memory;
 extern QueueHandle_t queue_app_to_wifi;
+extern QueueHandle_t queue_wifi_to_app;
 
-/* temporary global variables for testing */
+extern TaskHandle_t handle_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
 {
-    b_err_thread_network = thread_network_init();
-    if (true != b_err_thread_network)
+    if (true != thread_network_init())
     {
-        return;
+        error_handle();
     }
 
     while (1)
     {
-        thread_network_handle();
+        if (true != thread_network_handle())
+        {
+
+        }
     }
 }
 
@@ -35,22 +37,26 @@ bool thread_network_init(void)
 {
     printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
 
-    // while (false == b_ready_thread_memory)
-    // {
-    //     vTaskDelay(1);
-    // }
-
-    uint32_t value_notification = 0;
-
-    xTaskNotifyWait(0x00, 0x00, &value_notification, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
+    if (value_notification != NOTIFICATION_TO_NETWORK_REQ_INIT)
+    {
+        return false;
+    }
 
     if (true != wifi_init())
     {
         return false;
     }
 
-    b_ready_network = true;
+    /* Send response to thread_app */
+    if (pdPASS != xTaskNotify(handle_app, NOTIFICATION_TO_APP_RES_INIT_NETWORK, eSetBits))
+    {
+        return false;
+    }
 
+    printf("thread_network init ok\n");
+
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
@@ -58,20 +64,19 @@ bool thread_network_init(void)
 
 bool thread_network_handle(void)
 {
-    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), (TickType_t)5))
+    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 0u))
     {
         printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
-        vTaskDelay(10);
     }
 
-    if (true == b_ready_network)
+    if (true != wifi_handle())
     {
-        if (true != wifi_handle())
-        {
-            return false;
-        }
-        // uart_handle();
+        return false;
     }
+
+    /* TODO: Check if there was request to change mode from webpage. */
+
+    printf("thread_network handle ok\n");
     
     vTaskDelay(100);
 

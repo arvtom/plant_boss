@@ -66,7 +66,7 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_memory is init. */
-    xTaskNotifyWait(0u, NOTIFICATION_TO_APP_RES_INIT_MEMORY, &value_notification, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &value_notification, portMAX_DELAY);
     if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != value_notification)
     {
         return false;
@@ -79,7 +79,7 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_network is init */
-    xTaskNotifyWait(0u, NOTIFICATION_TO_APP_RES_INIT_NETWORK, &value_notification, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &value_notification, portMAX_DELAY);
     if (NOTIFICATION_TO_APP_RES_INIT_NETWORK != value_notification)
     {
         return false;
@@ -92,7 +92,7 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_input is init */
-    xTaskNotifyWait(0u, NOTIFICATION_TO_APP_RES_INIT_INPUT, &value_notification, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &value_notification, portMAX_DELAY);
     if (NOTIFICATION_TO_APP_RES_INIT_INPUT != value_notification)
     {
         return false;
@@ -105,7 +105,7 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_output is init */
-    xTaskNotifyWait(0u, NOTIFICATION_TO_APP_RES_INIT_OUTPUT, &value_notification, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &value_notification, portMAX_DELAY);
     if (NOTIFICATION_TO_APP_RES_INIT_OUTPUT != value_notification)
     {
         return false;
@@ -113,8 +113,9 @@ bool thread_app_init(void)
 
     /* TODO: read mode from nvm */
 
-    printf("thread_app_init_ok\n");
+    printf("thread_app init ok\n");
 
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
@@ -123,7 +124,7 @@ bool thread_app_init(void)
 bool thread_app_handle(void)
 {
     /* Request data from thread_input */
-    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_SENSORS, eSetBits))
+    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, eSetBits))
     {
         return false;
     }
@@ -188,6 +189,8 @@ bool thread_app_handle(void)
     }
 
     /* TODO: check queue from network, if mode needs to be changed. If yes, write to nvm. */
+
+    printf("thread_app handle ok\n");
 
     vTaskDelay(100);
 
