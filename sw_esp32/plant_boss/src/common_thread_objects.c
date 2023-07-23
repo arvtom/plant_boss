@@ -20,15 +20,6 @@ QueueHandle_t queue_input_to_app;       /*
                                             read sensor values 
                                         */
 
-QueueHandle_t queue_app_to_wifi;        /* 
-                                            write data packet to database
-                                        */
-QueueHandle_t queue_app_to_memory;      /* 
-                                            write mode
-                                            write device id
-                                            write errors
-                                        */
-
 QueueHandle_t queue_wifi_to_app;        /* 
                                             read mode 
                                         */
@@ -36,6 +27,15 @@ QueueHandle_t queue_wifi_to_app;        /*
 QueueHandle_t queue_memory_to_app;      /* 
                                             read mode
                                             read errors
+                                        */
+
+QueueHandle_t queue_app_to_wifi;        /* 
+                                            write data packet to database
+                                        */
+QueueHandle_t queue_app_to_memory;      /* 
+                                            write mode
+                                            write device id
+                                            write errors
                                         */
 
 /*------------------------------Public functions------------------------------*/

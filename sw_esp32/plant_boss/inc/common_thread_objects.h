@@ -16,7 +16,7 @@
 typedef enum
 {
     NOTIFICATION_TO_INPUT_REQ_INIT                      = 0x00000001,     /* bit 0 */
-    NOTIFICATION_TO_INPUT_REQ_HANDLE_ALL                = 0x00000002,     /* bit 1 */
+    NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS            = 0x00000002,     /* bit 1 */
     NOTIFICATION_TO_INPUT_REQ_HANDLE_BATTERY            = 0x00000004,     /* bit 2 */
     NOTIFICATION_TO_INPUT_RES_HANDLE_PWR_HUMIDITY       = 0x00000008,     /* bit 3 */
     NOTIFICATION_TO_INPUT_RES_HANDLE_PWR_TEMPERATURE    = 0x00000010,     /* bit 4 */
@@ -48,7 +48,7 @@ typedef enum
     // NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
     // NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 }
-notification_to_input_t
+notification_to_input_t;
 
 typedef enum
 {
@@ -85,7 +85,7 @@ typedef enum
 //     NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
 //     NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 }
-notification_to_output_t
+notification_to_output_t;
 
 typedef enum
 {
@@ -93,9 +93,9 @@ typedef enum
     NOTIFICATION_TO_APP_RES_INIT_OUTPUT                 = 0x00000002,     /* bit 1 */
     NOTIFICATION_TO_APP_RES_INIT_NETWORK                = 0x00000004,     /* bit 2 */
     NOTIFICATION_TO_APP_RES_INIT_MEMORY                 = 0x00000008,     /* bit 3 */
-    // NOTIFICATION_TO_ = 0x00000010,     /* bit 4 */
-    // NOTIFICATION_TO_ = 0x00000020,     /* bit 5 */
-    // NOTIFICATION_TO_ = 0x00000040,     /* bit 6 */
+    NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED              = 0x00000010,     /* bit 4 */
+    // NOTIFICATION_TO_APP_RES_HANDLE_SENSORS              = 0x00000020,     /* bit 5 */
+    // NOTIFICATION_TO_APP_RES_HANDLE_BATTERY              = 0x00000040,     /* bit 6 */
     // NOTIFICATION_TO_ = 0x00000080,     /* bit 7 */
     // NOTIFICATION_TO_ = 0x00000100,     /* bit 8 */
     // NOTIFICATION_TO_ = 0x00000200,     /* bit 9 */
@@ -122,7 +122,7 @@ typedef enum
     // NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
     // NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 }
-notification_to_app_t
+notification_to_app_t;
 
 typedef enum
 {
@@ -159,11 +159,11 @@ typedef enum
 //     NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
 //     NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 }
-notification_to_network_t
+notification_to_network_t;
 
 typedef enum
 {
-    NOTIFICATION_TO_MEMORY_REQ_INIT = 0x00000001,     /* bit 0 */
+    NOTIFICATION_TO_MEMORY_REQ_INIT                     = 0x00000001,     /* bit 0 */
 //     NOTIFICATION_TO_ = 0x00000002,     /* bit 1 */
 //     NOTIFICATION_TO_ = 0x00000004,     /* bit 2 */
 //     NOTIFICATION_TO_ = 0x00000008,     /* bit 3 */
@@ -196,7 +196,7 @@ typedef enum
 //     NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
 //     NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 }
-notification_to_memory_t
+notification_to_memory_t;
 
 // typedef enum
 // {
@@ -233,7 +233,7 @@ notification_to_memory_t
 //     NOTIFICATION_TO_ = 0x40000000,     /* bit 30 */
 //     NOTIFICATION_TO_ = 0x80000000,     /* bit 31 */
 // }
-// notification_to__t
+// notification_to__t;
 
 /* ---------------------------- Public functions ---------------------------- */
 bool common_thread_objects_init(void);
