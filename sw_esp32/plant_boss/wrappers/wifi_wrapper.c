@@ -14,6 +14,8 @@ int err_wifi_drv = 0;
 int err_tcp_drv = 0;
 int err_http_drv = 0;
 
+bool b_wifi_connected = false;
+
 extern char buf_rx_queue_wifi[150];
 extern uint16_t length_buf_tx_queue_wifi;
 
@@ -104,6 +106,7 @@ void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, in
         break;
     case WIFI_EVENT_STA_CONNECTED:
         printf("WiFi connected ... \n");
+        b_wifi_connected = true;
         break;
     case WIFI_EVENT_STA_DISCONNECTED:
         printf("WiFi lost connection ... \n");

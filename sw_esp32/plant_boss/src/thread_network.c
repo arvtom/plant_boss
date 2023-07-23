@@ -16,6 +16,8 @@ extern QueueHandle_t queue_wifi_to_app;
 
 extern TaskHandle_t handle_app;
 
+extern bool b_wifi_connected;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
 {
@@ -45,7 +47,11 @@ bool thread_network_init(void)
 
     if (true != wifi_init())
     {
-        return false;
+        while(false == b_wifi_connected)
+        {
+            vTaskDelay(1);
+        }
+        // return false;
     }
 
     /* Send response to thread_app */
