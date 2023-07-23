@@ -14,7 +14,7 @@ uint16_t length_buf_tx_queue_wifi = 0u;
 char buf_tx_queue_wifi[150];
 uint8_t buf_rx_queue_input[16];
 
-uint32_t value_notification;
+uint32_t notification_app = 0u;
 
 extern uint32_t err_thread_input;
 extern uint32_t err_thread_output;
@@ -66,8 +66,8 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_memory is init. */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != value_notification)
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &notification_app, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_INIT_MEMORY != notification_app)
     {
         return false;
     }
@@ -79,8 +79,8 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_network is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_NETWORK != value_notification)
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &notification_app, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_INIT_NETWORK != notification_app)
     {
         return false;
     }
@@ -92,8 +92,8 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_output is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_OUTPUT != value_notification)
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &notification_app, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_INIT_OUTPUT != notification_app)
     {
         return false;
     }
@@ -105,8 +105,8 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_input is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_INPUT != value_notification)
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &notification_app, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_INIT_INPUT != notification_app)
     {
         return false;
     }
@@ -198,8 +198,8 @@ bool thread_app_handle(void)
         return false;
     }
 
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED != value_notification)
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED != notification_app)
     {
         return false;
     }

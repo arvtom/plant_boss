@@ -13,7 +13,7 @@ thread_input_t s_thread_input;
 
 uint8_t buf_tx_queue_input[16];
 
-uint32_t value_notification = 0u;
+uint32_t notification_input = 0u;
 
 extern QueueHandle_t queue_input_to_app;
 
@@ -40,8 +40,8 @@ bool thread_input_init(void)
 {
     printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
-    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_INPUT_REQ_INIT)
+    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_INIT, 0u, &notification_input, portMAX_DELAY);
+    if (notification_input != NOTIFICATION_TO_INPUT_REQ_INIT)
     {
         return false;
     }
@@ -95,8 +95,8 @@ bool thread_input_init(void)
 
 bool thread_input_handle(void)
 {
-    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS)
+    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, 0u, &notification_input, portMAX_DELAY);
+    if (notification_input != NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS)
     {
         return false;
     }

@@ -9,7 +9,7 @@ esp_err_t err_thread_network = ESP_OK;
 
 char buf_rx_queue_wifi[150];
 
-uint32_t value_notification = 0;
+uint32_t notification_network = 0u;
 
 extern QueueHandle_t queue_app_to_wifi;
 extern QueueHandle_t queue_wifi_to_app;
@@ -37,8 +37,8 @@ bool thread_network_init(void)
 {
     printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
 
-    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_NETWORK_REQ_INIT)
+    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_INIT, 0u, &notification_network, portMAX_DELAY);
+    if (notification_network != NOTIFICATION_TO_NETWORK_REQ_INIT)
     {
         return false;
     }

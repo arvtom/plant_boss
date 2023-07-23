@@ -15,7 +15,7 @@ uint8_t counter = 0u;
 
 thread_output_t s_thread_output;
 
-uint32_t value_notification = 0u;
+uint32_t notification_output = 0u;
 
 extern TaskHandle_t handle_app;
 
@@ -41,8 +41,8 @@ bool thread_output_init(void)
 {
     printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
 
-    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_OUTPUT_REQ_INIT)
+    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_INIT, 0u, &notification_output, portMAX_DELAY);
+    if (notification_output != NOTIFICATION_TO_OUTPUT_REQ_INIT)
     {
         return false;
     }
@@ -147,8 +147,8 @@ bool thread_output_handle(void)
 {
     /* TODO: check if it is time to turn on/off power for sensors */
 
-    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED)
+    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, 0u, &notification_output, portMAX_DELAY);
+    if (notification_output != NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED)
     {
         return false;
     }

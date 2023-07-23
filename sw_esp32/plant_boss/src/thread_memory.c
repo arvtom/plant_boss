@@ -7,7 +7,7 @@
 /* ---------------------------- Global variables ---------------------------- */
 uint32_t err_thread_memory = 0u;
 
-uint32_t value_notification;
+uint32_t notification_memory = 0u;
 
 extern QueueHandle_t queue_app_to_memory;
 extern QueueHandle_t queue_memory_to_app;
@@ -35,8 +35,8 @@ bool thread_memory_init(void)
 {
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
-    xTaskNotifyWait(NOTIFICATION_TO_MEMORY_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
-    if (value_notification != NOTIFICATION_TO_MEMORY_REQ_INIT)
+    xTaskNotifyWait(NOTIFICATION_TO_MEMORY_REQ_INIT, 0u, &notification_memory, portMAX_DELAY);
+    if (notification_memory != NOTIFICATION_TO_MEMORY_REQ_INIT)
     {
         return false;
     }
