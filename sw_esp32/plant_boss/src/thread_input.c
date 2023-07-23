@@ -13,8 +13,6 @@ thread_input_t s_thread_input;
 
 uint8_t buf_tx_queue_input[16];
 
-bool b_ready_thread_input = false;
-
 extern bool b_ready_sensor_power;
 
 extern QueueHandle_t queue_input_to_app;

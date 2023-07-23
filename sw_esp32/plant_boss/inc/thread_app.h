@@ -12,6 +12,7 @@
 
 #include "wifi_wrapper.h"
 #include "common_thread_objects.h"
+#include "error.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
 // typedef struct

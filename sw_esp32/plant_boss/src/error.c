@@ -48,6 +48,7 @@ bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit)
 void error_handle(void)
 {
     /* periodically send errors on uart and wifi */
+    printf("error\n");
     
     vTaskDelay(100);
 }
