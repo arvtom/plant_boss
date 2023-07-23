@@ -10,12 +10,6 @@
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Variables / Macro calls------------------------------*/
-TaskHandle_t handle_input;
-TaskHandle_t handle_output;
-TaskHandle_t handle_app;
-TaskHandle_t handle_network;
-TaskHandle_t handle_memory;
-
 SemaphoreHandle_t mutex_nvm;
 SemaphoreHandle_t mutex_uart;
 
@@ -40,6 +34,12 @@ QueueHandle_t queue_app_to_memory;      /*
                                             write device id
                                             write errors
                                         */
+
+TaskHandle_t handle_input;
+TaskHandle_t handle_output;
+TaskHandle_t handle_app;
+TaskHandle_t handle_network;
+TaskHandle_t handle_memory;
 
 /*------------------------------Public functions------------------------------*/
 bool common_thread_objects_init(void)

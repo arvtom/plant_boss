@@ -53,7 +53,7 @@ bool thread_memory_init(void)
 
     /* TODO: read mode from nvm */
 
-    printf("thread_app init ok\n");
+    printf("thread_memory init ok\n");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -64,6 +64,8 @@ bool thread_memory_init(void)
 bool thread_memory_handle(void)
 {
     /* TODO: check if there was request to read/write to nvm */
+
+    printf("thread_memory handle ok\n");
     
     vTaskDelay(100);
 

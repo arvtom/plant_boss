@@ -135,6 +135,9 @@ bool thread_output_init(void)
         return false;
     }
 
+    printf("thread_output init ok\n");
+
+    /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
 
     return true;
@@ -158,6 +161,8 @@ bool thread_output_handle(void)
 
         return false;
     }
+
+    printf("thread_output handle ok\n");
     
     vTaskDelay(100);
 

@@ -85,19 +85,6 @@ bool thread_app_init(void)
         return false;
     }
 
-    /* Init thread_input */
-    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
-    {
-        return false;
-    }
-
-    /* Wait until thread_input is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &value_notification, portMAX_DELAY);
-    if (NOTIFICATION_TO_APP_RES_INIT_INPUT != value_notification)
-    {
-        return false;
-    }
-
     /* Init thread_output */
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
     {
@@ -107,6 +94,19 @@ bool thread_app_init(void)
     /* Wait until thread_output is init */
     xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &value_notification, portMAX_DELAY);
     if (NOTIFICATION_TO_APP_RES_INIT_OUTPUT != value_notification)
+    {
+        return false;
+    }
+
+    /* Init thread_input */
+    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
+    {
+        return false;
+    }
+
+    /* Wait until thread_input is init */
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &value_notification, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_INIT_INPUT != value_notification)
     {
         return false;
     }
