@@ -193,6 +193,17 @@ bool thread_app_handle(void)
         enter to sleep depending on mode
     */
 
+    if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, eSetBits))
+    {
+        return false;
+    }
+
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &value_notification, portMAX_DELAY);
+    if (NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED != value_notification)
+    {
+        return false;
+    }
+
     printf("thread_app handle ok\n");
 
     vTaskDelay(100);

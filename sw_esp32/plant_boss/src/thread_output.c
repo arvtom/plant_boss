@@ -11,16 +11,17 @@
 uint32_t err_thread_output = 0u;
 
 esp_err_t err_esp_output = ESP_OK;
-uint8_t counter = 0;
+uint8_t counter = 0u;
 
 thread_output_t s_thread_output;
 
-bool b_ready_sensor_power;
+uint32_t value_notification = 0u;
+
+extern TaskHandle_t handle_app;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_output(void *arg)
 {
-    // thread_app();
     if (true != thread_output_init())
     {
         error_handle();
@@ -39,6 +40,12 @@ void thread_output(void *arg)
 bool thread_output_init(void)
 {
     printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
+
+    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_INIT, 0u, &value_notification, portMAX_DELAY);
+    if (value_notification != NOTIFICATION_TO_OUTPUT_REQ_INIT)
+    {
+        return false;
+    }
 
     if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
@@ -123,7 +130,10 @@ bool thread_output_init(void)
         return false;
     }
 
-    b_ready_sensor_power = true;
+    if (pdPASS != xTaskNotify(handle_app, NOTIFICATION_TO_APP_RES_INIT_OUTPUT, eSetBits))
+    {
+        return false;
+    }
 
     vTaskDelay(1);
 
@@ -132,6 +142,14 @@ bool thread_output_init(void)
 
 bool thread_output_handle(void)
 {
+    /* TODO: check if it is time to turn on/off power for sensors */
+
+    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, 0u, &value_notification, portMAX_DELAY);
+    if (value_notification != NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED)
+    {
+        return false;
+    }
+
     counter++;
 
     if (true != gpio_handle_pin_output(27u, counter % 2))
