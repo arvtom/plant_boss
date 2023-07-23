@@ -1,16 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define STACK_THREAD_APP            4096u
-#define STACK_THREAD_INPUT          4096u
-#define STACK_THREAD_OUTPUT         4096u
-#define STACK_THREAD_NETWORK        4096u
-#define STACK_THREAD_MEMORY         4096u
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 
-#define PRIORITY_THREAD_APP         10u
-#define PRIORITY_THREAD_INPUT       10u
-#define PRIORITY_THREAD_OUTPUT      10u
-#define PRIORITY_THREAD_NETWORK     10u
-#define PRIORITY_THREAD_MEMORY      10u
+#include "thread_app.h"
+#include "thread_input.h"
+#include "thread_output.h"
+#include "thread_network.h"
+#include "thread_memory.h"
 
 #endif
