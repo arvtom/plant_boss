@@ -3,14 +3,14 @@ The purpose of this project is to demonstrate my skills as Embedded software eng
 
 Plant environment (soil humidity, temperature, light) monitoring using custom built battery powered esp32 device. Raspberry pi zero with custom linux will be used as a database, webpage, notification server.
 
-First device prototype photos:  
+Device prototype photos:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png)  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_2_plant_boss.png)  
 
-Embedded software ESP32 architecture:  
+ESP32 software architecture:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/sw_esp32/architecture_plant_boss.png)  
 
-First webpage/database prototype photos:  
+Webpage/database prototype photos:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
 
 # TODOs
