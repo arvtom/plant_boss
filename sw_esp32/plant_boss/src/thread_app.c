@@ -188,7 +188,10 @@ bool thread_app_handle(void)
         vTaskDelay(10);
     }
 
-    /* TODO: check queue from network, if mode needs to be changed. If yes, write to nvm. */
+    /* TODO: 
+        check queue from network, if mode needs to be changed. If yes, write to nvm. 
+        enter to sleep depending on mode
+    */
 
     printf("thread_app handle ok\n");
 

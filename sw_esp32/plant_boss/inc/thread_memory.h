@@ -8,6 +8,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
+#include "error.h"
 #include "nvm_wrapper.h"
 #include "common_thread_objects.h"
 
@@ -16,7 +17,7 @@
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg);
 bool thread_memory_init(void);
-void thread_memory_handle(void);
+bool thread_memory_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 
