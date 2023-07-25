@@ -53,6 +53,9 @@ def handle_settings(message):
         settings = string_input.split(";")
         length_settings = len(settings)
 
+        print(length_settings)
+        print(settings)
+
         is_numeric = []
         is_numeric.append(settings[0].isnumeric())
         is_numeric.append(settings[1].isnumeric())
