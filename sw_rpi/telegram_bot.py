@@ -17,7 +17,7 @@ def run_scheduled_task():
 
 scheduler = BlockingScheduler(timezone="Europe/Berlin") # You need to add a timezone, otherwise it will give you a warning
 # scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
-scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/5") # Runs every 5min
+scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/59") # Runs every 60min
 
 def schedule_checker():
     while True:
@@ -42,57 +42,52 @@ def print_help(message):
 
     bot.send_message(message.chat.id, string_response)
 
-# def handle_settings(string_input):
-
-
-# Handle any other text message
-@bot.message_handler(func=lambda message: True)
-def handle_message(message):
-    string_input = message.text
-    length_input = len(string_input)
-
-    print(length_input)
-    print(string_input)
-    print(string_input[9:])
-    print(string_input[0:9])
-
+def parse_message(string_input):
     string_response = ""
 
     if ("settings:" != string_input[0:9]):
         string_response = "I don't understand."
-    else:
-        settings = string_input[9:].split(";")
-        length_settings = len(settings)
+        return string_response
 
-        if (2 != length_settings):
-            string_response = "Missing settings parameters."
-        else:
-            print(length_settings)
-            print(settings)
+    settings = string_input[9:].split(";")
+    length_settings = len(settings)
 
-            is_numeric = []
-            is_numeric.append(settings[0].isnumeric())
-            is_numeric.append(settings[1].isnumeric())
+    if (2 != length_settings):
+        string_response = "Missing settings parameters."
+        return string_response
 
-            print(is_numeric)
+    print(length_settings)
+    print(settings)
 
-            if (False == is_numeric[0] or 
-                False == is_numeric[1]):
-                string_response = "One of settings parameters is not numeric."
-            else:
-                device_id = int(settings[0])
-                device_mode = int(settings[1])
+    is_numeric = []
+    is_numeric.append(settings[0].isnumeric())
+    is_numeric.append(settings[1].isnumeric())
 
-                if (device_id < 0 or device_id > 255):
-                    string_response = "device_id is invalid."
+    print(is_numeric)
 
+    if (False == is_numeric[0] or 
+        False == is_numeric[1]):
+        string_response = "One of settings parameters is not numeric."
+        return string_response
 
-                string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
+    device_id = int(settings[0])
+    device_mode = int(settings[1])
 
+    if (device_id < 0 or device_id > 255):
+        string_response = "device_id is invalid."
+        return string_response
 
-    bot.send_message(message.chat.id, string_response)
+    if (device_mode < 0 or device_mode > 1):
+        string_response = "device_mode is invalid."
+        return string_response
 
+    string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
+    return string_response
 
+# Handle any other text message
+@bot.message_handler(func=lambda message: True)
+def handle_message(message):
+    bot.send_message(message.chat.id, parse_message(message.text))
     # bot.reply_to(message, message.text)
 
 Thread(target=schedule_checker).start() # Notice that you refer to schedule_checker function which starts the job
