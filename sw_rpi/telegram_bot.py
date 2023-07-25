@@ -66,25 +66,29 @@ def print_settings(message):
     conn.close()
 
     number_rows = len(entries)
-    string_response += str(number_rows) + "\r\n" + str(entries)
+    string_response += str(number_rows) + "\r\n"
+
+    for i in range(0, number_rows):
+        string_response += str(entries[i]) + "\r\n"
 
     bot.send_message(message.chat.id, string_response)
 
-@bot.message_handler(commands=['data'])
-def print_settings(message):
-    string_response = "Number of entries "
+# When using this function, received error from telegram that message is too long.
+# @bot.message_handler(commands=['data'])
+# def print_settings(message):
+#     string_response = "Number of entries "
 
-    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
-    cursor = conn.cursor()                 # get a cursor
+#     conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+#     cursor = conn.cursor()                 # get a cursor
 
-    cursor.execute("SELECT * FROM " + TABLE_NAME_DATA)
-    entries = cursor.fetchall()
+#     cursor.execute("SELECT * FROM " + TABLE_NAME_DATA)
+#     entries = cursor.fetchall()
 
-    conn.commit()
-    conn.close()
+#     conn.commit()
+#     conn.close()
 
-    number_rows = len(entries)
-    string_response += str(number_rows) + "\r\n" + str(entries)
+#     number_rows = len(entries)
+#     string_response += str(number_rows) + "\r\n" + str(entries)
 
     bot.send_message(message.chat.id, string_response)
 
