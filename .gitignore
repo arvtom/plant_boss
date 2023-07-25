@@ -1,3 +1,4 @@
 build
 sw_esp32/plant_boss/wrappers/settings_wifi.h
 sw_rpi/plant_boss.db
+sw_rpi/settings_telegram_bot.py
