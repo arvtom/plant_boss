@@ -124,9 +124,6 @@ def handle_message(message):
     bot.send_message(message.chat.id, parse_message(message.text))
 
     if (True == b_settings_valid):
-        print(device_id)
-        print(device_mode)
-
         if (False == handle_database()):
             bot.send_message(message.chat.id, "Database error.")
 
