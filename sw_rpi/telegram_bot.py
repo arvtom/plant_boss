@@ -90,7 +90,7 @@ def print_settings(message):
 #     number_rows = len(entries)
 #     string_response += str(number_rows) + "\r\n" + str(entries)
 
-    bot.send_message(message.chat.id, string_response)
+#     bot.send_message(message.chat.id, string_response)
 
 def parse_message(string_input):
     global device_id
