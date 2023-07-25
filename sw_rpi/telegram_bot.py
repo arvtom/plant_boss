@@ -51,6 +51,14 @@ def print_help(message):
 
     bot.send_message(message.chat.id, string_response)
 
+@bot.message_handler(commands=['settings'])
+def print_settings(message):
+    string_response = """
+        settings
+    """
+
+    bot.send_message(message.chat.id, string_response)
+
 def parse_message(string_input):
     global device_id
     global device_mode
