@@ -30,6 +30,13 @@
 # sw_version INTEGER NOT NULL,
 # timer_or_period INTEGER NOT NULL);
 
+# CREATE TABLE plant_boss_settings_test_3 (
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# timestamp TEXT NOT NULL, 
+# device INTEGER NOT NULL, 
+# mode INTEGER NOT NULL
+# );
+
 #Show database structure
 
 #.tables
