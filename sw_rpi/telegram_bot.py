@@ -104,7 +104,7 @@ def handle_database():
     timestamp = datetime.now()
 
     # Delete settings entry with the same device_id, if it exists
-    sql = "DELETE FROM " + TABLE_NAME + " WHERE device=" + str(device_id) ";"
+    sql = "DELETE FROM " + TABLE_NAME + " WHERE device=" + str(device_id) + ";"
     cursor.execute(sql)
 
     # Add new settings entry for device_id
