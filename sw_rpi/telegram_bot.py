@@ -23,6 +23,7 @@ def schedule_checker():
     while True:
         scheduler.start()
 
+# Handle message /help
 @bot.message_handler(commands=['help'])
 def print_help(message):
     string_response = """
@@ -32,11 +33,23 @@ def print_help(message):
         * Edit settings for plant_boss devices.
 
         To change settings for plant_boss device, enter message in following format:
-        * /plant_boss_settings
-        * device_id; mode (0 for real time, 1 for normal with sleep functionality);
+        * settings:<device_id>;<mode (0 for real time, 1 for normal with sleep functionality)>;
     """
 
     bot.send_message(message.chat.id, string_response)
+
+# Handle any other text message
+@bot.message_handler(func=lambda message: True)
+def handle_settings(message):
+    string_input = message.text
+    length_input = len(string_input)
+
+    print(length_input)
+    print(string_input)
+    print(string_input[8:])
+    print(string_input[0:8])
+
+    # bot.reply_to(message, message.text)
 
 Thread(target=schedule_checker).start() # Notice that you refer to schedule_checker function which starts the job
 
