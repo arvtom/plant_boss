@@ -37,6 +37,9 @@
 # mode INTEGER NOT NULL
 # );
 
+# To delete all rows in table:
+# DELETE FROM plant_boss_settings_test_3;
+
 #Show database structure
 
 #.tables
