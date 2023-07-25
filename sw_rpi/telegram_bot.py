@@ -11,7 +11,8 @@ BOT_TOKEN = settings_telegram_bot.BOT_TOKEN
 CHAT_ID = settings_telegram_bot.CHAT_ID
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
-TABLE_NAME = 'plant_boss_settings_test_3'
+TABLE_NAME_SETTINGS = 'plant_boss_settings_test_3'
+TABLE_NAME_DATA = 'plant_boss_test_3'
 
 device_id = 0
 device_mode = 0
@@ -53,9 +54,37 @@ def print_help(message):
 
 @bot.message_handler(commands=['settings'])
 def print_settings(message):
-    string_response = """
-        settings
-    """
+    string_response = "Number of entries "
+
+    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+    cursor = conn.cursor()                 # get a cursor
+
+    cursor.execute("SELECT * FROM " + TABLE_NAME_SETTINGS)
+    entries = cursor.fetchall()
+
+    conn.commit()
+    conn.close()
+
+    number_rows = len(entries)
+    string_response += str(number_rows) + "\r\n" + str(entries)
+
+    bot.send_message(message.chat.id, string_response)
+
+@bot.message_handler(commands=['data'])
+def print_settings(message):
+    string_response = "Number of entries "
+
+    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+    cursor = conn.cursor()                 # get a cursor
+
+    cursor.execute("SELECT * FROM " + TABLE_NAME_DATA)
+    entries = cursor.fetchall()
+
+    conn.commit()
+    conn.close()
+
+    number_rows = len(entries)
+    string_response += str(number_rows) + "\r\n" + str(entries)
 
     bot.send_message(message.chat.id, string_response)
 
