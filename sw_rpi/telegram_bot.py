@@ -67,8 +67,7 @@ def handle_settings(message):
             device_id = int(settings[0])
             device_mode = int(settings[1])
 
-            string_response = "Settings received. device_id=" + 
-                str(device_id) + "; device_mode=" + str(device_mode)
+            string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
 
 
         bot.send_message(message.chat.id, string_response)
