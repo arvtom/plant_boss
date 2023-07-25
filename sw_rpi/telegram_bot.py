@@ -5,6 +5,9 @@ from threading import Thread
 # Import BOT_TOKEN and CHAT_ID
 import settings_telegram_bot
 
+BOT_TOKEN = settings_telegram_bot.BOT_TOKEN
+CHAT_ID = settings_telegram_bot.CHAT_ID
+
 bot = telebot.TeleBot(BOT_TOKEN)
 
 def run_scheduled_task():
