@@ -24,9 +24,10 @@ def application(env, start_line):
 
 def handle_post(env, start_line):    
     form = get_field_storage(env)  # body of an HTTP POST request
+
+    timestamp = datetime.now()
     
     # Extract fields from POST form.
-    timestamp = datetime.now()
     device = form.getvalue('a1')
     humidity = form.getvalue('a2')
     light = form.getvalue('a3')

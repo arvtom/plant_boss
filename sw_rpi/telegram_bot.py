@@ -8,8 +8,12 @@ import settings_telegram_bot
 BOT_TOKEN = settings_telegram_bot.BOT_TOKEN
 CHAT_ID = settings_telegram_bot.CHAT_ID
 
+PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
+TABLE_NAME = 'plant_boss_settings_test_3'
+
 device_id = 0
 device_mode = 0
+b_settings_valid = False
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -48,6 +52,7 @@ def print_help(message):
 def parse_message(string_input):
     global device_id
     global device_mode
+    global b_settings_valid
 
     string_response = ""
 
@@ -82,22 +87,45 @@ def parse_message(string_input):
         string_response = "device_mode is invalid."
         return string_response
 
+    b_settings_valid = True
+
     string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
     return string_response
+
+def handle_database():
+    global device_id
+    global device_mode
+
+    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+    cursor = conn.cursor()                 # get a cursor
+
+    timestamp = datetime.now()
+
+    sql = "INSERT INTO " + TABLE_NAME + """
+        (timestamp,device,mode) 
+        values (?,?,?)"""
+    cursor.execute(sql, (timestamp, device_id, device_mode))
+
+    conn.commit()
+    conn.close()
+
+    return True
 
 # Handle any other text message
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
-    global device_id
-    global device_mode
+    global b_settings_valid
 
     bot.send_message(message.chat.id, parse_message(message.text))
 
-    print(device_id)
-    print(device_mode)
+    if (True == b_settings_valid):
+        print(device_id)
+        print(device_mode)
 
-    bot.send_message(message.chat.id, "Database updated.")
-    # bot.reply_to(message, message.text)
+        if (False == handle_database()):
+            bot.send_message(message.chat.id, "Database error.")
+
+        bot.send_message(message.chat.id, "Database updated.")
 
 Thread(target=schedule_checker).start() # Notice that you refer to schedule_checker function which starts the job
 
