@@ -33,14 +33,21 @@ def print_help(message):
         * Edit settings for plant_boss devices.
 
         To change settings for plant_boss device, enter message in following format:
-        * settings:<device_id>;<device_mode (0 for real time, 1 for normal with sleep functionality)>;
+        * settings:<device_id>;<device_mode>
+
+        For information:
+        * device_id can be from 0 to 255.
+        * device_mode can be 0 (real time) or 1 (normal with sleep function).
     """
 
     bot.send_message(message.chat.id, string_response)
 
+# def handle_settings(string_input):
+
+
 # Handle any other text message
 @bot.message_handler(func=lambda message: True)
-def handle_settings(message):
+def handle_message(message):
     string_input = message.text
     length_input = len(string_input)
 
@@ -75,6 +82,10 @@ def handle_settings(message):
             else:
                 device_id = int(settings[0])
                 device_mode = int(settings[1])
+
+                if (device_id < 0 or device_id > 255):
+                    string_response = "device_id is invalid."
+
 
                 string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
 
