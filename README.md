@@ -14,7 +14,8 @@ Webpage/database prototype:
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
 
 Telegram bot to set up esp32 settings:
-![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings.png)  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings_1.png)  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings_2.png)  
 
 # TODOs
 * Software rpi:
