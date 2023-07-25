@@ -25,14 +25,14 @@ def schedule_checker():
 @bot.message_handler(commands=['help'])
 def print_help(message):
     string_response = """
-        The purpose of this telegram bot:\r\n
-        * Send periodic notifications about plant environment parameters (soil humidity, temperature, amount of light).\r\n
-        * Send notifications when plant needs to be watered ASAP.\r\n
-        * Edit settings for plant_boss devices.\r\n\r\n
+        The purpose of this telegram bot:
+        * Send periodic notifications about plant environment parameters (soil humidity, temperature, amount of light).
+        * Send notifications when plant needs to be watered ASAP.
+        * Edit settings for plant_boss devices.
 
-        To change settings for plant_boss device, enter message in following format:\r\n
-        * /plant_boss_settings\r\n
-        * device_id; mode (0 for real time, 1 for normal with sleep functionality);\r\n
+        To change settings for plant_boss device, enter message in following format:
+        * /plant_boss_settings
+        * device_id; mode (0 for real time, 1 for normal with sleep functionality);
     """
 
     bot.send_message(message.chat.id, string_response)
