@@ -33,7 +33,7 @@ def print_help(message):
         * Edit settings for plant_boss devices.
 
         To change settings for plant_boss device, enter message in following format:
-        * settings:<device_id>;<mode (0 for real time, 1 for normal with sleep functionality)>;
+        * settings:<device_id>;<device_mode (0 for real time, 1 for normal with sleep functionality)>;
     """
 
     bot.send_message(message.chat.id, string_response)
@@ -46,8 +46,33 @@ def handle_settings(message):
 
     print(length_input)
     print(string_input)
-    print(string_input[8:])
-    print(string_input[0:8])
+    print(string_input[9:])
+    print(string_input[0:9])
+
+    if ("settings:" == string_input[0:9]):
+        settings = string_input.split(";")
+        length_settings = len(settings)
+
+        is_numeric = []
+        is_numeric.append(settings[0].isnumeric())
+        is_numeric.append(settings[1].isnumeric())
+
+        if (length_settings != 2 or 
+            False == is_numeric[0] or 
+            False == is_numeric[1]):
+            string_response = """
+                Settings error.
+            """
+        else:
+            device_id = int(settings[0])
+            device_mode = int(settings[1])
+
+            string_response = "Settings received. device_id=" + 
+                str(device_id) + "; device_mode=" + str(device_mode)
+
+
+        bot.send_message(message.chat.id, string_response)
+
 
     # bot.reply_to(message, message.text)
 
