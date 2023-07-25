@@ -35,7 +35,7 @@ def print_help(message):
         * device_id; mode (0 for real time, 1 for normal with sleep functionality);\r\n
     """
 
-    bot.send_message(message.chat.id, 'string_response')
+    bot.send_message(message.chat.id, string_response)
 
 Thread(target=schedule_checker).start() # Notice that you refer to schedule_checker function which starts the job
 
