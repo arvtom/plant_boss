@@ -49,31 +49,37 @@ def handle_settings(message):
     print(string_input[9:])
     print(string_input[0:9])
 
-    if ("settings:" == string_input[0:9]):
-        settings = string_input.split(";")
+    string_response = ""
+
+    if ("settings:" != string_input[0:9]):
+        string_response = "I don't understand."
+    else:
+        settings = string_input[9:].split(";")
         length_settings = len(settings)
 
-        print(length_settings)
-        print(settings)
-
-        is_numeric = []
-        is_numeric.append(settings[0].isnumeric())
-        is_numeric.append(settings[1].isnumeric())
-
-        if (length_settings != 2 or 
-            False == is_numeric[0] or 
-            False == is_numeric[1]):
-            string_response = """
-                Settings error.
-            """
+        if (2 != length_settings):
+            string_response = "Missing settings parameters."
         else:
-            device_id = int(settings[0])
-            device_mode = int(settings[1])
+            print(length_settings)
+            print(settings)
 
-            string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
+            is_numeric = []
+            is_numeric.append(settings[0].isnumeric())
+            is_numeric.append(settings[1].isnumeric())
+
+            print(is_numeric)
+
+            if (False == is_numeric[0] or 
+                False == is_numeric[1]):
+                string_response = "One of settings parameters is not numeric."
+            else:
+                device_id = int(settings[0])
+                device_mode = int(settings[1])
+
+                string_response = "Settings received. device_id=" + str(device_id) + "; device_mode=" + str(device_mode)
 
 
-        bot.send_message(message.chat.id, string_response)
+    bot.send_message(message.chat.id, string_response)
 
 
     # bot.reply_to(message, message.text)
