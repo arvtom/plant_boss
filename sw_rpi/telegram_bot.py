@@ -118,6 +118,9 @@ def handle_database():
 def handle_message(message):
     global b_settings_valid
 
+    # Reset flag
+    b_settings_valid = False
+
     bot.send_message(message.chat.id, parse_message(message.text))
 
     if (True == b_settings_valid):
