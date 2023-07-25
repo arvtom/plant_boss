@@ -39,9 +39,13 @@ def print_help(message):
         * Send periodic notifications about plant environment parameters (soil humidity, temperature, amount of light).
         * Send notifications when plant needs to be watered ASAP.
         * Edit settings for plant_boss devices.
+        * Print settings for all plant_boss devices.
 
         To change settings for plant_boss device, enter message in following format:
         * settings:<device_id>;<device_mode>
+
+        To print settings for all plant_boss devices:
+        * /settings
 
         For information:
         * device_id can be from 0 to 255.
