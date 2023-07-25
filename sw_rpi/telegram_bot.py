@@ -21,9 +21,7 @@ b_settings_valid = False
 bot = telebot.TeleBot(BOT_TOKEN)
 
 def run_scheduled_task():
-    print("I am running")
-    bot.send_message(CHAT_ID, "This is telegram bot printing periodic message.")
-    
+    bot.send_message(CHAT_ID, "This is telegram bot printing periodic message.")    
 
 scheduler = BlockingScheduler(timezone="Europe/Berlin") # You need to add a timezone, otherwise it will give you a warning
 # scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
@@ -147,11 +145,11 @@ def handle_database():
     timestamp = datetime.now()
 
     # Delete settings entry with the same device_id, if it exists
-    sql = "DELETE FROM " + TABLE_NAME + " WHERE device=" + str(device_id) + ";"
+    sql = "DELETE FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id) + ";"
     cursor.execute(sql)
 
     # Add new settings entry for device_id
-    sql = "INSERT INTO " + TABLE_NAME + """
+    sql = "INSERT INTO " + TABLE_NAME_SETTINGS + """
         (timestamp,device,mode) 
         values (?,?,?)"""
     cursor.execute(sql, (timestamp, device_id, device_mode))

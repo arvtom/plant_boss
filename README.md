@@ -1,22 +1,27 @@
 # plant_boss
-The purpose of this project is to demonstrate my skills as Embedded software engineer and Technical lead. I wanted to learn SW development on ESP32 with freeRTOS, power saving techniques, requirements engineering.  
+The purpose of this project is to demonstrate my skills as Embedded software engineer and Technical lead. I wanted to learn SW development on ESP32 with freeRTOS, HW/SW design techniques for battery power, requirements engineering.  
 
-Plant environment (soil humidity, temperature, light) monitoring using custom built battery powered esp32 device. Raspberry pi zero with custom linux will be used as a database, webpage, notification server.
+Abstract: plant environment (soil humidity, temperature, light) monitoring using custom designed battery powered esp32 device. Raspberry pi zero with custom linux is used for sqlite database, simple html webpage on local network, notification server. Telegram bot is used as UI to receive smartphone notifications and configure esp32 device.
 
-Device prototype photos:  
+esp32 device prototype:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_1_plant_boss.png)  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/pcba_2_plant_boss.png)  
 
-ESP32 software architecture:  
+esp32 software architecture:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/sw_esp32/architecture_plant_boss.png)  
 
-Webpage/database prototype photos:  
+Webpage/database prototype:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
+
+Telegram bot to set up esp32 settings:
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings.png)  
 
 # TODOs
 * Software rpi:
 	* Debug custom built linux distro using buildroot. At the moment device boots up with no errors, but wifi driver is not found.
 	* Notification
+		* Add high priority notification when plant need to be watered.
+		* Add low priority notification with plant data table and plot.
 	* Webpage
 		* Plots
 		* Filter abstracted / debugging data
