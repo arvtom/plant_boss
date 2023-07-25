@@ -8,6 +8,9 @@ import settings_telegram_bot
 BOT_TOKEN = settings_telegram_bot.BOT_TOKEN
 CHAT_ID = settings_telegram_bot.CHAT_ID
 
+device_id = 0
+device_mode = 0
+
 bot = telebot.TeleBot(BOT_TOKEN)
 
 def run_scheduled_task():
@@ -43,6 +46,9 @@ def print_help(message):
     bot.send_message(message.chat.id, string_response)
 
 def parse_message(string_input):
+    global device_id
+    global device_mode
+
     string_response = ""
 
     if ("settings:" != string_input[0:9]):
@@ -56,14 +62,9 @@ def parse_message(string_input):
         string_response = "Missing settings parameters."
         return string_response
 
-    print(length_settings)
-    print(settings)
-
     is_numeric = []
     is_numeric.append(settings[0].isnumeric())
     is_numeric.append(settings[1].isnumeric())
-
-    print(is_numeric)
 
     if (False == is_numeric[0] or 
         False == is_numeric[1]):
@@ -87,7 +88,15 @@ def parse_message(string_input):
 # Handle any other text message
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
+    global device_id
+    global device_mode
+
     bot.send_message(message.chat.id, parse_message(message.text))
+
+    print(device_id)
+    print(device_mode)
+
+    bot.send_message(message.chat.id, "Database updated.")
     # bot.reply_to(message, message.text)
 
 Thread(target=schedule_checker).start() # Notice that you refer to schedule_checker function which starts the job
