@@ -12,11 +12,12 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 def run_scheduled_task():
     print("I am running")
-    bot.send_message(CHAT_ID, "This is telegram bot printing message every 1 min.")
+    bot.send_message(CHAT_ID, "This is telegram bot printing periodic message.")
     
 
 scheduler = BlockingScheduler(timezone="Europe/Berlin") # You need to add a timezone, otherwise it will give you a warning
-scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
+# scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
+scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/5") # Runs every 5min
 
 def schedule_checker():
     while True:
