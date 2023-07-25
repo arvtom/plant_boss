@@ -66,7 +66,9 @@ def print_settings(message):
     conn.close()
 
     number_rows = len(entries)
-    string_response += str(number_rows) + "\r\n"
+    string_response += str(number_rows) + "\r\n\r\n"
+
+    string_response += "(entry_id, timestamp, device_id, device_mode)\r\n"
 
     for i in range(0, number_rows):
         string_response += str(entries[i]) + "\r\n"
