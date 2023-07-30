@@ -15,9 +15,10 @@ def application(env, start_line):
     elif env['REQUEST_METHOD'] == 'GET':
         # return database contents in html
         print(env)
-        string = "This is uwsgi_plant_boss_plot.py"
-        string = string.encode()
-        return string
+        print(env['PATH_INFO'])
+        print(env.get('PATH_INFO'))
+
+        return handle_get(start_line)
 
     else:
         # for other type html requests, return error
