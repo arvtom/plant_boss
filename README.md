@@ -34,14 +34,15 @@ Telegram bot is used to:
 * Software rpi:
 	* Debug custom built linux distro using buildroot. At the moment device boots up with no errors, but wifi driver is not found.
 	* Notification
-		* Add high priority notification when plant need to be watered.
+		* Add high priority notification when plant need to be watered. This would be processed on rpi side.
 		* Add low priority notification with plant data table and plot.
 	* Webpage
-		* Plots
-		* Filter abstracted / debugging data
-		* Possibility to change esp32 mode
+		* Add timestamps to plot
+		* Possibility to change esp32 measurement period
+		* Possibility to change esp32 battery critical voltage threshold.
 		* Consider removing nginx
 * Embedded software ESP32:
+	* Add battery critical voltage detection, after which esp32 would go to sleep infinitely.
 	* Error management for every object using individual bits.
 	* Pointers to improve freeRTOS queue efficiency.
 	* Dedicated thread sinchronization functions from freeRTOS during init.
