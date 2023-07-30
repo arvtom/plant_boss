@@ -2,7 +2,7 @@
 
 #Install packages
 
-#sudo apt-get install sqlite3 build-essential python3
+#sudo apt-get install sqlite3 build-essential python3 nginx
 #pip install uwsgi
 
 #Create and open database
@@ -48,3 +48,6 @@
 #Allow 9999 port through firewall, to receive POST requests from other devices
 
 #sudo ufw allow 9999
+
+#Copy nginx configuration to add more locations (paths) in server
+#cp nginx/default /etc/nginx/sites-available
