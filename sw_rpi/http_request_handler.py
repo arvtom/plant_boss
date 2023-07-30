@@ -65,14 +65,17 @@ def handle_get_plot(start_line):
     cursor.execute("select * from " + TABLE_NAME)
     rows = cursor.fetchall()
 
-    humidity = rows[3][:]
-    light = rows[4][:]
-    temperature = rows[5][:]
+    humidity = []
+    light = []
+    temperature = []
 
-    print(rows[0][3])
-    print(rows[0:-1][3])
-    print(rows[3][0:-1])
-    print(type(rows))
+    for i in range(len(rows)-1, 0, -1):
+        row = rows[i]
+
+        humidity.append(row[3])
+        light.append(row[4])
+        temperature.append(row[5])
+
     print(humidity)
     print(light)
     print(temperature)
