@@ -1,7 +1,7 @@
 import sqlite3
 import cgi
 from datetime import datetime
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_3'
