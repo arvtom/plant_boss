@@ -14,6 +14,7 @@ def application(env, start_line):
 
     elif env['REQUEST_METHOD'] == 'GET':
         # return database contents in html
+        print(env)
         return handle_get(start_line)
 
     else:
