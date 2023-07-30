@@ -1,3 +1,6 @@
+sudo systemctl stop nginx
+sudo systemctl start nginx
+
 #Init server which writes/reads from database
 uwsgi --socket 127.0.0.1:8001 --wsgi-file /home/pi/github/plant_boss/sw_rpi/request_handler.py
 
@@ -8,6 +11,3 @@ uwsgi --socket 127.0.0.1:8001 --wsgi-file /home/pi/github/plant_boss/sw_rpi/requ
 #Check if data was put into database from other devices
 
 #curl 192.168.8.139:9999/
-
-sudo systemctl stop nginx
-sudo systemctl start nginx
