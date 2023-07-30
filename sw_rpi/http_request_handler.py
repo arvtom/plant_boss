@@ -1,6 +1,7 @@
 import sqlite3
 import cgi
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME = 'plant_boss_test_3'
@@ -79,6 +80,13 @@ def handle_get_plot(start_line):
     print(humidity)
     print(light)
     print(temperature)
+
+    time = range(0, len(rows)-1, 1)
+
+    plt.plot(time, humidity)
+    plt.xlabel("time")
+    plt.ylabel("humidity")
+    plt.savefig("humidity.png")
 
     response_body = """
         <!DOCTYPE html>
