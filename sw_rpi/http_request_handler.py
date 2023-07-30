@@ -110,7 +110,9 @@ def handle_get_plot(start_line):
     time = []
     timestamp = []
 
-    for i in range(len(rows)-1, 0, -1):
+    length_rows = len(rows) - 1
+
+    for i in range(length_rows, 0, -1):
         row = rows[i]
 
         # time.append(row[1])
@@ -118,7 +120,7 @@ def handle_get_plot(start_line):
         light.append(row[4])
         temperature.append(row[5])
 
-    time = range(0, len(rows)-1, 1)
+    time = range(0, length_rows, 1)
 
     # time = time[0:10]
     # humidity = humidity[0:10]
@@ -131,18 +133,21 @@ def handle_get_plot(start_line):
     axis[i].plot(time, humidity)
     axis[i].set_xlabel("time")
     axis[i].set_ylabel("humidity, %")
+    axis[i].set_xlim([0, length_rows])
     axis[i].grid(visible = True, which = "both", axis = "both")
 
     i = 1
     axis[i].plot(time, light)
     axis[i].set_xlabel("time")
     axis[i].set_ylabel("light, lx")
+    axis[i].set_xlim([0, length_rows])
     axis[i].grid(visible = True, which = "both", axis = "both")
 
     i = 2
     axis[i].plot(time, temperature)
     axis[i].set_xlabel("time")
     axis[i].set_ylabel("temperature, C")
+    axis[i].set_xlim([0, length_rows])
     axis[i].grid(visible = True, which = "both", axis = "both")
 
     plt.savefig("humidity.png")
