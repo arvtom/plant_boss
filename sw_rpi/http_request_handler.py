@@ -83,10 +83,10 @@ def handle_get_plot(start_line):
 
     time = range(0, len(rows)-1, 1)
 
-    plt.plot(time, humidity)
-    plt.xlabel("time")
-    plt.ylabel("humidity")
-    plt.savefig("humidity.png")
+    # plt.plot(time, humidity)
+    # plt.xlabel("time")
+    # plt.ylabel("humidity")
+    # plt.savefig("humidity.png")
 
     response_body = """
         <picture>
