@@ -91,7 +91,7 @@ def handle_get_plot(start_line):
     response_body = """
         <picture>
             <source media="(min-width:200px)" srcset="humidity.png">
-            <img src="humidity.png" alt="Humidity" style="width:auto;">
+            <img src="/home/pi/github/plant_boss/sw_rpi/humidity.png" alt="Humidity" style="width:auto;">
         </picture>
     """
     
