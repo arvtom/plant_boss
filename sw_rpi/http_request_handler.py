@@ -89,12 +89,11 @@ def handle_get_plot(start_line):
     plt.savefig("humidity.png")
 
     response_body = """
-        <!DOCTYPE html>
-        <html>
-            <body>
-                <h2>get plot</h2>
-            </body>
-        </html>"""
+        <picture>
+            <source media="(min-width:200px)" srcset="humidity.png">
+            <img src="humidity.png" alt="Humidity" style="width:auto;">
+        </picture>
+    """
     
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
