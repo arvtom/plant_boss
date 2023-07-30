@@ -114,10 +114,6 @@ def handle_get_plot(start_line):
         light.append(row[4])
         temperature.append(row[5])
 
-    print(humidity)
-    print(light)
-    print(temperature)
-
     time = range(0, len(rows)-1, 1)
 
     # plt.plot(time, humidity)
@@ -279,10 +275,8 @@ def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rss
     conn = sqlite3.connect(PATH_DATABASE)      # connect to database
     cursor = conn.cursor()                 # get a cursor
 
-    print("Count of Rows")
     cursor.execute("select * from " + TABLE_NAME_DATA)
     number_rows = len(cursor.fetchall())
-    print(number_rows)
 
     sql = "INSERT INTO " + TABLE_NAME_DATA + """
         (timestamp,device,humidity,light,temperature,bat_voltage,rssi_wifi,mode,bat_low_flag,
