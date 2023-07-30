@@ -1,4 +1,4 @@
-cp nginx/default /etc/nginx/sites-available/default
+sudo cp nginx/default /etc/nginx/sites-available/default
 
 sudo systemctl stop nginx
 sudo systemctl start nginx
