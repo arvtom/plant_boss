@@ -4,7 +4,8 @@ sudo systemctl stop nginx
 sudo systemctl start nginx
 
 #Init server which writes/reads from database
-nohup uwsgi --socket 127.0.0.1:8001 --wsgi-file /home/pi/github/plant_boss/sw_rpi/http_request_handler.py > uwsgi_plant_boss.log
+uwsgi --socket 127.0.0.1:8001 --wsgi-file /home/pi/github/plant_boss/sw_rpi/http_request_handler.py
+# nohup uwsgi --socket 127.0.0.1:8001 --wsgi-file /home/pi/github/plant_boss/sw_rpi/http_request_handler.py > uwsgi_plant_boss.log
 
 #Check if server accepts data from other devices
 

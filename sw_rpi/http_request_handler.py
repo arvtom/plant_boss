@@ -13,11 +13,6 @@ def application(env, start_line):
         return handle_post(env, start_line)
 
     elif env['REQUEST_METHOD'] == 'GET':
-        # return database contents in html
-        print(env)
-        print(env['PATH_INFO'])
-        print(env.get('PATH_INFO'))
-
         requested_path = env['PATH_INFO']
 
         if ("/plant_boss/data" == requested_path):
@@ -70,9 +65,9 @@ def handle_get_plot(start_line):
     cursor.execute("select * from " + TABLE_NAME)
     rows = cursor.fetchall()
 
-    humidity = rows[:][3]
-    light = rows[:][4]
-    temperature = rows[:][5]
+    humidity = rows[3][:]
+    light = rows[4][:]
+    temperature = rows[5][:]
 
     print(rows[0][3])
     print(humidity)
