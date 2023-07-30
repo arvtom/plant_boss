@@ -88,12 +88,16 @@ def handle_get_plot(start_line):
     # plt.ylabel("humidity")
     # plt.savefig("humidity.png")
 
-    response_body = """
-        <picture>
-            <source media="(min-width:200px)" srcset="humidity.png">
-            <img src="/home/pi/github/plant_boss/sw_rpi/humidity.png" alt="Humidity" style="width:auto;">
-        </picture>
-    """
+    import base64
+    data_uri = base64.b64encode(open('humidity.png', 'rb').read()).decode('utf-8')
+    response_body = '<img src="data:image/png;base64,{0}">'.format(data_uri)
+
+    # response_body = """
+    #     <picture>
+    #         <source media="(min-width:200px)" srcset="humidity.png">
+    #         <img src="/home/pi/github/plant_boss/sw_rpi/humidity.png" alt="Humidity" style="width:auto;">
+    #     </picture>
+    # """
     
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
