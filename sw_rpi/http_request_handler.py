@@ -65,6 +65,20 @@ def handle_get_settings(start_line):
     return [response_body.encode()]
 
 def handle_get_plot(start_line):
+    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
+    cursor = conn.cursor()                   # get a cursor
+    cursor.execute("select * from " + TABLE_NAME)
+    rows = cursor.fetchall()
+
+    humidity = rows[:][3]
+    light = rows[:][4]
+    temperature = rows[:][5]
+
+    print(rows[0][3])
+    print(humidity)
+    print(light)
+    print(temperature)
+
     response_body = """
         <!DOCTYPE html>
         <html>
