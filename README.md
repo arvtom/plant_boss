@@ -10,10 +10,21 @@ esp32 device prototype:
 esp32 software architecture:  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/sw_esp32/architecture_plant_boss.png)  
 
-Webpage/database prototype:  
-![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/database_plant_boss.png)  
+Webpage is used to:
+* Receive http post requests containing measured data from esp32
+* Display measured and debug data from all esp32 devices
+* Display plot of measured data
+* Display settings for each esp32 device
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/data_plant_boss.png)  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/plot_plant_boss.png)  
+![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/settings_plant_boss.png)  
 
-Telegram bot to set up esp32 settings:
+
+Telegram bot is used to:
+* Modify esp32 device settings
+* Display settings for each esp32 device
+* Receive periodic notifications
+* Receive high priority notifications
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings_1.jpg)  
 ![alt text](https://github.com/arvtom/plant_boss/blob/main/pictures/telegram_bot_settings_2.jpg)  
 
