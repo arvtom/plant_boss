@@ -4,7 +4,8 @@ from datetime import datetime
 # import matplotlib.pyplot as plt
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
-TABLE_NAME = 'plant_boss_test_3'
+TABLE_NAME_DATA = 'plant_boss_test_3'
+TABLE_NAME_SETTINGS = 'plant_boss_settings_test_3'
 ROWS = 100
 
 # Dispatches HTTP requests to the appropriate handler.
@@ -49,13 +50,49 @@ def handle_get_error(start_line):
     return [response_body.encode()]
 
 def handle_get_settings(start_line):
+    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
+    cursor = conn.cursor()                   # get a cursor
+    cursor.execute("select * from " + TABLE_NAME_SETTINGS)
+    rows = cursor.fetchall()
+
     response_body = """
         <!DOCTYPE html>
         <html>
+            <style>
+                table, th, td {
+                border:1px solid black;
+                }
+            </style>
+
             <body>
-                <h2>get settings</h2>
+                <h2>plant_boss settings</h2>
+
+                <table style="width:100%">
+                <tr>
+                    <th>entry_id</th>
+                    <th>timestamp</th>
+                    <th>device_id</th>
+                    <th>device_mode</th>
+                </tr>
+                """
+
+    for i in range(len(rows)-1, 0, -1):
+        row = rows[i]
+        response_body += "<tr>"
+        response_body += "<td>" + str(row[0]) + "</td>"         # entry_id
+        response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
+        response_body += "<td>" + str(row[2]) + "</td>"         # device_id
+        response_body += "<td>" + str(row[3]) + "</td>"         # device_mode
+        response_body += "</tr>"
+
+    response_body += """
+                </table>
             </body>
-        </html>"""
+        </html>
+        """
+
+    conn.commit()
+    conn.close()
     
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
@@ -63,7 +100,7 @@ def handle_get_settings(start_line):
 def handle_get_plot(start_line):
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
-    cursor.execute("select * from " + TABLE_NAME)
+    cursor.execute("select * from " + TABLE_NAME_DATA)
     rows = cursor.fetchall()
 
     humidity = []
@@ -105,7 +142,7 @@ def handle_get_plot(start_line):
 def handle_get_data(start_line):
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
-    cursor.execute("select * from " + TABLE_NAME)
+    cursor.execute("select * from " + TABLE_NAME_DATA)
     rows = cursor.fetchall()
 
     response_body = """
@@ -118,7 +155,7 @@ def handle_get_data(start_line):
             </style>
 
             <body>
-                <h2>plant_boss database report</h2>
+                <h2>plant_boss data</h2>
 
                 <table style="width:100%">
                 <tr>
@@ -243,18 +280,18 @@ def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rss
     cursor = conn.cursor()                 # get a cursor
 
     print("Count of Rows")
-    cursor.execute("select * from " + TABLE_NAME)
+    cursor.execute("select * from " + TABLE_NAME_DATA)
     number_rows = len(cursor.fetchall())
     print(number_rows)
 
-    sql = "INSERT INTO " + TABLE_NAME + """
+    sql = "INSERT INTO " + TABLE_NAME_DATA + """
         (timestamp,device,humidity,light,temperature,bat_voltage,rssi_wifi,mode,bat_low_flag,
         error_app,error_input,error_output,error_network,error_memory,sw_version,timer_or_period) 
         values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
     cursor.execute(sql, (timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi, mode, bat_low_flag, \
         error_app, error_input, error_output, error_network, error_memory, sw_version, timer_or_period)) # execute INSERT 
 
-    sql = "DELETE FROM " + TABLE_NAME +  " WHERE ROWID IN (SELECT ROWID FROM " + TABLE_NAME + " ORDER BY ROWID DESC LIMIT -1 OFFSET "+ str(ROWS) +")"
+    sql = "DELETE FROM " + TABLE_NAME_DATA +  " WHERE ROWID IN (SELECT ROWID FROM " + TABLE_NAME_DATA + " ORDER BY ROWID DESC LIMIT -1 OFFSET "+ str(ROWS) +")"
     cursor.execute(sql)
 
     conn.commit()
