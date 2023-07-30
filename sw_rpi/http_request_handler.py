@@ -70,6 +70,8 @@ def handle_get_plot(start_line):
     temperature = rows[5][:]
 
     print(rows[0][3])
+    print(rows[0:-1][3])
+    print(type(rows))
     print(humidity)
     print(light)
     print(temperature)
