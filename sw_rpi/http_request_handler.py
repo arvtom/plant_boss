@@ -107,7 +107,7 @@ def handle_get_plot(start_line):
     humidity = []
     light = []
     temperature = []
-    time = []
+    timestamp = []
 
     for i in range(len(rows)-1, 0, -1):
         row = rows[i]
