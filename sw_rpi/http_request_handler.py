@@ -71,6 +71,7 @@ def handle_get_plot(start_line):
 
     print(rows[0][3])
     print(rows[0:-1][3])
+    print(rows[3][0:-1])
     print(type(rows))
     print(humidity)
     print(light)
