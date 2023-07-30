@@ -1,7 +1,8 @@
 import sqlite3
 import cgi
 from datetime import datetime
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+import base64
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME_DATA = 'plant_boss_test_3'
@@ -116,12 +117,28 @@ def handle_get_plot(start_line):
 
     time = range(0, len(rows)-1, 1)
 
-    # plt.plot(time, humidity)
-    # plt.xlabel("time")
-    # plt.ylabel("humidity")
-    # plt.savefig("humidity.png")
+    figure, axis = plt.subplots(3, 1)
 
-    import base64
+    i = 0
+    axis[i].plot(time, humidity)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("humidity, %")
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    i = 1
+    axis[i].plot(time, light)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("light, lx")
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    i = 2
+    axis[i].plot(time, temperature)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("temperature, C")
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    plt.savefig("humidity.png")
+
     data_uri = base64.b64encode(open('humidity.png', 'rb').read()).decode('utf-8')
     response_body = '<img src="data:image/png;base64,{0}">'.format(data_uri)
 
