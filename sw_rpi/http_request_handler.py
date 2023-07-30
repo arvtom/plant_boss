@@ -30,7 +30,7 @@ def application(env, start_line):
             response = handle_get_plot(start_line) 
         
         else:
-            response = handle_get_error()
+            response = handle_get_error(start_line)
 
         return response
 
