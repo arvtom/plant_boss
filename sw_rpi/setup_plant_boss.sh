@@ -2,7 +2,7 @@
 
 #Install packages
 
-#sudo apt-get install sqlite3 build-essential python3 nginx
+#sudo apt-get install sqlite3 build-essential python3 nginx matplotlib
 #pip install uwsgi
 
 #Create and open database

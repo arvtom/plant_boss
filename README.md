@@ -27,6 +27,7 @@ Telegram bot to set up esp32 settings:
 		* Plots
 		* Filter abstracted / debugging data
 		* Possibility to change esp32 mode
+		* Consider removing nginx
 * Embedded software ESP32:
 	* Error management for every object using individual bits.
 	* Pointers to improve freeRTOS queue efficiency.
