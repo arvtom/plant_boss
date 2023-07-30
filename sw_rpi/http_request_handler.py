@@ -113,17 +113,17 @@ def handle_get_plot(start_line):
     for i in range(len(rows)-1, 0, -1):
         row = rows[i]
 
-        time.append(row[1])
+        # time.append(row[1])
         humidity.append(row[3])
         light.append(row[4])
         temperature.append(row[5])
 
-    # time = range(0, len(rows)-1, 1)
+    time = range(0, len(rows)-1, 1)
 
-    time = time[0:10]
-    humidity = humidity[0:10]
-    light = light[0:10]
-    temperature = temperature[0:10]
+    # time = time[0:10]
+    # humidity = humidity[0:10]
+    # light = light[0:10]
+    # temperature = temperature[0:10]
 
     figure, axis = plt.subplots(3, 1)
 
