@@ -112,7 +112,7 @@ def handle_get_plot(start_line):
     for i in range(len(rows)-1, 0, -1):
         row = rows[i]
 
-        timestamp.append(row[2])
+        timestamp.append(row[1])
         humidity.append(row[3])
         light.append(row[4])
         temperature.append(row[5])
