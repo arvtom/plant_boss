@@ -18,7 +18,21 @@ def application(env, start_line):
         print(env['PATH_INFO'])
         print(env.get('PATH_INFO'))
 
-        return handle_get(start_line)
+        requested_path = env['PATH_INFO']
+
+        if ("/plant_boss/data" == requested_path):
+            response = handle_get_data(start_line)
+        
+        elif ("/plant_boss/settings" == requested_path):
+            response = handle_get_settings(start_line)
+
+        elif ("/plant_boss/plot" == requested_path):
+            response = handle_get_plot(start_line) 
+        
+        else:
+            response = handle_get_error()
+
+        return response
 
     else:
         # for other type html requests, return error
@@ -26,58 +40,43 @@ def application(env, start_line):
         response_body = 'Only POST and GET verbs supported.'
         return [response_body.encode()]                            
 
-def handle_post(env, start_line):    
-    form = get_field_storage(env)  # body of an HTTP POST request
-
-    timestamp = datetime.now()
+def handle_get_error(start_line):
+    response_body = """
+        <!DOCTYPE html>
+        <html>
+            <body>
+                <h2>error unknown path</h2>
+            </body>
+        </html>"""
     
-    # Extract fields from POST form.
-    device = form.getvalue('a1')
-    humidity = form.getvalue('a2')
-    light = form.getvalue('a3')
-    temperature = form.getvalue('a4')
-    bat_voltage = form.getvalue('a5')
-    rssi_wifi = form.getvalue('a6')
-    mode = form.getvalue('a7')
-    bat_low_flag = form.getvalue('a8')
-    error_app = form.getvalue('a9')
-    error_input = form.getvalue('a10')
-    error_output = form.getvalue('a11')
-    error_network = form.getvalue('a12')
-    error_memory = form.getvalue('a13')
-    sw_version = form.getvalue('a14')
-    timer_or_period = form.getvalue('a15')
-
-    # Check if there is missing data
-    if (device is not None and
-        humidity is not None and
-        light is not None and
-        temperature is not None and
-        bat_voltage is not None and
-        rssi_wifi is not None and 
-        mode is not None and 
-        bat_low_flag is not None and 
-        error_app is not None and 
-        error_input is not None and 
-        error_output is not None and 
-        error_network is not None and 
-        error_memory is not None and 
-        sw_version is not None and 
-        timer_or_period is not None):
-
-        add_record(timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi, mode, bat_low_flag, \
-            error_app, error_input, error_output, error_network, error_memory, sw_version, timer_or_period)
-        response_body = "OK\n"
-        start_line('201 OK', [('Content-Type', 'text/plain')])
-
-    else:
-        # Return error
-        response_body = "Missing info in POST request.\n"
-        start_line('400 Bad Request', [('Content-Type', 'text/plain')])
- 
+    start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
 
-def handle_get(start_line):
+def handle_get_settings(start_line):
+    response_body = """
+        <!DOCTYPE html>
+        <html>
+            <body>
+                <h2>get settings</h2>
+            </body>
+        </html>"""
+    
+    start_line('200 OK', [('Content-Type', 'text/html')])
+    return [response_body.encode()]
+
+def handle_get_plot(start_line):
+    response_body = """
+        <!DOCTYPE html>
+        <html>
+            <body>
+                <h2>get plot</h2>
+            </body>
+        </html>"""
+    
+    start_line('200 OK', [('Content-Type', 'text/html')])
+    return [response_body.encode()]
+
+def handle_get_data(start_line):
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
     cursor.execute("select * from " + TABLE_NAME)
@@ -151,6 +150,67 @@ def handle_get(start_line):
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
 
+def handle_post(env, start_line):    
+    form = get_field_storage(env)  # body of an HTTP POST request
+
+    timestamp = datetime.now()
+    
+    # Extract fields from POST form.
+    device = form.getvalue('a1')
+    humidity = form.getvalue('a2')
+    light = form.getvalue('a3')
+    temperature = form.getvalue('a4')
+    bat_voltage = form.getvalue('a5')
+    rssi_wifi = form.getvalue('a6')
+    mode = form.getvalue('a7')
+    bat_low_flag = form.getvalue('a8')
+    error_app = form.getvalue('a9')
+    error_input = form.getvalue('a10')
+    error_output = form.getvalue('a11')
+    error_network = form.getvalue('a12')
+    error_memory = form.getvalue('a13')
+    sw_version = form.getvalue('a14')
+    timer_or_period = form.getvalue('a15')
+
+    # Check if there is missing data
+    if (device is not None and
+        humidity is not None and
+        light is not None and
+        temperature is not None and
+        bat_voltage is not None and
+        rssi_wifi is not None and 
+        mode is not None and 
+        bat_low_flag is not None and 
+        error_app is not None and 
+        error_input is not None and 
+        error_output is not None and 
+        error_network is not None and 
+        error_memory is not None and 
+        sw_version is not None and 
+        timer_or_period is not None):
+
+        add_record(timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi, mode, bat_low_flag, \
+            error_app, error_input, error_output, error_network, error_memory, sw_version, timer_or_period)
+        response_body = "OK\n"
+        start_line('201 OK', [('Content-Type', 'text/plain')])
+
+    else:
+        # Return error
+        response_body = "Missing info in POST request.\n"
+        start_line('400 Bad Request', [('Content-Type', 'text/plain')])
+ 
+    return [response_body.encode()]
+
+def get_field_storage(env):
+    input = env['wsgi.input']
+    form = env.get('wsgi.post_form')
+    if (form is not None and form[0] is input):
+        return form[2]
+
+    fs = cgi.FieldStorage(fp = input, environ = env, keep_blank_values = 1)
+
+    return fs
+
 def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rssi_wifi, mode, bat_low_flag, \
         error_app, error_input, error_output, error_network, error_memory, sw_version, timer_or_period):
     conn = sqlite3.connect(PATH_DATABASE)      # connect to database
@@ -173,13 +233,3 @@ def add_record(timestamp, device, humidity, light, temperature, bat_voltage, rss
 
     conn.commit()
     conn.close()
-
-def get_field_storage(env):
-    input = env['wsgi.input']
-    form = env.get('wsgi.post_form')
-    if (form is not None and form[0] is input):
-        return form[2]
-
-    fs = cgi.FieldStorage(fp = input, environ = env, keep_blank_values = 1)
-
-    return fs
