@@ -85,19 +85,8 @@ def handle_get_settings_request(start_line):
         response_body = "found more than one"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
 
-    # print(type(rows))
-    # print(rows)
-    # print(type(rows[0]))
-    # print(rows[0])
-    # print(type(rows[0][4]))
-    # print(rows[0][4])
-
-    # settings = rows.split(",")
-
-    # print(settings)
-
-    response_body = rows[0][2] + ";" + rows[0][3] + ";" +\
-        rows[0][4] + ";" + rows[0][5]
+    response_body = str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
+        str(rows[0][4]) + ";" + str(rows[0][5])
     start_line('200 OK', [('Content-Type', 'text/plain')])
 
 def handle_get_settings(start_line):
