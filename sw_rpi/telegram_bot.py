@@ -130,7 +130,7 @@ def parse_message(string_input):
         False == is_numeric[1] or
         False == is_numeric[2] or
         False == is_numeric[3]):
-        string_response = "One of settings parameters is not numeric."
+        string_response = "One of settings parameters is not numeric. " + is_numeric[:]
         return string_response
 
     device_id = int(settings[0])
