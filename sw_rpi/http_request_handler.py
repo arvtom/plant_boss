@@ -9,7 +9,7 @@ TABLE_NAME_DATA = 'plant_boss_test_3'
 TABLE_NAME_SETTINGS = 'plant_boss_settings_test_4'
 ROWS = 100
 
-device_id_request_settings = 255
+device_id_request_settings = 0
 
 # Dispatches HTTP requests to the appropriate handler.
 def application(env, start_line):
@@ -85,7 +85,9 @@ def handle_get_settings_request(start_line):
         response_body = "found more than one"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
 
-    settings = rows[0].split(",")
+    print(type(rows))
+    print(rows)
+    settings = rows.split(",")
 
     print(settings)
 
