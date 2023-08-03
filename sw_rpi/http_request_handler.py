@@ -79,7 +79,7 @@ def handle_get_settings(start_line):
                 </tr>
                 """
 
-    for i in range(len(rows)-1, 0, -1):
+    for i in range(len(rows), 0, -1):
         row = rows[i]
         response_body += "<tr>"
         response_body += "<td>" + str(row[0]) + "</td>"         # entry_id
