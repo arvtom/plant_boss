@@ -71,7 +71,7 @@ def handle_get_settings_request(start_line):
 
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
-    sql = "SELECT ROW FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
+    sql = "SELECT * FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
     cursor.execute(sql)
 
     rows = cursor.fetchall()
