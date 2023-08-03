@@ -123,8 +123,8 @@ def parse_message(string_input):
     is_numeric = []
     is_numeric.append(settings[0].isnumeric())
     is_numeric.append(settings[1].isnumeric())
-    is_numeric.append(settings[2].isnumeric())
-    is_numeric.append(settings[3].isnumeric())
+    is_numeric.append(settings[2].replace(".", "").isnumeric())
+    is_numeric.append(settings[3].replace(".", "").isnumeric())
 
     if (False == is_numeric[0] or 
         False == is_numeric[1] or
