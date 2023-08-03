@@ -6,7 +6,7 @@ import base64
 
 PATH_DATABASE = '/home/pi/github/plant_boss/sw_rpi/plant_boss.db'
 TABLE_NAME_DATA = 'plant_boss_test_3'
-TABLE_NAME_SETTINGS = 'plant_boss_settings_test_3'
+TABLE_NAME_SETTINGS = 'plant_boss_settings_test_4'
 ROWS = 100
 
 # Dispatches HTTP requests to the appropriate handler.
@@ -74,6 +74,8 @@ def handle_get_settings(start_line):
                     <th>timestamp</th>
                     <th>device_id</th>
                     <th>device_mode</th>
+                    <th>threshold_bat_voltage</th>
+                    <th>period_measurement</th>
                 </tr>
                 """
 
@@ -84,6 +86,8 @@ def handle_get_settings(start_line):
         response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
         response_body += "<td>" + str(row[2]) + "</td>"         # device_id
         response_body += "<td>" + str(row[3]) + "</td>"         # device_mode
+        response_body += "<td>" + str(row[4]) + "</td>"         # threshold_bat_voltage
+        response_body += "<td>" + str(row[5]) + "</td>"         # period_measurement
         response_body += "</tr>"
 
     response_body += """

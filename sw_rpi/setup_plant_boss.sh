@@ -30,12 +30,13 @@
 # sw_version INTEGER NOT NULL,
 # timer_or_period INTEGER NOT NULL);
 
-# CREATE TABLE plant_boss_settings_test_3 (
+# CREATE TABLE plant_boss_settings_test_4 (
 # id INTEGER PRIMARY KEY AUTOINCREMENT,
 # timestamp TEXT NOT NULL, 
 # device INTEGER NOT NULL, 
-# mode INTEGER NOT NULL
-# );
+# mode INTEGER NOT NULL,
+# threshold_bat_voltage DECIMAL NOT NULL,
+# period_measurement DECIMAL NOT NULL);
 
 # To delete all rows in table:
 # DELETE FROM plant_boss_settings_test_3;
