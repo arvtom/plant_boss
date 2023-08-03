@@ -75,12 +75,17 @@ def handle_get_settings_request(start_line):
     cursor.execute(sql)
 
     rows = cursor.fetchall()
+    amount_rows = len(rows)
 
-    if (0 == len(rows)):
+    if (0 == amount_rows):
         response_body = "not found"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
 
-    row = rows[0]
+    if (amount_rows > 1):
+        response_body = "found more than one"
+        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
+
+    row = rows
 
     response_body = row[2] + row[3] + row[4] + row[5]
     start_line('200 OK', [('Content-Type', 'text/plain')])
