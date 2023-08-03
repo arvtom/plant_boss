@@ -77,7 +77,7 @@ def handle_get_settings_request(start_line):
     rows = cursor.fetchall()
     amount_rows = len(rows)
 
-    if (0 == amount_rows or ):
+    if (0 == amount_rows):
         response_body = "not found"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
 
