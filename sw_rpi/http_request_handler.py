@@ -71,7 +71,7 @@ def handle_get_settings_request(start_line):
 
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
-    sql = "SELECT FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
+    sql = "SELECT ROW FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
     cursor.execute(sql)
 
     rows = cursor.fetchall()
@@ -79,7 +79,7 @@ def handle_get_settings_request(start_line):
     if (0 == len(rows)):
         response_body = "not found"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
-        
+
     row = rows[0]
 
     response_body = row[2] + row[3] + row[4] + row[5]
