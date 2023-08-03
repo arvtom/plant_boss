@@ -9,23 +9,39 @@ TABLE_NAME_DATA = 'plant_boss_test_3'
 TABLE_NAME_SETTINGS = 'plant_boss_settings_test_4'
 ROWS = 100
 
+device_id_request_settings = 255
+
 # Dispatches HTTP requests to the appropriate handler.
 def application(env, start_line):
+    requested_path = env['PATH_INFO']
+
     if env['REQUEST_METHOD'] == 'POST':
-        # take new database entry
-        return handle_post(env, start_line)
+        # esp32 sending measured data
+        if ("/plant_boss/data" == requested_path):
+            response = handle_post(env, start_line)
 
+        # esp32 request settings for specific device number
+        elif ("/plant_boss/settings_request" == requested_path):
+            response = handle_post_settings_request(env, start_line)
+        
+        return response
+        
     elif env['REQUEST_METHOD'] == 'GET':
-        requested_path = env['PATH_INFO']
-
+        # webpage requesting measured data
         if ("/plant_boss/data" == requested_path):
             response = handle_get_data(start_line)
         
+        # webpage requesting esp32 settings
         elif ("/plant_boss/settings" == requested_path):
             response = handle_get_settings(start_line)
 
+        # webpage requesting plot from measured data
         elif ("/plant_boss/plot" == requested_path):
             response = handle_get_plot(start_line) 
+
+        # esp32 get settings for specific device number
+        elif ("/plant_boss/settings_request" == requested_path):
+            response = handle_get_settings_request(start_line)  
         
         else:
             response = handle_get_error(start_line)
@@ -49,6 +65,25 @@ def handle_get_error(start_line):
     
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
+
+def handle_get_settings_request(start_line):
+    global device_id_request_settings
+
+    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
+    cursor = conn.cursor()                   # get a cursor
+    sql = "SELECT FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
+    cursor.execute(sql)
+
+    rows = cursor.fetchall()
+
+    if (0 == len(rows)):
+        response_body = "not found"
+        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
+        
+    row = rows[0]
+
+    response_body = row[2] + row[3] + row[4] + row[5]
+    start_line('200 OK', [('Content-Type', 'text/plain')])
 
 def handle_get_settings(start_line):
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
@@ -241,6 +276,25 @@ def handle_get_data(start_line):
     conn.close()
     
     start_line('200 OK', [('Content-Type', 'text/html')])
+    return [response_body.encode()]
+
+def handle_post_settings_request(env, start_line): 
+    global device_id_request_settings
+
+    form = get_field_storage(env)
+
+    temporary = form.getvalue('a1')
+
+    if (temporary is not None):
+        device_id_request_settings = temporary
+
+        response_body = "OK\n"
+        start_line('201 OK', [('Content-Type', 'text/plain')])
+
+    else:
+        response_body = "Missing info in POST request.\n"
+        start_line('400 Bad Request', [('Content-Type', 'text/plain')])
+ 
     return [response_body.encode()]
 
 def handle_post(env, start_line):    
