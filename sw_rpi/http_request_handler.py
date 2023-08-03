@@ -89,6 +89,8 @@ def handle_get_settings_request(start_line):
     print(rows)
     print(type(rows[0]))
     print(rows[0])
+    print(type(rows[0][4]))
+    print(rows[0][4])
 
     settings = rows.split(",")
 
