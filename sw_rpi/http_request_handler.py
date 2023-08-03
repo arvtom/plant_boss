@@ -87,9 +87,9 @@ def handle_get_settings_request(start_line):
 
     response_body = str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
         str(rows[0][4]) + ";" + str(rows[0][5])
-
-    print(response_body)
     start_line('200 OK', [('Content-Type', 'text/plain')])
+
+    return [response_body.encode()]
 
 def handle_get_settings(start_line):
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
