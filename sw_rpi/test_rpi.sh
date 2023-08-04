@@ -6,6 +6,7 @@ source settings_test_rpi.sh &> test_rpi.log
 # Call scp to copy test scripts to rpi. Use sshpass to provide pass.
 sshpass -p $pw_rpi scp -r /home/arvydas/github/plant_boss/sw_rpi $path_scp &> test_rpi.log
 
-sshpass -p $pw_rpi ssh path_ssh "bash -s" /home/pi/github/plant_boss/sw_rpi/plant_boss.sh &> test_rpi.log
+# sshpass -p $pw_rpi ssh $path_ssh "bash -s" < pi@192.168.8.139:/home/arvydas/github/plant_boss/sw_rpi/plant_boss.sh &> test_rpi.log
+echo "bash /home/pi/github/plant_boss/sw_rpi/plant_boss.sh" | sshpass -p $pw_rpi ssh pi@192.168.8.139
 
 echo "test_rpi.sh done"
