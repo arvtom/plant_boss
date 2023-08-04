@@ -4,3 +4,4 @@ sw_esp32/plant_boss/wrappers/settings_wifi.h
 sw_rpi/settings_telegram_bot.py
 sw_rpi/__pycache__
 sw_rpi/settings_test_rpi.sh
+sw_rpi/test_rpi.log
