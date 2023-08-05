@@ -7,6 +7,6 @@ source settings_test_rpi.sh
 sshpass -p $pw_rpi scp -r /home/arvydas/github/plant_boss/sw_rpi $path_scp
 
 # Call plant_boss script to start all needed processes on rpi
-echo "cd /home/pi/github/plant_boss/sw_rpi; bash plant_boss.sh &> plant_boss.log" | sshpass -p $pw_rpi ssh pi@192.168.8.139
+echo "cd /home/pi/github/plant_boss/sw_rpi; bash plant_boss.sh &> log/plant_boss.log" | sshpass -p $pw_rpi ssh pi@192.168.8.139
 
 echo "test_rpi.sh done"

@@ -16,9 +16,9 @@ killall -v python
 sleep 5
 
 # Start uwsgi as a background process
-nohup bash -c "uwsgi --socket 127.0.0.1:8001 --wsgi-file http_request_handler.py" &> uwsgi.log &
+nohup bash -c "uwsgi --socket 127.0.0.1:8001 --wsgi-file http_request_handler.py" &> log/uwsgi.log &
 
 # Start telegram_bot.py as a background process
-nohup bash -c "python telegram_bot.py" &> telegram_bot.log &
+nohup bash -c "python telegram_bot.py" &> log/telegram_bot.log &
 
 echo "plant_boss.sh done"
