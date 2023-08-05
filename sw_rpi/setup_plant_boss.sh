@@ -52,3 +52,18 @@
 
 #Copy nginx configuration to add more locations (paths) in server
 #cp nginx/default /etc/nginx/sites-available
+
+# Set up autostart on boot
+# cp /home/pi/github/plant_boss/sw_rpi/systemd/plant_boss.process /lib/systemd/system/plant_boss.process
+# sudo systemctl daemon-reload
+# sudo systemctl enable plant_boss.service
+
+# Check systemd process result:
+# sudo systemctl status plant_boss.service
+
+# Start systemd process manually:
+# sudo systemctl start plant_boss.service
+
+# Display running processes
+# ps aux
+
