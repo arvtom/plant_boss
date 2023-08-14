@@ -4,8 +4,10 @@ After=multi-user.target
 
 [Service]
 User=pi
-Type=simple
-ExecStart=/bin/bash /home/pi/github/plant_boss/sw_rpi/plant_boss.sh &> /home/p>
+Type=forking
+# ExecStart=/bin/bash /home/pi/github/plant_boss/sw_rpi/plant_boss.sh &> /home>
+# ExecStart=/home/pi/.local/bin/uwsgi --socket 127.0.0.1:8001 --wsgi-file http>
+ExecStart=/bin/bash /home/pi/github/plant_boss/sw_rpi/plant_boss.sh
 
 [Install]
 WantedBy=multi-user.target
