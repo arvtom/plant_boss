@@ -1,0 +1,11 @@
+[Unit]
+Description=plant_boss_telegram_bot
+After=multi-user.target
+
+[Service]
+User=pi
+Type=forking
+ExecStart=/bin/bash /home/pi/github/plant_boss/sw_rpi/plant_boss_telegram_bot.sh
+
+[Install]
+WantedBy=multi-user.target

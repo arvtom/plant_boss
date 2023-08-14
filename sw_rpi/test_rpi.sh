@@ -1,12 +1,12 @@
 # The purpose of this script is to transfer plant_boss/sw_rpi folder from development machine to rpi and start plant_boss software automatically.
 
-# Get pw_rpi
+# Get pw_rpi, path_scp and path_ssh
 source settings_test_rpi.sh
 
-echo $pw_rpi
+# Call scp to copy test scripts to rpi. Use sshpass to provide pass.
+sshpass -p $pw_rpi scp -r /home/arvydas/github/plant_boss/sw_rpi $path_scp
 
-#scp -r /home/arvydas/github/plant_boss/sw_rpi pi@192.168.8.139:/home/pi/github/plant_boss/sw_rpi
+# Call plant_boss script to start all needed processes on rpi
+echo "bash /home/pi/github/plant_boss/sw_rpi/plant_boss.sh" | sshpass -p $pw_rpi ssh pi@192.168.8.139
 
-#ssh pi@192.168.8.139 "bash -s" /home/pi/github/plant_boss/sw_rpi/plant_boss.sh
-
-#echo "done"
+echo "test_rpi.sh done"
