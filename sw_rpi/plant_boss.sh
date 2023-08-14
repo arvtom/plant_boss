@@ -3,15 +3,13 @@
 
 cd /home/pi/github/plant_boss/sw_rpi
 
-ls &> log/plant_boss.log
-
-sudo cp nginx/default /etc/nginx/sites-available/default &> log/plant_boss.log
-
-sudo systemctl stop nginx &> log/plant_boss.log
-sudo systemctl start nginx &> log/plant_boss.log
+# Nginx features are not used at the moment
+# sudo cp nginx/default /etc/nginx/sites-available/default &> log/plant_boss.log
+# sudo systemctl stop nginx &> log/plant_boss.log
+# sudo systemctl start nginx &> log/plant_boss.log
 
 # Stop existing uwsgi process
-killall -v uwsgi
+killall -v uwsgi &> log/plant_boss.log
 
 # Stop existing process of telegram_bot.py
 killall -v python &> log/plant_boss.log
@@ -19,10 +17,15 @@ killall -v python &> log/plant_boss.log
 # Wait 5s until previous uwsgi process releases port and python closes.
 sleep 5 &> log/plant_boss.log
 
-# Start uwsgi as a background process
-/home/pi/.local/bin/uwsgi --socket 127.0.0.1:8001 --wsgi-file http_request_handler.py &> log/uwsgi.log &
+# Copy systemd service scripts
+sudo cp systemd/plant_boss_uwsgi.service /lib/systemd/system/plant_boss_uwsgi.service &> log/plant_boss.log
+sudo cp systemd/plant_boss_telegram_bot.service /lib/systemd/system/plant_boss_telegram_bot.service &> log/plant_boss.log
 
-# Start telegram_bot.py as a background process
-python telegram_bot.py &> log/telegram_bot.log &
+# Start systemd services
+sudo systemctl daemon-reload &> log/plant_boss.log
+sudo systemctl enable plant_boss_uwsgi.service &> log/plant_boss.log
+sudo systemctl enable plant_boss_telegram_bot.service &> log/plant_boss.log
+sudo systemctl start plant_boss_uwsgi.service &> log/plant_boss.log
+sudo systemctl start plant_boss_telegram_bot.service &> log/plant_boss.log
 
 echo "plant_boss.sh done" &> log/plant_boss.log
