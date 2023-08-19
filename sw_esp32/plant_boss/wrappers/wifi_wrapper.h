@@ -58,6 +58,7 @@ bool wifi_handle_send_data(void);
 bool wifi_handle_request_settings(void);
 
 int8_t wifi_get_rssi_value(void);
+void wifi_get_device_settings(char *settings, uint8_t *length_settings);
 /*------------------------------Private function prototypes------------------------------*/
 bool wifi_handle_http_post(char *buffer, uint16_t length);
 void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data);

@@ -131,7 +131,7 @@ notification_to_app_t;
 typedef enum
 {
     NOTIFICATION_TO_NETWORK_REQ_INIT                    = 0x00000001,     /* bit 0 */
-//     NOTIFICATION_TO_ = 0x00000002,     /* bit 1 */
+    NOTIFICATION_TO_NETWORK_REQ_SETTINGS                = 0x00000002,     /* bit 1 */
 //     NOTIFICATION_TO_ = 0x00000004,     /* bit 2 */
 //     NOTIFICATION_TO_ = 0x00000008,     /* bit 3 */
 //     NOTIFICATION_TO_ = 0x00000010,     /* bit 4 */

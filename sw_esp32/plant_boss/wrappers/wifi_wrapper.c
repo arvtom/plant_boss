@@ -124,8 +124,6 @@ bool wifi_handle_request_settings(void)
             printf("err, HTTP_EVENT_ON_DATA: %.*s\n", length_response, (char *)response);
         }
 
-        printf("settings for this device are: %.*s\n", length_response, (char *)response);
-
         wifi_ap_record_t ap_info;
         if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
         {
@@ -143,6 +141,15 @@ bool wifi_handle_request_settings(void)
 int8_t wifi_get_rssi_value(void)
 {
     return rssi_wifi;
+}
+
+void wifi_get_device_settings(char *settings, uint8_t *length_settings)
+{
+    if (length_response > 0)
+    {
+        memcpy(settings, response, length_response);
+        *length_settings = (uint8_t)length_response;
+    }
 }
 
 /*------------------------------Private functions------------------------------*/

@@ -11,6 +11,8 @@ char buf_rx_queue_wifi[150];
 
 uint32_t notification_network = 0u;
 
+char buf_tx_queue_app[20];
+
 extern QueueHandle_t queue_app_to_wifi;
 extern QueueHandle_t queue_wifi_to_app;
 
@@ -70,16 +72,36 @@ bool thread_network_init(void)
 
 bool thread_network_handle(void)
 {
-    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), portMAX_DELAY))
+    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_SETTINGS, 0u, &notification_network, 1u);
+    if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 1u)
     {
-        printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
-
-        if (true != wifi_handle_send_data())
+        if (true != wifi_handle_request_settings())
         {
             return false;
         }
 
-        if (true != wifi_handle_request_settings())
+        char settings[20];
+        uint8_t length_settings;
+
+        wifi_get_device_settings((char *)settings, &length_settings);
+
+        if (length_settings <= 3)
+        {
+            return false;
+        }
+
+        length_settings -= 3;
+
+        memcpy(&buf_tx_queue_app, &settings[3], length_settings);
+
+        xQueueSend(queue_wifi_to_app, (void*)buf_tx_queue_app, (TickType_t)0);
+    }
+
+    if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 1u))
+    {
+        printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
+
+        if (true != wifi_handle_send_data())
         {
             return false;
         }

@@ -13,6 +13,7 @@ uint32_t err_thread_app = 0u;
 uint16_t length_buf_tx_queue_wifi = 0u;
 char buf_tx_queue_wifi[150];
 uint8_t buf_rx_queue_input[16];
+char buf_rx_queue_wifi_to_app[20];
 
 uint32_t notification_app = 0u;
 
@@ -123,6 +124,12 @@ bool thread_app_init(void)
 
 bool thread_app_handle(void)
 {
+    /* Wait for data to arrive from thread_network */
+    if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1))
+    {
+        printf("thread_app: settings for this device are: %.*s\n", 20, (char *)buf_rx_queue_wifi_to_app);
+    }
+    
     /* Request data from thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, eSetBits))
     {
@@ -130,7 +137,7 @@ bool thread_app_handle(void)
     }
 
     /* Wait for data to arrive from thread_input */
-    if (xQueueReceive(queue_input_to_app, &(buf_rx_queue_input), portMAX_DELAY))
+    if (xQueueReceive(queue_input_to_app, &(buf_rx_queue_input), 1))
     {
         float light_input;
         float temperature_input;
@@ -196,7 +203,7 @@ bool thread_app_handle(void)
         return false;
     }
 
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, 1);
     if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
     {
         return false;
