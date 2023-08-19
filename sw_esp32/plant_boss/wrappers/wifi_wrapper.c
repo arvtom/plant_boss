@@ -35,7 +35,7 @@ bool wifi_init(void)
         printf("err wifi_connection\n");
     }
 
-    config_post.url = "http://192.168.8.139:9999";
+    config_post.url = "http://192.168.8.139/plant_boss/data";
     config_post.method = HTTP_METHOD_POST;
     config_post.cert_pem = NULL;
     config_post.event_handler = client_event_post_handler;
