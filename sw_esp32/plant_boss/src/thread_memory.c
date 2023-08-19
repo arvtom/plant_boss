@@ -35,11 +35,13 @@ bool thread_memory_init(void)
 {
     printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
-    xTaskNotifyWait(NOTIFICATION_TO_MEMORY_REQ_INIT, 0u, &notification_memory, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_memory, portMAX_DELAY);
     if ((notification_memory & NOTIFICATION_TO_MEMORY_REQ_INIT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_MEMORY_REQ_INIT);
 
     if (true != nvm_init())
     {

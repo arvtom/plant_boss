@@ -41,11 +41,13 @@ bool thread_network_init(void)
 {
     printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
 
-    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_INIT, 0u, &notification_network, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_network, portMAX_DELAY);
     if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_NETWORK_REQ_INIT);
 
     if (true != wifi_init())
     {
@@ -72,30 +74,36 @@ bool thread_network_init(void)
 
 bool thread_network_handle(void)
 {
-    xTaskNotifyWait(NOTIFICATION_TO_NETWORK_REQ_SETTINGS, 0u, &notification_network, 1u);
-    if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 1u)
+    xTaskNotifyWait(0u, 0u, &notification_network, 1u);
+    if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 0u)
     {
-        if (true != wifi_handle_request_settings())
-        {
-            return false;
-        }
-
-        char settings[20];
-        uint8_t length_settings;
-
-        wifi_get_device_settings((char *)settings, &length_settings);
-
-        if (length_settings <= 3)
-        {
-            return false;
-        }
-
-        length_settings -= 3;
-
-        memcpy(&buf_tx_queue_app, &settings[3], length_settings);
-
-        xQueueSend(queue_wifi_to_app, (void*)buf_tx_queue_app, (TickType_t)0);
+        return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_NETWORK_REQ_INIT);
+
+    if (true != wifi_handle_request_settings())
+    {
+        return false;
+    }
+
+    char settings[20];
+    uint8_t length_settings;
+
+    wifi_get_device_settings((char *)settings, &length_settings);
+
+    if (length_settings <= 3)
+    {
+        return false;
+    }
+
+    length_settings -= 3;
+
+    memcpy(&buf_tx_queue_app, &settings[3], length_settings);
+
+    xQueueSend(queue_wifi_to_app, (void*)buf_tx_queue_app, (TickType_t)0);
+
+    printf("thread_network handle ok\n");
 
     if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 1u))
     {
@@ -105,11 +113,11 @@ bool thread_network_handle(void)
         {
             return false;
         }
+
+        printf("thread_network handle ok\n");
     }
 
     /* TODO: Check if there was request to change mode from webpage. */
-
-    printf("thread_network handle ok\n");
     
     vTaskDelay(DELAY_HANDLE_THREAD_NETWORK);
 

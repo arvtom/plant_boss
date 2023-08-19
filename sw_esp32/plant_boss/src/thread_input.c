@@ -40,11 +40,13 @@ bool thread_input_init(void)
 {
     printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
-    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_INIT, 0u, &notification_input, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_input, portMAX_DELAY);
     if ((notification_input & NOTIFICATION_TO_INPUT_REQ_INIT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_INPUT_REQ_INIT);
 
     if (true != adc_init())
     {
@@ -95,11 +97,13 @@ bool thread_input_init(void)
 
 bool thread_input_handle(void)
 {
-    xTaskNotifyWait(NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, 0u, &notification_input, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_input, portMAX_DELAY);
     if ((notification_input & NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS);
     
     float light_bh1750fvi;
     float temperature_lm20bim7;

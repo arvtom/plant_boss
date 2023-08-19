@@ -41,11 +41,13 @@ bool thread_output_init(void)
 {
     printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
 
-    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_INIT, 0u, &notification_output, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_output, portMAX_DELAY);
     if ((notification_output & NOTIFICATION_TO_OUTPUT_REQ_INIT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_OUTPUT_REQ_INIT);
 
     if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
@@ -147,11 +149,13 @@ bool thread_output_handle(void)
 {
     /* TODO: check if it is time to turn on/off power for sensors */
 
-    xTaskNotifyWait(NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, 0u, &notification_output, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_output, portMAX_DELAY);
     if ((notification_output & NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED);
 
     counter++;
 

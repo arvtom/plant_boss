@@ -28,6 +28,7 @@ extern QueueHandle_t queue_memory_to_app;
 extern QueueHandle_t queue_app_to_wifi;
 extern QueueHandle_t queue_app_to_memory;
 
+extern TaskHandle_t handle_app;
 extern TaskHandle_t handle_input;
 extern TaskHandle_t handle_output;
 extern TaskHandle_t handle_network;
@@ -67,11 +68,13 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_memory is init. */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_MEMORY, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_MEMORY);
 
     /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
@@ -80,11 +83,13 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_network is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_NETWORK, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
     {
         return false;
     }
+    
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_NETWORK);
 
     /* Init thread_output */
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
@@ -93,11 +98,13 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_output is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_OUTPUT, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_OUTPUT);
 
     /* Init thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
@@ -106,11 +113,13 @@ bool thread_app_init(void)
     }
 
     /* Wait until thread_input is init */
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_INIT_INPUT, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT);
 
     /* TODO: read mode from nvm */
 
@@ -124,8 +133,14 @@ bool thread_app_init(void)
 
 bool thread_app_handle(void)
 {
+    /* Request settings from thread_network */
+    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS, eSetBits))
+    {
+        return false;
+    }
+
     /* Wait for data to arrive from thread_network */
-    if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1))
+    if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1u))
     {
         printf("thread_app: settings for this device are: %.*s\n", 20, (char *)buf_rx_queue_wifi_to_app);
     }
@@ -203,11 +218,13 @@ bool thread_app_handle(void)
         return false;
     }
 
-    xTaskNotifyWait(NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED, 0u, &notification_app, 1);
+    xTaskNotifyWait(0u, 0u, &notification_app, 1);
     if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
     {
         return false;
     }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED);
 
     printf("thread_app handle ok\n");
 
