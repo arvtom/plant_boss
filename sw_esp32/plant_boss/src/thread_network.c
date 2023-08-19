@@ -74,7 +74,12 @@ bool thread_network_handle(void)
     {
         printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
 
-        if (true != wifi_handle())
+        if (true != wifi_handle_send_data())
+        {
+            return false;
+        }
+
+        if (true != wifi_handle_request_settings())
         {
             return false;
         }

@@ -24,6 +24,10 @@ int8_t rssi_wifi = 0;
 bool b_ready_wifi = false;
 bool b_err_database = false;
 
+char response[30];
+bool b_http_response = false;
+int length_response = 0u;
+
 esp_http_client_config_t config_post;
 
 /*------------------------------Public functions------------------------------*/
@@ -35,22 +39,92 @@ bool wifi_init(void)
         printf("err wifi_connection\n");
     }
 
-    config_post.url = "http://192.168.8.139/plant_boss/data";
-    config_post.method = HTTP_METHOD_POST;
     config_post.cert_pem = NULL;
     config_post.event_handler = client_event_post_handler;
+    config_post.method = HTTP_METHOD_POST;
     
     return true;
 }
 
-bool wifi_handle(void)
+bool wifi_handle_send_data(void)
 {
     if (true == b_ready_wifi && false == b_err_database)
     {
-        if (true != wifi_handle_http_post())
+        config_post.url = "http://192.168.8.139/plant_boss/data";
+
+        if (true != wifi_handle_http_post((char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi))
         {
             return false;
         }
+
+        /* Wait until webpage responds */
+        while(false == b_http_response)
+        {
+
+        }
+
+        b_http_response = false;
+
+        /* Check if reponse is string OK */
+        if (0x4F != response[0] && 0x4B != response[1])
+        {
+            b_err_database = true;
+
+            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", length_response, (char *)response);
+        }
+
+        wifi_ap_record_t ap_info;
+        if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
+        {
+            printf("error checking wifi info\n");
+            return false;
+        }
+
+        rssi_wifi = ap_info.rssi;
+    }
+
+
+    return true;
+}
+
+bool wifi_handle_request_settings(void)
+{
+    if (true == b_ready_wifi && false == b_err_database)
+    {
+        char temporary_buffer[6];
+
+        /* post data packet to request device 0 settings */
+        int ret = snprintf(temporary_buffer, 6, "a1=%d", 0u);
+
+        if (ret < 0 || ret > 6)
+        {
+            return false;
+        }
+
+        config_post.url = "http://192.168.8.139/plant_boss/settings_request";
+
+        if (true != wifi_handle_http_post((char *)temporary_buffer, ret))
+        {
+            return false;
+        }
+
+        /* Wait until webpage responds */
+        while(false == b_http_response)
+        {
+
+        }
+
+        b_http_response = false;
+
+        /* Check if reponse is string OK */
+        if (0x4F != response[0] && 0x4B != response[1])
+        {
+            b_err_database = true;
+
+            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", length_response, (char *)response);
+        }
+
+        printf("settings for this device are: %.*s\n", length_response, (char *)response);
 
         wifi_ap_record_t ap_info;
         if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
@@ -72,11 +146,11 @@ int8_t wifi_get_rssi_value(void)
 }
 
 /*------------------------------Private functions------------------------------*/
-bool wifi_handle_http_post(void)
+bool wifi_handle_http_post(char *buffer, uint16_t length)
 {
     esp_http_client_handle_t client = esp_http_client_init(&config_post);
 
-    err_http_drv = esp_http_client_set_post_field(client, (char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi);
+    err_http_drv = esp_http_client_set_post_field(client, buffer, length);
     if (ESP_OK != err_http_drv)
     {
         return false;
@@ -215,15 +289,11 @@ esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
     switch (evt->event_id)
     {
     case HTTP_EVENT_ON_DATA:
-        char response[30];
         memcpy(&response, evt->data, evt->data_len);
+        length_response = evt->data_len;
 
-        if (0x4F != response[0] && 0x4B != response[1])
-        {
-            b_err_database = true;
+        b_http_response = true;
 
-            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
-        }
         break;
 
     default:
