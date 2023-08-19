@@ -280,7 +280,7 @@ def handle_post_settings_request(env, start_line):
 
     response_body = "OK\n"
     response_body += str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
-        str(rows[0][4]) + ";" + str(rows[0][5])
+        str(rows[0][4]) + ";" + str(rows[0][5]) + ";"
 
     start_line('200 OK', [('Content-Type', 'text/plain')])
 
