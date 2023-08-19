@@ -9,8 +9,6 @@ TABLE_NAME_DATA = 'plant_boss_test_3'
 TABLE_NAME_SETTINGS = 'plant_boss_settings_test_4'
 ROWS = 100
 
-device_id_request_settings = 0
-
 # Dispatches HTTP requests to the appropriate handler.
 def application(env, start_line):
     requested_path = env['PATH_INFO']
@@ -39,10 +37,6 @@ def application(env, start_line):
         elif ("/plant_boss/plot" == requested_path):
             response = handle_get_plot(start_line) 
 
-        # esp32 get settings for specific device number
-        elif ("/plant_boss/settings_request" == requested_path):
-            response = handle_get_settings_request(start_line)  
-        
         else:
             response = handle_get_error(start_line)
 
@@ -64,31 +58,6 @@ def handle_get_error(start_line):
         </html>"""
     
     start_line('200 OK', [('Content-Type', 'text/html')])
-    return [response_body.encode()]
-
-def handle_get_settings_request(start_line):
-    global device_id_request_settings
-
-    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
-    cursor = conn.cursor()                   # get a cursor
-    sql = "SELECT * FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id_request_settings) + ";"
-    cursor.execute(sql)
-
-    rows = cursor.fetchall()
-    amount_rows = len(rows)
-
-    if (0 == amount_rows):
-        response_body = "not found"
-        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
-
-    if (amount_rows > 1):
-        response_body = "found more than one"
-        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
-
-    response_body = str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
-        str(rows[0][4]) + ";" + str(rows[0][5])
-    start_line('200 OK', [('Content-Type', 'text/plain')])
-
     return [response_body.encode()]
 
 def handle_get_settings(start_line):
@@ -285,22 +254,36 @@ def handle_get_data(start_line):
     return [response_body.encode()]
 
 def handle_post_settings_request(env, start_line): 
-    global device_id_request_settings
-
     form = get_field_storage(env)
 
-    temporary = form.getvalue('a1')
+    device_id = form.getvalue('a1')
 
-    if (temporary is not None):
-        device_id_request_settings = temporary
-
-        response_body = "OK\n"
-        start_line('201 OK', [('Content-Type', 'text/plain')])
-
-    else:
+    if (device_id is None):
         response_body = "Missing info in POST request.\n"
         start_line('400 Bad Request', [('Content-Type', 'text/plain')])
- 
+
+    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
+    cursor = conn.cursor()                   # get a cursor
+    sql = "SELECT * FROM " + TABLE_NAME_SETTINGS + " WHERE device=" + str(device_id) + ";"
+    cursor.execute(sql)
+
+    rows = cursor.fetchall()
+    amount_rows = len(rows)
+
+    if (0 == amount_rows):
+        response_body = "not found"
+        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
+
+    if (amount_rows > 1):
+        response_body = "found more than one"
+        start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
+
+    response_body = "OK\n"
+    response_body += str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
+        str(rows[0][4]) + ";" + str(rows[0][5])
+
+    start_line('200 OK', [('Content-Type', 'text/plain')])
+
     return [response_body.encode()]
 
 def handle_post(env, start_line):    
