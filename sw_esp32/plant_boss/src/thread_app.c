@@ -16,6 +16,8 @@ uint8_t buf_rx_queue_input[16];
 char buf_rx_queue_wifi_to_app[20];
 uint8_t length_buf_rx_queue_wifi_to_app;
 
+uint8_t buf_tx_queue_memory[10];
+
 uint32_t notification_app = 0u;
 
 extern uint32_t err_thread_input;
@@ -38,6 +40,9 @@ extern TaskHandle_t handle_memory;
 uint32_t delay_handle_thread_app = DELAY_HANDLE_THREAD_APP;
 extern float threshold_voltage_battery;
 uint8_t device_mode = 0u;
+uint8_t device_id = 1u;
+
+bool b_settings_updated = false;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
@@ -145,7 +150,7 @@ bool thread_app_handle(void)
     }
 
     /* Wait for data to arrive from thread_network */
-    if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1u))
+    if (xQueueReceive(queue_wifi_to_app, &buf_rx_queue_wifi_to_app, 1u))
     {
         if (true != thread_app_handle_settings())
         {
@@ -197,6 +202,8 @@ bool thread_app_handle(void)
 
 bool thread_app_handle_settings(void)
 {
+    b_settings_updated = false;
+
     /* find length of data packet */
     uint8_t index_character = 0u;
     uint8_t index_delimiter = 0u;
@@ -235,6 +242,11 @@ bool thread_app_handle_settings(void)
                     return false;
                 }
 
+                if (device_mode != temp_mode)
+                {
+                    b_settings_updated = true;
+                }
+
                 device_mode = temp_mode;
             break;
 
@@ -243,6 +255,11 @@ bool thread_app_handle_settings(void)
                 if (temp_threshold < 3.0 || temp_threshold > 4.0)
                 {
                     return false;
+                }
+
+                if (threshold_voltage_battery != temp_threshold)
+                {
+                    b_settings_updated = true;
                 }
 
                 threshold_voltage_battery = temp_threshold;
@@ -255,6 +272,11 @@ bool thread_app_handle_settings(void)
                     return false;
                 }
 
+                if (delay_handle_thread_app != temp_delay)
+                {
+                    b_settings_updated = true;
+                }
+
                 delay_handle_thread_app = temp_delay;
             break;
 
@@ -264,6 +286,17 @@ bool thread_app_handle_settings(void)
 
         token = strtok(NULL, ";");
         index ++;
+    }
+
+    if (true == b_settings_updated)
+    {
+        /* save new settings in nvm */
+        memcpy(&buf_tx_queue_memory[0], &device_id, 1);
+        memcpy(&buf_tx_queue_memory[1], &device_mode, 1);
+        memcpy(&buf_tx_queue_memory[2], &threshold_voltage_battery, 4);
+        memcpy(&buf_tx_queue_memory[6], &delay_handle_thread_app, 4);
+
+        xQueueSend(queue_app_to_memory, (void*)buf_tx_queue_memory, (TickType_t)0);
     }
 
     return true;
@@ -281,9 +314,7 @@ bool thread_app_handle_data_packet(void)
     memcpy(&humidity_input, &buf_rx_queue_input[8], 4);
     memcpy(&voltage_battery_input, &buf_rx_queue_input[12], 4);
 
-    uint8_t device_id = 1u;
     int8_t rssi_wifi = wifi_get_rssi_value();
-    uint8_t mode = 0u;
     uint8_t bat_low_flag = 0u;
     uint32_t sw_version = 20230816;
     uint32_t timer = (uint32_t)xTaskGetTickCount();
@@ -311,7 +342,7 @@ bool thread_app_handle_data_packet(void)
     int ret = snprintf(buf_tx_queue_wifi, 150, 
         "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%x&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
         device_id, humidity_input, light_input, temperature_input, voltage_battery_input,
-        rssi_wifi, mode, bat_low_flag, 
+        rssi_wifi, device_mode, bat_low_flag, 
         (unsigned int)err_thread_app, (unsigned int)err_thread_input, (unsigned int)err_thread_output, 
         (unsigned int)err_thread_network, (unsigned int)err_thread_memory, (unsigned int)sw_version, (unsigned int)timer);
 

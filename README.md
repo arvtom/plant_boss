@@ -42,6 +42,7 @@ Telegram bot is used to:
 		* Possibility to change esp32 battery critical voltage threshold.
 		* Consider removing nginx
 * Embedded software ESP32:
+	* Add possibility to change device id using telegram.
 	* Add battery critical voltage detection, after which esp32 would go to sleep infinitely.
 	* Error management for every object using individual bits.
 	* Pointers to improve freeRTOS queue efficiency.

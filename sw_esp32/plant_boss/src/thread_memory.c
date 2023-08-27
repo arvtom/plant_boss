@@ -15,6 +15,8 @@ extern QueueHandle_t queue_memory_to_app;
 extern TaskHandle_t handle_app;
 extern TaskHandle_t handle_memory;
 
+uint8_t buf_rx_queue_app_to_memory[10];
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
 {
@@ -66,9 +68,21 @@ bool thread_memory_init(void)
 
 bool thread_memory_handle(void)
 {
-    /* TODO: check if there was request to read/write to nvm */
-
-    // printf("thread_memory handle ok\n");
+    if (xQueueReceive(queue_app_to_memory, &buf_rx_queue_app_to_memory, 1u))
+    {
+        // printf("thread_memory: %x,%x,%x%x%x%x,%x%x%x%x\n",
+        //     buf_rx_queue_app_to_memory[0], buf_rx_queue_app_to_memory[1],
+        //     buf_rx_queue_app_to_memory[2], buf_rx_queue_app_to_memory[3],
+        //     buf_rx_queue_app_to_memory[4], buf_rx_queue_app_to_memory[5],
+        //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
+        //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
+        printf("thread_memory id %x\n", buf_rx_queue_app_to_memory[0]);
+        printf("thread_memory mode %x\n", buf_rx_queue_app_to_memory[1]);
+        // printf("thread_memory threshold %x %x %x %x\n", 
+        //     buf_rx_queue_app_to_memory[2], buf_rx_queue_app_to_memory[3],
+        //     buf_rx_queue_app_to_memory[4], buf_rx_queue_app_to_memory[5]);
+        // printf("thread_memory period %x\n", buf_rx_queue_app_to_memory[1]);
+    }
     
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
 
