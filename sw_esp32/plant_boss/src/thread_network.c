@@ -17,6 +17,7 @@ extern QueueHandle_t queue_app_to_wifi;
 extern QueueHandle_t queue_wifi_to_app;
 
 extern TaskHandle_t handle_app;
+extern TaskHandle_t handle_network;
 
 extern bool b_wifi_connected;
 
@@ -47,7 +48,7 @@ bool thread_network_init(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_NETWORK_REQ_INIT);
+    ulTaskNotifyValueClear(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT);
 
     if (true != wifi_init())
     {
@@ -75,12 +76,12 @@ bool thread_network_init(void)
 bool thread_network_handle(void)
 {
     xTaskNotifyWait(0u, 0u, &notification_network, 1u);
-    if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 0u)
+    if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_SETTINGS) == 0u)
     {
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_NETWORK_REQ_INIT);
+    ulTaskNotifyValueClear(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS);
 
     if (true != wifi_handle_request_settings())
     {

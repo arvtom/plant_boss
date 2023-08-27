@@ -13,6 +13,7 @@ extern QueueHandle_t queue_app_to_memory;
 extern QueueHandle_t queue_memory_to_app;
 
 extern TaskHandle_t handle_app;
+extern TaskHandle_t handle_memory;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
@@ -41,7 +42,7 @@ bool thread_memory_init(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_MEMORY_REQ_INIT);
+    ulTaskNotifyValueClear(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT);
 
     if (true != nvm_init())
     {

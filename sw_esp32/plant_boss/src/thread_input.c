@@ -18,6 +18,7 @@ uint32_t notification_input = 0u;
 extern QueueHandle_t queue_input_to_app;
 
 extern TaskHandle_t handle_app;
+extern TaskHandle_t handle_input;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
@@ -46,7 +47,7 @@ bool thread_input_init(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_INPUT_REQ_INIT);
+    ulTaskNotifyValueClear(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT);
 
     if (true != adc_init())
     {
@@ -103,7 +104,7 @@ bool thread_input_handle(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS);
+    ulTaskNotifyValueClear(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS);
     
     float light_bh1750fvi;
     float temperature_lm20bim7;

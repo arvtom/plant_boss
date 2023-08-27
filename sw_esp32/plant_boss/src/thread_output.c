@@ -18,6 +18,7 @@ thread_output_t s_thread_output;
 uint32_t notification_output = 0u;
 
 extern TaskHandle_t handle_app;
+extern TaskHandle_t handle_output;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_output(void *arg)
@@ -47,7 +48,7 @@ bool thread_output_init(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_OUTPUT_REQ_INIT);
+    ulTaskNotifyValueClear(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT);
 
     if (true != gpio_init_pin(27u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
@@ -155,7 +156,7 @@ bool thread_output_handle(void)
         return false;
     }
 
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED);
+    ulTaskNotifyValueClear(handle_output, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED);
 
     counter++;
 
