@@ -14,6 +14,7 @@ uint16_t length_buf_tx_queue_wifi = 0u;
 char buf_tx_queue_wifi[150];
 uint8_t buf_rx_queue_input[16];
 char buf_rx_queue_wifi_to_app[20];
+uint8_t length_buf_rx_queue_wifi_to_app;
 
 uint32_t notification_app = 0u;
 
@@ -146,54 +147,81 @@ bool thread_app_handle(void)
     /* Wait for data to arrive from thread_network */
     if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1u))
     {
-        printf("thread_app: settings for this device are: %.*s\n", 20, (char *)buf_rx_queue_wifi_to_app);
+        /* find length of data packet */
+        uint8_t index_character = 0u;
+        uint8_t index_delimiter = 0u;
 
-        // // Extract the first token
-        // char * token = strtok(buf_rx_queue_wifi_to_app, ";");
-        // // loop through the string to extract all other tokens
-        // uint8_t index = 0;
-        // while (NULL != token) 
-        // {
-        //     switch (index)
-        //     {
-        //         case 1u:
-        //             uint8_t temp_mode = *token;
-        //             if (temp_mode != 0u && temp_mode != 1u)
-        //             {
-        //                 return false;
-        //             }
+        while (index_character < 20u)
+        {
+            if (';' == buf_rx_queue_wifi_to_app[index_character])
+            {
+                index_delimiter ++;
 
-        //             device_mode = temp_mode;
-        //         break;
+                if (index_delimiter >= 4u)
+                {
+                    break;
+                }
+            }
 
-        //         case 2u:
-        //             float temp_threshold = strtof(token, NULL);
-        //             if (temp_threshold < 3.0 || temp_threshold > 4.0)
-        //             {
-        //                 return false;
-        //             }
+            index_character ++;
+        }
 
-        //             threshold_voltage_battery = temp_threshold;
-        //         break;
+        length_buf_rx_queue_wifi_to_app = index_character + 1;
 
-        //         case 3u:
-        //             float temp_delay = strtof(token, NULL);
-        //             if (temp_delay < 1.0 || temp_delay > 86400.0)
-        //             {
-        //                 return false;
-        //             }
+        printf("thread_app: settings for this device are: %.*s\n", length_buf_rx_queue_wifi_to_app, (char *)buf_rx_queue_wifi_to_app);
 
-        //             delay_handle_thread_app = temp_delay;
-        //         break;
+        // Extract the first token
+        char *token = strtok(buf_rx_queue_wifi_to_app, ";");
+        // loop through the string to extract all other tokens
+        uint8_t index = 0u;
+        while (NULL != token) 
+        {
+            switch (index)
+            {
+                case 1u:
+                    uint8_t temp_mode = *token;
+                    printf("temp_mode %d", temp_mode);
 
-        //         default:
-        //             //do nothing
-        //     }
+                    if (temp_mode != 0u && temp_mode != 1u)
+                    {
+                        return false;
+                    }
+
+                    // device_mode = temp_mode;
+                break;
+
+                case 2u:
+                    float temp_threshold = strtof(token, NULL);
+                    printf("temp_threshold %.1f", temp_threshold);
+
+                    if (temp_threshold < 3.0 || temp_threshold > 4.0)
+                    {
+                        return false;
+                    }
+
+                    // threshold_voltage_battery = temp_threshold;
+                break;
+
+                case 3u:
+                    float temp_delay = strtof(token, NULL);
+                    printf("temp_delay %.1f", temp_delay);
+
+                    if (temp_delay < 1.0 || temp_delay > 86400.0)
+                    {
+                        return false;
+                    }
+
+                    // delay_handle_thread_app = temp_delay;
+                break;
+
+                default:
+                    //do nothing
+            }
             
-        //     printf(" %s\n", token); //printing each token
-        //     token = strtok(NULL, ";");
-        //     index ++;
-        // }
+            printf(" %s\n", token); //printing each token
+            token = strtok(NULL, ";");
+            index ++;
+        }
     }
     
     /* Request data from thread_input */
