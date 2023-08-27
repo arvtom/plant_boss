@@ -72,12 +72,12 @@ bool thread_memory_handle(void)
 {
     if (xQueueReceive(queue_app_to_memory, &buf_rx_queue_app_to_memory, 1u))
     {
-        printf("thread_memory id 0x%x\n", buf_rx_queue_app_to_memory[0]);
-        printf("thread_memory mode 0x%x\n", buf_rx_queue_app_to_memory[1]);
-        printf("thread_memory threshold 0x%x%x%x%x\n", 
+        printf("%x\n", buf_rx_queue_app_to_memory[0]);
+        printf("%x\n", buf_rx_queue_app_to_memory[1]);
+        printf("%x%x%x%x\n", 
             buf_rx_queue_app_to_memory[2], buf_rx_queue_app_to_memory[3],
             buf_rx_queue_app_to_memory[4], buf_rx_queue_app_to_memory[5]);
-        printf("thread_memory periodold 0x%x%x%x%x\n", 
+        printf("%x%x%x%x\n", 
             buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
             buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
         // printf("thread_memory period 0x%x%x%x%x\n", 
