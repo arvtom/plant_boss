@@ -243,7 +243,7 @@ bool thread_app_handle_settings(void)
 
     length_buf_rx_queue_wifi_to_app = index_character + 1;
 
-    printf("thread_app: settings for this device are: %.*s\n", length_buf_rx_queue_wifi_to_app, (char *)buf_rx_queue_wifi_to_app);
+    printf("settings %.*s\n", length_buf_rx_queue_wifi_to_app, (char *)buf_rx_queue_wifi_to_app);
 
     // Extract the first token
     char *token = strtok(buf_rx_queue_wifi_to_app, ";");
