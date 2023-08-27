@@ -10,11 +10,11 @@
 /* ---------------------------- Includes ---------------------------- */
 
 /* ---------------------------- Defines ---------------------------- */
-#define STACK_THREAD_APP                4096u
-#define STACK_THREAD_INPUT              4096u
-#define STACK_THREAD_OUTPUT             4096u
-#define STACK_THREAD_NETWORK            4096u
-#define STACK_THREAD_MEMORY             4096u
+#define STACK_THREAD_APP                8192u
+#define STACK_THREAD_INPUT              8192u
+#define STACK_THREAD_OUTPUT             8192u
+#define STACK_THREAD_NETWORK            8192u
+#define STACK_THREAD_MEMORY             8192u
 
 #define PRIORITY_THREAD_APP             2u
 #define PRIORITY_THREAD_INPUT           5u
