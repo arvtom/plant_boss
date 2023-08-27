@@ -34,7 +34,8 @@
 			"wifi_wrapper.h": "c",
 			"esp_netif.h": "c",
 			"uart_wrapper.h": "c",
-			"battery.h": "c"
+			"battery.h": "c",
+			"nvm_wrapper.h": "c"
 		}
 	}
 }
