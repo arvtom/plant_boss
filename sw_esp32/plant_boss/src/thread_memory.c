@@ -15,6 +15,8 @@ extern QueueHandle_t queue_memory_to_app;
 extern TaskHandle_t handle_app;
 extern TaskHandle_t handle_memory;
 
+nvs_handle_t handle_nvs;
+
 uint8_t buf_rx_queue_app_to_memory[10];
 
 /* ---------------------------- Public functions ---------------------------- */
@@ -57,7 +59,7 @@ bool thread_memory_init(void)
     }
 
     /* TODO: read mode from nvm */
-    // nvs_handle_savings();
+    nvs_handle_read();
 
     // printf("thread_memory 111111111111init ok\n");
     printf("thread_memory init ok\n");
@@ -84,7 +86,7 @@ bool thread_memory_handle(void)
         //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
         //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
         // printf("nvs%s\n", buf_rx_queue_app_to_memory);
-        nvs_handle_savings();
+        nvs_handle_write();
     }
     
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
@@ -93,67 +95,80 @@ bool thread_memory_handle(void)
 }
 
 /* ---------------------------- Private functions ---------------------------- */
-void nvs_handle_savings(void)
+bool nvs_handle_read(void)
 {
-    // Initialize NVS
-    // esp_err_t err_nvs = nvs_flash_init();
-    // if (err_nvs == ESP_ERR_NVS_NO_FREE_PAGES || err_nvs == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-    //     // NVS partition was truncated and needs to be erased
-    //     // Retry nvs_flash_init
-    //     ESP_ERROR_CHECK(nvs_flash_erase());
-    //     err_nvs = nvs_flash_init();
-    // }
-    // ESP_ERROR_CHECK( err_nvs );
+    uint8_t temporary_id = 0xFF;
+    uint8_t temporary_mode = 0xFF;
+    uint32_t temporary_threshold = 0xFFFFFFFF;
+    uint32_t temporary_period = 100u;
 
-    // Open
-    printf("Opening Non-Volatile Storage (NVS) handle... ");
-    nvs_handle_t my_handle;
-    esp_err_t err_nvs = nvs_open("storage", NVS_READWRITE, &my_handle);
-    if (err_nvs != ESP_OK) {
-        printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err_nvs));
-    } 
-    else 
+    if (ESP_OK != nvs_open("plant_boss", NVS_READONLY, &handle_nvs)) 
     {
-        printf("Done\n");
+        return false;
+    } 
 
-        // Read
-        printf("Reading restart counter from NVS ... ");
-        int32_t restart_counter = 0; // value will default to 0, if not set yet in NVS
-        err_nvs = nvs_get_i32(my_handle, "restart_counter", &restart_counter);
-        switch (err_nvs) 
-        {
-            case ESP_OK:
-                printf("Done\n");
-                printf("Restart counter = %ld\n", restart_counter);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                printf("The value is not initialized yet!\n");
-                break;
-            default :
-                printf("Error (%s) reading!\n", esp_err_to_name(err_nvs));
-        }
+    if (ESP_OK != nvs_get_u8(handle_nvs, "0", &temporary_id))
+    {
+        nvs_close(handle_nvs);
 
-        //TODO: read filter structure
-
-        // Write
-        printf("Updating restart counter in NVS ... ");
-        restart_counter++;
-        err_nvs = nvs_set_i32(my_handle, "restart_counter", restart_counter);
-        printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        //TODO: save filter structure
-
-        // Commit written value.
-        // After setting any values, nvs_commit() must be called to ensure changes are written
-        // to flash storage. Implementations may write to storage at other times,
-        // but this is not guaranteed.
-        printf("Committing updates in NVS ... ");
-        err_nvs = nvs_commit(my_handle);
-        printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        // Close
-        nvs_close(my_handle);
+        return false;
     }
+
+    if (ESP_OK != nvs_get_u8(handle_nvs, "1", &temporary_mode))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_get_u32(handle_nvs, "2", &temporary_threshold))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_get_u32(handle_nvs, "3", &temporary_period))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_close(handle_nvs))
+    {
+        return false;
+    }
+
+    printf("nvs%x,%x,%lx,%lx\n",
+        temporary_id, temporary_mode,
+        temporary_threshold, temporary_period);
+
+    return true;
+}
+
+bool nvs_handle_write(void)
+{
+    if (ESP_OK != nvs_open("plant_boss", NVS_READWRITE, &handle_nvs)) 
+    {
+        return false;
+    } 
+
+    err_nvs = nvs_set_i32(my_handle, "restart_counter", restart_counter);
+    printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
+
+    //TODO: save filter structure
+
+    // Commit written value.
+    // After setting any values, nvs_commit() must be called to ensure changes are written
+    // to flash storage. Implementations may write to storage at other times,
+    // but this is not guaranteed.
+    printf("Committing updates in NVS ... ");
+    err_nvs = nvs_commit(my_handle);
+    printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
+
+    // Close
+    nvs_close(my_handle);
 }
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */

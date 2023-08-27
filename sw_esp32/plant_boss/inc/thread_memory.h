@@ -20,7 +20,8 @@ bool thread_memory_init(void);
 bool thread_memory_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
-void nvs_handle_savings(void);
+bool nvs_handle_read(void);
+bool nvs_handle_write(void);
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
 
