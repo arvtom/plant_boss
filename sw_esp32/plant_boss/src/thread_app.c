@@ -34,6 +34,10 @@ extern TaskHandle_t handle_output;
 extern TaskHandle_t handle_network;
 extern TaskHandle_t handle_memory;
 
+uint16_t delay_handle_thread_app = DELAY_HANDLE_THREAD_APP;
+extern float threshold_voltage_battery;
+uint8_t device_mode = 0u;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -143,6 +147,53 @@ bool thread_app_handle(void)
     if (xQueueReceive(queue_wifi_to_app, &(buf_rx_queue_wifi_to_app), 1u))
     {
         printf("thread_app: settings for this device are: %.*s\n", 20, (char *)buf_rx_queue_wifi_to_app);
+
+        // // Extract the first token
+        // char * token = strtok(buf_rx_queue_wifi_to_app, ";");
+        // // loop through the string to extract all other tokens
+        // uint8_t index = 0;
+        // while (NULL != token) 
+        // {
+        //     switch (index)
+        //     {
+        //         case 1u:
+        //             uint8_t temp_mode = *token;
+        //             if (temp_mode != 0u && temp_mode != 1u)
+        //             {
+        //                 return false;
+        //             }
+
+        //             device_mode = temp_mode;
+        //         break;
+
+        //         case 2u:
+        //             float temp_threshold = strtof(token, NULL);
+        //             if (temp_threshold < 3.0 || temp_threshold > 4.0)
+        //             {
+        //                 return false;
+        //             }
+
+        //             threshold_voltage_battery = temp_threshold;
+        //         break;
+
+        //         case 3u:
+        //             float temp_delay = strtof(token, NULL);
+        //             if (temp_delay < 1.0 || temp_delay > 86400.0)
+        //             {
+        //                 return false;
+        //             }
+
+        //             delay_handle_thread_app = temp_delay;
+        //         break;
+
+        //         default:
+        //             //do nothing
+        //     }
+            
+        //     printf(" %s\n", token); //printing each token
+        //     token = strtok(NULL, ";");
+        //     index ++;
+        // }
     }
     
     /* Request data from thread_input */
@@ -228,7 +279,7 @@ bool thread_app_handle(void)
 
     printf("thread_app handle ok\n");
 
-    vTaskDelay(DELAY_HANDLE_THREAD_APP);
+    vTaskDelay(delay_handle_thread_app);
 
     return true;
 }
