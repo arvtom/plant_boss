@@ -108,7 +108,8 @@ bool thread_network_handle(void)
 
     if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 1u))
     {
-        printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
+        // printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
+        printf("data to wifi\n");
 
         if (true != wifi_handle_send_data())
         {

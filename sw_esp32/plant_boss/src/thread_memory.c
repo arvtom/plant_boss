@@ -84,7 +84,7 @@ bool thread_memory_handle(void)
         //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
         //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
         // printf("nvs%s\n", buf_rx_queue_app_to_memory);
-        // nvs_handle_savings();
+        nvs_handle_savings();
     }
     
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
