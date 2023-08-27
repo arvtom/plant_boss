@@ -27,6 +27,8 @@ bool thread_app_handle(void);
 uint8_t app_function(void);
 
 /* ---------------------------- Private functions ---------------------------- */
+bool thread_app_handle_settings(void);
+bool thread_app_handle_data_packet(void);
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
 
