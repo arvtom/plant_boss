@@ -77,7 +77,7 @@ bool thread_memory_handle(void)
         printf("thread_memory threshold 0x%x%x%x%x\n", 
             buf_rx_queue_app_to_memory[2], buf_rx_queue_app_to_memory[3],
             buf_rx_queue_app_to_memory[4], buf_rx_queue_app_to_memory[5]);
-        printf("thread_memory threshold 0x%x%x%x%x\n", 
+        printf("thread_memory periodold 0x%x%x%x%x\n", 
             buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
             buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
         // printf("thread_memory period 0x%x%x%x%x\n", 
