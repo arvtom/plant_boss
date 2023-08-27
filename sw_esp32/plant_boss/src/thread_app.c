@@ -44,6 +44,12 @@ uint8_t device_id = 1u;
 
 bool b_settings_updated = false;
 
+UBaseType_t stack_watermark_app = 0u;
+UBaseType_t stack_watermark_input = 0u;
+UBaseType_t stack_watermark_output = 0u;
+UBaseType_t stack_watermark_network = 0u;
+UBaseType_t stack_watermark_memory = 0u;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -143,6 +149,18 @@ bool thread_app_init(void)
 
 bool thread_app_handle(void)
 {
+    stack_watermark_app = uxTaskGetStackHighWaterMark(handle_app);
+    stack_watermark_input = uxTaskGetStackHighWaterMark(handle_input);
+    stack_watermark_output = uxTaskGetStackHighWaterMark(handle_output);
+    stack_watermark_network = uxTaskGetStackHighWaterMark(handle_network);
+    stack_watermark_memory = uxTaskGetStackHighWaterMark(handle_memory);
+
+    printf("a%d\n", stack_watermark_app);
+    printf("i%d\n", stack_watermark_input);
+    printf("o%d\n", stack_watermark_output);
+    printf("n%d\n", stack_watermark_network);
+    printf("m%d\n", stack_watermark_memory);
+
     /* Request settings from thread_network */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS, eSetBits))
     {
