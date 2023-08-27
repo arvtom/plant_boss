@@ -35,7 +35,7 @@ extern TaskHandle_t handle_output;
 extern TaskHandle_t handle_network;
 extern TaskHandle_t handle_memory;
 
-uint16_t delay_handle_thread_app = DELAY_HANDLE_THREAD_APP;
+uint32_t delay_handle_thread_app = DELAY_HANDLE_THREAD_APP;
 extern float threshold_voltage_battery;
 uint8_t device_mode = 0u;
 
@@ -179,46 +179,46 @@ bool thread_app_handle(void)
             switch (index)
             {
                 case 1u:
-                    uint8_t temp_mode = *token;
-                    printf("temp_mode %d", temp_mode);
+                    uint8_t temp_mode = (uint8_t)strtol(token, NULL, 10);
+                    printf("temp_mode %d\n", temp_mode);
 
                     if (temp_mode != 0u && temp_mode != 1u)
                     {
                         return false;
                     }
 
-                    // device_mode = temp_mode;
+                    device_mode = temp_mode;
                 break;
 
                 case 2u:
                     float temp_threshold = strtof(token, NULL);
-                    printf("temp_threshold %.1f", temp_threshold);
+                    printf("temp_threshold %.1f\n", temp_threshold);
 
                     if (temp_threshold < 3.0 || temp_threshold > 4.0)
                     {
                         return false;
                     }
 
-                    // threshold_voltage_battery = temp_threshold;
+                    threshold_voltage_battery = temp_threshold;
                 break;
 
                 case 3u:
-                    float temp_delay = strtof(token, NULL);
-                    printf("temp_delay %.1f", temp_delay);
+                    uint32_t temp_delay = (uint32_t)(strtof(token, NULL) * 100.0);
+                    printf("temp_delay %ld\n", temp_delay);
 
-                    if (temp_delay < 1.0 || temp_delay > 86400.0)
+                    if (temp_delay < 100 || temp_delay > 8640000)
                     {
                         return false;
                     }
 
-                    // delay_handle_thread_app = temp_delay;
+                    delay_handle_thread_app = temp_delay;
                 break;
 
                 default:
                     //do nothing
             }
             
-            printf(" %s\n", token); //printing each token
+            // printf(" %s\n", token); //printing each token
             token = strtok(NULL, ";");
             index ++;
         }
