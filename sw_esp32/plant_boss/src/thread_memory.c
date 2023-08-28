@@ -24,7 +24,7 @@ extern float threshold_voltage_battery;
 extern uint8_t device_mode;
 extern uint8_t device_id;
 
-static const char* tag_t_mem = "t_mem";
+static const char* tag_t_m = "t_m";
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
@@ -95,12 +95,11 @@ bool thread_memory_handle(void)
 
         if (true != nvs_handle_write())
         {
-            // printf("nwf");
-            // ESP_LOGI(TAG, "nwf\n");
+            // ESP_LOGI(tag_t_m, "nwf\n");
         }
         else
         {
-            ESP_LOGI(tag_t_mem, "nwo\n");
+            ESP_LOGI(tag_t_m, "nwo\n");
         }
     }
     
