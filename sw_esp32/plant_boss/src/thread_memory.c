@@ -85,7 +85,7 @@ bool thread_memory_handle(void)
     {
         if (true != nvs_handle_write())
         {
-            // ESP_LOGI(tag_t_m, "nwf");
+            ESP_LOGI(tag_t_m, "nwf");
         }
         else
         {
