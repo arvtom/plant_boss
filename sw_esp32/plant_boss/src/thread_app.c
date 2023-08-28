@@ -229,6 +229,12 @@ bool thread_app_handle(void)
 
         /* Enter deep sleep. RAM will be deleted, so plant_boss will start from beginning. */
         esp_deep_sleep_start();
+
+        /* Wait until deep sleep starts */
+        while (1)
+        {
+
+        }
     }
 
     
