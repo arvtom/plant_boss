@@ -18,7 +18,7 @@
 #include "error.h"
 
 /* ---------------------------- Typedefs ---------------------------- */
-#define TIME_SLEEP (20U * 1000000) //10 seconds
+#define TIME_SLEEP (5U * 1000000) //5 seconds
 
 // typedef struct
 // {
