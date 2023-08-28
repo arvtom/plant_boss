@@ -45,7 +45,7 @@ void thread_memory(void *arg)
 
 bool thread_memory_init(void)
 {
-    printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
+    // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
     xTaskNotifyWait(0u, 0u, &notification_memory, portMAX_DELAY);
     if ((notification_memory & NOTIFICATION_TO_MEMORY_REQ_INIT) == 0u)
@@ -68,11 +68,10 @@ bool thread_memory_init(void)
     /* TODO: read mode from nvm */
     if (true != nvs_handle_read())
     {
-        printf("nrf");
+        ESP_LOGI(tag_t_m, "nrf");
     }
 
-    // printf("thread_memory 111111111111init ok\n");
-    printf("thread_memory init ok\n");
+    ESP_LOGI(tag_t_m, "t_m i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -84,25 +83,18 @@ bool thread_memory_handle(void)
 {
     if (xQueueReceive(queue_app_to_memory, &buf_rx_queue_app_to_memory, 1u))
     {
-        // printf("%x\n", buf_rx_queue_app_to_memory[0]);
-        // printf("%x\n", buf_rx_queue_app_to_memory[1]);
-        // printf("%x%x%x%x\n", 
-        //     buf_rx_queue_app_to_memory[2], buf_rx_queue_app_to_memory[3],
-        //     buf_rx_queue_app_to_memory[4], buf_rx_queue_app_to_memory[5]);
-        // printf("%x%x%x%x\n", 
-        //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
-        //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
-
         if (true != nvs_handle_write())
         {
-            // ESP_LOGI(tag_t_m, "nwf\n");
+            // ESP_LOGI(tag_t_m, "nwf");
         }
         else
         {
-            ESP_LOGI(tag_t_m, "nwo\n");
+            ESP_LOGI(tag_t_m, "nwo");
         }
+
+        ESP_LOGI(tag_t_m, "t_m h");
     }
-    
+
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
 
     return true;
@@ -151,7 +143,7 @@ bool nvs_handle_read(void)
 
     nvs_close(handle_nvs);
 
-    printf("nvs%x,%x,%lx,%lx\n",
+    ESP_LOGI(tag_t_m, "nvs%x,%x,%lx,%lxb",
         temporary_id, temporary_mode,
         temporary_threshold, temporary_period);
 

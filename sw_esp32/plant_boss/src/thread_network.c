@@ -40,7 +40,7 @@ void thread_network(void *arg)
 
 bool thread_network_init(void)
 {
-    printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
+    // printf("addr err_thread_network 0x%x\n", (unsigned int)&err_thread_network);
 
     xTaskNotifyWait(0u, 0u, &notification_network, portMAX_DELAY);
     if ((notification_network & NOTIFICATION_TO_NETWORK_REQ_INIT) == 0u)
