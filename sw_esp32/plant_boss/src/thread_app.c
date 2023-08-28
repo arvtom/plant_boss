@@ -139,6 +139,12 @@ bool thread_app_init(void)
 
     ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT);
 
+    //config sleep mode to wake up from RTC
+    if(ESP_OK != esp_sleep_enable_timer_wakeup(TIME_SLEEP))
+    {
+        return false;
+    }
+
     /* TODO: read mode from nvm */
 
     ESP_LOGI(tag_t_a, "i");
@@ -212,6 +218,16 @@ bool thread_app_handle(void)
     ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED);
 
     ESP_LOGI(tag_t_a, "h");
+
+    if (1u == device_mode)
+    {
+        //deinit wifi before entering sleep mode
+        esp_wifi_stop();
+
+        /* Enter deep sleep. RAM will be deleted, so plant_boss will start from beginning. */
+        esp_deep_sleep_start();
+    }
+
     
     vTaskDelay(delay_handle_thread_app);
 
