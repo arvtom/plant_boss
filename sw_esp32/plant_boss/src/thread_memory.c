@@ -19,6 +19,11 @@ nvs_handle_t handle_nvs;
 
 uint8_t buf_rx_queue_app_to_memory[10];
 
+extern uint32_t delay_handle_thread_app;
+extern float threshold_voltage_battery;
+extern uint8_t device_mode;
+extern uint8_t device_id;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
 {
@@ -59,7 +64,10 @@ bool thread_memory_init(void)
     }
 
     /* TODO: read mode from nvm */
-    nvs_handle_read();
+    if (true != nvs_handle_read())
+    {
+        printf("nrf");
+    }
 
     // printf("thread_memory 111111111111init ok\n");
     printf("thread_memory init ok\n");
@@ -86,7 +94,10 @@ bool thread_memory_handle(void)
         //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
         //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
         // printf("nvs%s\n", buf_rx_queue_app_to_memory);
-        nvs_handle_write();
+        if (true != nvs_handle_write())
+        {
+            printf("nwf");
+        }
     }
     
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
@@ -135,10 +146,7 @@ bool nvs_handle_read(void)
         return false;
     }
 
-    if (ESP_OK != nvs_close(handle_nvs))
-    {
-        return false;
-    }
+    nvs_close(handle_nvs);
 
     printf("nvs%x,%x,%lx,%lx\n",
         temporary_id, temporary_mode,
@@ -154,21 +162,44 @@ bool nvs_handle_write(void)
         return false;
     } 
 
-    err_nvs = nvs_set_i32(my_handle, "restart_counter", restart_counter);
-    printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
+    if (ESP_OK != nvs_set_i32(handle_nvs, "0", device_id))
+    {
+        nvs_close(handle_nvs);
 
-    //TODO: save filter structure
+        return false;
+    }
 
-    // Commit written value.
-    // After setting any values, nvs_commit() must be called to ensure changes are written
-    // to flash storage. Implementations may write to storage at other times,
-    // but this is not guaranteed.
-    printf("Committing updates in NVS ... ");
-    err_nvs = nvs_commit(my_handle);
-    printf((err_nvs != ESP_OK) ? "Failed!\n" : "Done\n");
+    if (ESP_OK != nvs_set_i32(handle_nvs, "1", device_mode))
+    {
+        nvs_close(handle_nvs);
 
-    // Close
-    nvs_close(my_handle);
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_i32(handle_nvs, "2", threshold_voltage_battery))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_i32(handle_nvs, "3", delay_handle_thread_app))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_commit(handle_nvs))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    nvs_close(handle_nvs);
+
+    return true;
 }
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
