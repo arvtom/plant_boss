@@ -24,6 +24,8 @@ extern float threshold_voltage_battery;
 extern uint8_t device_mode;
 extern uint8_t device_id;
 
+static const char* tag_t_mem = "t_mem";
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_memory(void *arg)
 {
@@ -90,10 +92,15 @@ bool thread_memory_handle(void)
         // printf("%x%x%x%x\n", 
         //     buf_rx_queue_app_to_memory[6], buf_rx_queue_app_to_memory[7],
         //     buf_rx_queue_app_to_memory[8], buf_rx_queue_app_to_memory[9]);
-        
+
         if (true != nvs_handle_write())
         {
-            printf("nwf");
+            // printf("nwf");
+            // ESP_LOGI(TAG, "nwf\n");
+        }
+        else
+        {
+            ESP_LOGI(tag_t_mem, "nwo\n");
         }
     }
     
