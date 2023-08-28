@@ -20,6 +20,8 @@ uint32_t notification_output = 0u;
 extern TaskHandle_t handle_app;
 extern TaskHandle_t handle_output;
 
+static const char* tag_t_o = "t_o";
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_output(void *arg)
 {
@@ -40,7 +42,7 @@ void thread_output(void *arg)
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_output_init(void)
 {
-    printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
+    // printf("addr err_thread_output 0x%x\n", (unsigned int)&err_thread_output);
 
     xTaskNotifyWait(0u, 0u, &notification_output, portMAX_DELAY);
     if ((notification_output & NOTIFICATION_TO_OUTPUT_REQ_INIT) == 0u)
@@ -62,15 +64,11 @@ bool thread_output_init(void)
     if (true != gpio_init_pin(4u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
-        printf("error\n");
-
         return false;
     }
 
     if (true != gpio_handle_pin_output(4u, true))
     {
-        printf("error\n");
-
         return false;
     }
 
@@ -78,15 +76,11 @@ bool thread_output_init(void)
     if (true != gpio_init_pin(17u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
-        printf("error\n");
-
         return false;
     }
 
     if (true != gpio_handle_pin_output(17u, false))
     {
-        printf("error\n");
-
         return false;
     }
 
@@ -94,8 +88,6 @@ bool thread_output_init(void)
 
     if (true != gpio_handle_pin_output(17u, true))
     {
-        printf("error\n");
-
         return false;
     }
 
@@ -105,15 +97,11 @@ bool thread_output_init(void)
     if (true != gpio_init_pin(32u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
-        printf("error\n");
-
         return false;
     }
 
     if (true != gpio_handle_pin_output(32u, true))
     {
-        printf("error\n");
-
         return false;
     }
 
@@ -121,15 +109,11 @@ bool thread_output_init(void)
     if (true != gpio_init_pin(33u, GPIO_MODE_OUTPUT, 
         GPIO_PULLUP_DISABLE, GPIO_PULLDOWN_DISABLE, GPIO_INTR_DISABLE))
     {
-        printf("error\n");
-
         return false;
     }
 
     if (true != gpio_handle_pin_output(33u, true))
     {
-        printf("error\n");
-
         return false;
     }
 
@@ -138,7 +122,7 @@ bool thread_output_init(void)
         return false;
     }
 
-    printf("thread_output init ok\n");
+    ESP_LOGI(tag_t_o, "i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -172,7 +156,7 @@ bool thread_output_handle(void)
         return false;
     }
 
-    printf("thread_output handle ok\n");
+    ESP_LOGI(tag_t_o, "h");
     
     vTaskDelay(DELAY_HANDLE_THREAD_OUTPUT);
 

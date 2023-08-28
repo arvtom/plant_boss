@@ -71,7 +71,7 @@ bool thread_memory_init(void)
         ESP_LOGI(tag_t_m, "nrf");
     }
 
-    ESP_LOGI(tag_t_m, "t_m i");
+    ESP_LOGI(tag_t_m, "i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -92,7 +92,7 @@ bool thread_memory_handle(void)
             ESP_LOGI(tag_t_m, "nwo");
         }
 
-        ESP_LOGI(tag_t_m, "t_m h");
+        ESP_LOGI(tag_t_m, "h");
     }
 
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);

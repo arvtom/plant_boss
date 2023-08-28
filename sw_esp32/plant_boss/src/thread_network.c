@@ -21,6 +21,8 @@ extern TaskHandle_t handle_network;
 
 extern bool b_wifi_connected;
 
+static const char* tag_t_n = "t_n";
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_network(void *arg)
 {
@@ -65,7 +67,7 @@ bool thread_network_init(void)
         return false;
     }
 
-    printf("thread_network init ok\n");
+    ESP_LOGI(tag_t_n, "i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -104,19 +106,17 @@ bool thread_network_handle(void)
 
     xQueueSend(queue_wifi_to_app, (void*)buf_tx_queue_app, (TickType_t)0);
 
-    printf("thread_network handle ok\n");
+    ESP_LOGI(tag_t_n, "h");
 
     if (xQueueReceive(queue_app_to_wifi, &(buf_rx_queue_wifi), 1u))
     {
         // printf("data to wifi: %s\n\n", buf_rx_queue_wifi);
-        printf("data to wifi\n");
+        ESP_LOGI(tag_t_n, "d");
 
         if (true != wifi_handle_send_data())
         {
             return false;
         }
-
-        printf("thread_network handle ok\n");
     }
 
     /* TODO: Check if there was request to change mode from webpage. */

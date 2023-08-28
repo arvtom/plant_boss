@@ -8,6 +8,8 @@
 #include <freertos/task.h>
 #include <freertos/semphr.h>
 #include <freertos/queue.h>
+#include <esp_log.h>
+
 #include <string.h>
 
 #include "wifi_wrapper.h"

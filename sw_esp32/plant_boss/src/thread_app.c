@@ -50,6 +50,8 @@ UBaseType_t stack_watermark_output = 0u;
 UBaseType_t stack_watermark_network = 0u;
 UBaseType_t stack_watermark_memory = 0u;
 
+static const char* tag_t_a = "t_a";
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -70,7 +72,7 @@ void thread_app(void *arg)
 bool thread_app_init(void)
 {
     vTaskDelay(100);
-    printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
+    // printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
 
     if (true != common_thread_objects_init())
     {
@@ -139,7 +141,7 @@ bool thread_app_init(void)
 
     /* TODO: read mode from nvm */
 
-    printf("thread_app init ok\n");
+    ESP_LOGI(tag_t_a, "i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -149,17 +151,17 @@ bool thread_app_init(void)
 
 bool thread_app_handle(void)
 {
-    stack_watermark_app = uxTaskGetStackHighWaterMark(handle_app);
-    stack_watermark_input = uxTaskGetStackHighWaterMark(handle_input);
-    stack_watermark_output = uxTaskGetStackHighWaterMark(handle_output);
-    stack_watermark_network = uxTaskGetStackHighWaterMark(handle_network);
-    stack_watermark_memory = uxTaskGetStackHighWaterMark(handle_memory);
+    // stack_watermark_app = uxTaskGetStackHighWaterMark(handle_app);
+    // stack_watermark_input = uxTaskGetStackHighWaterMark(handle_input);
+    // stack_watermark_output = uxTaskGetStackHighWaterMark(handle_output);
+    // stack_watermark_network = uxTaskGetStackHighWaterMark(handle_network);
+    // stack_watermark_memory = uxTaskGetStackHighWaterMark(handle_memory);
 
-    printf("a%d\n", stack_watermark_app);
-    printf("i%d\n", stack_watermark_input);
-    printf("o%d\n", stack_watermark_output);
-    printf("n%d\n", stack_watermark_network);
-    printf("m%d\n", stack_watermark_memory);
+    // ESP_LOGI(tag_t_a, "a%d", stack_watermark_app);
+    // ESP_LOGI(tag_t_a, "i%d", stack_watermark_input);
+    // ESP_LOGI(tag_t_a, "o%d", stack_watermark_output);
+    // ESP_LOGI(tag_t_a, "n%d", stack_watermark_network);
+    // ESP_LOGI(tag_t_a, "m%d", stack_watermark_memory);
 
     /* Request settings from thread_network */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS, eSetBits))
@@ -209,8 +211,8 @@ bool thread_app_handle(void)
 
     ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED);
 
-    printf("thread_app handle ok\n");
-
+    ESP_LOGI(tag_t_a, "h");
+    
     vTaskDelay(delay_handle_thread_app);
 
     return true;
@@ -243,7 +245,7 @@ bool thread_app_handle_settings(void)
 
     length_buf_rx_queue_wifi_to_app = index_character + 1;
 
-    printf("settings %.*s\n", length_buf_rx_queue_wifi_to_app, (char *)buf_rx_queue_wifi_to_app);
+    ESP_LOGI(tag_t_a, "s%.*s", length_buf_rx_queue_wifi_to_app, (char *)buf_rx_queue_wifi_to_app);
 
     // Extract the first token
     char *token = strtok(buf_rx_queue_wifi_to_app, ";");

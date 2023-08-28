@@ -20,6 +20,8 @@ extern QueueHandle_t queue_input_to_app;
 extern TaskHandle_t handle_app;
 extern TaskHandle_t handle_input;
 
+static const char* tag_t_i = "t_i";
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_input(void *arg)
 {
@@ -39,7 +41,7 @@ void thread_input(void *arg)
 
 bool thread_input_init(void)
 {
-    printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
+    // printf("addr err_thread_input 0x%x\n", (unsigned int)&err_thread_input);
 
     xTaskNotifyWait(0u, 0u, &notification_input, portMAX_DELAY);
     if ((notification_input & NOTIFICATION_TO_INPUT_REQ_INIT) == 0u)
@@ -51,7 +53,6 @@ bool thread_input_init(void)
 
     if (true != adc_init())
     {
-        printf("error\n");
         return false;
     }
 
@@ -88,7 +89,7 @@ bool thread_input_init(void)
         return false;
     }
 
-    printf("thread_input init ok\n");
+    ESP_LOGI(tag_t_i, "i");
 
     /* Give some time to other tasks to prevent WDT reset */
     vTaskDelay(1);
@@ -154,7 +155,7 @@ bool thread_input_handle(void)
 
     xQueueSend(queue_input_to_app, (void*)buf_tx_queue_input, (TickType_t)0);
 
-    printf("thread_input handle ok\n");
+    ESP_LOGI(tag_t_i, "h");
     
     vTaskDelay(DELAY_HANDLE_THREAD_INPUT);
 
