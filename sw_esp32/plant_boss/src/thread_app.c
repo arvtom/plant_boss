@@ -74,6 +74,8 @@ bool thread_app_init(void)
     vTaskDelay(100);
     // printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
 
+    ESP_LOGI(tag_t_a, "wakeup");
+
     if (true != common_thread_objects_init())
     {
         return false;
@@ -221,6 +223,8 @@ bool thread_app_handle(void)
 
     if (1u == device_mode)
     {
+        ESP_LOGI(tag_t_a, "sleep");
+
         //deinit wifi before entering sleep mode
         if (ESP_OK != esp_wifi_stop())
         {
