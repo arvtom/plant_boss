@@ -20,7 +20,7 @@ nvs_handle_t handle_nvs;
 uint8_t buf_rx_queue_app_to_memory[10];
 
 extern uint32_t delay_handle_thread_app;
-extern float threshold_voltage_battery;
+extern uint16_t threshold_voltage_battery;
 extern uint8_t device_mode;
 extern uint8_t device_id;
 
@@ -105,7 +105,7 @@ bool nvs_handle_read(void)
 {
     uint8_t temporary_id = 0xFF;
     uint8_t temporary_mode = 0xFF;
-    uint32_t temporary_threshold = 0xFFFFFFFF;
+    uint16_t temporary_threshold = 0xFFFF;
     uint32_t temporary_period = 100u;
 
     if (ESP_OK != nvs_open("plant_boss", NVS_READONLY, &handle_nvs)) 
@@ -133,7 +133,7 @@ bool nvs_handle_read(void)
         return false;
     }
 
-    if (ESP_OK != nvs_get_u32(handle_nvs, "2", &temporary_threshold))
+    if (ESP_OK != nvs_get_u16(handle_nvs, "2", &temporary_threshold))
     {
         ESP_LOGI(tag_t_m, "2f");
 
@@ -153,7 +153,7 @@ bool nvs_handle_read(void)
 
     nvs_close(handle_nvs);
 
-    ESP_LOGI(tag_t_m, "nvs%x,%x,%lx,%lxb",
+    ESP_LOGI(tag_t_m, "nvs%x,%x,%x,%lx",
         temporary_id, temporary_mode,
         temporary_threshold, temporary_period);
 
@@ -181,7 +181,7 @@ bool nvs_handle_write(void)
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, "2", threshold_voltage_battery))
+    if (ESP_OK != nvs_set_u16(handle_nvs, "2", threshold_voltage_battery))
     {
         nvs_close(handle_nvs);
 

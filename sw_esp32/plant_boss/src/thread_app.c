@@ -38,7 +38,7 @@ extern TaskHandle_t handle_network;
 extern TaskHandle_t handle_memory;
 
 uint32_t delay_handle_thread_app = DELAY_HANDLE_THREAD_APP;
-extern float threshold_voltage_battery;
+extern uint16_t threshold_voltage_battery;
 uint8_t device_mode = 0u;
 uint8_t device_id = 1u;
 
@@ -271,8 +271,8 @@ bool thread_app_handle_settings(void)
             break;
 
             case 2u:
-                float temp_threshold = strtof(token, NULL);
-                if (temp_threshold < 3.0 || temp_threshold > 4.0)
+                uint16_t temp_threshold = (uint16_t)(strtof(token, NULL) * 1000);
+                if (temp_threshold < 3000u || temp_threshold > 4000u)
                 {
                     return false;
                 }
@@ -287,7 +287,7 @@ bool thread_app_handle_settings(void)
 
             case 3u:
                 uint32_t temp_delay = (uint32_t)(strtof(token, NULL) * 100.0);
-                if (temp_delay < 100 || temp_delay > 8640000)
+                if (temp_delay < 100u || temp_delay > 8640000u)
                 {
                     return false;
                 }
@@ -313,8 +313,8 @@ bool thread_app_handle_settings(void)
         /* save new settings in nvm */
         memcpy(&buf_tx_queue_memory[0], &device_id, 1);
         memcpy(&buf_tx_queue_memory[1], &device_mode, 1);
-        memcpy(&buf_tx_queue_memory[2], &threshold_voltage_battery, 4);
-        memcpy(&buf_tx_queue_memory[6], &delay_handle_thread_app, 4);
+        memcpy(&buf_tx_queue_memory[2], &threshold_voltage_battery, 2);
+        memcpy(&buf_tx_queue_memory[4], &delay_handle_thread_app, 4);
 
         xQueueSend(queue_app_to_memory, (void*)buf_tx_queue_memory, (TickType_t)0);
     }

@@ -11,7 +11,7 @@
 #include "adc_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
-#define THRESHOLD_VOLTAGE_BATTERY 3.4
+#define THRESHOLD_VOLTAGE_BATTERY 3400
 
 /*------------------------------Structures / enumerators------------------------------*/
 // typedef enum

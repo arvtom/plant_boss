@@ -15,7 +15,7 @@ uint32_t err_battery = 0u;
 
 adc_cali_handle_t adc_calibration_handle_voltage_battery;
 float voltage_battery;
-float threshold_voltage_battery = THRESHOLD_VOLTAGE_BATTERY;
+uint16_t threshold_voltage_battery = THRESHOLD_VOLTAGE_BATTERY;
 
 /*------------------------------Public functions------------------------------*/
 bool battery_init(void)
