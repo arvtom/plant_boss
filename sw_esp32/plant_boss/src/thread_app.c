@@ -52,6 +52,8 @@ UBaseType_t stack_watermark_memory = 0u;
 
 static const char* tag_t_a = "t_a";
 
+uint32_t time_sleep = TIME_SLEEP;
+
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
 {
@@ -141,12 +143,6 @@ bool thread_app_init(void)
 
     ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT);
 
-    //config sleep mode to wake up from RTC
-    if(ESP_OK != esp_sleep_enable_timer_wakeup(TIME_SLEEP))
-    {
-        return false;
-    }
-
     /* TODO: read mode from nvm */
 
     ESP_LOGI(tag_t_a, "i");
@@ -223,6 +219,14 @@ bool thread_app_handle(void)
 
     if (1u == device_mode)
     {
+        time_sleep = delay_handle_thread_app * 10000;
+
+        //config sleep mode to wake up from RTC
+        if(ESP_OK != esp_sleep_enable_timer_wakeup(time_sleep))
+        {
+            return false;
+        }
+
         ESP_LOGI(tag_t_a, "sleep");
 
         /* Enter deep sleep. RAM will be deleted, so plant_boss will start from beginning. */
