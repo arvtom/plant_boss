@@ -110,11 +110,15 @@ bool nvs_handle_read(void)
 
     if (ESP_OK != nvs_open("plant_boss", NVS_READONLY, &handle_nvs)) 
     {
+        ESP_LOGI(tag_t_m, "of");
+
         return false;
-    } 
+    }
 
     if (ESP_OK != nvs_get_u8(handle_nvs, "0", &temporary_id))
     {
+        ESP_LOGI(tag_t_m, "0f");
+
         nvs_close(handle_nvs);
 
         return false;
@@ -122,6 +126,8 @@ bool nvs_handle_read(void)
 
     if (ESP_OK != nvs_get_u8(handle_nvs, "1", &temporary_mode))
     {
+        ESP_LOGI(tag_t_m, "1f");
+
         nvs_close(handle_nvs);
 
         return false;
@@ -129,6 +135,8 @@ bool nvs_handle_read(void)
 
     if (ESP_OK != nvs_get_u32(handle_nvs, "2", &temporary_threshold))
     {
+        ESP_LOGI(tag_t_m, "2f");
+
         nvs_close(handle_nvs);
 
         return false;
@@ -136,6 +144,8 @@ bool nvs_handle_read(void)
 
     if (ESP_OK != nvs_get_u32(handle_nvs, "3", &temporary_period))
     {
+        ESP_LOGI(tag_t_m, "3f");
+
         nvs_close(handle_nvs);
 
         return false;
@@ -157,28 +167,28 @@ bool nvs_handle_write(void)
         return false;
     } 
 
-    if (ESP_OK != nvs_set_i32(handle_nvs, "0", device_id))
+    if (ESP_OK != nvs_set_u8(handle_nvs, "0", device_id))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_i32(handle_nvs, "1", device_mode))
+    if (ESP_OK != nvs_set_u8(handle_nvs, "1", device_mode))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_i32(handle_nvs, "2", threshold_voltage_battery))
+    if (ESP_OK != nvs_set_u32(handle_nvs, "2", threshold_voltage_battery))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_i32(handle_nvs, "3", delay_handle_thread_app))
+    if (ESP_OK != nvs_set_u32(handle_nvs, "3", delay_handle_thread_app))
     {
         nvs_close(handle_nvs);
 
