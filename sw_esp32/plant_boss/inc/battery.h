@@ -6,6 +6,7 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+#include <esp_log.h>
 
 #include "adc_wrapper.h"
 

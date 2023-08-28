@@ -12,13 +12,14 @@
 /*------------------------------Variables / Macro calls------------------------------*/
 int err_nvs_drv = 0;
 
+static const char* tag_nvm = "nvm";
+
 /*------------------------------Public functions------------------------------*/
 bool nvm_init(void)
 {
     err_nvs_drv = nvs_flash_init();
     if (ESP_OK != err_nvs_drv)
     {
-        printf("err nvm_flash_init\n");
         return false;
     }
     

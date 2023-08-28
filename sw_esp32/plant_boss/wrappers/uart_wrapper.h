@@ -7,6 +7,7 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <string.h>
+#include <esp_log.h>
 
 #include <driver/uart.h>
 

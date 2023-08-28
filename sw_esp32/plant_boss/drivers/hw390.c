@@ -14,10 +14,12 @@ adc_cali_handle_t adc_calibration_handle_humidity;
 float humidity;
 uint32_t err_hw390 = 0u;
 
+// static const char* tag_hw390 = "hw390";
+
 /*------------------------------Public functions------------------------------*/
 bool hw390_init(void)
 {
-    printf("addr err_hw390 0x%x\n", (unsigned int)&err_hw390);
+    // printf("addr err_hw390 0x%x\n", (unsigned int)&err_hw390);
 
     adc_oneshot_chan_cfg_t adc_channel_config_humidity = 
     {

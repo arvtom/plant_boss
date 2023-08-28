@@ -8,6 +8,7 @@
 #include "battery.h"
 
 /*------------------------------Defines------------------------------*/
+static const char* tag_bat = "bat";
 
 /*------------------------------Variables / Macro calls------------------------------*/
 uint32_t err_battery = 0u;
@@ -19,7 +20,7 @@ float threshold_voltage_battery = THRESHOLD_VOLTAGE_BATTERY;
 /*------------------------------Public functions------------------------------*/
 bool battery_init(void)
 {
-    printf("addr err_battery 0x%x\n", (unsigned int)&err_battery);
+    // printf("addr err_battery 0x%x\n", (unsigned int)&err_battery);
 
     adc_oneshot_chan_cfg_t adc_channel_config_voltage_battery = 
     {
@@ -58,7 +59,7 @@ bool battery_handle(void)
 
     if (voltage_battery < threshold_voltage_battery)
     {
-        printf("low battery\n");
+        ESP_LOGI(tag_bat, "low battery");
     }
 
     return true;

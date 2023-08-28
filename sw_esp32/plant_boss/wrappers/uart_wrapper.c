@@ -8,6 +8,7 @@
 #include "uart_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
+static const char* tag_uart = "uart";
 
 /*------------------------------Variables / Macro calls------------------------------*/
 

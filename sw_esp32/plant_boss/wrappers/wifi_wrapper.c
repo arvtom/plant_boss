@@ -30,13 +30,15 @@ int length_response = 0u;
 
 esp_http_client_config_t config_post;
 
+static const char* tag_wifi = "wifi";
+
 /*------------------------------Public functions------------------------------*/
 bool wifi_init(void)
 {
     err_wifi_drv = wifi_connection();
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err wifi_connection\n");
+        ESP_LOGI(tag_wifi, "con");
     }
 
     config_post.cert_pem = NULL;
@@ -70,17 +72,8 @@ bool wifi_handle_send_data(void)
         {
             b_err_database = true;
 
-            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", length_response, (char *)response);
+            ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
         }
-
-        wifi_ap_record_t ap_info;
-        if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
-        {
-            printf("error checking wifi info\n");
-            return false;
-        }
-
-        rssi_wifi = ap_info.rssi;
     }
 
 
@@ -121,13 +114,14 @@ bool wifi_handle_request_settings(void)
         {
             b_err_database = true;
 
-            printf("err, HTTP_EVENT_ON_DATA: %.*s\n", length_response, (char *)response);
+            ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
         }
 
         wifi_ap_record_t ap_info;
         if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
         {
-            printf("error checking wifi info\n");
+            ESP_LOGI(tag_wifi, "ch");
+
             return false;
         }
 
@@ -183,18 +177,22 @@ void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, in
     switch (event_id)
     {
     case WIFI_EVENT_STA_START:
-        printf("WiFi connecting ... \n");
+        ESP_LOGI(tag_wifi, "wing");
+
         break;
     case WIFI_EVENT_STA_CONNECTED:
-        printf("WiFi connected ... \n");
+        ESP_LOGI(tag_wifi, "wed");
+
         b_wifi_connected = true;
         break;
     case WIFI_EVENT_STA_DISCONNECTED:
-        printf("WiFi lost connection ... \n");
+        ESP_LOGI(tag_wifi, "wost");
+
         b_ready_wifi = false;
         break;
     case IP_EVENT_STA_GOT_IP:
-        printf("WiFi got IP ... \n\n");
+        ESP_LOGI(tag_wifi, "wot");
+
         b_ready_wifi = true;
         break;
     default:
@@ -208,7 +206,7 @@ bool wifi_connection()
     err_tcp_drv = esp_netif_init();                    // TCP/IP initiation 					s1.1
     if (ESP_OK != err_tcp_drv)
     {
-        printf("err erresp_netif_init\n");
+        ESP_LOGI(tag_wifi, "n");
 
         return false;
     }
@@ -216,7 +214,7 @@ bool wifi_connection()
     err_tcp_drv = esp_event_loop_create_default();     // event loop 			                s1.2
     if (ESP_OK != err_tcp_drv)
     {
-        printf("err esp_event_loop_create_default\n");
+        ESP_LOGI(tag_wifi, "l");
 
         return false;
     }
@@ -227,7 +225,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_init(&wifi_initiation); // 					                    s1.4
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_wifi_init\n");
+        ESP_LOGI(tag_wifi, "d i");
 
         return false;
     }
@@ -236,7 +234,7 @@ bool wifi_connection()
     err_wifi_drv = esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, wifi_event_handler, NULL);
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_event_handler_register\n");
+        ESP_LOGI(tag_wifi, "er");
 
         return false;
     }
@@ -244,7 +242,7 @@ bool wifi_connection()
     err_wifi_drv = esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, wifi_event_handler, NULL);
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_event_handler_register\n");
+        ESP_LOGI(tag_wifi, "hr");
 
         return false;
     }
@@ -252,7 +250,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_set_mode(WIFI_MODE_STA);
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_wifi_set_mode\n");
+        ESP_LOGI(tag_wifi, "ms");
 
         return false;
     }
@@ -265,7 +263,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration);
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_wifi_set_config %d\n", err_wifi_drv);
+        ESP_LOGI(tag_wifi, "cs");
 
         return false;
     }
@@ -274,7 +272,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_start();
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_wifi_start\n");
+        ESP_LOGI(tag_wifi, "ds");
 
         return false;
     }
@@ -283,7 +281,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_connect();
     if (ESP_OK != err_wifi_drv)
     {
-        printf("err esp_wifi_connect\n");
+        ESP_LOGI(tag_wifi, "dc");
 
         return false;
     }

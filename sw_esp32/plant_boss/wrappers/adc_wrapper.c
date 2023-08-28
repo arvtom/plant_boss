@@ -14,6 +14,8 @@ int err_adc_drv = 0;
 
 adc_oneshot_unit_handle_t adc1_handle;
 
+static const char* tag_adc = "adc";
+
 /*------------------------------Public functions------------------------------*/
 bool adc_init(void)
 {
@@ -45,8 +47,6 @@ bool adc_init_channel(adc_oneshot_chan_cfg_t* p_channel_config, adc_cali_line_fi
     err_adc_drv = adc_oneshot_config_channel(adc1_handle, channel, p_channel_config);
     if (ESP_OK != err_adc_drv)
     {
-        printf("error\n");
-
         return false;
     }   
 
@@ -56,8 +56,6 @@ bool adc_init_channel(adc_oneshot_chan_cfg_t* p_channel_config, adc_cali_line_fi
     err_adc_drv = adc_cali_create_scheme_line_fitting(p_calibration_config, p_calibration_handle);
     if (ESP_OK != err_adc_drv)
     {
-        printf("error\n");
-
         return false;
     }
 

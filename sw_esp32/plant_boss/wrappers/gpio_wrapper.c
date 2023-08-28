@@ -12,6 +12,8 @@
 /*------------------------------Variables / Macro calls------------------------------*/
 int err_gpio_drv = 0;
 
+static const char* tag_gpio = "gpio";
+
 /*------------------------------Public functions------------------------------*/
 // bool gpio_init(void)
 // {

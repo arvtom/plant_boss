@@ -24,6 +24,8 @@ i2c_config_t conf = {
     .clk_flags = 0,                          // optional; you can use I2C_SCLK_SRC_FLAG_* flags to choose i2c source clock here
 };
 
+static const char* tag_i2c = "i2c";
+
 /*------------------------------Public functions------------------------------*/
 bool i2c_init(void)
 {

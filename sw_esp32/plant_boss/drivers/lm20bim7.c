@@ -14,10 +14,12 @@ uint32_t err_lm20bim7 = 0u;
 adc_cali_handle_t adc_calibration_handle_temperature;
 float temperature;
 
+// static const char* tag_lm20bim7 = "lm20bim7";
+
 /*------------------------------Public functions------------------------------*/
 bool lm20bim7_init(void)
 {
-    printf("addr err_lm20bim7 0x%x\n", (unsigned int)&err_lm20bim7);
+    // printf("addr err_lm20bim7 0x%x\n", (unsigned int)&err_lm20bim7);
 
     adc_oneshot_chan_cfg_t adc_channel_config_temperature = 
     {
