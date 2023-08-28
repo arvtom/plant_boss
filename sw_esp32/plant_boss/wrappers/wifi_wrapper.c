@@ -52,7 +52,7 @@ bool wifi_handle_send_data(void)
 {
     if (true == b_ready_wifi && false == b_err_database)
     {
-        config_post.url = "http://192.168.8.139/plant_boss/data";
+        config_post.url = "http://192.168.1.101/plant_boss/data";
 
         if (true != wifi_handle_http_post((char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi))
         {
@@ -94,7 +94,7 @@ bool wifi_handle_request_settings(void)
             return false;
         }
 
-        config_post.url = "http://192.168.8.139/plant_boss/settings_request";
+        config_post.url = "http://192.168.1.101/plant_boss/settings_request";
 
         if (true != wifi_handle_http_post((char *)temporary_buffer, ret))
         {
