@@ -222,7 +222,10 @@ bool thread_app_handle(void)
     if (1u == device_mode)
     {
         //deinit wifi before entering sleep mode
-        esp_wifi_stop();
+        if (ESP_OK != esp_wifi_stop())
+        {
+            return false;
+        }
 
         /* Enter deep sleep. RAM will be deleted, so plant_boss will start from beginning. */
         esp_deep_sleep_start();
