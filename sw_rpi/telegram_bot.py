@@ -59,6 +59,8 @@ scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every
 # scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/1") # Runs every 60min
 
 def schedule_checker():
+    bot.send_message(CHAT_ID, "Telegram bot started")
+
     while True:
         scheduler.start()
 
