@@ -103,23 +103,26 @@ def print_settings(message):
     bot.send_message(message.chat.id, string_response)
 
 # When using this function, received error from telegram that message is too long.
-# @bot.message_handler(commands=['data'])
-# def print_settings(message):
-#     string_response = "Number of entries "
+@bot.message_handler(commands=['data'])
+def print_data(message):
+    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+    cursor = conn.cursor()                 # get a cursor
 
-#     conn = sqlite3.connect(PATH_DATABASE)      # connect to database
-#     cursor = conn.cursor()                 # get a cursor
+    cursor.execute("SELECT * FROM " + TABLE_NAME_DATA + " order by ROWID DESC limit 1")
+    entries = cursor.fetchall()
 
-#     cursor.execute("SELECT * FROM " + TABLE_NAME_DATA)
-#     entries = cursor.fetchall()
+    conn.commit()
+    conn.close()
 
-#     conn.commit()
-#     conn.close()
+    entries = entries[0]
 
-#     number_rows = len(entries)
-#     string_response += str(number_rows) + "\r\n" + str(entries)
-
-#     bot.send_message(message.chat.id, string_response)
+    string_response = "entry_id=" + str(entries[0])\
+        + "; time=" + str(entries[1])\
+        + "; device_id=" + str(entries[2])\
+        + "; humidity=" + str(entries[3]) + " %"\
+        + "; light=" + str(entries[4]) + " lx"\
+        + "; temperature=" + str(entries[5]) + " C"
+    bot.send_message(CHAT_ID, string_response)
 
 def parse_message(string_input):
     global device_id
