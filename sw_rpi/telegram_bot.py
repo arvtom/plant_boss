@@ -22,12 +22,41 @@ b_settings_valid = False
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
+def check_plant_boss():
+    conn = sqlite3.connect(PATH_DATABASE)      # connect to database
+    cursor = conn.cursor()                 # get a cursor
+
+    cursor.execute("SELECT * FROM " + TABLE_NAME_DATA + " order by ROWID DESC limit 1")
+    entries = cursor.fetchall()
+
+    conn.commit()
+    conn.close()
+
+    bot.send_message(CHAT_ID, str(entries[:]))
+    bot.send_message(CHAT_ID, "humidity = " + str(entries[3]))
+
+    if entries[3] < 40.0:
+        return False
+
+    # number_rows = len(entries)
+    # string_response += str(number_rows) + "\r\n\r\n"
+
+    # string_response += "(entry_id, timestamp, device_id, device_mode, threshold_bat_voltage, period_measurement)\r\n"
+
+    # for i in range(0, number_rows):
+    #     string_response += str(entries[i]) + "\r\n"
+
+    # bot.send_message(message.chat.id, string_response)
+    
+    return True
+
 def run_scheduled_task():
-    bot.send_message(CHAT_ID, "This is telegram bot printing periodic message.")    
+    if (False == check_plant_boss()):
+        bot.send_message(CHAT_ID, "Plant needs water")
 
 scheduler = BlockingScheduler(timezone="Europe/Berlin") # You need to add a timezone, otherwise it will give you a warning
-# scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
-scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/59") # Runs every 60min
+scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
+# scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*/1") # Runs every 60min
 
 def schedule_checker():
     while True:
