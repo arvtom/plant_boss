@@ -112,7 +112,7 @@ def handle_get_settings(start_line):
     start_line('200 OK', [('Content-Type', 'text/html')])
     return [response_body.encode()]
 
-def handle_get_plot(start_line):
+def update_plot():
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
     cursor = conn.cursor()                   # get a cursor
     cursor.execute("select * from " + TABLE_NAME_DATA)
@@ -129,17 +129,11 @@ def handle_get_plot(start_line):
     for i in range(length_rows, 0, -1):
         row = rows[i]
 
-        # time.append(row[1])
         humidity.append(row[3])
         light.append(row[4])
         temperature.append(row[5])
 
     time = range(0, length_rows, 1)
-
-    # time = time[0:10]
-    # humidity = humidity[0:10]
-    # light = light[0:10]
-    # temperature = temperature[0:10]
 
     figure, axis = plt.subplots(3, 1)
 
@@ -166,17 +160,14 @@ def handle_get_plot(start_line):
 
     plt.savefig("humidity.png")
 
+def handle_get_plot(start_line):
+    update_plot()
+
     data_uri = base64.b64encode(open('humidity.png', 'rb').read()).decode('utf-8')
     response_body = '<img src="data:image/png;base64,{0}">'.format(data_uri)
-
-    # response_body = """
-    #     <picture>
-    #         <source media="(min-width:200px)" srcset="humidity.png">
-    #         <img src="/home/pi/github/plant_boss/sw_rpi/humidity.png" alt="Humidity" style="width:auto;">
-    #     </picture>
-    # """
     
     start_line('200 OK', [('Content-Type', 'text/html')])
+    
     return [response_body.encode()]
 
 def handle_get_data(start_line):

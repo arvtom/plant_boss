@@ -3,6 +3,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 from threading import Thread
 import sqlite3
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 # Import BOT_TOKEN and CHAT_ID
 import settings_telegram_bot
@@ -123,6 +124,60 @@ def print_data(message):
         + "; light=" + str(entries[4]) + " lx"\
         + "; temperature=" + str(entries[5]) + " C"
     bot.send_message(CHAT_ID, string_response)
+
+def update_plot():
+    conn = sqlite3.connect(PATH_DATABASE)        # connect to database
+    cursor = conn.cursor()                   # get a cursor
+    cursor.execute("select * from " + TABLE_NAME_DATA)
+    rows = cursor.fetchall()
+
+    humidity = []
+    light = []
+    temperature = []
+    time = []
+    timestamp = []
+
+    length_rows = len(rows) - 1
+
+    for i in range(length_rows, 0, -1):
+        row = rows[i]
+
+        humidity.append(row[3])
+        light.append(row[4])
+        temperature.append(row[5])
+
+    time = range(0, length_rows, 1)
+
+    figure, axis = plt.subplots(3, 1)
+
+    i = 0
+    axis[i].plot(time, humidity)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("humidity, %")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    i = 1
+    axis[i].plot(time, light)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("light, lx")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    i = 2
+    axis[i].plot(time, temperature)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("temperature, C")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    plt.savefig("humidity.png")
+
+@bot.message_handler(commands=['plot'])
+def print_plot(message):
+    update_plot()
+
+    bot.send_photo(CHAT_ID, open("humidity.png", "rb"))
 
 def parse_message(string_input):
     global device_id
