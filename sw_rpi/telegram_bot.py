@@ -32,27 +32,15 @@ def check_plant_boss():
     conn.commit()
     conn.close()
 
-    bot.send_message(CHAT_ID, str(entries[:]))
-    bot.send_message(CHAT_ID, "humidity = " + str(entries[3]))
+    entries = entries[0]
 
     if entries[3] < 40.0:
-        return False
-
-    # number_rows = len(entries)
-    # string_response += str(number_rows) + "\r\n\r\n"
-
-    # string_response += "(entry_id, timestamp, device_id, device_mode, threshold_bat_voltage, period_measurement)\r\n"
-
-    # for i in range(0, number_rows):
-    #     string_response += str(entries[i]) + "\r\n"
-
-    # bot.send_message(message.chat.id, string_response)
-    
-    return True
+        bot.send_message(CHAT_ID, "Plant needs water, humidity is " + str(entries[3]) + " %")
+    # else:
+    #     bot.send_message(CHAT_ID, "Plant is ok, humidity is " + str(entries[3]) + " %")
 
 def run_scheduled_task():
-    if (False == check_plant_boss()):
-        bot.send_message(CHAT_ID, "Plant needs water")
+    check_plant_boss()
 
 scheduler = BlockingScheduler(timezone="Europe/Berlin") # You need to add a timezone, otherwise it will give you a warning
 scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every minute
@@ -60,6 +48,8 @@ scheduler.add_job(run_scheduled_task, trigger="cron", minute = "*") # Runs every
 
 def schedule_checker():
     bot.send_message(CHAT_ID, "Telegram bot started")
+
+    check_plant_boss()
 
     while True:
         scheduler.start()
