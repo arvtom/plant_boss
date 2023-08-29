@@ -11,6 +11,8 @@
 #include "adc_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
+#define HW_390_HUMIDITY_OFFSET      (138.0)
+#define HW_390_HUMIDITY_SCALE       -0.0667
 
 /*------------------------------Structures / enumerators------------------------------*/
 // typedef enum

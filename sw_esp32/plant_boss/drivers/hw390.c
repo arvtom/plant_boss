@@ -52,7 +52,7 @@ bool hw390_handle(void)
         return false;
     }
 
-    humidity = (float)adc_voltage / 3000 * 100;
+    humidity = (float)adc_voltage * HW_390_HUMIDITY_SCALE + HW_390_HUMIDITY_OFFSET;
 
     return true;
 }
