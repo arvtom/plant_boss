@@ -139,6 +139,7 @@ def update_plot():
         #             <h2>database is empty</h2>
         #         </body>
         #     </html>"""
+        nothing=0
     else:
         humidity = []
         light = []

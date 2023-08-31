@@ -34,7 +34,8 @@ def check_plant_boss():
     conn.close()
 
     if 0 == len(entries):
-        bot.send_message(CHAT_ID, "Database is empty")
+        # bot.send_message(CHAT_ID, "Database is empty")
+        nothing=0
     else:
         entries = entries[0]
 
@@ -143,56 +144,59 @@ def update_plot():
     conn.commit()
     conn.close()
 
-    if 0 == len(entries):
-        bot.send_message(CHAT_ID, "Database is empty")
-    else:
-        humidity = []
-        light = []
-        temperature = []
-        time = []
-        timestamp = []
+    if 0 == len(rows):
+        return False
 
-        length_rows = len(rows) - 1
+    humidity = []
+    light = []
+    temperature = []
+    time = []
+    timestamp = []
 
-        for i in range(length_rows, 0, -1):
-            row = rows[i]
+    length_rows = len(rows) - 1
 
-            humidity.append(row[3])
-            light.append(row[4])
-            temperature.append(row[5])
+    for i in range(length_rows, 0, -1):
+        row = rows[i]
 
-        time = range(0, length_rows, 1)
+        humidity.append(row[3])
+        light.append(row[4])
+        temperature.append(row[5])
 
-        figure, axis = plt.subplots(3, 1)
+    time = range(0, length_rows, 1)
 
-        i = 0
-        axis[i].plot(time, humidity)
-        axis[i].set_xlabel("time")
-        axis[i].set_ylabel("humidity, %")
-        axis[i].set_xlim([0, length_rows])
-        axis[i].grid(visible = True, which = "both", axis = "both")
+    figure, axis = plt.subplots(3, 1)
 
-        i = 1
-        axis[i].plot(time, light)
-        axis[i].set_xlabel("time")
-        axis[i].set_ylabel("light, lx")
-        axis[i].set_xlim([0, length_rows])
-        axis[i].grid(visible = True, which = "both", axis = "both")
+    i = 0
+    axis[i].plot(time, humidity)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("humidity, %")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
 
-        i = 2
-        axis[i].plot(time, temperature)
-        axis[i].set_xlabel("time")
-        axis[i].set_ylabel("temperature, C")
-        axis[i].set_xlim([0, length_rows])
-        axis[i].grid(visible = True, which = "both", axis = "both")
+    i = 1
+    axis[i].plot(time, light)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("light, lx")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
 
-        plt.savefig("humidity.png")
+    i = 2
+    axis[i].plot(time, temperature)
+    axis[i].set_xlabel("time")
+    axis[i].set_ylabel("temperature, C")
+    axis[i].set_xlim([0, length_rows])
+    axis[i].grid(visible = True, which = "both", axis = "both")
+
+    plt.savefig("humidity.png")
+
+    return True
 
 @bot.message_handler(commands=['plot'])
 def print_plot(message):
-    update_plot()
-
-    bot.send_photo(CHAT_ID, open("humidity.png", "rb"))
+    if False == update_plot():
+        bot.send_message(CHAT_ID, "plot error")
+    else:
+        bot.send_photo(CHAT_ID, open("humidity.png", "rb"))
 
 def parse_message(string_input):
     global device_id
