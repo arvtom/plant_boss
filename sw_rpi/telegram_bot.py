@@ -41,8 +41,8 @@ def check_plant_boss():
 
         if entries[3] < 40.0:
             bot.send_message(CHAT_ID, "Plant needs water, humidity is " + str(entries[3]) + " %")
-        else:
-            bot.send_message(CHAT_ID, "Plant is ok, humidity is " + str(entries[3]) + " %")
+        # else:
+            # bot.send_message(CHAT_ID, "Plant is ok, humidity is " + str(entries[3]) + " %")
 
 def run_scheduled_task():
     check_plant_boss()
