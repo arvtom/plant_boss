@@ -112,6 +112,8 @@ def print_data(message):
     cursor.execute("SELECT * FROM " + TABLE_NAME_DATA + " order by ROWID DESC limit 1")
     entries = cursor.fetchall()
 
+    print("entries length " + str(len(entries)))
+
     conn.commit()
     conn.close()
 
