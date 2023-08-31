@@ -6,13 +6,13 @@
 #sudo apt-get update
 #sudo apt-get upgrade
 #sudo apt-get install sqlite3 nginx
-#pip install uwsgi telebot APScheduler
 
 # This seems quicker to install matplotlib, since pip tries to build matplotlib from source on rpi zero, which is painfully slow.
 #sudo apt install python3-matplotlib
 
-#Create and open database
+#pip install uwsgi telebot APScheduler
 
+#Create and open database
 #sqlite3 /home/pi/plant_boss/plant_boss.db
 
 #Create new data table in sqlite3

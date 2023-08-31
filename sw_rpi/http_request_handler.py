@@ -66,50 +66,60 @@ def handle_get_settings(start_line):
     cursor.execute("select * from " + TABLE_NAME_SETTINGS)
     rows = cursor.fetchall()
 
-    response_body = """
-        <!DOCTYPE html>
-        <html>
-            <style>
-                table, th, td {
-                border:1px solid black;
-                }
-            </style>
-
-            <body>
-                <h2>plant_boss settings</h2>
-
-                <table style="width:100%">
-                <tr>
-                    <th>entry_id</th>
-                    <th>timestamp</th>
-                    <th>device_id</th>
-                    <th>device_mode</th>
-                    <th>threshold_bat_voltage</th>
-                    <th>period_measurement</th>
-                </tr>
-                """
-
-    for i in range(0, len(rows)):
-        row = rows[i]
-        response_body += "<tr>"
-        response_body += "<td>" + str(row[0]) + "</td>"         # entry_id
-        response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
-        response_body += "<td>" + str(row[2]) + "</td>"         # device_id
-        response_body += "<td>" + str(row[3]) + "</td>"         # device_mode
-        response_body += "<td>" + str(row[4]) + "</td>"         # threshold_bat_voltage
-        response_body += "<td>" + str(row[5]) + "</td>"         # period_measurement
-        response_body += "</tr>"
-
-    response_body += """
-                </table>
-            </body>
-        </html>
-        """
-
     conn.commit()
     conn.close()
-    
+
+    if 0 == len(rows):
+        response_body = """
+            <!DOCTYPE html>
+            <html>
+                <body>
+                    <h2>database is empty</h2>
+                </body>
+            </html>"""
+    else:
+        response_body = """
+            <!DOCTYPE html>
+            <html>
+                <style>
+                    table, th, td {
+                    border:1px solid black;
+                    }
+                </style>
+
+                <body>
+                    <h2>plant_boss settings</h2>
+
+                    <table style="width:100%">
+                    <tr>
+                        <th>entry_id</th>
+                        <th>timestamp</th>
+                        <th>device_id</th>
+                        <th>device_mode</th>
+                        <th>threshold_bat_voltage</th>
+                        <th>period_measurement</th>
+                    </tr>
+                    """
+
+        for i in range(0, len(rows)):
+            row = rows[i]
+            response_body += "<tr>"
+            response_body += "<td>" + str(row[0]) + "</td>"         # entry_id
+            response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
+            response_body += "<td>" + str(row[2]) + "</td>"         # device_id
+            response_body += "<td>" + str(row[3]) + "</td>"         # device_mode
+            response_body += "<td>" + str(row[4]) + "</td>"         # threshold_bat_voltage
+            response_body += "<td>" + str(row[5]) + "</td>"         # period_measurement
+            response_body += "</tr>"
+
+        response_body += """
+                    </table>
+                </body>
+            </html>
+            """
+        
     start_line('200 OK', [('Content-Type', 'text/html')])
+
     return [response_body.encode()]
 
 def update_plot():
@@ -118,47 +128,59 @@ def update_plot():
     cursor.execute("select * from " + TABLE_NAME_DATA)
     rows = cursor.fetchall()
 
-    humidity = []
-    light = []
-    temperature = []
-    time = []
-    timestamp = []
+    conn.commit()
+    conn.close()
 
-    length_rows = len(rows) - 1
+    if 0 == len(rows):
+        # response_body = """
+        #     <!DOCTYPE html>
+        #     <html>
+        #         <body>
+        #             <h2>database is empty</h2>
+        #         </body>
+        #     </html>"""
+    else:
+        humidity = []
+        light = []
+        temperature = []
+        time = []
+        timestamp = []
 
-    for i in range(length_rows, 0, -1):
-        row = rows[i]
+        length_rows = len(rows) - 1
 
-        humidity.append(row[3])
-        light.append(row[4])
-        temperature.append(row[5])
+        for i in range(length_rows, 0, -1):
+            row = rows[i]
 
-    time = range(0, length_rows, 1)
+            humidity.append(row[3])
+            light.append(row[4])
+            temperature.append(row[5])
 
-    figure, axis = plt.subplots(3, 1)
+        time = range(0, length_rows, 1)
 
-    i = 0
-    axis[i].plot(time, humidity)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("humidity, %")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        figure, axis = plt.subplots(3, 1)
 
-    i = 1
-    axis[i].plot(time, light)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("light, lx")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        i = 0
+        axis[i].plot(time, humidity)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("humidity, %")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
 
-    i = 2
-    axis[i].plot(time, temperature)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("temperature, C")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        i = 1
+        axis[i].plot(time, light)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("light, lx")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
 
-    plt.savefig("humidity.png")
+        i = 2
+        axis[i].plot(time, temperature)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("temperature, C")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
+
+        plt.savefig("humidity.png")
 
 def handle_get_plot(start_line):
     update_plot()
@@ -176,72 +198,82 @@ def handle_get_data(start_line):
     cursor.execute("select * from " + TABLE_NAME_DATA)
     rows = cursor.fetchall()
 
-    response_body = """
-        <!DOCTYPE html>
-        <html>
-            <style>
-                table, th, td {
-                border:1px solid black;
-                }
-            </style>
-
-            <body>
-                <h2>plant_boss data</h2>
-
-                <table style="width:100%">
-                <tr>
-                    <th>id</th>
-                    <th>timestamp</th>
-                    <th>device</th>
-                    <th>humidity, %</th>
-                    <th>light, lx</th>
-                    <th>temperature, C</th>
-                    <th>bat_voltage, V</th>
-                    <th>rssi_wifi, dBm</th>
-                    <th>mode</th>
-                    <th>bat_low_flag</th>
-                    <th>error_app</th>
-                    <th>error_input</th>
-                    <th>error_output</th>
-                    <th>error_network</th>
-                    <th>error_memory</th>
-                    <th>sw_version</th>
-                    <th>timer_or_period</th>
-                </tr>
-                """
-
-    for i in range(len(rows)-1, 0, -1):
-        row = rows[i]
-        response_body += "<tr>"
-        response_body += "<td>" + str(row[0]) + "</td>"         # id
-        response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
-        response_body += "<td>" + str(row[2]) + "</td>"         # device
-        response_body += "<td>" + str(row[3]) + "</td>"         # humidity
-        response_body += "<td>" + str(row[4]) + "</td>"         #light
-        response_body += "<td>" + str(row[5]) + "</td>"         #temperature
-        response_body += "<td>" + str(row[6]) + "</td>"         #bat_voltage
-        response_body += "<td>" + str(row[7]) + "</td>"         # rssi_wifi
-        response_body += "<td>" + str(row[8]) + "</td>"         # mode
-        response_body += "<td>" + str(row[9]) + "</td>"         # bat_low_flag
-        response_body += "<td>" + str(row[10]) + "</td>"        # error_app
-        response_body += "<td>" + str(row[11]) + "</td>"        # error_input
-        response_body += "<td>" + str(row[12]) + "</td>"        # error_output
-        response_body += "<td>" + str(row[13]) + "</td>"        # error_network
-        response_body += "<td>" + str(row[14]) + "</td>"        # error_memory
-        response_body += "<td>" + str(row[15]) + "</td>"        # sw_version
-        response_body += "<td>" + str(row[16]) + "</td>"        # timer_or_period
-        response_body += "</tr>"
-
-    response_body += """
-                </table>
-            </body>
-        </html>
-        """
-
     conn.commit()
     conn.close()
+
+    if 0 == len(rows):
+        response_body = """
+            <!DOCTYPE html>
+            <html>
+                <body>
+                    <h2>database is empty</h2>
+                </body>
+            </html>"""
+    else:
+        response_body = """
+            <!DOCTYPE html>
+            <html>
+                <style>
+                    table, th, td {
+                    border:1px solid black;
+                    }
+                </style>
+
+                <body>
+                    <h2>plant_boss data</h2>
+
+                    <table style="width:100%">
+                    <tr>
+                        <th>id</th>
+                        <th>timestamp</th>
+                        <th>device</th>
+                        <th>humidity, %</th>
+                        <th>light, lx</th>
+                        <th>temperature, C</th>
+                        <th>bat_voltage, V</th>
+                        <th>rssi_wifi, dBm</th>
+                        <th>mode</th>
+                        <th>bat_low_flag</th>
+                        <th>error_app</th>
+                        <th>error_input</th>
+                        <th>error_output</th>
+                        <th>error_network</th>
+                        <th>error_memory</th>
+                        <th>sw_version</th>
+                        <th>timer_or_period</th>
+                    </tr>
+                    """
+
+        for i in range(len(rows)-1, 0, -1):
+            row = rows[i]
+            response_body += "<tr>"
+            response_body += "<td>" + str(row[0]) + "</td>"         # id
+            response_body += "<td>" + str(row[1]) + "</td>"         # timestamp
+            response_body += "<td>" + str(row[2]) + "</td>"         # device
+            response_body += "<td>" + str(row[3]) + "</td>"         # humidity
+            response_body += "<td>" + str(row[4]) + "</td>"         #light
+            response_body += "<td>" + str(row[5]) + "</td>"         #temperature
+            response_body += "<td>" + str(row[6]) + "</td>"         #bat_voltage
+            response_body += "<td>" + str(row[7]) + "</td>"         # rssi_wifi
+            response_body += "<td>" + str(row[8]) + "</td>"         # mode
+            response_body += "<td>" + str(row[9]) + "</td>"         # bat_low_flag
+            response_body += "<td>" + str(row[10]) + "</td>"        # error_app
+            response_body += "<td>" + str(row[11]) + "</td>"        # error_input
+            response_body += "<td>" + str(row[12]) + "</td>"        # error_output
+            response_body += "<td>" + str(row[13]) + "</td>"        # error_network
+            response_body += "<td>" + str(row[14]) + "</td>"        # error_memory
+            response_body += "<td>" + str(row[15]) + "</td>"        # sw_version
+            response_body += "<td>" + str(row[16]) + "</td>"        # timer_or_period
+            response_body += "</tr>"
+
+        response_body += """
+                    </table>
+                </body>
+            </html>
+            """
     
     start_line('200 OK', [('Content-Type', 'text/html')])
+
     return [response_body.encode()]
 
 def handle_post_settings_request(env, start_line): 
@@ -259,19 +291,22 @@ def handle_post_settings_request(env, start_line):
     cursor.execute(sql)
 
     rows = cursor.fetchall()
+
+    conn.commit()
+    conn.close()
+
     amount_rows = len(rows)
 
     if (0 == amount_rows):
         response_body = "not found"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
-
-    if (amount_rows > 1):
+    elif (amount_rows > 1):
         response_body = "found more than one"
         start_line('405 METHOD NOT ALLOWED', [('Content-Type', 'text/plain')])
-
-    response_body = "OK\n"
-    response_body += str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
-        str(rows[0][4]) + ";" + str(rows[0][5]) + ";"
+    else:
+        response_body = "OK\n"
+        response_body += str(rows[0][2]) + ";" + str(rows[0][3]) + ";" +\
+            str(rows[0][4]) + ";" + str(rows[0][5]) + ";"
 
     start_line('200 OK', [('Content-Type', 'text/plain')])
 

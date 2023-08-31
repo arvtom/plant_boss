@@ -33,12 +33,15 @@ def check_plant_boss():
     conn.commit()
     conn.close()
 
-    entries = entries[0]
+    if 0 == len(entries):
+        bot.send_message(CHAT_ID, "Database is empty")
+    else:
+        entries = entries[0]
 
-    if entries[3] < 40.0:
-        bot.send_message(CHAT_ID, "Plant needs water, humidity is " + str(entries[3]) + " %")
-    # else:
-    #     bot.send_message(CHAT_ID, "Plant is ok, humidity is " + str(entries[3]) + " %")
+        if entries[3] < 40.0:
+            bot.send_message(CHAT_ID, "Plant needs water, humidity is " + str(entries[3]) + " %")
+        else:
+            bot.send_message(CHAT_ID, "Plant is ok, humidity is " + str(entries[3]) + " %")
 
 def run_scheduled_task():
     check_plant_boss()
@@ -93,15 +96,18 @@ def print_settings(message):
     conn.commit()
     conn.close()
 
-    number_rows = len(entries)
-    string_response += str(number_rows) + "\r\n\r\n"
+    if 0 == len(entries):
+        bot.send_message(CHAT_ID, "Database is empty")
+    else:
+        number_rows = len(entries)
+        string_response += str(number_rows) + "\r\n\r\n"
 
-    string_response += "(entry_id, timestamp, device_id, device_mode, threshold_bat_voltage, period_measurement)\r\n"
+        string_response += "(entry_id, timestamp, device_id, device_mode, threshold_bat_voltage, period_measurement)\r\n"
 
-    for i in range(0, number_rows):
-        string_response += str(entries[i]) + "\r\n"
+        for i in range(0, number_rows):
+            string_response += str(entries[i]) + "\r\n"
 
-    bot.send_message(message.chat.id, string_response)
+        bot.send_message(message.chat.id, string_response)
 
 # When using this function, received error from telegram that message is too long.
 @bot.message_handler(commands=['data'])
@@ -112,20 +118,21 @@ def print_data(message):
     cursor.execute("SELECT * FROM " + TABLE_NAME_DATA + " order by ROWID DESC limit 1")
     entries = cursor.fetchall()
 
-    print("entries length " + str(len(entries)))
-
     conn.commit()
     conn.close()
 
-    entries = entries[0]
+    if 0 == len(entries):
+        bot.send_message(CHAT_ID, "Database is empty")
+    else:
+        entries = entries[0]
 
-    string_response = "entry_id=" + str(entries[0])\
-        + "; time=" + str(entries[1])\
-        + "; device_id=" + str(entries[2])\
-        + "; humidity=" + str(entries[3]) + " %"\
-        + "; light=" + str(entries[4]) + " lx"\
-        + "; temperature=" + str(entries[5]) + " C"
-    bot.send_message(CHAT_ID, string_response)
+        string_response = "entry_id=" + str(entries[0])\
+            + "; time=" + str(entries[1])\
+            + "; device_id=" + str(entries[2])\
+            + "; humidity=" + str(entries[3]) + " %"\
+            + "; light=" + str(entries[4]) + " lx"\
+            + "; temperature=" + str(entries[5]) + " C"
+        bot.send_message(CHAT_ID, string_response)
 
 def update_plot():
     conn = sqlite3.connect(PATH_DATABASE)        # connect to database
@@ -133,47 +140,53 @@ def update_plot():
     cursor.execute("select * from " + TABLE_NAME_DATA)
     rows = cursor.fetchall()
 
-    humidity = []
-    light = []
-    temperature = []
-    time = []
-    timestamp = []
+    conn.commit()
+    conn.close()
 
-    length_rows = len(rows) - 1
+    if 0 == len(entries):
+        bot.send_message(CHAT_ID, "Database is empty")
+    else:
+        humidity = []
+        light = []
+        temperature = []
+        time = []
+        timestamp = []
 
-    for i in range(length_rows, 0, -1):
-        row = rows[i]
+        length_rows = len(rows) - 1
 
-        humidity.append(row[3])
-        light.append(row[4])
-        temperature.append(row[5])
+        for i in range(length_rows, 0, -1):
+            row = rows[i]
 
-    time = range(0, length_rows, 1)
+            humidity.append(row[3])
+            light.append(row[4])
+            temperature.append(row[5])
 
-    figure, axis = plt.subplots(3, 1)
+        time = range(0, length_rows, 1)
 
-    i = 0
-    axis[i].plot(time, humidity)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("humidity, %")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        figure, axis = plt.subplots(3, 1)
 
-    i = 1
-    axis[i].plot(time, light)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("light, lx")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        i = 0
+        axis[i].plot(time, humidity)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("humidity, %")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
 
-    i = 2
-    axis[i].plot(time, temperature)
-    axis[i].set_xlabel("time")
-    axis[i].set_ylabel("temperature, C")
-    axis[i].set_xlim([0, length_rows])
-    axis[i].grid(visible = True, which = "both", axis = "both")
+        i = 1
+        axis[i].plot(time, light)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("light, lx")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
 
-    plt.savefig("humidity.png")
+        i = 2
+        axis[i].plot(time, temperature)
+        axis[i].set_xlabel("time")
+        axis[i].set_ylabel("temperature, C")
+        axis[i].set_xlim([0, length_rows])
+        axis[i].grid(visible = True, which = "both", axis = "both")
+
+        plt.savefig("humidity.png")
 
 @bot.message_handler(commands=['plot'])
 def print_plot(message):
