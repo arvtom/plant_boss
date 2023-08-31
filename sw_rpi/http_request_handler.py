@@ -132,14 +132,7 @@ def update_plot():
     conn.close()
 
     if 0 == len(rows):
-        # response_body = """
-        #     <!DOCTYPE html>
-        #     <html>
-        #         <body>
-        #             <h2>database is empty</h2>
-        #         </body>
-        #     </html>"""
-        nothing=0
+        return False
     else:
         humidity = []
         light = []
@@ -183,11 +176,20 @@ def update_plot():
 
         plt.savefig("humidity.png")
 
-def handle_get_plot(start_line):
-    update_plot()
+        return True
 
-    data_uri = base64.b64encode(open('humidity.png', 'rb').read()).decode('utf-8')
-    response_body = '<img src="data:image/png;base64,{0}">'.format(data_uri)
+def handle_get_plot(start_line):
+    if False == update_plot():
+        response_body = """
+            <!DOCTYPE html>
+            <html>
+                <body>
+                    <h2>plot error</h2>
+                </body>
+            </html>"""
+    else:
+        data_uri = base64.b64encode(open('humidity.png', 'rb').read()).decode('utf-8')
+        response_body = '<img src="data:image/png;base64,{0}">'.format(data_uri)
     
     start_line('200 OK', [('Content-Type', 'text/html')])
     

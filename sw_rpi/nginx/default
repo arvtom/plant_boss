@@ -52,29 +52,10 @@ server {
 	}
 
 	# Purpose: 
-	# send measured and debug data from esp32 to database
-	# display data in table format in web browser
-	
+	# subdomains of /plant_boss will be handled by http_request_handler.py
 	location /plant_boss {
 		include uwsgi_params;
 		uwsgi_pass 127.0.0.1:8001;
-	}
-	
-	# Purpose:
-	# find settings for specific device number
-	# display settings for all devices
-	
-	location /plant_boss_settings {
-		include uwsgi_params;
-		uwsgi_pass 127.0.0.1:8002;
-	}
-	
-	# Purpose:
-	# display data in plot
-	
-	location /plant_boss_plot {
-		include uwsgi_params;
-		uwsgi_pass 127.0.0.1:8003;
 	}
 
 	# pass PHP scripts to FastCGI server
