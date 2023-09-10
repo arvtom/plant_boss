@@ -17,10 +17,12 @@ adc_cali_handle_t adc_calibration_handle_voltage_battery;
 float voltage_battery;
 uint16_t threshold_voltage_battery = THRESHOLD_VOLTAGE_BATTERY;
 
+static const char* tag_battery = "battery";
+
 /*------------------------------Public functions------------------------------*/
 bool battery_init(void)
 {
-    // printf("addr err_battery 0x%x\n", (unsigned int)&err_battery);
+    ESP_LOGI(tag_battery, "addr err_battery 0x%x\n", (unsigned int)&err_battery);
 
     adc_oneshot_chan_cfg_t adc_channel_config_voltage_battery = 
     {
@@ -38,10 +40,10 @@ bool battery_init(void)
     if (true != adc_init_channel(&adc_channel_config_voltage_battery, &adc_calibration_config_voltage_battery,
                     &adc_calibration_handle_voltage_battery, ADC_CHANNEL_7))
     {
+        error_set_u32(&err_battery, BATTERY_ERROR_INIT_ADC);
+
         return false;
     }
-    
-    return true;
     
     return true;
 }
@@ -52,6 +54,8 @@ bool battery_handle(void)
 
     if (true != adc_handle_channel(&adc_calibration_handle_voltage_battery, &adc_voltage, ADC_CHANNEL_7))
     {
+        error_set_u32(&err_battery, BATTERY_ERROR_HANDLE_ADC);
+
         return false;
     }
 
