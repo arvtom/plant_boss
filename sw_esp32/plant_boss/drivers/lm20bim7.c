@@ -14,12 +14,12 @@ uint32_t err_lm20bim7 = 0u;
 adc_cali_handle_t adc_calibration_handle_temperature;
 float temperature;
 
-// static const char* tag_lm20bim7 = "lm20bim7";
+static const char* tag_lm20bim7 = "lm20bim7";
 
 /*------------------------------Public functions------------------------------*/
 bool lm20bim7_init(void)
 {
-    // printf("addr err_lm20bim7 0x%x\n", (unsigned int)&err_lm20bim7);
+    ESP_LOGI(tag_lm20bim7, "addr err_lm20bim7 0x%x\n", (unsigned int)&err_lm20bim7);
 
     adc_oneshot_chan_cfg_t adc_channel_config_temperature = 
     {
@@ -37,6 +37,8 @@ bool lm20bim7_init(void)
     if (true != adc_init_channel(&adc_channel_config_temperature, &adc_calibration_config_temperature,
                     &adc_calibration_handle_temperature, ADC_CHANNEL_3))
     {
+        error_set_u32(&err_lm20bim7, LM20BIM7_ERROR_INIT_ADC);
+
         return false;
     }
     
@@ -49,6 +51,8 @@ bool lm20bim7_handle(void)
 
     if (true != adc_handle_channel(&adc_calibration_handle_temperature, &adc_voltage, ADC_CHANNEL_3))
     {
+        error_set_u32(&err_lm20bim7, LM20BIM7_ERROR_HANDLE_ADC);
+
         return false;
     }
 

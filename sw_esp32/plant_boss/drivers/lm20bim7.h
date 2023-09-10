@@ -6,17 +6,19 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+
 #include <esp_log.h>
 
+#include "error.h"
 #include "adc_wrapper.h"
 
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
-    // ERROR_BIT = 0x00000002U,
+typedef enum
+{
+    LM20BIM7_ERROR_INIT_ADC                 = 0x00000001U,
+    LM20BIM7_ERROR_HANDLE_ADC               = 0x00000002U,
     // ERROR_BIT = 0x00000004U,
     // ERROR_BIT = 0x00000008U,
     // ERROR_BIT = 0x00000010U,
@@ -47,7 +49,7 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }lm20bim7_error_t;
+} lm20bim7_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool lm20bim7_init(void);
