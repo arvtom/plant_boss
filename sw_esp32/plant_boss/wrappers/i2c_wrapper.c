@@ -29,11 +29,12 @@ static const char* tag_i2c = "i2c";
 /*------------------------------Public functions------------------------------*/
 bool i2c_init(void)
 {
-    // /* Read light sensor */
+    ESP_LOGI(tag_i2c, "addr err_i2c 0x%x\n", (unsigned int)&err_i2c);
+
     err_i2c_drv = i2c_param_config(i2c_master_port, &conf);
     if (ESP_OK != err_i2c_drv)
     {
-        error_set_u32(&err_i2c, I2C_ERROR_INIT);
+        error_set_u32(&err_i2c, I2C_ERROR_INIT_PARAM);
 
         return false;
     }   
@@ -41,7 +42,7 @@ bool i2c_init(void)
     err_i2c_drv = i2c_driver_install(i2c_master_port, I2C_MODE_MASTER, 0, 0, 0);
     if (ESP_OK != err_i2c_drv)
     {
-        error_set_u32(&err_i2c, I2C_ERROR_INIT);
+        error_set_u32(&err_i2c, I2C_ERROR_INIT_DRIVER);
 
         return false;
     }   

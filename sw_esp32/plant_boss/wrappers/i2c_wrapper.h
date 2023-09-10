@@ -9,6 +9,7 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+
 #include <driver/i2c.h>
 #include <esp_log.h>
 
@@ -19,11 +20,11 @@
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
 {
-    I2C_ERROR_INIT              = 0x00000001U,
-    I2C_ERROR_HANDLE            = 0x00000002U,
-    I2C_ERROR_HANDLE_WRITE      = 0x00000004U,
-    I2C_ERROR_HANDLE_READ       = 0x00000008U,
-    // ERROR_BIT = 0x00000010U,
+    I2C_ERROR_INIT_PARAM                = 0x00000001U,
+    I2C_ERROR_INIT_DRIVER               = 0x00000002U,
+    I2C_ERROR_HANDLE_WRITE              = 0x00000004U,
+    I2C_ERROR_HANDLE_READ               = 0x00000008U,
+    // I2C_ERROR_INIT_DRIVER               = 0x00000010U,
     // ERROR_BIT = 0x00000020U,
     // ERROR_BIT = 0x00000040U,
     // ERROR_BIT = 0x00000080U,
