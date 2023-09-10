@@ -74,25 +74,32 @@ void thread_app(void *arg)
 bool thread_app_init(void)
 {
     vTaskDelay(100);
-    // printf("addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
+    
+    ESP_LOGI(tag_t_a, "addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
 
     ESP_LOGI(tag_t_a, "wakeup");
 
     if (true != common_thread_objects_init())
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_COMMON_OBJECTS);
+
         return false;
     }
 
     /* Init thread_memory first, because it is needed by wifi. */
     if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY);
+
         return false;
     }
 
     /* Wait until thread_memory is init. */
-    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    pdTRUE xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
+
         return false;
     }
 
@@ -101,6 +108,8 @@ bool thread_app_init(void)
     /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK);
+
         return false;
     }
 
@@ -108,6 +117,8 @@ bool thread_app_init(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK_RES);
+
         return false;
     }
     
@@ -116,6 +127,8 @@ bool thread_app_init(void)
     /* Init thread_output */
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT);
+
         return false;
     }
 
@@ -123,6 +136,8 @@ bool thread_app_init(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT_RES);
+
         return false;
     }
 
@@ -131,6 +146,8 @@ bool thread_app_init(void)
     /* Init thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT);
+
         return false;
     }
 
@@ -138,6 +155,8 @@ bool thread_app_init(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT_RES);
+
         return false;
     }
 
@@ -170,14 +189,18 @@ bool thread_app_handle(void)
     /* Request settings from thread_network */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS);
+
         return false;
     }
 
     /* Wait for data to arrive from thread_network */
-    if (xQueueReceive(queue_wifi_to_app, &buf_rx_queue_wifi_to_app, 1u))
+    if (pdTRUE == xQueueReceive(queue_wifi_to_app, &buf_rx_queue_wifi_to_app, 1u))
     {
         if (true != thread_app_handle_settings())
         {
+            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS_RES);
+
             return false;
         }
     }
@@ -185,6 +208,8 @@ bool thread_app_handle(void)
     /* Request data from thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS);
+
         return false;
     }
 
@@ -193,6 +218,8 @@ bool thread_app_handle(void)
     {
         if (true != thread_app_handle_data_packet())
         {
+            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS_RES);
+
             return false;
         }
     }
@@ -204,12 +231,16 @@ bool thread_app_handle(void)
 
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, eSetBits))
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED);
+
         return false;
     }
 
     xTaskNotifyWait(0u, 0u, &notification_app, 1);
     if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
     {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED_RES);
+
         return false;
     }
 
@@ -224,6 +255,8 @@ bool thread_app_handle(void)
         //config sleep mode to wake up from RTC
         if(ESP_OK != esp_sleep_enable_timer_wakeup(time_sleep))
         {
+            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SLEEP_SETTINGS);
+
             return false;
         }
 
@@ -233,7 +266,6 @@ bool thread_app_handle(void)
         esp_deep_sleep_start();
     }
 
-    
     vTaskDelay(delay_handle_thread_app);
 
     return true;
@@ -249,6 +281,8 @@ bool thread_app_handle_settings(void)
     uint8_t index_character = 0u;
     uint8_t index_delimiter = 0u;
 
+    bool b_length_found = false;
+
     while (index_character < 20u)
     {
         if (';' == buf_rx_queue_wifi_to_app[index_character])
@@ -257,11 +291,18 @@ bool thread_app_handle_settings(void)
 
             if (index_delimiter >= 4u)
             {
+                b_length_found = true;
+
                 break;
             }
         }
 
         index_character ++;
+    }
+
+    if (true != b_length_found)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_LENGTH);
     }
 
     length_buf_rx_queue_wifi_to_app = index_character + 1;
@@ -270,6 +311,13 @@ bool thread_app_handle_settings(void)
 
     // Extract the first token
     char *token = strtok(buf_rx_queue_wifi_to_app, ";");
+    if (NULL == token)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_1);
+
+        return false;
+    }
+
     // loop through the string to extract all other tokens
     uint8_t index = 0u;
     while (NULL != token) 
@@ -280,6 +328,8 @@ bool thread_app_handle_settings(void)
                 uint8_t temp_mode = (uint8_t)strtol(token, NULL, 10);
                 if (temp_mode != 0u && temp_mode != 1u)
                 {
+                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_MODE);
+
                     return false;
                 }
 
@@ -295,6 +345,8 @@ bool thread_app_handle_settings(void)
                 uint16_t temp_threshold = (uint16_t)(strtof(token, NULL) * 1000);
                 if (temp_threshold < 3000u || temp_threshold > 4000u)
                 {
+                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_BAT_THRESHOLD);
+
                     return false;
                 }
 
@@ -310,6 +362,8 @@ bool thread_app_handle_settings(void)
                 uint32_t temp_delay = (uint32_t)(strtof(token, NULL) * 100.0);
                 if (temp_delay < 100u || temp_delay > 8640000u)
                 {
+                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_DELAY);
+
                     return false;
                 }
 
@@ -322,10 +376,19 @@ bool thread_app_handle_settings(void)
             break;
 
             default:
-                //do nothing
+                error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_UNKNOWN);
+
+                return false;
         }
 
         token = strtok(NULL, ";");
+        if (NULL == token)
+        {
+            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_2);
+
+            return false;
+        }
+
         index ++;
     }
 
@@ -337,7 +400,10 @@ bool thread_app_handle_settings(void)
         memcpy(&buf_tx_queue_memory[2], &threshold_voltage_battery, 2);
         memcpy(&buf_tx_queue_memory[4], &delay_handle_thread_app, 4);
 
-        xQueueSend(queue_app_to_memory, (void*)buf_tx_queue_memory, (TickType_t)0);
+        if (pdTRUE != xQueueSend(queue_app_to_memory, (void*)buf_tx_queue_memory, (TickType_t)0))
+        {
+
+        }
     }
 
     return true;

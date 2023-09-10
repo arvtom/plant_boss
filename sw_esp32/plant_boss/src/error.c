@@ -49,6 +49,7 @@ bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit)
 void error_handle(void)
 {
     /* Save errors to database and nvm, then go to sleep */
+    ESP_LOGI(tag_err, "error_handle");
     
     vTaskDelay(100);
 }
