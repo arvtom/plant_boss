@@ -7,6 +7,7 @@
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <stdio.h>
+
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <esp_log.h>
@@ -24,9 +25,9 @@
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
 {
-    BH1750FVI_ERROR_INIT        = 0x00000001U,
-    BH1750FVI_ERROR_HANDLE      = 0x00000002U,
-    // ERROR_BIT = 0x00000004U,
+    BH1750FVI_ERROR_INIT_I2C                = 0x00000001U,
+    BH1750FVI_ERROR_HANDLE_I2C_WRITE        = 0x00000002U,
+    BH1750FVI_ERROR_HANDLE_I2C_READ         = 0x00000004U,
     // ERROR_BIT = 0x00000008U,
     // ERROR_BIT = 0x00000010U,
     // ERROR_BIT = 0x00000020U,

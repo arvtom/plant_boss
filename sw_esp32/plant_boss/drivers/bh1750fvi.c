@@ -13,16 +13,16 @@
 uint32_t err_bh1750fvi = 0u;
 float light = 0.0;
 
-// static const char* tag_bh1750fvi = "bh1750fvi";
+static const char* tag_bh1750fvi = "bh1750fvi";
 
 /*------------------------------Public functions------------------------------*/
 bool bh1750fvi_init(void)
 {
-    // printf("addr err_bh1750fvi 0x%x\n", (unsigned int)&err_bh1750fvi);
+    ESP_LOGI(tag_bh1750fvi, "addr err_bh1750fvi 0x%x\n", (unsigned int)&err_bh1750fvi);
 
     if (true != i2c_init())
     {
-        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_INIT);
+        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_INIT_I2C);
 
         return false;
     }
@@ -38,7 +38,7 @@ bool bh1750fvi_handle(void)
 
     if (true != i2c_handle_write(BH1750FVI_I2C_ADDR_MEASURE, (uint8_t *)buf_tx, 1, BH1750FVI_I2C_TIMEOUT))
     {
-        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE);
+        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE_I2C_WRITE);
         
         return false;
     }
@@ -50,7 +50,7 @@ bool bh1750fvi_handle(void)
 
     if (true != i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT))
     {
-        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE);
+        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE_I2C_READ);
 
         return false;
     }
