@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef I2C_WRAPPER_H
+#define I2C_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <driver/i2c.h>
@@ -58,3 +61,5 @@ bool i2c_handle_write(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeo
 bool i2c_handle_read(uint8_t addr, uint8_t* p_buf, uint8_t count, uint8_t timeout);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* I2C_WRAPPER_H */

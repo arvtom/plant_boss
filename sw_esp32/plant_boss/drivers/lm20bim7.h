@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef LM20BIM7_H
+#define LM20BIM7_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
@@ -58,3 +61,5 @@ bool lm20bim7_handle(void);
 float lm20bim7_get_temperature_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* LM20BIM7_H */

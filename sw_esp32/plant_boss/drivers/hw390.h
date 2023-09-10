@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef HW390_H
+#define HW390_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
@@ -60,3 +63,5 @@ bool hw390_handle(void);
 float hw390_get_humidity_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* HW390_H */

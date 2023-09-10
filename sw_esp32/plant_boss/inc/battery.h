@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef BATTERY_H
+#define BATTERY_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <esp_log.h>
@@ -57,3 +60,5 @@ bool battery_handle(void);
 float battery_get_voltage_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* BATTERY_H */

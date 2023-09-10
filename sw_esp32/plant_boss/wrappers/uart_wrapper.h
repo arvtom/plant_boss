@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef UART_WRAPPER_H
+#define UART_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <string.h>
@@ -55,3 +58,5 @@ bool uart_init(void);
 bool uart_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* UART_WRAPPER_H */

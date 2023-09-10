@@ -4,25 +4,31 @@
 *  \author  arvtom
 */
 
+#ifndef ADC_WRAPPER_H
+#define ADC_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+#include <math.h>
+
 #include <esp_adc/adc_oneshot.h>
 #include <esp_adc/adc_cali.h>
 #include <esp_adc/adc_cali_scheme.h>
 #include <esp_err.h>
 #include <esp_log.h>
-#include <math.h>
+
+#include "error.h"
 
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
-    // ERROR_BIT = 0x00000002U,
-    // ERROR_BIT = 0x00000004U,
-    // ERROR_BIT = 0x00000008U,
-    // ERROR_BIT = 0x00000010U,
+typedef enum
+{
+    ADC_ERROR_INIT_UNIT                 = 0x00000001U,
+    ADC_ERROR_INIT_CHANNEL              = 0x00000002U,
+    ADC_ERROR_INIT_CALIBRATION          = 0x00000004U,
+    ADC_ERROR_HANDLE_READ               = 0x00000008U,
+    ADC_ERROR_HANDLE_READ_CALIBRATION   = 0x00000010U,
     // ERROR_BIT = 0x00000020U,
     // ERROR_BIT = 0x00000040U,
     // ERROR_BIT = 0x00000080U,
@@ -50,7 +56,7 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }adc_error_t;
+} adc_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool adc_init(void);
@@ -62,3 +68,4 @@ bool adc_handle_channel(adc_cali_handle_t* p_calibration_handle, int* p_adc_volt
 
 /*------------------------------Private function prototypes------------------------------*/
 
+#endif /* ADC_WRAPPER_H */

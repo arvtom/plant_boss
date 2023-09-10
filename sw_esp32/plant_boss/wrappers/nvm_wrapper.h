@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef NVM_WRAPPER_H
+#define NVM_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <esp_log.h>
@@ -54,3 +57,5 @@ bool nvm_init(void);
 bool nvm_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* NVM_WRAPPER_H */

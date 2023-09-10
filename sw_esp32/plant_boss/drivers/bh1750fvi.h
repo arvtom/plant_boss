@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef BH1750FVI_H
+#define BH1750FVI_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <stdio.h>
@@ -66,3 +69,5 @@ bool bh1750fvi_handle(void);
 float bh1750fvi_get_light_value(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* BH1750FVI_H*/

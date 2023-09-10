@@ -11,6 +11,7 @@
 
 /*------------------------------Variables / Macro calls------------------------------*/
 int err_adc_drv = 0;
+uint32_t err_adc = 0u;
 
 adc_oneshot_unit_handle_t adc1_handle;
 
@@ -19,6 +20,8 @@ static const char* tag_adc = "adc";
 /*------------------------------Public functions------------------------------*/
 bool adc_init(void)
 {
+    ESP_LOGI(tag_adc, "addr err_adc 0x%x\n", (unsigned int)&err_adc);
+
     adc_oneshot_unit_init_cfg_t init_config1 = 
     {
         .unit_id = ADC_UNIT_1,
@@ -28,6 +31,7 @@ bool adc_init(void)
     err_adc_drv = adc_oneshot_new_unit(&init_config1, &adc1_handle);
     if (ESP_OK != err_adc_drv)
     {
+        error_set_u32(&err_adc, ADC_ERROR_INIT_UNIT);
 
         return false;
     }
@@ -47,6 +51,8 @@ bool adc_init_channel(adc_oneshot_chan_cfg_t* p_channel_config, adc_cali_line_fi
     err_adc_drv = adc_oneshot_config_channel(adc1_handle, channel, p_channel_config);
     if (ESP_OK != err_adc_drv)
     {
+        error_set_u32(&err_adc, ADC_ERROR_INIT_CHANNEL);
+
         return false;
     }   
 
@@ -56,6 +62,8 @@ bool adc_init_channel(adc_oneshot_chan_cfg_t* p_channel_config, adc_cali_line_fi
     err_adc_drv = adc_cali_create_scheme_line_fitting(p_calibration_config, p_calibration_handle);
     if (ESP_OK != err_adc_drv)
     {
+        error_set_u32(&err_adc, ADC_ERROR_INIT_CALIBRATION);
+
         return false;
     }
 
@@ -69,6 +77,8 @@ bool adc_handle_channel(adc_cali_handle_t* p_calibration_handle, int* p_adc_volt
     err_adc_drv = adc_oneshot_read(adc1_handle, channel, &adc_raw);
     if (ESP_OK != err_adc_drv)
     {
+        error_set_u32(&err_adc, ADC_ERROR_HANDLE_READ);
+
         return false;
     }
 
@@ -76,6 +86,8 @@ bool adc_handle_channel(adc_cali_handle_t* p_calibration_handle, int* p_adc_volt
     err_adc_drv = adc_cali_raw_to_voltage(*p_calibration_handle, adc_raw, p_adc_voltage);
     if (ESP_OK != err_adc_drv)
     {
+        error_set_u32(&err_adc, ADC_ERROR_HANDLE_READ_CALIBRATION);
+
         return false;
     }
 

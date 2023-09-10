@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef ERROR_H
+#define ERROR_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <stdint.h>
@@ -59,3 +62,5 @@ bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit);
 void error_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* ERROR_H */

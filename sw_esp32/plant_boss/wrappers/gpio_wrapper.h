@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef GPIO_WRAPPER_H
+#define GPIO_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 #include <freertos/FreeRTOS.h>
@@ -59,3 +62,5 @@ bool gpio_init_pin(uint8_t pin, gpio_mode_t mode, gpio_pullup_t pull_up, gpio_pu
 bool gpio_handle_pin_output(uint8_t pin, bool level);
 
 /*------------------------------Private function prototypes------------------------------*/
+
+#endif /* GPIO_WRAPPER_H */

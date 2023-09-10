@@ -4,6 +4,9 @@
 *  \author  arvtom
 */
 
+#ifndef WIFI_WRAPPER_H
+#define WIFI_WRAPPER_H
+
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
 
@@ -65,3 +68,5 @@ bool wifi_handle_http_post(char *buffer, uint16_t length);
 void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
 bool wifi_connection();
 esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt);
+
+#endif /* WIFI_WRAPPER_H */
