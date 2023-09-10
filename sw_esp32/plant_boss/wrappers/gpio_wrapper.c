@@ -11,15 +11,17 @@
 
 /*------------------------------Variables / Macro calls------------------------------*/
 int err_gpio_drv = 0;
+uint32_t err_gpio = 0U;
 
 static const char* tag_gpio = "gpio";
 
 /*------------------------------Public functions------------------------------*/
-// bool gpio_init(void)
-// {
+bool gpio_init(void)
+{
+    ESP_LOGI(tag_gpio, "addr err_gpio 0x%x\n", (unsigned int)&err_gpio);
 
-//     return true;
-// }
+    return true;
+}
 
 // bool gpio_handle(void)
 // {
@@ -39,6 +41,8 @@ bool gpio_init_pin(uint8_t pin, gpio_mode_t mode, gpio_pullup_t pull_up, gpio_pu
     err_gpio_drv = gpio_config(&config);
     if (ESP_OK != err_gpio_drv)
     {
+        error_set_u32(&err_gpio, GPIO_ERROR_INIT_PIN);
+
         return false;
     }  
 
@@ -50,6 +54,8 @@ bool gpio_handle_pin_output(uint8_t pin, bool level)
     err_gpio_drv = gpio_set_level(pin, level);
     if (ESP_OK != err_gpio_drv)
     {
+        error_set_u32(&err_gpio, GPIO_ERROR_HANDLE_PIN_OUTPUT);
+
         return false;
     }
     

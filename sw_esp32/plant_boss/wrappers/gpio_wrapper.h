@@ -9,19 +9,21 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <driver/gpio.h>
 #include <esp_log.h>
 
+#include "error.h"
 
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
-    // ERROR_BIT = 0x00000002U,
+typedef enum
+{
+    GPIO_ERROR_INIT_PIN                 = 0x00000001U,
+    GPIO_ERROR_HANDLE_PIN_OUTPUT        = 0x00000002U,
     // ERROR_BIT = 0x00000004U,
     // ERROR_BIT = 0x00000008U,
     // ERROR_BIT = 0x00000010U,
@@ -52,10 +54,10 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }gpio_error_t;
+} gpio_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
-// bool gpio_init(void);
+bool gpio_init(void);
 // bool gpio_handle(void);
 
 bool gpio_init_pin(uint8_t pin, gpio_mode_t mode, gpio_pullup_t pull_up, gpio_pulldown_t pull_down, gpio_int_type_t intr);

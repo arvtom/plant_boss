@@ -56,6 +56,11 @@ bool thread_input_init(void)
         return false;
     }
 
+    if (true != gpio_init())
+    {
+        return false;
+    }
+
     if (true != bh1750fvi_init())
     {
         error_set_u32(&err_thread_input, THREAD_INPUT_ERROR_INIT_LIGHT);
