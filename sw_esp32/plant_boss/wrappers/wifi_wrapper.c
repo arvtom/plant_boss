@@ -13,6 +13,7 @@
 int err_wifi_drv = 0;
 int err_tcp_drv = 0;
 int err_http_drv = 0;
+uint32_t err_wifi = 0U;
 
 bool b_wifi_connected = false;
 
@@ -35,10 +36,14 @@ static const char* tag_wifi = "wifi";
 /*------------------------------Public functions------------------------------*/
 bool wifi_init(void)
 {
+    ESP_LOGI(tag_wifi, "addr err_wifi 0x%x\n", (unsigned int)&err_wifi);
+
     err_wifi_drv = wifi_connection();
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "con");
+        error_set_u32(&err_wifi, WIFI_ERROR_CONNECTION);
+
+        return false;
     }
 
     config_post.cert_pem = NULL;
@@ -56,26 +61,30 @@ bool wifi_handle_send_data(void)
 
         if (true != wifi_handle_http_post((char *)buf_rx_queue_wifi, length_buf_tx_queue_wifi))
         {
+            error_set_u32(&err_wifi, WIFI_ERROR_HTTP_POST_DATA);
+
             return false;
         }
 
         /* Wait until webpage responds */
         while(false == b_http_response)
         {
-
+#warning timeout
         }
 
         b_http_response = false;
 
         /* Check if reponse is string OK */
-        if (0x4F != response[0] && 0x4B != response[1])
+        if ('O' != response[0] && 'K' != response[1])
         {
             b_err_database = true;
 
-            ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
+            // ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
+            error_set_u32(&err_wifi, WIFI_ERROR_HTTP_RESPONSE_DATA);
+
+            return false;
         }
     }
-
 
     return true;
 }
@@ -91,6 +100,8 @@ bool wifi_handle_request_settings(void)
 
         if (ret < 0 || ret > 6)
         {
+            error_set_u32(&err_wifi, WIFI_ERROR_SNPRINTF);
+
             return false;
         }
 
@@ -98,13 +109,15 @@ bool wifi_handle_request_settings(void)
 
         if (true != wifi_handle_http_post((char *)temporary_buffer, ret))
         {
+            error_set_u32(&err_wifi, WIFI_ERROR_HTTP_POST_SETTINGS_REQUEST);
+
             return false;
         }
 
         /* Wait until webpage responds */
         while(false == b_http_response)
         {
-
+#warning timeout
         }
 
         b_http_response = false;
@@ -114,20 +127,22 @@ bool wifi_handle_request_settings(void)
         {
             b_err_database = true;
 
-            ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
+            // ESP_LOGI(tag_wifi, "r%.*s", length_response, (char *)response);
+            error_set_u32(&err_wifi, WIFI_ERROR_HTTP_RESPONSE_SETTINGS);
+
+            return false;
         }
 
         wifi_ap_record_t ap_info;
         if (ESP_OK != esp_wifi_sta_get_ap_info(&ap_info))
         {
-            ESP_LOGI(tag_wifi, "ch");
+            error_set_u32(&err_wifi, WIFI_ERROR_GET_AP_INFO);
 
             return false;
         }
 
         rssi_wifi = ap_info.rssi;
     }
-
 
     return true;
 }
@@ -154,18 +169,24 @@ bool wifi_handle_http_post(char *buffer, uint16_t length)
     err_http_drv = esp_http_client_set_post_field(client, buffer, length);
     if (ESP_OK != err_http_drv)
     {
+        error_set_u32(&err_wifi, WIFI_ERROR_SET_POST_FIELD);
+
         return false;
     }
 
     err_http_drv = esp_http_client_perform(client);
     if (ESP_OK != err_http_drv)
     {
-        // return false;
+        error_set_u32(&err_wifi, WIFI_ERROR_CLIENT_PERFORM);
+
+        /* continue execution to cleanup */
     }
 
     err_http_drv = esp_http_client_cleanup(client);
     if (ESP_OK != err_http_drv)
     {
+        error_set_u32(&err_wifi, WIFI_ERROR_CLIENT_CLEANUP);
+
         return false;
     }
 
@@ -176,27 +197,32 @@ void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, in
 {
     switch (event_id)
     {
-    case WIFI_EVENT_STA_START:
-        ESP_LOGI(tag_wifi, "wing");
+        case WIFI_EVENT_STA_START:
+            ESP_LOGI(tag_wifi, "wing");
 
-        break;
-    case WIFI_EVENT_STA_CONNECTED:
-        ESP_LOGI(tag_wifi, "wed");
+            break;
+        case WIFI_EVENT_STA_CONNECTED:
+            ESP_LOGI(tag_wifi, "wed");
 
-        b_wifi_connected = true;
-        break;
-    case WIFI_EVENT_STA_DISCONNECTED:
-        ESP_LOGI(tag_wifi, "wost");
+            b_wifi_connected = true;
 
-        b_ready_wifi = false;
-        break;
-    case IP_EVENT_STA_GOT_IP:
-        ESP_LOGI(tag_wifi, "wot");
+            break;
+        case WIFI_EVENT_STA_DISCONNECTED:
+            error_set_u32(&err_wifi, WIFI_ERROR_DISCONNECTED);
 
-        b_ready_wifi = true;
-        break;
-    default:
-        break;
+            b_ready_wifi = false;
+
+            break;
+        case IP_EVENT_STA_GOT_IP:
+            ESP_LOGI(tag_wifi, "wot");
+
+            b_ready_wifi = true;
+
+            break;
+        default:
+            error_set_u32(&err_wifi, WIFI_ERROR_UNKNOWN_EVENT_WIFI);
+
+            break;
     }
 }
 
@@ -206,7 +232,7 @@ bool wifi_connection()
     err_tcp_drv = esp_netif_init();                    // TCP/IP initiation 					s1.1
     if (ESP_OK != err_tcp_drv)
     {
-        ESP_LOGI(tag_wifi, "n");
+        error_set_u32(&err_wifi, WIFI_ERROR_NETIF_INIT);
 
         return false;
     }
@@ -214,7 +240,7 @@ bool wifi_connection()
     err_tcp_drv = esp_event_loop_create_default();     // event loop 			                s1.2
     if (ESP_OK != err_tcp_drv)
     {
-        ESP_LOGI(tag_wifi, "l");
+        error_set_u32(&err_wifi, WIFI_ERROR_LOOP_CREATE);
 
         return false;
     }
@@ -225,7 +251,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_init(&wifi_initiation); // 					                    s1.4
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "d i");
+        error_set_u32(&err_wifi, WIFI_ERROR_INIT_DRV);
 
         return false;
     }
@@ -234,7 +260,7 @@ bool wifi_connection()
     err_wifi_drv = esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, wifi_event_handler, NULL);
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "er");
+        error_set_u32(&err_wifi, WIFI_ERROR_REGISTER_EVENT_HANDLER_1);
 
         return false;
     }
@@ -242,7 +268,7 @@ bool wifi_connection()
     err_wifi_drv = esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, wifi_event_handler, NULL);
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "hr");
+        error_set_u32(&err_wifi, WIFI_ERROR_REGISTER_EVENT_HANDLER_2);
 
         return false;
     }
@@ -250,7 +276,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_set_mode(WIFI_MODE_STA);
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "ms");
+        error_set_u32(&err_wifi, WIFI_ERROR_SET_MODE);
 
         return false;
     }
@@ -263,7 +289,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration);
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "cs");
+        error_set_u32(&err_wifi, WIFI_ERROR_SET_CONFIG);
 
         return false;
     }
@@ -272,7 +298,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_start();
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "ds");
+        error_set_u32(&err_wifi, WIFI_ERROR_START);
 
         return false;
     }
@@ -281,7 +307,7 @@ bool wifi_connection()
     err_wifi_drv = esp_wifi_connect();
     if (ESP_OK != err_wifi_drv)
     {
-        ESP_LOGI(tag_wifi, "dc");
+        error_set_u32(&err_wifi, WIFI_ERROR_CONNECT);
 
         return false;
     }
@@ -293,16 +319,19 @@ esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
 {
     switch (evt->event_id)
     {
-    case HTTP_EVENT_ON_DATA:
-        memcpy(&response, evt->data, evt->data_len);
-        length_response = evt->data_len;
+        case HTTP_EVENT_ON_DATA:
+            memcpy(&response, evt->data, evt->data_len);
+            length_response = evt->data_len;
 
-        b_http_response = true;
+            b_http_response = true;
 
-        break;
+            break;
 
-    default:
-        break;
+        default:
+            error_set_u32(&err_wifi, WIFI_ERROR_UNKNOWN_EVENT_POST);
+
+            break;
     }
+
     return ESP_OK;
 }
