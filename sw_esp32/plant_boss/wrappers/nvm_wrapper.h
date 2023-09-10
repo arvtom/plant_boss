@@ -9,16 +9,18 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
-#include <esp_log.h>
 
+#include <esp_log.h>
 #include <nvs_flash.h>
+
+#include "error.h"
 
 /*------------------------------Defines------------------------------*/
 
 /*------------------------------Structures / enumerators------------------------------*/
-// typedef enum
-// {
-    // ERROR_BIT = 0x00000001U,
+typedef enum
+{
+    NVM_ERROR_INIT = 0x00000001U,
     // ERROR_BIT = 0x00000002U,
     // ERROR_BIT = 0x00000004U,
     // ERROR_BIT = 0x00000008U,
@@ -50,11 +52,11 @@
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-// }nvs_error_t;
+} nvs_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool nvm_init(void);
-bool nvm_handle(void);
+// bool nvm_handle(void);
 
 /*------------------------------Private function prototypes------------------------------*/
 
