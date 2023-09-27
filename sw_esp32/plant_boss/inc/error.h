@@ -58,7 +58,10 @@
 /*------------------------------Public function prototypes------------------------------*/
 void error_set_u32(uint32_t *p_err_var, uint32_t err_bit);
 void error_clear_u32(uint32_t *p_err_var, uint32_t err_bit);
-bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit);
+// bool error_check_u32(uint32_t *p_err_var, uint32_t err_bit);
+
+void error_set_u64(uint64_t *p_err_var, uint64_t err_bit);
+void error_clear_u64(uint64_t *p_err_var, uint64_t err_bit);
 
 /*------------------------------Private function prototypes------------------------------*/
 

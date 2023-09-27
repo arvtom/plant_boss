@@ -8,7 +8,7 @@
 /* ---------------------------- Typedefs ---------------------------- */
 
 /* ---------------------------- Global variables ---------------------------- */
-uint32_t err_thread_app = 0u;
+uint64_t err_thread_app = 0u;
 
 uint16_t length_buf_tx_queue_wifi = 0u;
 char buf_tx_queue_wifi[150];
@@ -82,7 +82,7 @@ bool thread_app_init(void)
 
     if (true != common_thread_objects_init())
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_COMMON_OBJECTS);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_COMMON_OBJECTS);
 
         return false;
     }
@@ -95,7 +95,7 @@ bool thread_app_init(void)
     /* TODO: read device id from nvm */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_REQ_DEVICE_ID);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_REQ_DEVICE_ID);
 
         return false;
     }
@@ -125,7 +125,7 @@ bool thread_app_handle(void)
     /* Request settings from thread_network */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SETTINGS, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS);
 
         return false;
     }
@@ -135,7 +135,7 @@ bool thread_app_handle(void)
     {
         if (true != thread_app_handle_settings())
         {
-            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS_RES);
+            error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_REQ_SETTINGS_RES);
 
             return false;
         }
@@ -144,7 +144,7 @@ bool thread_app_handle(void)
     /* Request data from thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_HANDLE_SENSORS, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS);
 
         return false;
     }
@@ -154,7 +154,7 @@ bool thread_app_handle(void)
     {
         if (true != thread_app_handle_data_packet())
         {
-            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS_RES);
+            error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SENSORS_RES);
 
             return false;
         }
@@ -167,7 +167,7 @@ bool thread_app_handle(void)
 
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_HANDLE_EXT_LED, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED);
 
         return false;
     }
@@ -175,7 +175,7 @@ bool thread_app_handle(void)
     xTaskNotifyWait(0u, 0u, &notification_app, 1);
     if ((notification_app & NOTIFICATION_TO_APP_RES_HANDLE_EXT_LED) == 0u)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED_RES);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_EXT_LED_RES);
 
         return false;
     }
@@ -191,7 +191,7 @@ bool thread_app_handle(void)
         //config sleep mode to wake up from RTC
         if(ESP_OK != esp_sleep_enable_timer_wakeup(time_sleep))
         {
-            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SLEEP_SETTINGS);
+            error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SLEEP_SETTINGS);
 
             return false;
         }
@@ -238,7 +238,7 @@ bool thread_app_init_threads(void)
     /* Init thread_memory first, because it is needed by wifi. */
     if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY);
 
         return false;
     }
@@ -247,7 +247,7 @@ bool thread_app_init_threads(void)
     pdTRUE xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
 
         return false;
     }
@@ -257,7 +257,7 @@ bool thread_app_init_threads(void)
     /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
     if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK);
 
         return false;
     }
@@ -266,7 +266,7 @@ bool thread_app_init_threads(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK_RES);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK_RES);
 
         return false;
     }
@@ -276,7 +276,7 @@ bool thread_app_init_threads(void)
     /* Init thread_output */
     if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT);
 
         return false;
     }
@@ -285,7 +285,7 @@ bool thread_app_init_threads(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT_RES);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT_RES);
 
         return false;
     }
@@ -295,7 +295,7 @@ bool thread_app_init_threads(void)
     /* Init thread_input */
     if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT);
 
         return false;
     }
@@ -304,7 +304,7 @@ bool thread_app_init_threads(void)
     xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT_RES);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT_RES);
 
         return false;
     }
@@ -343,7 +343,7 @@ bool thread_app_handle_settings(void)
 
     if (true != b_length_found)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_LENGTH);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_LENGTH);
     }
 
     length_buf_rx_queue_wifi_to_app = index_character + 1;
@@ -354,7 +354,7 @@ bool thread_app_handle_settings(void)
     char *token = strtok(buf_rx_queue_wifi_to_app, ";");
     if (NULL == token)
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_1);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_1);
 
         return false;
     }
@@ -369,7 +369,7 @@ bool thread_app_handle_settings(void)
                 uint8_t temp_mode = (uint8_t)strtol(token, NULL, 10);
                 if (temp_mode != 0u && temp_mode != 1u)
                 {
-                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_MODE);
+                    error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_MODE);
 
                     return false;
                 }
@@ -386,7 +386,7 @@ bool thread_app_handle_settings(void)
                 uint16_t temp_threshold = (uint16_t)(strtof(token, NULL) * 1000);
                 if (temp_threshold < 3000u || temp_threshold > 4000u)
                 {
-                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_BAT_THRESHOLD);
+                    error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_BAT_THRESHOLD);
 
                     return false;
                 }
@@ -403,7 +403,7 @@ bool thread_app_handle_settings(void)
                 uint32_t temp_delay = (uint32_t)(strtof(token, NULL) * 100.0);
                 if (temp_delay < 100u || temp_delay > 8640000u)
                 {
-                    error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_DELAY);
+                    error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_DELAY);
 
                     return false;
                 }
@@ -417,7 +417,7 @@ bool thread_app_handle_settings(void)
             break;
 
             default:
-                error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_UNKNOWN);
+                error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_UNKNOWN);
 
                 return false;
         }
@@ -425,7 +425,7 @@ bool thread_app_handle_settings(void)
         token = strtok(NULL, ";");
         if (NULL == token)
         {
-            error_set_u32(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_2);
+            error_set_u64(&err_thread_app, THREAD_APP_ERROR_HANDLE_SETTINGS_TOKEN_2);
 
             return false;
         }
@@ -488,10 +488,10 @@ bool thread_app_handle_data_packet(void)
         */
         
     int ret = snprintf(buf_tx_queue_wifi, 150, 
-        "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%x&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
+        "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%lx&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
         device_id, humidity_input, light_input, temperature_input, voltage_battery_input,
         rssi_wifi, device_mode, bat_low_flag, 
-        (unsigned int)err_thread_app, (unsigned int)err_thread_input, (unsigned int)err_thread_output, 
+        (uint64_t)err_thread_app, (unsigned int)err_thread_input, (unsigned int)err_thread_output, 
         (unsigned int)err_thread_network, (unsigned int)err_thread_memory, (unsigned int)sw_version, (unsigned int)timer);
 
     if (ret < 0 || ret > 150)
