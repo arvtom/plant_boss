@@ -10,6 +10,12 @@
 /* ---------------------------- Includes ---------------------------- */
 
 /* ---------------------------- Defines ---------------------------- */
+#define DEBUG_PLANT_BOSS
+
+#ifdef DEBUG_PLANT_BOSS
+    #warning DEBUG_PLANT_BOSS flag is enabled
+#endif
+
 #define STACK_THREAD_APP                8192u
 #define STACK_THREAD_INPUT              8192u
 #define STACK_THREAD_OUTPUT             8192u

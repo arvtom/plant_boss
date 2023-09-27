@@ -20,6 +20,9 @@
 /* ---------------------------- Typedefs ---------------------------- */
 #define TIME_SLEEP (5U * 1000000U) //5 seconds
 
+#define TIMEOUT_WRITE_ERROR_TO_MEMORY   200U    /* x10 ms*/
+#define TIMEOUT_SEND_ERROR_TO_NETWORK   1000U   /* x10 ms*/
+
 typedef enum
 {
     THREAD_APP_ERROR_INIT_COMMON_OBJECTS            = 0x00000001U,
@@ -60,7 +63,10 @@ typedef enum
 void thread_app(void *arg);
 bool thread_app_init(void);
 bool thread_app_handle(void);
-uint8_t app_function(void);
+
+void thread_app_handle_error_write_memory(void);
+void thread_app_handle_error_send_network(void);
+void thread_app_handle_error(void);
 
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_app_handle_settings(void);

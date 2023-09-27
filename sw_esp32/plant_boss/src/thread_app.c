@@ -59,14 +59,14 @@ void thread_app(void *arg)
 {
     if (true != thread_app_init())
     {
-        error_handle();
+        thread_app_handle_error();
     }
 
     while (1)
     {
         if (true != thread_app_handle())
         {
-            error_handle();
+            thread_app_handle_error();
         }
     }
 }
@@ -269,6 +269,77 @@ bool thread_app_handle(void)
     vTaskDelay(delay_handle_thread_app);
 
     return true;
+}
+
+void thread_app_handle_error_write_memory(void)
+{
+    if (0u == err_thread_memory)
+    {
+        if (pdPASS == xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR, eSetBits))
+        {
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_ERROR_TO_MEMORY))
+            {
+                ESP_LOGI(tag_t_a, "write error timeout");
+            }
+            else
+            {
+                if ((notification_app & NOTIFICATION_TO_APP_RES_WRITE_ERROR) == 0u)
+                {
+                    ESP_LOGI(tag_t_a, "write error fail");
+                }
+            }
+
+            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_WRITE_ERROR);
+        }
+    }
+}
+
+void thread_app_handle_error_send_network(void)
+{
+    if (0u == err_thread_network)
+    {
+        if (pdPASS == xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SEND_ERROR, eSetBits))
+        {
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_SEND_ERROR_TO_NETWORK))
+            {
+                ESP_LOGI(tag_t_a, "send error timeout");
+            }
+            else
+            {
+                if ((notification_app & NOTIFICATION_TO_APP_RES_SEND_ERROR) == 0u)
+                {
+                    ESP_LOGI(tag_t_a, "send error fail");
+                }
+            }
+
+            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_SEND_ERROR);
+        }
+    }
+}
+
+void thread_app_handle_error(void)
+{
+    ESP_LOGI(tag_t_a, "thread_app_handle_error");
+
+    #ifndef DEBUG_PLANT_BOSS
+        /* Write to nvm only if debug is disabled, to save nvm durability. */
+        thread_app_handle_error_write_memory();
+    #endif
+
+    thread_app_handle_error_send_network();
+
+    ESP_LOGI(tag_t_a, "sleep");
+
+    #ifndef DEBUG_PLANT_BOSS
+        /* Go to sleep infinitely */
+        esp_deep_sleep_start()
+    #endif
+
+    /* Otherwise watchdog will bite. */
+    while(1)
+    {
+
+    }
 }
 
 /* ---------------------------- Private functions ---------------------------- */
