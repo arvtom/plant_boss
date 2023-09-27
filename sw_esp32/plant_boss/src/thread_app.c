@@ -73,6 +73,7 @@ void thread_app(void *arg)
 
 bool thread_app_init(void)
 {
+    /* Debouncing insertion of battery. */
     vTaskDelay(100);
     
     ESP_LOGI(tag_t_a, "addr err_thread_app 0x%x\n", (unsigned int)&err_thread_app);
@@ -86,83 +87,18 @@ bool thread_app_init(void)
         return false;
     }
 
-    /* Init thread_memory first, because it is needed by wifi. */
-    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT, eSetBits))
+    if (true != thread_app_init_threads())
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY);
-
         return false;
     }
 
-    /* Wait until thread_memory is init. */
-    pdTRUE xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
-    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
+    /* TODO: read device id from nvm */
+    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID, eSetBits))
     {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_REQ_DEVICE_ID);
 
         return false;
     }
-
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_MEMORY);
-
-    /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
-    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK);
-
-        return false;
-    }
-
-    /* Wait until thread_network is init */
-    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
-    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK_RES);
-
-        return false;
-    }
-    
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_NETWORK);
-
-    /* Init thread_output */
-    if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT);
-
-        return false;
-    }
-
-    /* Wait until thread_output is init */
-    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
-    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT_RES);
-
-        return false;
-    }
-
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_OUTPUT);
-
-    /* Init thread_input */
-    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT);
-
-        return false;
-    }
-
-    /* Wait until thread_input is init */
-    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
-    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
-    {
-        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT_RES);
-
-        return false;
-    }
-
-    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT);
-
-    /* TODO: read mode from nvm */
 
     ESP_LOGI(tag_t_a, "i");
 
@@ -271,52 +207,6 @@ bool thread_app_handle(void)
     return true;
 }
 
-void thread_app_handle_error_write_memory(void)
-{
-    if (0u == err_thread_memory)
-    {
-        if (pdPASS == xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR, eSetBits))
-        {
-            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_ERROR_TO_MEMORY))
-            {
-                ESP_LOGI(tag_t_a, "write error timeout");
-            }
-            else
-            {
-                if ((notification_app & NOTIFICATION_TO_APP_RES_WRITE_ERROR) == 0u)
-                {
-                    ESP_LOGI(tag_t_a, "write error fail");
-                }
-            }
-
-            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_WRITE_ERROR);
-        }
-    }
-}
-
-void thread_app_handle_error_send_network(void)
-{
-    if (0u == err_thread_network)
-    {
-        if (pdPASS == xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SEND_ERROR, eSetBits))
-        {
-            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_SEND_ERROR_TO_NETWORK))
-            {
-                ESP_LOGI(tag_t_a, "send error timeout");
-            }
-            else
-            {
-                if ((notification_app & NOTIFICATION_TO_APP_RES_SEND_ERROR) == 0u)
-                {
-                    ESP_LOGI(tag_t_a, "send error fail");
-                }
-            }
-
-            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_SEND_ERROR);
-        }
-    }
-}
-
 void thread_app_handle_error(void)
 {
     ESP_LOGI(tag_t_a, "thread_app_handle_error");
@@ -343,6 +233,86 @@ void thread_app_handle_error(void)
 }
 
 /* ---------------------------- Private functions ---------------------------- */
+bool thread_app_init_threads(void)
+{
+    /* Init thread_memory first, because it is needed by wifi. */
+    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_INIT, eSetBits))
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY);
+
+        return false;
+    }
+
+    /* Wait until thread_memory is init. */
+    pdTRUE xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
+
+        return false;
+    }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_MEMORY);
+
+    /* Init thread_network, because there is no point for starting other threads if connection to database is not existing. */
+    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_INIT, eSetBits))
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK);
+
+        return false;
+    }
+
+    /* Wait until thread_network is init */
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_NETWORK) == 0u)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_NETWORK_RES);
+
+        return false;
+    }
+    
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_NETWORK);
+
+    /* Init thread_output */
+    if (pdPASS != xTaskNotify(handle_output, NOTIFICATION_TO_OUTPUT_REQ_INIT, eSetBits))
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT);
+
+        return false;
+    }
+
+    /* Wait until thread_output is init */
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_OUTPUT) == 0u)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_OUTPUT_RES);
+
+        return false;
+    }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_OUTPUT);
+
+    /* Init thread_input */
+    if (pdPASS != xTaskNotify(handle_input, NOTIFICATION_TO_INPUT_REQ_INIT, eSetBits))
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT);
+
+        return false;
+    }
+
+    /* Wait until thread_input is init */
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_INPUT) == 0u)
+    {
+        error_set_u32(&err_thread_app, THREAD_APP_ERROR_INIT_INPUT_RES);
+
+        return false;
+    }
+
+    ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_INIT_INPUT);
+
+    return true;
+}
 
 bool thread_app_handle_settings(void)
 {
@@ -534,6 +504,52 @@ bool thread_app_handle_data_packet(void)
     xQueueSend(queue_app_to_wifi, (void*)buf_tx_queue_wifi, (TickType_t)0);
 
     return true;
+}
+
+void thread_app_handle_error_write_memory(void)
+{
+    if (0u == err_thread_memory)
+    {
+        if (pdPASS == xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR, eSetBits))
+        {
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_ERROR_TO_MEMORY))
+            {
+                ESP_LOGI(tag_t_a, "write error timeout");
+            }
+            else
+            {
+                if ((notification_app & NOTIFICATION_TO_APP_RES_WRITE_ERROR) == 0u)
+                {
+                    ESP_LOGI(tag_t_a, "write error fail");
+                }
+            }
+
+            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_WRITE_ERROR);
+        }
+    }
+}
+
+void thread_app_handle_error_send_network(void)
+{
+    if (0u == err_thread_network)
+    {
+        if (pdPASS == xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SEND_ERROR, eSetBits))
+        {
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_SEND_ERROR_TO_NETWORK))
+            {
+                ESP_LOGI(tag_t_a, "send error timeout");
+            }
+            else
+            {
+                if ((notification_app & NOTIFICATION_TO_APP_RES_SEND_ERROR) == 0u)
+                {
+                    ESP_LOGI(tag_t_a, "send error fail");
+                }
+            }
+
+            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_SEND_ERROR);
+        }
+    }
 }
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */

@@ -47,7 +47,7 @@ typedef enum
     THREAD_APP_ERROR_HANDLE_SETTINGS_BAT_THRESHOLD  = 0x00080000U,
     THREAD_APP_ERROR_HANDLE_SETTINGS_DELAY          = 0x00100000U,
     THREAD_APP_ERROR_HANDLE_SETTINGS_UNKNOWN        = 0x00200000U,
-    // ERROR_BIT = 0x00400000U,
+    THREAD_APP_ERROR_REQ_DEVICE_ID                  = 0x00400000U,
     // ERROR_BIT = 0x00800000U,
     // ERROR_BIT = 0x01000000U,
     // ERROR_BIT = 0x02000000U,
@@ -64,13 +64,16 @@ void thread_app(void *arg);
 bool thread_app_init(void);
 bool thread_app_handle(void);
 
-void thread_app_handle_error_write_memory(void);
-void thread_app_handle_error_send_network(void);
 void thread_app_handle_error(void);
 
 /* ---------------------------- Private functions ---------------------------- */
+bool thread_app_init_threads(void);
+
 bool thread_app_handle_settings(void);
 bool thread_app_handle_data_packet(void);
+
+void thread_app_handle_error_write_memory(void);
+void thread_app_handle_error_send_network(void);
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
 
