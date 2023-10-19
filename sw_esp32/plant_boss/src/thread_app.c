@@ -94,7 +94,7 @@ bool thread_app_init(void)
     }
 
     /* TODO: read device id from nvm */
-    if (pdPASS != xTaskNotify(handle_network, NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID, eSetBits))
+    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID, eSetBits))
     {
         error_set_u64(&err_thread_app, THREAD_APP_ERROR_REQ_DEVICE_ID);
 

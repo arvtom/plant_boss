@@ -63,6 +63,8 @@ void error_clear_u32(uint32_t *p_err_var, uint32_t err_bit);
 void error_set_u64(uint64_t *p_err_var, uint64_t err_bit);
 void error_clear_u64(uint64_t *p_err_var, uint64_t err_bit);
 
+void error_handle();
+
 /*------------------------------Private function prototypes------------------------------*/
 
 #endif /* ERROR_H */

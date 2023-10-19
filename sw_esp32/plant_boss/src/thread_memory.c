@@ -95,6 +95,18 @@ bool thread_memory_handle(void)
         ESP_LOGI(tag_t_m, "h");
     }
 
+    // if (pdTRUE == xTaskNotifyWait(0u, 0u, &notification_memory, 1u))
+    // {
+    //     if (1u == notification_memory & NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID)
+    //     {
+
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
+
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
 
     return true;

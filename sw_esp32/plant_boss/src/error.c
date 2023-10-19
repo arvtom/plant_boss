@@ -53,7 +53,7 @@ void error_set_u64(uint64_t *p_err_var, uint64_t err_bit)
 {
     *p_err_var |= err_bit;
 
-    ESP_LOGI(tag_err, "err 0x%lx, addr 0x%x\n", *p_err_var, (unsigned int)p_err_var);
+    ESP_LOGI(tag_err, "err 0x%llx, addr 0x%x\n", *p_err_var, (unsigned int)p_err_var);
 }
 
 /**
@@ -62,6 +62,13 @@ void error_set_u64(uint64_t *p_err_var, uint64_t err_bit)
 void error_clear_u64(uint64_t *p_err_var, uint64_t err_bit)
 {
     *p_err_var &= (~ err_bit);
+}
+
+void error_handle()
+{
+    ESP_LOGI(tag_err, "err handle");
+
+    vTaskDelay(100);
 }
 
 /*------------------------------Private functions------------------------------*/
