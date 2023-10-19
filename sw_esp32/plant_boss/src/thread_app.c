@@ -71,6 +71,7 @@ void thread_app(void *arg)
     }
 }
 
+/* ---------------------------- Private functions ---------------------------- */
 bool thread_app_init(void)
 {
     /* Debouncing insertion of battery. */
@@ -99,6 +100,15 @@ bool thread_app_init(void)
 
         return false;
     }
+
+    if (pdTRUE == xQueueReceive(queue_memory_to_app, &buf_rx_queue_memory_to_app, 100u))
+    {
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_RES_DEVICE_ID);
+
+        return false;
+    }
+
+    device_id = buf_rx_queue_memory_to_app[0];
 
     ESP_LOGI(tag_t_a, "i");
 
@@ -232,7 +242,6 @@ void thread_app_handle_error(void)
     }
 }
 
-/* ---------------------------- Private functions ---------------------------- */
 bool thread_app_init_threads(void)
 {
     /* Init thread_memory first, because it is needed by wifi. */
