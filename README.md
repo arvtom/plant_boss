@@ -42,6 +42,7 @@ Telegram bot is used to:
 		* Possibility to change esp32 battery critical voltage threshold.
 		* Consider removing nginx
 * Embedded software ESP32:
+	* automated sw versioning using date.
 	* Focus on trimmed down version with proper error management.
 	* Static analysis.
 	* Calibration constants in nvs.
