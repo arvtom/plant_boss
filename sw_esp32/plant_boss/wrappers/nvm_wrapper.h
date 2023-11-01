@@ -9,6 +9,7 @@
 
 /*------------------------------Includes------------------------------*/
 #include <stdbool.h>
+#include <string.h>
 
 #include <esp_log.h>
 #include <nvs_flash.h>
@@ -27,6 +28,7 @@
 #define KEY_NVS_ERROR_OUTPUT                  "8"
 #define KEY_NVS_ERROR_NETWORK                 "9"
 #define KEY_NVS_ERROR_MEMORY                  "10"
+#define KEY_NVS_CRC_SW                        "11"
 
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
@@ -78,6 +80,7 @@ typedef struct
     uint32_t err_output;
     uint32_t err_network;
     uint32_t err_memory;
+    uint32_t crc_sw;
 } nvm_contents_t;
 
 /*------------------------------Public function prototypes------------------------------*/

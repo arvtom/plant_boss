@@ -29,6 +29,8 @@ bool nvm_init(void)
 
         return false;
     }
+
+    memset(&nvm_contents, 0u, sizeof(nvm_contents));
     
     return true;
 }
@@ -141,6 +143,15 @@ bool nvm_handle_read(void)
         return false;
     }
 
+    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CRC_SW, &nvm_contents.crc_sw))
+    {
+        ESP_LOGI(tag_nvm, "11f");
+
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
     nvs_close(handle_nvs);
 
     ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx",
@@ -167,28 +178,77 @@ bool nvm_handle_write(void)
         return false;
     } 
 
-    if (ESP_OK != nvs_set_u8(handle_nvs, "0", device_id))
+    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_ID, &nvm_contents.id))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u8(handle_nvs, "1", device_mode))
+    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_MODE, &nvm_contents.mode))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u16(handle_nvs, "2", threshold_voltage_battery))
+    if (ESP_OK != nvs_set_u16(handle_nvs, KEY_NVS_THRESHOLD_BAT_VOLTAGE, &nvm_contents.bat_threshold))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, "3", delay_handle_thread_app))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_PERIOD_MEASUREMENT, &nvm_contents.measurement_period))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_SCALE, &nvm_contents.calibration_scale))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_OFFSET, &nvm_contents.calibration_offset))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u64(handle_nvs, KEY_NVS_ERROR_APP, &nvm_contents.err_app))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_INPUT, &nvm_contents.err_input))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_OUTPUT, &nvm_contents.err_output))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_NETWORK, &nvm_contents.err_network))
+    {
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_MEMORY, &nvm_contents.err_memory))
     {
         nvs_close(handle_nvs);
 
@@ -205,6 +265,61 @@ bool nvm_handle_write(void)
     nvs_close(handle_nvs);
 
     return true;
+}
+
+uint8_t nvm_get_id(void)
+{
+    return nvm_contents.id;
+}
+
+uint8_t nvm_get_mode(void)
+{
+    return nvm_contents.mode;
+}
+
+uint16_t nvm_get_bat_threshold(void)
+{
+    return nvm_contents.bat_threshold;
+}
+
+uint32_t nvm_get_measurement_period(void)
+{
+    return nvm_contents.measurement_period;
+}
+
+float nvm_get_calibration_scale(void)
+{
+    return nvm_contents.calibration_scale;
+}
+
+float nvm_get_calibration_offset(void)
+{
+    return nvm_contents.calibration_offset;
+}
+
+uint64_t nvm_get_err_app(void)
+{
+    return nvm_contents.err_app;
+}
+
+uint32_t nvm_get_err_input(void)
+{
+    return nvm_contents.err_input;
+}
+
+uint32_t nvm_get_err_output(void)
+{
+    return nvm_contents.err_output;
+}
+
+uint32_t nvm_get_err_network(void)
+{
+    return nvm_contents.err_network;
+}
+
+uint32_t nvm_get_err_memory(void)
+{
+    return nvm_contents.err_memory;
 }
 
 /*------------------------------Private functions------------------------------*/
