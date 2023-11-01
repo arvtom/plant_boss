@@ -9,4 +9,7 @@ splint \
 -I ../plant_boss/drivers \
 -I ../plant_boss/wrappers \
 -I ~/esp/esp-idf/components/log/include \
--I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos
+-I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include \
+-I ~/esp/esp-idf/components/esp_adc/include \
+-I ~/esp/esp-idf/components/esp_common/include \
+>> splint.txt
