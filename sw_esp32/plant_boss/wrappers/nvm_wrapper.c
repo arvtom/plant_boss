@@ -80,7 +80,7 @@ bool nvm_handle_read(void)
         return false;
     }
 
-    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CALIBRATION_SCALE, &nvm_contents.calibration_scale))
+    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CALIBRATION_SCALE, &nvm_contents.calibration_scale.u32))
     {
         ESP_LOGI(tag_nvm, "4f");
 
@@ -89,7 +89,7 @@ bool nvm_handle_read(void)
         return false;
     }
 
-    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CALIBRATION_OFFSET, &nvm_contents.calibration_offset))
+    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CALIBRATION_OFFSET, &nvm_contents.calibration_offset.u32))
     {
         ESP_LOGI(tag_nvm, "5f");
 
@@ -154,13 +154,13 @@ bool nvm_handle_read(void)
 
     nvs_close(handle_nvs);
 
-    ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx",
+    ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx,%lx",
         nvm_contents.id,
         nvm_contents.mode,
         nvm_contents.bat_threshold,
         nvm_contents.measurement_period,
-        nvm_contents.calibration_scale,
-        nvm_contents.calibration_offset
+        nvm_contents.calibration_scale.u32,
+        nvm_contents.calibration_offset.u32,
         nvm_contents.err_app,
         nvm_contents.err_input,
         nvm_contents.err_output,
@@ -178,77 +178,77 @@ bool nvm_handle_write(void)
         return false;
     } 
 
-    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_ID, &nvm_contents.id))
+    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_ID, nvm_contents.id))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_MODE, &nvm_contents.mode))
+    if (ESP_OK != nvs_set_u8(handle_nvs, KEY_NVS_DEVICE_MODE, nvm_contents.mode))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u16(handle_nvs, KEY_NVS_THRESHOLD_BAT_VOLTAGE, &nvm_contents.bat_threshold))
+    if (ESP_OK != nvs_set_u16(handle_nvs, KEY_NVS_THRESHOLD_BAT_VOLTAGE, nvm_contents.bat_threshold))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_PERIOD_MEASUREMENT, &nvm_contents.measurement_period))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_PERIOD_MEASUREMENT, nvm_contents.measurement_period))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_SCALE, &nvm_contents.calibration_scale))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_SCALE, nvm_contents.calibration_scale.u32))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_OFFSET, &nvm_contents.calibration_offset))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_CALIBRATION_OFFSET, nvm_contents.calibration_offset.u32))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u64(handle_nvs, KEY_NVS_ERROR_APP, &nvm_contents.err_app))
+    if (ESP_OK != nvs_set_u64(handle_nvs, KEY_NVS_ERROR_APP, nvm_contents.err_app))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_INPUT, &nvm_contents.err_input))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_INPUT, nvm_contents.err_input))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_OUTPUT, &nvm_contents.err_output))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_OUTPUT, nvm_contents.err_output))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_NETWORK, &nvm_contents.err_network))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_NETWORK, nvm_contents.err_network))
     {
         nvs_close(handle_nvs);
 
         return false;
     }
 
-    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_MEMORY, &nvm_contents.err_memory))
+    if (ESP_OK != nvs_set_u32(handle_nvs, KEY_NVS_ERROR_MEMORY, nvm_contents.err_memory))
     {
         nvs_close(handle_nvs);
 
@@ -289,12 +289,12 @@ uint32_t nvm_get_measurement_period(void)
 
 float nvm_get_calibration_scale(void)
 {
-    return nvm_contents.calibration_scale;
+    return nvm_contents.calibration_scale.f;
 }
 
 float nvm_get_calibration_offset(void)
 {
-    return nvm_contents.calibration_offset;
+    return nvm_contents.calibration_offset.f;
 }
 
 uint64_t nvm_get_err_app(void)

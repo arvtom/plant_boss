@@ -15,6 +15,7 @@ char buf_tx_queue_wifi[150];
 uint8_t buf_rx_queue_input[16];
 char buf_rx_queue_wifi_to_app[20];
 uint8_t length_buf_rx_queue_wifi_to_app;
+uint8_t buf_rx_queue_memory_to_app[10];
 
 uint8_t buf_tx_queue_memory[10];
 
@@ -93,17 +94,17 @@ bool thread_app_init(void)
         return false;
     }
 
-    /* TODO: read device id from nvm */
-    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID, eSetBits))
+    /* TODO: read parameters from nvm */
+    if (pdPASS != xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_NVM_CONTENTS, eSetBits))
     {
-        error_set_u64(&err_thread_app, THREAD_APP_ERROR_REQ_DEVICE_ID);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_REQ_NVM_CONTENTS);
 
         return false;
     }
 
     if (pdTRUE == xQueueReceive(queue_memory_to_app, &buf_rx_queue_memory_to_app, 100u))
     {
-        error_set_u64(&err_thread_app, THREAD_APP_ERROR_RES_DEVICE_ID);
+        error_set_u64(&err_thread_app, THREAD_APP_ERROR_RES_NVM_CONTENTS);
 
         return false;
     }
@@ -252,8 +253,9 @@ bool thread_app_init_threads(void)
         return false;
     }
 
+    #warning check return of xTaskNotifyWait
     /* Wait until thread_memory is init. */
-    pdTRUE xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
+    xTaskNotifyWait(0u, 0u, &notification_app, portMAX_DELAY);
     if ((notification_app & NOTIFICATION_TO_APP_RES_INIT_MEMORY) == 0u)
     {
         error_set_u64(&err_thread_app, THREAD_APP_ERROR_INIT_MEMORY_RES);
@@ -497,7 +499,7 @@ bool thread_app_handle_data_packet(void)
         */
         
     int ret = snprintf(buf_tx_queue_wifi, 150, 
-        "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%lx&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
+        "a1=%d&a2=%3.1f&a3=%5.1f&a4=%2.1f&a5=%1.1f&a6=%d&a7=%d&a8=%d&a9=0x%llx&a10=0x%x&a11=0x%x&a12=0x%x&a13=0x%x&a14=0x%x&a15=0x%x",
         device_id, humidity_input, light_input, temperature_input, voltage_battery_input,
         rssi_wifi, device_mode, bat_low_flag, 
         (uint64_t)err_thread_app, (unsigned int)err_thread_input, (unsigned int)err_thread_output, 

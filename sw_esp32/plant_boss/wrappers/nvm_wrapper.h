@@ -67,14 +67,20 @@ typedef enum
     // ERROR_BIT = 0x80000000U,
 } nvm_error_t;
 
+typedef union
+{
+    float f;
+    uint32_t u32;
+} float_u32_t;
+
 typedef struct
 {
     uint8_t id;
     uint8_t mode;
     uint16_t bat_threshold;
     uint32_t measurement_period;
-    float calibration_scale;
-    float calibration_offset;
+    float_u32_t calibration_scale;
+    float_u32_t calibration_offset;
     uint64_t err_app;
     uint32_t err_input;
     uint32_t err_output;
