@@ -16,6 +16,17 @@
 #include "error.h"
 
 /*------------------------------Defines------------------------------*/
+#define KEY_NVS_DEVICE_ID                     "0"
+#define KEY_NVS_DEVICE_MODE                   "1"
+#define KEY_NVS_THRESHOLD_BAT_VOLTAGE         "2"
+#define KEY_NVS_PERIOD_MEASUREMENT            "3"
+#define KEY_NVS_CALIBRATION_SCALE             "4"
+#define KEY_NVS_CALIBRATION_OFFSET            "5"
+#define KEY_NVS_ERROR_APP                     "6"
+#define KEY_NVS_ERROR_INPUT                   "7"
+#define KEY_NVS_ERROR_OUTPUT                  "8"
+#define KEY_NVS_ERROR_NETWORK                 "9"
+#define KEY_NVS_ERROR_MEMORY                  "10"
 
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
@@ -52,11 +63,28 @@ typedef enum
     // ERROR_BIT = 0x20000000U,
     // ERROR_BIT = 0x40000000U,
     // ERROR_BIT = 0x80000000U,
-} nvs_error_t;
+} nvm_error_t;
+
+typedef struct
+{
+    uint8_t id;
+    uint8_t mode;
+    uint16_t bat_threshold;
+    uint32_t measurement_period;
+    float calibration_scale;
+    float calibration_offset;
+    uint64_t err_app;
+    uint32_t err_input;
+    uint32_t err_output;
+    uint32_t err_network;
+    uint32_t err_memory;
+} nvm_contents_t;
 
 /*------------------------------Public function prototypes------------------------------*/
 bool nvm_init(void);
-// bool nvm_handle(void);
+
+bool nvm_handle_read(void);
+bool nvm_handle_write(void);
 
 /*------------------------------Private function prototypes------------------------------*/
 
