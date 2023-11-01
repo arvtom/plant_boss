@@ -17,7 +17,7 @@ char buf_rx_queue_wifi_to_app[20];
 uint8_t length_buf_rx_queue_wifi_to_app;
 uint8_t buf_rx_queue_memory_to_app[10];
 
-uint8_t buf_tx_queue_memory[10];
+// uint8_t buf_tx_queue_memory[10];
 
 uint32_t notification_app = 0u;
 
@@ -54,6 +54,8 @@ UBaseType_t stack_watermark_memory = 0u;
 static const char* tag_t_a = "t_a";
 
 uint32_t time_sleep = TIME_SLEEP;
+
+extern nvm_contents_t nvm_contents;
 
 /* ---------------------------- Public functions ---------------------------- */
 void thread_app(void *arg)
@@ -224,6 +226,12 @@ void thread_app_handle_error(void)
 
     #ifndef DEBUG_PLANT_BOSS
         /* Write to nvm only if debug is disabled, to save nvm durability. */
+        nvm_contents.err_app = err_thread_app;
+        nvm_contents.err_input = err_thread_input;
+        nvm_contents.err_output = err_thread_output;
+        nvm_contents.err_network = err_thread_network;
+        nvm_contents.err_memory = err_thread_memory;
+
         thread_app_handle_error_write_memory();
     #endif
 
@@ -446,15 +454,25 @@ bool thread_app_handle_settings(void)
 
     if (true == b_settings_updated)
     {
-        /* save new settings in nvm */
-        memcpy(&buf_tx_queue_memory[0], &device_id, 1);
-        memcpy(&buf_tx_queue_memory[1], &device_mode, 1);
-        memcpy(&buf_tx_queue_memory[2], &threshold_voltage_battery, 2);
-        memcpy(&buf_tx_queue_memory[4], &delay_handle_thread_app, 4);
+        nvm_contents.mode = device_mode;
+        nvm_contents.bat_threshold = threshold_voltage_battery;
+        nvm_contents.measurement_period = delay_handle_thread_app;
 
-        if (pdTRUE != xQueueSend(queue_app_to_memory, (void*)buf_tx_queue_memory, (TickType_t)0))
+        if (pdPASS == xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_WRITE_PARAMETERS, eSetBits))
         {
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_TO_MEMORY))
+            {
+                ESP_LOGI(tag_t_a, "wpt");
+            }
+            else
+            {
+                if ((notification_app & NOTIFICATION_TO_APP_RES_WRITE_PARAMETERS) == 0u)
+                {
+                    ESP_LOGI(tag_t_a, "wpf");
+                }
+            }
 
+            ulTaskNotifyValueClear(handle_app, NOTIFICATION_TO_APP_RES_WRITE_PARAMETERS);
         }
     }
 
@@ -523,15 +541,15 @@ void thread_app_handle_error_write_memory(void)
     {
         if (pdPASS == xTaskNotify(handle_memory, NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR, eSetBits))
         {
-            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_ERROR_TO_MEMORY))
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_WRITE_TO_MEMORY))
             {
-                ESP_LOGI(tag_t_a, "write error timeout");
+                ESP_LOGI(tag_t_a, "wet");
             }
             else
             {
                 if ((notification_app & NOTIFICATION_TO_APP_RES_WRITE_ERROR) == 0u)
                 {
-                    ESP_LOGI(tag_t_a, "write error fail");
+                    ESP_LOGI(tag_t_a, "wef");
                 }
             }
 
@@ -546,7 +564,7 @@ void thread_app_handle_error_send_network(void)
     {
         if (pdPASS == xTaskNotify(handle_network, NOTIFICATION_TO_NETWORK_REQ_SEND_ERROR, eSetBits))
         {
-            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_SEND_ERROR_TO_NETWORK))
+            if (pdFALSE == xTaskNotifyWait(0u, 0u, &notification_app, TIMEOUT_SEND_TO_NETWORK))
             {
                 ESP_LOGI(tag_t_a, "send error timeout");
             }

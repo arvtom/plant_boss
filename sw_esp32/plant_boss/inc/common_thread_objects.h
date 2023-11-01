@@ -105,7 +105,7 @@ typedef enum
     NOTIFICATION_TO_APP_RES_SEND_ERROR                  = 0x00000200,     /* bit 9 */
     NOTIFICATION_TO_APP_RES_WRITE_ERROR                 = 0x00000400,     /* bit 10 */
     NOTIFICATION_TO_APP_RES_DEVICE_ID                   = 0x00000800,     /* bit 11 */
-    // NOTIFICATION_TO_ = 0x00001000,     /* bit 12 */
+    NOTIFICATION_TO_APP_RES_WRITE_PARAMETERS            = 0x00001000,     /* bit 12 */
     // NOTIFICATION_TO_ = 0x00002000,     /* bit 13 */
     // NOTIFICATION_TO_ = 0x00004000,     /* bit 14 */
     // NOTIFICATION_TO_ = 0x00008000,     /* bit 15 */
@@ -170,7 +170,7 @@ typedef enum
     NOTIFICATION_TO_MEMORY_REQ_INIT                     = 0x00000001,     /* bit 0 */
     NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR              = 0x00000002,     /* bit 1 */
     NOTIFICATION_TO_MEMORY_REQ_NVM_CONTENTS                = 0x00000004,     /* bit 2 */
-//     NOTIFICATION_TO_ = 0x00000008,     /* bit 3 */
+    NOTIFICATION_TO_MEMORY_REQ_WRITE_PARAMETERS = 0x00000008,     /* bit 3 */
 //     NOTIFICATION_TO_ = 0x00000010,     /* bit 4 */
 //     NOTIFICATION_TO_ = 0x00000020,     /* bit 5 */
 //     NOTIFICATION_TO_ = 0x00000040,     /* bit 6 */

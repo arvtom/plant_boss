@@ -29,7 +29,7 @@ QueueHandle_t queue_memory_to_app;      /*
 QueueHandle_t queue_app_to_wifi;        /* 
                                             write data packet to database
                                         */
-QueueHandle_t queue_app_to_memory;      /* 
+/* QueueHandle_t queue_app_to_memory;  */     /* 
                                             write mode
                                             write device id
                                             write errors
@@ -110,11 +110,11 @@ bool common_thread_objects_init(void)
         return false;
     }
 
-    queue_app_to_memory = xQueueCreate(1, SIZE_QUEUE_APP_TO_MEMORY); 
-    if (queue_app_to_memory == NULL)
-    {
-        return false;
-    }
+    // queue_app_to_memory = xQueueCreate(1, SIZE_QUEUE_APP_TO_MEMORY); 
+    // if (queue_app_to_memory == NULL)
+    // {
+    //     return false;
+    // }
 
     return true;
 }

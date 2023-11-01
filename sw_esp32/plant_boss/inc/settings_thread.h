@@ -13,7 +13,9 @@
 #define DEBUG_PLANT_BOSS
 
 #ifdef DEBUG_PLANT_BOSS
-    #warning DEBUG_PLANT_BOSS flag is enabled
+    /* #warning DEBUG_PLANT_BOSS flag is enabled */
+#else
+    #warning DEBUG_PLANT_BOSS flag is disabled
 #endif
 
 #define STACK_THREAD_APP                8192u

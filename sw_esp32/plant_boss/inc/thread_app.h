@@ -13,6 +13,7 @@
 #include <esp_log.h>
 #include <esp_sleep.h>
 
+#include "nvm_wrapper.h"
 #include "wifi_wrapper.h"
 #include "common_thread_objects.h"
 #include "error.h"
@@ -20,8 +21,8 @@
 /* ---------------------------- Typedefs ---------------------------- */
 #define TIME_SLEEP (5U * 1000000U) //5 seconds
 
-#define TIMEOUT_WRITE_ERROR_TO_MEMORY   200U    /* x10 ms*/
-#define TIMEOUT_SEND_ERROR_TO_NETWORK   1000U   /* x10 ms*/
+#define TIMEOUT_WRITE_TO_MEMORY   200U    /* x10 ms*/
+#define TIMEOUT_SEND_TO_NETWORK   1000U   /* x10 ms*/
 
 typedef enum
 {

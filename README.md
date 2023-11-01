@@ -43,6 +43,7 @@ Telegram bot is used to:
 		* Consider removing nginx
 * Embedded software ESP32:
 	* Focus on trimmed down version with proper error management.
+	* Static analysis.
 	* Calibration constants in nvs.
 	* Read device id from nvs.
 	* Write and read errors from nvs.

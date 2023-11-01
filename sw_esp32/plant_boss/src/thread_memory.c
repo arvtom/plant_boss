@@ -9,7 +9,7 @@ uint32_t err_thread_memory = 0u;
 
 uint32_t notification_memory = 0u;
 
-extern QueueHandle_t queue_app_to_memory;
+// extern QueueHandle_t queue_app_to_memory;
 extern QueueHandle_t queue_memory_to_app;
 
 extern TaskHandle_t handle_app;
@@ -79,31 +79,23 @@ bool thread_memory_init(void)
 
 bool thread_memory_handle(void)
 {
-    if (xQueueReceive(queue_app_to_memory, &buf_rx_queue_app_to_memory, 1u))
+    if (pdTRUE == xTaskNotifyWait(0u, 0u, &notification_memory, 1u))
     {
-        if (true != nvm_handle_write())
+        if (0u != (notification_memory & NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR) ||
+                0u != (notification_memory & NOTIFICATION_TO_MEMORY_REQ_WRITE_PARAMETERS))
         {
-            ESP_LOGI(tag_t_m, "nwf");
-        }
-        else
-        {
-            ESP_LOGI(tag_t_m, "nwo");
-        }
+            if (true != nvm_handle_write())
+            {
+                ESP_LOGI(tag_t_m, "nwf");
+            }
+            else
+            {
+                ESP_LOGI(tag_t_m, "nwo");
+            }
 
-        ESP_LOGI(tag_t_m, "h");
+            ESP_LOGI(tag_t_m, "h");
+        }
     }
-
-    // if (pdTRUE == xTaskNotifyWait(0u, 0u, &notification_memory, 1u))
-    // {
-    //     if (1u == notification_memory & NOTIFICATION_TO_MEMORY_REQ_DEVICE_ID)
-    //     {
-
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
 
     vTaskDelay(DELAY_HANDLE_THREAD_MEMORY);
 
