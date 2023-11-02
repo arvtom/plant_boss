@@ -2,9 +2,7 @@ splint \
 ../plant_boss/src/* \
 ../plant_boss/drivers/* \
 ../plant_boss/wrappers/* \
-+skip-sys-headers \
--sysdirs ~/esp/esp-idf/components \
--unrecog +show-summary +stats +trytorecover \
+-unrecog +show-summary +stats \
 -I ../plant_boss/inc \
 -I ../plant_boss/drivers \
 -I ../plant_boss/wrappers \
@@ -18,6 +16,17 @@ splint \
 -I ~/esp/esp-idf/components/esp_netif/include \
 -I ~/esp/esp-idf/components/esp_http_client/include \
 -I ~/esp/esp-idf/components/driver/include \
+\
+-I ~/esp/esp-idf/components/esp_rom/include \
+-I ../plant_boss/build/config \
+-I ~/esp/esp-idf/components/esp_adc/esp32/include \
+-I ~/esp/esp-idf/components/hal/include \
+-I ~/esp/esp-idf/components/soc/esp32/include \
+-I ~/esp/esp-idf/components/freertos/esp_additions/include/freertos \
+-I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include \
+-I ~/esp/esp-idf/components/xtensa/esp32/include \
+-I ~/esp/esp-idf/components/xtensa/include/xtensa \
+\
 &> splint.txt
 
 cat splint.txt

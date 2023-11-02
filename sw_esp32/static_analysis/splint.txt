@@ -1,181 +1,370 @@
 Splint 3.1.2 --- 21 Feb 2021
 
-../plant_boss/inc/common_thread_objects.h:28:54: Comment starts inside comment
-  A comment open sequence (/*) appears within a comment.  This usually means an
-  earlier comment was not closed. (Use -nestcomment to inhibit warning)
-   In file included from ../plant_boss/src/common_thread_objects.c:8
-../plant_boss/inc/common_thread_objects.h:29:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:30:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:31:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:32:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:33:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:34:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:35:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:36:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:37:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:38:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:39:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:40:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:41:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:42:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:43:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:44:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:45:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:46:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:47:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:48:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:49:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:50:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:51:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:52:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:53:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:64:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:65:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:66:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:67:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:68:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:69:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:70:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:71:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:72:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:73:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:74:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:75:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:76:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:77:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:78:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:79:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:80:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:81:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:82:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:83:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:84:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:85:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:86:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:87:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:88:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:89:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:90:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:101:89: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:102:89: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:109:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:110:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:111:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:112:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:113:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:114:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:115:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:116:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:117:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:118:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:119:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:120:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:121:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:122:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:123:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:124:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:125:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:126:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:127:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:136:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:137:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:138:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:139:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:140:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:141:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:142:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:143:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:144:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:145:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:146:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:147:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:148:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:149:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:150:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:151:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:152:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:153:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:154:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:155:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:156:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:157:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:158:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:159:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:160:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:161:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:162:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:163:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:164:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:174:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:175:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:176:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:177:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:178:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:179:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:180:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:181:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:182:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:183:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:184:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:185:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:186:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:187:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:188:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:189:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:190:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:191:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:192:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:193:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:194:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:195:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:196:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:197:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:198:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:199:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:200:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:201:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:207:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:208:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:209:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:210:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:211:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:212:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:213:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:214:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:215:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:216:54: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:217:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:218:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:219:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:220:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:221:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:222:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:223:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:224:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:225:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:226:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:227:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:228:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:229:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:230:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:231:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:232:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:233:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:234:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:235:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:236:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:237:55: Comment starts inside comment
-../plant_boss/inc/common_thread_objects.h:238:55: Comment starts inside comment
-../plant_boss/src/thread_app.c:264:45: #warning check return of xTaskNotifyWait
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/xtensa_config.h:47:24: Cannot find include file xtensa/hal.h
+    on search path: ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappe
+    rs;/home/arvydas/esp/esp-idf/components/log/include;/home/arvydas/esp/esp-id
+    f/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/comp
+    onents/esp_adc/include;/home/arvydas/esp/esp-idf/components/esp_common/inclu
+    de;/home/arvydas/esp/esp-idf/components/esp_hw_support/include;/home/arvydas
+    /esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/esp-idf/componen
+    ts/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp_netif/include;/
+    home/arvydas/esp/esp-idf/components/esp_http_client/include;/home/arvydas/es
+    p/esp-idf/components/driver/include;/home/arvydas/esp/esp-idf/components/esp
+    _rom/include;../plant_boss/build/config;/home/arvydas/esp/esp-idf/components
+    /esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/hal/include;/hom
+    e/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf
+    /components/freertos/esp_additions/include/freertos;/home/arvydas/esp/esp-id
+    f/components/freertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/
+    esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/esp/esp-idf/compon
+    ents/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/usr/include
   Preprocessing error. (Use -preproc to inhibit warning)
-../plant_boss/src/thread_output.c:8:90:
-    #warning issue_with_esp_err_t_where_not_allowed_variables_with_same_name_in_
-    different_src
-../plant_boss/src/thread_output.c:9:53:
-    #warning reading_sensors_also_contains_power_outputs
-../plant_boss/wrappers/wifi_wrapper.c:72:17: #warning timeout
-../plant_boss/wrappers/wifi_wrapper.c:120:17: #warning timeout
-../plant_boss/wrappers/adc_wrapper.h:65:46:
-    Parse Error. Attempting to continue.
-../plant_boss/wrappers/adc_wrapper.h:65:64: Cannot recover from parse error.
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/FreeRTOSConfig_arch.h:15,
+                 from ../../../../esp/esp-idf/components/freertos/esp_additions/include/freertos/FreeRTOSConfig.h:28,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:64,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/xtensa/esp32/include/xtensa/config/core.h:44:
+    24: Cannot find include file xtensa/hal.h on search path:
+    /home/arvydas/esp/esp-idf/components/xtensa/esp32/include/xtensa/config;../p
+    lant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp
+    /esp-idf/components/log/include;/home/arvydas/esp/esp-idf/components/freerto
+    s/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/inclu
+    de;/home/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas/esp
+    /esp-idf/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/compone
+    nts/nvs_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/include;
+    /home/arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp/esp
+    -idf/components/esp_http_client/include;/home/arvydas/esp/esp-idf/components
+    /driver/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../plan
+    t_boss/build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/inclu
+    de;/home/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/esp-id
+    f/components/soc/esp32/include;/home/arvydas/esp/esp-idf/components/freertos
+    /esp_additions/include/freertos;/home/arvydas/esp/esp-idf/components/freerto
+    s/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/componen
+    ts/xtensa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/include/
+    xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/xtensa_config.h:48,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/FreeRTOSConfig_arch.h:15,
+                 from ../../../../esp/esp-idf/components/freertos/esp_additions/include/freertos/FreeRTOSConfig.h:28,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:64,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/xtensa/esp32/include/xtensa/config/core.h:45:
+    36: Cannot find include file xtensa/xtensa-versions.h on search path:
+    /home/arvydas/esp/esp-idf/components/xtensa/esp32/include/xtensa/config;../p
+    lant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp
+    /esp-idf/components/log/include;/home/arvydas/esp/esp-idf/components/freerto
+    s/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/inclu
+    de;/home/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas/esp
+    /esp-idf/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/compone
+    nts/nvs_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/include;
+    /home/arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp/esp
+    -idf/components/esp_http_client/include;/home/arvydas/esp/esp-idf/components
+    /driver/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../plan
+    t_boss/build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/inclu
+    de;/home/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/esp-id
+    f/components/soc/esp32/include;/home/arvydas/esp/esp-idf/components/freertos
+    /esp_additions/include/freertos;/home/arvydas/esp/esp-idf/components/freerto
+    s/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/componen
+    ts/xtensa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/include/
+    xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/xtensa_context.h:2:35: Cannot find include file
+    xtensa/xtensa_context.h on search path: ../plant_boss/inc;../plant_boss/driv
+    ers;../plant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;
+    /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/
+    arvydas/esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/com
+    ponents/esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_suppo
+    rt/include;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvy
+    das/esp/esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/compon
+    ents/esp_netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/
+    include;/home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/es
+    p/esp-idf/components/esp_rom/include;../plant_boss/build/config;/home/arvyda
+    s/esp/esp-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/com
+    ponents/hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/
+    home/arvydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;
+    /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtens
+    a/include;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/ar
+    vydas/esp/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux
+    -gnu;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/xtensa_config.h:51,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/FreeRTOSConfig_arch.h:15,
+                 from ../../../../esp/esp-idf/components/freertos/esp_additions/include/freertos/FreeRTOSConfig.h:28,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:64,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/xtensa_config.h:140:29: Cannot find include file sys/reent.h
+    on search path: ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappe
+    rs;/home/arvydas/esp/esp-idf/components/log/include;/home/arvydas/esp/esp-id
+    f/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/comp
+    onents/esp_adc/include;/home/arvydas/esp/esp-idf/components/esp_common/inclu
+    de;/home/arvydas/esp/esp-idf/components/esp_hw_support/include;/home/arvydas
+    /esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/esp-idf/componen
+    ts/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp_netif/include;/
+    home/arvydas/esp/esp-idf/components/esp_http_client/include;/home/arvydas/es
+    p/esp-idf/components/driver/include;/home/arvydas/esp/esp-idf/components/esp
+    _rom/include;../plant_boss/build/config;/home/arvydas/esp/esp-idf/components
+    /esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/hal/include;/hom
+    e/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf
+    /components/freertos/esp_additions/include/freertos;/home/arvydas/esp/esp-id
+    f/components/freertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/
+    esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/esp/esp-idf/compon
+    ents/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/FreeRTOSConfig_arch.h:15,
+                 from ../../../../esp/esp-idf/components/freertos/esp_additions/include/freertos/FreeRTOSConfig.h:28,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:64,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:71:109: Cannot find include file xtensa/hal.h on
+    search path: ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;
+    /home/arvydas/esp/esp-idf/components/log/include;/home/arvydas/esp/esp-idf/c
+    omponents/freertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/compone
+    nts/esp_adc/include;/home/arvydas/esp/esp-idf/components/esp_common/include;
+    /home/arvydas/esp/esp-idf/components/esp_hw_support/include;/home/arvydas/es
+    p/esp-idf/components/nvs_flash/include;/home/arvydas/esp/esp-idf/components/
+    esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp_netif/include;/hom
+    e/arvydas/esp/esp-idf/components/esp_http_client/include;/home/arvydas/esp/e
+    sp-idf/components/driver/include;/home/arvydas/esp/esp-idf/components/esp_ro
+    m/include;../plant_boss/build/config;/home/arvydas/esp/esp-idf/components/es
+    p_adc/esp32/include;/home/arvydas/esp/esp-idf/components/hal/include;/home/a
+    rvydas/esp/esp-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf/co
+    mponents/freertos/esp_additions/include/freertos;/home/arvydas/esp/esp-idf/c
+    omponents/freertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp
+    /esp-idf/components/xtensa/esp32/include;/home/arvydas/esp/esp-idf/component
+    s/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:72:134: Cannot find include file
+    xtensa/xtruntime.h on search path: ../plant_boss/inc;../plant_boss/drivers;.
+    ./plant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/home
+    /arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvyd
+    as/esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/componen
+    ts/esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/in
+    clude;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/e
+    sp/esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components/
+    esp_netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/inclu
+    de;/home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/esp
+    -idf/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/esp
+    /esp-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/componen
+    ts/hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/
+    arvydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/home
+    /arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/inc
+    lude;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas
+    /esp/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;
+    /usr/include
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:73:29: Cannot find include file xt_instr_macros.h
+    on search path: /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kerne
+    l/portable/xtensa/include/freertos;../plant_boss/inc;../plant_boss/drivers;.
+    ./plant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/home
+    /arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvyd
+    as/esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/componen
+    ts/esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/in
+    clude;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/e
+    sp/esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components/
+    esp_netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/inclu
+    de;/home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/esp
+    -idf/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/esp
+    /esp-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/componen
+    ts/hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/
+    arvydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/home
+    /arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/inc
+    lude;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas
+    /esp/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;
+    /usr/include
+../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:54:82:
+    #warning ECO version not determined. Some ECO related caps will not be
+    available.
+   In file included from ../../../../esp/esp-idf/components/esp_hw_support/include/esp_cpu.h:13,
+                 from ../../../../esp/esp-idf/components/esp_hw_support/include/spinlock.h:11,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h:74,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:55:63:
+    #warning Define SOC_CAPS_ECO_VER before including this header.
+../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:1:
+    Macro SOC_DPORT_WORKAROUND already defined
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:75:39: Cannot find include file
+    esp_private/crosscore_int.h on search path:
+    /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtens
+    a/include/freertos;../plant_boss/inc;../plant_boss/drivers;../plant_boss/wra
+    ppers;/home/arvydas/esp/esp-idf/components/log/include;/home/arvydas/esp/esp
+    -idf/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/c
+    omponents/esp_adc/include;/home/arvydas/esp/esp-idf/components/esp_common/in
+    clude;/home/arvydas/esp/esp-idf/components/esp_hw_support/include;/home/arvy
+    das/esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/esp-idf/compo
+    nents/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp_netif/includ
+    e;/home/arvydas/esp/esp-idf/components/esp_http_client/include;/home/arvydas
+    /esp/esp-idf/components/driver/include;/home/arvydas/esp/esp-idf/components/
+    esp_rom/include;../plant_boss/build/config;/home/arvydas/esp/esp-idf/compone
+    nts/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/hal/include;/
+    home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arvydas/esp/esp-
+    idf/components/freertos/esp_additions/include/freertos;/home/arvydas/esp/esp
+    -idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvyd
+    as/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/esp/esp-idf/com
+    ponents/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:1:
+    Macro SOC_DPORT_WORKAROUND already defined
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:80:83: Cannot find include file esp_newlib.h on
+    search path: /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/p
+    ortable/xtensa/include/freertos;../plant_boss/inc;../plant_boss/drivers;../p
+    lant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/
+    esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/components/
+    esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/inclu
+    de;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/
+    esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp
+    _netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/include;
+    /home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/esp-id
+    f/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/esp/es
+    p-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/
+    hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arv
+    ydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/includ
+    e;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/es
+    p/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/us
+    r/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:81:27: Cannot find include file esp_heap_caps.h on
+    search path: /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/p
+    ortable/xtensa/include/freertos;../plant_boss/inc;../plant_boss/drivers;../p
+    lant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/
+    esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/components/
+    esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/inclu
+    de;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/
+    esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp
+    _netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/include;
+    /home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/esp-id
+    f/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/esp/es
+    p-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/
+    hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arv
+    ydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/includ
+    e;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/es
+    p/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/us
+    r/include
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:83:127: Cannot find include file esp_system.h on
+    search path: /home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/p
+    ortable/xtensa/include/freertos;../plant_boss/inc;../plant_boss/drivers;../p
+    lant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvydas/
+    esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/components/
+    esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/inclu
+    de;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/esp/
+    esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components/esp
+    _netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/include;
+    /home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/esp-id
+    f/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/esp/es
+    p-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/components/
+    hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home/arv
+    ydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/home/ar
+    vydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/includ
+    e;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvydas/es
+    p/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu;/us
+    r/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/incl
+    ude/freertos/portmacro.h:89:31: Cannot find include file
+    xtensa/xtensa_api.h on search path: ../plant_boss/inc;../plant_boss/drivers;
+    ../plant_boss/wrappers;/home/arvydas/esp/esp-idf/components/log/include;/hom
+    e/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include;/home/arvy
+    das/esp/esp-idf/components/esp_adc/include;/home/arvydas/esp/esp-idf/compone
+    nts/esp_common/include;/home/arvydas/esp/esp-idf/components/esp_hw_support/i
+    nclude;/home/arvydas/esp/esp-idf/components/nvs_flash/include;/home/arvydas/
+    esp/esp-idf/components/esp_wifi/include;/home/arvydas/esp/esp-idf/components
+    /esp_netif/include;/home/arvydas/esp/esp-idf/components/esp_http_client/incl
+    ude;/home/arvydas/esp/esp-idf/components/driver/include;/home/arvydas/esp/es
+    p-idf/components/esp_rom/include;../plant_boss/build/config;/home/arvydas/es
+    p/esp-idf/components/esp_adc/esp32/include;/home/arvydas/esp/esp-idf/compone
+    nts/hal/include;/home/arvydas/esp/esp-idf/components/soc/esp32/include;/home
+    /arvydas/esp/esp-idf/components/freertos/esp_additions/include/freertos;/hom
+    e/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/in
+    clude;/home/arvydas/esp/esp-idf/components/xtensa/esp32/include;/home/arvyda
+    s/esp/esp-idf/components/xtensa/include/xtensa;/usr/include/x86_64-linux-gnu
+    ;/usr/include
+   In file included from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:58,
+                 from ../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:70,
+                 from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+../../../../esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/Fre
+    eRTOS.h:79:23: Cannot find include file reent.h on search path:
+    ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas
+    /esp/esp-idf/components/log/include;/home/arvydas/esp/esp-idf/components/fre
+    ertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/i
+    nclude;/home/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas
+    /esp/esp-idf/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/com
+    ponents/nvs_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/incl
+    ude;/home/arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp
+    /esp-idf/components/esp_http_client/include;/home/arvydas/esp/esp-idf/compon
+    ents/driver/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../
+    plant_boss/build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/i
+    nclude;/home/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/es
+    p-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf/components/free
+    rtos/esp_additions/include/freertos;/home/arvydas/esp/esp-idf/components/fre
+    ertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/comp
+    onents/xtensa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/incl
+    ude/xtensa;/usr/include/x86_64-linux-gnu;/usr/include
+   In file included from ../plant_boss/inc/error.h:14,
+                 from ../plant_boss/inc/battery.h:15,
+                 from ../plant_boss/src/battery.c:8
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:94:
+  Previous definition of SOC_DPORT_WORKAROUND
+  ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
+  Previous definition of SOC_DPORT_WORKAROUND
+Preprocessing error for file: /home/arvydas/github/plant_boss/sw_esp32/plant_bos
+    s/src/battery.c
 *** Cannot continue.
