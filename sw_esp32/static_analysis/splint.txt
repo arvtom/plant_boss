@@ -272,35 +272,6 @@ Splint 3.1.2 --- 21 Feb 2021
                  from ../plant_boss/src/thread_app.c:6
 ../../../../esp/esp-idf/components/esp_partition/include/esp_partition.h:101:49:
      Invalid character in #if: +
-../../../../esp/esp-idf/components/esp_netif/include/esp_netif_ip_addr.h:11:28:
-    Cannot find include file machine/endian.h on search path:
-    ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas
-    /esp/esp-idf/components/log/include;/home/arvydas/esp/esp-idf/components/fre
-    ertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/i
-    nclude;/home/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas
-    /esp/esp-idf/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/com
-    ponents/nvs_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/incl
-    ude;/home/arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp
-    /esp-idf/components/esp_http_client/include;/home/arvydas/esp/esp-idf/compon
-    ents/driver/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../
-    plant_boss/build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/i
-    nclude;/home/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/es
-    p-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf/components/free
-    rtos/esp_additions/include/freertos;/home/arvydas/esp/esp-idf/components/fre
-    ertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/comp
-    onents/xtensa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/incl
-    ude;/home/arvydas/esp/esp-idf/components/newlib/platform_include;/home/arvyd
-    as/esp/esp-idf/components/newlib/platform_include/sys;/home/arvydas/esp/esp-
-    idf/components/esp_system/include;/home/arvydas/esp/esp-idf/components/heap/
-    include;/home/arvydas/esp/esp-idf/components/esp_partition/include;/home/arv
-    ydas/esp/esp-idf/components/esp_event/include;/usr/include/x86_64-linux-gnu;
-    /usr/include
-   In file included from ../../../../esp/esp-idf/components/esp_netif/include/esp_netif.h:12,
-                 from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi_default.h:10,
-                 from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi.h:58,
-                 from ../plant_boss/wrappers/wifi_wrapper.h:13,
-                 from ../plant_boss/inc/thread_app.h:17,
-                 from ../plant_boss/src/thread_app.c:6
 ../../../../esp/esp-idf/components/esp_http_client/include/esp_http_client.h:12:
      Include file <sys/socket.h> matches the name of a POSIX library, but the
     POSIX library is not being used.  Consider using +posixlib or
@@ -308,36 +279,42 @@ Splint 3.1.2 --- 21 Feb 2021
     message.
   Header name matches a POSIX header, but the POSIX library is not selected.
   (Use -warnposixheaders to inhibit warning)
-../../../../esp/esp-idf/components/newlib/platform_include/endian.h:51:28:
-    Cannot find include file machine/endian.h on search path:
-    ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas
-    /esp/esp-idf/components/log/include;/home/arvydas/esp/esp-idf/components/fre
-    ertos/FreeRTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/i
-    nclude;/home/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas
-    /esp/esp-idf/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/com
-    ponents/nvs_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/incl
-    ude;/home/arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp
-    /esp-idf/components/esp_http_client/include;/home/arvydas/esp/esp-idf/compon
-    ents/driver/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../
-    plant_boss/build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/i
-    nclude;/home/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/es
-    p-idf/components/soc/esp32/include;/home/arvydas/esp/esp-idf/components/free
-    rtos/esp_additions/include/freertos;/home/arvydas/esp/esp-idf/components/fre
-    ertos/FreeRTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/comp
-    onents/xtensa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/incl
-    ude;/home/arvydas/esp/esp-idf/components/newlib/platform_include;/home/arvyd
-    as/esp/esp-idf/components/newlib/platform_include/sys;/home/arvydas/esp/esp-
-    idf/components/esp_system/include;/home/arvydas/esp/esp-idf/components/heap/
-    include;/home/arvydas/esp/esp-idf/components/esp_partition/include;/home/arv
-    ydas/esp/esp-idf/components/esp_event/include;/usr/include/x86_64-linux-gnu;
-    /usr/include
-   In file included from /usr/include/x86_64-linux-gnu/sys/types.h:176,
-                 from /usr/include/x86_64-linux-gnu/bits/socket.h:29,
-                 from /usr/include/x86_64-linux-gnu/sys/socket.h:33,
-                 from ../../../../esp/esp-idf/components/esp_http_client/include/esp_http_client.h:13,
-                 from ../plant_boss/wrappers/wifi_wrapper.h:15,
-                 from ../plant_boss/inc/thread_app.h:17,
-                 from ../plant_boss/src/thread_app.c:6
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:69:1:
+    Macro htobe16 already defined
+  ../plant_boss/inc/machine/endian.h:39: Previous definition of htobe16
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:70:1:
+    Macro htobe32 already defined
+  ../plant_boss/inc/machine/endian.h:44: Previous definition of htobe32
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:71:1:
+    Macro htobe64 already defined
+  ../plant_boss/inc/machine/endian.h:49: Previous definition of htobe64
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:72:1:
+    Macro htole16 already defined
+  ../plant_boss/inc/machine/endian.h:40: Previous definition of htole16
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:73:1:
+    Macro htole32 already defined
+  ../plant_boss/inc/machine/endian.h:45: Previous definition of htole32
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:74:1:
+    Macro htole64 already defined
+  ../plant_boss/inc/machine/endian.h:50: Previous definition of htole64
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:76:1:
+    Macro be16toh already defined
+  ../plant_boss/inc/machine/endian.h:41: Previous definition of be16toh
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:77:1:
+    Macro be32toh already defined
+  ../plant_boss/inc/machine/endian.h:46: Previous definition of be32toh
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:78:1:
+    Macro be64toh already defined
+  ../plant_boss/inc/machine/endian.h:51: Previous definition of be64toh
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:79:1:
+    Macro le16toh already defined
+  ../plant_boss/inc/machine/endian.h:42: Previous definition of le16toh
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:80:1:
+    Macro le32toh already defined
+  ../plant_boss/inc/machine/endian.h:47: Previous definition of le32toh
+../../../../esp/esp-idf/components/newlib/platform_include/endian.h:81:1:
+    Macro le64toh already defined
+  ../plant_boss/inc/machine/endian.h:52: Previous definition of le64toh
 ../../../../esp/esp-idf/components/newlib/platform_include/sys/select.h:10:
     Include file <sys/types.h> matches the name of a POSIX library, but the
     POSIX library is not being used.  Consider using +posixlib or
