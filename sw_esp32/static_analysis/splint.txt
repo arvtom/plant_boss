@@ -176,5 +176,6 @@ Splint 3.1.2 --- 21 Feb 2021
 ../plant_boss/wrappers/wifi_wrapper.c:72:17: #warning timeout
 ../plant_boss/wrappers/wifi_wrapper.c:120:17: #warning timeout
 ../plant_boss/wrappers/adc_wrapper.h:65:46:
-    Parse Error. (For help on parse errors, see splint -help parseerrors.)
+    Parse Error. Attempting to continue.
+../plant_boss/wrappers/adc_wrapper.h:65:64: Cannot recover from parse error.
 *** Cannot continue.
