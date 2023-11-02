@@ -25,7 +25,11 @@ splint \
 -I ~/esp/esp-idf/components/freertos/esp_additions/include/freertos \
 -I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include \
 -I ~/esp/esp-idf/components/xtensa/esp32/include \
--I ~/esp/esp-idf/components/xtensa/include/xtensa \
+-I ~/esp/esp-idf/components/xtensa/include \
+-I ~/esp/esp-idf/components/newlib/platform_include \
+-I ~/esp/esp-idf/components/newlib/platform_include/sys \
+-I ~/esp/esp-idf/components/esp_system/include \
+-I ~/esp/esp-idf/components/heap/include \
 \
 &> splint.txt
 
