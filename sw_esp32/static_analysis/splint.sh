@@ -12,4 +12,12 @@ splint \
 -I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include \
 -I ~/esp/esp-idf/components/esp_adc/include \
 -I ~/esp/esp-idf/components/esp_common/include \
->> splint.txt
+-I ~/esp/esp-idf/components/esp_hw_support/include \
+-I ~/esp/esp-idf/components/nvs_flash/include \
+-I ~/esp/esp-idf/components/esp_wifi/include \
+-I ~/esp/esp-idf/components/esp_netif/include \
+-I ~/esp/esp-idf/components/esp_http_client/include \
+-I ~/esp/esp-idf/components/driver/include \
+&> splint.txt
+
+cat splint.txt

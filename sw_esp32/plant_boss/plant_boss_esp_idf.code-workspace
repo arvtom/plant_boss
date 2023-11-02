@@ -36,7 +36,9 @@
 			"uart_wrapper.h": "c",
 			"battery.h": "c",
 			"nvm_wrapper.h": "c",
-			"nvs_flash.h": "c"
+			"nvs_flash.h": "c",
+			"esp_sleep.h": "c",
+			"esp_http_client.h": "c"
 		}
 	}
 }
