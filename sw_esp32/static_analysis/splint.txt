@@ -264,83 +264,14 @@ Splint 3.1.2 --- 21 Feb 2021
   Previous definition of SOC_DPORT_WORKAROUND
   ../../../../esp/esp-idf/components/soc/esp32/include/soc/soc_caps.h:61:
   Previous definition of SOC_DPORT_WORKAROUND
-../../../../esp/esp-idf/components/nvs_flash/include/nvs_flash.h:22:27:
-    Cannot find include file esp_partition.h on search path:
-    /home/arvydas/esp/esp-idf/components/nvs_flash/include;../plant_boss/inc;../
-    plant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp/esp-idf/componen
-    ts/log/include;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel
-    /include;/home/arvydas/esp/esp-idf/components/esp_adc/include;/home/arvydas/
-    esp/esp-idf/components/esp_common/include;/home/arvydas/esp/esp-idf/componen
-    ts/esp_hw_support/include;/home/arvydas/esp/esp-idf/components/nvs_flash/inc
-    lude;/home/arvydas/esp/esp-idf/components/esp_wifi/include;/home/arvydas/esp
-    /esp-idf/components/esp_netif/include;/home/arvydas/esp/esp-idf/components/e
-    sp_http_client/include;/home/arvydas/esp/esp-idf/components/driver/include;/
-    home/arvydas/esp/esp-idf/components/esp_rom/include;../plant_boss/build/conf
-    ig;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/include;/home/arvydas/
-    esp/esp-idf/components/hal/include;/home/arvydas/esp/esp-idf/components/soc/
-    esp32/include;/home/arvydas/esp/esp-idf/components/freertos/esp_additions/in
-    clude/freertos;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel
-    /portable/xtensa/include;/home/arvydas/esp/esp-idf/components/xtensa/esp32/i
-    nclude;/home/arvydas/esp/esp-idf/components/xtensa/include;/home/arvydas/esp
-    /esp-idf/components/newlib/platform_include;/home/arvydas/esp/esp-idf/compon
-    ents/newlib/platform_include/sys;/home/arvydas/esp/esp-idf/components/esp_sy
-    stem/include;/home/arvydas/esp/esp-idf/components/heap/include;/usr/include/
-    x86_64-linux-gnu;/usr/include
-   In file included from ../plant_boss/wrappers/nvm_wrapper.h:15,
+../../../../esp/esp-idf/components/esp_partition/include/esp_partition.h:101:49:
+     string constants not allowed in #if expressions
+   In file included from ../../../../esp/esp-idf/components/nvs_flash/include/nvs_flash.h:22,
+                 from ../plant_boss/wrappers/nvm_wrapper.h:15,
                  from ../plant_boss/inc/thread_app.h:16,
                  from ../plant_boss/src/thread_app.c:6
-../../../../esp/esp-idf/components/esp_wifi/include/esp_private/esp_wifi_types_p
-    rivate.h:23:28: Cannot find include file esp_event_base.h on search path:
-    /home/arvydas/esp/esp-idf/components/esp_wifi/include/esp_private;../plant_b
-    oss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp/esp-i
-    df/components/log/include;/home/arvydas/esp/esp-idf/components/freertos/Free
-    RTOS-Kernel/include;/home/arvydas/esp/esp-idf/components/esp_adc/include;/ho
-    me/arvydas/esp/esp-idf/components/esp_common/include;/home/arvydas/esp/esp-i
-    df/components/esp_hw_support/include;/home/arvydas/esp/esp-idf/components/nv
-    s_flash/include;/home/arvydas/esp/esp-idf/components/esp_wifi/include;/home/
-    arvydas/esp/esp-idf/components/esp_netif/include;/home/arvydas/esp/esp-idf/c
-    omponents/esp_http_client/include;/home/arvydas/esp/esp-idf/components/drive
-    r/include;/home/arvydas/esp/esp-idf/components/esp_rom/include;../plant_boss
-    /build/config;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/include;/ho
-    me/arvydas/esp/esp-idf/components/hal/include;/home/arvydas/esp/esp-idf/comp
-    onents/soc/esp32/include;/home/arvydas/esp/esp-idf/components/freertos/esp_a
-    dditions/include/freertos;/home/arvydas/esp/esp-idf/components/freertos/Free
-    RTOS-Kernel/portable/xtensa/include;/home/arvydas/esp/esp-idf/components/xte
-    nsa/esp32/include;/home/arvydas/esp/esp-idf/components/xtensa/include;/home/
-    arvydas/esp/esp-idf/components/newlib/platform_include;/home/arvydas/esp/esp
-    -idf/components/newlib/platform_include/sys;/home/arvydas/esp/esp-idf/compon
-    ents/esp_system/include;/home/arvydas/esp/esp-idf/components/heap/include;/u
-    sr/include/x86_64-linux-gnu;/usr/include
-   In file included from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi_types.h:11,
-                 from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi.h:55,
-                 from ../plant_boss/wrappers/wifi_wrapper.h:13,
-                 from ../plant_boss/inc/thread_app.h:17,
-                 from ../plant_boss/src/thread_app.c:6
-../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi.h:56:23:
-    Cannot find include file esp_event.h on search path:
-    /home/arvydas/esp/esp-idf/components/esp_wifi/include;../plant_boss/inc;../p
-    lant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp/esp-idf/component
-    s/log/include;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/
-    include;/home/arvydas/esp/esp-idf/components/esp_adc/include;/home/arvydas/e
-    sp/esp-idf/components/esp_common/include;/home/arvydas/esp/esp-idf/component
-    s/esp_hw_support/include;/home/arvydas/esp/esp-idf/components/nvs_flash/incl
-    ude;/home/arvydas/esp/esp-idf/components/esp_wifi/include;/home/arvydas/esp/
-    esp-idf/components/esp_netif/include;/home/arvydas/esp/esp-idf/components/es
-    p_http_client/include;/home/arvydas/esp/esp-idf/components/driver/include;/h
-    ome/arvydas/esp/esp-idf/components/esp_rom/include;../plant_boss/build/confi
-    g;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/include;/home/arvydas/e
-    sp/esp-idf/components/hal/include;/home/arvydas/esp/esp-idf/components/soc/e
-    sp32/include;/home/arvydas/esp/esp-idf/components/freertos/esp_additions/inc
-    lude/freertos;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel/
-    portable/xtensa/include;/home/arvydas/esp/esp-idf/components/xtensa/esp32/in
-    clude;/home/arvydas/esp/esp-idf/components/xtensa/include;/home/arvydas/esp/
-    esp-idf/components/newlib/platform_include;/home/arvydas/esp/esp-idf/compone
-    nts/newlib/platform_include/sys;/home/arvydas/esp/esp-idf/components/esp_sys
-    tem/include;/home/arvydas/esp/esp-idf/components/heap/include;/usr/include/x
-    86_64-linux-gnu;/usr/include
-   In file included from ../plant_boss/wrappers/wifi_wrapper.h:13,
-                 from ../plant_boss/inc/thread_app.h:17,
-                 from ../plant_boss/src/thread_app.c:6
+../../../../esp/esp-idf/components/esp_partition/include/esp_partition.h:101:49:
+     Invalid character in #if: +
 ../../../../esp/esp-idf/components/esp_netif/include/esp_netif_ip_addr.h:11:28:
     Cannot find include file machine/endian.h on search path:
     ../plant_boss/inc;../plant_boss/drivers;../plant_boss/wrappers;/home/arvydas
@@ -361,36 +292,10 @@ Splint 3.1.2 --- 21 Feb 2021
     ude;/home/arvydas/esp/esp-idf/components/newlib/platform_include;/home/arvyd
     as/esp/esp-idf/components/newlib/platform_include/sys;/home/arvydas/esp/esp-
     idf/components/esp_system/include;/home/arvydas/esp/esp-idf/components/heap/
-    include;/usr/include/x86_64-linux-gnu;/usr/include
+    include;/home/arvydas/esp/esp-idf/components/esp_partition/include;/home/arv
+    ydas/esp/esp-idf/components/esp_event/include;/usr/include/x86_64-linux-gnu;
+    /usr/include
    In file included from ../../../../esp/esp-idf/components/esp_netif/include/esp_netif.h:12,
-                 from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi_default.h:10,
-                 from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi.h:58,
-                 from ../plant_boss/wrappers/wifi_wrapper.h:13,
-                 from ../plant_boss/inc/thread_app.h:17,
-                 from ../plant_boss/src/thread_app.c:6
-../../../../esp/esp-idf/components/esp_netif/include/esp_netif_types.h:12:28:
-    Cannot find include file esp_event_base.h on search path:
-    /home/arvydas/esp/esp-idf/components/esp_netif/include;../plant_boss/inc;../
-    plant_boss/drivers;../plant_boss/wrappers;/home/arvydas/esp/esp-idf/componen
-    ts/log/include;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel
-    /include;/home/arvydas/esp/esp-idf/components/esp_adc/include;/home/arvydas/
-    esp/esp-idf/components/esp_common/include;/home/arvydas/esp/esp-idf/componen
-    ts/esp_hw_support/include;/home/arvydas/esp/esp-idf/components/nvs_flash/inc
-    lude;/home/arvydas/esp/esp-idf/components/esp_wifi/include;/home/arvydas/esp
-    /esp-idf/components/esp_netif/include;/home/arvydas/esp/esp-idf/components/e
-    sp_http_client/include;/home/arvydas/esp/esp-idf/components/driver/include;/
-    home/arvydas/esp/esp-idf/components/esp_rom/include;../plant_boss/build/conf
-    ig;/home/arvydas/esp/esp-idf/components/esp_adc/esp32/include;/home/arvydas/
-    esp/esp-idf/components/hal/include;/home/arvydas/esp/esp-idf/components/soc/
-    esp32/include;/home/arvydas/esp/esp-idf/components/freertos/esp_additions/in
-    clude/freertos;/home/arvydas/esp/esp-idf/components/freertos/FreeRTOS-Kernel
-    /portable/xtensa/include;/home/arvydas/esp/esp-idf/components/xtensa/esp32/i
-    nclude;/home/arvydas/esp/esp-idf/components/xtensa/include;/home/arvydas/esp
-    /esp-idf/components/newlib/platform_include;/home/arvydas/esp/esp-idf/compon
-    ents/newlib/platform_include/sys;/home/arvydas/esp/esp-idf/components/esp_sy
-    stem/include;/home/arvydas/esp/esp-idf/components/heap/include;/usr/include/
-    x86_64-linux-gnu;/usr/include
-   In file included from ../../../../esp/esp-idf/components/esp_netif/include/esp_netif.h:13,
                  from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi_default.h:10,
                  from ../../../../esp/esp-idf/components/esp_wifi/include/esp_wifi.h:58,
                  from ../plant_boss/wrappers/wifi_wrapper.h:13,
@@ -423,7 +328,9 @@ Splint 3.1.2 --- 21 Feb 2021
     ude;/home/arvydas/esp/esp-idf/components/newlib/platform_include;/home/arvyd
     as/esp/esp-idf/components/newlib/platform_include/sys;/home/arvydas/esp/esp-
     idf/components/esp_system/include;/home/arvydas/esp/esp-idf/components/heap/
-    include;/usr/include/x86_64-linux-gnu;/usr/include
+    include;/home/arvydas/esp/esp-idf/components/esp_partition/include;/home/arv
+    ydas/esp/esp-idf/components/esp_event/include;/usr/include/x86_64-linux-gnu;
+    /usr/include
    In file included from /usr/include/x86_64-linux-gnu/sys/types.h:176,
                  from /usr/include/x86_64-linux-gnu/bits/socket.h:29,
                  from /usr/include/x86_64-linux-gnu/sys/socket.h:33,

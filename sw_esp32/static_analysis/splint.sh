@@ -30,6 +30,8 @@ splint \
 -I ~/esp/esp-idf/components/newlib/platform_include/sys \
 -I ~/esp/esp-idf/components/esp_system/include \
 -I ~/esp/esp-idf/components/heap/include \
+-I ~/esp/esp-idf/components/esp_partition/include \
+-I ~/esp/esp-idf/components/esp_event/include \
 \
 &> splint.txt
 
