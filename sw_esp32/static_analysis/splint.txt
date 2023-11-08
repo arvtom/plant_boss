@@ -167,23 +167,14 @@ Splint 3.1.2 --- 21 Feb 2021
 ../plant_boss/inc/common_thread_objects.h:237:55: Comment starts inside comment
 ../plant_boss/inc/common_thread_objects.h:238:55: Comment starts inside comment
 ../plant_boss/src/battery.c: (in function battery_init)
-../plant_boss/src/battery.c:25:5: Unrecognized identifier: ESP_LOGI
-  Identifier used in code has not been declared. (Use -unrecog to inhibit
-  warning)
-../plant_boss/src/battery.c:29:21: Unrecognized identifier: ADC_BITWIDTH_12
-../plant_boss/src/battery.c:30:18: Unrecognized identifier: ADC_ATTEN_DB_11
 ../plant_boss/src/battery.c:28:5: Initializer block used for
     adc_channel_config_voltage_battery where int is expected:
     { <error>, <error> }
   Types are incompatible. (Use -type to inhibit warning)
-../plant_boss/src/battery.c:35:20: Unrecognized identifier: ADC_UNIT_1
 ../plant_boss/src/battery.c:34:5: Initializer block used for
     adc_calibration_config_voltage_battery where int is expected:
     { <error>, <error>, <error> }
-../plant_boss/src/battery.c:40:17: Unrecognized identifier: adc_init_channel
-../plant_boss/src/battery.c:41:62: Unrecognized identifier: ADC_CHANNEL_7
 ../plant_boss/src/battery.c: (in function battery_handle)
-../plant_boss/src/battery.c:55:17: Unrecognized identifier: adc_handle_channel
 ../plant_boss/src/battery.c:62:5: Assignment of int to float:
                                      voltage_battery = adc_voltage
   To allow all numeric types to match, use +relaxtypes.
@@ -192,15 +183,6 @@ Splint 3.1.2 --- 21 Feb 2021
   path. (Use -usedef to inhibit warning)
 ../plant_boss/src/battery.c:64:9: Operands of < have incompatible types (float,
     uint16_t): voltage_battery < threshold_voltage_battery
-../plant_boss/src/common_thread_objects.c: (in function common_thread_objects_init)
-../plant_boss/src/common_thread_objects.c:47:20: Unrecognized identifier:
-                                                    xTaskGetHandle
-../plant_boss/src/common_thread_objects.c:77:17: Unrecognized identifier:
-                                                    xSemaphoreCreateMutex
-../plant_boss/src/common_thread_objects.c:89:26: Unrecognized identifier:
-                                                    xQueueCreate
-../plant_boss/src/error.c: (in function error_handle)
-../plant_boss/src/error.c:71:5: Unrecognized identifier: vTaskDelay
 ../plant_boss/src/thread_app.c:41:36:
     Variable delay_handle_thread_app initialized to type unsigned int, expects
     uint32_t: 100u
@@ -220,29 +202,13 @@ Splint 3.1.2 --- 21 Feb 2021
   A function parameter is not used in the body of the function. If the argument
   is needed for type compatibility or future plans, use /*@unused@*/ in the
   argument declaration. (Use -paramuse to inhibit warning)
-../plant_boss/src/thread_app.c: (in function thread_app_init)
-../plant_boss/src/thread_app.c:100:9: Unrecognized identifier: pdPASS
-../plant_boss/src/thread_app.c:100:19: Unrecognized identifier: xTaskNotify
-../plant_boss/src/thread_app.c:100:87: Unrecognized identifier: eSetBits
-../plant_boss/src/thread_app.c:107:9: Unrecognized identifier: pdTRUE
-../plant_boss/src/thread_app.c:107:19: Unrecognized identifier: xQueueReceive
 ../plant_boss/src/thread_app.c: (in function thread_app_handle)
-../plant_boss/src/thread_app.c:188:5: Unrecognized identifier: xTaskNotifyWait
-../plant_boss/src/thread_app.c:196:5: Unrecognized identifier:
-                                         ulTaskNotifyValueClear
 ../plant_boss/src/thread_app.c:200:9:
     Operands of == have incompatible types (unsigned int, uint8_t):
     1u == device_mode
-../plant_boss/src/thread_app.c:205:12: Unrecognized identifier: ESP_OK
-../plant_boss/src/thread_app.c:205:22: Unrecognized identifier:
-                                          esp_sleep_enable_timer_wakeup
-../plant_boss/src/thread_app.c:215:9: Unrecognized identifier:
-                                         esp_deep_sleep_start
 ../plant_boss/src/thread_app.c: (in function thread_app_handle_error)
 ../plant_boss/src/thread_app.c:248:11:
     Test expression for while not boolean, type int: 1
-../plant_boss/src/thread_app.c: (in function thread_app_init_threads)
-../plant_boss/src/thread_app.c:266:48: Unrecognized identifier: portMAX_DELAY
 ../plant_boss/src/thread_app.c: (in function thread_app_handle_settings)
 ../plant_boss/src/thread_app.c:346:12:
     Operands of < have incompatible types (uint8_t, unsigned int):

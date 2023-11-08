@@ -1,5 +1,7 @@
 splint \
+\
 -preproc \
+-unrecog \
 \
 -Dadc_cali_handle_t=int \
 -Dadc_oneshot_chan_cfg_t=int \
@@ -11,7 +13,9 @@ splint \
 -Dnvm_contents_t=int \
 \
 ../plant_boss/src/* \
+\
 -I../plant_boss/inc \
+\
 &> splint.txt
 
 cat splint.txt
