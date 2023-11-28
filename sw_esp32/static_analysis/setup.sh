@@ -1,2 +1,5 @@
 pip install flawfinder
-sudo apt install splint
+pip install lizard
+apt install splint
+apt install cppcheck
+apt install clang
