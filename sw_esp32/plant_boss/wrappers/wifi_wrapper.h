@@ -16,6 +16,8 @@
 #include <esp_log.h>
 
 #include "error.h"
+
+/* Get wifi SSID and PASS */
 #include "settings_wifi.h"
 
 /*------------------------------Defines------------------------------*/

@@ -1,29 +1,19 @@
 {
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.intelliSenseEngine": "default",
     "idf.adapterTargetName": "esp32",
-    "idf.customExtraPaths": "/home/arvydas/.espressif/tools/xtensa-esp-elf-gdb/11.2_20220823/xtensa-esp-elf-gdb/bin:/home/arvydas/.espressif/tools/riscv32-esp-elf-gdb/11.2_20220823/riscv32-esp-elf-gdb/bin:/home/arvydas/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin:/home/arvydas/.espressif/tools/xtensa-esp32s2-elf/esp-2022r1-11.2.0/xtensa-esp32s2-elf/bin:/home/arvydas/.espressif/tools/xtensa-esp32s3-elf/esp-2022r1-11.2.0/xtensa-esp32s3-elf/bin:/home/arvydas/.espressif/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin:/home/arvydas/.espressif/tools/esp32ulp-elf/2.35_20220830/esp32ulp-elf/bin:/home/arvydas/.espressif/tools/cmake/3.24.0/bin:/home/arvydas/.espressif/tools/openocd-esp32/v0.11.0-esp32-20221026/openocd-esp32/bin:/home/arvydas/.espressif/tools/ninja/1.10.2:/home/arvydas/.espressif/tools/esp-rom-elfs/20220823",
+    "idf.customExtraPaths": "/root/.espressif/tools/xtensa-esp-elf-gdb/12.1_20221002/xtensa-esp-elf-gdb/bin:/root/.espressif/tools/riscv32-esp-elf-gdb/12.1_20221002/riscv32-esp-elf-gdb/bin:/root/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:/root/.espressif/tools/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:/root/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:/root/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:/root/.espressif/tools/esp32ulp-elf/2.35_20220830/esp32ulp-elf/bin:/root/.espressif/tools/cmake/3.24.0/bin:/root/.espressif/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/bin:/root/.espressif/tools/ninja/1.10.2:/root/.espressif/tools/esp-rom-elfs/20230320",
     "idf.customExtraVars": {
-        "OPENOCD_SCRIPTS": "/home/arvydas/.espressif/tools/openocd-esp32/v0.11.0-esp32-20221026/openocd-esp32/share/openocd/scripts",
-        "ESP_ROM_ELF_DIR": "/home/arvydas/.espressif/tools/esp-rom-elfs/20220823/"
+        "OPENOCD_SCRIPTS": "/root/.espressif/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/share/openocd/scripts",
+        "ESP_ROM_ELF_DIR": "/root/.espressif/tools/esp-rom-elfs/20230320/"
     },
-    "idf.espIdfPath": "/home/arvydas/esp/esp-idf",
+    "idf.espIdfPath": "/root/esp/esp-idf",
     "idf.openOcdConfigs": [
         "interface/ftdi/esp32_devkitj_v1.cfg",
         "target/esp32.cfg"
     ],
-    "idf.port": "/dev/ttyUSB1",
-    "idf.pythonBinPath": "/home/arvydas/.espressif/python_env/idf5.0_py3.10_env/bin/python",
-    "idf.toolsPath": "/home/arvydas/.espressif",
-    "idf.flashType": "JTAG",
+    "idf.pythonBinPath": "/root/.espressif/python_env/idf5.1_py3.10_env/bin/python",
+    "idf.toolsPath": "/root/.espressif",
     "files.associations": {
-        "freertos.h": "c",
-        "gpio.h": "c",
-        "task.h": "c",
-        "thread_app.h": "c",
-        "thread_input.h": "c",
-        "thread_network.h": "c",
-        "thread_output.h": "c",
-        "esp_err.h": "c",
-        "complex": "c"
+        "wifi_wrapper.h": "c"
     }
 }
