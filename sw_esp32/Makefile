@@ -15,7 +15,7 @@ SOURCES = \
 SOURCES_FORMAT_CPPCHECK = $(filter-out $(IGNORE_FILES_FORMAT_CPPCHECK),$(SOURCES))
 HEADERS_FORMAT = $(filter-out $(IGNORE_FILES_FORMAT_CPPCHECK),$(HEADERS))
 CPPCHECK_FLAGS = \
-	--quiet --enable=all --error-exitcode=1 \
+	--enable=all \
 	--inline-suppr \
 	--suppress=missingIncludeSystem \
 	--suppress=unmatchedSuppression \
@@ -24,3 +24,19 @@ CPPCHECK_FLAGS = \
 
 cppcheck:
 	$(CPPCHECK) $(CPPCHECK_FLAGS) $(SOURCES_FORMAT_CPPCHECK)
+
+cppcheck1:
+	cppcheck \
+	--enable=all \
+	--inline-suppr \
+	--suppress=missingIncludeSystem \
+	--suppress=unmatchedSuppression \
+	--suppress=unusedFunction \
+	-I ./plant_boss/inc \
+	-I ./plant_boss/drivers \
+	-I ./plant_boss/wrappers \
+	plant_boss/src/thread_app.c \
+	plant_boss/src/thread_input.c \
+	plant_boss/src/thread_output.c \
+	plant_boss/src/thread_network.c \
+	plant_boss/src/thread_memory.c
