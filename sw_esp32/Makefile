@@ -35,6 +35,9 @@ cppcheck1:
 	-I ./plant_boss/inc \
 	-I ./plant_boss/drivers \
 	-I ./plant_boss/wrappers \
+	plant_boss/drivers/bh1750fvi.c \
+	plant_boss/drivers/hw390.c \
+	plant_boss/drivers/lm20bim7.c \
 	plant_boss/src/thread_app.c \
 	plant_boss/src/thread_input.c \
 	plant_boss/src/thread_output.c \
