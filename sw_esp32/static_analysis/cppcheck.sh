@@ -1,10 +1,10 @@
-CPPCHECK="/home/arvydas/repo/cppcheck-2.13.0/build/bin/cppcheck"
+CPPCHECK="/home/vscode/repo/cppcheck-2.13.0/build/bin/cppcheck"
 LOG_FILE="./cppcheck.txt"
 
 FLAGS="\
-    --enable=all \
     --suppress=unusedFunction \
     --cppcheck-build-dir=./cppcheck_cache \
+    --project=../plant_boss/build/compile_commands.json \
     "
 
 SOURCES="\
@@ -28,8 +28,6 @@ $CPPCHECK --version &> $LOG_FILE
 # Execute static analysis
 $CPPCHECK \
     $FLAGS \
-    $HEADERS \
-    $SOURCES \
     &>> $LOG_FILE
 
 cat $LOG_FILE
