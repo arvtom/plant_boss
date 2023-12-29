@@ -18,6 +18,8 @@ HEADERS="
     -I ../plant_boss/drivers \
     -I ../plant_boss/wrappers \
     -I ../plant_boss/inc
+    -I ~/esp/esp-idf/components/log/include \
+    -I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos
     "
 
 # Print static analyser version
