@@ -15,8 +15,32 @@ Checking ../plant_boss/drivers/bh1750fvi.c ...
 ../plant_boss/drivers/bh1750fvi.h:16:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <esp_log.h>
 ^
-../plant_boss/drivers/bh1750fvi.h:18:0: information: Include file: "i2c_wrapper.h" not found. [missingInclude]
-#include "i2c_wrapper.h"
+../plant_boss/wrappers/i2c_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdbool.h>
+^
+../plant_boss/wrappers/i2c_wrapper.h:13:0: information: Include file: <driver/i2c.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <driver/i2c.h>
+^
+../plant_boss/wrappers/i2c_wrapper.h:14:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
+^
+../plant_boss/inc/error.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdbool.h>
+^
+../plant_boss/inc/error.h:12:0: information: Include file: <stdint.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdint.h>
+^
+../plant_boss/inc/error.h:13:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/error.h:14:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/error.h:15:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/error.h:16:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
 ^
 ../plant_boss/drivers/bh1750fvi.c:60:66: error: Array 'buf_rx[2]' accessed at index 2, which is out of bounds. [arrayIndexOutOfBounds]
     light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[2]) / 1.2;
@@ -29,28 +53,6 @@ Checking ../plant_boss/drivers/hw390.c ...
 ../plant_boss/drivers/hw390.h:13:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <esp_log.h>
 ^
-../plant_boss/drivers/hw390.h:15:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
-../plant_boss/drivers/hw390.h:16:0: information: Include file: "adc_wrapper.h" not found. [missingInclude]
-#include "adc_wrapper.h"
-^
-2/18 files checked 5% done
-Checking ../plant_boss/drivers/lm20bim7.c ...
-../plant_boss/drivers/lm20bim7.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
-#include <stdbool.h>
-^
-../plant_boss/drivers/lm20bim7.h:13:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
-#include <esp_log.h>
-^
-../plant_boss/drivers/lm20bim7.h:15:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
-../plant_boss/drivers/lm20bim7.h:16:0: information: Include file: "adc_wrapper.h" not found. [missingInclude]
-#include "adc_wrapper.h"
-^
-3/18 files checked 8% done
-Checking ../plant_boss/wrappers/adc_wrapper.c ...
 ../plant_boss/wrappers/adc_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
 ^
@@ -72,9 +74,16 @@ Checking ../plant_boss/wrappers/adc_wrapper.c ...
 ../plant_boss/wrappers/adc_wrapper.h:18:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <esp_log.h>
 ^
-../plant_boss/wrappers/adc_wrapper.h:20:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
+2/18 files checked 5% done
+Checking ../plant_boss/drivers/lm20bim7.c ...
+../plant_boss/drivers/lm20bim7.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdbool.h>
 ^
+../plant_boss/drivers/lm20bim7.h:13:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
+^
+3/18 files checked 8% done
+Checking ../plant_boss/wrappers/adc_wrapper.c ...
 4/18 files checked 12% done
 Checking ../plant_boss/wrappers/gpio_wrapper.c ...
 ../plant_boss/wrappers/gpio_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
@@ -92,23 +101,8 @@ Checking ../plant_boss/wrappers/gpio_wrapper.c ...
 ../plant_boss/wrappers/gpio_wrapper.h:16:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <esp_log.h>
 ^
-../plant_boss/wrappers/gpio_wrapper.h:18:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
 5/18 files checked 14% done
 Checking ../plant_boss/wrappers/i2c_wrapper.c ...
-../plant_boss/wrappers/i2c_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
-#include <stdbool.h>
-^
-../plant_boss/wrappers/i2c_wrapper.h:13:0: information: Include file: <driver/i2c.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
-#include <driver/i2c.h>
-^
-../plant_boss/wrappers/i2c_wrapper.h:14:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
-#include <esp_log.h>
-^
-../plant_boss/wrappers/i2c_wrapper.h:16:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
 6/18 files checked 17% done
 Checking ../plant_boss/wrappers/nvm_wrapper.c ...
 ../plant_boss/wrappers/nvm_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
@@ -122,9 +116,6 @@ Checking ../plant_boss/wrappers/nvm_wrapper.c ...
 ^
 ../plant_boss/wrappers/nvm_wrapper.h:15:0: information: Include file: <nvs_flash.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <nvs_flash.h>
-^
-../plant_boss/wrappers/nvm_wrapper.h:17:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
 ^
 7/18 files checked 28% done
 Checking ../plant_boss/wrappers/uart_wrapper.c ...
@@ -157,31 +148,55 @@ Checking ../plant_boss/wrappers/wifi_wrapper.c ...
 ../plant_boss/wrappers/wifi_wrapper.h:16:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <esp_log.h>
 ^
-../plant_boss/wrappers/wifi_wrapper.h:18:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
 ../plant_boss/wrappers/wifi_wrapper.c:99:19: warning: %d in format string (no. 1) requires 'int' but the argument type is 'unsigned int'. [invalidPrintfArgType_sint]
         int ret = snprintf(temporary_buffer, 6, "a1=%d", 0u);
                   ^
 9/18 files checked 42% done
 Checking ../plant_boss/src/battery.c ...
-../plant_boss/src/battery.c:8:0: information: Include file: "battery.h" not found. [missingInclude]
-#include "battery.h"
+../plant_boss/inc/battery.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdbool.h>
+^
+../plant_boss/inc/battery.h:13:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
 ^
 10/18 files checked 45% done
 Checking ../plant_boss/src/common_thread_objects.c ...
-../plant_boss/src/common_thread_objects.c:8:0: information: Include file: "common_thread_objects.h" not found. [missingInclude]
-#include "common_thread_objects.h"
+../plant_boss/inc/common_thread_objects.h:11:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/common_thread_objects.h:12:0: information: Include file: <freertos/queue.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/queue.h>
+^
+../plant_boss/inc/common_thread_objects.h:13:0: information: Include file: <freertos/semphr.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/semphr.h>
 ^
 11/18 files checked 50% done
 Checking ../plant_boss/src/error.c ...
-../plant_boss/src/error.c:8:0: information: Include file: "error.h" not found. [missingInclude]
-#include "error.h"
-^
 12/18 files checked 53% done
 Checking ../plant_boss/src/thread_app.c ...
-../plant_boss/src/thread_app.c:6:0: information: Include file: "thread_app.h" not found. [missingInclude]
-#include "thread_app.h"
+../plant_boss/inc/thread_app.h:6:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/thread_app.h:7:0: information: Include file: <string.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <string.h>
+^
+../plant_boss/inc/thread_app.h:9:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/thread_app.h:10:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/thread_app.h:11:0: information: Include file: <freertos/semphr.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/semphr.h>
+^
+../plant_boss/inc/thread_app.h:12:0: information: Include file: <freertos/queue.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/queue.h>
+^
+../plant_boss/inc/thread_app.h:13:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
+^
+../plant_boss/inc/thread_app.h:14:0: information: Include file: <esp_sleep.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_sleep.h>
 ^
 ../plant_boss/src/thread_app.c:519:15: warning: %llx in format string (no. 9) requires 'unsigned long long' but the argument type is 'unsigned long'. [invalidPrintfArgType_uint]
     int ret = snprintf(buf_tx_queue_wifi, 150,
@@ -191,23 +206,77 @@ Checking ../plant_boss/src/thread_app.c ...
           ^
 13/18 files checked 78% done
 Checking ../plant_boss/src/thread_input.c ...
-../plant_boss/src/thread_input.c:3:0: information: Include file: "thread_input.h" not found. [missingInclude]
-#include "thread_input.h"
+../plant_boss/inc/thread_input.h:6:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/thread_input.h:7:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdbool.h>
+^
+../plant_boss/inc/thread_input.h:8:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/thread_input.h:9:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/thread_input.h:10:0: information: Include file: <freertos/queue.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/queue.h>
+^
+../plant_boss/inc/thread_input.h:11:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
+^
+../plant_boss/inc/thread_input.h:12:0: information: Include file: <string.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <string.h>
 ^
 14/18 files checked 84% done
 Checking ../plant_boss/src/thread_memory.c ...
-../plant_boss/src/thread_memory.c:3:0: information: Include file: "thread_memory.h" not found. [missingInclude]
-#include "thread_memory.h"
+../plant_boss/inc/thread_memory.h:6:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/thread_memory.h:8:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/thread_memory.h:9:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/thread_memory.h:10:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
 ^
 15/18 files checked 88% done
 Checking ../plant_boss/src/thread_network.c ...
-../plant_boss/src/thread_network.c:3:0: information: Include file: "thread_network.h" not found. [missingInclude]
-#include "thread_network.h"
+../plant_boss/inc/thread_network.h:6:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/thread_network.h:7:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/thread_network.h:8:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/thread_network.h:9:0: information: Include file: <freertos/queue.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/queue.h>
+^
+../plant_boss/inc/thread_network.h:10:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
 ^
 16/18 files checked 93% done
 Checking ../plant_boss/src/thread_output.c ...
-../plant_boss/src/thread_output.c:3:0: information: Include file: "thread_output.h" not found. [missingInclude]
-#include "thread_output.h"
+../plant_boss/inc/thread_output.h:6:0: information: Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdio.h>
+^
+../plant_boss/inc/thread_output.h:7:0: information: Include file: <stdint.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <stdint.h>
+^
+../plant_boss/inc/thread_output.h:8:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/inc/thread_output.h:9:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/inc/thread_output.h:10:0: information: Include file: <driver/gpio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <driver/gpio.h>
+^
+../plant_boss/inc/thread_output.h:11:0: information: Include file: <esp_log.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <esp_log.h>
 ^
 17/18 files checked 99% done
 Checking ../plant_boss/main/main.c ...
@@ -217,21 +286,6 @@ Checking ../plant_boss/main/main.c ...
 ../plant_boss/main/main.h:5:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <freertos/task.h>
 ^
-../plant_boss/main/main.h:7:0: information: Include file: "thread_app.h" not found. [missingInclude]
-#include "thread_app.h"
-^
-../plant_boss/main/main.h:8:0: information: Include file: "thread_input.h" not found. [missingInclude]
-#include "thread_input.h"
-^
-../plant_boss/main/main.h:9:0: information: Include file: "thread_output.h" not found. [missingInclude]
-#include "thread_output.h"
-^
-../plant_boss/main/main.h:10:0: information: Include file: "thread_network.h" not found. [missingInclude]
-#include "thread_network.h"
-^
-../plant_boss/main/main.h:11:0: information: Include file: "thread_memory.h" not found. [missingInclude]
-#include "thread_memory.h"
-^
 18/18 files checked 100% done
-nofile:0:0: information: Active checkers: 4/592 (use --checkers-report=<filename> to see details) [checkersReport]
+nofile:0:0: information: Active checkers: 106/592 (use --checkers-report=<filename> to see details) [checkersReport]
 

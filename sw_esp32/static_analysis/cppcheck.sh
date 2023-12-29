@@ -7,14 +7,27 @@ FLAGS="\
     --cppcheck-build-dir=./cppcheck_cache \
     "
 
-$CPPCHECK --version &> $LOG_FILE
-
-$CPPCHECK \
-    $FLAGS \
+SOURCES="\
     ../plant_boss/drivers \
     ../plant_boss/wrappers \
     ../plant_boss/src \
-    ../plant_boss/main \
+    ../plant_boss/main
+    "
+
+HEADERS="
+    -I ../plant_boss/drivers \
+    -I ../plant_boss/wrappers \
+    -I ../plant_boss/inc
+    "
+
+# Print static analyser version
+$CPPCHECK --version &> $LOG_FILE
+
+# Execute static analysis
+$CPPCHECK \
+    $FLAGS \
+    $HEADERS \
+    $SOURCES \
     &>> $LOG_FILE
 
 cat $LOG_FILE
