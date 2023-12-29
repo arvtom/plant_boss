@@ -233,47 +233,5 @@ Checking ../plant_boss/main/main.c ...
 #include "thread_memory.h"
 ^
 18/18 files checked 100% done
-../plant_boss/main/main.c:4:0: style: The function 'app_main' is never used. [unusedFunction]
-void app_main(void)
-^
-../plant_boss/src/error.c:29:0: style: The function 'error_clear_u32' is never used. [unusedFunction]
-void error_clear_u32(uint32_t *p_err_var, uint32_t err_bit)
-^
-../plant_boss/src/error.c:62:0: style: The function 'error_clear_u64' is never used. [unusedFunction]
-void error_clear_u64(uint64_t *p_err_var, uint64_t err_bit)
-^
-../plant_boss/wrappers/nvm_wrapper.c:270:0: style: The function 'nvm_get_id' is never used. [unusedFunction]
-uint8_t nvm_get_id(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:275:0: style: The function 'nvm_get_mode' is never used. [unusedFunction]
-uint8_t nvm_get_mode(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:280:0: style: The function 'nvm_get_bat_threshold' is never used. [unusedFunction]
-uint16_t nvm_get_bat_threshold(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:285:0: style: The function 'nvm_get_measurement_period' is never used. [unusedFunction]
-uint32_t nvm_get_measurement_period(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:290:0: style: The function 'nvm_get_calibration_scale' is never used. [unusedFunction]
-float nvm_get_calibration_scale(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:295:0: style: The function 'nvm_get_calibration_offset' is never used. [unusedFunction]
-float nvm_get_calibration_offset(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:300:0: style: The function 'nvm_get_err_app' is never used. [unusedFunction]
-uint64_t nvm_get_err_app(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:305:0: style: The function 'nvm_get_err_input' is never used. [unusedFunction]
-uint32_t nvm_get_err_input(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:310:0: style: The function 'nvm_get_err_output' is never used. [unusedFunction]
-uint32_t nvm_get_err_output(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:315:0: style: The function 'nvm_get_err_network' is never used. [unusedFunction]
-uint32_t nvm_get_err_network(void)
-^
-../plant_boss/wrappers/nvm_wrapper.c:320:0: style: The function 'nvm_get_err_memory' is never used. [unusedFunction]
-uint32_t nvm_get_err_memory(void)
-^
-nofile:0:0: information: Active checkers: 106/592 (use --checkers-report=<filename> to see details) [checkersReport]
+nofile:0:0: information: Active checkers: 4/592 (use --checkers-report=<filename> to see details) [checkersReport]
 

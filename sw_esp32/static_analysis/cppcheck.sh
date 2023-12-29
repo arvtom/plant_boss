@@ -3,6 +3,8 @@ LOG_FILE="./cppcheck.txt"
 
 FLAGS="\
     --enable=all \
+    --suppress=unusedFunction \
+    --cppcheck-build-dir=./cppcheck_cache \
     "
 
 $CPPCHECK --version &> $LOG_FILE
