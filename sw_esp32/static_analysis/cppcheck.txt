@@ -21,7 +21,7 @@ Checking ../plant_boss/drivers/bh1750fvi.c ...
 ../plant_boss/drivers/bh1750fvi.c:60:66: error: Array 'buf_rx[2]' accessed at index 2, which is out of bounds. [arrayIndexOutOfBounds]
     light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[2]) / 1.2;
                                                                  ^
-1/17 files checked 2% done
+1/18 files checked 2% done
 Checking ../plant_boss/drivers/hw390.c ...
 ../plant_boss/drivers/hw390.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -35,7 +35,7 @@ Checking ../plant_boss/drivers/hw390.c ...
 ../plant_boss/drivers/hw390.h:16:0: information: Include file: "adc_wrapper.h" not found. [missingInclude]
 #include "adc_wrapper.h"
 ^
-2/17 files checked 5% done
+2/18 files checked 5% done
 Checking ../plant_boss/drivers/lm20bim7.c ...
 ../plant_boss/drivers/lm20bim7.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -49,7 +49,7 @@ Checking ../plant_boss/drivers/lm20bim7.c ...
 ../plant_boss/drivers/lm20bim7.h:16:0: information: Include file: "adc_wrapper.h" not found. [missingInclude]
 #include "adc_wrapper.h"
 ^
-3/17 files checked 8% done
+3/18 files checked 8% done
 Checking ../plant_boss/wrappers/adc_wrapper.c ...
 ../plant_boss/wrappers/adc_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -75,7 +75,7 @@ Checking ../plant_boss/wrappers/adc_wrapper.c ...
 ../plant_boss/wrappers/adc_wrapper.h:20:0: information: Include file: "error.h" not found. [missingInclude]
 #include "error.h"
 ^
-4/17 files checked 12% done
+4/18 files checked 12% done
 Checking ../plant_boss/wrappers/gpio_wrapper.c ...
 ../plant_boss/wrappers/gpio_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -95,7 +95,7 @@ Checking ../plant_boss/wrappers/gpio_wrapper.c ...
 ../plant_boss/wrappers/gpio_wrapper.h:18:0: information: Include file: "error.h" not found. [missingInclude]
 #include "error.h"
 ^
-5/17 files checked 14% done
+5/18 files checked 14% done
 Checking ../plant_boss/wrappers/i2c_wrapper.c ...
 ../plant_boss/wrappers/i2c_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -109,7 +109,7 @@ Checking ../plant_boss/wrappers/i2c_wrapper.c ...
 ../plant_boss/wrappers/i2c_wrapper.h:16:0: information: Include file: "error.h" not found. [missingInclude]
 #include "error.h"
 ^
-6/17 files checked 18% done
+6/18 files checked 17% done
 Checking ../plant_boss/wrappers/nvm_wrapper.c ...
 ../plant_boss/wrappers/nvm_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -126,7 +126,7 @@ Checking ../plant_boss/wrappers/nvm_wrapper.c ...
 ../plant_boss/wrappers/nvm_wrapper.h:17:0: information: Include file: "error.h" not found. [missingInclude]
 #include "error.h"
 ^
-7/17 files checked 28% done
+7/18 files checked 28% done
 Checking ../plant_boss/wrappers/uart_wrapper.c ...
 ../plant_boss/wrappers/uart_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -140,7 +140,7 @@ Checking ../plant_boss/wrappers/uart_wrapper.c ...
 ../plant_boss/wrappers/uart_wrapper.h:15:0: information: Include file: <driver/uart.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <driver/uart.h>
 ^
-8/17 files checked 31% done
+8/18 files checked 30% done
 Checking ../plant_boss/wrappers/wifi_wrapper.c ...
 ../plant_boss/wrappers/wifi_wrapper.h:11:0: information: Include file: <stdbool.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
 #include <stdbool.h>
@@ -163,22 +163,22 @@ Checking ../plant_boss/wrappers/wifi_wrapper.c ...
 ../plant_boss/wrappers/wifi_wrapper.c:99:19: warning: %d in format string (no. 1) requires 'int' but the argument type is 'unsigned int'. [invalidPrintfArgType_sint]
         int ret = snprintf(temporary_buffer, 6, "a1=%d", 0u);
                   ^
-9/17 files checked 43% done
+9/18 files checked 42% done
 Checking ../plant_boss/src/battery.c ...
 ../plant_boss/src/battery.c:8:0: information: Include file: "battery.h" not found. [missingInclude]
 #include "battery.h"
 ^
-10/17 files checked 46% done
+10/18 files checked 45% done
 Checking ../plant_boss/src/common_thread_objects.c ...
 ../plant_boss/src/common_thread_objects.c:8:0: information: Include file: "common_thread_objects.h" not found. [missingInclude]
 #include "common_thread_objects.h"
 ^
-11/17 files checked 51% done
+11/18 files checked 50% done
 Checking ../plant_boss/src/error.c ...
 ../plant_boss/src/error.c:8:0: information: Include file: "error.h" not found. [missingInclude]
 #include "error.h"
 ^
-12/17 files checked 53% done
+12/18 files checked 53% done
 Checking ../plant_boss/src/thread_app.c ...
 ../plant_boss/src/thread_app.c:6:0: information: Include file: "thread_app.h" not found. [missingInclude]
 #include "thread_app.h"
@@ -189,47 +189,58 @@ Checking ../plant_boss/src/thread_app.c ...
 ../plant_boss/src/thread_app.c:373:11: style: Variable 'token' can be declared as pointer to const [constVariablePointer]
     char *token = strtok(buf_rx_queue_wifi_to_app, ";");
           ^
-13/17 files checked 79% done
+13/18 files checked 78% done
 Checking ../plant_boss/src/thread_input.c ...
 ../plant_boss/src/thread_input.c:3:0: information: Include file: "thread_input.h" not found. [missingInclude]
 #include "thread_input.h"
 ^
-14/17 files checked 85% done
+14/18 files checked 84% done
 Checking ../plant_boss/src/thread_memory.c ...
 ../plant_boss/src/thread_memory.c:3:0: information: Include file: "thread_memory.h" not found. [missingInclude]
 #include "thread_memory.h"
 ^
-15/17 files checked 89% done
+15/18 files checked 88% done
 Checking ../plant_boss/src/thread_network.c ...
 ../plant_boss/src/thread_network.c:3:0: information: Include file: "thread_network.h" not found. [missingInclude]
 #include "thread_network.h"
 ^
-16/17 files checked 93% done
+16/18 files checked 93% done
 Checking ../plant_boss/src/thread_output.c ...
 ../plant_boss/src/thread_output.c:3:0: information: Include file: "thread_output.h" not found. [missingInclude]
 #include "thread_output.h"
 ^
-17/17 files checked 100% done
+17/18 files checked 99% done
+Checking ../plant_boss/main/main.c ...
+../plant_boss/main/main.h:4:0: information: Include file: <freertos/FreeRTOS.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/FreeRTOS.h>
+^
+../plant_boss/main/main.h:5:0: information: Include file: <freertos/task.h> not found. Please note: Cppcheck does not need standard library headers to get proper results. [missingIncludeSystem]
+#include <freertos/task.h>
+^
+../plant_boss/main/main.h:7:0: information: Include file: "thread_app.h" not found. [missingInclude]
+#include "thread_app.h"
+^
+../plant_boss/main/main.h:8:0: information: Include file: "thread_input.h" not found. [missingInclude]
+#include "thread_input.h"
+^
+../plant_boss/main/main.h:9:0: information: Include file: "thread_output.h" not found. [missingInclude]
+#include "thread_output.h"
+^
+../plant_boss/main/main.h:10:0: information: Include file: "thread_network.h" not found. [missingInclude]
+#include "thread_network.h"
+^
+../plant_boss/main/main.h:11:0: information: Include file: "thread_memory.h" not found. [missingInclude]
+#include "thread_memory.h"
+^
+18/18 files checked 100% done
+../plant_boss/main/main.c:4:0: style: The function 'app_main' is never used. [unusedFunction]
+void app_main(void)
+^
 ../plant_boss/src/error.c:29:0: style: The function 'error_clear_u32' is never used. [unusedFunction]
 void error_clear_u32(uint32_t *p_err_var, uint32_t err_bit)
 ^
 ../plant_boss/src/error.c:62:0: style: The function 'error_clear_u64' is never used. [unusedFunction]
 void error_clear_u64(uint64_t *p_err_var, uint64_t err_bit)
-^
-../plant_boss/src/thread_app.c:61:0: style: The function 'thread_app' is never used. [unusedFunction]
-void thread_app(void *arg)
-^
-../plant_boss/src/thread_input.c:26:0: style: The function 'thread_input' is never used. [unusedFunction]
-void thread_input(void *arg)
-^
-../plant_boss/src/thread_memory.c:28:0: style: The function 'thread_memory' is never used. [unusedFunction]
-void thread_memory(void *arg)
-^
-../plant_boss/src/thread_network.c:27:0: style: The function 'thread_network' is never used. [unusedFunction]
-void thread_network(void *arg)
-^
-../plant_boss/src/thread_output.c:26:0: style: The function 'thread_output' is never used. [unusedFunction]
-void thread_output(void *arg)
 ^
 ../plant_boss/wrappers/nvm_wrapper.c:270:0: style: The function 'nvm_get_id' is never used. [unusedFunction]
 uint8_t nvm_get_id(void)

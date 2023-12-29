@@ -12,6 +12,7 @@ $CPPCHECK \
     ../plant_boss/drivers \
     ../plant_boss/wrappers \
     ../plant_boss/src \
+    ../plant_boss/main \
     &>> $LOG_FILE
 
 cat $LOG_FILE
