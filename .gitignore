@@ -7,3 +7,4 @@ sw_rpi/settings_test_rpi.sh
 sw_rpi/test_rpi.log
 sw_rpi/*.log
 sw_rpi/log/*
+sw_esp32/static_analysis/cppcheck_cache/*
