@@ -48,14 +48,16 @@ bool bh1750fvi_handle(void)
 
     uint8_t buf_rx[2];
 
-    if (true != i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT))
-    {
-        error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE_I2C_READ);
+    // if (true != i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT))
+    // {
+    //     error_set_u32(&err_bh1750fvi, BH1750FVI_ERROR_HANDLE_I2C_READ);
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[1]) / 1.2;
+    i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT);
+
+    light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[2]) / 1.2;
 
     return true;
 }
