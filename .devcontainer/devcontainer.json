@@ -32,5 +32,5 @@
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "root",
 	// "runArgs": ["-v /dev:/dev", "--privileged"]
-	"runArgs": ["--device=/dev/ttyUSB2"]
+	// "runArgs": ["--device=/dev/ttyUSB2"]
 }
