@@ -1,5 +1,5 @@
-sudo apt update
-sudo apt-get -y install cppcheck sshpass python3-pip python3-venv libusb-1.0-0-dev minicom
+apt-get update
+apt-get -y install cppcheck sshpass python3-pip python3-venv libusb-1.0-0-dev minicom
 pip install flawfinder lizard
 
 # esp-idf also asks for:
