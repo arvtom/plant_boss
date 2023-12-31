@@ -1,9 +1,561 @@
 Cppcheck 2.13.0
 
 
-../plant_boss/drivers/bh1750fvi.c:60:66: error: Array 'buf_rx[2]' accessed at index 2, which is out of bounds. [arrayIndexOutOfBounds]
+/root/esp/esp-idf/components/hal/esp32/include/hal/rtc_io_ll.h:358:5: error: Signed integer overflow for expression '0x0000001F_V<<0x0000001F_S'. [integerOverflow]
+    REG_SET_FIELD(RTC_IO_EXT_WAKEUP0_REG, RTC_IO_EXT_WAKEUP0_SEL, rtcio_num);
+    ^
+/root/esp/esp-idf/components/soc/esp32/include/soc/soc.h:82:0: error: failed to expand 'REG_SET_FIELD', Invalid ## usage when expanding 'REG_SET_FIELD': Unexpected token ')' [preprocessorErrorDirective]
+#define REG_SET_FIELD(_r, _f, _v) do {                                                                                 \
+^
+/root/esp/esp-idf/components/driver/i2c/i2c.c:929:0: error: failed to expand 'ESP_RETURN_ON_FALSE', it is invalid to use a preprocessor directive as macro parameter [preprocessorErrorDirective]
+#if SOC_I2C_SUPPORT_SLAVE
+^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: warning: Possible null pointer dereference: hw [nullPointer]
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/driver/i2s/i2s_common.c:1208:29: note: Calling function 'i2s_ll_enable_clock', 1st argument '((id)==0)?(&I2S0):(((id)==1)?(&I2S1):NULL)' value is 0
+        i2s_ll_enable_clock(I2S_LL_GET_HW(id));
+                            ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: note: Null pointer dereference
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: warning: Possible null pointer dereference: hw [nullPointer]
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
+/root/esp/esp-idf/components/driver/i2s/i2s_common.c:1229:30: note: Calling function 'i2s_ll_disable_clock', 1st argument '((id)==0)?(&I2S0):(((id)==1)?(&I2S1):NULL)' value is 0
+        i2s_ll_disable_clock(I2S_LL_GET_HW(id));
+                             ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: note: Null pointer dereference
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: warning: Possible null pointer dereference: hw [nullPointer]
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/driver/deprecated/i2s_legacy.c:1908:29: note: Calling function 'i2s_ll_enable_clock', 1st argument '((id)==0)?(&I2S0):(((id)==1)?(&I2S1):NULL)' value is 0
+        i2s_ll_enable_clock(I2S_LL_GET_HW(id));
+                            ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: note: Null pointer dereference
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: warning: Possible null pointer dereference: hw [nullPointer]
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
+/root/esp/esp-idf/components/driver/deprecated/i2s_legacy.c:1924:30: note: Calling function 'i2s_ll_disable_clock', 1st argument '((id)==0)?(&I2S0):(((id)==1)?(&I2S1):NULL)' value is 0
+        i2s_ll_disable_clock(I2S_LL_GET_HW(id));
+                             ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: note: Null pointer dereference
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
+/root/esp/esp-idf/components/esp_pm/pm_locks.c:181:17: error: Uninitialized variable: it->name [uninitvar]
+        if (it->name == NULL) {
+                ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:207:104: error: Subtracting pointers that point to different objects [comparePointers]
+        ret = esp_crt_bundle_init(x509_crt_imported_bundle_bin_start, x509_crt_imported_bundle_bin_end - x509_crt_imported_bundle_bin_start);
+                                                                                                       ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:22:22: note: Variable declared here.
+extern const uint8_t x509_crt_imported_bundle_bin_end[]   asm("_binary_x509_crt_bundle_end");
+                     ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:207:71: note: Array decayed to pointer here.
+        ret = esp_crt_bundle_init(x509_crt_imported_bundle_bin_start, x509_crt_imported_bundle_bin_end - x509_crt_imported_bundle_bin_start);
+                                                                      ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:21:22: note: Variable declared here.
+extern const uint8_t x509_crt_imported_bundle_bin_start[] asm("_binary_x509_crt_bundle_start");
+                     ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:207:106: note: Array decayed to pointer here.
+        ret = esp_crt_bundle_init(x509_crt_imported_bundle_bin_start, x509_crt_imported_bundle_bin_end - x509_crt_imported_bundle_bin_start);
+                                                                                                         ^
+/root/esp/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c:207:104: note: Subtracting pointers that point to different objects
+        ret = esp_crt_bundle_init(x509_crt_imported_bundle_bin_start, x509_crt_imported_bundle_bin_end - x509_crt_imported_bundle_bin_start);
+                                                                                                       ^
+/root/esp/esp-idf/components/mbedtls/mbedtls/library/bignum.c:1193:12: error: Uninitialized variable: ret [uninitvar]
+    return ret;
+           ^
+/root/esp/esp-idf/components/mbedtls/mbedtls/library/bignum.c:2477:12: warning: Uninitialized variable: ret [uninitvar]
+    return ret;
+           ^
+/root/esp/esp-idf/components/mbedtls/mbedtls/library/bignum.c:2415:19: note: Assuming condition is false
+    for (i = 0; i < rounds; i++) {
+                  ^
+/root/esp/esp-idf/components/mbedtls/mbedtls/library/bignum.c:2477:12: note: Uninitialized variable: ret
+    return ret;
+           ^
+/root/esp/esp-idf/components/mbedtls/mbedtls/include/mbedtls/ssl.h:649:28: error: Unknown constant MBEDTLS_ECP_MAX_BYTES, please review configuration [misra-config]
+    unsigned char _pms_ecdh[MBEDTLS_ECP_MAX_BYTES];    /* RFC 4492 5.10 */
+                           ^
+/root/esp/esp-idf/components/mbedtls/port/esp_bignum.c:205:12: error: Uninitialized variable: ret [uninitvar]
+    return ret;
+           ^
+/root/esp/esp-idf/components/esp_partition/partition.c:427:13: warning: inconclusive: Possible null pointer dereference: it [nullPointer]
+        if (it->info.flash_chip == flash_chip &&
+            ^
+/root/esp/esp-idf/components/esp_partition/partition.c:423:33: note: Assignment 'it=NULL', assigned value is 0
+    partition_list_item_t *it = NULL;
+                                ^
+/root/esp/esp-idf/components/esp_partition/partition.c:427:13: note: Null pointer dereference
+        if (it->info.flash_chip == flash_chip &&
+            ^
+/root/esp/esp-idf/components/esp_partition/partition.c:429:49: warning: inconclusive: Possible null pointer dereference: it [nullPointer]
+                                                it->info.address, it->info.address + it->info.size)) {
+                                                ^
+/root/esp/esp-idf/components/esp_partition/partition.c:423:33: note: Assignment 'it=NULL', assigned value is 0
+    partition_list_item_t *it = NULL;
+                                ^
+/root/esp/esp-idf/components/esp_partition/partition.c:429:49: note: Null pointer dereference
+                                                it->info.address, it->info.address + it->info.size)) {
+                                                ^
+/root/esp/esp-idf/components/esp_partition/partition.c:456:22: error: Uninitialized variable: it->user_registered [uninitvar]
+            if (!it->user_registered) {
+                     ^
+/root/esp/esp-idf/components/esp_partition/partition.c:253:22: error: Variable 's_partition_list' is unknown [misra-config]
+    if (SLIST_EMPTY(&s_partition_list)) {
+                     ^
+/root/esp/esp-idf/components/esp_partition/partition.c:256:26: error: Variable 's_partition_list' is unknown [misra-config]
+        if (SLIST_EMPTY(&s_partition_list)) {
+                         ^
+/root/esp/esp-idf/components/pthread/pthread_cond_var.c:31:16: error: syntax error [syntaxError]
+    TAILQ_HEAD(, esp_pthread_cond_waiter) waiter_list;  ///< head of the list of semaphores
+               ^
+/root/esp/esp-idf/components/pthread/pthread_local_storage.c:244:26: error: Uninitialized variables: it.key, it.value [uninitvar]
+            last_entry = it;
+                         ^
+/root/esp/esp-idf/components/pthread/pthread_semaphore.c:90:41: error: syntax error: <) [syntaxError]
+    if (timespeccmp(abstime, &cur_time, <)) {
+                                        ^
+/root/esp/esp-idf/components/esp_system/panic.c:452:7: error: Null pointer dereference: (volatile int*)0 [nullPointer]
+    *((volatile int *) 0) = 0; // NOLINT(clang-analyzer-core.NullDereference) should be an invalid operation on targets
+      ^
+/root/esp/esp-idf/components/vfs/include/esp_vfs.h:33:0: error: #error "VFS should be used with FD_SETSIZE and FD_SET from sys/types.h" [preprocessorErrorDirective]
+#error "VFS should be used with FD_SETSIZE and FD_SET from sys/types.h"
+^
+/root/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:122:13: error: Uninitialized variables: entry.task_handle, entry.user_name, entry.has_reset [uninitvar]
+        if (entry == user_entry) {
+            ^
+/root/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:147:20: error: Uninitialized variable: entry->task_handle [uninitvar]
+        if (entry->task_handle == handle) {
+                   ^
+/root/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c:527:21: error: Uninitialized variable: entry->has_reset [uninitvar]
+        if (!entry->has_reset) {
+                    ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:332:39: error: Subtracting pointers that point to different objects [comparePointers]
+    memset(&_bss_start, 0, (&_bss_end - &_bss_start) * sizeof(_bss_start));
+                                      ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:108:12: note: Variable declared here.
+extern int _bss_end;
+           ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:332:29: note: Address of variable taken here.
+    memset(&_bss_start, 0, (&_bss_end - &_bss_start) * sizeof(_bss_start));
+                            ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:107:12: note: Variable declared here.
+extern int _bss_start;
+           ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:332:41: note: Address of variable taken here.
+    memset(&_bss_start, 0, (&_bss_end - &_bss_start) * sizeof(_bss_start));
+                                        ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:332:39: note: Subtracting pointers that point to different objects
+    memset(&_bss_start, 0, (&_bss_end - &_bss_start) * sizeof(_bss_start));
+                                      ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:347:51: error: Subtracting pointers that point to different objects [comparePointers]
+        memset(&_rtc_bss_start, 0, (&_rtc_bss_end - &_rtc_bss_start) * sizeof(_rtc_bss_start));
+                                                  ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:110:12: note: Variable declared here.
+extern int _rtc_bss_end;
+           ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:347:37: note: Address of variable taken here.
+        memset(&_rtc_bss_start, 0, (&_rtc_bss_end - &_rtc_bss_start) * sizeof(_rtc_bss_start));
+                                    ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:109:12: note: Variable declared here.
+extern int _rtc_bss_start;
+           ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:347:53: note: Address of variable taken here.
+        memset(&_rtc_bss_start, 0, (&_rtc_bss_end - &_rtc_bss_start) * sizeof(_rtc_bss_start));
+                                                    ^
+/root/esp/esp-idf/components/esp_system/port/cpu_start.c:347:51: note: Subtracting pointers that point to different objects
+        memset(&_rtc_bss_start, 0, (&_rtc_bss_end - &_rtc_bss_start) * sizeof(_rtc_bss_start));
+                                                  ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:338:9: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_ADDR_BITLEN, SPI0_R_QIO_ADDR_BITSLEN);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:339:9: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, SPI0_R_QIO_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[0]);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:340:9: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0xEB);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:344:9: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_ADDR_BITLEN, SPI0_R_FAST_ADDR_BITSLEN);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:346:13: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0x6B);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:347:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, SPI0_R_FAST_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[0]);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:349:13: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_ADDR_BITLEN, SPI0_R_DIO_ADDR_BITSLEN);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:350:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, SPI0_R_DIO_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[0]);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:351:13: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0xBB);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:353:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, SPI0_R_FAST_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[0]);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:354:13: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0x3B);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:356:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, SPI0_R_FAST_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[0]);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:357:13: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0x0B);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:365:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_DUMMY_CYCLELEN, g_rom_spiflash_dummy_len_plus[0] - 1);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:368:9: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER1_REG(0), SPI_USR_ADDR_BITLEN, SPI0_R_SIO_ADDR_BITSLEN);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:369:9: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(SPI_USER2_REG(0), SPI_USR_COMMAND_VALUE, 0x03);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:441:5: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, ESP_ROM_SPIFLASH_W_SIO_ADDR_BITSLEN);
+    ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:461:5: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, ESP_ROM_SPIFLASH_W_SIO_ADDR_BITSLEN);
+    ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:487:5: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, ESP_ROM_SPIFLASH_W_SIO_ADDR_BITSLEN);
+    ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:559:9: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, SPI1_R_QIO_ADDR_BITSLEN);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:560:9: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_DUMMY_CYCLELEN, SPI1_R_QIO_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[1]);
+        ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:569:17: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+                REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, SPI1_R_DIO_ADDR_BITSLEN);
+                ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:573:17: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+                REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, SPI1_R_DIO_ADDR_BITSLEN);
+                ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:574:17: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+                REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_DUMMY_CYCLELEN, g_rom_spiflash_dummy_len_plus[1] - 1);
+                ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:575:17: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+                REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG2, SPI_USR_COMMAND_VALUE, 0xBB);
+                ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:589:13: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, SPI1_R_FAST_ADDR_BITSLEN);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:590:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_DUMMY_CYCLELEN, SPI1_R_FAST_DUMMY_CYCLELEN + g_rom_spiflash_dummy_len_plus[1]);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:598:13: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+            REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_DUMMY_CYCLELEN,  g_rom_spiflash_dummy_len_plus[1] - 1);
+            ^
+/root/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c:601:9: error: Shifting 32-bit value by 63 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(PERIPHS_SPI_FLASH_USRREG1, SPI_USR_ADDR_BITLEN, SPI1_R_SIO_ADDR_BITSLEN);
+        ^
+/root/esp/esp-idf/components/log/log.c:279:26: error: Uninitialized variable: it->level [uninitvar]
+            *level = it->level;
+                         ^
+/root/esp/esp-idf/components/heap/heap_caps.c:153:23: error: Uninitialized variable: heap->heap [uninitvar]
+            if (heap->heap == NULL) {
+                      ^
+/root/esp/esp-idf/components/heap/heap_caps.c:365:19: error: Uninitialized variable: heap->heap [uninitvar]
+        if (heap->heap != NULL && p >= heap->start && p < heap->end) {
+                  ^
+/root/esp/esp-idf/components/heap/heap_caps.c:521:29: error: Uninitialized variables: heap.start, heap.end, heap.heap_mux, heap.heap [uninitvar]
+        if (heap_caps_match(heap, caps)) {
+                            ^
+/root/esp/esp-idf/components/heap/heap_caps.c:533:29: error: Uninitialized variables: heap.start, heap.end, heap.heap_mux, heap.heap [uninitvar]
+        if (heap_caps_match(heap, caps)) {
+                            ^
+/root/esp/esp-idf/components/heap/heap_caps.c:545:29: error: Uninitialized variables: heap.start, heap.end, heap.heap_mux, heap.heap [uninitvar]
+        if (heap_caps_match(heap, caps)) {
+                            ^
+/root/esp/esp-idf/components/heap/heap_caps.c:565:29: error: Uninitialized variables: heap.start, heap.end, heap.heap_mux, heap.heap [uninitvar]
+        if (heap_caps_match(heap, caps)) {
+                            ^
+/root/esp/esp-idf/components/heap/heap_caps.c:587:29: error: Uninitialized variables: heap.start, heap.end, heap.heap_mux, heap.heap [uninitvar]
+        if (heap_caps_match(heap, caps)) {
+                            ^
+/root/esp/esp-idf/components/heap/heap_caps.c:610:19: error: Uninitialized variable: heap->heap [uninitvar]
+        if (heap->heap != NULL
+                  ^
+/root/esp/esp-idf/components/heap/heap_caps.c:638:19: error: Uninitialized variable: heap->heap [uninitvar]
+        if (heap->heap != NULL
+                  ^
+/root/esp/esp-idf/components/heap/heap_caps.c:687:23: error: Uninitialized variable: heap->heap [uninitvar]
+            if (heap->heap == NULL) {
+                      ^
+/root/esp/esp-idf/components/heap/heap_caps_init.c:38:19: error: Uninitialized variable: heap->heap [uninitvar]
+        if (heap->heap == NULL) {
+                  ^
+/root/esp/esp-idf/components/heap/heap_caps_init.c:218:55: error: Uninitialized variable: heap->start [uninitvar]
+        if (!heap_caps_check_add_region_allowed(heap->start, heap->end, start, end)) {
+                                                      ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:39:14: error: Subtracting pointers that point to different objects [comparePointers]
+             - &soc_reserved_memory_region_start );
+             ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:34:30: note: Variable declared here.
+extern soc_reserved_region_t soc_reserved_memory_region_end;
+                             ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:38:23: note: Address of variable taken here.
+    size_t result = ( &soc_reserved_memory_region_end
+                      ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:33:30: note: Variable declared here.
+extern soc_reserved_region_t soc_reserved_memory_region_start;
+                             ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:39:16: note: Address of variable taken here.
+             - &soc_reserved_memory_region_start );
+               ^
+/root/esp/esp-idf/components/heap/port/memory_layout_utils.c:39:14: note: Subtracting pointers that point to different objects
+             - &soc_reserved_memory_region_start );
+             ^
+/root/esp/esp-idf/components/esp_hw_support/rtc_module.c:70:17: error: Uninitialized variable: it->mask [uninitvar]
+        if (it->mask & status) {
+                ^
+/root/esp/esp-idf/components/esp_hw_support/rtc_module.c:143:17: error: Uninitialized variable: it->handler [uninitvar]
+        if (it->handler == handler && it->handler_arg == handler_arg) {
+                ^
+/root/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_init.c:35:5: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(RTC_CNTL_TIMER1_REG, RTC_CNTL_PLL_BUF_WAIT, cfg.pll_wait);
+    ^
+/root/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_init.c:36:5: error: Shifting 32-bit value by 1023 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(RTC_CNTL_TIMER1_REG, RTC_CNTL_XTL_BUF_WAIT, cfg.xtal_wait);
+    ^
+/root/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_init.c:37:5: error: Shifting 32-bit value by 255 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(RTC_CNTL_TIMER1_REG, RTC_CNTL_CK8M_WAIT, cfg.ck8m_wait);
+    ^
+/root/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:217:22: error: Signed integer overflow for expression '-4'. [integerOverflow]
+    p[2] = (uint32_t)ALIGNUP(XCHAL_TOTAL_SA_ALIGN, (uint32_t)uxStackPointer + 12);
+                     ^
+/root/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:263:36: error: Signed integer overflow for expression '-16'. [integerOverflow]
+    const uint32_t tls_area_size = ALIGNUP(16, (uint32_t)&_thread_local_end - (uint32_t)&_thread_local_start);
+                                   ^
+/root/esp/esp-idf/components/esp_common/include/esp_macros.h:91:19: error: syntax error [syntaxError]
+ESP_STATIC_ASSERT(foo() == 2, "CHOOSE_MACRO_VA_ARG() result does not match for 0 arguments");
+                  ^
+/root/esp/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c:226:5: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(CONFIG_REG, TIMG_LACT_DIVIDER, apb_ticks_per_us / TICKS_PER_US);
+    ^
+/root/esp/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c:257:5: error: Shifting 32-bit value by 65535 bits is undefined behaviour [shiftTooManyBits]
+    REG_SET_FIELD(CONFIG_REG, TIMG_LACT_DIVIDER, APB_CLK_FREQ / 1000000 / TICKS_PER_US);
+    ^
+/root/esp/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c:298:9: error: Shifting 32-bit value by 67108863 bits is undefined behaviour [shiftTooManyBits]
+        REG_SET_FIELD(RTC_STEP_REG, TIMG_LACT_RTC_STEP_LEN, slowclk_ticks_per_us);
+        ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:137:35: error: Returning pointer to local variable 'tmo' that will be invalid when returning. [returnDanglingLifetime]
+    return ch->hw->get_down_buffer(ch->hw_data, size, &tmo);
+                                  ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:137:55: note: Address of variable taken here.
+    return ch->hw->get_down_buffer(ch->hw_data, size, &tmo);
+                                                      ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:137:55: note: Passed to initializer list.
+    return ch->hw->get_down_buffer(ch->hw_data, size, &tmo);
+                                                      ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:114:24: note: Variable created here.
+    esp_apptrace_tmo_t tmo;
+                       ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:137:35: note: Returning pointer to local variable 'tmo' that will be invalid when returning.
+    return ch->hw->get_down_buffer(ch->hw_data, size, &tmo);
+                                  ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:235:33: error: Returning pointer to local variable 'tmo' that will be invalid when returning. [returnDanglingLifetime]
+    return ch->hw->get_up_buffer(ch->hw_data, size, &tmo);
+                                ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:235:53: note: Address of variable taken here.
+    return ch->hw->get_up_buffer(ch->hw_data, size, &tmo);
+                                                    ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:235:53: note: Passed to initializer list.
+    return ch->hw->get_up_buffer(ch->hw_data, size, &tmo);
+                                                    ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:212:24: note: Variable created here.
+    esp_apptrace_tmo_t tmo;
+                       ^
+/root/esp/esp-idf/components/app_trace/app_trace.c:235:33: note: Returning pointer to local variable 'tmo' that will be invalid when returning.
+    return ch->hw->get_up_buffer(ch->hw_data, size, &tmo);
+                                ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:331:21: error: Uninitialized variable: it->handler_ctx [uninitvar]
+            if (it->handler_ctx->handler == handler_ctx->handler) {
+                    ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:359:21: error: Uninitialized variable: it->id [uninitvar]
+            if (it->id == id) {
+                    ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:384:21: error: Uninitialized variable: it->base [uninitvar]
+            if (it->base == base) {
+                    ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:429:38: error: Uninitialized variables: it.base, it.handlers, it.id_nodes [uninitvar]
+        base_node_remove_all_handler(it);
+                                     ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:585:39: error: Uninitialized variable: handler.handler_ctx [uninitvar]
+                handler_execute(loop, handler, post);
+                                      ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:590:32: warning: Uninitialized variable: base_node->base [uninitvar]
+                if (base_node->base == post.base) {
+                               ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:670:38: error: Uninitialized variables: it.handlers, it.base_nodes [uninitvar]
+        loop_node_remove_all_handler(it);
+                                     ^
+/root/esp/esp-idf/components/esp_event/esp_event.c:795:50: error: Uninitialized variables: it.handlers, it.base_nodes [uninitvar]
+        esp_err_t res = loop_node_remove_handler(it, event_base, event_id, handler_ctx, legacy);
+                                                 ^
+/root/esp/esp-idf/components/esp_event/esp_event_private.c:33:93: error: Uninitialized variable: handler->handler_ctx [uninitvar]
+            if(event_base == ESP_EVENT_ANY_BASE && event_id == ESP_EVENT_ANY_ID && handler->handler_ctx->handler == event_handler)
+                                                                                            ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:93:19: error: Uninitialized variable: item->netif [uninitvar]
+        if (item->netif == netif) {
+                  ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:136:19: error: Uninitialized variable: item->netif [uninitvar]
+        if (item->netif == netif) {
+                  ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:130:15: note: Assuming condition is false
+    if (netif == NULL) {
+              ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:136:19: note: Uninitialized variable: item->netif
+        if (item->netif == netif) {
+                  ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:154:19: error: Uninitialized variable: item->netif [uninitvar]
+        if (item->netif == esp_netif) {
+                  ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:173:40: error: Uninitialized variable: item->netif [uninitvar]
+        esp_netif_t *esp_netif = item->netif;
+                                       ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:174:48: error: Uninitialized variable: esp_netif [uninitvar]
+        if (strcmp(if_key, esp_netif_get_ifkey(esp_netif)) == 0) {
+                                               ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:173:38: note: Assignment 'esp_netif=item->netif', assigned value is <Uninit>
+        esp_netif_t *esp_netif = item->netif;
+                                     ^
+/root/esp/esp-idf/components/esp_netif/esp_netif_objects.c:174:48: note: Uninitialized variable: esp_netif
+        if (strcmp(if_key, esp_netif_get_ifkey(esp_netif)) == 0) {
+                                               ^
+/root/esp/esp-idf/components/wpa_supplicant/src/crypto/ccmp.c:52:2: error: Buffer is accessed out of bounds: hdr->addr1 [bufferAccessOutOfBounds]
+ os_memcpy(pos, hdr->addr1, 3 * ETH_ALEN);
+ ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_eap_client.c:156:20: error: syntax error [syntaxError]
+static STAILQ_HEAD(, wpa2_rx_param) s_wpa2_rxq;
+                   ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpas_glue.c:49:5: error: Memory leak: buffer [memleak]
+    return (u8 *) hdr;
+    ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wps.c:45:20: error: syntax error [syntaxError]
+static STAILQ_HEAD(,wps_rx_param) s_wps_rxq;
+                   ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa3.c:383:5: error: Memory leak: evt [memleak]
+    return ESP_OK;
+    ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/fastpbkdf2.c:373:0: error: failed to expand 'DECL_PBKDF2', it is invalid to use a preprocessor directive as macro parameter [preprocessorErrorDirective]
+#if defined(MBEDTLS_SHA1_ALT)
+^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-bignum.c:102:12: error: Uninitialized variable: ret [uninitvar]
+    return ret;
+           ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-ec.c:261:9: error: Uninitialized variable: ret [uninitvar]
+ return ret ? -1 : 0;
+        ^
+/root/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-ec.c:288:9: error: Uninitialized variable: ret [uninitvar]
+ return ret ? -1 : 0;
+        ^
+/root/esp/esp-idf/components/console/commands.c:149:30: error: Uninitialized variable: it->command [uninitvar]
+        if (strncmp(buf, it->command, len) == 0) {
+                             ^
+/root/esp/esp-idf/components/console/commands.c:160:24: error: Uninitialized variable: it->command [uninitvar]
+        if (strlen(it->command) == len &&
+                       ^
+/root/esp/esp-idf/components/console/commands.c:176:24: error: Uninitialized variable: it->command [uninitvar]
+        if (strlen(it->command) == len &&
+                       ^
+/root/esp/esp-idf/components/console/commands.c:218:17: error: Uninitialized variable: it->help [uninitvar]
+        if (it->help == NULL) {
+                ^
+/root/esp/esp-idf/components/tcp_transport/transport.c:66:20: error: Uninitialized variables: item.port, item.data, item._connect, item._read, item._write, item._close, item._poll_read, item._poll_write, item._destroy, item._connect_async, item._parent_transfer, item._get_socket, item.keep_alive_cfg, item.foundation [uninitvar]
+            return item;
+                   ^
+/root/esp/esp-idf/components/esp_http_client/lib/http_header.c:57:20: error: Uninitialized variable: item.value [uninitvar]
+            return item;
+                   ^
+/root/esp/esp-idf/components/esp_http_client/lib/http_header.c:177:19: error: Uninitialized variable: item->value [uninitvar]
+        if (item->value && idx >= index) {
+                  ^
+/root/esp/esp-idf/components/protocomm/src/common/protocomm.c:45:14: error: Uninitialized variables: it.ep_name, it.req_handler, it.priv_data, it.flag [uninitvar]
+        free(it);
+             ^
+/root/esp/esp-idf/components/protocomm/src/common/protocomm.c:67:24: error: Uninitialized variable: it->ep_name [uninitvar]
+        if (strcmp(it->ep_name, ep_name) == 0) {
+                       ^
+/root/esp/esp-idf/components/protocomm/src/common/protocomm.c:135:33: error: Uninitialized variable: it->ep_name [uninitvar]
+        if (strcmp(ep_name, it->ep_name) == 0) {
+                                ^
+/root/esp/esp-idf/components/wear_levelling/Partition.cpp:31:9: error: syntax error [syntaxError]
+        ESP_LOGV(TAG, "erase_range - start_address=0x%08x, size=0x%08x, result=0x%08x", start_address, size, result);
+        ^
+/root/esp/esp-idf/components/wear_levelling/SPI_Flash.cpp:29:9: error: syntax error [syntaxError]
+        ESP_LOGV(TAG, "erase_sector - sector=0x%08x, result=0x%08x", sector, result);
+        ^
+/root/esp/esp-idf/components/wear_levelling/WL_Ext_Perf.cpp:69:5: error: syntax error [syntaxError]
+    ESP_LOGV(TAG, "%s begin, start_sector = 0x%08x, count = %i", __func__, start_sector, count);
+    ^
+/root/esp/esp-idf/components/wear_levelling/WL_Ext_Safe.cpp:53:5: error: syntax error [syntaxError]
+    WL_EXT_RESULT_CHECK(result);
+    ^
+/root/esp/esp-idf/components/wear_levelling/WL_Flash.cpp:42:5: error: syntax error [syntaxError]
+    ESP_LOGV(TAG, "%s start_addr=0x%08x, full_mem_size=0x%08x, page_size=0x%08x, sector_size=0x%08x, updaterate=0x%08x, wr_size=0x%08x, version=0x%08x, temp_buff_size=0x%08x", __func__,
+    ^
+/root/esp/esp-idf/components/wear_levelling/wear_levelling.cpp:85:9: error: syntax error [syntaxError]
+        ESP_LOGE(TAG, "MAX_WL_HANDLES=%d instances already allocated", MAX_WL_HANDLES);
+        ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:71:19: error: Uninitialized variable: item->msg_id [uninitvar]
+        if (item->msg_id == msg_id) {
+                  ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:82:19: error: Uninitialized variable: item->pending [uninitvar]
+        if (item->pending == pending) {
+                  ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:96:13: error: Uninitialized variables: item.buffer, item.len, item.msg_id, item.msg_type, item.msg_qos, item.tick, item.pending [uninitvar]
+        if (item == item_to_delete) {
+            ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:123:19: error: Uninitialized variable: item->msg_id [uninitvar]
+        if (item->msg_id == msg_id && (0xFF & (item->msg_type)) == msg_type) {
+                  ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:169:34: error: Uninitialized variable: item->tick [uninitvar]
+        if (current_tick - item->tick > timeout) {
+                                 ^
+/root/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c:187:34: error: Uninitialized variable: item->tick [uninitvar]
+        if (current_tick - item->tick > timeout) {
+                                 ^
+/workspaces/plant_boss/sw_esp32/plant_boss/drivers/bh1750fvi.c:60:66: error: Array 'buf_rx[2]' accessed at index 2, which is out of bounds. [arrayIndexOutOfBounds]
     light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[2]) / 1.2;
                                                                  ^
+/root/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-gcm.c:19:21: error: Pointer arithmetic overflow; 'block' buffer size is 16 [ctuPointerArith]
+ val = WPA_GET_BE32(block + AES_BLOCK_SIZE - 4);
+                    ^
+/root/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-gcm.c:162:8: note: Calling function inc32, 1st argument is uninitialized
+  inc32(cb);
+       ^
+/root/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-gcm.c:19:21: note: Using argument block
+ val = WPA_GET_BE32(block + AES_BLOCK_SIZE - 4);
+                    ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: error: Null pointer dereference: hw [ctunullpointer]
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/driver/i2s/i2s_common.c:1208:28: note: Calling function i2s_ll_enable_clock, 1st argument is null
+        i2s_ll_enable_clock(I2S_LL_GET_HW(id));
+                           ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:101:9: note: Dereferencing argument hw that is null
+    if (hw->clkm_conf.clk_en == 0) {
+        ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: error: Null pointer dereference: hw [ctunullpointer]
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
+/root/esp/esp-idf/components/driver/i2s/i2s_common.c:1229:29: note: Calling function i2s_ll_disable_clock, 1st argument is null
+        i2s_ll_disable_clock(I2S_LL_GET_HW(id));
+                            ^
+/root/esp/esp-idf/components/hal/esp32/include/hal/i2s_ll.h:114:9: note: Dereferencing argument hw that is null
+    if (hw->clkm_conf.clk_en == 1) {
+        ^
 
 
 cppcheck finished

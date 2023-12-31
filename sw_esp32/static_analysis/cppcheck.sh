@@ -7,6 +7,7 @@ FLAGS_CPPCHECK="\
     --check-level=exhaustive \
     --inconclusive \
     --suppress=unusedFunction \
+    --project=../plant_boss/build/compile_commands.json \
     --cppcheck-build-dir=./cppcheck_cache
     "
 
@@ -38,8 +39,6 @@ printf "\n\n" &>> $LOG_FILE
 # Execute static analysis
 $CPPCHECK \
     $FLAGS_CPPCHECK \
-    $FLAGS_GCC \
-    $SOURCES \
     &>> $LOG_FILE
 
 printf "\n\ncppcheck finished" &>> $LOG_FILE
