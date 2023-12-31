@@ -16,5 +16,6 @@
     "files.associations": {
         "wifi_wrapper.h": "c"
     },
-    "idf.flashType": "JTAG"
+    "idf.flashType": "JTAG",
+    "idf.port":"/dev/ttyUSB1"
 }
