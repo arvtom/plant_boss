@@ -15,5 +15,6 @@
     "idf.toolsPath": "/root/.espressif",
     "files.associations": {
         "wifi_wrapper.h": "c"
-    }
+    },
+    "idf.flashType": "JTAG"
 }
