@@ -1,14 +1,9 @@
 CPPCHECK="/home/vscode/repo/cppcheck-2.13.0/build/bin/cppcheck"
+MISRA="/home/vscode/repo/cppcheck-2.13.0/addons/misra.py"
 LOG_FILE="./cppcheck.txt"
 
 FLAGS_CPPCHECK="\
-    --quiet \
-    --addon=misra \
-    --check-level=exhaustive \
-    --inconclusive \
-    --suppress=unusedFunction \
-    --project=../plant_boss/build/compile_commands.json \
-    --cppcheck-build-dir=./cppcheck_cache
+    --dump
     "
 
 FLAGS_GCC="\
@@ -18,10 +13,7 @@ FLAGS_GCC="\
     "
 
 SOURCES="\
-    ../plant_boss/drivers \
-    ../plant_boss/wrappers \
-    ../plant_boss/src \
-    ../plant_boss/main
+    ../plant_boss/drivers/bh1750fvi.c \
     "
 
 HEADERS="
@@ -39,7 +31,11 @@ printf "\n\n" &>> $LOG_FILE
 # Execute static analysis
 $CPPCHECK \
     $FLAGS_CPPCHECK \
+    $SOURCES \
     &>> $LOG_FILE
+printf "\n\ncppcheck finished\n\n" &>> $LOG_FILE
 
-printf "\n\ncppcheck finished" &>> $LOG_FILE
+python3 $MISRA /workspaces/plant_boss/sw_esp32/plant_boss/drivers/bh1750fvi.c.dump &>> $LOG_FILE
+printf "\n\nmisra finished\n\n" &>> $LOG_FILE
+
 cat $LOG_FILE

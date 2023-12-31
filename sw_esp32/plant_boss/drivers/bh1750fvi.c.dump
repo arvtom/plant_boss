@@ -1,0 +1,713 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/drivers/bh1750fvi.c"/>
+    <file index="1" name="../plant_boss/drivers/bh1750fvi.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    bh1750fvi.cx*  \brief   This file contains functions for reading light sensor bh1750fvi data.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;bh1750fvi.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="12" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="13" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="13" column="10" str="err_bh1750fvi"/>
+    <tok fileIndex="0" linenr="13" column="24" str="="/>
+    <tok fileIndex="0" linenr="13" column="26" str="0u"/>
+    <tok fileIndex="0" linenr="13" column="28" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="float"/>
+    <tok fileIndex="0" linenr="14" column="7" str="light"/>
+    <tok fileIndex="0" linenr="14" column="13" str="="/>
+    <tok fileIndex="0" linenr="14" column="16" str="0.0"/>
+    <tok fileIndex="0" linenr="14" column="18" str=";"/>
+    <tok fileIndex="0" linenr="16" column="1" str="static"/>
+    <tok fileIndex="0" linenr="16" column="8" str="const"/>
+    <tok fileIndex="0" linenr="16" column="14" str="char"/>
+    <tok fileIndex="0" linenr="16" column="18" str="*"/>
+    <tok fileIndex="0" linenr="16" column="20" str="tag_bh1750fvi"/>
+    <tok fileIndex="0" linenr="16" column="34" str="="/>
+    <tok fileIndex="0" linenr="16" column="36" str="&quot;bh1750fvi&quot;"/>
+    <tok fileIndex="0" linenr="16" column="47" str=";"/>
+    <tok fileIndex="0" linenr="18" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="19" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="19" column="6" str="bh1750fvi_init"/>
+    <tok fileIndex="0" linenr="19" column="20" str="("/>
+    <tok fileIndex="0" linenr="19" column="21" str="void"/>
+    <tok fileIndex="0" linenr="19" column="25" str=")"/>
+    <tok fileIndex="0" linenr="20" column="1" str="{"/>
+    <tok fileIndex="0" linenr="21" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="21" column="13" str="("/>
+    <tok fileIndex="0" linenr="21" column="14" str="tag_bh1750fvi"/>
+    <tok fileIndex="0" linenr="21" column="27" str=","/>
+    <tok fileIndex="0" linenr="21" column="29" str="&quot;addr err_bh1750fvi 0x%x\n&quot;"/>
+    <tok fileIndex="0" linenr="21" column="56" str=","/>
+    <tok fileIndex="0" linenr="21" column="58" str="("/>
+    <tok fileIndex="0" linenr="21" column="59" str="unsigned"/>
+    <tok fileIndex="0" linenr="21" column="68" str="int"/>
+    <tok fileIndex="0" linenr="21" column="71" str=")"/>
+    <tok fileIndex="0" linenr="21" column="72" str="&amp;"/>
+    <tok fileIndex="0" linenr="21" column="73" str="err_bh1750fvi"/>
+    <tok fileIndex="0" linenr="21" column="86" str=")"/>
+    <tok fileIndex="0" linenr="21" column="87" str=";"/>
+    <tok fileIndex="0" linenr="23" column="5" str="if"/>
+    <tok fileIndex="0" linenr="23" column="8" str="("/>
+    <tok fileIndex="0" linenr="23" column="9" str="true"/>
+    <tok fileIndex="0" linenr="23" column="14" str="!="/>
+    <tok fileIndex="0" linenr="23" column="17" str="i2c_init"/>
+    <tok fileIndex="0" linenr="23" column="25" str="("/>
+    <tok fileIndex="0" linenr="23" column="26" str=")"/>
+    <tok fileIndex="0" linenr="23" column="27" str=")"/>
+    <tok fileIndex="0" linenr="24" column="5" str="{"/>
+    <tok fileIndex="0" linenr="25" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="25" column="22" str="("/>
+    <tok fileIndex="0" linenr="25" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="25" column="24" str="err_bh1750fvi"/>
+    <tok fileIndex="0" linenr="25" column="37" str=","/>
+    <tok fileIndex="0" linenr="25" column="39" str="BH1750FVI_ERROR_INIT_I2C"/>
+    <tok fileIndex="0" linenr="25" column="63" str=")"/>
+    <tok fileIndex="0" linenr="25" column="64" str=";"/>
+    <tok fileIndex="0" linenr="27" column="9" str="return"/>
+    <tok fileIndex="0" linenr="27" column="16" str="false"/>
+    <tok fileIndex="0" linenr="27" column="21" str=";"/>
+    <tok fileIndex="0" linenr="28" column="5" str="}"/>
+    <tok fileIndex="0" linenr="30" column="5" str="return"/>
+    <tok fileIndex="0" linenr="30" column="12" str="true"/>
+    <tok fileIndex="0" linenr="30" column="16" str=";"/>
+    <tok fileIndex="0" linenr="31" column="1" str="}"/>
+    <tok fileIndex="0" linenr="33" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="33" column="6" str="bh1750fvi_handle"/>
+    <tok fileIndex="0" linenr="33" column="22" str="("/>
+    <tok fileIndex="0" linenr="33" column="23" str="void"/>
+    <tok fileIndex="0" linenr="33" column="27" str=")"/>
+    <tok fileIndex="0" linenr="34" column="1" str="{"/>
+    <tok fileIndex="0" linenr="35" column="5" str="/* Low resolution mode. Needs 24 ms to finish sampling. */"/>
+    <tok fileIndex="0" linenr="36" column="5" str="uint8_t"/>
+    <tok fileIndex="0" linenr="36" column="13" str="buf_tx"/>
+    <tok fileIndex="0" linenr="36" column="19" str="["/>
+    <tok fileIndex="0" linenr="36" column="20" str="1"/>
+    <tok fileIndex="0" linenr="36" column="21" str="]"/>
+    <tok fileIndex="0" linenr="36" column="22" str=";"/>
+    <tok fileIndex="0" linenr="37" column="5" str="buf_tx"/>
+    <tok fileIndex="0" linenr="37" column="11" str="["/>
+    <tok fileIndex="0" linenr="37" column="12" str="0"/>
+    <tok fileIndex="0" linenr="37" column="13" str="]"/>
+    <tok fileIndex="0" linenr="37" column="15" str="="/>
+    <tok fileIndex="0" linenr="37" column="17" str="BH1750FVI_I2C_COMMAND_MEASURE"/>
+    <tok fileIndex="0" linenr="37" column="46" str=";"/>
+    <tok fileIndex="0" linenr="39" column="5" str="if"/>
+    <tok fileIndex="0" linenr="39" column="8" str="("/>
+    <tok fileIndex="0" linenr="39" column="9" str="true"/>
+    <tok fileIndex="0" linenr="39" column="14" str="!="/>
+    <tok fileIndex="0" linenr="39" column="17" str="i2c_handle_write"/>
+    <tok fileIndex="0" linenr="39" column="33" str="("/>
+    <tok fileIndex="0" linenr="39" column="34" str="BH1750FVI_I2C_ADDR_MEASURE"/>
+    <tok fileIndex="0" linenr="39" column="60" str=","/>
+    <tok fileIndex="0" linenr="39" column="62" str="("/>
+    <tok fileIndex="0" linenr="39" column="63" str="uint8_t"/>
+    <tok fileIndex="0" linenr="39" column="71" str="*"/>
+    <tok fileIndex="0" linenr="39" column="72" str=")"/>
+    <tok fileIndex="0" linenr="39" column="73" str="buf_tx"/>
+    <tok fileIndex="0" linenr="39" column="79" str=","/>
+    <tok fileIndex="0" linenr="39" column="81" str="1"/>
+    <tok fileIndex="0" linenr="39" column="82" str=","/>
+    <tok fileIndex="0" linenr="39" column="84" str="BH1750FVI_I2C_TIMEOUT"/>
+    <tok fileIndex="0" linenr="39" column="105" str=")"/>
+    <tok fileIndex="0" linenr="39" column="106" str=")"/>
+    <tok fileIndex="0" linenr="40" column="5" str="{"/>
+    <tok fileIndex="0" linenr="41" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="41" column="22" str="("/>
+    <tok fileIndex="0" linenr="41" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="41" column="24" str="err_bh1750fvi"/>
+    <tok fileIndex="0" linenr="41" column="37" str=","/>
+    <tok fileIndex="0" linenr="41" column="39" str="BH1750FVI_ERROR_HANDLE_I2C_WRITE"/>
+    <tok fileIndex="0" linenr="41" column="71" str=")"/>
+    <tok fileIndex="0" linenr="41" column="72" str=";"/>
+    <tok fileIndex="0" linenr="43" column="9" str="return"/>
+    <tok fileIndex="0" linenr="43" column="16" str="false"/>
+    <tok fileIndex="0" linenr="43" column="21" str=";"/>
+    <tok fileIndex="0" linenr="44" column="5" str="}"/>
+    <tok fileIndex="0" linenr="46" column="5" str="/* wait 30ms */"/>
+    <tok fileIndex="0" linenr="47" column="5" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="47" column="15" str="("/>
+    <tok fileIndex="0" linenr="47" column="16" str="3"/>
+    <tok fileIndex="0" linenr="47" column="17" str=")"/>
+    <tok fileIndex="0" linenr="47" column="18" str=";"/>
+    <tok fileIndex="0" linenr="49" column="5" str="uint8_t"/>
+    <tok fileIndex="0" linenr="49" column="13" str="buf_rx"/>
+    <tok fileIndex="0" linenr="49" column="19" str="["/>
+    <tok fileIndex="0" linenr="49" column="20" str="2"/>
+    <tok fileIndex="0" linenr="49" column="21" str="]"/>
+    <tok fileIndex="0" linenr="49" column="22" str=";"/>
+    <tok fileIndex="0" linenr="51" column="5" str="// if (true != i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT))"/>
+    <tok fileIndex="0" linenr="52" column="5" str="// {"/>
+    <tok fileIndex="0" linenr="53" column="5" str="//     error_set_u32(&amp;err_bh1750fvi, BH1750FVI_ERROR_HANDLE_I2C_READ);"/>
+    <tok fileIndex="0" linenr="55" column="5" str="//     return false;"/>
+    <tok fileIndex="0" linenr="56" column="5" str="// }"/>
+    <tok fileIndex="0" linenr="58" column="5" str="i2c_handle_read"/>
+    <tok fileIndex="0" linenr="58" column="20" str="("/>
+    <tok fileIndex="0" linenr="58" column="21" str="BH1750FVI_I2C_ADDR_RESULT"/>
+    <tok fileIndex="0" linenr="58" column="46" str=","/>
+    <tok fileIndex="0" linenr="58" column="48" str="("/>
+    <tok fileIndex="0" linenr="58" column="49" str="uint8_t"/>
+    <tok fileIndex="0" linenr="58" column="57" str="*"/>
+    <tok fileIndex="0" linenr="58" column="58" str=")"/>
+    <tok fileIndex="0" linenr="58" column="59" str="buf_rx"/>
+    <tok fileIndex="0" linenr="58" column="65" str=","/>
+    <tok fileIndex="0" linenr="58" column="67" str="2"/>
+    <tok fileIndex="0" linenr="58" column="68" str=","/>
+    <tok fileIndex="0" linenr="58" column="70" str="BH1750FVI_I2C_TIMEOUT"/>
+    <tok fileIndex="0" linenr="58" column="91" str=")"/>
+    <tok fileIndex="0" linenr="58" column="92" str=";"/>
+    <tok fileIndex="0" linenr="60" column="5" str="light"/>
+    <tok fileIndex="0" linenr="60" column="11" str="="/>
+    <tok fileIndex="0" linenr="60" column="13" str="("/>
+    <tok fileIndex="0" linenr="60" column="14" str="float"/>
+    <tok fileIndex="0" linenr="60" column="19" str=")"/>
+    <tok fileIndex="0" linenr="60" column="20" str="("/>
+    <tok fileIndex="0" linenr="60" column="21" str="("/>
+    <tok fileIndex="0" linenr="60" column="22" str="("/>
+    <tok fileIndex="0" linenr="60" column="23" str="uint16_t"/>
+    <tok fileIndex="0" linenr="60" column="31" str=")"/>
+    <tok fileIndex="0" linenr="60" column="32" str="buf_rx"/>
+    <tok fileIndex="0" linenr="60" column="38" str="["/>
+    <tok fileIndex="0" linenr="60" column="39" str="0"/>
+    <tok fileIndex="0" linenr="60" column="40" str="]"/>
+    <tok fileIndex="0" linenr="60" column="42" str="&lt;&lt;"/>
+    <tok fileIndex="0" linenr="60" column="45" str="8"/>
+    <tok fileIndex="0" linenr="60" column="46" str=")"/>
+    <tok fileIndex="0" linenr="60" column="48" str="|"/>
+    <tok fileIndex="0" linenr="60" column="50" str="("/>
+    <tok fileIndex="0" linenr="60" column="51" str="uint16_t"/>
+    <tok fileIndex="0" linenr="60" column="59" str=")"/>
+    <tok fileIndex="0" linenr="60" column="60" str="buf_rx"/>
+    <tok fileIndex="0" linenr="60" column="66" str="["/>
+    <tok fileIndex="0" linenr="60" column="67" str="2"/>
+    <tok fileIndex="0" linenr="60" column="68" str="]"/>
+    <tok fileIndex="0" linenr="60" column="69" str=")"/>
+    <tok fileIndex="0" linenr="60" column="71" str="/"/>
+    <tok fileIndex="0" linenr="60" column="74" str="1.2"/>
+    <tok fileIndex="0" linenr="60" column="76" str=";"/>
+    <tok fileIndex="0" linenr="62" column="5" str="return"/>
+    <tok fileIndex="0" linenr="62" column="12" str="true"/>
+    <tok fileIndex="0" linenr="62" column="16" str=";"/>
+    <tok fileIndex="0" linenr="63" column="1" str="}"/>
+    <tok fileIndex="0" linenr="65" column="1" str="float"/>
+    <tok fileIndex="0" linenr="65" column="7" str="bh1750fvi_get_light_value"/>
+    <tok fileIndex="0" linenr="65" column="32" str="("/>
+    <tok fileIndex="0" linenr="65" column="33" str="void"/>
+    <tok fileIndex="0" linenr="65" column="37" str=")"/>
+    <tok fileIndex="0" linenr="66" column="1" str="{"/>
+    <tok fileIndex="0" linenr="67" column="5" str="return"/>
+    <tok fileIndex="0" linenr="67" column="12" str="light"/>
+    <tok fileIndex="0" linenr="67" column="17" str=";"/>
+    <tok fileIndex="0" linenr="68" column="1" str="}"/>
+    <tok fileIndex="0" linenr="70" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/drivers/bh1750fvi.c" linenr="8" str="#include &quot;bh1750fvi.h&quot;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="7" str="#ifndef BH1750FVI_H"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="8" str="#define BH1750FVI_H"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="12" str="#include &lt;stdio.h&gt;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="14" str="#include &lt;freertos/FreeRTOS.h&gt;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="15" str="#include &lt;freertos/task.h&gt;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="16" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="18" str="#include &quot;i2c_wrapper.h&quot;"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="21" str="#define BH1750FVI_I2C_ADDR_MEASURE 0x23"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="22" str="#define BH1750FVI_I2C_ADDR_RESULT 0x23"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="24" str="#define BH1750FVI_I2C_COMMAND_MEASURE 0x23"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="26" str="#define BH1750FVI_I2C_TIMEOUT 100u"/>
+    <directive file="../plant_boss/drivers/bh1750fvi.h" linenr="73" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="BH1750FVI_I2C_TIMEOUT" file="../plant_boss/drivers/bh1750fvi.h" line="26" column="9" usefile="../plant_boss/drivers/bh1750fvi.c" useline="39" usecolumn="84" is-known-value="true"/>
+    <macro name="BH1750FVI_I2C_TIMEOUT" file="../plant_boss/drivers/bh1750fvi.h" line="26" column="9" usefile="../plant_boss/drivers/bh1750fvi.c" useline="58" usecolumn="70" is-known-value="true"/>
+    <macro name="BH1750FVI_I2C_COMMAND_MEASURE" file="../plant_boss/drivers/bh1750fvi.h" line="24" column="9" usefile="../plant_boss/drivers/bh1750fvi.c" useline="37" usecolumn="17" is-known-value="true"/>
+    <macro name="BH1750FVI_I2C_ADDR_RESULT" file="../plant_boss/drivers/bh1750fvi.h" line="22" column="9" usefile="../plant_boss/drivers/bh1750fvi.c" useline="58" usecolumn="21" is-known-value="true"/>
+    <macro name="BH1750FVI_H" file="../plant_boss/drivers/bh1750fvi.h" line="8" column="9" usefile="../plant_boss/drivers/bh1750fvi.h" useline="7" usecolumn="9" is-known-value="true"/>
+    <macro name="BH1750FVI_I2C_ADDR_MEASURE" file="../plant_boss/drivers/bh1750fvi.h" line="21" column="9" usefile="../plant_boss/drivers/bh1750fvi.c" useline="39" usecolumn="34" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55cd7ef3ffb0" file="../plant_boss/drivers/bh1750fvi.h" linenr="29" column="9" str="enum" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef31410" file="../plant_boss/drivers/bh1750fvi.h" linenr="29" column="0" str="bh1750fvi_error_t" scope="55cd7ef31830" type="name" type-scope="55cd7ef2c140"/>
+    <token id="55cd7ef3fe30" file="../plant_boss/drivers/bh1750fvi.h" linenr="30" column="1" str="{" scope="55cd7ef2c140" link="55cd7ef40d10" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef3fda0" file="../plant_boss/drivers/bh1750fvi.h" linenr="31" column="5" str="BH1750FVI_ERROR_INIT_I2C" scope="55cd7ef2c140" type="name" values="55cd7ef36a30" astParent="55cd7ef3fd00" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef3fd00" file="../plant_boss/drivers/bh1750fvi.h" linenr="31" column="45" str="=" scope="55cd7ef2c140" type="op" isAssignmentOp="true" values="55cd7ef17de0" astParent="55cd7ef189b0" astOperand1="55cd7ef3fda0" astOperand2="55cd7ef28ba0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef28ba0" file="../plant_boss/drivers/bh1750fvi.h" linenr="31" column="47" str="0x00000001U" scope="55cd7ef2c140" type="number" isInt="true" values="55cd7ef17da0" astParent="55cd7ef3fd00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef189b0" file="../plant_boss/drivers/bh1750fvi.h" linenr="31" column="58" str="," scope="55cd7ef2c140" values="55cd7ef22800" astParent="55cd7ef3e510" astOperand1="55cd7ef3fd00" astOperand2="55cd7ef3e5b0"/>
+    <token id="55cd7ef18a10" file="../plant_boss/drivers/bh1750fvi.h" linenr="32" column="5" str="BH1750FVI_ERROR_HANDLE_I2C_WRITE" scope="55cd7ef2c140" type="name" values="55cd7ef32180" astParent="55cd7ef3e5b0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef3e5b0" file="../plant_boss/drivers/bh1750fvi.h" linenr="32" column="45" str="=" scope="55cd7ef2c140" type="op" isAssignmentOp="true" values="55cd7ef227c0" astParent="55cd7ef189b0" astOperand1="55cd7ef18a10" astOperand2="55cd7ef40860" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef40860" file="../plant_boss/drivers/bh1750fvi.h" linenr="32" column="47" str="0x00000002U" scope="55cd7ef2c140" type="number" isInt="true" values="55cd7ef22780" astParent="55cd7ef3e5b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef3e510" file="../plant_boss/drivers/bh1750fvi.h" linenr="32" column="58" str="," scope="55cd7ef2c140" values="55cd7ef236d0" astOperand1="55cd7ef189b0" astOperand2="55cd7ef40a80"/>
+    <token id="55cd7ef40970" file="../plant_boss/drivers/bh1750fvi.h" linenr="33" column="5" str="BH1750FVI_ERROR_HANDLE_I2C_READ" scope="55cd7ef2c140" type="name" values="55cd7ef33f90" astParent="55cd7ef40a80" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef40a80" file="../plant_boss/drivers/bh1750fvi.h" linenr="33" column="45" str="=" scope="55cd7ef2c140" type="op" isAssignmentOp="true" values="55cd7ef23550" astParent="55cd7ef3e510" astOperand1="55cd7ef40970" astOperand2="55cd7ef40ae0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef40ae0" file="../plant_boss/drivers/bh1750fvi.h" linenr="33" column="47" str="0x00000004U" scope="55cd7ef2c140" type="number" isInt="true" values="55cd7ef22840" astParent="55cd7ef40a80" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef3dbe0" file="../plant_boss/drivers/bh1750fvi.h" linenr="33" column="58" str="," scope="55cd7ef2c140"/>
+    <token id="55cd7ef40d10" file="../plant_boss/drivers/bh1750fvi.h" linenr="63" column="1" str="}" scope="55cd7ef2c140" link="55cd7ef3fe30"/>
+    <token id="55cd7ef40e20" file="../plant_boss/drivers/bh1750fvi.h" linenr="63" column="19" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef40f30" file="../plant_boss/drivers/bh1750fvi.h" linenr="66" column="1" str="bool" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef400c0" file="../plant_boss/drivers/bh1750fvi.h" linenr="66" column="6" str="bh1750fvi_init" scope="55cd7ef31830" type="name" function="55cd7ef3ea80"/>
+    <token id="55cd7ef28b20" file="../plant_boss/drivers/bh1750fvi.h" linenr="66" column="20" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef345b0" values="55cd7ef3ac50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef345b0" file="../plant_boss/drivers/bh1750fvi.h" linenr="66" column="25" str=")" scope="55cd7ef31830" link="55cd7ef28b20"/>
+    <token id="55cd7ef346c0" file="../plant_boss/drivers/bh1750fvi.h" linenr="66" column="26" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef34720" file="../plant_boss/drivers/bh1750fvi.h" linenr="67" column="1" str="bool" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef34a00" file="../plant_boss/drivers/bh1750fvi.h" linenr="67" column="6" str="bh1750fvi_handle" scope="55cd7ef31830" type="name" function="55cd7ef3e9c0"/>
+    <token id="55cd7ef34ca0" file="../plant_boss/drivers/bh1750fvi.h" linenr="67" column="22" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef3f1a0" values="55cd7ef3b730" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef3f1a0" file="../plant_boss/drivers/bh1750fvi.h" linenr="67" column="27" str=")" scope="55cd7ef31830" link="55cd7ef34ca0"/>
+    <token id="55cd7ef3f2b0" file="../plant_boss/drivers/bh1750fvi.h" linenr="67" column="28" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef3dd30" file="../plant_boss/drivers/bh1750fvi.h" linenr="69" column="1" str="float" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef3de40" file="../plant_boss/drivers/bh1750fvi.h" linenr="69" column="7" str="bh1750fvi_get_light_value" scope="55cd7ef31830" type="name" function="55cd7ef3efe0"/>
+    <token id="55cd7ef3dea0" file="../plant_boss/drivers/bh1750fvi.h" linenr="69" column="32" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef369d0" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef369d0" file="../plant_boss/drivers/bh1750fvi.h" linenr="69" column="37" str=")" scope="55cd7ef31830" link="55cd7ef3dea0"/>
+    <token id="55cd7ef41bd0" file="../plant_boss/drivers/bh1750fvi.h" linenr="69" column="38" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef41ce0" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="1" str="uint32_t" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef41d40" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="10" str="err_bh1750fvi" scope="55cd7ef31830" type="name" varId="1" exprId="1" variable="55cd7ef182d0" values="55cd7ef3c200" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef41e50" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="24" str=";" scope="55cd7ef31830" isSplittedVarDeclEq="true"/>
+    <token id="55cd7ef33bc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="10" str="err_bh1750fvi" scope="55cd7ef31830" type="name" varId="1" exprId="1" variable="55cd7ef182d0" values="55cd7ef3c1c0" astParent="55cd7ef3e3c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef3e3c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="24" str="=" scope="55cd7ef31830" type="op" isAssignmentOp="true" values="55cd7ef34530" astOperand1="55cd7ef33bc0" astOperand2="55cd7ef36ec0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef36ec0" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="26" str="0u" scope="55cd7ef31830" type="number" isInt="true" values="55cd7ef34260" astParent="55cd7ef3e3c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef41eb0" file="../plant_boss/drivers/bh1750fvi.c" linenr="13" column="28" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef41fc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="1" str="float" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef420d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="7" str="light" scope="55cd7ef31830" type="name" varId="2" exprId="2" variable="55cd7ef24700" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef421e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="13" str=";" scope="55cd7ef31830" isSplittedVarDeclEq="true"/>
+    <token id="55cd7ef311f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="7" str="light" scope="55cd7ef31830" type="name" varId="2" exprId="2" variable="55cd7ef24700" astParent="55cd7ef31300" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef31300" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="13" str="=" scope="55cd7ef31830" type="op" isAssignmentOp="true" values="55cd7ef31eb0" astOperand1="55cd7ef311f0" astOperand2="55cd7ef42300" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef42300" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="16" str="0.0" scope="55cd7ef31830" type="number" isFloat="true" values="55cd7ef31010" astParent="55cd7ef31300" valueType-type="double" valueType-reference="None"/>
+    <token id="55cd7ef42360" file="../plant_boss/drivers/bh1750fvi.c" linenr="14" column="18" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef42480" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="1" str="static" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef424e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="8" str="const" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef42600" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="14" str="char" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef31e50" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="18" str="*" scope="55cd7ef31830" type="op" isArithmeticalOp="true"/>
+    <token id="55cd7ef42710" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="20" str="tag_bh1750fvi" scope="55cd7ef31830" type="name" varId="3" exprId="3" variable="55cd7ef28610" astParent="55cd7ef42820" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55cd7ef42820" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="34" str="=" scope="55cd7ef31830" type="op" isAssignmentOp="true" values="55cd7ef3a990" astOperand1="55cd7ef42710" astOperand2="55cd7ef42880" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55cd7ef42880" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="36" str="&quot;bh1750fvi&quot;" scope="55cd7ef31830" type="string" strlen="9" values="55cd7ef3a830" astParent="55cd7ef42820" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55cd7ef42990" file="../plant_boss/drivers/bh1750fvi.c" linenr="16" column="47" str=";" scope="55cd7ef31830"/>
+    <token id="55cd7ef30f00" file="../plant_boss/drivers/bh1750fvi.c" linenr="19" column="1" str="bool" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef429f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="19" column="6" str="bh1750fvi_init" scope="55cd7ef31830" type="name" function="55cd7ef3ea80"/>
+    <token id="55cd7ef42b00" file="../plant_boss/drivers/bh1750fvi.c" linenr="19" column="20" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef42d20" values="55cd7ef3c240" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef42d20" file="../plant_boss/drivers/bh1750fvi.c" linenr="19" column="25" str=")" scope="55cd7ef31830" link="55cd7ef42b00"/>
+    <token id="55cd7ef42e40" file="../plant_boss/drivers/bh1750fvi.c" linenr="20" column="1" str="{" scope="55cd7ef2c480" link="55cd7ef37190"/>
+    <token id="55cd7ef42ea0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="5" str="ESP_LOGI" scope="55cd7ef2c480" type="name" astParent="55cd7ef42fc0"/>
+    <token id="55cd7ef42fc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="13" str="(" scope="55cd7ef2c480" link="55cd7ef437c0" exprId="1073741836" astOperand1="55cd7ef42ea0" astOperand2="55cd7ef43250"/>
+    <token id="55cd7ef43020" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="14" str="tag_bh1750fvi" scope="55cd7ef2c480" type="name" varId="3" exprId="3" variable="55cd7ef28610" astParent="55cd7ef43140" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55cd7ef43140" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="27" str="," scope="55cd7ef2c480" exprId="1073741832" astParent="55cd7ef43250" astOperand1="55cd7ef43020" astOperand2="55cd7ef344d0"/>
+    <token id="55cd7ef344d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="29" str="&quot;addr err_bh1750fvi 0x%x\n&quot;" scope="55cd7ef2c480" type="string" strlen="24" exprId="1073741831" values="55cd7ef3aaf0" astParent="55cd7ef43140" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55cd7ef43250" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="56" str="," scope="55cd7ef2c480" exprId="1073741835" astParent="55cd7ef42fc0" astOperand1="55cd7ef43140" astOperand2="55cd7ef433b0"/>
+    <token id="55cd7ef433b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="58" str="(" scope="55cd7ef2c480" isCast="true" link="55cd7ef43590" exprId="1073741834" values="55cd7ef3af90" astParent="55cd7ef43250" astOperand1="55cd7ef436b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef43410" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="68" str="int" scope="55cd7ef2c480" type="name" isUnsigned="true"/>
+    <token id="55cd7ef43590" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="71" str=")" scope="55cd7ef2c480" link="55cd7ef433b0"/>
+    <token id="55cd7ef436b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="72" str="&amp;" scope="55cd7ef2c480" type="op" exprId="9" values="55cd7ef3acd0" astParent="55cd7ef433b0" astOperand1="55cd7ef34200" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef34200" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="73" str="err_bh1750fvi" scope="55cd7ef2c480" type="name" varId="1" exprId="1" variable="55cd7ef182d0" values="55cd7ef3d080" astParent="55cd7ef436b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef437c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="86" str=")" scope="55cd7ef2c480" link="55cd7ef42fc0"/>
+    <token id="55cd7ef438d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="21" column="87" str=";" scope="55cd7ef2c480"/>
+    <token id="55cd7ef43930" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="5" str="if" scope="55cd7ef2c480" type="name" astParent="55cd7ef43a40"/>
+    <token id="55cd7ef43a40" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="8" str="(" scope="55cd7ef2c480" link="55cd7ef43ef0" astOperand1="55cd7ef43930" astOperand2="55cd7ef43aa0"/>
+    <token id="55cd7ef33e80" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="9" str="true" scope="55cd7ef2c480" type="name" exprId="13" astParent="55cd7ef43aa0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef43aa0" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="14" str="!=" scope="55cd7ef2c480" type="op" isComparisonOp="true" exprId="1073741840" values="55cd7ef3d0c0" astParent="55cd7ef43a40" astOperand1="55cd7ef33e80" astOperand2="55cd7ef43cc0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef43bb0" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="17" str="i2c_init" scope="55cd7ef2c480" type="name" astParent="55cd7ef43cc0"/>
+    <token id="55cd7ef43cc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="25" str="(" scope="55cd7ef2c480" link="55cd7ef43dd0" exprId="1073741839" astParent="55cd7ef43aa0" astOperand1="55cd7ef43bb0"/>
+    <token id="55cd7ef43dd0" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="26" str=")" scope="55cd7ef2c480" link="55cd7ef43cc0"/>
+    <token id="55cd7ef43ef0" file="../plant_boss/drivers/bh1750fvi.c" linenr="23" column="27" str=")" scope="55cd7ef2c480" link="55cd7ef43a40"/>
+    <token id="55cd7ef43f50" file="../plant_boss/drivers/bh1750fvi.c" linenr="24" column="5" str="{" scope="55cd7ef27c50" link="55cd7ef44870"/>
+    <token id="55cd7ef44070" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="9" str="error_set_u32" scope="55cd7ef27c50" type="name" astParent="55cd7ef440d0"/>
+    <token id="55cd7ef440d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="22" str="(" scope="55cd7ef27c50" link="55cd7ef44470" exprId="1073741844" astOperand1="55cd7ef44070" astOperand2="55cd7ef44300"/>
+    <token id="55cd7ef441f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="23" str="&amp;" scope="55cd7ef27c50" type="op" exprId="9" values="55cd7ef3b130" astParent="55cd7ef44300" astOperand1="55cd7ef32120" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef32120" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="24" str="err_bh1750fvi" scope="55cd7ef27c50" type="name" varId="1" exprId="1" variable="55cd7ef182d0" values="55cd7ef3d460" astParent="55cd7ef441f0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef44300" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="37" str="," scope="55cd7ef27c50" exprId="1073741843" astParent="55cd7ef440d0" astOperand1="55cd7ef441f0" astOperand2="55cd7ef44410"/>
+    <token id="55cd7ef44410" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="39" str="BH1750FVI_ERROR_INIT_I2C" scope="55cd7ef27c50" type="name" exprId="1073741842" values="55cd7ef36fd0" astParent="55cd7ef44300" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef44470" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="63" str=")" scope="55cd7ef27c50" link="55cd7ef440d0"/>
+    <token id="55cd7ef445e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="25" column="64" str=";" scope="55cd7ef27c50"/>
+    <token id="55cd7ef44640" file="../plant_boss/drivers/bh1750fvi.c" linenr="27" column="9" str="return" scope="55cd7ef27c50" type="name" values="55cd7ef3d5c0" astOperand1="55cd7ef44760" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef44760" file="../plant_boss/drivers/bh1750fvi.c" linenr="27" column="16" str="false" scope="55cd7ef27c50" type="name" exprId="1073741845" astParent="55cd7ef44640" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef36700" file="../plant_boss/drivers/bh1750fvi.c" linenr="27" column="21" str=";" scope="55cd7ef27c50"/>
+    <token id="55cd7ef44870" file="../plant_boss/drivers/bh1750fvi.c" linenr="28" column="5" str="}" scope="55cd7ef27c50" link="55cd7ef43f50"/>
+    <token id="55cd7ef44980" file="../plant_boss/drivers/bh1750fvi.c" linenr="30" column="5" str="return" scope="55cd7ef2c480" type="name" values="55cd7ef4e1b0" astOperand1="55cd7ef449e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef449e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="30" column="12" str="true" scope="55cd7ef2c480" type="name" exprId="13" astParent="55cd7ef44980" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef44af0" file="../plant_boss/drivers/bh1750fvi.c" linenr="30" column="16" str=";" scope="55cd7ef2c480"/>
+    <token id="55cd7ef37190" file="../plant_boss/drivers/bh1750fvi.c" linenr="31" column="1" str="}" scope="55cd7ef2c480" link="55cd7ef42e40"/>
+    <token id="55cd7ef44b50" file="../plant_boss/drivers/bh1750fvi.c" linenr="33" column="1" str="bool" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef44c60" file="../plant_boss/drivers/bh1750fvi.c" linenr="33" column="6" str="bh1750fvi_handle" scope="55cd7ef31830" type="name" function="55cd7ef3e9c0"/>
+    <token id="55cd7ef44d70" file="../plant_boss/drivers/bh1750fvi.c" linenr="33" column="22" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef44fc0" values="55cd7ef4e430" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef44fc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="33" column="27" str=")" scope="55cd7ef31830" link="55cd7ef44d70"/>
+    <token id="55cd7ef45020" file="../plant_boss/drivers/bh1750fvi.c" linenr="34" column="1" str="{" scope="55cd7ef27ec0" link="55cd7ef27440"/>
+    <token id="55cd7ef45140" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="5" str="uint8_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef451a0" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="13" str="buf_tx" scope="55cd7ef27ec0" type="name" varId="4" exprId="4" variable="55cd7ef44f10" astParent="55cd7ef452c0" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef452c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="19" str="[" scope="55cd7ef27ec0" link="55cd7ef453d0" exprId="1073741847" astOperand1="55cd7ef451a0" astOperand2="55cd7ef36160" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef36160" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="20" str="1" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef36760" astParent="55cd7ef452c0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef453d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="21" str="]" scope="55cd7ef27ec0" link="55cd7ef452c0"/>
+    <token id="55cd7ef454e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="36" column="22" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef45540" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="5" str="buf_tx" scope="55cd7ef27ec0" type="name" varId="4" exprId="4" variable="55cd7ef44f10" values="55cd7ef4f9d0" astParent="55cd7ef45650" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef45650" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="11" str="[" scope="55cd7ef27ec0" link="55cd7ef456b0" exprId="1073741849" values="55cd7ef4e6b0" astParent="55cd7ef457c0" astOperand1="55cd7ef45540" astOperand2="55cd7ef36380" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef36380" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="12" str="0" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef33740" astParent="55cd7ef45650" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef456b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="13" str="]" scope="55cd7ef27ec0" link="55cd7ef45650"/>
+    <token id="55cd7ef457c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="15" str="=" scope="55cd7ef27ec0" type="op" isAssignmentOp="true" values="55cd7ef3eda0" astOperand1="55cd7ef45650" astOperand2="55cd7ef458d0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef458d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="17" str="0x23" scope="55cd7ef27ec0" type="number" isInt="true" macroName="BH1750FVI_I2C_COMMAND_MEASURE" values="55cd7ef47f60" astParent="55cd7ef457c0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef459e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="37" column="46" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef45bc0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="5" str="if" scope="55cd7ef27ec0" type="name" astParent="55cd7ef45c20"/>
+    <token id="55cd7ef45c20" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="8" str="(" scope="55cd7ef27ec0" link="55cd7ef46a70" astOperand1="55cd7ef45bc0" astOperand2="55cd7ef45da0"/>
+    <token id="55cd7ef45d40" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="9" str="true" scope="55cd7ef27ec0" type="name" exprId="26" astParent="55cd7ef45da0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef45da0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="14" str="!=" scope="55cd7ef27ec0" type="op" isComparisonOp="true" exprId="1073741859" values="55cd7ef4e810" astParent="55cd7ef45c20" astOperand1="55cd7ef45d40" astOperand2="55cd7ef36ca0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef45ec0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="17" str="i2c_handle_write" scope="55cd7ef27ec0" type="name" astParent="55cd7ef36ca0"/>
+    <token id="55cd7ef36ca0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="33" str="(" scope="55cd7ef27ec0" link="55cd7ef468a0" exprId="1073741858" astParent="55cd7ef45da0" astOperand1="55cd7ef45ec0" astOperand2="55cd7ef46730"/>
+    <token id="55cd7ef45fd0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="34" str="0x23" scope="55cd7ef27ec0" type="number" isInt="true" macroName="BH1750FVI_I2C_ADDR_MEASURE" values="55cd7ef36d00" astParent="55cd7ef46150" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef46150" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="60" str="," scope="55cd7ef27ec0" exprId="1073741854" astParent="55cd7ef465c0" astOperand1="55cd7ef45fd0" astOperand2="55cd7ef461b0"/>
+    <token id="55cd7ef461b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="62" str="(" scope="55cd7ef27ec0" isCast="true" link="55cd7ef464b0" exprId="1073741853" values="55cd7ef3b390" astParent="55cd7ef46150" astOperand1="55cd7ef3ed40" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef46330" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="63" str="uint8_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef46390" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="71" str="*" scope="55cd7ef27ec0" type="op" isArithmeticalOp="true"/>
+    <token id="55cd7ef464b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="72" str=")" scope="55cd7ef27ec0" link="55cd7ef461b0"/>
+    <token id="55cd7ef3ed40" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="73" str="buf_tx" scope="55cd7ef27ec0" type="name" varId="4" exprId="4" variable="55cd7ef44f10" values="55cd7ef3b1f0" astParent="55cd7ef461b0" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef465c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="79" str="," scope="55cd7ef27ec0" exprId="1073741855" astParent="55cd7ef46730" astOperand1="55cd7ef46150" astOperand2="55cd7ef466d0"/>
+    <token id="55cd7ef466d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="81" str="1" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef36490" astParent="55cd7ef465c0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef46730" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="82" str="," scope="55cd7ef27ec0" exprId="1073741857" astParent="55cd7ef36ca0" astOperand1="55cd7ef465c0" astOperand2="55cd7ef46840"/>
+    <token id="55cd7ef46840" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="84" str="100u" scope="55cd7ef27ec0" type="number" isInt="true" macroName="BH1750FVI_I2C_TIMEOUT" values="55cd7ef361c0" astParent="55cd7ef46730" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef468a0" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="105" str=")" scope="55cd7ef27ec0" link="55cd7ef36ca0"/>
+    <token id="55cd7ef46a70" file="../plant_boss/drivers/bh1750fvi.c" linenr="39" column="106" str=")" scope="55cd7ef27ec0" link="55cd7ef45c20"/>
+    <token id="55cd7ef40740" file="../plant_boss/drivers/bh1750fvi.c" linenr="40" column="5" str="{" scope="55cd7ef28130" link="55cd7ef473f0"/>
+    <token id="55cd7ef46b80" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="9" str="error_set_u32" scope="55cd7ef28130" type="name" astParent="55cd7ef46c90"/>
+    <token id="55cd7ef46c90" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="22" str="(" scope="55cd7ef28130" link="55cd7ef47020" exprId="1073741864" astOperand1="55cd7ef46b80" astOperand2="55cd7ef46eb0"/>
+    <token id="55cd7ef407a0" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="23" str="&amp;" scope="55cd7ef28130" type="op" exprId="1073741861" values="55cd7ef3ba80" astParent="55cd7ef46eb0" astOperand1="55cd7ef46da0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef46da0" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="24" str="err_bh1750fvi" scope="55cd7ef28130" type="name" varId="1" exprId="1" variable="55cd7ef182d0" values="55cd7ef4ebb0" astParent="55cd7ef407a0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef46eb0" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="37" str="," scope="55cd7ef28130" exprId="1073741863" astParent="55cd7ef46c90" astOperand1="55cd7ef407a0" astOperand2="55cd7ef46f10"/>
+    <token id="55cd7ef46f10" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="39" str="BH1750FVI_ERROR_HANDLE_I2C_WRITE" scope="55cd7ef28130" type="name" exprId="1073741862" values="55cd7ef372a0" astParent="55cd7ef46eb0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55cd7ef2c140"/>
+    <token id="55cd7ef47020" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="71" str=")" scope="55cd7ef28130" link="55cd7ef46c90"/>
+    <token id="55cd7ef47160" file="../plant_boss/drivers/bh1750fvi.c" linenr="41" column="72" str=";" scope="55cd7ef28130"/>
+    <token id="55cd7ef471c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="43" column="9" str="return" scope="55cd7ef28130" type="name" values="55cd7ef4ed10" astOperand1="55cd7ef472e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef472e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="43" column="16" str="false" scope="55cd7ef28130" type="name" exprId="1073741865" astParent="55cd7ef471c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef2cf00" file="../plant_boss/drivers/bh1750fvi.c" linenr="43" column="21" str=";" scope="55cd7ef28130"/>
+    <token id="55cd7ef473f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="44" column="5" str="}" scope="55cd7ef28130" link="55cd7ef40740"/>
+    <token id="55cd7ef47500" file="../plant_boss/drivers/bh1750fvi.c" linenr="47" column="5" str="vTaskDelay" scope="55cd7ef27ec0" type="name" astParent="55cd7ef47560"/>
+    <token id="55cd7ef47560" file="../plant_boss/drivers/bh1750fvi.c" linenr="47" column="15" str="(" scope="55cd7ef27ec0" link="55cd7ef476d0" exprId="1073741868" astOperand1="55cd7ef47500" astOperand2="55cd7ef47670"/>
+    <token id="55cd7ef47670" file="../plant_boss/drivers/bh1750fvi.c" linenr="47" column="16" str="3" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef39bd0" astParent="55cd7ef47560" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef476d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="47" column="17" str=")" scope="55cd7ef27ec0" link="55cd7ef47560"/>
+    <token id="55cd7ef477e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="47" column="18" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef3d9b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="5" str="uint8_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef47840" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="13" str="buf_rx" scope="55cd7ef27ec0" type="name" varId="5" exprId="5" variable="55cd7ef31aa0" astParent="55cd7ef47950" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef47950" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="19" str="[" scope="55cd7ef27ec0" link="55cd7ef47b70" exprId="46" astOperand1="55cd7ef47840" astOperand2="55cd7ef47a60" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef47a60" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="20" str="2" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef39d30" astParent="55cd7ef47950" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef47b70" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="21" str="]" scope="55cd7ef27ec0" link="55cd7ef47950"/>
+    <token id="55cd7ef47c80" file="../plant_boss/drivers/bh1750fvi.c" linenr="49" column="22" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef47ce0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="5" str="i2c_handle_read" scope="55cd7ef27ec0" type="name" astParent="55cd7ef47df0"/>
+    <token id="55cd7ef47df0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="20" str="(" scope="55cd7ef27ec0" link="55cd7ef27ac0" exprId="1073741876" astOperand1="55cd7ef47ce0" astOperand2="55cd7ef485d0"/>
+    <token id="55cd7ef47e50" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="21" str="0x23" scope="55cd7ef27ec0" type="number" isInt="true" macroName="BH1750FVI_I2C_ADDR_RESULT" values="55cd7ef39e90" astParent="55cd7ef48000" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef48000" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="46" str="," scope="55cd7ef27ec0" exprId="1073741873" astParent="55cd7ef48460" astOperand1="55cd7ef47e50" astOperand2="55cd7ef48060"/>
+    <token id="55cd7ef48060" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="48" str="(" scope="55cd7ef27ec0" isCast="true" link="55cd7ef482f0" exprId="1073741872" values="55cd7ef3be20" astParent="55cd7ef48000" astOperand1="55cd7ef48400" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef481e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="49" str="uint8_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef277e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="57" str="*" scope="55cd7ef27ec0" type="op" isArithmeticalOp="true"/>
+    <token id="55cd7ef482f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="58" str=")" scope="55cd7ef27ec0" link="55cd7ef48060"/>
+    <token id="55cd7ef48400" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="59" str="buf_rx" scope="55cd7ef27ec0" type="name" varId="5" exprId="5" variable="55cd7ef31aa0" values="55cd7ef3bda0" astParent="55cd7ef48060" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef48460" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="65" str="," scope="55cd7ef27ec0" exprId="1073741874" astParent="55cd7ef485d0" astOperand1="55cd7ef48000" astOperand2="55cd7ef48570"/>
+    <token id="55cd7ef48570" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="67" str="2" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef39ff0" astParent="55cd7ef48460" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef485d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="68" str="," scope="55cd7ef27ec0" exprId="1073741875" astParent="55cd7ef47df0" astOperand1="55cd7ef48460" astOperand2="55cd7ef486e0"/>
+    <token id="55cd7ef486e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="70" str="100u" scope="55cd7ef27ec0" type="number" isInt="true" macroName="BH1750FVI_I2C_TIMEOUT" values="55cd7ef3a150" astParent="55cd7ef485d0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef27ac0" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="91" str=")" scope="55cd7ef27ec0" link="55cd7ef47df0"/>
+    <token id="55cd7ef48900" file="../plant_boss/drivers/bh1750fvi.c" linenr="58" column="92" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef487f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="5" str="light" scope="55cd7ef27ec0" type="name" varId="2" exprId="2" variable="55cd7ef24700" astParent="55cd7ef48a10" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef48a10" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="11" str="=" scope="55cd7ef27ec0" type="op" isAssignmentOp="true" exprId="1073741886" astOperand1="55cd7ef487f0" astOperand2="55cd7ef49d00" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef48b20" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="13" str="(" scope="55cd7ef27ec0" isCast="true" link="55cd7ef48c90" exprId="1073741883" astParent="55cd7ef49d00" astOperand1="55cd7ef288f0" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef48b80" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="14" str="float" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef48c90" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="19" str=")" scope="55cd7ef27ec0" link="55cd7ef48b20"/>
+    <token id="55cd7ef48cf0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="20" str="(" scope="55cd7ef27ec0" link="55cd7ef49bf0"/>
+    <token id="55cd7ef48e00" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="21" str="(" scope="55cd7ef27ec0" link="55cd7ef49580"/>
+    <token id="55cd7ef2cac0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="22" str="(" scope="55cd7ef27ec0" isCast="true" link="55cd7ef48f70" exprId="1073741878" values="55cd7ef4ef90" astParent="55cd7ef49410" astOperand1="55cd7ef49190" valueType-type="short" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef48e60" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="23" str="uint16_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef48f70" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="31" str=")" scope="55cd7ef27ec0" link="55cd7ef2cac0"/>
+    <token id="55cd7ef49080" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="32" str="buf_rx" scope="55cd7ef27ec0" type="name" varId="5" exprId="5" variable="55cd7ef31aa0" values="55cd7ef3c2c0" astParent="55cd7ef49190" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef49190" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="38" str="[" scope="55cd7ef27ec0" link="55cd7ef49300" exprId="1073741877" values="55cd7ef4f0f0" astParent="55cd7ef2cac0" astOperand1="55cd7ef49080" astOperand2="55cd7ef492a0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef492a0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="39" str="0" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef3a2b0" astParent="55cd7ef49190" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef49300" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="40" str="]" scope="55cd7ef27ec0" link="55cd7ef49190"/>
+    <token id="55cd7ef49410" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="42" str="&lt;&lt;" scope="55cd7ef27ec0" type="op" isArithmeticalOp="true" exprId="1073741880" astParent="55cd7ef288f0" astOperand1="55cd7ef2cac0" astOperand2="55cd7ef49470" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef49470" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="45" str="8" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef3a410" astParent="55cd7ef49410" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef49580" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="46" str=")" scope="55cd7ef27ec0" link="55cd7ef48e00"/>
+    <token id="55cd7ef288f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="48" str="|" scope="55cd7ef27ec0" type="op" exprId="1073741882" astParent="55cd7ef48b20" astOperand1="55cd7ef49410" astOperand2="55cd7ef495e0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef495e0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="50" str="(" scope="55cd7ef27ec0" isCast="true" link="55cd7ef49800" exprId="1073741881" values="55cd7ef4f250" astParent="55cd7ef288f0" astOperand1="55cd7ef49a20" valueType-type="short" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef496f0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="51" str="uint16_t" scope="55cd7ef27ec0" type="name"/>
+    <token id="55cd7ef49800" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="59" str=")" scope="55cd7ef27ec0" link="55cd7ef495e0"/>
+    <token id="55cd7ef49910" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="60" str="buf_rx" scope="55cd7ef27ec0" type="name" varId="5" exprId="5" variable="55cd7ef31aa0" values="55cd7ef3c500" astParent="55cd7ef49a20" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55cd7ef49a20" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="66" str="[" scope="55cd7ef27ec0" link="55cd7ef49b90" exprId="46" values="55cd7ef4f3b0" astParent="55cd7ef495e0" astOperand1="55cd7ef49910" astOperand2="55cd7ef49a80" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55cd7ef49a80" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="67" str="2" scope="55cd7ef27ec0" type="number" isInt="true" values="55cd7ef3a570" astParent="55cd7ef49a20" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55cd7ef49b90" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="68" str="]" scope="55cd7ef27ec0" link="55cd7ef49a20"/>
+    <token id="55cd7ef49bf0" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="69" str=")" scope="55cd7ef27ec0" link="55cd7ef48cf0"/>
+    <token id="55cd7ef49d00" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="71" str="/" scope="55cd7ef27ec0" type="op" isArithmeticalOp="true" exprId="1073741885" astParent="55cd7ef48a10" astOperand1="55cd7ef48b20" astOperand2="55cd7ef49d60" valueType-type="double" valueType-reference="None"/>
+    <token id="55cd7ef49d60" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="74" str="1.2" scope="55cd7ef27ec0" type="number" isFloat="true" values="55cd7ef3a6d0" astParent="55cd7ef49d00" valueType-type="double" valueType-reference="None"/>
+    <token id="55cd7ef49e70" file="../plant_boss/drivers/bh1750fvi.c" linenr="60" column="76" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef49f80" file="../plant_boss/drivers/bh1750fvi.c" linenr="62" column="5" str="return" scope="55cd7ef27ec0" type="name" values="55cd7ef4f510" astOperand1="55cd7ef49fe0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef49fe0" file="../plant_boss/drivers/bh1750fvi.c" linenr="62" column="12" str="true" scope="55cd7ef27ec0" type="name" exprId="26" astParent="55cd7ef49f80" valueType-type="bool" valueType-reference="None"/>
+    <token id="55cd7ef4a100" file="../plant_boss/drivers/bh1750fvi.c" linenr="62" column="16" str=";" scope="55cd7ef27ec0"/>
+    <token id="55cd7ef27440" file="../plant_boss/drivers/bh1750fvi.c" linenr="63" column="1" str="}" scope="55cd7ef27ec0" link="55cd7ef45020"/>
+    <token id="55cd7ef274a0" file="../plant_boss/drivers/bh1750fvi.c" linenr="65" column="1" str="float" scope="55cd7ef31830" type="name"/>
+    <token id="55cd7ef4a2c0" file="../plant_boss/drivers/bh1750fvi.c" linenr="65" column="7" str="bh1750fvi_get_light_value" scope="55cd7ef31830" type="name" function="55cd7ef3efe0"/>
+    <token id="55cd7ef4a3d0" file="../plant_boss/drivers/bh1750fvi.c" linenr="65" column="32" str="(" scope="55cd7ef31830" isRemovedVoidParameter="true" link="55cd7ef4a5b0" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef4a5b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="65" column="37" str=")" scope="55cd7ef31830" link="55cd7ef4a3d0"/>
+    <token id="55cd7ef4a610" file="../plant_boss/drivers/bh1750fvi.c" linenr="66" column="1" str="{" scope="55cd7ef283a0" link="55cd7ef4a910"/>
+    <token id="55cd7ef4a730" file="../plant_boss/drivers/bh1750fvi.c" linenr="67" column="5" str="return" scope="55cd7ef283a0" type="name" astOperand1="55cd7ef4a790" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef4a790" file="../plant_boss/drivers/bh1750fvi.c" linenr="67" column="12" str="light" scope="55cd7ef283a0" type="name" varId="2" exprId="2" variable="55cd7ef24700" astParent="55cd7ef4a730" valueType-type="float" valueType-reference="None"/>
+    <token id="55cd7ef4a8b0" file="../plant_boss/drivers/bh1750fvi.c" linenr="67" column="17" str=";" scope="55cd7ef283a0"/>
+    <token id="55cd7ef4a910" file="../plant_boss/drivers/bh1750fvi.c" linenr="68" column="1" str="}" scope="55cd7ef283a0" link="55cd7ef4a610"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55cd7ef31830" type="Global">
+      <functionList>
+        <function id="55cd7ef3ea80" token="55cd7ef429f0" tokenDef="55cd7ef400c0" name="bh1750fvi_init" type="Function" access="Public"/>
+        <function id="55cd7ef3e9c0" token="55cd7ef44c60" tokenDef="55cd7ef34a00" name="bh1750fvi_handle" type="Function" access="Public"/>
+        <function id="55cd7ef3efe0" token="55cd7ef4a2c0" tokenDef="55cd7ef3de40" name="bh1750fvi_get_light_value" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55cd7ef182d0"/>
+        <var id="55cd7ef24700"/>
+        <var id="55cd7ef28610"/>
+      </varlist>
+    </scope>
+    <scope id="55cd7ef2c140" type="Enum" className="bh1750fvi_error_t" bodyStart="55cd7ef3fe30" bodyEnd="55cd7ef40d10" nestedIn="55cd7ef31830" definedType="55cd7ef3e6f0"/>
+    <scope id="55cd7ef2c480" type="Function" className="bh1750fvi_init" bodyStart="55cd7ef42e40" bodyEnd="55cd7ef37190" nestedIn="55cd7ef31830" function="55cd7ef3ea80"/>
+    <scope id="55cd7ef27c50" type="If" bodyStart="55cd7ef43f50" bodyEnd="55cd7ef44870" nestedIn="55cd7ef2c480"/>
+    <scope id="55cd7ef27ec0" type="Function" className="bh1750fvi_handle" bodyStart="55cd7ef45020" bodyEnd="55cd7ef27440" nestedIn="55cd7ef31830" function="55cd7ef3e9c0">
+      <varlist>
+        <var id="55cd7ef44f10"/>
+        <var id="55cd7ef31aa0"/>
+      </varlist>
+    </scope>
+    <scope id="55cd7ef28130" type="If" bodyStart="55cd7ef40740" bodyEnd="55cd7ef473f0" nestedIn="55cd7ef27ec0"/>
+    <scope id="55cd7ef283a0" type="Function" className="bh1750fvi_get_light_value" bodyStart="55cd7ef4a610" bodyEnd="55cd7ef4a910" nestedIn="55cd7ef31830" function="55cd7ef3efe0"/>
+  </scopes>
+  <types>
+    <type id="55cd7ef3e6f0" classScope="55cd7ef2c140"/>
+  </types>
+  <variables>
+    <var id="55cd7ef182d0" nameToken="55cd7ef41d40" typeStartToken="55cd7ef41ce0" typeEndToken="55cd7ef41ce0" access="Global" scope="55cd7ef31830" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55cd7ef24700" nameToken="55cd7ef420d0" typeStartToken="55cd7ef41fc0" typeEndToken="55cd7ef41fc0" access="Global" scope="55cd7ef31830" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55cd7ef28610" nameToken="55cd7ef42710" typeStartToken="55cd7ef42600" typeEndToken="55cd7ef31e50" access="Global" scope="55cd7ef31830" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55cd7ef31aa0" nameToken="55cd7ef47840" typeStartToken="55cd7ef3d9b0" typeEndToken="55cd7ef3d9b0" access="Local" scope="55cd7ef27ec0" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55cd7ef44f10" nameToken="55cd7ef451a0" typeStartToken="55cd7ef45140" typeEndToken="55cd7ef45140" access="Local" scope="55cd7ef27ec0" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55cd7ef36a30">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef17de0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef17da0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef22800">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef32180">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef227c0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef22780">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef236d0">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef33f90">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef23550">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef22840">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3ac50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3b730">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3c200">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3c1c0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef34530">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef34260">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef31eb0">
+      <value floatvalue="0.000000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef31010">
+      <value floatvalue="0.000000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a990">
+      <value tokvalue="55cd7ef42880" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a830">
+      <value tokvalue="55cd7ef42880" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3c240">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3aaf0">
+      <value tokvalue="55cd7ef344d0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3af90">
+      <value lifetime="55cd7ef34200" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3acd0">
+      <value lifetime="55cd7ef34200" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3d080">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3d0c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3b130">
+      <value lifetime="55cd7ef32120" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3d460">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef36fd0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3d5c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef4e1b0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef4e430">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef36760">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4f9d0">
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4e6b0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef33740">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3eda0">
+      <value intvalue="35" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef47f60">
+      <value intvalue="35" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4e810">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef36d00">
+      <value intvalue="35" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3b390">
+      <value lifetime="55cd7ef451a0" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3b1f0">
+      <value lifetime="55cd7ef451a0" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55cd7ef36490">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef361c0">
+      <value intvalue="100" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3ba80">
+      <value lifetime="55cd7ef46da0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef4ebb0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef372a0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4ed10">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef39bd0">
+      <value intvalue="3" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef39d30">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef39e90">
+      <value intvalue="35" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3be20">
+      <value lifetime="55cd7ef47840" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3bda0">
+      <value lifetime="55cd7ef47840" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef39ff0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a150">
+      <value intvalue="100" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4ef90">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3c2c0">
+      <value lifetime="55cd7ef47840" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55cd7ef4f0f0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a2b0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a410">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4f250">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3c500">
+      <value lifetime="55cd7ef47840" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55cd7ef4f3b0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a570">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef3a6d0">
+      <value floatvalue="1.200000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55cd7ef4f510">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+  <typedef-info>
+    <info name="bh1750fvi_error_t" file="../plant_boss/drivers/bh1750fvi.h" line="29" column="1" used="0"/>
+  </typedef-info>
+</dump>
+</dumps>
