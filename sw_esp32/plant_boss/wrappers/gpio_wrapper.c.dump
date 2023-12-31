@@ -1,0 +1,661 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/wrappers/gpio_wrapper.c"/>
+    <file index="1" name="../plant_boss/wrappers/gpio_wrapper.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    gpio_wrapper.cx*  \brief   This file wraps around esp32 gpio driver.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;gpio_wrapper.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="12" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="13" column="1" str="int"/>
+    <tok fileIndex="0" linenr="13" column="5" str="err_gpio_drv"/>
+    <tok fileIndex="0" linenr="13" column="18" str="="/>
+    <tok fileIndex="0" linenr="13" column="20" str="0"/>
+    <tok fileIndex="0" linenr="13" column="21" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="14" column="10" str="err_gpio"/>
+    <tok fileIndex="0" linenr="14" column="19" str="="/>
+    <tok fileIndex="0" linenr="14" column="21" str="0U"/>
+    <tok fileIndex="0" linenr="14" column="23" str=";"/>
+    <tok fileIndex="0" linenr="16" column="1" str="static"/>
+    <tok fileIndex="0" linenr="16" column="8" str="const"/>
+    <tok fileIndex="0" linenr="16" column="14" str="char"/>
+    <tok fileIndex="0" linenr="16" column="18" str="*"/>
+    <tok fileIndex="0" linenr="16" column="20" str="tag_gpio"/>
+    <tok fileIndex="0" linenr="16" column="29" str="="/>
+    <tok fileIndex="0" linenr="16" column="31" str="&quot;gpio&quot;"/>
+    <tok fileIndex="0" linenr="16" column="37" str=";"/>
+    <tok fileIndex="0" linenr="18" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="19" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="19" column="6" str="gpio_init"/>
+    <tok fileIndex="0" linenr="19" column="15" str="("/>
+    <tok fileIndex="0" linenr="19" column="16" str="void"/>
+    <tok fileIndex="0" linenr="19" column="20" str=")"/>
+    <tok fileIndex="0" linenr="20" column="1" str="{"/>
+    <tok fileIndex="0" linenr="21" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="21" column="13" str="("/>
+    <tok fileIndex="0" linenr="21" column="14" str="tag_gpio"/>
+    <tok fileIndex="0" linenr="21" column="22" str=","/>
+    <tok fileIndex="0" linenr="21" column="24" str="&quot;addr err_gpio 0x%x\n&quot;"/>
+    <tok fileIndex="0" linenr="21" column="46" str=","/>
+    <tok fileIndex="0" linenr="21" column="48" str="("/>
+    <tok fileIndex="0" linenr="21" column="49" str="unsigned"/>
+    <tok fileIndex="0" linenr="21" column="58" str="int"/>
+    <tok fileIndex="0" linenr="21" column="61" str=")"/>
+    <tok fileIndex="0" linenr="21" column="62" str="&amp;"/>
+    <tok fileIndex="0" linenr="21" column="63" str="err_gpio"/>
+    <tok fileIndex="0" linenr="21" column="71" str=")"/>
+    <tok fileIndex="0" linenr="21" column="72" str=";"/>
+    <tok fileIndex="0" linenr="23" column="5" str="return"/>
+    <tok fileIndex="0" linenr="23" column="12" str="true"/>
+    <tok fileIndex="0" linenr="23" column="16" str=";"/>
+    <tok fileIndex="0" linenr="24" column="1" str="}"/>
+    <tok fileIndex="0" linenr="26" column="1" str="// bool gpio_handle(void)"/>
+    <tok fileIndex="0" linenr="27" column="1" str="// {"/>
+    <tok fileIndex="0" linenr="29" column="1" str="//     return true;"/>
+    <tok fileIndex="0" linenr="30" column="1" str="// }"/>
+    <tok fileIndex="0" linenr="32" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="32" column="6" str="gpio_init_pin"/>
+    <tok fileIndex="0" linenr="32" column="19" str="("/>
+    <tok fileIndex="0" linenr="32" column="20" str="uint8_t"/>
+    <tok fileIndex="0" linenr="32" column="28" str="pin"/>
+    <tok fileIndex="0" linenr="32" column="31" str=","/>
+    <tok fileIndex="0" linenr="32" column="33" str="gpio_mode_t"/>
+    <tok fileIndex="0" linenr="32" column="45" str="mode"/>
+    <tok fileIndex="0" linenr="32" column="49" str=","/>
+    <tok fileIndex="0" linenr="32" column="51" str="gpio_pullup_t"/>
+    <tok fileIndex="0" linenr="32" column="65" str="pull_up"/>
+    <tok fileIndex="0" linenr="32" column="72" str=","/>
+    <tok fileIndex="0" linenr="32" column="74" str="gpio_pulldown_t"/>
+    <tok fileIndex="0" linenr="32" column="90" str="pull_down"/>
+    <tok fileIndex="0" linenr="32" column="99" str=","/>
+    <tok fileIndex="0" linenr="32" column="101" str="gpio_int_type_t"/>
+    <tok fileIndex="0" linenr="32" column="117" str="intr"/>
+    <tok fileIndex="0" linenr="32" column="121" str=")"/>
+    <tok fileIndex="0" linenr="33" column="1" str="{"/>
+    <tok fileIndex="0" linenr="34" column="5" str="gpio_config_t"/>
+    <tok fileIndex="0" linenr="34" column="19" str="config"/>
+    <tok fileIndex="0" linenr="34" column="26" str="="/>
+    <tok fileIndex="0" linenr="34" column="28" str="{"/>
+    <tok fileIndex="0" linenr="34" column="29" str="}"/>
+    <tok fileIndex="0" linenr="34" column="30" str=";"/>
+    <tok fileIndex="0" linenr="35" column="5" str="config"/>
+    <tok fileIndex="0" linenr="35" column="11" str="."/>
+    <tok fileIndex="0" linenr="35" column="12" str="pin_bit_mask"/>
+    <tok fileIndex="0" linenr="35" column="25" str="="/>
+    <tok fileIndex="0" linenr="35" column="27" str="("/>
+    <tok fileIndex="0" linenr="35" column="28" str="1ULL"/>
+    <tok fileIndex="0" linenr="35" column="32" str="&lt;&lt;"/>
+    <tok fileIndex="0" linenr="35" column="34" str="pin"/>
+    <tok fileIndex="0" linenr="35" column="37" str=")"/>
+    <tok fileIndex="0" linenr="35" column="38" str=";"/>
+    <tok fileIndex="0" linenr="36" column="5" str="config"/>
+    <tok fileIndex="0" linenr="36" column="11" str="."/>
+    <tok fileIndex="0" linenr="36" column="12" str="mode"/>
+    <tok fileIndex="0" linenr="36" column="17" str="="/>
+    <tok fileIndex="0" linenr="36" column="19" str="mode"/>
+    <tok fileIndex="0" linenr="36" column="23" str=";"/>
+    <tok fileIndex="0" linenr="37" column="5" str="config"/>
+    <tok fileIndex="0" linenr="37" column="11" str="."/>
+    <tok fileIndex="0" linenr="37" column="12" str="pull_up_en"/>
+    <tok fileIndex="0" linenr="37" column="23" str="="/>
+    <tok fileIndex="0" linenr="37" column="25" str="pull_up"/>
+    <tok fileIndex="0" linenr="37" column="32" str=";"/>
+    <tok fileIndex="0" linenr="38" column="5" str="config"/>
+    <tok fileIndex="0" linenr="38" column="11" str="."/>
+    <tok fileIndex="0" linenr="38" column="12" str="pull_down_en"/>
+    <tok fileIndex="0" linenr="38" column="25" str="="/>
+    <tok fileIndex="0" linenr="38" column="27" str="pull_down"/>
+    <tok fileIndex="0" linenr="38" column="36" str=";"/>
+    <tok fileIndex="0" linenr="39" column="5" str="config"/>
+    <tok fileIndex="0" linenr="39" column="11" str="."/>
+    <tok fileIndex="0" linenr="39" column="12" str="intr_type"/>
+    <tok fileIndex="0" linenr="39" column="22" str="="/>
+    <tok fileIndex="0" linenr="39" column="24" str="intr"/>
+    <tok fileIndex="0" linenr="39" column="28" str=";"/>
+    <tok fileIndex="0" linenr="41" column="5" str="err_gpio_drv"/>
+    <tok fileIndex="0" linenr="41" column="18" str="="/>
+    <tok fileIndex="0" linenr="41" column="20" str="gpio_config"/>
+    <tok fileIndex="0" linenr="41" column="31" str="("/>
+    <tok fileIndex="0" linenr="41" column="32" str="&amp;"/>
+    <tok fileIndex="0" linenr="41" column="33" str="config"/>
+    <tok fileIndex="0" linenr="41" column="39" str=")"/>
+    <tok fileIndex="0" linenr="41" column="40" str=";"/>
+    <tok fileIndex="0" linenr="42" column="5" str="if"/>
+    <tok fileIndex="0" linenr="42" column="8" str="("/>
+    <tok fileIndex="0" linenr="42" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="42" column="16" str="!="/>
+    <tok fileIndex="0" linenr="42" column="19" str="err_gpio_drv"/>
+    <tok fileIndex="0" linenr="42" column="31" str=")"/>
+    <tok fileIndex="0" linenr="43" column="5" str="{"/>
+    <tok fileIndex="0" linenr="44" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="44" column="22" str="("/>
+    <tok fileIndex="0" linenr="44" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="44" column="24" str="err_gpio"/>
+    <tok fileIndex="0" linenr="44" column="32" str=","/>
+    <tok fileIndex="0" linenr="44" column="34" str="GPIO_ERROR_INIT_PIN"/>
+    <tok fileIndex="0" linenr="44" column="53" str=")"/>
+    <tok fileIndex="0" linenr="44" column="54" str=";"/>
+    <tok fileIndex="0" linenr="46" column="9" str="return"/>
+    <tok fileIndex="0" linenr="46" column="16" str="false"/>
+    <tok fileIndex="0" linenr="46" column="21" str=";"/>
+    <tok fileIndex="0" linenr="47" column="5" str="}"/>
+    <tok fileIndex="0" linenr="49" column="5" str="return"/>
+    <tok fileIndex="0" linenr="49" column="12" str="true"/>
+    <tok fileIndex="0" linenr="49" column="16" str=";"/>
+    <tok fileIndex="0" linenr="50" column="1" str="}"/>
+    <tok fileIndex="0" linenr="52" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="52" column="6" str="gpio_handle_pin_output"/>
+    <tok fileIndex="0" linenr="52" column="28" str="("/>
+    <tok fileIndex="0" linenr="52" column="29" str="uint8_t"/>
+    <tok fileIndex="0" linenr="52" column="37" str="pin"/>
+    <tok fileIndex="0" linenr="52" column="40" str=","/>
+    <tok fileIndex="0" linenr="52" column="42" str="bool"/>
+    <tok fileIndex="0" linenr="52" column="47" str="level"/>
+    <tok fileIndex="0" linenr="52" column="52" str=")"/>
+    <tok fileIndex="0" linenr="53" column="1" str="{"/>
+    <tok fileIndex="0" linenr="54" column="5" str="err_gpio_drv"/>
+    <tok fileIndex="0" linenr="54" column="18" str="="/>
+    <tok fileIndex="0" linenr="54" column="20" str="gpio_set_level"/>
+    <tok fileIndex="0" linenr="54" column="34" str="("/>
+    <tok fileIndex="0" linenr="54" column="35" str="pin"/>
+    <tok fileIndex="0" linenr="54" column="38" str=","/>
+    <tok fileIndex="0" linenr="54" column="40" str="level"/>
+    <tok fileIndex="0" linenr="54" column="45" str=")"/>
+    <tok fileIndex="0" linenr="54" column="46" str=";"/>
+    <tok fileIndex="0" linenr="55" column="5" str="if"/>
+    <tok fileIndex="0" linenr="55" column="8" str="("/>
+    <tok fileIndex="0" linenr="55" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="55" column="16" str="!="/>
+    <tok fileIndex="0" linenr="55" column="19" str="err_gpio_drv"/>
+    <tok fileIndex="0" linenr="55" column="31" str=")"/>
+    <tok fileIndex="0" linenr="56" column="5" str="{"/>
+    <tok fileIndex="0" linenr="57" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="57" column="22" str="("/>
+    <tok fileIndex="0" linenr="57" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="57" column="24" str="err_gpio"/>
+    <tok fileIndex="0" linenr="57" column="32" str=","/>
+    <tok fileIndex="0" linenr="57" column="34" str="GPIO_ERROR_HANDLE_PIN_OUTPUT"/>
+    <tok fileIndex="0" linenr="57" column="62" str=")"/>
+    <tok fileIndex="0" linenr="57" column="63" str=";"/>
+    <tok fileIndex="0" linenr="59" column="9" str="return"/>
+    <tok fileIndex="0" linenr="59" column="16" str="false"/>
+    <tok fileIndex="0" linenr="59" column="21" str=";"/>
+    <tok fileIndex="0" linenr="60" column="5" str="}"/>
+    <tok fileIndex="0" linenr="62" column="5" str="return"/>
+    <tok fileIndex="0" linenr="62" column="12" str="true"/>
+    <tok fileIndex="0" linenr="62" column="16" str=";"/>
+    <tok fileIndex="0" linenr="63" column="1" str="}"/>
+    <tok fileIndex="0" linenr="65" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.c" linenr="8" str="#include &quot;gpio_wrapper.h&quot;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="7" str="#ifndef GPIO_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="8" str="#define GPIO_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="13" str="#include &lt;freertos/FreeRTOS.h&gt;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="14" str="#include &lt;freertos/task.h&gt;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="15" str="#include &lt;driver/gpio.h&gt;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="16" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="18" str="#include &quot;error.h&quot;"/>
+    <directive file="../plant_boss/wrappers/gpio_wrapper.h" linenr="68" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="GPIO_WRAPPER_H" file="../plant_boss/wrappers/gpio_wrapper.h" line="8" column="9" usefile="../plant_boss/wrappers/gpio_wrapper.h" useline="7" usecolumn="9" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55b1192539e0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="23" column="9" str="enum" scope="55b11923f800" type="name"/>
+    <token id="55b119258560" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="23" column="0" str="gpio_error_t" scope="55b11923f800" type="name" type-scope="55b11923a110"/>
+    <token id="55b119237d70" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="24" column="1" str="{" scope="55b11923a110" link="55b119258150" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119247a30" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="25" column="5" str="GPIO_ERROR_INIT_PIN" scope="55b11923a110" type="name" values="55b119251220" astParent="55b119240e10" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119240e10" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="25" column="41" str="=" scope="55b11923a110" type="op" isAssignmentOp="true" values="55b11924c2a0" astParent="55b11924af90" astOperand1="55b119247a30" astOperand2="55b119249fd0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119249fd0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="25" column="43" str="0x00000001U" scope="55b11923a110" type="number" isInt="true" values="55b11924c260" astParent="55b119240e10" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924af90" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="25" column="54" str="," scope="55b11923a110" values="55b119251610" astOperand1="55b119240e10" astOperand2="55b11924fb50"/>
+    <token id="55b119244890" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="26" column="5" str="GPIO_ERROR_HANDLE_PIN_OUTPUT" scope="55b11923a110" type="name" values="55b119254fe0" astParent="55b11924fb50" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b11924fb50" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="26" column="41" str="=" scope="55b11923a110" type="op" isAssignmentOp="true" values="55b11924c1e0" astParent="55b11924af90" astOperand1="55b119244890" astOperand2="55b119257fb0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119257fb0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="26" column="43" str="0x00000002U" scope="55b11923a110" type="number" isInt="true" values="55b11924c220" astParent="55b11924fb50" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922b8e0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="26" column="54" str="," scope="55b11923a110"/>
+    <token id="55b119258150" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="57" column="1" str="}" scope="55b11923a110" link="55b119237d70"/>
+    <token id="55b119248620" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="57" column="15" str=";" scope="55b11923f800"/>
+    <token id="55b11925aaa0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="60" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b119248730" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="60" column="6" str="gpio_init" scope="55b11923f800" type="name" function="55b119229a30"/>
+    <token id="55b119248840" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="60" column="15" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b1192416c0" values="55b119250200" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192416c0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="60" column="20" str=")" scope="55b11923f800" link="55b119248840"/>
+    <token id="55b11925fcb0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="60" column="21" str=";" scope="55b11923f800"/>
+    <token id="55b1192274b0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b119227ff0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="6" str="gpio_init_pin" scope="55b11923f800" type="name" function="55b119229970"/>
+    <token id="55b1192547d0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="19" str="(" scope="55b11923f800" link="55b11925c0a0" values="55b119230810" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925fe00" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="20" str="uint8_t" scope="55b11923f800" type="name"/>
+    <token id="55b11922ab10" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="28" str="pin" scope="55b11923f800" type="name" varId="1" exprId="1"/>
+    <token id="55b11922ab70" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="31" str="," scope="55b11923f800"/>
+    <token id="55b119240ed0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="33" str="gpio_mode_t" scope="55b11923f800" type="name"/>
+    <token id="55b119240fe0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="45" str="mode" scope="55b11923f800" type="name" varId="2" exprId="2"/>
+    <token id="55b11939edd0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="49" str="," scope="55b11923f800"/>
+    <token id="55b11939ee30" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="51" str="gpio_pullup_t" scope="55b11923f800" type="name"/>
+    <token id="55b11925ae10" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="65" str="pull_up" scope="55b11923f800" type="name" varId="3" exprId="3"/>
+    <token id="55b11925af20" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="72" str="," scope="55b11923f800"/>
+    <token id="55b11922b170" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="74" str="gpio_pulldown_t" scope="55b11923f800" type="name"/>
+    <token id="55b1192275f0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="90" str="pull_down" scope="55b11923f800" type="name" varId="4" exprId="4"/>
+    <token id="55b11925bec0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="99" str="," scope="55b11923f800"/>
+    <token id="55b11925bf20" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="101" str="gpio_int_type_t" scope="55b11923f800" type="name"/>
+    <token id="55b11925c040" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="117" str="intr" scope="55b11923f800" type="name" varId="5" exprId="5"/>
+    <token id="55b11925c0a0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="121" str=")" scope="55b11923f800" link="55b1192547d0"/>
+    <token id="55b11925c1c0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="63" column="122" str=";" scope="55b11923f800"/>
+    <token id="55b119227000" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b11925c2d0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="6" str="gpio_handle_pin_output" scope="55b11923f800" type="name" function="55b119229f90"/>
+    <token id="55b11925c3e0" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="28" str="(" scope="55b11923f800" link="55b11925b280" values="55b11922cea0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925c440" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="29" str="uint8_t" scope="55b11923f800" type="name"/>
+    <token id="55b11925c550" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="37" str="pin" scope="55b11923f800" type="name" varId="6" exprId="6"/>
+    <token id="55b11925b220" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="40" str="," scope="55b11923f800"/>
+    <token id="55b11925c660" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="42" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b11925c770" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="47" str="level" scope="55b11923f800" type="name" varId="7" exprId="7"/>
+    <token id="55b11925b280" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="52" str=")" scope="55b11923f800" link="55b11925c3e0"/>
+    <token id="55b11925c940" file="../plant_boss/wrappers/gpio_wrapper.h" linenr="64" column="53" str=";" scope="55b11923f800"/>
+    <token id="55b11925c9a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="1" str="int" scope="55b11923f800" type="name"/>
+    <token id="55b11925cac0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="5" str="err_gpio_drv" scope="55b11923f800" type="name" varId="8" exprId="8" variable="55b119252450" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925fad0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="18" str=";" scope="55b11923f800" isSplittedVarDeclEq="true"/>
+    <token id="55b11939e720" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="5" str="err_gpio_drv" scope="55b11923f800" type="name" varId="8" exprId="8" variable="55b119252450" astParent="55b11939e780" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11939e780" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="18" str="=" scope="55b11923f800" type="op" isAssignmentOp="true" values="55b11925ab00" astOperand1="55b11939e720" astOperand2="55b11925cbd0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925cbd0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="20" str="0" scope="55b11923f800" type="number" isInt="true" values="55b11925cf00" astParent="55b11939e780" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925cce0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="13" column="21" str=";" scope="55b11923f800"/>
+    <token id="55b11925fb30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="1" str="uint32_t" scope="55b11923f800" type="name"/>
+    <token id="55b11925cdf0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="10" str="err_gpio" scope="55b11923f800" type="name" varId="9" exprId="9" variable="55b1192326d0" values="55b119227f00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11923faf0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="19" str=";" scope="55b11923f800" isSplittedVarDeclEq="true"/>
+    <token id="55b11922b7c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="10" str="err_gpio" scope="55b11923f800" type="name" varId="9" exprId="9" variable="55b1192326d0" values="55b11924bba0" astParent="55b119258230" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119258230" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="19" str="=" scope="55b11923f800" type="op" isAssignmentOp="true" values="55b119226640" astOperand1="55b11922b7c0" astOperand2="55b11925f830" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925f830" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="21" str="0U" scope="55b11923f800" type="number" isInt="true" values="55b11922afa0" astParent="55b119258230" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11923fc00" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="14" column="23" str=";" scope="55b11923f800"/>
+    <token id="55b11923fd10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="1" str="static" scope="55b11923f800" type="name"/>
+    <token id="55b11925f890" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="8" str="const" scope="55b11923f800" type="name"/>
+    <token id="55b11923fe20" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="14" str="char" scope="55b11923f800" type="name"/>
+    <token id="55b11923ff30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="18" str="*" scope="55b11923f800" type="op" isArithmeticalOp="true"/>
+    <token id="55b11925aca0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="20" str="tag_gpio" scope="55b11923f800" type="name" varId="10" exprId="10" variable="55b1192365e0" astParent="55b11923ff90" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11923ff90" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="29" str="=" scope="55b11923f800" type="op" isAssignmentOp="true" values="55b119244fa0" astOperand1="55b11925aca0" astOperand2="55b1192400a0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192400a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="31" str="&quot;gpio&quot;" scope="55b11923f800" type="string" strlen="4" values="55b119229d50" astParent="55b11923ff90" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192401b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="16" column="37" str=";" scope="55b11923f800"/>
+    <token id="55b1192402c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="19" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b1192403d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="19" column="6" str="gpio_init" scope="55b11923f800" type="name" function="55b119229a30"/>
+    <token id="55b119240430" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="19" column="15" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b1192411d0" values="55b119249a50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192411d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="19" column="20" str=")" scope="55b11923f800" link="55b119240430"/>
+    <token id="55b1192405a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="20" column="1" str="{" scope="55b11923a450" link="55b119243fa0"/>
+    <token id="55b1192406b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="5" str="ESP_LOGI" scope="55b11923a450" type="name" astParent="55b1192407c0"/>
+    <token id="55b1192407c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="13" str="(" scope="55b11923a450" link="55b119243c10" exprId="1073741854" astOperand1="55b1192406b0" astOperand2="55b119240b60"/>
+    <token id="55b1192408d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="14" str="tag_gpio" scope="55b11923a450" type="name" varId="10" exprId="10" variable="55b1192365e0" astParent="55b1192409f0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192409f0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="22" str="," scope="55b11923a450" exprId="1073741850" astParent="55b119240b60" astOperand1="55b1192408d0" astOperand2="55b119240a50"/>
+    <token id="55b119240a50" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="24" str="&quot;addr err_gpio 0x%x\n&quot;" scope="55b11923a450" type="string" strlen="19" exprId="1073741849" values="55b119251510" astParent="55b1192409f0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119240b60" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="46" str="," scope="55b11923a450" exprId="1073741853" astParent="55b1192407c0" astOperand1="55b1192409f0" astOperand2="55b119243810"/>
+    <token id="55b119243810" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="48" str="(" scope="55b11923a450" isCast="true" link="55b119226890" exprId="1073741852" values="55b11924a530" astParent="55b119240b60" astOperand1="55b119243aa0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119243870" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="58" str="int" scope="55b11923a450" type="name" isUnsigned="true"/>
+    <token id="55b119226890" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="61" str=")" scope="55b11923a450" link="55b119243810"/>
+    <token id="55b119243aa0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="62" str="&amp;" scope="55b11923a450" type="op" exprId="1073741851" values="55b1192515d0" astParent="55b119243810" astOperand1="55b119243bb0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119243bb0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="63" str="err_gpio" scope="55b11923a450" type="name" varId="9" exprId="9" variable="55b1192326d0" values="55b119228480" astParent="55b119243aa0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119243c10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="71" str=")" scope="55b11923a450" link="55b1192407c0"/>
+    <token id="55b119243d20" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="21" column="72" str=";" scope="55b11923a450"/>
+    <token id="55b11939f020" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="23" column="5" str="return" scope="55b11923a450" type="name" values="55b11924d810" astOperand1="55b119243d80" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119243d80" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="23" column="12" str="true" scope="55b11923a450" type="name" exprId="1073741855" astParent="55b11939f020" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119243e90" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="23" column="16" str=";" scope="55b11923a450"/>
+    <token id="55b119243fa0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="24" column="1" str="}" scope="55b11923a450" link="55b1192405a0"/>
+    <token id="55b1192440b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b1192441d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="6" str="gpio_init_pin" scope="55b11923f800" type="name" function="55b119229970"/>
+    <token id="55b119244230" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="19" str="(" scope="55b11923f800" link="55b1192610c0" values="55b119255f50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119244350" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="20" str="uint8_t" scope="55b11923f800" type="name"/>
+    <token id="55b1192443b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="28" str="pin" scope="55b11923f800" type="name" varId="11" exprId="11" variable="55b11924a820" values="55b11924be90" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192444d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="31" str="," scope="55b11923f800"/>
+    <token id="55b11939f3a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="33" str="gpio_mode_t" scope="55b11923f800" type="name"/>
+    <token id="55b1192445e0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="45" str="mode" scope="55b11923f800" type="name" varId="12" exprId="12" variable="55b119250250"/>
+    <token id="55b1192446f0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="49" str="," scope="55b11923f800"/>
+    <token id="55b119244750" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="51" str="gpio_pullup_t" scope="55b11923f800" type="name"/>
+    <token id="55b119260bb0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="65" str="pull_up" scope="55b11923f800" type="name" varId="13" exprId="13" variable="55b119247aa0"/>
+    <token id="55b119260c10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="72" str="," scope="55b11923f800"/>
+    <token id="55b119260d30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="74" str="gpio_pulldown_t" scope="55b11923f800" type="name"/>
+    <token id="55b119241550" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="90" str="pull_down" scope="55b11923f800" type="name" varId="14" exprId="14" variable="55b119254be0"/>
+    <token id="55b119260e40" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="99" str="," scope="55b11923f800"/>
+    <token id="55b119260f50" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="101" str="gpio_int_type_t" scope="55b11923f800" type="name"/>
+    <token id="55b119260fb0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="117" str="intr" scope="55b11923f800" type="name" varId="15" exprId="15" variable="55b119254d10"/>
+    <token id="55b1192610c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="32" column="121" str=")" scope="55b11923f800" link="55b119244230"/>
+    <token id="55b119229c40" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="33" column="1" str="{" scope="55b119235c20" link="55b11924f110"/>
+    <token id="55b119261120" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="5" str="gpio_config_t" scope="55b119235c20" type="name"/>
+    <token id="55b119261230" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="19" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70"/>
+    <token id="55b119261340" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="26" str=";" scope="55b119235c20" isSplittedVarDeclEq="true"/>
+    <token id="55b119258340" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="19" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119258450"/>
+    <token id="55b119258450" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="26" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741857" astOperand1="55b119258340" astOperand2="55b119261450"/>
+    <token id="55b119261450" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="28" str="{" scope="55b119235c20" link="55b119261570" astParent="55b119258450"/>
+    <token id="55b119261570" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="29" str="}" scope="55b119235c20" link="55b119261450"/>
+    <token id="55b1192615d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="34" column="30" str=";" scope="55b119235c20"/>
+    <token id="55b1192616f0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="5" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119261750"/>
+    <token id="55b119261750" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="11" str="." scope="55b119235c20" exprId="1073741858" astParent="55b119227b70" astOperand1="55b1192616f0" astOperand2="55b119261870"/>
+    <token id="55b119261870" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="12" str="pin_bit_mask" scope="55b119235c20" type="name" varId="17" exprId="17" astParent="55b119261750"/>
+    <token id="55b119227b70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="25" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741861" values="55b11924c730" astOperand1="55b119261750" astOperand2="55b119261af0"/>
+    <token id="55b119261980" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="28" str="1ULL" scope="55b119235c20" type="number" isInt="true" values="55b1192545a0" astParent="55b119261af0" valueType-type="long long" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119261af0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="32" str="&lt;&lt;" scope="55b119235c20" type="op" isArithmeticalOp="true" exprId="1073741860" values="55b11923aef0" astParent="55b119227b70" astOperand1="55b119261980" astOperand2="55b119261c00" valueType-type="long long" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119261c00" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="34" str="pin" scope="55b119235c20" type="name" varId="11" exprId="11" variable="55b11924a820" values="55b11939ec40" astParent="55b119261af0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119261c60" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="35" column="38" str=";" scope="55b119235c20"/>
+    <token id="55b11925a870" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="5" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119261dd0"/>
+    <token id="55b119261dd0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="11" str="." scope="55b119235c20" exprId="1073741862" astParent="55b119261ff0" astOperand1="55b11925a870" astOperand2="55b119261ee0"/>
+    <token id="55b119261ee0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="12" str="mode" scope="55b119235c20" type="name" varId="18" exprId="18" astParent="55b119261dd0"/>
+    <token id="55b119261ff0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="17" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741863" astOperand1="55b119261dd0" astOperand2="55b119262050"/>
+    <token id="55b119262050" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="19" str="mode" scope="55b119235c20" type="name" varId="12" exprId="12" variable="55b119250250" astParent="55b119261ff0"/>
+    <token id="55b1192569f0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="36" column="23" str=";" scope="55b119235c20"/>
+    <token id="55b119256a50" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="5" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119256b70"/>
+    <token id="55b119256b70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="11" str="." scope="55b119235c20" exprId="1073741864" astParent="55b119256cf0" astOperand1="55b119256a50" astOperand2="55b119256bd0"/>
+    <token id="55b119256bd0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="12" str="pull_up_en" scope="55b119235c20" type="name" varId="19" exprId="19" astParent="55b119256b70"/>
+    <token id="55b119256cf0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="23" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741865" astOperand1="55b119256b70" astOperand2="55b119256d50"/>
+    <token id="55b119256d50" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="25" str="pull_up" scope="55b119235c20" type="name" varId="13" exprId="13" variable="55b119247aa0" astParent="55b119256cf0"/>
+    <token id="55b119256e70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="37" column="32" str=";" scope="55b119235c20"/>
+    <token id="55b119256ed0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="5" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119256ff0"/>
+    <token id="55b119256ff0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="11" str="." scope="55b119235c20" exprId="1073741866" astParent="55b119257100" astOperand1="55b119256ed0" astOperand2="55b11923aac0"/>
+    <token id="55b11923aac0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="12" str="pull_down_en" scope="55b119235c20" type="name" varId="20" exprId="20" astParent="55b119256ff0"/>
+    <token id="55b119257100" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="25" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741867" astOperand1="55b119256ff0" astOperand2="55b119257210"/>
+    <token id="55b119257210" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="27" str="pull_down" scope="55b119235c20" type="name" varId="14" exprId="14" variable="55b119254be0" astParent="55b119257100"/>
+    <token id="55b11923ab20" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="38" column="36" str=";" scope="55b119235c20"/>
+    <token id="55b119257320" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="5" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119257430"/>
+    <token id="55b119257430" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="11" str="." scope="55b119235c20" exprId="1073741868" astParent="55b1192575a0" astOperand1="55b119257320" astOperand2="55b119257490"/>
+    <token id="55b119257490" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="12" str="intr_type" scope="55b119235c20" type="name" varId="21" exprId="21" astParent="55b119257430"/>
+    <token id="55b1192575a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="22" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741869" astOperand1="55b119257430" astOperand2="55b1192576b0"/>
+    <token id="55b1192576b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="24" str="intr" scope="55b119235c20" type="name" varId="15" exprId="15" variable="55b119254d10" astParent="55b1192575a0"/>
+    <token id="55b119257710" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="39" column="28" str=";" scope="55b119235c20"/>
+    <token id="55b119257830" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="5" str="err_gpio_drv" scope="55b119235c20" type="name" varId="8" exprId="8" variable="55b119252450" astParent="55b119257890" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119257890" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="18" str="=" scope="55b119235c20" type="op" isAssignmentOp="true" exprId="1073741873" astOperand1="55b119257830" astOperand2="55b119258cc0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192579b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="20" str="gpio_config" scope="55b119235c20" type="name" astParent="55b119258cc0"/>
+    <token id="55b119258cc0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="31" str="(" scope="55b119235c20" link="55b119257c30" exprId="1073741872" astParent="55b119257890" astOperand1="55b1192579b0" astOperand2="55b119257a10"/>
+    <token id="55b119257a10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="32" str="&amp;" scope="55b119235c20" type="op" exprId="1073741871" values="55b11925dfa0" astParent="55b119258cc0" astOperand1="55b119257b20"/>
+    <token id="55b119257b20" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="33" str="config" scope="55b119235c20" type="name" varId="16" exprId="16" variable="55b11923fa70" astParent="55b119257a10"/>
+    <token id="55b119257c30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="39" str=")" scope="55b119235c20" link="55b119258cc0"/>
+    <token id="55b119257d40" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="41" column="40" str=";" scope="55b119235c20"/>
+    <token id="55b119257da0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="5" str="if" scope="55b119235c20" type="name" astParent="55b119257eb0"/>
+    <token id="55b119257eb0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="8" str="(" scope="55b119235c20" link="55b11924e4b0" astOperand1="55b119257da0" astOperand2="55b11924e330"/>
+    <token id="55b119257f10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="9" str="ESP_OK" scope="55b119235c20" type="name" exprId="1073741874" astParent="55b11924e330"/>
+    <token id="55b11924e330" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="16" str="!=" scope="55b119235c20" type="op" isComparisonOp="true" exprId="1073741875" values="55b119253410" astParent="55b119257eb0" astOperand1="55b119257f10" astOperand2="55b11924e390" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924e390" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="19" str="err_gpio_drv" scope="55b119235c20" type="name" varId="8" exprId="8" variable="55b119252450" astParent="55b11924e330" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924e4b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="42" column="31" str=")" scope="55b119235c20" link="55b119257eb0"/>
+    <token id="55b11924e510" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="43" column="5" str="{" scope="55b119235e90" link="55b11924ee20"/>
+    <token id="55b11924e630" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="9" str="error_set_u32" scope="55b119235e90" type="name" astParent="55b11924e690"/>
+    <token id="55b11924e690" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="22" str="(" scope="55b119235e90" link="55b11924ea30" exprId="1073741880" astOperand1="55b11924e630" astOperand2="55b11924e8c0"/>
+    <token id="55b11924e7b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="23" str="&amp;" scope="55b119235e90" type="op" exprId="1073741877" values="55b119237580" astParent="55b11924e8c0" astOperand1="55b119254540" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119254540" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="24" str="err_gpio" scope="55b119235e90" type="name" varId="9" exprId="9" variable="55b1192326d0" values="55b1192537b0" astParent="55b11924e7b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924e8c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="32" str="," scope="55b119235e90" exprId="1073741879" astParent="55b11924e690" astOperand1="55b11924e7b0" astOperand2="55b11924e9d0"/>
+    <token id="55b11924e9d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="34" str="GPIO_ERROR_INIT_PIN" scope="55b119235e90" type="name" exprId="1073741878" values="55b119257f70" astParent="55b11924e8c0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b11924ea30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="53" str=")" scope="55b119235e90" link="55b11924e690"/>
+    <token id="55b11924eb40" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="44" column="54" str=";" scope="55b119235e90"/>
+    <token id="55b11924eba0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="46" column="9" str="return" scope="55b119235e90" type="name" values="55b119253910" astOperand1="55b11924ecb0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924ecb0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="46" column="16" str="false" scope="55b119235e90" type="name" exprId="1073741881" astParent="55b11924eba0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924ed10" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="46" column="21" str=";" scope="55b119235e90"/>
+    <token id="55b11924ee20" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="47" column="5" str="}" scope="55b119235e90" link="55b11924e510"/>
+    <token id="55b11924ef30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="49" column="5" str="return" scope="55b119235c20" type="name" values="55b119251db0" astOperand1="55b11924ef90" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924ef90" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="49" column="12" str="true" scope="55b119235c20" type="name" exprId="1073741882" astParent="55b11924ef30" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924f0b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="49" column="16" str=";" scope="55b119235c20"/>
+    <token id="55b11924f110" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="50" column="1" str="}" scope="55b119235c20" link="55b119229c40"/>
+    <token id="55b11924f230" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b11922c2e0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="6" str="gpio_handle_pin_output" scope="55b11923f800" type="name" function="55b119229f90"/>
+    <token id="55b11924f340" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="28" str="(" scope="55b11923f800" link="55b11924f850" values="55b119252030" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922c340" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="29" str="uint8_t" scope="55b11923f800" type="name"/>
+    <token id="55b11924f550" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="37" str="pin" scope="55b11923f800" type="name" varId="22" exprId="22" variable="55b119254e40" values="55b1192522b0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924f5b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="40" str="," scope="55b11923f800"/>
+    <token id="55b11924f6d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="42" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b11924f730" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="47" str="level" scope="55b11923f800" type="name" varId="23" exprId="23" variable="55b1192586e0" values="55b119259030" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924f850" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="52" column="52" str=")" scope="55b11923f800" link="55b11924f340"/>
+    <token id="55b11924f8b0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="53" column="1" str="{" scope="55b119236100" link="55b11939e600"/>
+    <token id="55b11924f9d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="5" str="err_gpio_drv" scope="55b119236100" type="name" varId="8" exprId="8" variable="55b119252450" astParent="55b11924fa30" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924fa30" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="18" str="=" scope="55b119236100" type="op" isAssignmentOp="true" exprId="1073741887" astOperand1="55b11924f9d0" astOperand2="55b11939d100" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11939d0a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="20" str="gpio_set_level" scope="55b119236100" type="name" astParent="55b11939d100"/>
+    <token id="55b11939d100" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="34" str="(" scope="55b119236100" link="55b11939d440" exprId="1073741886" astParent="55b11924fa30" astOperand1="55b11939d0a0" astOperand2="55b119259a70"/>
+    <token id="55b11939d220" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="35" str="pin" scope="55b119236100" type="name" varId="22" exprId="22" variable="55b119254e40" values="55b11922d310" astParent="55b119259a70" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119259a70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="38" str="," scope="55b119236100" exprId="1073741885" astParent="55b11939d100" astOperand1="55b11939d220" astOperand2="55b11939d330"/>
+    <token id="55b11939d330" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="40" str="level" scope="55b119236100" type="name" varId="23" exprId="23" variable="55b1192586e0" values="55b11922d470" astParent="55b119259a70" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939d440" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="45" str=")" scope="55b119236100" link="55b11939d100"/>
+    <token id="55b119259ad0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="54" column="46" str=";" scope="55b119236100"/>
+    <token id="55b11939d550" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="5" str="if" scope="55b119236100" type="name" astParent="55b11939d660"/>
+    <token id="55b11939d660" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="8" str="(" scope="55b119236100" link="55b11939d940" astOperand1="55b11939d550" astOperand2="55b11939d7d0"/>
+    <token id="55b11939d6c0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="9" str="ESP_OK" scope="55b119236100" type="name" exprId="1073741888" astParent="55b11939d7d0"/>
+    <token id="55b11939d7d0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="16" str="!=" scope="55b119236100" type="op" isComparisonOp="true" exprId="1073741889" values="55b11922d6f0" astParent="55b11939d660" astOperand1="55b11939d6c0" astOperand2="55b11939d8e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939d8e0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="19" str="err_gpio_drv" scope="55b119236100" type="name" varId="8" exprId="8" variable="55b119252450" astParent="55b11939d7d0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11939d940" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="55" column="31" str=")" scope="55b119236100" link="55b11939d660"/>
+    <token id="55b11939da60" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="56" column="5" str="{" scope="55b119236370" link="55b11939e310"/>
+    <token id="55b11939dac0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="9" str="error_set_u32" scope="55b119236370" type="name" astParent="55b11939dbe0"/>
+    <token id="55b11939dbe0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="22" str="(" scope="55b119236370" link="55b11939df80" exprId="1073741894" astOperand1="55b11939dac0" astOperand2="55b119226d70"/>
+    <token id="55b11939dc40" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="23" str="&amp;" scope="55b119236370" type="op" exprId="1073741891" values="55b119232260" astParent="55b119226d70" astOperand1="55b11939dd60" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11939dd60" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="24" str="err_gpio" scope="55b119236370" type="name" varId="9" exprId="9" variable="55b1192326d0" values="55b119242420" astParent="55b11939dc40" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119226d70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="32" str="," scope="55b119236370" exprId="1073741893" astParent="55b11939dbe0" astOperand1="55b11939dc40" astOperand2="55b11939de70"/>
+    <token id="55b11939de70" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="34" str="GPIO_ERROR_HANDLE_PIN_OUTPUT" scope="55b119236370" type="name" exprId="1073741892" values="55b119227bd0" astParent="55b119226d70" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b11939df80" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="62" str=")" scope="55b119236370" link="55b11939dbe0"/>
+    <token id="55b119226dd0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="57" column="63" str=";" scope="55b119236370"/>
+    <token id="55b11939e090" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="59" column="9" str="return" scope="55b119236370" type="name" values="55b11925b4a0" astOperand1="55b11939e1a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939e1a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="59" column="16" str="false" scope="55b119236370" type="name" exprId="1073741895" astParent="55b11939e090" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939e200" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="59" column="21" str=";" scope="55b119236370"/>
+    <token id="55b11939e310" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="60" column="5" str="}" scope="55b119236370" link="55b11939da60"/>
+    <token id="55b11939e420" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="62" column="5" str="return" scope="55b119236100" type="name" values="55b11925b720" astOperand1="55b11939e480" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939e480" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="62" column="12" str="true" scope="55b119236100" type="name" exprId="1073741896" astParent="55b11939e420" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939e5a0" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="62" column="16" str=";" scope="55b119236100"/>
+    <token id="55b11939e600" file="../plant_boss/wrappers/gpio_wrapper.c" linenr="63" column="1" str="}" scope="55b119236100" link="55b11924f8b0"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b11923f800" type="Global">
+      <functionList>
+        <function id="55b119229a30" token="55b1192403d0" tokenDef="55b119248730" name="gpio_init" type="Function" access="Public"/>
+        <function id="55b119229970" token="55b1192441d0" tokenDef="55b119227ff0" name="gpio_init_pin" type="Function" access="Public">
+          <arg nr="1" variable="55b11924a820"/>
+          <arg nr="2" variable="55b119250250"/>
+          <arg nr="3" variable="55b119247aa0"/>
+          <arg nr="4" variable="55b119254be0"/>
+          <arg nr="5" variable="55b119254d10"/>
+        </function>
+        <function id="55b119229f90" token="55b11922c2e0" tokenDef="55b11925c2d0" name="gpio_handle_pin_output" type="Function" access="Public">
+          <arg nr="1" variable="55b119254e40"/>
+          <arg nr="2" variable="55b1192586e0"/>
+        </function>
+      </functionList>
+      <varlist>
+        <var id="55b119252450"/>
+        <var id="55b1192326d0"/>
+        <var id="55b1192365e0"/>
+      </varlist>
+    </scope>
+    <scope id="55b11923a110" type="Enum" className="gpio_error_t" bodyStart="55b119237d70" bodyEnd="55b119258150" nestedIn="55b11923f800" definedType="55b1192296a0"/>
+    <scope id="55b11923a450" type="Function" className="gpio_init" bodyStart="55b1192405a0" bodyEnd="55b119243fa0" nestedIn="55b11923f800" function="55b119229a30"/>
+    <scope id="55b119235c20" type="Function" className="gpio_init_pin" bodyStart="55b119229c40" bodyEnd="55b11924f110" nestedIn="55b11923f800" function="55b119229970">
+      <varlist>
+        <var id="55b11923fa70"/>
+      </varlist>
+    </scope>
+    <scope id="55b119235e90" type="If" bodyStart="55b11924e510" bodyEnd="55b11924ee20" nestedIn="55b119235c20"/>
+    <scope id="55b119236100" type="Function" className="gpio_handle_pin_output" bodyStart="55b11924f8b0" bodyEnd="55b11939e600" nestedIn="55b11923f800" function="55b119229f90"/>
+    <scope id="55b119236370" type="If" bodyStart="55b11939da60" bodyEnd="55b11939e310" nestedIn="55b119236100"/>
+  </scopes>
+  <types>
+    <type id="55b1192296a0" classScope="55b11923a110"/>
+  </types>
+  <variables>
+    <var id="55b1192326d0" nameToken="55b11925cdf0" typeStartToken="55b11925fb30" typeEndToken="55b11925fb30" access="Global" scope="55b11923f800" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1192365e0" nameToken="55b11925aca0" typeStartToken="55b11923fe20" typeEndToken="55b11923ff30" access="Global" scope="55b11923f800" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b11923fa70" nameToken="55b119261230" typeStartToken="55b119261120" typeEndToken="55b119261120" access="Local" scope="55b119235c20" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119247aa0" nameToken="55b119260bb0" typeStartToken="55b119244750" typeEndToken="55b119244750" access="Argument" scope="55b119235c20" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924a820" nameToken="55b1192443b0" typeStartToken="55b119244350" typeEndToken="55b119244350" access="Argument" scope="55b119235c20" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119250250" nameToken="55b1192445e0" typeStartToken="55b11939f3a0" typeEndToken="55b11939f3a0" access="Argument" scope="55b119235c20" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119252450" nameToken="55b11925cac0" typeStartToken="55b11925c9a0" typeEndToken="55b11925c9a0" access="Global" scope="55b11923f800" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119254be0" nameToken="55b119241550" typeStartToken="55b119260d30" typeEndToken="55b119260d30" access="Argument" scope="55b119235c20" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119254d10" nameToken="55b119260fb0" typeStartToken="55b119260f50" typeEndToken="55b119260f50" access="Argument" scope="55b119235c20" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119254e40" nameToken="55b11924f550" typeStartToken="55b11922c340" typeEndToken="55b11922c340" access="Argument" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1192586e0" nameToken="55b11924f730" typeStartToken="55b11924f6d0" typeEndToken="55b11924f6d0" access="Argument" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119251220">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924c2a0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924c260">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119251610">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119254fe0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924c1e0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924c220">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119250200">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922cea0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925ab00">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925cf00">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119227f00">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924bba0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119226640">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922afa0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119244fa0">
+      <value tokvalue="55b1192400a0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119229d50">
+      <value tokvalue="55b1192400a0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119249a50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119251510">
+      <value tokvalue="55b119240a50" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924a530">
+      <value lifetime="55b119243bb0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192515d0">
+      <value lifetime="55b119243bb0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119228480">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924d810">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119255f50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924be90">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924c730">
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192545a0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923aef0">
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939ec40">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925dfa0">
+      <value lifetime="55b119257b20" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119253410">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119237580">
+      <value lifetime="55b119254540" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192537b0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119257f70">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119253910">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119251db0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119252030">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192522b0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119259030">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922d310">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922d470">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922d6f0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119232260">
+      <value lifetime="55b11939dd60" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119242420">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119227bd0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925b4a0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925b720">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+  <typedef-info>
+    <info name="gpio_error_t" file="../plant_boss/wrappers/gpio_wrapper.h" line="23" column="1" used="0"/>
+  </typedef-info>
+</dump>
+</dumps>

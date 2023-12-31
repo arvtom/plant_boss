@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/wrappers/uart_wrapper.c"/>
+    <file index="1" name="../plant_boss/wrappers/uart_wrapper.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    uart_wrapper.cx*  \brief   This file wraps around esp32 uart driver.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;uart_wrapper.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="11" column="1" str="static"/>
+    <tok fileIndex="0" linenr="11" column="8" str="const"/>
+    <tok fileIndex="0" linenr="11" column="14" str="char"/>
+    <tok fileIndex="0" linenr="11" column="18" str="*"/>
+    <tok fileIndex="0" linenr="11" column="20" str="tag_uart"/>
+    <tok fileIndex="0" linenr="11" column="29" str="="/>
+    <tok fileIndex="0" linenr="11" column="31" str="&quot;uart&quot;"/>
+    <tok fileIndex="0" linenr="11" column="37" str=";"/>
+    <tok fileIndex="0" linenr="13" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="15" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="16" column="1" str="// bool uart_init(void)"/>
+    <tok fileIndex="0" linenr="17" column="1" str="// {"/>
+    <tok fileIndex="0" linenr="18" column="1" str="//     uart_config_t uart_config = {"/>
+    <tok fileIndex="0" linenr="19" column="1" str="//         .baud_rate = 115200,"/>
+    <tok fileIndex="0" linenr="20" column="1" str="//         .data_bits = UART_DATA_8_BITS,"/>
+    <tok fileIndex="0" linenr="21" column="1" str="//         .parity = UART_PARITY_DISABLE,"/>
+    <tok fileIndex="0" linenr="22" column="1" str="//         .stop_bits = UART_STOP_BITS_1,"/>
+    <tok fileIndex="0" linenr="23" column="1" str="//         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,"/>
+    <tok fileIndex="0" linenr="24" column="1" str="//         .rx_flow_ctrl_thresh = 122,"/>
+    <tok fileIndex="0" linenr="25" column="1" str="//     };"/>
+    <tok fileIndex="0" linenr="26" column="1" str="//     // Configure UART parameters"/>
+    <tok fileIndex="0" linenr="27" column="1" str="//     ESP_ERROR_CHECK(uart_param_config(UART_NUM_0, &amp;uart_config));"/>
+    <tok fileIndex="0" linenr="29" column="1" str="//     // Set UART pins(TX: IO4, RX: IO5, RTS: IO18, CTS: IO19)"/>
+    <tok fileIndex="0" linenr="30" column="1" str="//     // ESP_ERROR_CHECK(uart_set_pin(UART_NUM_2, 4, 5, 18, 19));"/>
+    <tok fileIndex="0" linenr="32" column="1" str="//     // Setup UART buffered IO with event queue"/>
+    <tok fileIndex="0" linenr="33" column="1" str="//     const int uart_buffer_size = (1024 * 2);"/>
+    <tok fileIndex="0" linenr="34" column="1" str="//     QueueHandle_t uart_queue;"/>
+    <tok fileIndex="0" linenr="35" column="1" str="//     // Install UART driver using an event queue here"/>
+    <tok fileIndex="0" linenr="36" column="1" str="//     ESP_ERROR_CHECK(uart_driver_install(UART_NUM_0, uart_buffer_size, uart_buffer_size, 10, &amp;uart_queue, 0));"/>
+    <tok fileIndex="0" linenr="38" column="1" str="//     return true;"/>
+    <tok fileIndex="0" linenr="39" column="1" str="// }"/>
+    <tok fileIndex="0" linenr="41" column="1" str="// bool uart_handle(void)"/>
+    <tok fileIndex="0" linenr="42" column="1" str="// {"/>
+    <tok fileIndex="0" linenr="43" column="1" str="//     // Write data to UART."/>
+    <tok fileIndex="0" linenr="44" column="1" str="//     char* test_str = &quot;This is a test string.\n&quot;;"/>
+    <tok fileIndex="0" linenr="45" column="1" str="//     uart_write_bytes(UART_NUM_0, (const char*)test_str, strlen(test_str));"/>
+    <tok fileIndex="0" linenr="47" column="1" str="//     // Wait for packet to be sent"/>
+    <tok fileIndex="0" linenr="48" column="1" str="//     // ESP_ERROR_CHECK(uart_wait_tx_done(UART_NUM_2, 100)); // wait timeout is 100 RTOS ticks (TickType_t)"/>
+    <tok fileIndex="0" linenr="50" column="1" str="//     return true;"/>
+    <tok fileIndex="0" linenr="51" column="1" str="// }"/>
+    <tok fileIndex="0" linenr="53" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/wrappers/uart_wrapper.c" linenr="8" str="#include &quot;uart_wrapper.h&quot;"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="7" str="#ifndef UART_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="8" str="#define UART_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="12" str="#include &lt;string.h&gt;"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="13" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="15" str="#include &lt;driver/uart.h&gt;"/>
+    <directive file="../plant_boss/wrappers/uart_wrapper.h" linenr="62" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="UART_WRAPPER_H" file="../plant_boss/wrappers/uart_wrapper.h" line="8" column="9" usefile="../plant_boss/wrappers/uart_wrapper.h" useline="7" usecolumn="9" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55b1192579e0" file="../plant_boss/wrappers/uart_wrapper.h" linenr="57" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119404a20" file="../plant_boss/wrappers/uart_wrapper.h" linenr="57" column="6" str="uart_init" scope="55b119236370" type="name" function="55b11924a300"/>
+    <token id="55b119245e50" file="../plant_boss/wrappers/uart_wrapper.h" linenr="57" column="15" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b11939f400" values="55b119235bd0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939f400" file="../plant_boss/wrappers/uart_wrapper.h" linenr="57" column="20" str=")" scope="55b119236370" link="55b119245e50"/>
+    <token id="55b1193b2d40" file="../plant_boss/wrappers/uart_wrapper.h" linenr="57" column="21" str=";" scope="55b119236370"/>
+    <token id="55b119228460" file="../plant_boss/wrappers/uart_wrapper.h" linenr="58" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11922be40" file="../plant_boss/wrappers/uart_wrapper.h" linenr="58" column="6" str="uart_handle" scope="55b119236370" type="name" function="55b11924a690"/>
+    <token id="55b1192426c0" file="../plant_boss/wrappers/uart_wrapper.h" linenr="58" column="17" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b11925a030" values="55b119232c80" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925a030" file="../plant_boss/wrappers/uart_wrapper.h" linenr="58" column="22" str=")" scope="55b119236370" link="55b1192426c0"/>
+    <token id="55b119403180" file="../plant_boss/wrappers/uart_wrapper.h" linenr="58" column="23" str=";" scope="55b119236370"/>
+    <token id="55b1194031e0" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="1" str="static" scope="55b119236370" type="name"/>
+    <token id="55b119225d70" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="8" str="const" scope="55b119236370" type="name"/>
+    <token id="55b119225dd0" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="14" str="char" scope="55b119236370" type="name"/>
+    <token id="55b1193f2400" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="18" str="*" scope="55b119236370" type="op" isArithmeticalOp="true"/>
+    <token id="55b1193f2460" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="20" str="tag_uart" scope="55b119236370" type="name" varId="1" exprId="1" variable="55b119254a00" astParent="55b119258d00" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119258d00" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="29" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b1193b3260" astOperand1="55b1193f2460" astOperand2="55b119258d60" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119258d60" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="31" str="&quot;uart&quot;" scope="55b119236370" type="string" strlen="4" values="55b119230810" astParent="55b119258d00" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192583d0" file="../plant_boss/wrappers/uart_wrapper.c" linenr="11" column="37" str=";" scope="55b119236370"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b119236370" type="Global">
+      <functionList>
+        <function id="55b11924a300" token="0" tokenDef="55b119404a20" name="uart_init" type="Function" access="Public"/>
+        <function id="55b11924a690" token="0" tokenDef="55b11922be40" name="uart_handle" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55b119254a00"/>
+      </varlist>
+    </scope>
+  </scopes>
+  <variables>
+    <var id="55b119254a00" nameToken="55b1193f2460" typeStartToken="55b119225dd0" typeEndToken="55b1193f2400" access="Global" scope="55b119236370" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119235bd0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119232c80">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193b3260">
+      <value tokvalue="55b119258d60" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value tokvalue="55b119258d60" bound="Point" known="true" path="0"/>
+    </values>
+  </valueflow>
+</dump>
+</dumps>

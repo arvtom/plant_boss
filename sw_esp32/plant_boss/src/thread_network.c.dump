@@ -1,0 +1,1070 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/src/thread_network.c"/>
+    <tok fileIndex="0" linenr="2" column="1" str="/* ---------------------------- Includes ---------------------------- */"/>
+    <tok fileIndex="0" linenr="3" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3" column="2" str="include"/>
+    <tok fileIndex="0" linenr="3" column="10" str="&quot;thread_network.h&quot;"/>
+    <tok fileIndex="0" linenr="5" column="1" str="/* ---------------------------- Typedefs ---------------------------- */"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/* ---------------------------- Global variables ---------------------------- */"/>
+    <tok fileIndex="0" linenr="8" column="1" str="esp_err_t"/>
+    <tok fileIndex="0" linenr="8" column="11" str="err_thread_network"/>
+    <tok fileIndex="0" linenr="8" column="30" str="="/>
+    <tok fileIndex="0" linenr="8" column="32" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="8" column="38" str=";"/>
+    <tok fileIndex="0" linenr="10" column="1" str="char"/>
+    <tok fileIndex="0" linenr="10" column="6" str="buf_rx_queue_wifi"/>
+    <tok fileIndex="0" linenr="10" column="23" str="["/>
+    <tok fileIndex="0" linenr="10" column="24" str="150"/>
+    <tok fileIndex="0" linenr="10" column="27" str="]"/>
+    <tok fileIndex="0" linenr="10" column="28" str=";"/>
+    <tok fileIndex="0" linenr="12" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="12" column="10" str="notification_network"/>
+    <tok fileIndex="0" linenr="12" column="31" str="="/>
+    <tok fileIndex="0" linenr="12" column="33" str="0u"/>
+    <tok fileIndex="0" linenr="12" column="35" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="char"/>
+    <tok fileIndex="0" linenr="14" column="6" str="buf_tx_queue_app"/>
+    <tok fileIndex="0" linenr="14" column="22" str="["/>
+    <tok fileIndex="0" linenr="14" column="23" str="20"/>
+    <tok fileIndex="0" linenr="14" column="25" str="]"/>
+    <tok fileIndex="0" linenr="14" column="26" str=";"/>
+    <tok fileIndex="0" linenr="16" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="16" column="8" str="QueueHandle_t"/>
+    <tok fileIndex="0" linenr="16" column="22" str="queue_app_to_wifi"/>
+    <tok fileIndex="0" linenr="16" column="39" str=";"/>
+    <tok fileIndex="0" linenr="17" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="17" column="8" str="QueueHandle_t"/>
+    <tok fileIndex="0" linenr="17" column="22" str="queue_wifi_to_app"/>
+    <tok fileIndex="0" linenr="17" column="39" str=";"/>
+    <tok fileIndex="0" linenr="19" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="19" column="8" str="TaskHandle_t"/>
+    <tok fileIndex="0" linenr="19" column="21" str="handle_app"/>
+    <tok fileIndex="0" linenr="19" column="31" str=";"/>
+    <tok fileIndex="0" linenr="20" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="20" column="8" str="TaskHandle_t"/>
+    <tok fileIndex="0" linenr="20" column="21" str="handle_network"/>
+    <tok fileIndex="0" linenr="20" column="35" str=";"/>
+    <tok fileIndex="0" linenr="22" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="22" column="8" str="bool"/>
+    <tok fileIndex="0" linenr="22" column="13" str="b_wifi_connected"/>
+    <tok fileIndex="0" linenr="22" column="29" str=";"/>
+    <tok fileIndex="0" linenr="24" column="1" str="static"/>
+    <tok fileIndex="0" linenr="24" column="8" str="const"/>
+    <tok fileIndex="0" linenr="24" column="14" str="char"/>
+    <tok fileIndex="0" linenr="24" column="18" str="*"/>
+    <tok fileIndex="0" linenr="24" column="20" str="tag_t_n"/>
+    <tok fileIndex="0" linenr="24" column="28" str="="/>
+    <tok fileIndex="0" linenr="24" column="30" str="&quot;t_n&quot;"/>
+    <tok fileIndex="0" linenr="24" column="35" str=";"/>
+    <tok fileIndex="0" linenr="26" column="1" str="/* ---------------------------- Public functions ---------------------------- */"/>
+    <tok fileIndex="0" linenr="27" column="1" str="void"/>
+    <tok fileIndex="0" linenr="27" column="6" str="thread_network"/>
+    <tok fileIndex="0" linenr="27" column="20" str="("/>
+    <tok fileIndex="0" linenr="27" column="21" str="void"/>
+    <tok fileIndex="0" linenr="27" column="26" str="*"/>
+    <tok fileIndex="0" linenr="27" column="27" str="arg"/>
+    <tok fileIndex="0" linenr="27" column="30" str=")"/>
+    <tok fileIndex="0" linenr="28" column="1" str="{"/>
+    <tok fileIndex="0" linenr="29" column="5" str="if"/>
+    <tok fileIndex="0" linenr="29" column="8" str="("/>
+    <tok fileIndex="0" linenr="29" column="9" str="true"/>
+    <tok fileIndex="0" linenr="29" column="14" str="!="/>
+    <tok fileIndex="0" linenr="29" column="17" str="thread_network_init"/>
+    <tok fileIndex="0" linenr="29" column="36" str="("/>
+    <tok fileIndex="0" linenr="29" column="37" str=")"/>
+    <tok fileIndex="0" linenr="29" column="38" str=")"/>
+    <tok fileIndex="0" linenr="30" column="5" str="{"/>
+    <tok fileIndex="0" linenr="31" column="9" str="error_handle"/>
+    <tok fileIndex="0" linenr="31" column="21" str="("/>
+    <tok fileIndex="0" linenr="31" column="22" str=")"/>
+    <tok fileIndex="0" linenr="31" column="23" str=";"/>
+    <tok fileIndex="0" linenr="32" column="5" str="}"/>
+    <tok fileIndex="0" linenr="34" column="5" str="while"/>
+    <tok fileIndex="0" linenr="34" column="11" str="("/>
+    <tok fileIndex="0" linenr="34" column="12" str="1"/>
+    <tok fileIndex="0" linenr="34" column="13" str=")"/>
+    <tok fileIndex="0" linenr="35" column="5" str="{"/>
+    <tok fileIndex="0" linenr="36" column="9" str="if"/>
+    <tok fileIndex="0" linenr="36" column="12" str="("/>
+    <tok fileIndex="0" linenr="36" column="13" str="true"/>
+    <tok fileIndex="0" linenr="36" column="18" str="!="/>
+    <tok fileIndex="0" linenr="36" column="21" str="thread_network_handle"/>
+    <tok fileIndex="0" linenr="36" column="42" str="("/>
+    <tok fileIndex="0" linenr="36" column="43" str=")"/>
+    <tok fileIndex="0" linenr="36" column="44" str=")"/>
+    <tok fileIndex="0" linenr="37" column="9" str="{"/>
+    <tok fileIndex="0" linenr="39" column="9" str="}"/>
+    <tok fileIndex="0" linenr="40" column="5" str="}"/>
+    <tok fileIndex="0" linenr="41" column="1" str="}"/>
+    <tok fileIndex="0" linenr="43" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="43" column="6" str="thread_network_init"/>
+    <tok fileIndex="0" linenr="43" column="25" str="("/>
+    <tok fileIndex="0" linenr="43" column="26" str="void"/>
+    <tok fileIndex="0" linenr="43" column="30" str=")"/>
+    <tok fileIndex="0" linenr="44" column="1" str="{"/>
+    <tok fileIndex="0" linenr="45" column="5" str="// printf(&quot;addr err_thread_network 0x%x\n&quot;, (unsigned int)&amp;err_thread_network);"/>
+    <tok fileIndex="0" linenr="47" column="5" str="xTaskNotifyWait"/>
+    <tok fileIndex="0" linenr="47" column="20" str="("/>
+    <tok fileIndex="0" linenr="47" column="21" str="0u"/>
+    <tok fileIndex="0" linenr="47" column="23" str=","/>
+    <tok fileIndex="0" linenr="47" column="25" str="0u"/>
+    <tok fileIndex="0" linenr="47" column="27" str=","/>
+    <tok fileIndex="0" linenr="47" column="29" str="&amp;"/>
+    <tok fileIndex="0" linenr="47" column="30" str="notification_network"/>
+    <tok fileIndex="0" linenr="47" column="50" str=","/>
+    <tok fileIndex="0" linenr="47" column="52" str="portMAX_DELAY"/>
+    <tok fileIndex="0" linenr="47" column="65" str=")"/>
+    <tok fileIndex="0" linenr="47" column="66" str=";"/>
+    <tok fileIndex="0" linenr="48" column="5" str="if"/>
+    <tok fileIndex="0" linenr="48" column="8" str="("/>
+    <tok fileIndex="0" linenr="48" column="9" str="("/>
+    <tok fileIndex="0" linenr="48" column="10" str="notification_network"/>
+    <tok fileIndex="0" linenr="48" column="31" str="&amp;"/>
+    <tok fileIndex="0" linenr="48" column="33" str="NOTIFICATION_TO_NETWORK_REQ_INIT"/>
+    <tok fileIndex="0" linenr="48" column="65" str=")"/>
+    <tok fileIndex="0" linenr="48" column="67" str="=="/>
+    <tok fileIndex="0" linenr="48" column="70" str="0u"/>
+    <tok fileIndex="0" linenr="48" column="72" str=")"/>
+    <tok fileIndex="0" linenr="49" column="5" str="{"/>
+    <tok fileIndex="0" linenr="50" column="9" str="return"/>
+    <tok fileIndex="0" linenr="50" column="16" str="false"/>
+    <tok fileIndex="0" linenr="50" column="21" str=";"/>
+    <tok fileIndex="0" linenr="51" column="5" str="}"/>
+    <tok fileIndex="0" linenr="53" column="5" str="ulTaskNotifyValueClear"/>
+    <tok fileIndex="0" linenr="53" column="27" str="("/>
+    <tok fileIndex="0" linenr="53" column="28" str="handle_network"/>
+    <tok fileIndex="0" linenr="53" column="42" str=","/>
+    <tok fileIndex="0" linenr="53" column="44" str="NOTIFICATION_TO_NETWORK_REQ_INIT"/>
+    <tok fileIndex="0" linenr="53" column="76" str=")"/>
+    <tok fileIndex="0" linenr="53" column="77" str=";"/>
+    <tok fileIndex="0" linenr="55" column="5" str="if"/>
+    <tok fileIndex="0" linenr="55" column="8" str="("/>
+    <tok fileIndex="0" linenr="55" column="9" str="true"/>
+    <tok fileIndex="0" linenr="55" column="14" str="!="/>
+    <tok fileIndex="0" linenr="55" column="17" str="wifi_init"/>
+    <tok fileIndex="0" linenr="55" column="26" str="("/>
+    <tok fileIndex="0" linenr="55" column="27" str=")"/>
+    <tok fileIndex="0" linenr="55" column="28" str=")"/>
+    <tok fileIndex="0" linenr="56" column="5" str="{"/>
+    <tok fileIndex="0" linenr="57" column="9" str="while"/>
+    <tok fileIndex="0" linenr="57" column="14" str="("/>
+    <tok fileIndex="0" linenr="57" column="15" str="false"/>
+    <tok fileIndex="0" linenr="57" column="21" str="=="/>
+    <tok fileIndex="0" linenr="57" column="24" str="b_wifi_connected"/>
+    <tok fileIndex="0" linenr="57" column="40" str=")"/>
+    <tok fileIndex="0" linenr="58" column="9" str="{"/>
+    <tok fileIndex="0" linenr="59" column="13" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="59" column="23" str="("/>
+    <tok fileIndex="0" linenr="59" column="24" str="200"/>
+    <tok fileIndex="0" linenr="59" column="27" str=")"/>
+    <tok fileIndex="0" linenr="59" column="28" str=";"/>
+    <tok fileIndex="0" linenr="60" column="9" str="}"/>
+    <tok fileIndex="0" linenr="61" column="9" str="// return false;"/>
+    <tok fileIndex="0" linenr="62" column="5" str="}"/>
+    <tok fileIndex="0" linenr="64" column="5" str="/* Send response to thread_app */"/>
+    <tok fileIndex="0" linenr="65" column="5" str="if"/>
+    <tok fileIndex="0" linenr="65" column="8" str="("/>
+    <tok fileIndex="0" linenr="65" column="9" str="pdPASS"/>
+    <tok fileIndex="0" linenr="65" column="16" str="!="/>
+    <tok fileIndex="0" linenr="65" column="19" str="xTaskNotify"/>
+    <tok fileIndex="0" linenr="65" column="30" str="("/>
+    <tok fileIndex="0" linenr="65" column="31" str="handle_app"/>
+    <tok fileIndex="0" linenr="65" column="41" str=","/>
+    <tok fileIndex="0" linenr="65" column="43" str="NOTIFICATION_TO_APP_RES_INIT_NETWORK"/>
+    <tok fileIndex="0" linenr="65" column="79" str=","/>
+    <tok fileIndex="0" linenr="65" column="81" str="eSetBits"/>
+    <tok fileIndex="0" linenr="65" column="89" str=")"/>
+    <tok fileIndex="0" linenr="65" column="90" str=")"/>
+    <tok fileIndex="0" linenr="66" column="5" str="{"/>
+    <tok fileIndex="0" linenr="67" column="9" str="return"/>
+    <tok fileIndex="0" linenr="67" column="16" str="false"/>
+    <tok fileIndex="0" linenr="67" column="21" str=";"/>
+    <tok fileIndex="0" linenr="68" column="5" str="}"/>
+    <tok fileIndex="0" linenr="70" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="70" column="13" str="("/>
+    <tok fileIndex="0" linenr="70" column="14" str="tag_t_n"/>
+    <tok fileIndex="0" linenr="70" column="21" str=","/>
+    <tok fileIndex="0" linenr="70" column="23" str="&quot;i&quot;"/>
+    <tok fileIndex="0" linenr="70" column="26" str=")"/>
+    <tok fileIndex="0" linenr="70" column="27" str=";"/>
+    <tok fileIndex="0" linenr="72" column="5" str="/* Give some time to other tasks to prevent WDT reset */"/>
+    <tok fileIndex="0" linenr="73" column="5" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="73" column="15" str="("/>
+    <tok fileIndex="0" linenr="73" column="16" str="1"/>
+    <tok fileIndex="0" linenr="73" column="17" str=")"/>
+    <tok fileIndex="0" linenr="73" column="18" str=";"/>
+    <tok fileIndex="0" linenr="75" column="5" str="return"/>
+    <tok fileIndex="0" linenr="75" column="12" str="true"/>
+    <tok fileIndex="0" linenr="75" column="16" str=";"/>
+    <tok fileIndex="0" linenr="76" column="1" str="}"/>
+    <tok fileIndex="0" linenr="78" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="78" column="6" str="thread_network_handle"/>
+    <tok fileIndex="0" linenr="78" column="27" str="("/>
+    <tok fileIndex="0" linenr="78" column="28" str="void"/>
+    <tok fileIndex="0" linenr="78" column="32" str=")"/>
+    <tok fileIndex="0" linenr="79" column="1" str="{"/>
+    <tok fileIndex="0" linenr="80" column="5" str="xTaskNotifyWait"/>
+    <tok fileIndex="0" linenr="80" column="20" str="("/>
+    <tok fileIndex="0" linenr="80" column="21" str="0u"/>
+    <tok fileIndex="0" linenr="80" column="23" str=","/>
+    <tok fileIndex="0" linenr="80" column="25" str="0u"/>
+    <tok fileIndex="0" linenr="80" column="27" str=","/>
+    <tok fileIndex="0" linenr="80" column="29" str="&amp;"/>
+    <tok fileIndex="0" linenr="80" column="30" str="notification_network"/>
+    <tok fileIndex="0" linenr="80" column="50" str=","/>
+    <tok fileIndex="0" linenr="80" column="52" str="1u"/>
+    <tok fileIndex="0" linenr="80" column="54" str=")"/>
+    <tok fileIndex="0" linenr="80" column="55" str=";"/>
+    <tok fileIndex="0" linenr="81" column="5" str="if"/>
+    <tok fileIndex="0" linenr="81" column="8" str="("/>
+    <tok fileIndex="0" linenr="81" column="9" str="("/>
+    <tok fileIndex="0" linenr="81" column="10" str="notification_network"/>
+    <tok fileIndex="0" linenr="81" column="31" str="&amp;"/>
+    <tok fileIndex="0" linenr="81" column="33" str="NOTIFICATION_TO_NETWORK_REQ_SETTINGS"/>
+    <tok fileIndex="0" linenr="81" column="69" str=")"/>
+    <tok fileIndex="0" linenr="81" column="71" str="=="/>
+    <tok fileIndex="0" linenr="81" column="74" str="0u"/>
+    <tok fileIndex="0" linenr="81" column="76" str=")"/>
+    <tok fileIndex="0" linenr="82" column="5" str="{"/>
+    <tok fileIndex="0" linenr="83" column="9" str="return"/>
+    <tok fileIndex="0" linenr="83" column="16" str="false"/>
+    <tok fileIndex="0" linenr="83" column="21" str=";"/>
+    <tok fileIndex="0" linenr="84" column="5" str="}"/>
+    <tok fileIndex="0" linenr="86" column="5" str="ulTaskNotifyValueClear"/>
+    <tok fileIndex="0" linenr="86" column="27" str="("/>
+    <tok fileIndex="0" linenr="86" column="28" str="handle_network"/>
+    <tok fileIndex="0" linenr="86" column="42" str=","/>
+    <tok fileIndex="0" linenr="86" column="44" str="NOTIFICATION_TO_NETWORK_REQ_SETTINGS"/>
+    <tok fileIndex="0" linenr="86" column="80" str=")"/>
+    <tok fileIndex="0" linenr="86" column="81" str=";"/>
+    <tok fileIndex="0" linenr="88" column="5" str="if"/>
+    <tok fileIndex="0" linenr="88" column="8" str="("/>
+    <tok fileIndex="0" linenr="88" column="9" str="true"/>
+    <tok fileIndex="0" linenr="88" column="14" str="!="/>
+    <tok fileIndex="0" linenr="88" column="17" str="wifi_handle_request_settings"/>
+    <tok fileIndex="0" linenr="88" column="45" str="("/>
+    <tok fileIndex="0" linenr="88" column="46" str=")"/>
+    <tok fileIndex="0" linenr="88" column="47" str=")"/>
+    <tok fileIndex="0" linenr="89" column="5" str="{"/>
+    <tok fileIndex="0" linenr="90" column="9" str="return"/>
+    <tok fileIndex="0" linenr="90" column="16" str="false"/>
+    <tok fileIndex="0" linenr="90" column="21" str=";"/>
+    <tok fileIndex="0" linenr="91" column="5" str="}"/>
+    <tok fileIndex="0" linenr="93" column="5" str="char"/>
+    <tok fileIndex="0" linenr="93" column="10" str="settings"/>
+    <tok fileIndex="0" linenr="93" column="18" str="["/>
+    <tok fileIndex="0" linenr="93" column="19" str="20"/>
+    <tok fileIndex="0" linenr="93" column="21" str="]"/>
+    <tok fileIndex="0" linenr="93" column="22" str=";"/>
+    <tok fileIndex="0" linenr="94" column="5" str="uint8_t"/>
+    <tok fileIndex="0" linenr="94" column="13" str="length_settings"/>
+    <tok fileIndex="0" linenr="94" column="28" str=";"/>
+    <tok fileIndex="0" linenr="96" column="5" str="wifi_get_device_settings"/>
+    <tok fileIndex="0" linenr="96" column="29" str="("/>
+    <tok fileIndex="0" linenr="96" column="30" str="("/>
+    <tok fileIndex="0" linenr="96" column="31" str="char"/>
+    <tok fileIndex="0" linenr="96" column="36" str="*"/>
+    <tok fileIndex="0" linenr="96" column="37" str=")"/>
+    <tok fileIndex="0" linenr="96" column="38" str="settings"/>
+    <tok fileIndex="0" linenr="96" column="46" str=","/>
+    <tok fileIndex="0" linenr="96" column="48" str="&amp;"/>
+    <tok fileIndex="0" linenr="96" column="49" str="length_settings"/>
+    <tok fileIndex="0" linenr="96" column="64" str=")"/>
+    <tok fileIndex="0" linenr="96" column="65" str=";"/>
+    <tok fileIndex="0" linenr="98" column="5" str="if"/>
+    <tok fileIndex="0" linenr="98" column="8" str="("/>
+    <tok fileIndex="0" linenr="98" column="9" str="length_settings"/>
+    <tok fileIndex="0" linenr="98" column="25" str="&lt;="/>
+    <tok fileIndex="0" linenr="98" column="28" str="3"/>
+    <tok fileIndex="0" linenr="98" column="29" str=")"/>
+    <tok fileIndex="0" linenr="99" column="5" str="{"/>
+    <tok fileIndex="0" linenr="100" column="9" str="return"/>
+    <tok fileIndex="0" linenr="100" column="16" str="false"/>
+    <tok fileIndex="0" linenr="100" column="21" str=";"/>
+    <tok fileIndex="0" linenr="101" column="5" str="}"/>
+    <tok fileIndex="0" linenr="103" column="5" str="length_settings"/>
+    <tok fileIndex="0" linenr="103" column="21" str="-="/>
+    <tok fileIndex="0" linenr="103" column="24" str="3"/>
+    <tok fileIndex="0" linenr="103" column="25" str=";"/>
+    <tok fileIndex="0" linenr="105" column="5" str="memcpy"/>
+    <tok fileIndex="0" linenr="105" column="11" str="("/>
+    <tok fileIndex="0" linenr="105" column="12" str="&amp;"/>
+    <tok fileIndex="0" linenr="105" column="13" str="buf_tx_queue_app"/>
+    <tok fileIndex="0" linenr="105" column="29" str=","/>
+    <tok fileIndex="0" linenr="105" column="31" str="&amp;"/>
+    <tok fileIndex="0" linenr="105" column="32" str="settings"/>
+    <tok fileIndex="0" linenr="105" column="40" str="["/>
+    <tok fileIndex="0" linenr="105" column="41" str="3"/>
+    <tok fileIndex="0" linenr="105" column="42" str="]"/>
+    <tok fileIndex="0" linenr="105" column="43" str=","/>
+    <tok fileIndex="0" linenr="105" column="45" str="length_settings"/>
+    <tok fileIndex="0" linenr="105" column="60" str=")"/>
+    <tok fileIndex="0" linenr="105" column="61" str=";"/>
+    <tok fileIndex="0" linenr="107" column="5" str="xQueueSend"/>
+    <tok fileIndex="0" linenr="107" column="15" str="("/>
+    <tok fileIndex="0" linenr="107" column="16" str="queue_wifi_to_app"/>
+    <tok fileIndex="0" linenr="107" column="33" str=","/>
+    <tok fileIndex="0" linenr="107" column="35" str="("/>
+    <tok fileIndex="0" linenr="107" column="36" str="void"/>
+    <tok fileIndex="0" linenr="107" column="40" str="*"/>
+    <tok fileIndex="0" linenr="107" column="41" str=")"/>
+    <tok fileIndex="0" linenr="107" column="42" str="buf_tx_queue_app"/>
+    <tok fileIndex="0" linenr="107" column="58" str=","/>
+    <tok fileIndex="0" linenr="107" column="60" str="("/>
+    <tok fileIndex="0" linenr="107" column="61" str="TickType_t"/>
+    <tok fileIndex="0" linenr="107" column="71" str=")"/>
+    <tok fileIndex="0" linenr="107" column="72" str="0"/>
+    <tok fileIndex="0" linenr="107" column="73" str=")"/>
+    <tok fileIndex="0" linenr="107" column="74" str=";"/>
+    <tok fileIndex="0" linenr="109" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="109" column="13" str="("/>
+    <tok fileIndex="0" linenr="109" column="14" str="tag_t_n"/>
+    <tok fileIndex="0" linenr="109" column="21" str=","/>
+    <tok fileIndex="0" linenr="109" column="23" str="&quot;h&quot;"/>
+    <tok fileIndex="0" linenr="109" column="26" str=")"/>
+    <tok fileIndex="0" linenr="109" column="27" str=";"/>
+    <tok fileIndex="0" linenr="111" column="5" str="if"/>
+    <tok fileIndex="0" linenr="111" column="8" str="("/>
+    <tok fileIndex="0" linenr="111" column="9" str="xQueueReceive"/>
+    <tok fileIndex="0" linenr="111" column="22" str="("/>
+    <tok fileIndex="0" linenr="111" column="23" str="queue_app_to_wifi"/>
+    <tok fileIndex="0" linenr="111" column="40" str=","/>
+    <tok fileIndex="0" linenr="111" column="42" str="&amp;"/>
+    <tok fileIndex="0" linenr="111" column="43" str="("/>
+    <tok fileIndex="0" linenr="111" column="44" str="buf_rx_queue_wifi"/>
+    <tok fileIndex="0" linenr="111" column="61" str=")"/>
+    <tok fileIndex="0" linenr="111" column="62" str=","/>
+    <tok fileIndex="0" linenr="111" column="64" str="1u"/>
+    <tok fileIndex="0" linenr="111" column="66" str=")"/>
+    <tok fileIndex="0" linenr="111" column="67" str=")"/>
+    <tok fileIndex="0" linenr="112" column="5" str="{"/>
+    <tok fileIndex="0" linenr="113" column="9" str="// printf(&quot;data to wifi: %s\n\n&quot;, buf_rx_queue_wifi);"/>
+    <tok fileIndex="0" linenr="114" column="9" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="114" column="17" str="("/>
+    <tok fileIndex="0" linenr="114" column="18" str="tag_t_n"/>
+    <tok fileIndex="0" linenr="114" column="25" str=","/>
+    <tok fileIndex="0" linenr="114" column="27" str="&quot;d&quot;"/>
+    <tok fileIndex="0" linenr="114" column="30" str=")"/>
+    <tok fileIndex="0" linenr="114" column="31" str=";"/>
+    <tok fileIndex="0" linenr="116" column="9" str="if"/>
+    <tok fileIndex="0" linenr="116" column="12" str="("/>
+    <tok fileIndex="0" linenr="116" column="13" str="true"/>
+    <tok fileIndex="0" linenr="116" column="18" str="!="/>
+    <tok fileIndex="0" linenr="116" column="21" str="wifi_handle_send_data"/>
+    <tok fileIndex="0" linenr="116" column="42" str="("/>
+    <tok fileIndex="0" linenr="116" column="43" str=")"/>
+    <tok fileIndex="0" linenr="116" column="44" str=")"/>
+    <tok fileIndex="0" linenr="117" column="9" str="{"/>
+    <tok fileIndex="0" linenr="118" column="13" str="return"/>
+    <tok fileIndex="0" linenr="118" column="20" str="false"/>
+    <tok fileIndex="0" linenr="118" column="25" str=";"/>
+    <tok fileIndex="0" linenr="119" column="9" str="}"/>
+    <tok fileIndex="0" linenr="120" column="5" str="}"/>
+    <tok fileIndex="0" linenr="122" column="5" str="/* TODO: Check if there was request to change mode from webpage. */"/>
+    <tok fileIndex="0" linenr="124" column="5" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="124" column="15" str="("/>
+    <tok fileIndex="0" linenr="124" column="16" str="DELAY_HANDLE_THREAD_NETWORK"/>
+    <tok fileIndex="0" linenr="124" column="43" str=")"/>
+    <tok fileIndex="0" linenr="124" column="44" str=";"/>
+    <tok fileIndex="0" linenr="126" column="5" str="return"/>
+    <tok fileIndex="0" linenr="126" column="12" str="true"/>
+    <tok fileIndex="0" linenr="126" column="16" str=";"/>
+    <tok fileIndex="0" linenr="127" column="1" str="}"/>
+    <tok fileIndex="0" linenr="129" column="1" str="/* ---------------------------- Private functions ---------------------------- */"/>
+    <tok fileIndex="0" linenr="132" column="1" str="/* ---------------------------- Interrupt callbacks ---------------------------- */"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/src/thread_network.c" linenr="3" str="#include &quot;thread_network.h&quot;"/>
+  </directivelist>
+  <tokenlist>
+    <token id="55b119237d70" file="../plant_boss/src/thread_network.c" linenr="8" column="1" str="esp_err_t" scope="55b119236370" type="name"/>
+    <token id="55b1192503a0" file="../plant_boss/src/thread_network.c" linenr="8" column="11" str="err_thread_network" scope="55b119236370" type="name" varId="1" exprId="1" variable="55b1194b7240"/>
+    <token id="55b119250160" file="../plant_boss/src/thread_network.c" linenr="8" column="30" str=";" scope="55b119236370" isSplittedVarDeclEq="true"/>
+    <token id="55b119261fd0" file="../plant_boss/src/thread_network.c" linenr="8" column="11" str="err_thread_network" scope="55b119236370" type="name" varId="1" exprId="1" variable="55b1194b7240" astParent="55b11922c640"/>
+    <token id="55b11922c640" file="../plant_boss/src/thread_network.c" linenr="8" column="30" str="=" scope="55b119236370" type="op" isAssignmentOp="true" astOperand1="55b119261fd0" astOperand2="55b119250220"/>
+    <token id="55b119250220" file="../plant_boss/src/thread_network.c" linenr="8" column="32" str="ESP_OK" scope="55b119236370" type="name" astParent="55b11922c640"/>
+    <token id="55b11924fe00" file="../plant_boss/src/thread_network.c" linenr="8" column="38" str=";" scope="55b119236370"/>
+    <token id="55b1194527e0" file="../plant_boss/src/thread_network.c" linenr="10" column="1" str="char" scope="55b119236370" type="name"/>
+    <token id="55b119250640" file="../plant_boss/src/thread_network.c" linenr="10" column="6" str="buf_rx_queue_wifi" scope="55b119236370" type="name" varId="2" exprId="2" variable="55b119482210" astParent="55b119255f80" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119255f80" file="../plant_boss/src/thread_network.c" linenr="10" column="23" str="[" scope="55b119236370" link="55b11925d960" astOperand1="55b119250640" astOperand2="55b119251e70" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119251e70" file="../plant_boss/src/thread_network.c" linenr="10" column="24" str="150" scope="55b119236370" type="number" isInt="true" values="55b119252e50" astParent="55b119255f80" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925d960" file="../plant_boss/src/thread_network.c" linenr="10" column="27" str="]" scope="55b119236370" link="55b119255f80"/>
+    <token id="55b11924fb50" file="../plant_boss/src/thread_network.c" linenr="10" column="28" str=";" scope="55b119236370"/>
+    <token id="55b119249580" file="../plant_boss/src/thread_network.c" linenr="12" column="1" str="uint32_t" scope="55b119236370" type="name"/>
+    <token id="55b119257220" file="../plant_boss/src/thread_network.c" linenr="12" column="10" str="notification_network" scope="55b119236370" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b119258ed0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925ff60" file="../plant_boss/src/thread_network.c" linenr="12" column="31" str=";" scope="55b119236370" isSplittedVarDeclEq="true"/>
+    <token id="55b11922c750" file="../plant_boss/src/thread_network.c" linenr="12" column="10" str="notification_network" scope="55b119236370" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b11924caa0" astParent="55b11922c860" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922c860" file="../plant_boss/src/thread_network.c" linenr="12" column="31" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b11922c140" astOperand1="55b11922c750" astOperand2="55b1192620c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192620c0" file="../plant_boss/src/thread_network.c" linenr="12" column="33" str="0u" scope="55b119236370" type="number" isInt="true" values="55b119258e10" astParent="55b11922c860" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925bdd0" file="../plant_boss/src/thread_network.c" linenr="12" column="35" str=";" scope="55b119236370"/>
+    <token id="55b1192531a0" file="../plant_boss/src/thread_network.c" linenr="14" column="1" str="char" scope="55b119236370" type="name"/>
+    <token id="55b119253200" file="../plant_boss/src/thread_network.c" linenr="14" column="6" str="buf_tx_queue_app" scope="55b119236370" type="name" varId="4" exprId="4" variable="55b1192426d0" astParent="55b119234e30" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119234e30" file="../plant_boss/src/thread_network.c" linenr="14" column="22" str="[" scope="55b119236370" link="55b119248880" astOperand1="55b119253200" astOperand2="55b119234e90" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119234e90" file="../plant_boss/src/thread_network.c" linenr="14" column="23" str="20" scope="55b119236370" type="number" isInt="true" values="55b119237860" astParent="55b119234e30" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119248880" file="../plant_boss/src/thread_network.c" linenr="14" column="25" str="]" scope="55b119236370" link="55b119234e30"/>
+    <token id="55b119455cd0" file="../plant_boss/src/thread_network.c" linenr="14" column="26" str=";" scope="55b119236370"/>
+    <token id="55b1193f6ca0" file="../plant_boss/src/thread_network.c" linenr="16" column="1" str="extern" scope="55b119236370" type="name"/>
+    <token id="55b11922aca0" file="../plant_boss/src/thread_network.c" linenr="16" column="8" str="QueueHandle_t" scope="55b119236370" type="name"/>
+    <token id="55b11924d0a0" file="../plant_boss/src/thread_network.c" linenr="16" column="22" str="queue_app_to_wifi" scope="55b119236370" type="name" varId="5" exprId="5" variable="55b1192539c0"/>
+    <token id="55b1194ba670" file="../plant_boss/src/thread_network.c" linenr="16" column="39" str=";" scope="55b119236370"/>
+    <token id="55b119248d20" file="../plant_boss/src/thread_network.c" linenr="17" column="1" str="extern" scope="55b119236370" type="name"/>
+    <token id="55b1194baab0" file="../plant_boss/src/thread_network.c" linenr="17" column="8" str="QueueHandle_t" scope="55b119236370" type="name"/>
+    <token id="55b119248e30" file="../plant_boss/src/thread_network.c" linenr="17" column="22" str="queue_wifi_to_app" scope="55b119236370" type="name" varId="6" exprId="6" variable="55b1194569b0"/>
+    <token id="55b119248f40" file="../plant_boss/src/thread_network.c" linenr="17" column="39" str=";" scope="55b119236370"/>
+    <token id="55b119248fa0" file="../plant_boss/src/thread_network.c" linenr="19" column="1" str="extern" scope="55b119236370" type="name"/>
+    <token id="55b1194baed0" file="../plant_boss/src/thread_network.c" linenr="19" column="8" str="TaskHandle_t" scope="55b119236370" type="name"/>
+    <token id="55b1192491c0" file="../plant_boss/src/thread_network.c" linenr="19" column="21" str="handle_app" scope="55b119236370" type="name" varId="7" exprId="7" variable="55b119405830"/>
+    <token id="55b119454680" file="../plant_boss/src/thread_network.c" linenr="19" column="31" str=";" scope="55b119236370"/>
+    <token id="55b1192492d0" file="../plant_boss/src/thread_network.c" linenr="20" column="1" str="extern" scope="55b119236370" type="name"/>
+    <token id="55b1192493e0" file="../plant_boss/src/thread_network.c" linenr="20" column="8" str="TaskHandle_t" scope="55b119236370" type="name"/>
+    <token id="55b119454120" file="../plant_boss/src/thread_network.c" linenr="20" column="21" str="handle_network" scope="55b119236370" type="name" varId="8" exprId="8" variable="55b119256d60"/>
+    <token id="55b1194bac00" file="../plant_boss/src/thread_network.c" linenr="20" column="35" str=";" scope="55b119236370"/>
+    <token id="55b1194593f0" file="../plant_boss/src/thread_network.c" linenr="22" column="1" str="extern" scope="55b119236370" type="name"/>
+    <token id="55b1194543d0" file="../plant_boss/src/thread_network.c" linenr="22" column="8" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119459500" file="../plant_boss/src/thread_network.c" linenr="22" column="13" str="b_wifi_connected" scope="55b119236370" type="name" varId="9" exprId="9" variable="55b119256e90" values="55b119236990" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119459610" file="../plant_boss/src/thread_network.c" linenr="22" column="29" str=";" scope="55b119236370"/>
+    <token id="55b119459670" file="../plant_boss/src/thread_network.c" linenr="24" column="1" str="static" scope="55b119236370" type="name"/>
+    <token id="55b1192494f0" file="../plant_boss/src/thread_network.c" linenr="24" column="8" str="const" scope="55b119236370" type="name"/>
+    <token id="55b119459890" file="../plant_boss/src/thread_network.c" linenr="24" column="14" str="char" scope="55b119236370" type="name"/>
+    <token id="55b11925f600" file="../plant_boss/src/thread_network.c" linenr="24" column="18" str="*" scope="55b119236370" type="op" isArithmeticalOp="true"/>
+    <token id="55b1194599a0" file="../plant_boss/src/thread_network.c" linenr="24" column="20" str="tag_t_n" scope="55b119236370" type="name" varId="10" exprId="10" variable="55b119256fc0" astParent="55b119459ab0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119459ab0" file="../plant_boss/src/thread_network.c" linenr="24" column="28" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b1193f7370" astOperand1="55b1194599a0" astOperand2="55b11925f660" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925f660" file="../plant_boss/src/thread_network.c" linenr="24" column="30" str="&quot;t_n&quot;" scope="55b119236370" type="string" strlen="3" values="55b11923ab60" astParent="55b119459ab0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119248620" file="../plant_boss/src/thread_network.c" linenr="24" column="35" str=";" scope="55b119236370"/>
+    <token id="55b119248730" file="../plant_boss/src/thread_network.c" linenr="27" column="1" str="void" scope="55b119236370" type="name"/>
+    <token id="55b119251bd0" file="../plant_boss/src/thread_network.c" linenr="27" column="6" str="thread_network" scope="55b119236370" type="name" function="55b119455200"/>
+    <token id="55b119252f90" file="../plant_boss/src/thread_network.c" linenr="27" column="20" str="(" scope="55b119236370" link="55b119462150" valueType-type="void" valueType-reference="None"/>
+    <token id="55b1192530a0" file="../plant_boss/src/thread_network.c" linenr="27" column="21" str="void" scope="55b119236370" type="name"/>
+    <token id="55b119253100" file="../plant_boss/src/thread_network.c" linenr="27" column="26" str="*" scope="55b119236370" type="op" isArithmeticalOp="true"/>
+    <token id="55b1194620f0" file="../plant_boss/src/thread_network.c" linenr="27" column="27" str="arg" scope="55b119236370" type="name" varId="11" exprId="11" variable="55b119247910" valueType-type="void" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119462150" file="../plant_boss/src/thread_network.c" linenr="27" column="30" str=")" scope="55b119236370" link="55b119252f90"/>
+    <token id="55b1193f6f50" file="../plant_boss/src/thread_network.c" linenr="28" column="1" str="{" scope="55b11923f800" link="55b119458400"/>
+    <token id="55b119254bd0" file="../plant_boss/src/thread_network.c" linenr="29" column="5" str="if" scope="55b11923f800" type="name" astParent="55b119254c30"/>
+    <token id="55b119254c30" file="../plant_boss/src/thread_network.c" linenr="29" column="8" str="(" scope="55b11923f800" link="55b119255130" astOperand1="55b119254bd0" astOperand2="55b119254db0"/>
+    <token id="55b119254d50" file="../plant_boss/src/thread_network.c" linenr="29" column="9" str="true" scope="55b11923f800" type="name" exprId="14" astParent="55b119254db0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119254db0" file="../plant_boss/src/thread_network.c" linenr="29" column="14" str="!=" scope="55b11923f800" type="op" isComparisonOp="true" exprId="1073741841" values="55b11923fcc0" astParent="55b119254c30" astOperand1="55b119254d50" astOperand2="55b11925fbd0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119254ed0" file="../plant_boss/src/thread_network.c" linenr="29" column="17" str="thread_network_init" scope="55b11923f800" type="name" function="55b119455590" astParent="55b11925fbd0"/>
+    <token id="55b11925fbd0" file="../plant_boss/src/thread_network.c" linenr="29" column="36" str="(" scope="55b11923f800" link="55b119254fe0" exprId="1073741840" values="55b11923f650" astParent="55b119254db0" astOperand1="55b119254ed0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119254fe0" file="../plant_boss/src/thread_network.c" linenr="29" column="37" str=")" scope="55b11923f800" link="55b11925fbd0"/>
+    <token id="55b119255130" file="../plant_boss/src/thread_network.c" linenr="29" column="38" str=")" scope="55b11923f800" link="55b119254c30"/>
+    <token id="55b119255190" file="../plant_boss/src/thread_network.c" linenr="30" column="5" str="{" scope="55b11923a110" link="55b119255540"/>
+    <token id="55b1192552b0" file="../plant_boss/src/thread_network.c" linenr="31" column="9" str="error_handle" scope="55b11923a110" type="name" astParent="55b119255310"/>
+    <token id="55b119255310" file="../plant_boss/src/thread_network.c" linenr="31" column="21" str="(" scope="55b11923a110" link="55b119255430" exprId="1073741843" astOperand1="55b1192552b0"/>
+    <token id="55b119255430" file="../plant_boss/src/thread_network.c" linenr="31" column="22" str=")" scope="55b11923a110" link="55b119255310"/>
+    <token id="55b11924cfe0" file="../plant_boss/src/thread_network.c" linenr="31" column="23" str=";" scope="55b11923a110"/>
+    <token id="55b119255540" file="../plant_boss/src/thread_network.c" linenr="32" column="5" str="}" scope="55b11923a110" link="55b119255190"/>
+    <token id="55b119255650" file="../plant_boss/src/thread_network.c" linenr="34" column="5" str="while" scope="55b11923f800" type="name" astParent="55b1192556b0"/>
+    <token id="55b1192556b0" file="../plant_boss/src/thread_network.c" linenr="34" column="11" str="(" scope="55b11923f800" link="55b11925fdf0" astOperand1="55b119255650" astOperand2="55b1192557c0"/>
+    <token id="55b1192557c0" file="../plant_boss/src/thread_network.c" linenr="34" column="12" str="1" scope="55b11923f800" type="number" isInt="true" values="55b119226290" astParent="55b1192556b0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925fdf0" file="../plant_boss/src/thread_network.c" linenr="34" column="13" str=")" scope="55b11923f800" link="55b1192556b0"/>
+    <token id="55b119255820" file="../plant_boss/src/thread_network.c" linenr="35" column="5" str="{" scope="55b11923a450" link="55b1194583a0"/>
+    <token id="55b119255930" file="../plant_boss/src/thread_network.c" linenr="36" column="9" str="if" scope="55b11923a450" type="name" astParent="55b119255a40"/>
+    <token id="55b119255a40" file="../plant_boss/src/thread_network.c" linenr="36" column="12" str="(" scope="55b11923a450" link="55b119458180" astOperand1="55b119255930" astOperand2="55b119457e60"/>
+    <token id="55b119255b50" file="../plant_boss/src/thread_network.c" linenr="36" column="13" str="true" scope="55b11923a450" type="name" exprId="14" astParent="55b119457e60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119457e60" file="../plant_boss/src/thread_network.c" linenr="36" column="18" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="1073741847" values="55b11923aef0" astParent="55b119255a40" astOperand1="55b119255b50" astOperand2="55b119457fe0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119457ec0" file="../plant_boss/src/thread_network.c" linenr="36" column="21" str="thread_network_handle" scope="55b11923a450" type="name" function="55b1194554d0" astParent="55b119457fe0"/>
+    <token id="55b119457fe0" file="../plant_boss/src/thread_network.c" linenr="36" column="42" str="(" scope="55b11923a450" link="55b119458040" exprId="1073741846" values="55b119252230" astParent="55b119457e60" astOperand1="55b119457ec0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119458040" file="../plant_boss/src/thread_network.c" linenr="36" column="43" str=")" scope="55b11923a450" link="55b119457fe0"/>
+    <token id="55b119458180" file="../plant_boss/src/thread_network.c" linenr="36" column="44" str=")" scope="55b11923a450" link="55b119255a40"/>
+    <token id="55b11924ca40" file="../plant_boss/src/thread_network.c" linenr="37" column="9" str="{" scope="55b119235c20" link="55b119458290"/>
+    <token id="55b119458290" file="../plant_boss/src/thread_network.c" linenr="39" column="9" str="}" scope="55b119235c20" link="55b11924ca40"/>
+    <token id="55b1194583a0" file="../plant_boss/src/thread_network.c" linenr="40" column="5" str="}" scope="55b11923a450" link="55b119255820"/>
+    <token id="55b119458400" file="../plant_boss/src/thread_network.c" linenr="41" column="1" str="}" scope="55b11923f800" link="55b1193f6f50"/>
+    <token id="55b119458510" file="../plant_boss/src/thread_network.c" linenr="43" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11924cc60" file="../plant_boss/src/thread_network.c" linenr="43" column="6" str="thread_network_init" scope="55b119236370" type="name" function="55b119455590"/>
+    <token id="55b119458570" file="../plant_boss/src/thread_network.c" linenr="43" column="25" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119458800" values="55b1193ca430" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119458800" file="../plant_boss/src/thread_network.c" linenr="43" column="30" str=")" scope="55b119236370" link="55b119458570"/>
+    <token id="55b119458920" file="../plant_boss/src/thread_network.c" linenr="44" column="1" str="{" scope="55b119235e90" link="55b119247580"/>
+    <token id="55b119458980" file="../plant_boss/src/thread_network.c" linenr="47" column="5" str="xTaskNotifyWait" scope="55b119235e90" type="name" astParent="55b119458aa0"/>
+    <token id="55b119458aa0" file="../plant_boss/src/thread_network.c" linenr="47" column="20" str="(" scope="55b119235e90" link="55b119459180" exprId="1073741857" astOperand1="55b119458980" astOperand2="55b119458fb0"/>
+    <token id="55b119458b00" file="../plant_boss/src/thread_network.c" linenr="47" column="21" str="0u" scope="55b119235e90" type="number" isInt="true" values="55b119258dd0" astParent="55b119458c20" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119458c20" file="../plant_boss/src/thread_network.c" linenr="47" column="23" str="," scope="55b119235e90" exprId="1073741852" astParent="55b119458d30" astOperand1="55b119458b00" astOperand2="55b11925f900"/>
+    <token id="55b11925f900" file="../plant_boss/src/thread_network.c" linenr="47" column="25" str="0u" scope="55b119235e90" type="number" isInt="true" values="55b119252e10" astParent="55b119458c20" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119458d30" file="../plant_boss/src/thread_network.c" linenr="47" column="27" str="," scope="55b119235e90" exprId="1073741854" astParent="55b119458fb0" astOperand1="55b119458c20" astOperand2="55b119458e40"/>
+    <token id="55b119458e40" file="../plant_boss/src/thread_network.c" linenr="47" column="29" str="&amp;" scope="55b119235e90" type="op" exprId="1073741853" values="55b1194bb730" astParent="55b119458d30" astOperand1="55b119458ea0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119458ea0" file="../plant_boss/src/thread_network.c" linenr="47" column="30" str="notification_network" scope="55b119235e90" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b1193f7060" astParent="55b119458e40" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119458fb0" file="../plant_boss/src/thread_network.c" linenr="47" column="50" str="," scope="55b119235e90" exprId="1073741856" astParent="55b119458aa0" astOperand1="55b119458d30" astOperand2="55b119459010"/>
+    <token id="55b119459010" file="../plant_boss/src/thread_network.c" linenr="47" column="52" str="portMAX_DELAY" scope="55b119235e90" type="name" exprId="1073741855" astParent="55b119458fb0"/>
+    <token id="55b119459180" file="../plant_boss/src/thread_network.c" linenr="47" column="65" str=")" scope="55b119235e90" link="55b119458aa0"/>
+    <token id="55b1194591e0" file="../plant_boss/src/thread_network.c" linenr="47" column="66" str=";" scope="55b119235e90"/>
+    <token id="55b119455850" file="../plant_boss/src/thread_network.c" linenr="48" column="5" str="if" scope="55b119235e90" type="name" astParent="55b1194066b0"/>
+    <token id="55b1194066b0" file="../plant_boss/src/thread_network.c" linenr="48" column="8" str="(" scope="55b119235e90" link="55b11924a760" astOperand1="55b119455850" astOperand2="55b119406ae0"/>
+    <token id="55b119406710" file="../plant_boss/src/thread_network.c" linenr="48" column="9" str="(" scope="55b119235e90" link="55b11924a700"/>
+    <token id="55b119406830" file="../plant_boss/src/thread_network.c" linenr="48" column="10" str="notification_network" scope="55b119235e90" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b11925fc30" astParent="55b119406890" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119406890" file="../plant_boss/src/thread_network.c" linenr="48" column="31" str="&amp;" scope="55b119235e90" type="op" exprId="1073741860" astParent="55b119406ae0" astOperand1="55b119406830" astOperand2="55b1194069d0"/>
+    <token id="55b1194069d0" file="../plant_boss/src/thread_network.c" linenr="48" column="33" str="NOTIFICATION_TO_NETWORK_REQ_INIT" scope="55b119235e90" type="name" exprId="35" astParent="55b119406890"/>
+    <token id="55b11924a700" file="../plant_boss/src/thread_network.c" linenr="48" column="65" str=")" scope="55b119235e90" link="55b119406710"/>
+    <token id="55b119406ae0" file="../plant_boss/src/thread_network.c" linenr="48" column="67" str="==" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741861" values="55b11924cd70" astParent="55b1194066b0" astOperand1="55b119406890" astOperand2="55b119406bf0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119406bf0" file="../plant_boss/src/thread_network.c" linenr="48" column="70" str="0u" scope="55b119235e90" type="number" isInt="true" values="55b119253160" astParent="55b119406ae0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924a760" file="../plant_boss/src/thread_network.c" linenr="48" column="72" str=")" scope="55b119235e90" link="55b1194066b0"/>
+    <token id="55b119406d00" file="../plant_boss/src/thread_network.c" linenr="49" column="5" str="{" scope="55b119236100" link="55b119407090"/>
+    <token id="55b119406e10" file="../plant_boss/src/thread_network.c" linenr="50" column="9" str="return" scope="55b119236100" type="name" values="55b119454ac0" astOperand1="55b119406e70" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119406e70" file="../plant_boss/src/thread_network.c" linenr="50" column="16" str="false" scope="55b119236100" type="name" exprId="38" astParent="55b119406e10" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119406f80" file="../plant_boss/src/thread_network.c" linenr="50" column="21" str=";" scope="55b119236100"/>
+    <token id="55b119407090" file="../plant_boss/src/thread_network.c" linenr="51" column="5" str="}" scope="55b119236100" link="55b119406d00"/>
+    <token id="55b11924a3d0" file="../plant_boss/src/thread_network.c" linenr="53" column="5" str="ulTaskNotifyValueClear" scope="55b119235e90" type="name" astParent="55b1194071a0"/>
+    <token id="55b1194071a0" file="../plant_boss/src/thread_network.c" linenr="53" column="27" str="(" scope="55b119235e90" link="55b119407530" exprId="1073741865" astOperand1="55b11924a3d0" astOperand2="55b1194073b0"/>
+    <token id="55b11924a430" file="../plant_boss/src/thread_network.c" linenr="53" column="28" str="handle_network" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b119256d60" astParent="55b1194073b0"/>
+    <token id="55b1194073b0" file="../plant_boss/src/thread_network.c" linenr="53" column="42" str="," scope="55b119235e90" exprId="1073741864" astParent="55b1194071a0" astOperand1="55b11924a430" astOperand2="55b119407410"/>
+    <token id="55b119407410" file="../plant_boss/src/thread_network.c" linenr="53" column="44" str="NOTIFICATION_TO_NETWORK_REQ_INIT" scope="55b119235e90" type="name" exprId="35" astParent="55b1194073b0"/>
+    <token id="55b119407530" file="../plant_boss/src/thread_network.c" linenr="53" column="76" str=")" scope="55b119235e90" link="55b1194071a0"/>
+    <token id="55b119407590" file="../plant_boss/src/thread_network.c" linenr="53" column="77" str=";" scope="55b119235e90"/>
+    <token id="55b1194076b0" file="../plant_boss/src/thread_network.c" linenr="55" column="5" str="if" scope="55b119235e90" type="name" astParent="55b119407710"/>
+    <token id="55b119407710" file="../plant_boss/src/thread_network.c" linenr="55" column="8" str="(" scope="55b119235e90" link="55b119227020" astOperand1="55b1194076b0" astOperand2="55b1193f6bd0"/>
+    <token id="55b119407830" file="../plant_boss/src/thread_network.c" linenr="55" column="9" str="true" scope="55b119235e90" type="name" exprId="42" astParent="55b1193f6bd0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1193f6bd0" file="../plant_boss/src/thread_network.c" linenr="55" column="14" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741869" values="55b11924be90" astParent="55b119407710" astOperand1="55b119407830" astOperand2="55b119226ea0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119407940" file="../plant_boss/src/thread_network.c" linenr="55" column="17" str="wifi_init" scope="55b119235e90" type="name" astParent="55b119226ea0"/>
+    <token id="55b119226ea0" file="../plant_boss/src/thread_network.c" linenr="55" column="26" str="(" scope="55b119235e90" link="55b119226f00" exprId="1073741868" astParent="55b1193f6bd0" astOperand1="55b119407940"/>
+    <token id="55b119226f00" file="../plant_boss/src/thread_network.c" linenr="55" column="27" str=")" scope="55b119235e90" link="55b119226ea0"/>
+    <token id="55b119227020" file="../plant_boss/src/thread_network.c" linenr="55" column="28" str=")" scope="55b119235e90" link="55b119407710"/>
+    <token id="55b119227080" file="../plant_boss/src/thread_network.c" linenr="56" column="5" str="{" scope="55b11922c980" link="55b119227b80"/>
+    <token id="55b1192271a0" file="../plant_boss/src/thread_network.c" linenr="57" column="9" str="while" scope="55b11922c980" type="name" astParent="55b119227200"/>
+    <token id="55b119227200" file="../plant_boss/src/thread_network.c" linenr="57" column="14" str="(" scope="55b11922c980" link="55b119248c50" astOperand1="55b1192271a0" astOperand2="55b119227380"/>
+    <token id="55b119227320" file="../plant_boss/src/thread_network.c" linenr="57" column="15" str="false" scope="55b11922c980" type="name" exprId="38" astParent="55b119227380" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119227380" file="../plant_boss/src/thread_network.c" linenr="57" column="21" str="==" scope="55b11922c980" type="op" isComparisonOp="true" exprId="1073741870" values="55b119250340" astParent="55b119227200" astOperand1="55b119227320" astOperand2="55b1192274a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192274a0" file="../plant_boss/src/thread_network.c" linenr="57" column="24" str="b_wifi_connected" scope="55b11922c980" type="name" varId="9" exprId="9" variable="55b119256e90" values="55b119233750" astParent="55b119227380" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119248c50" file="../plant_boss/src/thread_network.c" linenr="57" column="40" str=")" scope="55b11922c980" link="55b119227200"/>
+    <token id="55b1192275b0" file="../plant_boss/src/thread_network.c" linenr="58" column="9" str="{" scope="55b1192264f0" link="55b119227a60"/>
+    <token id="55b119227700" file="../plant_boss/src/thread_network.c" linenr="59" column="13" str="vTaskDelay" scope="55b1192264f0" type="name" astParent="55b119227760"/>
+    <token id="55b119227760" file="../plant_boss/src/thread_network.c" linenr="59" column="23" str="(" scope="55b1192264f0" link="55b1192278e0" exprId="1073741873" astOperand1="55b119227700" astOperand2="55b119227880"/>
+    <token id="55b119227880" file="../plant_boss/src/thread_network.c" linenr="59" column="24" str="200" scope="55b1192264f0" type="number" isInt="true" values="55b119228480" astParent="55b119227760" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192278e0" file="../plant_boss/src/thread_network.c" linenr="59" column="27" str=")" scope="55b1192264f0" link="55b119227760"/>
+    <token id="55b119227a00" file="../plant_boss/src/thread_network.c" linenr="59" column="28" str=";" scope="55b1192264f0"/>
+    <token id="55b119227a60" file="../plant_boss/src/thread_network.c" linenr="60" column="9" str="}" scope="55b1192264f0" link="55b1192275b0"/>
+    <token id="55b119227b80" file="../plant_boss/src/thread_network.c" linenr="62" column="5" str="}" scope="55b11922c980" link="55b119227080"/>
+    <token id="55b119227be0" file="../plant_boss/src/thread_network.c" linenr="65" column="5" str="if" scope="55b119235e90" type="name" astParent="55b119227d00"/>
+    <token id="55b119227d00" file="../plant_boss/src/thread_network.c" linenr="65" column="8" str="(" scope="55b119235e90" link="55b119246620" astOperand1="55b119227be0" astOperand2="55b1193f6890"/>
+    <token id="55b1193f6830" file="../plant_boss/src/thread_network.c" linenr="65" column="9" str="pdPASS" scope="55b119235e90" type="name" exprId="1073741874" astParent="55b1193f6890"/>
+    <token id="55b1193f6890" file="../plant_boss/src/thread_network.c" linenr="65" column="16" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741881" values="55b1192339d0" astParent="55b119227d00" astOperand1="55b1193f6830" astOperand2="55b119227fd0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119227ec0" file="../plant_boss/src/thread_network.c" linenr="65" column="19" str="xTaskNotify" scope="55b119235e90" type="name" astParent="55b119227fd0"/>
+    <token id="55b119227fd0" file="../plant_boss/src/thread_network.c" linenr="65" column="30" str="(" scope="55b119235e90" link="55b119228420" exprId="1073741880" astParent="55b1193f6890" astOperand1="55b119227ec0" astOperand2="55b1192282b0"/>
+    <token id="55b119228030" file="../plant_boss/src/thread_network.c" linenr="65" column="31" str="handle_app" scope="55b119235e90" type="name" varId="7" exprId="7" variable="55b119405830" astParent="55b119228140"/>
+    <token id="55b119228140" file="../plant_boss/src/thread_network.c" linenr="65" column="41" str="," scope="55b119235e90" exprId="1073741877" astParent="55b1192282b0" astOperand1="55b119228030" astOperand2="55b1192281a0"/>
+    <token id="55b1192281a0" file="../plant_boss/src/thread_network.c" linenr="65" column="43" str="NOTIFICATION_TO_APP_RES_INIT_NETWORK" scope="55b119235e90" type="name" exprId="1073741876" astParent="55b119228140"/>
+    <token id="55b1192282b0" file="../plant_boss/src/thread_network.c" linenr="65" column="79" str="," scope="55b119235e90" exprId="1073741879" astParent="55b119227fd0" astOperand1="55b119228140" astOperand2="55b1192283c0"/>
+    <token id="55b1192283c0" file="../plant_boss/src/thread_network.c" linenr="65" column="81" str="eSetBits" scope="55b119235e90" type="name" exprId="1073741878" astParent="55b1192282b0"/>
+    <token id="55b119228420" file="../plant_boss/src/thread_network.c" linenr="65" column="89" str=")" scope="55b119235e90" link="55b119227fd0"/>
+    <token id="55b119246620" file="../plant_boss/src/thread_network.c" linenr="65" column="90" str=")" scope="55b119235e90" link="55b119227d00"/>
+    <token id="55b119246680" file="../plant_boss/src/thread_network.c" linenr="66" column="5" str="{" scope="55b119226760" link="55b119246980"/>
+    <token id="55b1192467a0" file="../plant_boss/src/thread_network.c" linenr="67" column="9" str="return" scope="55b119226760" type="name" values="55b119233c50" astOperand1="55b119246800" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119246800" file="../plant_boss/src/thread_network.c" linenr="67" column="16" str="false" scope="55b119226760" type="name" exprId="38" astParent="55b1192467a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119246920" file="../plant_boss/src/thread_network.c" linenr="67" column="21" str=";" scope="55b119226760"/>
+    <token id="55b119246980" file="../plant_boss/src/thread_network.c" linenr="68" column="5" str="}" scope="55b119226760" link="55b119246680"/>
+    <token id="55b119246aa0" file="../plant_boss/src/thread_network.c" linenr="70" column="5" str="ESP_LOGI" scope="55b119235e90" type="name" astParent="55b119246b00"/>
+    <token id="55b119246b00" file="../plant_boss/src/thread_network.c" linenr="70" column="13" str="(" scope="55b119235e90" link="55b119246e40" exprId="1073741885" astOperand1="55b119246aa0" astOperand2="55b119251a60"/>
+    <token id="55b119246c20" file="../plant_boss/src/thread_network.c" linenr="70" column="14" str="tag_t_n" scope="55b119235e90" type="name" varId="10" exprId="10" variable="55b119256fc0" astParent="55b119251a60" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119251a60" file="../plant_boss/src/thread_network.c" linenr="70" column="21" str="," scope="55b119235e90" exprId="1073741884" astParent="55b119246b00" astOperand1="55b119246c20" astOperand2="55b119246d30"/>
+    <token id="55b119246d30" file="../plant_boss/src/thread_network.c" linenr="70" column="23" str="&quot;i&quot;" scope="55b119235e90" type="string" strlen="1" exprId="1073741883" values="55b11925a3d0" astParent="55b119251a60" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119246e40" file="../plant_boss/src/thread_network.c" linenr="70" column="26" str=")" scope="55b119235e90" link="55b119246b00"/>
+    <token id="55b119246ea0" file="../plant_boss/src/thread_network.c" linenr="70" column="27" str=";" scope="55b119235e90"/>
+    <token id="55b119246fb0" file="../plant_boss/src/thread_network.c" linenr="73" column="5" str="vTaskDelay" scope="55b119235e90" type="name" astParent="55b119247010"/>
+    <token id="55b119247010" file="../plant_boss/src/thread_network.c" linenr="73" column="15" str="(" scope="55b119235e90" link="55b119247180" exprId="1073741887" astOperand1="55b119246fb0" astOperand2="55b119247120"/>
+    <token id="55b119247120" file="../plant_boss/src/thread_network.c" linenr="73" column="16" str="1" scope="55b119235e90" type="number" isInt="true" values="55b1194558b0" astParent="55b119247010" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119247180" file="../plant_boss/src/thread_network.c" linenr="73" column="17" str=")" scope="55b119235e90" link="55b119247010"/>
+    <token id="55b119247290" file="../plant_boss/src/thread_network.c" linenr="73" column="18" str=";" scope="55b119235e90"/>
+    <token id="55b1192473a0" file="../plant_boss/src/thread_network.c" linenr="75" column="5" str="return" scope="55b119235e90" type="name" values="55b119233ed0" astOperand1="55b119247400" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119247400" file="../plant_boss/src/thread_network.c" linenr="75" column="12" str="true" scope="55b119235e90" type="name" exprId="42" astParent="55b1192473a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119247520" file="../plant_boss/src/thread_network.c" linenr="75" column="16" str=";" scope="55b119235e90"/>
+    <token id="55b119247580" file="../plant_boss/src/thread_network.c" linenr="76" column="1" str="}" scope="55b119235e90" link="55b119458920"/>
+    <token id="55b1192476a0" file="../plant_boss/src/thread_network.c" linenr="78" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119247700" file="../plant_boss/src/thread_network.c" linenr="78" column="6" str="thread_network_handle" scope="55b119236370" type="name" function="55b1194554d0"/>
+    <token id="55b119247820" file="../plant_boss/src/thread_network.c" linenr="78" column="27" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b1192479c0" values="55b119234150" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192479c0" file="../plant_boss/src/thread_network.c" linenr="78" column="32" str=")" scope="55b119236370" link="55b119247820"/>
+    <token id="55b119253800" file="../plant_boss/src/thread_network.c" linenr="79" column="1" str="{" scope="55b1192269d0" link="55b119261ec0"/>
+    <token id="55b1194b72c0" file="../plant_boss/src/thread_network.c" linenr="80" column="5" str="xTaskNotifyWait" scope="55b1192269d0" type="name" astParent="55b119247ad0"/>
+    <token id="55b119247ad0" file="../plant_boss/src/thread_network.c" linenr="80" column="20" str="(" scope="55b1192269d0" link="55b1194b7a00" exprId="1073741897" astOperand1="55b1194b72c0" astOperand2="55b1194b7820"/>
+    <token id="55b1194b73d0" file="../plant_boss/src/thread_network.c" linenr="80" column="21" str="0u" scope="55b1192269d0" type="number" isInt="true" values="55b1193f6db0" astParent="55b1194b74e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b74e0" file="../plant_boss/src/thread_network.c" linenr="80" column="23" str="," scope="55b1192269d0" exprId="1073741892" astParent="55b1194b7650" astOperand1="55b1194b73d0" astOperand2="55b1194b7540"/>
+    <token id="55b1194b7540" file="../plant_boss/src/thread_network.c" linenr="80" column="25" str="0u" scope="55b1192269d0" type="number" isInt="true" values="55b11922adb0" astParent="55b1194b74e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b7650" file="../plant_boss/src/thread_network.c" linenr="80" column="27" str="," scope="55b1192269d0" exprId="1073741894" astParent="55b1194b7820" astOperand1="55b1194b74e0" astOperand2="55b1194b76b0"/>
+    <token id="55b1194b76b0" file="../plant_boss/src/thread_network.c" linenr="80" column="29" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741893" values="55b11925dfa0" astParent="55b1194b7650" astOperand1="55b1194b77c0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1194b77c0" file="../plant_boss/src/thread_network.c" linenr="80" column="30" str="notification_network" scope="55b1192269d0" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b119237f80" astParent="55b1194b76b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b7820" file="../plant_boss/src/thread_network.c" linenr="80" column="50" str="," scope="55b1192269d0" exprId="1073741896" astParent="55b119247ad0" astOperand1="55b1194b7650" astOperand2="55b1194b79a0"/>
+    <token id="55b1194b79a0" file="../plant_boss/src/thread_network.c" linenr="80" column="52" str="1u" scope="55b1192269d0" type="number" isInt="true" values="55b1193f6c60" astParent="55b1194b7820" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b7a00" file="../plant_boss/src/thread_network.c" linenr="80" column="54" str=")" scope="55b1192269d0" link="55b119247ad0"/>
+    <token id="55b1194b7b20" file="../plant_boss/src/thread_network.c" linenr="80" column="55" str=";" scope="55b1192269d0"/>
+    <token id="55b1194b7b80" file="../plant_boss/src/thread_network.c" linenr="81" column="5" str="if" scope="55b1192269d0" type="name" astParent="55b1194b7ca0"/>
+    <token id="55b1194b7ca0" file="../plant_boss/src/thread_network.c" linenr="81" column="8" str="(" scope="55b1192269d0" link="55b1194b8250" astOperand1="55b1194b7b80" astOperand2="55b1194b8140"/>
+    <token id="55b1194b7d00" file="../plant_boss/src/thread_network.c" linenr="81" column="9" str="(" scope="55b1192269d0" link="55b1194b8020"/>
+    <token id="55b1194b7e20" file="../plant_boss/src/thread_network.c" linenr="81" column="10" str="notification_network" scope="55b1192269d0" type="name" varId="3" exprId="3" variable="55b1194ba390" values="55b1192380e0" astParent="55b1194b7e80" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b7e80" file="../plant_boss/src/thread_network.c" linenr="81" column="31" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741900" astParent="55b1194b8140" astOperand1="55b1194b7e20" astOperand2="55b1194b7fc0"/>
+    <token id="55b1194b7fc0" file="../plant_boss/src/thread_network.c" linenr="81" column="33" str="NOTIFICATION_TO_NETWORK_REQ_SETTINGS" scope="55b1192269d0" type="name" exprId="75" astParent="55b1194b7e80"/>
+    <token id="55b1194b8020" file="../plant_boss/src/thread_network.c" linenr="81" column="69" str=")" scope="55b1192269d0" link="55b1194b7d00"/>
+    <token id="55b1194b8140" file="../plant_boss/src/thread_network.c" linenr="81" column="71" str="==" scope="55b1192269d0" type="op" isComparisonOp="true" exprId="1073741901" values="55b119238240" astParent="55b1194b7ca0" astOperand1="55b1194b7e80" astOperand2="55b119456450" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119456450" file="../plant_boss/src/thread_network.c" linenr="81" column="74" str="0u" scope="55b1192269d0" type="number" isInt="true" values="55b119482a80" astParent="55b1194b8140" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194b8250" file="../plant_boss/src/thread_network.c" linenr="81" column="76" str=")" scope="55b1192269d0" link="55b1194b7ca0"/>
+    <token id="55b1194b8360" file="../plant_boss/src/thread_network.c" linenr="82" column="5" str="{" scope="55b11925eb60" link="55b1194b8640"/>
+    <token id="55b1194b83c0" file="../plant_boss/src/thread_network.c" linenr="83" column="9" str="return" scope="55b11925eb60" type="name" values="55b1192384c0" astOperand1="55b1194b84d0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1194b84d0" file="../plant_boss/src/thread_network.c" linenr="83" column="16" str="false" scope="55b11925eb60" type="name" exprId="78" astParent="55b1194b83c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1194b8530" file="../plant_boss/src/thread_network.c" linenr="83" column="21" str=";" scope="55b11925eb60"/>
+    <token id="55b1194b8640" file="../plant_boss/src/thread_network.c" linenr="84" column="5" str="}" scope="55b11925eb60" link="55b1194b8360"/>
+    <token id="55b1194b86a0" file="../plant_boss/src/thread_network.c" linenr="86" column="5" str="ulTaskNotifyValueClear" scope="55b1192269d0" type="name" astParent="55b1194b87b0"/>
+    <token id="55b1194b87b0" file="../plant_boss/src/thread_network.c" linenr="86" column="27" str="(" scope="55b1192269d0" link="55b11925a840" exprId="1073741905" astOperand1="55b1194b86a0" astOperand2="55b11925a6c0"/>
+    <token id="55b11925a660" file="../plant_boss/src/thread_network.c" linenr="86" column="28" str="handle_network" scope="55b1192269d0" type="name" varId="8" exprId="8" variable="55b119256d60" astParent="55b11925a6c0"/>
+    <token id="55b11925a6c0" file="../plant_boss/src/thread_network.c" linenr="86" column="42" str="," scope="55b1192269d0" exprId="1073741904" astParent="55b1194b87b0" astOperand1="55b11925a660" astOperand2="55b11925a7e0"/>
+    <token id="55b11925a7e0" file="../plant_boss/src/thread_network.c" linenr="86" column="44" str="NOTIFICATION_TO_NETWORK_REQ_SETTINGS" scope="55b1192269d0" type="name" exprId="75" astParent="55b11925a6c0"/>
+    <token id="55b11925a840" file="../plant_boss/src/thread_network.c" linenr="86" column="80" str=")" scope="55b1192269d0" link="55b1194b87b0"/>
+    <token id="55b11925a960" file="../plant_boss/src/thread_network.c" linenr="86" column="81" str=";" scope="55b1192269d0"/>
+    <token id="55b11925a9c0" file="../plant_boss/src/thread_network.c" linenr="88" column="5" str="if" scope="55b1192269d0" type="name" astParent="55b11925aae0"/>
+    <token id="55b11925aae0" file="../plant_boss/src/thread_network.c" linenr="88" column="8" str="(" scope="55b1192269d0" link="55b11925aef0" astOperand1="55b11925a9c0" astOperand2="55b11925ac60"/>
+    <token id="55b11925ab40" file="../plant_boss/src/thread_network.c" linenr="88" column="9" str="true" scope="55b1192269d0" type="name" exprId="82" astParent="55b11925ac60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925ac60" file="../plant_boss/src/thread_network.c" linenr="88" column="14" str="!=" scope="55b1192269d0" type="op" isComparisonOp="true" exprId="1073741909" values="55b119238740" astParent="55b11925aae0" astOperand1="55b11925ab40" astOperand2="55b11925ade0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925acc0" file="../plant_boss/src/thread_network.c" linenr="88" column="17" str="wifi_handle_request_settings" scope="55b1192269d0" type="name" astParent="55b11925ade0"/>
+    <token id="55b11925ade0" file="../plant_boss/src/thread_network.c" linenr="88" column="45" str="(" scope="55b1192269d0" link="55b1192425f0" exprId="1073741908" astParent="55b11925ac60" astOperand1="55b11925acc0"/>
+    <token id="55b1192425f0" file="../plant_boss/src/thread_network.c" linenr="88" column="46" str=")" scope="55b1192269d0" link="55b11925ade0"/>
+    <token id="55b11925aef0" file="../plant_boss/src/thread_network.c" linenr="88" column="47" str=")" scope="55b1192269d0" link="55b11925aae0"/>
+    <token id="55b11925b000" file="../plant_boss/src/thread_network.c" linenr="89" column="5" str="{" scope="55b11925edd0" link="55b11925b280"/>
+    <token id="55b119242650" file="../plant_boss/src/thread_network.c" linenr="90" column="9" str="return" scope="55b11925edd0" type="name" values="55b1192389c0" astOperand1="55b11925b110" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925b110" file="../plant_boss/src/thread_network.c" linenr="90" column="16" str="false" scope="55b11925edd0" type="name" exprId="78" astParent="55b119242650" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925b220" file="../plant_boss/src/thread_network.c" linenr="90" column="21" str=";" scope="55b11925edd0"/>
+    <token id="55b11925b280" file="../plant_boss/src/thread_network.c" linenr="91" column="5" str="}" scope="55b11925edd0" link="55b11925b000"/>
+    <token id="55b11925b390" file="../plant_boss/src/thread_network.c" linenr="93" column="5" str="char" scope="55b1192269d0" type="name"/>
+    <token id="55b11925b4a0" file="../plant_boss/src/thread_network.c" linenr="93" column="10" str="settings" scope="55b1192269d0" type="name" varId="12" exprId="12" variable="55b1192570f0" astParent="55b11925b500" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925b500" file="../plant_boss/src/thread_network.c" linenr="93" column="18" str="[" scope="55b1192269d0" link="55b11925b680" exprId="1073741911" astOperand1="55b11925b4a0" astOperand2="55b11925b620" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925b620" file="../plant_boss/src/thread_network.c" linenr="93" column="19" str="20" scope="55b1192269d0" type="number" isInt="true" values="55b1194621b0" astParent="55b11925b500" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925b680" file="../plant_boss/src/thread_network.c" linenr="93" column="21" str="]" scope="55b1192269d0" link="55b11925b500"/>
+    <token id="55b11925b7a0" file="../plant_boss/src/thread_network.c" linenr="93" column="22" str=";" scope="55b1192269d0"/>
+    <token id="55b11925b800" file="../plant_boss/src/thread_network.c" linenr="94" column="5" str="uint8_t" scope="55b1192269d0" type="name"/>
+    <token id="55b11925b920" file="../plant_boss/src/thread_network.c" linenr="94" column="13" str="length_settings" scope="55b1192269d0" type="name" varId="13" exprId="13" variable="55b119257180" values="55b119238c40" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925b980" file="../plant_boss/src/thread_network.c" linenr="94" column="28" str=";" scope="55b1192269d0"/>
+    <token id="55b11925baa0" file="../plant_boss/src/thread_network.c" linenr="96" column="5" str="wifi_get_device_settings" scope="55b1192269d0" type="name" astParent="55b11925bb00"/>
+    <token id="55b11925bb00" file="../plant_boss/src/thread_network.c" linenr="96" column="29" str="(" scope="55b1192269d0" link="55b119254860" exprId="1073741916" astOperand1="55b11925baa0" astOperand2="55b119254800"/>
+    <token id="55b11925bc50" file="../plant_boss/src/thread_network.c" linenr="96" column="30" str="(" scope="55b1192269d0" isCast="true" link="55b11924e2d0" exprId="1073741913" values="55b119454000" astParent="55b119254800" astOperand1="55b11924e3f0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925bcb0" file="../plant_boss/src/thread_network.c" linenr="96" column="31" str="char" scope="55b1192269d0" type="name"/>
+    <token id="55b11924e270" file="../plant_boss/src/thread_network.c" linenr="96" column="36" str="*" scope="55b1192269d0" type="op" isArithmeticalOp="true"/>
+    <token id="55b11924e2d0" file="../plant_boss/src/thread_network.c" linenr="96" column="37" str=")" scope="55b1192269d0" link="55b11925bc50"/>
+    <token id="55b11924e3f0" file="../plant_boss/src/thread_network.c" linenr="96" column="38" str="settings" scope="55b1192269d0" type="name" varId="12" exprId="12" variable="55b1192570f0" values="55b119241f30" astParent="55b11925bc50" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119254800" file="../plant_boss/src/thread_network.c" linenr="96" column="46" str="," scope="55b1192269d0" exprId="1073741915" astParent="55b11925bb00" astOperand1="55b11925bc50" astOperand2="55b11924e500"/>
+    <token id="55b11924e500" file="../plant_boss/src/thread_network.c" linenr="96" column="48" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741914" values="55b119230810" astParent="55b119254800" astOperand1="55b11924e610" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11924e610" file="../plant_boss/src/thread_network.c" linenr="96" column="49" str="length_settings" scope="55b1192269d0" type="name" varId="13" exprId="13" variable="55b119257180" values="55b119238ec0" astParent="55b11924e500" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119254860" file="../plant_boss/src/thread_network.c" linenr="96" column="64" str=")" scope="55b1192269d0" link="55b11925bb00"/>
+    <token id="55b11924e720" file="../plant_boss/src/thread_network.c" linenr="96" column="65" str=";" scope="55b1192269d0"/>
+    <token id="55b11924e830" file="../plant_boss/src/thread_network.c" linenr="98" column="5" str="if" scope="55b1192269d0" type="name" astParent="55b11924e890"/>
+    <token id="55b11924e890" file="../plant_boss/src/thread_network.c" linenr="98" column="8" str="(" scope="55b1192269d0" link="55b11924ec30" astOperand1="55b11924e830" astOperand2="55b11924eab0"/>
+    <token id="55b11924e9a0" file="../plant_boss/src/thread_network.c" linenr="98" column="9" str="length_settings" scope="55b1192269d0" type="name" varId="13" exprId="13" variable="55b119257180" values="55b119239020" astParent="55b11924eab0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924eab0" file="../plant_boss/src/thread_network.c" linenr="98" column="25" str="&lt;=" scope="55b1192269d0" type="op" isComparisonOp="true" exprId="1073741918" values="55b119239180" astParent="55b11924e890" astOperand1="55b11924e9a0" astOperand2="55b11924eb10" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924eb10" file="../plant_boss/src/thread_network.c" linenr="98" column="28" str="3" scope="55b1192269d0" type="number" isInt="true" values="55b119459240" astParent="55b11924eab0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924ec30" file="../plant_boss/src/thread_network.c" linenr="98" column="29" str=")" scope="55b1192269d0" link="55b11924e890"/>
+    <token id="55b11924ec90" file="../plant_boss/src/thread_network.c" linenr="99" column="5" str="{" scope="55b11925f040" link="55b11924ef90"/>
+    <token id="55b11924edb0" file="../plant_boss/src/thread_network.c" linenr="100" column="9" str="return" scope="55b11925f040" type="name" values="55b119239400" astOperand1="55b11924ee10" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924ee10" file="../plant_boss/src/thread_network.c" linenr="100" column="16" str="false" scope="55b11925f040" type="name" exprId="78" astParent="55b11924edb0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924ef30" file="../plant_boss/src/thread_network.c" linenr="100" column="21" str=";" scope="55b11925f040"/>
+    <token id="55b11924ef90" file="../plant_boss/src/thread_network.c" linenr="101" column="5" str="}" scope="55b11925f040" link="55b11924ec90"/>
+    <token id="55b11924f0b0" file="../plant_boss/src/thread_network.c" linenr="103" column="5" str="length_settings" scope="55b1192269d0" type="name" varId="13" exprId="13" variable="55b119257180" values="55b119239680" astParent="55b11924f110" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924f110" file="../plant_boss/src/thread_network.c" linenr="103" column="21" str="-=" scope="55b1192269d0" type="op" isAssignmentOp="true" exprId="1073741919" values="55b1192397e0" astOperand1="55b11924f0b0" astOperand2="55b11924f230" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924f230" file="../plant_boss/src/thread_network.c" linenr="103" column="24" str="3" scope="55b1192269d0" type="number" isInt="true" values="55b119454730" astParent="55b11924f110" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924f290" file="../plant_boss/src/thread_network.c" linenr="103" column="25" str=";" scope="55b1192269d0"/>
+    <token id="55b11924f3b0" file="../plant_boss/src/thread_network.c" linenr="105" column="5" str="memcpy" scope="55b1192269d0" type="name" astParent="55b11924f410"/>
+    <token id="55b11924f410" file="../plant_boss/src/thread_network.c" linenr="105" column="11" str="(" scope="55b1192269d0" link="55b11925bfe0" exprId="1073741926" astOperand1="55b11924f3b0" astOperand2="55b11924faf0" valueType-type="void" valueType-pointer="1" valueType-reference="None" valueType-originalTypeName="void *"/>
+    <token id="55b11924f530" file="../plant_boss/src/thread_network.c" linenr="105" column="12" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741921" values="55b1193ca2c0" astParent="55b11924f590" astOperand1="55b11945a1f0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11945a1f0" file="../plant_boss/src/thread_network.c" linenr="105" column="13" str="buf_tx_queue_app" scope="55b1192269d0" type="name" varId="4" exprId="4" variable="55b1192426d0" values="55b11924b6a0" astParent="55b11924f530" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11924f590" file="../plant_boss/src/thread_network.c" linenr="105" column="29" str="," scope="55b1192269d0" exprId="1073741924" astParent="55b11924faf0" astOperand1="55b11924f530" astOperand2="55b11924f790"/>
+    <token id="55b11924f790" file="../plant_boss/src/thread_network.c" linenr="105" column="31" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741923" values="55b119232260" astParent="55b11924f590" astOperand1="55b11924f910" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11924f7f0" file="../plant_boss/src/thread_network.c" linenr="105" column="32" str="settings" scope="55b1192269d0" type="name" varId="12" exprId="12" variable="55b1192570f0" values="55b11923a020" astParent="55b11924f910" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11924f910" file="../plant_boss/src/thread_network.c" linenr="105" column="40" str="[" scope="55b1192269d0" link="55b11924fa90" exprId="1073741922" astParent="55b11924f790" astOperand1="55b11924f7f0" astOperand2="55b11924f970" valueType-type="char" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924f970" file="../plant_boss/src/thread_network.c" linenr="105" column="41" str="3" scope="55b1192269d0" type="number" isInt="true" values="55b11922c100" astParent="55b11924f910" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924fa90" file="../plant_boss/src/thread_network.c" linenr="105" column="42" str="]" scope="55b1192269d0" link="55b11924f910"/>
+    <token id="55b11924faf0" file="../plant_boss/src/thread_network.c" linenr="105" column="43" str="," scope="55b1192269d0" exprId="1073741925" astParent="55b11924f410" astOperand1="55b11924f590" astOperand2="55b11925bf80"/>
+    <token id="55b11925bf80" file="../plant_boss/src/thread_network.c" linenr="105" column="45" str="length_settings" scope="55b1192269d0" type="name" varId="13" exprId="13" variable="55b119257180" values="55b1193f06c0" astParent="55b11924faf0" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925bfe0" file="../plant_boss/src/thread_network.c" linenr="105" column="60" str=")" scope="55b1192269d0" link="55b11924f410"/>
+    <token id="55b11925c100" file="../plant_boss/src/thread_network.c" linenr="105" column="61" str=";" scope="55b1192269d0"/>
+    <token id="55b11925c160" file="../plant_boss/src/thread_network.c" linenr="107" column="5" str="xQueueSend" scope="55b1192269d0" type="name" astParent="55b11925c280"/>
+    <token id="55b11925c280" file="../plant_boss/src/thread_network.c" linenr="107" column="15" str="(" scope="55b1192269d0" link="55b119482a20" exprId="1073741933" astOperand1="55b11925c160" astOperand2="55b11925c8a0"/>
+    <token id="55b11925c2e0" file="../plant_boss/src/thread_network.c" linenr="107" column="16" str="queue_wifi_to_app" scope="55b1192269d0" type="name" varId="6" exprId="6" variable="55b1194569b0" astParent="55b11925c400"/>
+    <token id="55b11925c400" file="../plant_boss/src/thread_network.c" linenr="107" column="33" str="," scope="55b1192269d0" exprId="1073741929" astParent="55b11925c8a0" astOperand1="55b11925c2e0" astOperand2="55b11925c460"/>
+    <token id="55b11925c460" file="../plant_boss/src/thread_network.c" linenr="107" column="35" str="(" scope="55b1192269d0" isCast="true" link="55b11925c720" exprId="1073741928" values="55b1193cabe0" astParent="55b11925c400" astOperand1="55b11925c780" valueType-type="void" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925c5a0" file="../plant_boss/src/thread_network.c" linenr="107" column="36" str="void" scope="55b1192269d0" type="name"/>
+    <token id="55b11925c600" file="../plant_boss/src/thread_network.c" linenr="107" column="40" str="*" scope="55b1192269d0" type="op" isArithmeticalOp="true"/>
+    <token id="55b11925c720" file="../plant_boss/src/thread_network.c" linenr="107" column="41" str=")" scope="55b1192269d0" link="55b11925c460"/>
+    <token id="55b11925c780" file="../plant_boss/src/thread_network.c" linenr="107" column="42" str="buf_tx_queue_app" scope="55b1192269d0" type="name" varId="4" exprId="4" variable="55b1192426d0" values="55b11924e1d0" astParent="55b11925c460" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925c8a0" file="../plant_boss/src/thread_network.c" linenr="107" column="58" str="," scope="55b1192269d0" exprId="1073741932" astParent="55b11925c280" astOperand1="55b11925c400" astOperand2="55b11925c900"/>
+    <token id="55b11925c900" file="../plant_boss/src/thread_network.c" linenr="107" column="60" str="(" scope="55b1192269d0" isCast="true" link="55b11925caa0" exprId="1073741931" values="55b11922c180" astParent="55b11925c8a0" astOperand1="55b11925cbc0"/>
+    <token id="55b11925ca40" file="../plant_boss/src/thread_network.c" linenr="107" column="61" str="TickType_t" scope="55b1192269d0" type="name"/>
+    <token id="55b11925caa0" file="../plant_boss/src/thread_network.c" linenr="107" column="71" str=")" scope="55b1192269d0" link="55b11925c900"/>
+    <token id="55b11925cbc0" file="../plant_boss/src/thread_network.c" linenr="107" column="72" str="0" scope="55b1192269d0" type="number" isInt="true" values="55b119257700" astParent="55b11925c900" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119482a20" file="../plant_boss/src/thread_network.c" linenr="107" column="73" str=")" scope="55b1192269d0" link="55b11925c280"/>
+    <token id="55b11925ccd0" file="../plant_boss/src/thread_network.c" linenr="107" column="74" str=";" scope="55b1192269d0"/>
+    <token id="55b11925cde0" file="../plant_boss/src/thread_network.c" linenr="109" column="5" str="ESP_LOGI" scope="55b1192269d0" type="name" astParent="55b11925ce40"/>
+    <token id="55b11925ce40" file="../plant_boss/src/thread_network.c" linenr="109" column="13" str="(" scope="55b1192269d0" link="55b11925d120" exprId="1073741937" astOperand1="55b11925cde0" astOperand2="55b11925cfb0"/>
+    <token id="55b11925cf50" file="../plant_boss/src/thread_network.c" linenr="109" column="14" str="tag_t_n" scope="55b1192269d0" type="name" varId="10" exprId="10" variable="55b119256fc0" astParent="55b11925cfb0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925cfb0" file="../plant_boss/src/thread_network.c" linenr="109" column="21" str="," scope="55b1192269d0" exprId="1073741936" astParent="55b11925ce40" astOperand1="55b11925cf50" astOperand2="55b11925d0c0"/>
+    <token id="55b11925d0c0" file="../plant_boss/src/thread_network.c" linenr="109" column="23" str="&quot;h&quot;" scope="55b1192269d0" type="string" strlen="1" exprId="1073741935" values="55b119451aa0" astParent="55b11925cfb0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925d120" file="../plant_boss/src/thread_network.c" linenr="109" column="26" str=")" scope="55b1192269d0" link="55b11925ce40"/>
+    <token id="55b11925d230" file="../plant_boss/src/thread_network.c" linenr="109" column="27" str=";" scope="55b1192269d0"/>
+    <token id="55b11925d340" file="../plant_boss/src/thread_network.c" linenr="111" column="5" str="if" scope="55b1192269d0" type="name" astParent="55b11925d3a0"/>
+    <token id="55b11925d3a0" file="../plant_boss/src/thread_network.c" linenr="111" column="8" str="(" scope="55b1192269d0" link="55b119260750" astOperand1="55b11925d340" astOperand2="55b11925d520"/>
+    <token id="55b11925d4c0" file="../plant_boss/src/thread_network.c" linenr="111" column="9" str="xQueueReceive" scope="55b1192269d0" type="name" astParent="55b11925d520"/>
+    <token id="55b11925d520" file="../plant_boss/src/thread_network.c" linenr="111" column="22" str="(" scope="55b1192269d0" link="55b1192606f0" exprId="1073741942" astParent="55b11925d3a0" astOperand1="55b11925d4c0" astOperand2="55b119260570"/>
+    <token id="55b11925d640" file="../plant_boss/src/thread_network.c" linenr="111" column="23" str="queue_app_to_wifi" scope="55b1192269d0" type="name" varId="5" exprId="5" variable="55b1192539c0" astParent="55b11925d6a0"/>
+    <token id="55b11925d6a0" file="../plant_boss/src/thread_network.c" linenr="111" column="40" str="," scope="55b1192269d0" exprId="1073741940" astParent="55b119260570" astOperand1="55b11925d640" astOperand2="55b11925d7e0"/>
+    <token id="55b11925d7e0" file="../plant_boss/src/thread_network.c" linenr="111" column="42" str="&amp;" scope="55b1192269d0" type="op" exprId="1073741939" values="55b11925f960" astParent="55b11925d6a0" astOperand1="55b11925d840" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11925d840" file="../plant_boss/src/thread_network.c" linenr="111" column="44" str="buf_rx_queue_wifi" scope="55b1192269d0" type="name" varId="2" exprId="2" variable="55b119482210" values="55b1192442d0" astParent="55b11925d7e0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119260570" file="../plant_boss/src/thread_network.c" linenr="111" column="62" str="," scope="55b1192269d0" exprId="1073741941" astParent="55b11925d520" astOperand1="55b11925d6a0" astOperand2="55b1192605d0"/>
+    <token id="55b1192605d0" file="../plant_boss/src/thread_network.c" linenr="111" column="64" str="1u" scope="55b1192269d0" type="number" isInt="true" values="55b119259c60" astParent="55b119260570" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192606f0" file="../plant_boss/src/thread_network.c" linenr="111" column="66" str=")" scope="55b1192269d0" link="55b11925d520"/>
+    <token id="55b119260750" file="../plant_boss/src/thread_network.c" linenr="111" column="67" str=")" scope="55b1192269d0" link="55b11925d3a0"/>
+    <token id="55b119260870" file="../plant_boss/src/thread_network.c" linenr="112" column="5" str="{" scope="55b119256880" link="55b1192617f0"/>
+    <token id="55b119243ee0" file="../plant_boss/src/thread_network.c" linenr="114" column="9" str="ESP_LOGI" scope="55b119256880" type="name" astParent="55b119260980"/>
+    <token id="55b119260980" file="../plant_boss/src/thread_network.c" linenr="114" column="17" str="(" scope="55b119256880" link="55b119260c60" exprId="1073741945" astOperand1="55b119243ee0" astOperand2="55b119260af0"/>
+    <token id="55b119260a90" file="../plant_boss/src/thread_network.c" linenr="114" column="18" str="tag_t_n" scope="55b119256880" type="name" varId="10" exprId="10" variable="55b119256fc0" astParent="55b119260af0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119260af0" file="../plant_boss/src/thread_network.c" linenr="114" column="25" str="," scope="55b119256880" exprId="1073741944" astParent="55b119260980" astOperand1="55b119260a90" astOperand2="55b119260c00"/>
+    <token id="55b119260c00" file="../plant_boss/src/thread_network.c" linenr="114" column="27" str="&quot;d&quot;" scope="55b119256880" type="string" strlen="1" exprId="1073741943" values="55b119230cf0" astParent="55b119260af0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119260c60" file="../plant_boss/src/thread_network.c" linenr="114" column="30" str=")" scope="55b119256880" link="55b119260980"/>
+    <token id="55b119260d70" file="../plant_boss/src/thread_network.c" linenr="114" column="31" str=";" scope="55b119256880"/>
+    <token id="55b119260dd0" file="../plant_boss/src/thread_network.c" linenr="116" column="9" str="if" scope="55b119256880" type="name" astParent="55b119260ee0"/>
+    <token id="55b119260ee0" file="../plant_boss/src/thread_network.c" linenr="116" column="12" str="(" scope="55b119256880" link="55b119261370" astOperand1="55b119260dd0" astOperand2="55b119261050"/>
+    <token id="55b119260ff0" file="../plant_boss/src/thread_network.c" linenr="116" column="13" str="true" scope="55b119256880" type="name" exprId="82" astParent="55b119261050" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261050" file="../plant_boss/src/thread_network.c" linenr="116" column="18" str="!=" scope="55b119256880" type="op" isComparisonOp="true" exprId="1073741948" values="55b1193f0940" astParent="55b119260ee0" astOperand1="55b119260ff0" astOperand2="55b1192611d0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261170" file="../plant_boss/src/thread_network.c" linenr="116" column="21" str="wifi_handle_send_data" scope="55b119256880" type="name" astParent="55b1192611d0"/>
+    <token id="55b1192611d0" file="../plant_boss/src/thread_network.c" linenr="116" column="42" str="(" scope="55b119256880" link="55b119261310" exprId="1073741947" astParent="55b119261050" astOperand1="55b119261170"/>
+    <token id="55b119261310" file="../plant_boss/src/thread_network.c" linenr="116" column="43" str=")" scope="55b119256880" link="55b1192611d0"/>
+    <token id="55b119261370" file="../plant_boss/src/thread_network.c" linenr="116" column="44" str=")" scope="55b119256880" link="55b119260ee0"/>
+    <token id="55b119261490" file="../plant_boss/src/thread_network.c" linenr="117" column="9" str="{" scope="55b119256af0" link="55b119261790"/>
+    <token id="55b1192614f0" file="../plant_boss/src/thread_network.c" linenr="118" column="13" str="return" scope="55b119256af0" type="name" values="55b1193f0bc0" astOperand1="55b119261610" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261610" file="../plant_boss/src/thread_network.c" linenr="118" column="20" str="false" scope="55b119256af0" type="name" exprId="78" astParent="55b1192614f0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261670" file="../plant_boss/src/thread_network.c" linenr="118" column="25" str=";" scope="55b119256af0"/>
+    <token id="55b119261790" file="../plant_boss/src/thread_network.c" linenr="119" column="9" str="}" scope="55b119256af0" link="55b119261490"/>
+    <token id="55b1192617f0" file="../plant_boss/src/thread_network.c" linenr="120" column="5" str="}" scope="55b119256880" link="55b119260870"/>
+    <token id="55b119261910" file="../plant_boss/src/thread_network.c" linenr="124" column="5" str="vTaskDelay" scope="55b1192269d0" type="name" astParent="55b119261970"/>
+    <token id="55b119261970" file="../plant_boss/src/thread_network.c" linenr="124" column="15" str="(" scope="55b1192269d0" link="55b119261af0" exprId="1073741952" astOperand1="55b119261910" astOperand2="55b119261a90"/>
+    <token id="55b119261a90" file="../plant_boss/src/thread_network.c" linenr="124" column="16" str="DELAY_HANDLE_THREAD_NETWORK" scope="55b1192269d0" type="name" exprId="1073741951" astParent="55b119261970"/>
+    <token id="55b119261af0" file="../plant_boss/src/thread_network.c" linenr="124" column="43" str=")" scope="55b1192269d0" link="55b119261970"/>
+    <token id="55b119261c40" file="../plant_boss/src/thread_network.c" linenr="124" column="44" str=";" scope="55b1192269d0"/>
+    <token id="55b119453080" file="../plant_boss/src/thread_network.c" linenr="126" column="5" str="return" scope="55b1192269d0" type="name" values="55b1193f0e40" astOperand1="55b119261d50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261d50" file="../plant_boss/src/thread_network.c" linenr="126" column="12" str="true" scope="55b1192269d0" type="name" exprId="82" astParent="55b119453080" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119261e60" file="../plant_boss/src/thread_network.c" linenr="126" column="16" str=";" scope="55b1192269d0"/>
+    <token id="55b119261ec0" file="../plant_boss/src/thread_network.c" linenr="127" column="1" str="}" scope="55b1192269d0" link="55b119253800"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b119236370" type="Global">
+      <functionList>
+        <function id="55b119455200" token="55b119251bd0" tokenDef="55b119251bd0" name="thread_network" type="Function" access="Public">
+          <arg nr="1" variable="55b119247910"/>
+        </function>
+        <function id="55b119455590" token="55b11924cc60" tokenDef="55b11924cc60" name="thread_network_init" type="Function" access="Public"/>
+        <function id="55b1194554d0" token="55b119247700" tokenDef="55b119247700" name="thread_network_handle" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55b1194b7240"/>
+        <var id="55b119482210"/>
+        <var id="55b1194ba390"/>
+        <var id="55b1192426d0"/>
+        <var id="55b1192539c0"/>
+        <var id="55b1194569b0"/>
+        <var id="55b119405830"/>
+        <var id="55b119256d60"/>
+        <var id="55b119256e90"/>
+        <var id="55b119256fc0"/>
+      </varlist>
+    </scope>
+    <scope id="55b11923f800" type="Function" className="thread_network" bodyStart="55b1193f6f50" bodyEnd="55b119458400" nestedIn="55b119236370" function="55b119455200"/>
+    <scope id="55b11923a110" type="If" bodyStart="55b119255190" bodyEnd="55b119255540" nestedIn="55b11923f800"/>
+    <scope id="55b11923a450" type="While" bodyStart="55b119255820" bodyEnd="55b1194583a0" nestedIn="55b11923f800"/>
+    <scope id="55b119235c20" type="If" bodyStart="55b11924ca40" bodyEnd="55b119458290" nestedIn="55b11923a450"/>
+    <scope id="55b119235e90" type="Function" className="thread_network_init" bodyStart="55b119458920" bodyEnd="55b119247580" nestedIn="55b119236370" function="55b119455590"/>
+    <scope id="55b119236100" type="If" bodyStart="55b119406d00" bodyEnd="55b119407090" nestedIn="55b119235e90"/>
+    <scope id="55b11922c980" type="If" bodyStart="55b119227080" bodyEnd="55b119227b80" nestedIn="55b119235e90"/>
+    <scope id="55b1192264f0" type="While" bodyStart="55b1192275b0" bodyEnd="55b119227a60" nestedIn="55b11922c980"/>
+    <scope id="55b119226760" type="If" bodyStart="55b119246680" bodyEnd="55b119246980" nestedIn="55b119235e90"/>
+    <scope id="55b1192269d0" type="Function" className="thread_network_handle" bodyStart="55b119253800" bodyEnd="55b119261ec0" nestedIn="55b119236370" function="55b1194554d0">
+      <varlist>
+        <var id="55b1192570f0"/>
+        <var id="55b119257180"/>
+      </varlist>
+    </scope>
+    <scope id="55b11925eb60" type="If" bodyStart="55b1194b8360" bodyEnd="55b1194b8640" nestedIn="55b1192269d0"/>
+    <scope id="55b11925edd0" type="If" bodyStart="55b11925b000" bodyEnd="55b11925b280" nestedIn="55b1192269d0"/>
+    <scope id="55b11925f040" type="If" bodyStart="55b11924ec90" bodyEnd="55b11924ef90" nestedIn="55b1192269d0"/>
+    <scope id="55b119256880" type="If" bodyStart="55b119260870" bodyEnd="55b1192617f0" nestedIn="55b1192269d0"/>
+    <scope id="55b119256af0" type="If" bodyStart="55b119261490" bodyEnd="55b119261790" nestedIn="55b119256880"/>
+  </scopes>
+  <variables>
+    <var id="55b1192426d0" nameToken="55b119253200" typeStartToken="55b1192531a0" typeEndToken="55b1192531a0" access="Global" scope="55b119236370" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119247910" nameToken="55b1194620f0" typeStartToken="55b1192530a0" typeEndToken="55b119253100" access="Argument" scope="55b11923f800" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1192539c0" nameToken="55b11924d0a0" typeStartToken="55b11922aca0" typeEndToken="55b11922aca0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119256d60" nameToken="55b119454120" typeStartToken="55b1192493e0" typeEndToken="55b1192493e0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119256e90" nameToken="55b119459500" typeStartToken="55b1194543d0" typeEndToken="55b1194543d0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119256fc0" nameToken="55b1194599a0" typeStartToken="55b119459890" typeEndToken="55b11925f600" access="Global" scope="55b119236370" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b1192570f0" nameToken="55b11925b4a0" typeStartToken="55b11925b390" typeEndToken="55b11925b390" access="Local" scope="55b1192269d0" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119257180" nameToken="55b11925b920" typeStartToken="55b11925b800" typeEndToken="55b11925b800" access="Local" scope="55b1192269d0" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119405830" nameToken="55b1192491c0" typeStartToken="55b1194baed0" typeEndToken="55b1194baed0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1194569b0" nameToken="55b119248e30" typeStartToken="55b1194baab0" typeEndToken="55b1194baab0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119482210" nameToken="55b119250640" typeStartToken="55b1194527e0" typeEndToken="55b1194527e0" access="Global" scope="55b119236370" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1194b7240" nameToken="55b1192503a0" typeStartToken="55b119237d70" typeEndToken="55b119237d70" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1194ba390" nameToken="55b119257220" typeStartToken="55b119249580" typeEndToken="55b119249580" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119252e50">
+      <value intvalue="150" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119258ed0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924caa0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922c140">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119258e10">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119237860">
+      <value intvalue="20" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119236990">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f7370">
+      <value tokvalue="55b11925f660" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923ab60">
+      <value tokvalue="55b11925f660" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923fcc0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923f650">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119226290">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923aef0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119252230">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193ca430">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119258dd0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252e10">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1194bb730">
+      <value lifetime="55b119458ea0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f7060">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925fc30">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924cd70">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119253160">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119454ac0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924be90">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119250340">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119233750">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119228480">
+      <value intvalue="200" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192339d0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119233c50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925a3d0">
+      <value tokvalue="55b119246d30" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1194558b0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119233ed0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119234150">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f6db0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922adb0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925dfa0">
+      <value lifetime="55b1194b77c0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119237f80">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f6c60">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192380e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119238240">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119482a80">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192384c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119238740">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192389c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1194621b0">
+      <value intvalue="20" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119238c40">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119454000">
+      <value lifetime="55b11925b4a0" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119241f30">
+      <value lifetime="55b11925b4a0" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value lifetime="55b11924e610" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119238ec0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119239020">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239180">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119459240">
+      <value intvalue="3" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119239400">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239680">
+      <value intvalue="3" bound="Upper" condition-line="98" impossible="true" path="0"/>
+      <value intvalue="4" bound="Lower" condition-line="98" possible="true" path="0"/>
+    </values>
+    <values id="55b1192397e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119454730">
+      <value intvalue="3" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1193ca2c0">
+      <value lifetime="55b11945a1f0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924b6a0">
+      <value lifetime="55b119253200" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55b119232260">
+      <value lifetime="55b11924f7f0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923a020">
+      <value lifetime="55b11925b4a0" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55b11922c100">
+      <value intvalue="3" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1193f06c0">
+      <value intvalue="0" bound="Upper" condition-line="98" impossible="true" path="0"/>
+      <value intvalue="1" bound="Lower" condition-line="98" possible="true" path="0"/>
+    </values>
+    <values id="55b1193cabe0">
+      <value lifetime="55b119253200" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55b11924e1d0">
+      <value lifetime="55b119253200" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55b11922c180">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119257700">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119451aa0">
+      <value tokvalue="55b11925d0c0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925f960">
+      <value lifetime="55b11925d840" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192442d0">
+      <value lifetime="55b119250640" lifetime-scope="Local" lifetime-kind="Object" bound="Point" possible="true" path="0"/>
+    </values>
+    <values id="55b119259c60">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230cf0">
+      <value tokvalue="55b119260c00" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1193f0940">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f0bc0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1193f0e40">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+</dump>
+</dumps>

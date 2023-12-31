@@ -13,13 +13,17 @@ FLAGS_GCC="\
     "
 
 SOURCES="\
-    ../plant_boss/drivers/bh1750fvi.c \
+    ../plant_boss/drivers \
+    ../plant_boss/wrappers \
+    ../plant_boss/src \
+    ../plant_boss/main
     "
 
 HEADERS="
     -I ../plant_boss/drivers \
     -I ../plant_boss/wrappers \
-    -I ../plant_boss/inc
+    -I ../plant_boss/inc \
+    -I ../plant_boss/main \
     -I ~/esp/esp-idf/components/log/include \
     -I ~/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos
     "
@@ -28,14 +32,21 @@ HEADERS="
 $CPPCHECK --version &> $LOG_FILE
 printf "\n\n" &>> $LOG_FILE
 
-# Execute static analysis
+# Execute cppcheck static analysis
 $CPPCHECK \
     $FLAGS_CPPCHECK \
     $SOURCES \
     &>> $LOG_FILE
 printf "\n\ncppcheck finished\n\n" &>> $LOG_FILE
 
-python3 $MISRA /workspaces/plant_boss/sw_esp32/plant_boss/drivers/bh1750fvi.c.dump &>> $LOG_FILE
+# Execute MISRA static analysis
+$CPPCHECK --dump $SOURCES
+python3 $MISRA \
+    /workspaces/plant_boss/sw_esp32/plant_boss/drivers/*.dump \
+    /workspaces/plant_boss/sw_esp32/plant_boss/wrappers/*.dump \
+    /workspaces/plant_boss/sw_esp32/plant_boss/src/*.dump \
+    /workspaces/plant_boss/sw_esp32/plant_boss/main/*.dump \
+    &>> $LOG_FILE
 printf "\n\nmisra finished\n\n" &>> $LOG_FILE
 
 cat $LOG_FILE

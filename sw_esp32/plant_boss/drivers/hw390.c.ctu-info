@@ -1,0 +1,1 @@
+{"summary": "MisraMacro", "data": [{"name": "HW390_H", "used": true, "file": "../plant_boss/drivers/hw390.h", "line": 8, "column": 0}, {"name": "HW390_HUMIDITY_OFFSET", "used": true, "file": "../plant_boss/drivers/hw390.h", "line": 19, "column": 0}, {"name": "HW390_HUMIDITY_SCALE", "used": true, "file": "../plant_boss/drivers/hw390.h", "line": 20, "column": 0}]}

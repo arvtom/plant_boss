@@ -1,0 +1,703 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/drivers/lm20bim7.c"/>
+    <file index="1" name="../plant_boss/drivers/lm20bim7.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    lm20bim7.cx*  \brief   This file contains functions for reading temperature sensor lm20bim7 data.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;lm20bim7.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="12" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="13" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="13" column="10" str="err_lm20bim7"/>
+    <tok fileIndex="0" linenr="13" column="23" str="="/>
+    <tok fileIndex="0" linenr="13" column="25" str="0u"/>
+    <tok fileIndex="0" linenr="13" column="27" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="adc_cali_handle_t"/>
+    <tok fileIndex="0" linenr="14" column="19" str="adc_calibration_handle_temperature"/>
+    <tok fileIndex="0" linenr="14" column="53" str=";"/>
+    <tok fileIndex="0" linenr="15" column="1" str="float"/>
+    <tok fileIndex="0" linenr="15" column="7" str="temperature"/>
+    <tok fileIndex="0" linenr="15" column="18" str=";"/>
+    <tok fileIndex="0" linenr="17" column="1" str="static"/>
+    <tok fileIndex="0" linenr="17" column="8" str="const"/>
+    <tok fileIndex="0" linenr="17" column="14" str="char"/>
+    <tok fileIndex="0" linenr="17" column="18" str="*"/>
+    <tok fileIndex="0" linenr="17" column="20" str="tag_lm20bim7"/>
+    <tok fileIndex="0" linenr="17" column="33" str="="/>
+    <tok fileIndex="0" linenr="17" column="35" str="&quot;lm20bim7&quot;"/>
+    <tok fileIndex="0" linenr="17" column="45" str=";"/>
+    <tok fileIndex="0" linenr="19" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="20" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="20" column="6" str="lm20bim7_init"/>
+    <tok fileIndex="0" linenr="20" column="19" str="("/>
+    <tok fileIndex="0" linenr="20" column="20" str="void"/>
+    <tok fileIndex="0" linenr="20" column="24" str=")"/>
+    <tok fileIndex="0" linenr="21" column="1" str="{"/>
+    <tok fileIndex="0" linenr="22" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="22" column="13" str="("/>
+    <tok fileIndex="0" linenr="22" column="14" str="tag_lm20bim7"/>
+    <tok fileIndex="0" linenr="22" column="26" str=","/>
+    <tok fileIndex="0" linenr="22" column="28" str="&quot;addr err_lm20bim7 0x%x\n&quot;"/>
+    <tok fileIndex="0" linenr="22" column="54" str=","/>
+    <tok fileIndex="0" linenr="22" column="56" str="("/>
+    <tok fileIndex="0" linenr="22" column="57" str="unsigned"/>
+    <tok fileIndex="0" linenr="22" column="66" str="int"/>
+    <tok fileIndex="0" linenr="22" column="69" str=")"/>
+    <tok fileIndex="0" linenr="22" column="70" str="&amp;"/>
+    <tok fileIndex="0" linenr="22" column="71" str="err_lm20bim7"/>
+    <tok fileIndex="0" linenr="22" column="83" str=")"/>
+    <tok fileIndex="0" linenr="22" column="84" str=";"/>
+    <tok fileIndex="0" linenr="24" column="5" str="adc_oneshot_chan_cfg_t"/>
+    <tok fileIndex="0" linenr="24" column="28" str="adc_channel_config_temperature"/>
+    <tok fileIndex="0" linenr="24" column="59" str="="/>
+    <tok fileIndex="0" linenr="25" column="5" str="{"/>
+    <tok fileIndex="0" linenr="26" column="9" str="."/>
+    <tok fileIndex="0" linenr="26" column="10" str="bitwidth"/>
+    <tok fileIndex="0" linenr="26" column="19" str="="/>
+    <tok fileIndex="0" linenr="26" column="21" str="ADC_BITWIDTH_12"/>
+    <tok fileIndex="0" linenr="26" column="36" str=","/>
+    <tok fileIndex="0" linenr="27" column="9" str="."/>
+    <tok fileIndex="0" linenr="27" column="10" str="atten"/>
+    <tok fileIndex="0" linenr="27" column="16" str="="/>
+    <tok fileIndex="0" linenr="27" column="18" str="ADC_ATTEN_DB_6"/>
+    <tok fileIndex="0" linenr="27" column="32" str=","/>
+    <tok fileIndex="0" linenr="28" column="5" str="}"/>
+    <tok fileIndex="0" linenr="28" column="6" str=";"/>
+    <tok fileIndex="0" linenr="30" column="5" str="adc_cali_line_fitting_config_t"/>
+    <tok fileIndex="0" linenr="30" column="36" str="adc_calibration_config_temperature"/>
+    <tok fileIndex="0" linenr="30" column="71" str="="/>
+    <tok fileIndex="0" linenr="31" column="5" str="{"/>
+    <tok fileIndex="0" linenr="32" column="9" str="."/>
+    <tok fileIndex="0" linenr="32" column="10" str="unit_id"/>
+    <tok fileIndex="0" linenr="32" column="18" str="="/>
+    <tok fileIndex="0" linenr="32" column="20" str="ADC_UNIT_1"/>
+    <tok fileIndex="0" linenr="32" column="30" str=","/>
+    <tok fileIndex="0" linenr="33" column="9" str="."/>
+    <tok fileIndex="0" linenr="33" column="10" str="atten"/>
+    <tok fileIndex="0" linenr="33" column="16" str="="/>
+    <tok fileIndex="0" linenr="33" column="18" str="ADC_ATTEN_DB_6"/>
+    <tok fileIndex="0" linenr="33" column="32" str=","/>
+    <tok fileIndex="0" linenr="34" column="9" str="."/>
+    <tok fileIndex="0" linenr="34" column="10" str="bitwidth"/>
+    <tok fileIndex="0" linenr="34" column="19" str="="/>
+    <tok fileIndex="0" linenr="34" column="21" str="ADC_BITWIDTH_12"/>
+    <tok fileIndex="0" linenr="34" column="36" str=","/>
+    <tok fileIndex="0" linenr="35" column="5" str="}"/>
+    <tok fileIndex="0" linenr="35" column="6" str=";"/>
+    <tok fileIndex="0" linenr="37" column="5" str="if"/>
+    <tok fileIndex="0" linenr="37" column="8" str="("/>
+    <tok fileIndex="0" linenr="37" column="9" str="true"/>
+    <tok fileIndex="0" linenr="37" column="14" str="!="/>
+    <tok fileIndex="0" linenr="37" column="17" str="adc_init_channel"/>
+    <tok fileIndex="0" linenr="37" column="33" str="("/>
+    <tok fileIndex="0" linenr="37" column="34" str="&amp;"/>
+    <tok fileIndex="0" linenr="37" column="35" str="adc_channel_config_temperature"/>
+    <tok fileIndex="0" linenr="37" column="65" str=","/>
+    <tok fileIndex="0" linenr="37" column="67" str="&amp;"/>
+    <tok fileIndex="0" linenr="37" column="68" str="adc_calibration_config_temperature"/>
+    <tok fileIndex="0" linenr="37" column="102" str=","/>
+    <tok fileIndex="0" linenr="38" column="21" str="&amp;"/>
+    <tok fileIndex="0" linenr="38" column="22" str="adc_calibration_handle_temperature"/>
+    <tok fileIndex="0" linenr="38" column="56" str=","/>
+    <tok fileIndex="0" linenr="38" column="58" str="ADC_CHANNEL_3"/>
+    <tok fileIndex="0" linenr="38" column="71" str=")"/>
+    <tok fileIndex="0" linenr="38" column="72" str=")"/>
+    <tok fileIndex="0" linenr="39" column="5" str="{"/>
+    <tok fileIndex="0" linenr="40" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="40" column="22" str="("/>
+    <tok fileIndex="0" linenr="40" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="40" column="24" str="err_lm20bim7"/>
+    <tok fileIndex="0" linenr="40" column="36" str=","/>
+    <tok fileIndex="0" linenr="40" column="38" str="LM20BIM7_ERROR_INIT_ADC"/>
+    <tok fileIndex="0" linenr="40" column="61" str=")"/>
+    <tok fileIndex="0" linenr="40" column="62" str=";"/>
+    <tok fileIndex="0" linenr="42" column="9" str="return"/>
+    <tok fileIndex="0" linenr="42" column="16" str="false"/>
+    <tok fileIndex="0" linenr="42" column="21" str=";"/>
+    <tok fileIndex="0" linenr="43" column="5" str="}"/>
+    <tok fileIndex="0" linenr="45" column="5" str="return"/>
+    <tok fileIndex="0" linenr="45" column="12" str="true"/>
+    <tok fileIndex="0" linenr="45" column="16" str=";"/>
+    <tok fileIndex="0" linenr="46" column="1" str="}"/>
+    <tok fileIndex="0" linenr="48" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="48" column="6" str="lm20bim7_handle"/>
+    <tok fileIndex="0" linenr="48" column="21" str="("/>
+    <tok fileIndex="0" linenr="48" column="22" str="void"/>
+    <tok fileIndex="0" linenr="48" column="26" str=")"/>
+    <tok fileIndex="0" linenr="49" column="1" str="{"/>
+    <tok fileIndex="0" linenr="50" column="5" str="int"/>
+    <tok fileIndex="0" linenr="50" column="9" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="50" column="20" str=";"/>
+    <tok fileIndex="0" linenr="52" column="5" str="if"/>
+    <tok fileIndex="0" linenr="52" column="8" str="("/>
+    <tok fileIndex="0" linenr="52" column="9" str="true"/>
+    <tok fileIndex="0" linenr="52" column="14" str="!="/>
+    <tok fileIndex="0" linenr="52" column="17" str="adc_handle_channel"/>
+    <tok fileIndex="0" linenr="52" column="35" str="("/>
+    <tok fileIndex="0" linenr="52" column="36" str="&amp;"/>
+    <tok fileIndex="0" linenr="52" column="37" str="adc_calibration_handle_temperature"/>
+    <tok fileIndex="0" linenr="52" column="71" str=","/>
+    <tok fileIndex="0" linenr="52" column="73" str="&amp;"/>
+    <tok fileIndex="0" linenr="52" column="74" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="52" column="85" str=","/>
+    <tok fileIndex="0" linenr="52" column="87" str="ADC_CHANNEL_3"/>
+    <tok fileIndex="0" linenr="52" column="100" str=")"/>
+    <tok fileIndex="0" linenr="52" column="101" str=")"/>
+    <tok fileIndex="0" linenr="53" column="5" str="{"/>
+    <tok fileIndex="0" linenr="54" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="54" column="22" str="("/>
+    <tok fileIndex="0" linenr="54" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="54" column="24" str="err_lm20bim7"/>
+    <tok fileIndex="0" linenr="54" column="36" str=","/>
+    <tok fileIndex="0" linenr="54" column="38" str="LM20BIM7_ERROR_HANDLE_ADC"/>
+    <tok fileIndex="0" linenr="54" column="63" str=")"/>
+    <tok fileIndex="0" linenr="54" column="64" str=";"/>
+    <tok fileIndex="0" linenr="56" column="9" str="return"/>
+    <tok fileIndex="0" linenr="56" column="16" str="false"/>
+    <tok fileIndex="0" linenr="56" column="21" str=";"/>
+    <tok fileIndex="0" linenr="57" column="5" str="}"/>
+    <tok fileIndex="0" linenr="59" column="5" str="temperature"/>
+    <tok fileIndex="0" linenr="59" column="17" str="="/>
+    <tok fileIndex="0" linenr="59" column="19" str="-"/>
+    <tok fileIndex="0" linenr="59" column="24" str="1481.96"/>
+    <tok fileIndex="0" linenr="59" column="28" str="+"/>
+    <tok fileIndex="0" linenr="60" column="9" str="sqrt"/>
+    <tok fileIndex="0" linenr="60" column="13" str="("/>
+    <tok fileIndex="0" linenr="60" column="15" str="2.1962"/>
+    <tok fileIndex="0" linenr="60" column="21" str="*"/>
+    <tok fileIndex="0" linenr="60" column="23" str="pow"/>
+    <tok fileIndex="0" linenr="60" column="26" str="("/>
+    <tok fileIndex="0" linenr="60" column="27" str="10"/>
+    <tok fileIndex="0" linenr="60" column="29" str=","/>
+    <tok fileIndex="0" linenr="60" column="31" str="6"/>
+    <tok fileIndex="0" linenr="60" column="32" str=")"/>
+    <tok fileIndex="0" linenr="60" column="34" str="+"/>
+    <tok fileIndex="0" linenr="60" column="36" str="("/>
+    <tok fileIndex="0" linenr="60" column="37" str="("/>
+    <tok fileIndex="0" linenr="60" column="39" str="1.8639"/>
+    <tok fileIndex="0" linenr="60" column="45" str="-"/>
+    <tok fileIndex="0" linenr="60" column="47" str="("/>
+    <tok fileIndex="0" linenr="60" column="48" str="("/>
+    <tok fileIndex="0" linenr="60" column="49" str="float"/>
+    <tok fileIndex="0" linenr="60" column="54" str=")"/>
+    <tok fileIndex="0" linenr="60" column="55" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="60" column="67" str="/"/>
+    <tok fileIndex="0" linenr="60" column="69" str="1000"/>
+    <tok fileIndex="0" linenr="60" column="73" str=")"/>
+    <tok fileIndex="0" linenr="60" column="74" str=")"/>
+    <tok fileIndex="0" linenr="60" column="76" str="/"/>
+    <tok fileIndex="0" linenr="60" column="78" str="("/>
+    <tok fileIndex="0" linenr="60" column="80" str="3.88"/>
+    <tok fileIndex="0" linenr="60" column="84" str="*"/>
+    <tok fileIndex="0" linenr="60" column="86" str="pow"/>
+    <tok fileIndex="0" linenr="60" column="89" str="("/>
+    <tok fileIndex="0" linenr="60" column="90" str="10"/>
+    <tok fileIndex="0" linenr="60" column="92" str=","/>
+    <tok fileIndex="0" linenr="60" column="94" str="-"/>
+    <tok fileIndex="0" linenr="60" column="95" str="6"/>
+    <tok fileIndex="0" linenr="60" column="96" str=")"/>
+    <tok fileIndex="0" linenr="60" column="97" str=")"/>
+    <tok fileIndex="0" linenr="60" column="98" str=")"/>
+    <tok fileIndex="0" linenr="60" column="99" str=")"/>
+    <tok fileIndex="0" linenr="60" column="100" str=";"/>
+    <tok fileIndex="0" linenr="62" column="5" str="return"/>
+    <tok fileIndex="0" linenr="62" column="12" str="true"/>
+    <tok fileIndex="0" linenr="62" column="16" str=";"/>
+    <tok fileIndex="0" linenr="63" column="1" str="}"/>
+    <tok fileIndex="0" linenr="65" column="1" str="float"/>
+    <tok fileIndex="0" linenr="65" column="7" str="lm20bim7_get_temperature_value"/>
+    <tok fileIndex="0" linenr="65" column="37" str="("/>
+    <tok fileIndex="0" linenr="65" column="38" str="void"/>
+    <tok fileIndex="0" linenr="65" column="42" str=")"/>
+    <tok fileIndex="0" linenr="66" column="1" str="{"/>
+    <tok fileIndex="0" linenr="67" column="5" str="return"/>
+    <tok fileIndex="0" linenr="67" column="12" str="temperature"/>
+    <tok fileIndex="0" linenr="67" column="23" str=";"/>
+    <tok fileIndex="0" linenr="68" column="1" str="}"/>
+    <tok fileIndex="0" linenr="70" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/drivers/lm20bim7.c" linenr="8" str="#include &quot;lm20bim7.h&quot;"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="7" str="#ifndef LM20BIM7_H"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="8" str="#define LM20BIM7_H"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="13" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="15" str="#include &quot;error.h&quot;"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="16" str="#include &quot;adc_wrapper.h&quot;"/>
+    <directive file="../plant_boss/drivers/lm20bim7.h" linenr="65" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="LM20BIM7_H" file="../plant_boss/drivers/lm20bim7.h" line="8" column="9" usefile="../plant_boss/drivers/lm20bim7.h" useline="7" usecolumn="9" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55b119237d70" file="../plant_boss/drivers/lm20bim7.h" linenr="21" column="9" str="enum" scope="55b11923f800" type="name"/>
+    <token id="55b119250c30" file="../plant_boss/drivers/lm20bim7.h" linenr="21" column="0" str="lm20bim7_error_t" scope="55b11923f800" type="name" type-scope="55b11923a110"/>
+    <token id="55b119240230" file="../plant_boss/drivers/lm20bim7.h" linenr="22" column="1" str="{" scope="55b11923a110" link="55b119230fb0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b1192400b0" file="../plant_boss/drivers/lm20bim7.h" linenr="23" column="5" str="LM20BIM7_ERROR_INIT_ADC" scope="55b11923a110" type="name" values="55b119246af0" astParent="55b1192567c0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b1192567c0" file="../plant_boss/drivers/lm20bim7.h" linenr="23" column="45" str="=" scope="55b11923a110" type="op" isAssignmentOp="true" values="55b119230260" astParent="55b11924f190" astOperand1="55b1192400b0" astOperand2="55b11924b9a0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b11924b9a0" file="../plant_boss/drivers/lm20bim7.h" linenr="23" column="47" str="0x00000001U" scope="55b11923a110" type="number" isInt="true" values="55b1192302a0" astParent="55b1192567c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924f190" file="../plant_boss/drivers/lm20bim7.h" linenr="23" column="58" str="," scope="55b11923a110" values="55b119230360" astOperand1="55b1192567c0" astOperand2="55b119250210"/>
+    <token id="55b11924f1f0" file="../plant_boss/drivers/lm20bim7.h" linenr="24" column="5" str="LM20BIM7_ERROR_HANDLE_ADC" scope="55b11923a110" type="name" values="55b119246b30" astParent="55b119250210" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119250210" file="../plant_boss/drivers/lm20bim7.h" linenr="24" column="45" str="=" scope="55b11923a110" type="op" isAssignmentOp="true" values="55b119230320" astParent="55b11924f190" astOperand1="55b11924f1f0" astOperand2="55b119250270" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119250270" file="../plant_boss/drivers/lm20bim7.h" linenr="24" column="47" str="0x00000002U" scope="55b11923a110" type="number" isInt="true" values="55b1192302e0" astParent="55b119250210" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119230f50" file="../plant_boss/drivers/lm20bim7.h" linenr="24" column="58" str="," scope="55b11923a110"/>
+    <token id="55b119230fb0" file="../plant_boss/drivers/lm20bim7.h" linenr="55" column="1" str="}" scope="55b11923a110" link="55b119240230"/>
+    <token id="55b11924ffe0" file="../plant_boss/drivers/lm20bim7.h" linenr="55" column="19" str=";" scope="55b11923f800"/>
+    <token id="55b119250da0" file="../plant_boss/drivers/lm20bim7.h" linenr="58" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b1192478b0" file="../plant_boss/drivers/lm20bim7.h" linenr="58" column="6" str="lm20bim7_init" scope="55b11923f800" type="name" function="55b11924f470"/>
+    <token id="55b119246d70" file="../plant_boss/drivers/lm20bim7.h" linenr="58" column="19" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b11924fcc0" values="55b119249a50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924fcc0" file="../plant_boss/drivers/lm20bim7.h" linenr="58" column="24" str=")" scope="55b11923f800" link="55b119246d70"/>
+    <token id="55b119228660" file="../plant_boss/drivers/lm20bim7.h" linenr="58" column="25" str=";" scope="55b11923f800"/>
+    <token id="55b119246f60" file="../plant_boss/drivers/lm20bim7.h" linenr="59" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b119247070" file="../plant_boss/drivers/lm20bim7.h" linenr="59" column="6" str="lm20bim7_handle" scope="55b11923f800" type="name" function="55b11924f3b0"/>
+    <token id="55b1192470d0" file="../plant_boss/drivers/lm20bim7.h" linenr="59" column="21" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b119245f60" values="55b11922b300" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119245f60" file="../plant_boss/drivers/lm20bim7.h" linenr="59" column="26" str=")" scope="55b11923f800" link="55b1192470d0"/>
+    <token id="55b119251070" file="../plant_boss/drivers/lm20bim7.h" linenr="59" column="27" str=";" scope="55b11923f800"/>
+    <token id="55b119251180" file="../plant_boss/drivers/lm20bim7.h" linenr="61" column="1" str="float" scope="55b11923f800" type="name"/>
+    <token id="55b1192511e0" file="../plant_boss/drivers/lm20bim7.h" linenr="61" column="7" str="lm20bim7_get_temperature_value" scope="55b11923f800" type="name" function="55b11924f9d0"/>
+    <token id="55b119259a80" file="../plant_boss/drivers/lm20bim7.h" linenr="61" column="37" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b119259fd0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119259fd0" file="../plant_boss/drivers/lm20bim7.h" linenr="61" column="42" str=")" scope="55b11923f800" link="55b119259a80"/>
+    <token id="55b11925a0e0" file="../plant_boss/drivers/lm20bim7.h" linenr="61" column="43" str=";" scope="55b11923f800"/>
+    <token id="55b119243800" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="1" str="uint32_t" scope="55b11923f800" type="name"/>
+    <token id="55b119243910" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="10" str="err_lm20bim7" scope="55b11923f800" type="name" varId="1" exprId="1" variable="55b11925d940" values="55b11922b580" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119243970" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="23" str=";" scope="55b11923f800" isSplittedVarDeclEq="true"/>
+    <token id="55b1192575f0" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="10" str="err_lm20bim7" scope="55b11923f800" type="name" varId="1" exprId="1" variable="55b11925d940" values="55b11922b6e0" astParent="55b119239320" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119239320" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="23" str="=" scope="55b11923f800" type="op" isAssignmentOp="true" values="55b1192502d0" astOperand1="55b1192575f0" astOperand2="55b119243040" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119243040" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="25" str="0u" scope="55b11923f800" type="number" isInt="true" values="55b11924f790" astParent="55b119239320" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925a190" file="../plant_boss/drivers/lm20bim7.c" linenr="13" column="27" str=";" scope="55b11923f800"/>
+    <token id="55b11925a2a0" file="../plant_boss/drivers/lm20bim7.c" linenr="14" column="1" str="adc_cali_handle_t" scope="55b11923f800" type="name"/>
+    <token id="55b11925a3b0" file="../plant_boss/drivers/lm20bim7.c" linenr="14" column="19" str="adc_calibration_handle_temperature" scope="55b11923f800" type="name" varId="2" exprId="2" variable="55b11925dfb0"/>
+    <token id="55b119249d30" file="../plant_boss/drivers/lm20bim7.c" linenr="14" column="53" str=";" scope="55b11923f800"/>
+    <token id="55b119249d90" file="../plant_boss/drivers/lm20bim7.c" linenr="15" column="1" str="float" scope="55b11923f800" type="name"/>
+    <token id="55b119249ee0" file="../plant_boss/drivers/lm20bim7.c" linenr="15" column="7" str="temperature" scope="55b11923f800" type="name" varId="3" exprId="3" variable="55b1192326d0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b1192433c0" file="../plant_boss/drivers/lm20bim7.c" linenr="15" column="18" str=";" scope="55b11923f800"/>
+    <token id="55b119249ff0" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="1" str="static" scope="55b11923f800" type="name"/>
+    <token id="55b11924a100" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="8" str="const" scope="55b11923f800" type="name"/>
+    <token id="55b11924a160" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="14" str="char" scope="55b11923f800" type="name"/>
+    <token id="55b11924a270" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="18" str="*" scope="55b11923f800" type="op" isArithmeticalOp="true"/>
+    <token id="55b1192435e0" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="20" str="tag_lm20bim7" scope="55b11923f800" type="name" varId="4" exprId="4" variable="55b1192365e0" astParent="55b11924a2d0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11924a2d0" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="33" str="=" scope="55b11923f800" type="op" isAssignmentOp="true" values="55b119225fa0" astOperand1="55b1192435e0" astOperand2="55b11924a3e0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11924a3e0" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="35" str="&quot;lm20bim7&quot;" scope="55b11923f800" type="string" strlen="8" values="55b11925b8c0" astParent="55b11924a2d0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11924a4f0" file="../plant_boss/drivers/lm20bim7.c" linenr="17" column="45" str=";" scope="55b11923f800"/>
+    <token id="55b11924a600" file="../plant_boss/drivers/lm20bim7.c" linenr="20" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b11924a720" file="../plant_boss/drivers/lm20bim7.c" linenr="20" column="6" str="lm20bim7_init" scope="55b11923f800" type="name" function="55b11924f470"/>
+    <token id="55b11924a780" file="../plant_boss/drivers/lm20bim7.c" linenr="20" column="19" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b11924a900" values="55b11922b840" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924a900" file="../plant_boss/drivers/lm20bim7.c" linenr="20" column="24" str=")" scope="55b11923f800" link="55b11924a780"/>
+    <token id="55b11924aa20" file="../plant_boss/drivers/lm20bim7.c" linenr="21" column="1" str="{" scope="55b11923a450" link="55b119229dc0"/>
+    <token id="55b119259e00" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="5" str="ESP_LOGI" scope="55b11923a450" type="name" astParent="55b11924ab30"/>
+    <token id="55b11924ab30" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="13" str="(" scope="55b11923a450" link="55b119247430" exprId="1073741846" astOperand1="55b119259e00" astOperand2="55b11924f680"/>
+    <token id="55b11924ac40" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="14" str="tag_lm20bim7" scope="55b11923a450" type="name" varId="4" exprId="4" variable="55b1192365e0" astParent="55b11924aca0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11924aca0" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="26" str="," scope="55b11923a450" exprId="1073741842" astParent="55b11924f680" astOperand1="55b11924ac40" astOperand2="55b11924adb0"/>
+    <token id="55b11924adb0" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="28" str="&quot;addr err_lm20bim7 0x%x\n&quot;" scope="55b11923a450" type="string" strlen="23" exprId="1073741841" values="55b119230220" astParent="55b11924aca0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11924f680" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="54" str="," scope="55b11923a450" exprId="1073741845" astParent="55b11924ab30" astOperand1="55b11924aca0" astOperand2="55b11924af90"/>
+    <token id="55b11924af90" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="56" str="(" scope="55b11923a450" isCast="true" link="55b11924b1b0" exprId="1073741844" values="55b11923fcf0" astParent="55b11924f680" astOperand1="55b11924b210" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924aec0" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="66" str="int" scope="55b11923a450" type="name" isUnsigned="true"/>
+    <token id="55b11924b1b0" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="69" str=")" scope="55b11923a450" link="55b11924af90"/>
+    <token id="55b11924b210" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="70" str="&amp;" scope="55b11923a450" type="op" exprId="19" values="55b119230810" astParent="55b11924af90" astOperand1="55b11924b320" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11924b320" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="71" str="err_lm20bim7" scope="55b11923a450" type="name" varId="1" exprId="1" variable="55b11925d940" values="55b119248db0" astParent="55b11924b210" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119247430" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="83" str=")" scope="55b11923a450" link="55b11924ab30"/>
+    <token id="55b11924b380" file="../plant_boss/drivers/lm20bim7.c" linenr="22" column="84" str=";" scope="55b11923a450"/>
+    <token id="55b11924b490" file="../plant_boss/drivers/lm20bim7.c" linenr="24" column="5" str="adc_oneshot_chan_cfg_t" scope="55b11923a450" type="name"/>
+    <token id="55b11924b5a0" file="../plant_boss/drivers/lm20bim7.c" linenr="24" column="28" str="adc_channel_config_temperature" scope="55b11923a450" type="name" varId="5" exprId="5" variable="55b11923fa70"/>
+    <token id="55b11924b6b0" file="../plant_boss/drivers/lm20bim7.c" linenr="24" column="59" str=";" scope="55b11923a450" isSplittedVarDeclEq="true"/>
+    <token id="55b119240ef0" file="../plant_boss/drivers/lm20bim7.c" linenr="24" column="28" str="adc_channel_config_temperature" scope="55b11923a450" type="name" varId="5" exprId="5" variable="55b11923fa70" astParent="55b119250900"/>
+    <token id="55b119250900" file="../plant_boss/drivers/lm20bim7.c" linenr="24" column="59" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741853" astOperand1="55b119240ef0" astOperand2="55b11924b820"/>
+    <token id="55b11924b820" file="../plant_boss/drivers/lm20bim7.c" linenr="25" column="5" str="{" scope="55b11923a450" link="55b119232de0" exprId="1073741852" astParent="55b119250900" astOperand1="55b119232930"/>
+    <token id="55b11924b880" file="../plant_boss/drivers/lm20bim7.c" linenr="26" column="9" str="." scope="55b11923a450" exprId="1073741847" astParent="55b1192327b0" astOperand1="55b119232750"/>
+    <token id="55b119232750" file="../plant_boss/drivers/lm20bim7.c" linenr="26" column="10" str="bitwidth" scope="55b11923a450" type="name" varId="6" exprId="6" astParent="55b11924b880"/>
+    <token id="55b1192327b0" file="../plant_boss/drivers/lm20bim7.c" linenr="26" column="19" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741848" astParent="55b119232930" astOperand1="55b11924b880" astOperand2="55b1192328d0"/>
+    <token id="55b1192328d0" file="../plant_boss/drivers/lm20bim7.c" linenr="26" column="21" str="ADC_BITWIDTH_12" scope="55b11923a450" type="name" exprId="13" astParent="55b1192327b0"/>
+    <token id="55b119232930" file="../plant_boss/drivers/lm20bim7.c" linenr="26" column="36" str="," scope="55b11923a450" exprId="1073741851" astParent="55b11924b820" astOperand1="55b1192327b0" astOperand2="55b119232b60"/>
+    <token id="55b119232a50" file="../plant_boss/drivers/lm20bim7.c" linenr="27" column="9" str="." scope="55b11923a450" exprId="1073741849" astParent="55b119232b60" astOperand1="55b119245da0"/>
+    <token id="55b119245da0" file="../plant_boss/drivers/lm20bim7.c" linenr="27" column="10" str="atten" scope="55b11923a450" type="name" varId="7" exprId="7" astParent="55b119232a50"/>
+    <token id="55b119232b60" file="../plant_boss/drivers/lm20bim7.c" linenr="27" column="16" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741850" astParent="55b119232930" astOperand1="55b119232a50" astOperand2="55b119232c70"/>
+    <token id="55b119232c70" file="../plant_boss/drivers/lm20bim7.c" linenr="27" column="18" str="ADC_ATTEN_DB_6" scope="55b11923a450" type="name" exprId="14" astParent="55b119232b60"/>
+    <token id="55b119232cd0" file="../plant_boss/drivers/lm20bim7.c" linenr="27" column="32" str="," scope="55b11923a450"/>
+    <token id="55b119232de0" file="../plant_boss/drivers/lm20bim7.c" linenr="28" column="5" str="}" scope="55b11923a450" link="55b11924b820"/>
+    <token id="55b119232e40" file="../plant_boss/drivers/lm20bim7.c" linenr="28" column="6" str=";" scope="55b11923a450"/>
+    <token id="55b119232f50" file="../plant_boss/drivers/lm20bim7.c" linenr="30" column="5" str="adc_cali_line_fitting_config_t" scope="55b11923a450" type="name"/>
+    <token id="55b119232fb0" file="../plant_boss/drivers/lm20bim7.c" linenr="30" column="36" str="adc_calibration_config_temperature" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11923edb0"/>
+    <token id="55b119233140" file="../plant_boss/drivers/lm20bim7.c" linenr="30" column="71" str=";" scope="55b11923a450" isSplittedVarDeclEq="true"/>
+    <token id="55b119250a10" file="../plant_boss/drivers/lm20bim7.c" linenr="30" column="36" str="adc_calibration_config_temperature" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11923edb0" astParent="55b119250b20"/>
+    <token id="55b119250b20" file="../plant_boss/drivers/lm20bim7.c" linenr="30" column="71" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741863" astOperand1="55b119250a10" astOperand2="55b1192331a0"/>
+    <token id="55b1192331a0" file="../plant_boss/drivers/lm20bim7.c" linenr="31" column="5" str="{" scope="55b11923a450" link="55b119233dc0" exprId="1073741862" astParent="55b119250b20" astOperand1="55b1192339b0"/>
+    <token id="55b119233230" file="../plant_boss/drivers/lm20bim7.c" linenr="32" column="9" str="." scope="55b11923a450" exprId="1073741854" astParent="55b119233450" astOperand1="55b119233340"/>
+    <token id="55b119233340" file="../plant_boss/drivers/lm20bim7.c" linenr="32" column="10" str="unit_id" scope="55b11923a450" type="name" varId="9" exprId="9" astParent="55b119233230"/>
+    <token id="55b119233450" file="../plant_boss/drivers/lm20bim7.c" linenr="32" column="18" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741855" astParent="55b1192335c0" astOperand1="55b119233230" astOperand2="55b1192334b0"/>
+    <token id="55b1192334b0" file="../plant_boss/drivers/lm20bim7.c" linenr="32" column="20" str="ADC_UNIT_1" scope="55b11923a450" type="name" exprId="1073741839" astParent="55b119233450"/>
+    <token id="55b1192335c0" file="../plant_boss/drivers/lm20bim7.c" linenr="32" column="30" str="," scope="55b11923a450" exprId="1073741858" astParent="55b1192339b0" astOperand1="55b119233450" astOperand2="55b119233790"/>
+    <token id="55b119233620" file="../plant_boss/drivers/lm20bim7.c" linenr="33" column="9" str="." scope="55b11923a450" exprId="1073741856" astParent="55b119233790" astOperand1="55b119233730"/>
+    <token id="55b119233730" file="../plant_boss/drivers/lm20bim7.c" linenr="33" column="10" str="atten" scope="55b11923a450" type="name" varId="10" exprId="10" astParent="55b119233620"/>
+    <token id="55b119233790" file="../plant_boss/drivers/lm20bim7.c" linenr="33" column="16" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741857" astParent="55b1192335c0" astOperand1="55b119233620" astOperand2="55b1192338a0"/>
+    <token id="55b1192338a0" file="../plant_boss/drivers/lm20bim7.c" linenr="33" column="18" str="ADC_ATTEN_DB_6" scope="55b11923a450" type="name" exprId="14" astParent="55b119233790"/>
+    <token id="55b1192339b0" file="../plant_boss/drivers/lm20bim7.c" linenr="33" column="32" str="," scope="55b11923a450" exprId="1073741861" astParent="55b1192331a0" astOperand1="55b1192335c0" astOperand2="55b119233b90"/>
+    <token id="55b119233a10" file="../plant_boss/drivers/lm20bim7.c" linenr="34" column="9" str="." scope="55b11923a450" exprId="1073741859" astParent="55b119233b90" astOperand1="55b119233b30"/>
+    <token id="55b119233b30" file="../plant_boss/drivers/lm20bim7.c" linenr="34" column="10" str="bitwidth" scope="55b11923a450" type="name" varId="11" exprId="11" astParent="55b119233a10"/>
+    <token id="55b119233b90" file="../plant_boss/drivers/lm20bim7.c" linenr="34" column="19" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741860" astParent="55b1192339b0" astOperand1="55b119233a10" astOperand2="55b119233cb0"/>
+    <token id="55b119233cb0" file="../plant_boss/drivers/lm20bim7.c" linenr="34" column="21" str="ADC_BITWIDTH_12" scope="55b11923a450" type="name" exprId="13" astParent="55b119233b90"/>
+    <token id="55b11924ed60" file="../plant_boss/drivers/lm20bim7.c" linenr="34" column="36" str="," scope="55b11923a450"/>
+    <token id="55b119233dc0" file="../plant_boss/drivers/lm20bim7.c" linenr="35" column="5" str="}" scope="55b11923a450" link="55b1192331a0"/>
+    <token id="55b119233ed0" file="../plant_boss/drivers/lm20bim7.c" linenr="35" column="6" str=";" scope="55b11923a450"/>
+    <token id="55b11924edc0" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="5" str="if" scope="55b11923a450" type="name" astParent="55b119233fe0"/>
+    <token id="55b119233fe0" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="8" str="(" scope="55b11923a450" link="55b1192290d0" astOperand1="55b11924edc0" astOperand2="55b119234150"/>
+    <token id="55b1192340f0" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="9" str="true" scope="55b11923a450" type="name" exprId="40" astParent="55b119234150" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119234150" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="14" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="1073741874" values="55b119248df0" astParent="55b119233fe0" astOperand1="55b1192340f0" astOperand2="55b119234370" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119234260" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="17" str="adc_init_channel" scope="55b11923a450" type="name" astParent="55b119234370"/>
+    <token id="55b119234370" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="33" str="(" scope="55b11923a450" link="55b119256710" exprId="1073741873" astParent="55b119234150" astOperand1="55b119234260" astOperand2="55b119228e70"/>
+    <token id="55b1192343d0" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="34" str="&amp;" scope="55b11923a450" type="op" exprId="1073741866" values="55b11922e160" astParent="55b119228990" astOperand1="55b119228930"/>
+    <token id="55b119228930" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="35" str="adc_channel_config_temperature" scope="55b11923a450" type="name" varId="5" exprId="5" variable="55b11923fa70" astParent="55b1192343d0"/>
+    <token id="55b119228990" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="65" str="," scope="55b11923a450" exprId="1073741868" astParent="55b119228c60" astOperand1="55b1192343d0" astOperand2="55b119228ae0"/>
+    <token id="55b119228ae0" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="67" str="&amp;" scope="55b11923a450" type="op" exprId="1073741867" values="55b11923aef0" astParent="55b119228990" astOperand1="55b119228b40"/>
+    <token id="55b119228b40" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="68" str="adc_calibration_config_temperature" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11923edb0" astParent="55b119228ae0"/>
+    <token id="55b119228c60" file="../plant_boss/drivers/lm20bim7.c" linenr="37" column="102" str="," scope="55b11923a450" exprId="1073741870" astParent="55b119228e70" astOperand1="55b119228990" astOperand2="55b119228cc0"/>
+    <token id="55b119228cc0" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="21" str="&amp;" scope="55b11923a450" type="op" exprId="1073741869" values="55b119247a60" astParent="55b119228c60" astOperand1="55b119228e10"/>
+    <token id="55b119228e10" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="22" str="adc_calibration_handle_temperature" scope="55b11923a450" type="name" varId="2" exprId="2" variable="55b11925dfb0" astParent="55b119228cc0"/>
+    <token id="55b119228e70" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="56" str="," scope="55b11923a450" exprId="1073741872" astParent="55b119234370" astOperand1="55b119228c60" astOperand2="55b119228fc0"/>
+    <token id="55b119228fc0" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="58" str="ADC_CHANNEL_3" scope="55b11923a450" type="name" exprId="1073741871" astParent="55b119228e70"/>
+    <token id="55b119256710" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="71" str=")" scope="55b11923a450" link="55b119234370"/>
+    <token id="55b1192290d0" file="../plant_boss/drivers/lm20bim7.c" linenr="38" column="72" str=")" scope="55b11923a450" link="55b119233fe0"/>
+    <token id="55b1192291e0" file="../plant_boss/drivers/lm20bim7.c" linenr="39" column="5" str="{" scope="55b119235c20" link="55b119229ac0"/>
+    <token id="55b119229240" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="9" str="error_set_u32" scope="55b119235c20" type="name" astParent="55b119229350"/>
+    <token id="55b119229350" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="22" str="(" scope="55b119235c20" link="55b119229740" exprId="1073741878" astOperand1="55b119229240" astOperand2="55b119229520"/>
+    <token id="55b1192293b0" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="23" str="&amp;" scope="55b119235c20" type="op" exprId="19" values="55b11922cd00" astParent="55b119229520" astOperand1="55b1192294c0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192294c0" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="24" str="err_lm20bim7" scope="55b119235c20" type="name" varId="1" exprId="1" variable="55b11925d940" values="55b1192494f0" astParent="55b1192293b0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119229520" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="36" str="," scope="55b119235c20" exprId="1073741877" astParent="55b119229350" astOperand1="55b1192293b0" astOperand2="55b119229630"/>
+    <token id="55b119229630" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="38" str="LM20BIM7_ERROR_INIT_ADC" scope="55b119235c20" type="name" exprId="1073741876" values="55b119228570" astParent="55b119229520" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119229740" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="61" str=")" scope="55b119235c20" link="55b119229350"/>
+    <token id="55b1192297a0" file="../plant_boss/drivers/lm20bim7.c" linenr="40" column="62" str=";" scope="55b119235c20"/>
+    <token id="55b1192298e0" file="../plant_boss/drivers/lm20bim7.c" linenr="42" column="9" str="return" scope="55b119235c20" type="name" values="55b119249650" astOperand1="55b119229940" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229940" file="../plant_boss/drivers/lm20bim7.c" linenr="42" column="16" str="false" scope="55b119235c20" type="name" exprId="1073741879" astParent="55b1192298e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229a60" file="../plant_boss/drivers/lm20bim7.c" linenr="42" column="21" str=";" scope="55b119235c20"/>
+    <token id="55b119229ac0" file="../plant_boss/drivers/lm20bim7.c" linenr="43" column="5" str="}" scope="55b119235c20" link="55b1192291e0"/>
+    <token id="55b119229be0" file="../plant_boss/drivers/lm20bim7.c" linenr="45" column="5" str="return" scope="55b11923a450" type="name" values="55b119244be0" astOperand1="55b119229c40" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229c40" file="../plant_boss/drivers/lm20bim7.c" linenr="45" column="12" str="true" scope="55b11923a450" type="name" exprId="40" astParent="55b119229be0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229d60" file="../plant_boss/drivers/lm20bim7.c" linenr="45" column="16" str=";" scope="55b11923a450"/>
+    <token id="55b119229dc0" file="../plant_boss/drivers/lm20bim7.c" linenr="46" column="1" str="}" scope="55b11923a450" link="55b11924aa20"/>
+    <token id="55b119229ee0" file="../plant_boss/drivers/lm20bim7.c" linenr="48" column="1" str="bool" scope="55b11923f800" type="name"/>
+    <token id="55b119229f40" file="../plant_boss/drivers/lm20bim7.c" linenr="48" column="6" str="lm20bim7_handle" scope="55b11923f800" type="name" function="55b11924f3b0"/>
+    <token id="55b11922a060" file="../plant_boss/drivers/lm20bim7.c" linenr="48" column="21" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b11922a170" values="55b119244e60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922a170" file="../plant_boss/drivers/lm20bim7.c" linenr="48" column="26" str=")" scope="55b11923f800" link="55b11922a060"/>
+    <token id="55b11922a280" file="../plant_boss/drivers/lm20bim7.c" linenr="49" column="1" str="{" scope="55b119235e90" link="55b119257d20"/>
+    <token id="55b11922a2e0" file="../plant_boss/drivers/lm20bim7.c" linenr="50" column="5" str="int" scope="55b119235e90" type="name"/>
+    <token id="55b11922a3f0" file="../plant_boss/drivers/lm20bim7.c" linenr="50" column="9" str="adc_voltage" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11924ba10" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11922a450" file="../plant_boss/drivers/lm20bim7.c" linenr="50" column="20" str=";" scope="55b119235e90"/>
+    <token id="55b11922a560" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="5" str="if" scope="55b119235e90" type="name" astParent="55b11922a5c0"/>
+    <token id="55b11922a5c0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="8" str="(" scope="55b119235e90" link="55b119238690" astOperand1="55b11922a560" astOperand2="55b119237e60"/>
+    <token id="55b11922a6d0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="9" str="true" scope="55b119235e90" type="name" exprId="56" astParent="55b119237e60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119237e60" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="14" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741888" values="55b1192450e0" astParent="55b11922a5c0" astOperand1="55b11922a6d0" astOperand2="55b119237fe0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119237ec0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="17" str="adc_handle_channel" scope="55b119235e90" type="name" astParent="55b119237fe0"/>
+    <token id="55b119237fe0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="35" str="(" scope="55b119235e90" link="55b119238630" exprId="1073741887" astParent="55b119237e60" astOperand1="55b119237ec0" astOperand2="55b1192384b0"/>
+    <token id="55b119238040" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="36" str="&amp;" scope="55b119235e90" type="op" exprId="1073741882" values="55b11922cea0" astParent="55b1192381e0" astOperand1="55b119238180"/>
+    <token id="55b119238180" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="37" str="adc_calibration_handle_temperature" scope="55b119235e90" type="name" varId="2" exprId="2" variable="55b11925dfb0" astParent="55b119238040"/>
+    <token id="55b1192381e0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="71" str="," scope="55b119235e90" exprId="1073741884" astParent="55b1192384b0" astOperand1="55b119238040" astOperand2="55b119238330"/>
+    <token id="55b119238330" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="73" str="&amp;" scope="55b119235e90" type="op" exprId="1073741883" values="55b11922adc0" astParent="55b1192381e0" astOperand1="55b119238390" valueType-type="int" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119238390" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="74" str="adc_voltage" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11924ba10" values="55b1192607b0" astParent="55b119238330" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192384b0" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="85" str="," scope="55b119235e90" exprId="1073741886" astParent="55b119237fe0" astOperand1="55b1192381e0" astOperand2="55b119238510"/>
+    <token id="55b119238510" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="87" str="ADC_CHANNEL_3" scope="55b119235e90" type="name" exprId="1073741885" astParent="55b1192384b0"/>
+    <token id="55b119238630" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="100" str=")" scope="55b119235e90" link="55b119237fe0"/>
+    <token id="55b119238690" file="../plant_boss/drivers/lm20bim7.c" linenr="52" column="101" str=")" scope="55b119235e90" link="55b11922a5c0"/>
+    <token id="55b1192387b0" file="../plant_boss/drivers/lm20bim7.c" linenr="53" column="5" str="{" scope="55b119236100" link="55b119239080"/>
+    <token id="55b119238810" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="9" str="error_set_u32" scope="55b119236100" type="name" astParent="55b119238930"/>
+    <token id="55b119238930" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="22" str="(" scope="55b119236100" link="55b119238cc0" exprId="1073741893" astOperand1="55b119238810" astOperand2="55b119238b50"/>
+    <token id="55b119248390" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="23" str="&amp;" scope="55b119236100" type="op" exprId="1073741890" values="55b11922af60" astParent="55b119238b50" astOperand1="55b119238a40" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119238a40" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="24" str="err_lm20bim7" scope="55b119236100" type="name" varId="1" exprId="1" variable="55b11925d940" values="55b1192456c0" astParent="55b119248390" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238b50" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="36" str="," scope="55b119236100" exprId="1073741892" astParent="55b119238930" astOperand1="55b119248390" astOperand2="55b119238bb0"/>
+    <token id="55b119238bb0" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="38" str="LM20BIM7_ERROR_HANDLE_ADC" scope="55b119236100" type="name" exprId="1073741891" values="55b1192500f0" astParent="55b119238b50" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b11923a110"/>
+    <token id="55b119238cc0" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="63" str=")" scope="55b119236100" link="55b119238930"/>
+    <token id="55b119238d20" file="../plant_boss/drivers/lm20bim7.c" linenr="54" column="64" str=";" scope="55b119236100"/>
+    <token id="55b119238ea0" file="../plant_boss/drivers/lm20bim7.c" linenr="56" column="9" str="return" scope="55b119236100" type="name" values="55b119254fd0" astOperand1="55b119238f00" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119238f00" file="../plant_boss/drivers/lm20bim7.c" linenr="56" column="16" str="false" scope="55b119236100" type="name" exprId="1073741894" astParent="55b119238ea0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119239020" file="../plant_boss/drivers/lm20bim7.c" linenr="56" column="21" str=";" scope="55b119236100"/>
+    <token id="55b119239080" file="../plant_boss/drivers/lm20bim7.c" linenr="57" column="5" str="}" scope="55b119236100" link="55b1192387b0"/>
+    <token id="55b1192391a0" file="../plant_boss/drivers/lm20bim7.c" linenr="59" column="5" str="temperature" scope="55b119235e90" type="name" varId="3" exprId="3" variable="55b1192326d0" astParent="55b119239200" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119239200" file="../plant_boss/drivers/lm20bim7.c" linenr="59" column="17" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741918" astOperand1="55b1192391a0" astOperand2="55b1192394a0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119239380" file="../plant_boss/drivers/lm20bim7.c" linenr="59" column="24" str="-1481.96" scope="55b119235e90" type="number" isFloat="true" values="55b119251de0" astParent="55b1192394a0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b1192394a0" file="../plant_boss/drivers/lm20bim7.c" linenr="59" column="28" str="+" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741917" astParent="55b119239200" astOperand1="55b119239380" astOperand2="55b119239620" valueType-type="double" valueType-reference="None"/>
+    <token id="55b119239500" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="9" str="sqrt" scope="55b119235e90" type="name" astParent="55b119239620"/>
+    <token id="55b119239620" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="13" str="(" scope="55b119235e90" link="55b119257990" exprId="1073741916" astParent="55b1192394a0" astOperand1="55b119239500" astOperand2="55b119240b30" valueType-type="double" valueType-reference="None" valueType-originalTypeName="double"/>
+    <token id="55b119239680" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="15" str="2.1962" scope="55b119235e90" type="number" isFloat="true" values="55b119240f50" astParent="55b1192397a0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b1192397a0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="21" str="*" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741903" values="55b1192354a0" astParent="55b119240b30" astOperand1="55b119239680" astOperand2="55b119239920" valueType-type="double" valueType-reference="None"/>
+    <token id="55b119239800" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="23" str="pow" scope="55b119235e90" type="name" astParent="55b119239920"/>
+    <token id="55b119239920" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="26" str="(" scope="55b119235e90" link="55b119239c20" exprId="1073741902" values="55b119234e30" astParent="55b1192397a0" astOperand1="55b119239800" astOperand2="55b119239aa0" valueType-type="double" valueType-reference="None" valueType-originalTypeName="double"/>
+    <token id="55b119239980" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="27" str="10" scope="55b119235e90" type="number" isInt="true" values="55b119247540" astParent="55b119239aa0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119239aa0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="29" str="," scope="55b119235e90" exprId="1073741901" astParent="55b119239920" astOperand1="55b119239980" astOperand2="55b119239b00"/>
+    <token id="55b119239b00" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="31" str="6" scope="55b119235e90" type="number" isInt="true" values="55b11924af20" astParent="55b119239aa0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119239c20" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="32" str=")" scope="55b119235e90" link="55b119239920"/>
+    <token id="55b119240b30" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="34" str="+" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741915" astParent="55b119239620" astOperand1="55b1192397a0" astOperand2="55b119256ff0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b119239d30" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="36" str="(" scope="55b119235e90" link="55b119257880"/>
+    <token id="55b119239e40" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="37" str="(" scope="55b119235e90" link="55b119256ed0"/>
+    <token id="55b119239ea0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="39" str="1.8639" scope="55b119235e90" type="number" isFloat="true" values="55b119246b70" astParent="55b119256870" valueType-type="double" valueType-reference="None"/>
+    <token id="55b119256870" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="45" str="-" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741908" astParent="55b119256ff0" astOperand1="55b119239ea0" astOperand2="55b119256cf0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b1192568d0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="47" str="(" scope="55b119235e90" link="55b119256e70"/>
+    <token id="55b1192569f0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="48" str="(" scope="55b119235e90" isCast="true" link="55b119256b70" exprId="1073741905" astParent="55b119256cf0" astOperand1="55b119256bd0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119256a50" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="49" str="float" scope="55b119235e90" type="name"/>
+    <token id="55b119256b70" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="54" str=")" scope="55b119235e90" link="55b1192569f0"/>
+    <token id="55b119256bd0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="55" str="adc_voltage" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11924ba10" astParent="55b1192569f0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119256cf0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="67" str="/" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741907" astParent="55b119256870" astOperand1="55b1192569f0" astOperand2="55b119256d50" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119256d50" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="69" str="1000" scope="55b119235e90" type="number" isInt="true" values="55b1192594d0" astParent="55b119256cf0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119256e70" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="73" str=")" scope="55b119235e90" link="55b1192568d0"/>
+    <token id="55b119256ed0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="74" str=")" scope="55b119235e90" link="55b119239e40"/>
+    <token id="55b119256ff0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="76" str="/" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741914" astParent="55b119240b30" astOperand1="55b119256870" astOperand2="55b1192571d0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b119257050" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="78" str="(" scope="55b119235e90" link="55b119251d20"/>
+    <token id="55b119257170" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="80" str="3.88" scope="55b119235e90" type="number" isFloat="true" values="55b11924ccb0" astParent="55b1192571d0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b1192571d0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="84" str="*" scope="55b119235e90" type="op" isArithmeticalOp="true" exprId="1073741913" values="55b119260650" astParent="55b119256ff0" astOperand1="55b119257170" astOperand2="55b119257350" valueType-type="double" valueType-reference="None"/>
+    <token id="55b1192572f0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="86" str="pow" scope="55b119235e90" type="name" astParent="55b119257350"/>
+    <token id="55b119257350" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="89" str="(" scope="55b119235e90" link="55b119257770" exprId="1073741912" values="55b1192604f0" astParent="55b1192571d0" astOperand1="55b1192572f0" astOperand2="55b1192574d0" valueType-type="double" valueType-reference="None" valueType-originalTypeName="double"/>
+    <token id="55b119257470" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="90" str="10" scope="55b119235e90" type="number" isInt="true" values="55b11922aba0" astParent="55b1192574d0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192574d0" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="92" str="," scope="55b119235e90" exprId="1073741911" astParent="55b119257350" astOperand1="55b119257470" astOperand2="55b119257650"/>
+    <token id="55b119257650" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="95" str="-6" scope="55b119235e90" type="number" isInt="true" values="55b119232260" astParent="55b1192574d0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119257770" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="96" str=")" scope="55b119235e90" link="55b119257350"/>
+    <token id="55b119251d20" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="97" str=")" scope="55b119235e90" link="55b119257050"/>
+    <token id="55b119257880" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="98" str=")" scope="55b119235e90" link="55b119239d30"/>
+    <token id="55b119257990" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="99" str=")" scope="55b119235e90" link="55b119239620"/>
+    <token id="55b119251d80" file="../plant_boss/drivers/lm20bim7.c" linenr="60" column="100" str=";" scope="55b119235e90"/>
+    <token id="55b119257aa0" file="../plant_boss/drivers/lm20bim7.c" linenr="62" column="5" str="return" scope="55b119235e90" type="name" values="55b119255250" astOperand1="55b119257bb0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119257bb0" file="../plant_boss/drivers/lm20bim7.c" linenr="62" column="12" str="true" scope="55b119235e90" type="name" exprId="56" astParent="55b119257aa0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119257c10" file="../plant_boss/drivers/lm20bim7.c" linenr="62" column="16" str=";" scope="55b119235e90"/>
+    <token id="55b119257d20" file="../plant_boss/drivers/lm20bim7.c" linenr="63" column="1" str="}" scope="55b119235e90" link="55b11922a280"/>
+    <token id="55b119257e30" file="../plant_boss/drivers/lm20bim7.c" linenr="65" column="1" str="float" scope="55b11923f800" type="name"/>
+    <token id="55b119257e90" file="../plant_boss/drivers/lm20bim7.c" linenr="65" column="7" str="lm20bim7_get_temperature_value" scope="55b11923f800" type="name" function="55b11924f9d0"/>
+    <token id="55b119257fb0" file="../plant_boss/drivers/lm20bim7.c" linenr="65" column="37" str="(" scope="55b11923f800" isRemovedVoidParameter="true" link="55b119258160" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119258160" file="../plant_boss/drivers/lm20bim7.c" linenr="65" column="42" str=")" scope="55b11923f800" link="55b119257fb0"/>
+    <token id="55b1192581c0" file="../plant_boss/drivers/lm20bim7.c" linenr="66" column="1" str="{" scope="55b119236370" link="55b1192584c0"/>
+    <token id="55b1192582e0" file="../plant_boss/drivers/lm20bim7.c" linenr="67" column="5" str="return" scope="55b119236370" type="name" astOperand1="55b119258340" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119258340" file="../plant_boss/drivers/lm20bim7.c" linenr="67" column="12" str="temperature" scope="55b119236370" type="name" varId="3" exprId="3" variable="55b1192326d0" astParent="55b1192582e0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119258460" file="../plant_boss/drivers/lm20bim7.c" linenr="67" column="23" str=";" scope="55b119236370"/>
+    <token id="55b1192584c0" file="../plant_boss/drivers/lm20bim7.c" linenr="68" column="1" str="}" scope="55b119236370" link="55b1192581c0"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b11923f800" type="Global">
+      <functionList>
+        <function id="55b11924f470" token="55b11924a720" tokenDef="55b1192478b0" name="lm20bim7_init" type="Function" access="Public"/>
+        <function id="55b11924f3b0" token="55b119229f40" tokenDef="55b119247070" name="lm20bim7_handle" type="Function" access="Public"/>
+        <function id="55b11924f9d0" token="55b119257e90" tokenDef="55b1192511e0" name="lm20bim7_get_temperature_value" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55b11925d940"/>
+        <var id="55b11925dfb0"/>
+        <var id="55b1192326d0"/>
+        <var id="55b1192365e0"/>
+      </varlist>
+    </scope>
+    <scope id="55b11923a110" type="Enum" className="lm20bim7_error_t" bodyStart="55b119240230" bodyEnd="55b119230fb0" nestedIn="55b11923f800" definedType="55b11924f0e0"/>
+    <scope id="55b11923a450" type="Function" className="lm20bim7_init" bodyStart="55b11924aa20" bodyEnd="55b119229dc0" nestedIn="55b11923f800" function="55b11924f470">
+      <varlist>
+        <var id="55b11923fa70"/>
+        <var id="55b11923edb0"/>
+      </varlist>
+    </scope>
+    <scope id="55b119235c20" type="If" bodyStart="55b1192291e0" bodyEnd="55b119229ac0" nestedIn="55b11923a450"/>
+    <scope id="55b119235e90" type="Function" className="lm20bim7_handle" bodyStart="55b11922a280" bodyEnd="55b119257d20" nestedIn="55b11923f800" function="55b11924f3b0">
+      <varlist>
+        <var id="55b11924ba10"/>
+      </varlist>
+    </scope>
+    <scope id="55b119236100" type="If" bodyStart="55b1192387b0" bodyEnd="55b119239080" nestedIn="55b119235e90"/>
+    <scope id="55b119236370" type="Function" className="lm20bim7_get_temperature_value" bodyStart="55b1192581c0" bodyEnd="55b1192584c0" nestedIn="55b11923f800" function="55b11924f9d0"/>
+  </scopes>
+  <types>
+    <type id="55b11924f0e0" classScope="55b11923a110"/>
+  </types>
+  <variables>
+    <var id="55b1192326d0" nameToken="55b119249ee0" typeStartToken="55b119249d90" typeEndToken="55b119249d90" access="Global" scope="55b11923f800" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1192365e0" nameToken="55b1192435e0" typeStartToken="55b11924a160" typeEndToken="55b11924a270" access="Global" scope="55b11923f800" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b11923edb0" nameToken="55b119232fb0" typeStartToken="55b119232f50" typeEndToken="55b119232f50" access="Local" scope="55b11923a450" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11923fa70" nameToken="55b11924b5a0" typeStartToken="55b11924b490" typeEndToken="55b11924b490" access="Local" scope="55b11923a450" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924ba10" nameToken="55b11922a3f0" typeStartToken="55b11922a2e0" typeEndToken="55b11922a2e0" access="Local" scope="55b119235e90" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925d940" nameToken="55b119243910" typeStartToken="55b119243800" typeEndToken="55b119243800" access="Global" scope="55b11923f800" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925dfb0" nameToken="55b11925a3b0" typeStartToken="55b11925a2a0" typeEndToken="55b11925a2a0" access="Global" scope="55b11923f800" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119246af0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230260">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192302a0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230360">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119246b30">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230320">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192302e0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119249a50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b300">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b580">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b6e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192502d0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924f790">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119225fa0">
+      <value tokvalue="55b11924a3e0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925b8c0">
+      <value tokvalue="55b11924a3e0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922b840">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230220">
+      <value tokvalue="55b11924adb0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923fcf0">
+      <value lifetime="55b11924b320" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value lifetime="55b11924b320" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119248db0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119248df0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922e160">
+      <value lifetime="55b119228930" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923aef0">
+      <value lifetime="55b119228b40" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119247a60">
+      <value lifetime="55b119228e10" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922cd00">
+      <value lifetime="55b1192294c0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192494f0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119228570">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119249650">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119244be0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119244e60">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192450e0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922cea0">
+      <value lifetime="55b119238180" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922adc0">
+      <value lifetime="55b119238390" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192607b0">
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922af60">
+      <value lifetime="55b119238a40" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192456c0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192500f0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119254fd0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119251de0">
+      <value floatvalue="-1481.960000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119240f50">
+      <value floatvalue="2.196200" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192354a0">
+      <value floatvalue="2196200.000000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119234e30">
+      <value floatvalue="1000000.000000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119247540">
+      <value intvalue="10" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924af20">
+      <value intvalue="6" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119246b70">
+      <value floatvalue="1.863900" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192594d0">
+      <value intvalue="1000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924ccb0">
+      <value floatvalue="3.880000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119260650">
+      <value floatvalue="0.000004" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192604f0">
+      <value floatvalue="0.000001" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922aba0">
+      <value intvalue="10" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119232260">
+      <value intvalue="-6" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119255250">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+  <typedef-info>
+    <info name="lm20bim7_error_t" file="../plant_boss/drivers/lm20bim7.h" line="21" column="1" used="0"/>
+  </typedef-info>
+</dump>
+</dumps>

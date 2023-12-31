@@ -1,0 +1,610 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/drivers/hw390.c"/>
+    <file index="1" name="../plant_boss/drivers/hw390.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    hw390.cx*  \brief   This file contains functions for reading soil moisture sensor hw390 data.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;hw390.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="12" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="13" column="1" str="adc_cali_handle_t"/>
+    <tok fileIndex="0" linenr="13" column="19" str="adc_calibration_handle_humidity"/>
+    <tok fileIndex="0" linenr="13" column="50" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="float"/>
+    <tok fileIndex="0" linenr="14" column="7" str="humidity"/>
+    <tok fileIndex="0" linenr="14" column="15" str=";"/>
+    <tok fileIndex="0" linenr="15" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="15" column="10" str="err_hw390"/>
+    <tok fileIndex="0" linenr="15" column="20" str="="/>
+    <tok fileIndex="0" linenr="15" column="22" str="0u"/>
+    <tok fileIndex="0" linenr="15" column="24" str=";"/>
+    <tok fileIndex="0" linenr="17" column="1" str="static"/>
+    <tok fileIndex="0" linenr="17" column="8" str="const"/>
+    <tok fileIndex="0" linenr="17" column="14" str="char"/>
+    <tok fileIndex="0" linenr="17" column="18" str="*"/>
+    <tok fileIndex="0" linenr="17" column="20" str="tag_hw390"/>
+    <tok fileIndex="0" linenr="17" column="30" str="="/>
+    <tok fileIndex="0" linenr="17" column="32" str="&quot;hw390&quot;"/>
+    <tok fileIndex="0" linenr="17" column="39" str=";"/>
+    <tok fileIndex="0" linenr="19" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="20" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="20" column="6" str="hw390_init"/>
+    <tok fileIndex="0" linenr="20" column="16" str="("/>
+    <tok fileIndex="0" linenr="20" column="17" str="void"/>
+    <tok fileIndex="0" linenr="20" column="21" str=")"/>
+    <tok fileIndex="0" linenr="21" column="1" str="{"/>
+    <tok fileIndex="0" linenr="22" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="22" column="13" str="("/>
+    <tok fileIndex="0" linenr="22" column="14" str="tag_hw390"/>
+    <tok fileIndex="0" linenr="22" column="23" str=","/>
+    <tok fileIndex="0" linenr="22" column="25" str="&quot;addr err_hw390 0x%x\n&quot;"/>
+    <tok fileIndex="0" linenr="22" column="48" str=","/>
+    <tok fileIndex="0" linenr="22" column="50" str="("/>
+    <tok fileIndex="0" linenr="22" column="51" str="unsigned"/>
+    <tok fileIndex="0" linenr="22" column="60" str="int"/>
+    <tok fileIndex="0" linenr="22" column="63" str=")"/>
+    <tok fileIndex="0" linenr="22" column="64" str="&amp;"/>
+    <tok fileIndex="0" linenr="22" column="65" str="err_hw390"/>
+    <tok fileIndex="0" linenr="22" column="74" str=")"/>
+    <tok fileIndex="0" linenr="22" column="75" str=";"/>
+    <tok fileIndex="0" linenr="24" column="5" str="adc_oneshot_chan_cfg_t"/>
+    <tok fileIndex="0" linenr="24" column="28" str="adc_channel_config_humidity"/>
+    <tok fileIndex="0" linenr="24" column="56" str="="/>
+    <tok fileIndex="0" linenr="25" column="5" str="{"/>
+    <tok fileIndex="0" linenr="26" column="9" str="."/>
+    <tok fileIndex="0" linenr="26" column="10" str="bitwidth"/>
+    <tok fileIndex="0" linenr="26" column="19" str="="/>
+    <tok fileIndex="0" linenr="26" column="21" str="ADC_BITWIDTH_12"/>
+    <tok fileIndex="0" linenr="26" column="36" str=","/>
+    <tok fileIndex="0" linenr="27" column="9" str="."/>
+    <tok fileIndex="0" linenr="27" column="10" str="atten"/>
+    <tok fileIndex="0" linenr="27" column="16" str="="/>
+    <tok fileIndex="0" linenr="27" column="18" str="ADC_ATTEN_DB_11"/>
+    <tok fileIndex="0" linenr="27" column="33" str=","/>
+    <tok fileIndex="0" linenr="28" column="5" str="}"/>
+    <tok fileIndex="0" linenr="28" column="6" str=";"/>
+    <tok fileIndex="0" linenr="30" column="5" str="adc_cali_line_fitting_config_t"/>
+    <tok fileIndex="0" linenr="30" column="36" str="adc_calibration_config_humidity"/>
+    <tok fileIndex="0" linenr="30" column="68" str="="/>
+    <tok fileIndex="0" linenr="31" column="5" str="{"/>
+    <tok fileIndex="0" linenr="32" column="9" str="."/>
+    <tok fileIndex="0" linenr="32" column="10" str="unit_id"/>
+    <tok fileIndex="0" linenr="32" column="18" str="="/>
+    <tok fileIndex="0" linenr="32" column="20" str="ADC_UNIT_1"/>
+    <tok fileIndex="0" linenr="32" column="30" str=","/>
+    <tok fileIndex="0" linenr="33" column="9" str="."/>
+    <tok fileIndex="0" linenr="33" column="10" str="atten"/>
+    <tok fileIndex="0" linenr="33" column="16" str="="/>
+    <tok fileIndex="0" linenr="33" column="18" str="ADC_ATTEN_DB_11"/>
+    <tok fileIndex="0" linenr="33" column="33" str=","/>
+    <tok fileIndex="0" linenr="34" column="9" str="."/>
+    <tok fileIndex="0" linenr="34" column="10" str="bitwidth"/>
+    <tok fileIndex="0" linenr="34" column="19" str="="/>
+    <tok fileIndex="0" linenr="34" column="21" str="ADC_BITWIDTH_12"/>
+    <tok fileIndex="0" linenr="34" column="36" str=","/>
+    <tok fileIndex="0" linenr="35" column="5" str="}"/>
+    <tok fileIndex="0" linenr="35" column="6" str=";"/>
+    <tok fileIndex="0" linenr="37" column="5" str="if"/>
+    <tok fileIndex="0" linenr="37" column="8" str="("/>
+    <tok fileIndex="0" linenr="37" column="9" str="true"/>
+    <tok fileIndex="0" linenr="37" column="14" str="!="/>
+    <tok fileIndex="0" linenr="37" column="17" str="adc_init_channel"/>
+    <tok fileIndex="0" linenr="37" column="33" str="("/>
+    <tok fileIndex="0" linenr="37" column="34" str="&amp;"/>
+    <tok fileIndex="0" linenr="37" column="35" str="adc_channel_config_humidity"/>
+    <tok fileIndex="0" linenr="37" column="62" str=","/>
+    <tok fileIndex="0" linenr="37" column="64" str="&amp;"/>
+    <tok fileIndex="0" linenr="37" column="65" str="adc_calibration_config_humidity"/>
+    <tok fileIndex="0" linenr="37" column="96" str=","/>
+    <tok fileIndex="0" linenr="38" column="21" str="&amp;"/>
+    <tok fileIndex="0" linenr="38" column="22" str="adc_calibration_handle_humidity"/>
+    <tok fileIndex="0" linenr="38" column="53" str=","/>
+    <tok fileIndex="0" linenr="38" column="55" str="ADC_CHANNEL_6"/>
+    <tok fileIndex="0" linenr="38" column="68" str=")"/>
+    <tok fileIndex="0" linenr="38" column="69" str=")"/>
+    <tok fileIndex="0" linenr="39" column="5" str="{"/>
+    <tok fileIndex="0" linenr="40" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="40" column="22" str="("/>
+    <tok fileIndex="0" linenr="40" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="40" column="24" str="err_hw390"/>
+    <tok fileIndex="0" linenr="40" column="33" str=","/>
+    <tok fileIndex="0" linenr="40" column="35" str="HW390_ERROR_INIT_ADC"/>
+    <tok fileIndex="0" linenr="40" column="55" str=")"/>
+    <tok fileIndex="0" linenr="40" column="56" str=";"/>
+    <tok fileIndex="0" linenr="42" column="9" str="return"/>
+    <tok fileIndex="0" linenr="42" column="16" str="false"/>
+    <tok fileIndex="0" linenr="42" column="21" str=";"/>
+    <tok fileIndex="0" linenr="43" column="5" str="}"/>
+    <tok fileIndex="0" linenr="45" column="5" str="return"/>
+    <tok fileIndex="0" linenr="45" column="12" str="true"/>
+    <tok fileIndex="0" linenr="45" column="16" str=";"/>
+    <tok fileIndex="0" linenr="46" column="1" str="}"/>
+    <tok fileIndex="0" linenr="48" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="48" column="6" str="hw390_handle"/>
+    <tok fileIndex="0" linenr="48" column="18" str="("/>
+    <tok fileIndex="0" linenr="48" column="19" str="void"/>
+    <tok fileIndex="0" linenr="48" column="23" str=")"/>
+    <tok fileIndex="0" linenr="49" column="1" str="{"/>
+    <tok fileIndex="0" linenr="50" column="5" str="int"/>
+    <tok fileIndex="0" linenr="50" column="9" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="50" column="20" str=";"/>
+    <tok fileIndex="0" linenr="52" column="5" str="if"/>
+    <tok fileIndex="0" linenr="52" column="8" str="("/>
+    <tok fileIndex="0" linenr="52" column="9" str="true"/>
+    <tok fileIndex="0" linenr="52" column="14" str="!="/>
+    <tok fileIndex="0" linenr="52" column="17" str="adc_handle_channel"/>
+    <tok fileIndex="0" linenr="52" column="35" str="("/>
+    <tok fileIndex="0" linenr="52" column="36" str="&amp;"/>
+    <tok fileIndex="0" linenr="52" column="37" str="adc_calibration_handle_humidity"/>
+    <tok fileIndex="0" linenr="52" column="68" str=","/>
+    <tok fileIndex="0" linenr="52" column="70" str="&amp;"/>
+    <tok fileIndex="0" linenr="52" column="71" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="52" column="82" str=","/>
+    <tok fileIndex="0" linenr="52" column="84" str="ADC_CHANNEL_6"/>
+    <tok fileIndex="0" linenr="52" column="97" str=")"/>
+    <tok fileIndex="0" linenr="52" column="98" str=")"/>
+    <tok fileIndex="0" linenr="53" column="5" str="{"/>
+    <tok fileIndex="0" linenr="54" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="54" column="22" str="("/>
+    <tok fileIndex="0" linenr="54" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="54" column="24" str="err_hw390"/>
+    <tok fileIndex="0" linenr="54" column="33" str=","/>
+    <tok fileIndex="0" linenr="54" column="35" str="HW390_ERROR_HANDLE_ADC"/>
+    <tok fileIndex="0" linenr="54" column="57" str=")"/>
+    <tok fileIndex="0" linenr="54" column="58" str=";"/>
+    <tok fileIndex="0" linenr="56" column="9" str="return"/>
+    <tok fileIndex="0" linenr="56" column="16" str="false"/>
+    <tok fileIndex="0" linenr="56" column="21" str=";"/>
+    <tok fileIndex="0" linenr="57" column="5" str="}"/>
+    <tok fileIndex="0" linenr="59" column="5" str="humidity"/>
+    <tok fileIndex="0" linenr="59" column="14" str="="/>
+    <tok fileIndex="0" linenr="59" column="16" str="("/>
+    <tok fileIndex="0" linenr="59" column="17" str="float"/>
+    <tok fileIndex="0" linenr="59" column="22" str=")"/>
+    <tok fileIndex="0" linenr="59" column="23" str="adc_voltage"/>
+    <tok fileIndex="0" linenr="59" column="35" str="*"/>
+    <tok fileIndex="0" linenr="59" column="37" str="HW390_HUMIDITY_SCALE"/>
+    <tok fileIndex="0" linenr="59" column="58" str="+"/>
+    <tok fileIndex="0" linenr="59" column="60" str="HW390_HUMIDITY_OFFSET"/>
+    <tok fileIndex="0" linenr="59" column="81" str=";"/>
+    <tok fileIndex="0" linenr="61" column="5" str="return"/>
+    <tok fileIndex="0" linenr="61" column="12" str="true"/>
+    <tok fileIndex="0" linenr="61" column="16" str=";"/>
+    <tok fileIndex="0" linenr="62" column="1" str="}"/>
+    <tok fileIndex="0" linenr="64" column="1" str="float"/>
+    <tok fileIndex="0" linenr="64" column="7" str="hw390_get_humidity_value"/>
+    <tok fileIndex="0" linenr="64" column="31" str="("/>
+    <tok fileIndex="0" linenr="64" column="32" str="void"/>
+    <tok fileIndex="0" linenr="64" column="36" str=")"/>
+    <tok fileIndex="0" linenr="65" column="1" str="{"/>
+    <tok fileIndex="0" linenr="66" column="5" str="return"/>
+    <tok fileIndex="0" linenr="66" column="12" str="humidity"/>
+    <tok fileIndex="0" linenr="66" column="20" str=";"/>
+    <tok fileIndex="0" linenr="67" column="1" str="}"/>
+    <tok fileIndex="0" linenr="69" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/drivers/hw390.c" linenr="8" str="#include &quot;hw390.h&quot;"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="7" str="#ifndef HW390_H"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="8" str="#define HW390_H"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="13" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="15" str="#include &quot;error.h&quot;"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="16" str="#include &quot;adc_wrapper.h&quot;"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="19" str="#define HW390_HUMIDITY_OFFSET ( 138.0)"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="20" str="#define HW390_HUMIDITY_SCALE - 0.0667"/>
+    <directive file="../plant_boss/drivers/hw390.h" linenr="67" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="HW390_HUMIDITY_SCALE" file="../plant_boss/drivers/hw390.h" line="20" column="9" usefile="../plant_boss/drivers/hw390.c" useline="59" usecolumn="37" is-known-value="true"/>
+    <macro name="HW390_H" file="../plant_boss/drivers/hw390.h" line="8" column="9" usefile="../plant_boss/drivers/hw390.h" useline="7" usecolumn="9" is-known-value="true"/>
+    <macro name="HW390_HUMIDITY_OFFSET" file="../plant_boss/drivers/hw390.h" line="19" column="9" usefile="../plant_boss/drivers/hw390.c" useline="59" usecolumn="60" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55b119247a70" file="../plant_boss/drivers/hw390.h" linenr="23" column="9" str="enum" scope="55b119236370" type="name"/>
+    <token id="55b119255ab0" file="../plant_boss/drivers/hw390.h" linenr="23" column="0" str="hw390_error_t" scope="55b119236370" type="name" type-scope="55b119236100"/>
+    <token id="55b119245770" file="../plant_boss/drivers/hw390.h" linenr="24" column="1" str="{" scope="55b119236100" link="55b119254980" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11924d060" file="../plant_boss/drivers/hw390.h" linenr="25" column="5" str="HW390_ERROR_INIT_ADC" scope="55b119236100" type="name" values="55b119252e20" astParent="55b11923efc0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11923efc0" file="../plant_boss/drivers/hw390.h" linenr="25" column="45" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119252c80" astParent="55b1192476d0" astOperand1="55b11924d060" astOperand2="55b119234400" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119234400" file="../plant_boss/drivers/hw390.h" linenr="25" column="47" str="0x00000001U" scope="55b119236100" type="number" isInt="true" values="55b119252cc0" astParent="55b11923efc0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192476d0" file="../plant_boss/drivers/hw390.h" linenr="25" column="58" str="," scope="55b119236100" values="55b119252db0" astOperand1="55b11923efc0" astOperand2="55b11925bc80"/>
+    <token id="55b119247730" file="../plant_boss/drivers/hw390.h" linenr="26" column="5" str="HW390_ERROR_HANDLE_ADC" scope="55b119236100" type="name" values="55b119252e90" astParent="55b11925bc80" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11925bc80" file="../plant_boss/drivers/hw390.h" linenr="26" column="45" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119252d40" astParent="55b1192476d0" astOperand1="55b119247730" astOperand2="55b11925bce0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11925bce0" file="../plant_boss/drivers/hw390.h" linenr="26" column="47" str="0x00000002U" scope="55b119236100" type="number" isInt="true" values="55b119252d00" astParent="55b11925bc80" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119254920" file="../plant_boss/drivers/hw390.h" linenr="26" column="58" str="," scope="55b119236100"/>
+    <token id="55b119254980" file="../plant_boss/drivers/hw390.h" linenr="57" column="1" str="}" scope="55b119236100" link="55b119245770"/>
+    <token id="55b1192555a0" file="../plant_boss/drivers/hw390.h" linenr="57" column="16" str=";" scope="55b119236370"/>
+    <token id="55b11924d500" file="../plant_boss/drivers/hw390.h" linenr="60" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11924d560" file="../plant_boss/drivers/hw390.h" linenr="60" column="6" str="hw390_init" scope="55b119236370" type="name" function="55b119250ee0"/>
+    <token id="55b119250d00" file="../plant_boss/drivers/hw390.h" linenr="60" column="16" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119247630" values="55b11924ed00" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119247630" file="../plant_boss/drivers/hw390.h" linenr="60" column="21" str=")" scope="55b119236370" link="55b119250d00"/>
+    <token id="55b119247b80" file="../plant_boss/drivers/hw390.h" linenr="60" column="22" str=";" scope="55b119236370"/>
+    <token id="55b11924ce60" file="../plant_boss/drivers/hw390.h" linenr="61" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11924e1c0" file="../plant_boss/drivers/hw390.h" linenr="61" column="6" str="hw390_handle" scope="55b119236370" type="name" function="55b1192511b0"/>
+    <token id="55b11924dc50" file="../plant_boss/drivers/hw390.h" linenr="61" column="18" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119251d10" values="55b1192371a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119251d10" file="../plant_boss/drivers/hw390.h" linenr="61" column="23" str=")" scope="55b119236370" link="55b11924dc50"/>
+    <token id="55b119251e20" file="../plant_boss/drivers/hw390.h" linenr="61" column="24" str=";" scope="55b119236370"/>
+    <token id="55b119252450" file="../plant_boss/drivers/hw390.h" linenr="63" column="1" str="float" scope="55b119236370" type="name"/>
+    <token id="55b1192524b0" file="../plant_boss/drivers/hw390.h" linenr="63" column="7" str="hw390_get_humidity_value" scope="55b119236370" type="name" function="55b119246f70"/>
+    <token id="55b11924b9a0" file="../plant_boss/drivers/hw390.h" linenr="63" column="31" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119254fe0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119254fe0" file="../plant_boss/drivers/hw390.h" linenr="63" column="36" str=")" scope="55b119236370" link="55b11924b9a0"/>
+    <token id="55b1192550f0" file="../plant_boss/drivers/hw390.h" linenr="63" column="37" str=";" scope="55b119236370"/>
+    <token id="55b119255150" file="../plant_boss/drivers/hw390.c" linenr="13" column="1" str="adc_cali_handle_t" scope="55b119236370" type="name"/>
+    <token id="55b119255490" file="../plant_boss/drivers/hw390.c" linenr="13" column="19" str="adc_calibration_handle_humidity" scope="55b119236370" type="name" varId="1" exprId="1" variable="55b11923fa70"/>
+    <token id="55b119249330" file="../plant_boss/drivers/hw390.c" linenr="13" column="50" str=";" scope="55b119236370"/>
+    <token id="55b11924c9b0" file="../plant_boss/drivers/hw390.c" linenr="14" column="1" str="float" scope="55b119236370" type="name"/>
+    <token id="55b119249440" file="../plant_boss/drivers/hw390.c" linenr="14" column="7" str="humidity" scope="55b119236370" type="name" varId="2" exprId="2" variable="55b1192365e0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b119249550" file="../plant_boss/drivers/hw390.c" linenr="14" column="15" str=";" scope="55b119236370"/>
+    <token id="55b1192495b0" file="../plant_boss/drivers/hw390.c" linenr="15" column="1" str="uint32_t" scope="55b119236370" type="name"/>
+    <token id="55b1192496c0" file="../plant_boss/drivers/hw390.c" linenr="15" column="10" str="err_hw390" scope="55b119236370" type="name" varId="3" exprId="3" variable="55b1192326d0" values="55b119237420" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922d0d0" file="../plant_boss/drivers/hw390.c" linenr="15" column="20" str=";" scope="55b119236370" isSplittedVarDeclEq="true"/>
+    <token id="55b11922a730" file="../plant_boss/drivers/hw390.c" linenr="15" column="10" str="err_hw390" scope="55b119236370" type="name" varId="3" exprId="3" variable="55b1192326d0" values="55b119237580" astParent="55b119258a00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119258a00" file="../plant_boss/drivers/hw390.c" linenr="15" column="20" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b119247870" astOperand1="55b11922a730" astOperand2="55b11922d130" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922d130" file="../plant_boss/drivers/hw390.c" linenr="15" column="22" str="0u" scope="55b119236370" type="number" isInt="true" values="55b119246d30" astParent="55b119258a00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922d250" file="../plant_boss/drivers/hw390.c" linenr="15" column="24" str=";" scope="55b119236370"/>
+    <token id="55b11922d2b0" file="../plant_boss/drivers/hw390.c" linenr="17" column="1" str="static" scope="55b119236370" type="name"/>
+    <token id="55b11922d3d0" file="../plant_boss/drivers/hw390.c" linenr="17" column="8" str="const" scope="55b119236370" type="name"/>
+    <token id="55b11922d430" file="../plant_boss/drivers/hw390.c" linenr="17" column="14" str="char" scope="55b119236370" type="name"/>
+    <token id="55b11922d550" file="../plant_boss/drivers/hw390.c" linenr="17" column="18" str="*" scope="55b119236370" type="op" isArithmeticalOp="true"/>
+    <token id="55b119250680" file="../plant_boss/drivers/hw390.c" linenr="17" column="20" str="tag_hw390" scope="55b119236370" type="name" varId="4" exprId="4" variable="55b1192262a0" astParent="55b11922d660" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11922d660" file="../plant_boss/drivers/hw390.c" linenr="17" column="30" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b119258a60" astOperand1="55b119250680" astOperand2="55b11922d770" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11922d770" file="../plant_boss/drivers/hw390.c" linenr="17" column="32" str="&quot;hw390&quot;" scope="55b119236370" type="string" strlen="5" values="55b1192551b0" astParent="55b11922d660" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11922d7d0" file="../plant_boss/drivers/hw390.c" linenr="17" column="39" str=";" scope="55b119236370"/>
+    <token id="55b11922d8e0" file="../plant_boss/drivers/hw390.c" linenr="20" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119243ef0" file="../plant_boss/drivers/hw390.c" linenr="20" column="6" str="hw390_init" scope="55b119236370" type="name" function="55b119250ee0"/>
+    <token id="55b11922d940" file="../plant_boss/drivers/hw390.c" linenr="20" column="16" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b11922db60" values="55b1192376e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922db60" file="../plant_boss/drivers/hw390.c" linenr="20" column="21" str=")" scope="55b119236370" link="55b11922d940"/>
+    <token id="55b11922dc70" file="../plant_boss/drivers/hw390.c" linenr="21" column="1" str="{" scope="55b119235e90" link="55b119228480"/>
+    <token id="55b11922dd90" file="../plant_boss/drivers/hw390.c" linenr="22" column="5" str="ESP_LOGI" scope="55b119235e90" type="name" astParent="55b11922ddf0"/>
+    <token id="55b11922ddf0" file="../plant_boss/drivers/hw390.c" linenr="22" column="13" str="(" scope="55b119235e90" link="55b119254c10" exprId="1073741846" astOperand1="55b11922dd90" astOperand2="55b119244540"/>
+    <token id="55b11922df10" file="../plant_boss/drivers/hw390.c" linenr="22" column="14" str="tag_hw390" scope="55b119235e90" type="name" varId="4" exprId="4" variable="55b1192262a0" astParent="55b11922df70" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11922df70" file="../plant_boss/drivers/hw390.c" linenr="22" column="23" str="," scope="55b119235e90" exprId="1073741842" astParent="55b119244540" astOperand1="55b11922df10" astOperand2="55b11922e090"/>
+    <token id="55b11922e090" file="../plant_boss/drivers/hw390.c" linenr="22" column="25" str="&quot;addr err_hw390 0x%x\n&quot;" scope="55b119235e90" type="string" strlen="20" exprId="1073741841" values="55b119252c40" astParent="55b11922df70" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119244540" file="../plant_boss/drivers/hw390.c" linenr="22" column="48" str="," scope="55b119235e90" exprId="1073741845" astParent="55b11922ddf0" astOperand1="55b11922df70" astOperand2="55b11922e1a0"/>
+    <token id="55b11922e1a0" file="../plant_boss/drivers/hw390.c" linenr="22" column="50" str="(" scope="55b119235e90" isCast="true" link="55b11922e470" exprId="1073741844" values="55b11924e800" astParent="55b119244540" astOperand1="55b11922e4d0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11922e2f0" file="../plant_boss/drivers/hw390.c" linenr="22" column="60" str="int" scope="55b119235e90" type="name" isUnsigned="true"/>
+    <token id="55b11922e470" file="../plant_boss/drivers/hw390.c" linenr="22" column="63" str=")" scope="55b119235e90" link="55b11922e1a0"/>
+    <token id="55b11922e4d0" file="../plant_boss/drivers/hw390.c" linenr="22" column="64" str="&amp;" scope="55b119235e90" type="op" exprId="19" values="55b11924be90" astParent="55b11922e1a0" astOperand1="55b11922e5f0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11922e5f0" file="../plant_boss/drivers/hw390.c" linenr="22" column="65" str="err_hw390" scope="55b119235e90" type="name" varId="3" exprId="3" variable="55b1192326d0" values="55b11922c6e0" astParent="55b11922e4d0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119254c10" file="../plant_boss/drivers/hw390.c" linenr="22" column="74" str=")" scope="55b119235e90" link="55b11922ddf0"/>
+    <token id="55b11922e700" file="../plant_boss/drivers/hw390.c" linenr="22" column="75" str=";" scope="55b119235e90"/>
+    <token id="55b11922e810" file="../plant_boss/drivers/hw390.c" linenr="24" column="5" str="adc_oneshot_chan_cfg_t" scope="55b119235e90" type="name"/>
+    <token id="55b11922e870" file="../plant_boss/drivers/hw390.c" linenr="24" column="28" str="adc_channel_config_humidity" scope="55b119235e90" type="name" varId="5" exprId="5" variable="55b11925dfb0"/>
+    <token id="55b11922e9d0" file="../plant_boss/drivers/hw390.c" linenr="24" column="56" str=";" scope="55b119235e90" isSplittedVarDeclEq="true"/>
+    <token id="55b11924c250" file="../plant_boss/drivers/hw390.c" linenr="24" column="28" str="adc_channel_config_humidity" scope="55b119235e90" type="name" varId="5" exprId="5" variable="55b11925dfb0" astParent="55b119255780"/>
+    <token id="55b119255780" file="../plant_boss/drivers/hw390.c" linenr="24" column="56" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741853" astOperand1="55b11924c250" astOperand2="55b11922ea30"/>
+    <token id="55b11922ea30" file="../plant_boss/drivers/hw390.c" linenr="25" column="5" str="{" scope="55b119235e90" link="55b11922f2a0" exprId="1073741852" astParent="55b119255780" astOperand1="55b11922ee00"/>
+    <token id="55b11922eb80" file="../plant_boss/drivers/hw390.c" linenr="26" column="9" str="." scope="55b119235e90" exprId="1073741847" astParent="55b11922ec90" astOperand1="55b119237cd0"/>
+    <token id="55b119237cd0" file="../plant_boss/drivers/hw390.c" linenr="26" column="10" str="bitwidth" scope="55b119235e90" type="name" varId="6" exprId="6" astParent="55b11922eb80"/>
+    <token id="55b11922ec90" file="../plant_boss/drivers/hw390.c" linenr="26" column="19" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741848" astParent="55b11922ee00" astOperand1="55b11922eb80" astOperand2="55b11922eda0"/>
+    <token id="55b11922eda0" file="../plant_boss/drivers/hw390.c" linenr="26" column="21" str="ADC_BITWIDTH_12" scope="55b119235e90" type="name" exprId="13" astParent="55b11922ec90"/>
+    <token id="55b11922ee00" file="../plant_boss/drivers/hw390.c" linenr="26" column="36" str="," scope="55b119235e90" exprId="1073741851" astParent="55b11922ea30" astOperand1="55b11922ec90" astOperand2="55b11922ef70"/>
+    <token id="55b11922ef10" file="../plant_boss/drivers/hw390.c" linenr="27" column="9" str="." scope="55b119235e90" exprId="1073741849" astParent="55b11922ef70" astOperand1="55b119243c20"/>
+    <token id="55b119243c20" file="../plant_boss/drivers/hw390.c" linenr="27" column="10" str="atten" scope="55b119235e90" type="name" varId="7" exprId="7" astParent="55b11922ef10"/>
+    <token id="55b11922ef70" file="../plant_boss/drivers/hw390.c" linenr="27" column="16" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741850" astParent="55b11922ee00" astOperand1="55b11922ef10" astOperand2="55b11922f080"/>
+    <token id="55b11922f080" file="../plant_boss/drivers/hw390.c" linenr="27" column="18" str="ADC_ATTEN_DB_11" scope="55b119235e90" type="name" exprId="14" astParent="55b11922ef70"/>
+    <token id="55b11922f190" file="../plant_boss/drivers/hw390.c" linenr="27" column="33" str="," scope="55b119235e90"/>
+    <token id="55b11922f2a0" file="../plant_boss/drivers/hw390.c" linenr="28" column="5" str="}" scope="55b119235e90" link="55b11922ea30"/>
+    <token id="55b11922f3c0" file="../plant_boss/drivers/hw390.c" linenr="28" column="6" str=";" scope="55b119235e90"/>
+    <token id="55b11922f420" file="../plant_boss/drivers/hw390.c" linenr="30" column="5" str="adc_cali_line_fitting_config_t" scope="55b119235e90" type="name"/>
+    <token id="55b11922f540" file="../plant_boss/drivers/hw390.c" linenr="30" column="36" str="adc_calibration_config_humidity" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b119258410"/>
+    <token id="55b11922f5a0" file="../plant_boss/drivers/hw390.c" linenr="30" column="68" str=";" scope="55b119235e90" isSplittedVarDeclEq="true"/>
+    <token id="55b119255890" file="../plant_boss/drivers/hw390.c" linenr="30" column="36" str="adc_calibration_config_humidity" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b119258410" astParent="55b1192559a0"/>
+    <token id="55b1192559a0" file="../plant_boss/drivers/hw390.c" linenr="30" column="68" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741863" astOperand1="55b119255890" astOperand2="55b11922f720"/>
+    <token id="55b11922f720" file="../plant_boss/drivers/hw390.c" linenr="31" column="5" str="{" scope="55b119235e90" link="55b1192302c0" exprId="1073741862" astParent="55b1192559a0" astOperand1="55b11922fe40"/>
+    <token id="55b119244810" file="../plant_boss/drivers/hw390.c" linenr="32" column="9" str="." scope="55b119235e90" exprId="1073741854" astParent="55b11922f940" astOperand1="55b11922f830"/>
+    <token id="55b11922f830" file="../plant_boss/drivers/hw390.c" linenr="32" column="10" str="unit_id" scope="55b119235e90" type="name" varId="9" exprId="9" astParent="55b119244810"/>
+    <token id="55b11922f940" file="../plant_boss/drivers/hw390.c" linenr="32" column="18" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741855" astParent="55b11922fab0" astOperand1="55b119244810" astOperand2="55b11922f9a0"/>
+    <token id="55b11922f9a0" file="../plant_boss/drivers/hw390.c" linenr="32" column="20" str="ADC_UNIT_1" scope="55b119235e90" type="name" exprId="1073741839" astParent="55b11922f940"/>
+    <token id="55b11922fab0" file="../plant_boss/drivers/hw390.c" linenr="32" column="30" str="," scope="55b119235e90" exprId="1073741858" astParent="55b11922fe40" astOperand1="55b11922f940" astOperand2="55b11922fc20"/>
+    <token id="55b119243680" file="../plant_boss/drivers/hw390.c" linenr="33" column="9" str="." scope="55b119235e90" exprId="1073741856" astParent="55b11922fc20" astOperand1="55b11922fb10"/>
+    <token id="55b11922fb10" file="../plant_boss/drivers/hw390.c" linenr="33" column="10" str="atten" scope="55b119235e90" type="name" varId="10" exprId="10" astParent="55b119243680"/>
+    <token id="55b11922fc20" file="../plant_boss/drivers/hw390.c" linenr="33" column="16" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741857" astParent="55b11922fab0" astOperand1="55b119243680" astOperand2="55b11922fd30"/>
+    <token id="55b11922fd30" file="../plant_boss/drivers/hw390.c" linenr="33" column="18" str="ADC_ATTEN_DB_11" scope="55b119235e90" type="name" exprId="14" astParent="55b11922fc20"/>
+    <token id="55b11922fe40" file="../plant_boss/drivers/hw390.c" linenr="33" column="33" str="," scope="55b119235e90" exprId="1073741861" astParent="55b11922f720" astOperand1="55b11922fab0" astOperand2="55b1192300e0"/>
+    <token id="55b11922ff60" file="../plant_boss/drivers/hw390.c" linenr="34" column="9" str="." scope="55b119235e90" exprId="1073741859" astParent="55b1192300e0" astOperand1="55b11922ffc0"/>
+    <token id="55b11922ffc0" file="../plant_boss/drivers/hw390.c" linenr="34" column="10" str="bitwidth" scope="55b119235e90" type="name" varId="11" exprId="11" astParent="55b11922ff60"/>
+    <token id="55b1192300e0" file="../plant_boss/drivers/hw390.c" linenr="34" column="19" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741860" astParent="55b11922fe40" astOperand1="55b11922ff60" astOperand2="55b119230140"/>
+    <token id="55b119230140" file="../plant_boss/drivers/hw390.c" linenr="34" column="21" str="ADC_BITWIDTH_12" scope="55b119235e90" type="name" exprId="13" astParent="55b1192300e0"/>
+    <token id="55b119230260" file="../plant_boss/drivers/hw390.c" linenr="34" column="36" str="," scope="55b119235e90"/>
+    <token id="55b1192302c0" file="../plant_boss/drivers/hw390.c" linenr="35" column="5" str="}" scope="55b119235e90" link="55b11922f720"/>
+    <token id="55b119243a00" file="../plant_boss/drivers/hw390.c" linenr="35" column="6" str=";" scope="55b119235e90"/>
+    <token id="55b119226ab0" file="../plant_boss/drivers/hw390.c" linenr="37" column="5" str="if" scope="55b119235e90" type="name" astParent="55b119226b10"/>
+    <token id="55b119226b10" file="../plant_boss/drivers/hw390.c" linenr="37" column="8" str="(" scope="55b119235e90" link="55b1192277c0" astOperand1="55b119226ab0" astOperand2="55b119226c90"/>
+    <token id="55b119226c30" file="../plant_boss/drivers/hw390.c" linenr="37" column="9" str="true" scope="55b119235e90" type="name" exprId="40" astParent="55b119226c90" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119226c90" file="../plant_boss/drivers/hw390.c" linenr="37" column="14" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741874" values="55b11922c720" astParent="55b119226b10" astOperand1="55b119226c30" astOperand2="55b119244270" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119226db0" file="../plant_boss/drivers/hw390.c" linenr="37" column="17" str="adc_init_channel" scope="55b119235e90" type="name" astParent="55b119244270"/>
+    <token id="55b119244270" file="../plant_boss/drivers/hw390.c" linenr="37" column="33" str="(" scope="55b119235e90" link="55b119227760" exprId="1073741873" astParent="55b119226c90" astOperand1="55b119226db0" astOperand2="55b1192275b0"/>
+    <token id="55b119226ec0" file="../plant_boss/drivers/hw390.c" linenr="37" column="34" str="&amp;" scope="55b119235e90" type="op" exprId="1073741866" values="55b11924dfb0" astParent="55b119227070" astOperand1="55b119227010"/>
+    <token id="55b119227010" file="../plant_boss/drivers/hw390.c" linenr="37" column="35" str="adc_channel_config_humidity" scope="55b119235e90" type="name" varId="5" exprId="5" variable="55b11925dfb0" astParent="55b119226ec0"/>
+    <token id="55b119227070" file="../plant_boss/drivers/hw390.c" linenr="37" column="62" str="," scope="55b119235e90" exprId="1073741868" astParent="55b119227340" astOperand1="55b119226ec0" astOperand2="55b1192271c0"/>
+    <token id="55b1192271c0" file="../plant_boss/drivers/hw390.c" linenr="37" column="64" str="&amp;" scope="55b119235e90" type="op" exprId="1073741867" values="55b11925fa30" astParent="55b119227070" astOperand1="55b119227220"/>
+    <token id="55b119227220" file="../plant_boss/drivers/hw390.c" linenr="37" column="65" str="adc_calibration_config_humidity" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b119258410" astParent="55b1192271c0"/>
+    <token id="55b119227340" file="../plant_boss/drivers/hw390.c" linenr="37" column="96" str="," scope="55b119235e90" exprId="1073741870" astParent="55b1192275b0" astOperand1="55b119227070" astOperand2="55b1192273a0"/>
+    <token id="55b1192273a0" file="../plant_boss/drivers/hw390.c" linenr="38" column="21" str="&amp;" scope="55b119235e90" type="op" exprId="1073741869" values="55b119245840" astParent="55b119227340" astOperand1="55b119246cd0"/>
+    <token id="55b119246cd0" file="../plant_boss/drivers/hw390.c" linenr="38" column="22" str="adc_calibration_handle_humidity" scope="55b119235e90" type="name" varId="1" exprId="1" variable="55b11923fa70" astParent="55b1192273a0"/>
+    <token id="55b1192275b0" file="../plant_boss/drivers/hw390.c" linenr="38" column="53" str="," scope="55b119235e90" exprId="1073741872" astParent="55b119244270" astOperand1="55b119227340" astOperand2="55b119227610"/>
+    <token id="55b119227610" file="../plant_boss/drivers/hw390.c" linenr="38" column="55" str="ADC_CHANNEL_6" scope="55b119235e90" type="name" exprId="1073741871" astParent="55b1192275b0"/>
+    <token id="55b119227760" file="../plant_boss/drivers/hw390.c" linenr="38" column="68" str=")" scope="55b119235e90" link="55b119244270"/>
+    <token id="55b1192277c0" file="../plant_boss/drivers/hw390.c" linenr="38" column="69" str=")" scope="55b119235e90" link="55b119226b10"/>
+    <token id="55b1192278e0" file="../plant_boss/drivers/hw390.c" linenr="39" column="5" str="{" scope="55b119235c20" link="55b119228200"/>
+    <token id="55b119247f40" file="../plant_boss/drivers/hw390.c" linenr="40" column="9" str="error_set_u32" scope="55b119235c20" type="name" astParent="55b1192279f0"/>
+    <token id="55b1192279f0" file="../plant_boss/drivers/hw390.c" linenr="40" column="22" str="(" scope="55b119235c20" link="55b119227d80" exprId="1073741878" astOperand1="55b119247f40" astOperand2="55b119227c10"/>
+    <token id="55b119227b00" file="../plant_boss/drivers/hw390.c" linenr="40" column="23" str="&amp;" scope="55b119235c20" type="op" exprId="19" values="55b119249a50" astParent="55b119227c10" astOperand1="55b119247fa0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119247fa0" file="../plant_boss/drivers/hw390.c" linenr="40" column="24" str="err_hw390" scope="55b119235c20" type="name" varId="3" exprId="3" variable="55b1192326d0" values="55b11922ce20" astParent="55b119227b00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119227c10" file="../plant_boss/drivers/hw390.c" linenr="40" column="33" str="," scope="55b119235c20" exprId="1073741877" astParent="55b1192279f0" astOperand1="55b119227b00" astOperand2="55b119227d20"/>
+    <token id="55b119227d20" file="../plant_boss/drivers/hw390.c" linenr="40" column="35" str="HW390_ERROR_INIT_ADC" scope="55b119235c20" type="name" exprId="1073741876" values="55b119244a00" astParent="55b119227c10" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119227d80" file="../plant_boss/drivers/hw390.c" linenr="40" column="55" str=")" scope="55b119235c20" link="55b1192279f0"/>
+    <token id="55b119227f00" file="../plant_boss/drivers/hw390.c" linenr="40" column="56" str=";" scope="55b119235c20"/>
+    <token id="55b119227f60" file="../plant_boss/drivers/hw390.c" linenr="42" column="9" str="return" scope="55b119235c20" type="name" values="55b11922cf80" astOperand1="55b119228080" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119228080" file="../plant_boss/drivers/hw390.c" linenr="42" column="16" str="false" scope="55b119235c20" type="name" exprId="1073741879" astParent="55b119227f60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192280e0" file="../plant_boss/drivers/hw390.c" linenr="42" column="21" str=";" scope="55b119235c20"/>
+    <token id="55b119228200" file="../plant_boss/drivers/hw390.c" linenr="43" column="5" str="}" scope="55b119235c20" link="55b1192278e0"/>
+    <token id="55b119252230" file="../plant_boss/drivers/hw390.c" linenr="45" column="5" str="return" scope="55b119235e90" type="name" values="55b119234710" astOperand1="55b119228260" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119228260" file="../plant_boss/drivers/hw390.c" linenr="45" column="12" str="true" scope="55b119235e90" type="name" exprId="40" astParent="55b119252230" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119228370" file="../plant_boss/drivers/hw390.c" linenr="45" column="16" str=";" scope="55b119235e90"/>
+    <token id="55b119228480" file="../plant_boss/drivers/hw390.c" linenr="46" column="1" str="}" scope="55b119235e90" link="55b11922dc70"/>
+    <token id="55b119228590" file="../plant_boss/drivers/hw390.c" linenr="48" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b1192285f0" file="../plant_boss/drivers/hw390.c" linenr="48" column="6" str="hw390_handle" scope="55b119236370" type="name" function="55b1192511b0"/>
+    <token id="55b119228700" file="../plant_boss/drivers/hw390.c" linenr="48" column="18" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119228870" values="55b119234990" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119228870" file="../plant_boss/drivers/hw390.c" linenr="48" column="23" str=")" scope="55b119236370" link="55b119228700"/>
+    <token id="55b119228980" file="../plant_boss/drivers/hw390.c" linenr="49" column="1" str="{" scope="55b11923a450" link="55b11922b110"/>
+    <token id="55b1192289e0" file="../plant_boss/drivers/hw390.c" linenr="50" column="5" str="int" scope="55b11923a450" type="name"/>
+    <token id="55b119228b00" file="../plant_boss/drivers/hw390.c" linenr="50" column="9" str="adc_voltage" scope="55b11923a450" type="name" varId="12" exprId="12" variable="55b119245640" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119228b60" file="../plant_boss/drivers/hw390.c" linenr="50" column="20" str=";" scope="55b11923a450"/>
+    <token id="55b119228c80" file="../plant_boss/drivers/hw390.c" linenr="52" column="5" str="if" scope="55b11923a450" type="name" astParent="55b119228ce0"/>
+    <token id="55b119228ce0" file="../plant_boss/drivers/hw390.c" linenr="52" column="8" str="(" scope="55b11923a450" link="55b119229750" astOperand1="55b119228c80" astOperand2="55b119250b60"/>
+    <token id="55b119228e00" file="../plant_boss/drivers/hw390.c" linenr="52" column="9" str="true" scope="55b11923a450" type="name" exprId="56" astParent="55b119250b60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119250b60" file="../plant_boss/drivers/hw390.c" linenr="52" column="14" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="1073741888" values="55b119234c10" astParent="55b119228ce0" astOperand1="55b119228e00" astOperand2="55b119229020" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119228f10" file="../plant_boss/drivers/hw390.c" linenr="52" column="17" str="adc_handle_channel" scope="55b11923a450" type="name" astParent="55b119229020"/>
+    <token id="55b119229020" file="../plant_boss/drivers/hw390.c" linenr="52" column="35" str="(" scope="55b11923a450" link="55b119229630" exprId="1073741887" astParent="55b119250b60" astOperand1="55b119228f10" astOperand2="55b1192294b0"/>
+    <token id="55b119250bc0" file="../plant_boss/drivers/hw390.c" linenr="52" column="36" str="&amp;" scope="55b11923a450" type="op" exprId="1073741882" values="55b119241730" astParent="55b1192292a0" astOperand1="55b119229080"/>
+    <token id="55b119229080" file="../plant_boss/drivers/hw390.c" linenr="52" column="37" str="adc_calibration_handle_humidity" scope="55b11923a450" type="name" varId="1" exprId="1" variable="55b11923fa70" astParent="55b119250bc0"/>
+    <token id="55b1192292a0" file="../plant_boss/drivers/hw390.c" linenr="52" column="68" str="," scope="55b11923a450" exprId="1073741884" astParent="55b1192294b0" astOperand1="55b119250bc0" astOperand2="55b119229300"/>
+    <token id="55b119229300" file="../plant_boss/drivers/hw390.c" linenr="52" column="70" str="&amp;" scope="55b11923a450" type="op" exprId="1073741883" values="55b11925f250" astParent="55b1192292a0" astOperand1="55b119229450" valueType-type="int" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119229450" file="../plant_boss/drivers/hw390.c" linenr="52" column="71" str="adc_voltage" scope="55b11923a450" type="name" varId="12" exprId="12" variable="55b119245640" values="55b119248510" astParent="55b119229300" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192294b0" file="../plant_boss/drivers/hw390.c" linenr="52" column="82" str="," scope="55b11923a450" exprId="1073741886" astParent="55b119229020" astOperand1="55b1192292a0" astOperand2="55b1192295d0"/>
+    <token id="55b1192295d0" file="../plant_boss/drivers/hw390.c" linenr="52" column="84" str="ADC_CHANNEL_6" scope="55b11923a450" type="name" exprId="1073741885" astParent="55b1192294b0"/>
+    <token id="55b119229630" file="../plant_boss/drivers/hw390.c" linenr="52" column="97" str=")" scope="55b11923a450" link="55b119229020"/>
+    <token id="55b119229750" file="../plant_boss/drivers/hw390.c" linenr="52" column="98" str=")" scope="55b11923a450" link="55b119228ce0"/>
+    <token id="55b1192297b0" file="../plant_boss/drivers/hw390.c" linenr="53" column="5" str="{" scope="55b11923a110" link="55b11922a130"/>
+    <token id="55b1192298d0" file="../plant_boss/drivers/hw390.c" linenr="54" column="9" str="error_set_u32" scope="55b11923a110" type="name" astParent="55b119229930"/>
+    <token id="55b119229930" file="../plant_boss/drivers/hw390.c" linenr="54" column="22" str="(" scope="55b11923a110" link="55b119229ce0" exprId="1073741893" astOperand1="55b1192298d0" astOperand2="55b119229bd0"/>
+    <token id="55b119229a50" file="../plant_boss/drivers/hw390.c" linenr="54" column="23" str="&amp;" scope="55b11923a110" type="op" exprId="1073741890" values="55b11925f3f0" astParent="55b119229bd0" astOperand1="55b119229ab0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119229ab0" file="../plant_boss/drivers/hw390.c" linenr="54" column="24" str="err_hw390" scope="55b11923a110" type="name" varId="3" exprId="3" variable="55b1192326d0" values="55b1192351f0" astParent="55b119229a50" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119229bd0" file="../plant_boss/drivers/hw390.c" linenr="54" column="33" str="," scope="55b11923a110" exprId="1073741892" astParent="55b119229930" astOperand1="55b119229a50" astOperand2="55b119243460"/>
+    <token id="55b119243460" file="../plant_boss/drivers/hw390.c" linenr="54" column="35" str="HW390_ERROR_HANDLE_ADC" scope="55b11923a110" type="name" exprId="1073741891" values="55b119250d60" astParent="55b119229bd0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119229ce0" file="../plant_boss/drivers/hw390.c" linenr="54" column="57" str=")" scope="55b11923a110" link="55b119229930"/>
+    <token id="55b119229e30" file="../plant_boss/drivers/hw390.c" linenr="54" column="58" str=";" scope="55b11923a110"/>
+    <token id="55b119229e90" file="../plant_boss/drivers/hw390.c" linenr="56" column="9" str="return" scope="55b11923a110" type="name" values="55b119235350" astOperand1="55b119229fb0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229fb0" file="../plant_boss/drivers/hw390.c" linenr="56" column="16" str="false" scope="55b11923a110" type="name" exprId="1073741894" astParent="55b119229e90" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922a010" file="../plant_boss/drivers/hw390.c" linenr="56" column="21" str=";" scope="55b11923a110"/>
+    <token id="55b11922a130" file="../plant_boss/drivers/hw390.c" linenr="57" column="5" str="}" scope="55b11923a110" link="55b1192297b0"/>
+    <token id="55b11922a190" file="../plant_boss/drivers/hw390.c" linenr="59" column="5" str="humidity" scope="55b11923a450" type="name" varId="2" exprId="2" variable="55b1192365e0" astParent="55b11922a2b0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b11922a2b0" file="../plant_boss/drivers/hw390.c" linenr="59" column="14" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741900" astOperand1="55b11922a190" astOperand2="55b11922a960" valueType-type="float" valueType-reference="None"/>
+    <token id="55b11922a310" file="../plant_boss/drivers/hw390.c" linenr="59" column="16" str="(" scope="55b11923a450" isCast="true" link="55b11922a490" exprId="1073741895" astParent="55b11922a610" astOperand1="55b11922a5b0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b11922a430" file="../plant_boss/drivers/hw390.c" linenr="59" column="17" str="float" scope="55b11923a450" type="name"/>
+    <token id="55b11922a490" file="../plant_boss/drivers/hw390.c" linenr="59" column="22" str=")" scope="55b11923a450" link="55b11922a310"/>
+    <token id="55b11922a5b0" file="../plant_boss/drivers/hw390.c" linenr="59" column="23" str="adc_voltage" scope="55b11923a450" type="name" varId="12" exprId="12" variable="55b119245640" astParent="55b11922a310" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11922a610" file="../plant_boss/drivers/hw390.c" linenr="59" column="35" str="*" scope="55b11923a450" type="op" isArithmeticalOp="true" exprId="1073741897" astParent="55b11922a960" astOperand1="55b11922a310" astOperand2="55b11922a790" valueType-type="double" valueType-reference="None"/>
+    <token id="55b11922a790" file="../plant_boss/drivers/hw390.c" linenr="59" column="37" str="-0.0667" scope="55b11923a450" type="number" isFloat="true" macroName="HW390_HUMIDITY_SCALE" values="55b119250430" astParent="55b11922a610" valueType-type="double" valueType-reference="None"/>
+    <token id="55b11922a960" file="../plant_boss/drivers/hw390.c" linenr="59" column="58" str="+" scope="55b11923a450" type="op" isArithmeticalOp="true" exprId="1073741899" astParent="55b11922a2b0" astOperand1="55b11922a610" astOperand2="55b11922a9c0" valueType-type="double" valueType-reference="None"/>
+    <token id="55b11922a9c0" file="../plant_boss/drivers/hw390.c" linenr="59" column="60" str="138.0" scope="55b11923a450" type="number" isFloat="true" macroName="HW390_HUMIDITY_OFFSET" values="55b119247690" astParent="55b11922a960" valueType-type="double" valueType-reference="None"/>
+    <token id="55b11922abd0" file="../plant_boss/drivers/hw390.c" linenr="59" column="81" str=";" scope="55b11923a450"/>
+    <token id="55b11922ae10" file="../plant_boss/drivers/hw390.c" linenr="61" column="5" str="return" scope="55b11923a450" type="name" values="55b119248170" astOperand1="55b11922af90" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922af90" file="../plant_boss/drivers/hw390.c" linenr="61" column="12" str="true" scope="55b11923a450" type="name" exprId="56" astParent="55b11922ae10" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11922aff0" file="../plant_boss/drivers/hw390.c" linenr="61" column="16" str=";" scope="55b11923a450"/>
+    <token id="55b11922b110" file="../plant_boss/drivers/hw390.c" linenr="62" column="1" str="}" scope="55b11923a450" link="55b119228980"/>
+    <token id="55b11922b170" file="../plant_boss/drivers/hw390.c" linenr="64" column="1" str="float" scope="55b119236370" type="name"/>
+    <token id="55b11922b290" file="../plant_boss/drivers/hw390.c" linenr="64" column="7" str="hw390_get_humidity_value" scope="55b119236370" type="name" function="55b119246f70"/>
+    <token id="55b11922b2f0" file="../plant_boss/drivers/hw390.c" linenr="64" column="31" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b1192456e0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b1192456e0" file="../plant_boss/drivers/hw390.c" linenr="64" column="36" str=")" scope="55b119236370" link="55b11922b2f0"/>
+    <token id="55b11922b550" file="../plant_boss/drivers/hw390.c" linenr="65" column="1" str="{" scope="55b11923f800" link="55b11922b830"/>
+    <token id="55b11922b660" file="../plant_boss/drivers/hw390.c" linenr="66" column="5" str="return" scope="55b11923f800" type="name" astOperand1="55b11922b6c0" valueType-type="float" valueType-reference="None"/>
+    <token id="55b11922b6c0" file="../plant_boss/drivers/hw390.c" linenr="66" column="12" str="humidity" scope="55b11923f800" type="name" varId="2" exprId="2" variable="55b1192365e0" astParent="55b11922b660" valueType-type="float" valueType-reference="None"/>
+    <token id="55b11922b7d0" file="../plant_boss/drivers/hw390.c" linenr="66" column="20" str=";" scope="55b11923f800"/>
+    <token id="55b11922b830" file="../plant_boss/drivers/hw390.c" linenr="67" column="1" str="}" scope="55b11923f800" link="55b11922b550"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b119236370" type="Global">
+      <functionList>
+        <function id="55b119250ee0" token="55b119243ef0" tokenDef="55b11924d560" name="hw390_init" type="Function" access="Public"/>
+        <function id="55b1192511b0" token="55b1192285f0" tokenDef="55b11924e1c0" name="hw390_handle" type="Function" access="Public"/>
+        <function id="55b119246f70" token="55b11922b290" tokenDef="55b1192524b0" name="hw390_get_humidity_value" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55b11923fa70"/>
+        <var id="55b1192365e0"/>
+        <var id="55b1192326d0"/>
+        <var id="55b1192262a0"/>
+      </varlist>
+    </scope>
+    <scope id="55b119236100" type="Enum" className="hw390_error_t" bodyStart="55b119245770" bodyEnd="55b119254980" nestedIn="55b119236370" definedType="55b119250fa0"/>
+    <scope id="55b119235e90" type="Function" className="hw390_init" bodyStart="55b11922dc70" bodyEnd="55b119228480" nestedIn="55b119236370" function="55b119250ee0">
+      <varlist>
+        <var id="55b11925dfb0"/>
+        <var id="55b119258410"/>
+      </varlist>
+    </scope>
+    <scope id="55b119235c20" type="If" bodyStart="55b1192278e0" bodyEnd="55b119228200" nestedIn="55b119235e90"/>
+    <scope id="55b11923a450" type="Function" className="hw390_handle" bodyStart="55b119228980" bodyEnd="55b11922b110" nestedIn="55b119236370" function="55b1192511b0">
+      <varlist>
+        <var id="55b119245640"/>
+      </varlist>
+    </scope>
+    <scope id="55b11923a110" type="If" bodyStart="55b1192297b0" bodyEnd="55b11922a130" nestedIn="55b11923a450"/>
+    <scope id="55b11923f800" type="Function" className="hw390_get_humidity_value" bodyStart="55b11922b550" bodyEnd="55b11922b830" nestedIn="55b119236370" function="55b119246f70"/>
+  </scopes>
+  <types>
+    <type id="55b119250fa0" classScope="55b119236100"/>
+  </types>
+  <variables>
+    <var id="55b1192262a0" nameToken="55b119250680" typeStartToken="55b11922d430" typeEndToken="55b11922d550" access="Global" scope="55b119236370" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b1192326d0" nameToken="55b1192496c0" typeStartToken="55b1192495b0" typeEndToken="55b1192495b0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1192365e0" nameToken="55b119249440" typeStartToken="55b11924c9b0" typeEndToken="55b11924c9b0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11923fa70" nameToken="55b119255490" typeStartToken="55b119255150" typeEndToken="55b119255150" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119245640" nameToken="55b119228b00" typeStartToken="55b1192289e0" typeEndToken="55b1192289e0" access="Local" scope="55b11923a450" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119258410" nameToken="55b11922f540" typeStartToken="55b11922f420" typeEndToken="55b11922f420" access="Local" scope="55b119235e90" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925dfb0" nameToken="55b11922e870" typeStartToken="55b11922e810" typeEndToken="55b11922e810" access="Local" scope="55b119235e90" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119252e20">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252c80">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252cc0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252db0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252e90">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252d40">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252d00">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924ed00">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192371a0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119237420">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119237580">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119247870">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119246d30">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119258a60">
+      <value tokvalue="55b11922d770" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192551b0">
+      <value tokvalue="55b11922d770" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192376e0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119252c40">
+      <value tokvalue="55b11922e090" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924e800">
+      <value lifetime="55b11922e5f0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924be90">
+      <value lifetime="55b11922e5f0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922c6e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922c720">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924dfb0">
+      <value lifetime="55b119227010" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925fa30">
+      <value lifetime="55b119227220" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119245840">
+      <value lifetime="55b119246cd0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119249a50">
+      <value lifetime="55b119247fa0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922ce20">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119244a00">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922cf80">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119234710">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119234990">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119234c10">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119241730">
+      <value lifetime="55b119229080" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925f250">
+      <value lifetime="55b119229450" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119248510">
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925f3f0">
+      <value lifetime="55b119229ab0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192351f0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119250d60">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119235350">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119250430">
+      <value floatvalue="-0.066700" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119247690">
+      <value floatvalue="138.000000" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119248170">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+  <typedef-info>
+    <info name="hw390_error_t" file="../plant_boss/drivers/hw390.h" line="23" column="1" used="0"/>
+  </typedef-info>
+</dump>
+</dumps>

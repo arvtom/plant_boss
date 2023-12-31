@@ -1,0 +1,1 @@
+{"summary": "MisraMacro", "data": [{"name": "SSID", "used": true, "file": "../plant_boss/wrappers/settings_wifi.h", "line": 1, "column": 0}, {"name": "PASS", "used": true, "file": "../plant_boss/wrappers/settings_wifi.h", "line": 2, "column": 0}, {"name": "WIFI_WRAPPER_H", "used": true, "file": "../plant_boss/wrappers/wifi_wrapper.h", "line": 8, "column": 0}]}

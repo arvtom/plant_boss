@@ -1,0 +1,854 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/src/thread_memory.c"/>
+    <tok fileIndex="0" linenr="2" column="1" str="/* ---------------------------- Includes ---------------------------- */"/>
+    <tok fileIndex="0" linenr="3" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3" column="2" str="include"/>
+    <tok fileIndex="0" linenr="3" column="10" str="&quot;thread_memory.h&quot;"/>
+    <tok fileIndex="0" linenr="5" column="1" str="/* ---------------------------- Typedefs ---------------------------- */"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/* ---------------------------- Global variables ---------------------------- */"/>
+    <tok fileIndex="0" linenr="8" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="8" column="10" str="err_thread_memory"/>
+    <tok fileIndex="0" linenr="8" column="28" str="="/>
+    <tok fileIndex="0" linenr="8" column="30" str="0u"/>
+    <tok fileIndex="0" linenr="8" column="32" str=";"/>
+    <tok fileIndex="0" linenr="10" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="10" column="10" str="notification_memory"/>
+    <tok fileIndex="0" linenr="10" column="30" str="="/>
+    <tok fileIndex="0" linenr="10" column="32" str="0u"/>
+    <tok fileIndex="0" linenr="10" column="34" str=";"/>
+    <tok fileIndex="0" linenr="12" column="1" str="// extern QueueHandle_t queue_app_to_memory;"/>
+    <tok fileIndex="0" linenr="13" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="13" column="8" str="QueueHandle_t"/>
+    <tok fileIndex="0" linenr="13" column="22" str="queue_memory_to_app"/>
+    <tok fileIndex="0" linenr="13" column="41" str=";"/>
+    <tok fileIndex="0" linenr="15" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="15" column="8" str="TaskHandle_t"/>
+    <tok fileIndex="0" linenr="15" column="21" str="handle_app"/>
+    <tok fileIndex="0" linenr="15" column="31" str=";"/>
+    <tok fileIndex="0" linenr="16" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="16" column="8" str="TaskHandle_t"/>
+    <tok fileIndex="0" linenr="16" column="21" str="handle_memory"/>
+    <tok fileIndex="0" linenr="16" column="34" str=";"/>
+    <tok fileIndex="0" linenr="18" column="1" str="uint8_t"/>
+    <tok fileIndex="0" linenr="18" column="9" str="buf_rx_queue_app_to_memory"/>
+    <tok fileIndex="0" linenr="18" column="35" str="["/>
+    <tok fileIndex="0" linenr="18" column="36" str="10"/>
+    <tok fileIndex="0" linenr="18" column="38" str="]"/>
+    <tok fileIndex="0" linenr="18" column="39" str=";"/>
+    <tok fileIndex="0" linenr="20" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="20" column="8" str="uint32_t"/>
+    <tok fileIndex="0" linenr="20" column="17" str="delay_handle_thread_app"/>
+    <tok fileIndex="0" linenr="20" column="40" str=";"/>
+    <tok fileIndex="0" linenr="21" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="21" column="8" str="uint16_t"/>
+    <tok fileIndex="0" linenr="21" column="17" str="threshold_voltage_battery"/>
+    <tok fileIndex="0" linenr="21" column="42" str=";"/>
+    <tok fileIndex="0" linenr="22" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="22" column="8" str="uint8_t"/>
+    <tok fileIndex="0" linenr="22" column="16" str="device_mode"/>
+    <tok fileIndex="0" linenr="22" column="27" str=";"/>
+    <tok fileIndex="0" linenr="23" column="1" str="extern"/>
+    <tok fileIndex="0" linenr="23" column="8" str="uint8_t"/>
+    <tok fileIndex="0" linenr="23" column="16" str="device_id"/>
+    <tok fileIndex="0" linenr="23" column="25" str=";"/>
+    <tok fileIndex="0" linenr="25" column="1" str="static"/>
+    <tok fileIndex="0" linenr="25" column="8" str="const"/>
+    <tok fileIndex="0" linenr="25" column="14" str="char"/>
+    <tok fileIndex="0" linenr="25" column="18" str="*"/>
+    <tok fileIndex="0" linenr="25" column="20" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="25" column="28" str="="/>
+    <tok fileIndex="0" linenr="25" column="30" str="&quot;t_m&quot;"/>
+    <tok fileIndex="0" linenr="25" column="35" str=";"/>
+    <tok fileIndex="0" linenr="27" column="1" str="/* ---------------------------- Public functions ---------------------------- */"/>
+    <tok fileIndex="0" linenr="28" column="1" str="void"/>
+    <tok fileIndex="0" linenr="28" column="6" str="thread_memory"/>
+    <tok fileIndex="0" linenr="28" column="19" str="("/>
+    <tok fileIndex="0" linenr="28" column="20" str="void"/>
+    <tok fileIndex="0" linenr="28" column="25" str="*"/>
+    <tok fileIndex="0" linenr="28" column="26" str="arg"/>
+    <tok fileIndex="0" linenr="28" column="29" str=")"/>
+    <tok fileIndex="0" linenr="29" column="1" str="{"/>
+    <tok fileIndex="0" linenr="30" column="5" str="if"/>
+    <tok fileIndex="0" linenr="30" column="8" str="("/>
+    <tok fileIndex="0" linenr="30" column="9" str="true"/>
+    <tok fileIndex="0" linenr="30" column="14" str="!="/>
+    <tok fileIndex="0" linenr="30" column="17" str="thread_memory_init"/>
+    <tok fileIndex="0" linenr="30" column="35" str="("/>
+    <tok fileIndex="0" linenr="30" column="36" str=")"/>
+    <tok fileIndex="0" linenr="30" column="37" str=")"/>
+    <tok fileIndex="0" linenr="31" column="5" str="{"/>
+    <tok fileIndex="0" linenr="32" column="9" str="error_handle"/>
+    <tok fileIndex="0" linenr="32" column="21" str="("/>
+    <tok fileIndex="0" linenr="32" column="22" str=")"/>
+    <tok fileIndex="0" linenr="32" column="23" str=";"/>
+    <tok fileIndex="0" linenr="33" column="5" str="}"/>
+    <tok fileIndex="0" linenr="35" column="5" str="while"/>
+    <tok fileIndex="0" linenr="35" column="11" str="("/>
+    <tok fileIndex="0" linenr="35" column="12" str="1"/>
+    <tok fileIndex="0" linenr="35" column="13" str=")"/>
+    <tok fileIndex="0" linenr="36" column="5" str="{"/>
+    <tok fileIndex="0" linenr="37" column="9" str="if"/>
+    <tok fileIndex="0" linenr="37" column="12" str="("/>
+    <tok fileIndex="0" linenr="37" column="13" str="true"/>
+    <tok fileIndex="0" linenr="37" column="18" str="!="/>
+    <tok fileIndex="0" linenr="37" column="21" str="thread_memory_handle"/>
+    <tok fileIndex="0" linenr="37" column="41" str="("/>
+    <tok fileIndex="0" linenr="37" column="42" str=")"/>
+    <tok fileIndex="0" linenr="37" column="43" str=")"/>
+    <tok fileIndex="0" linenr="38" column="9" str="{"/>
+    <tok fileIndex="0" linenr="39" column="13" str="error_handle"/>
+    <tok fileIndex="0" linenr="39" column="25" str="("/>
+    <tok fileIndex="0" linenr="39" column="26" str=")"/>
+    <tok fileIndex="0" linenr="39" column="27" str=";"/>
+    <tok fileIndex="0" linenr="40" column="9" str="}"/>
+    <tok fileIndex="0" linenr="41" column="5" str="}"/>
+    <tok fileIndex="0" linenr="42" column="1" str="}"/>
+    <tok fileIndex="0" linenr="44" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="44" column="6" str="thread_memory_init"/>
+    <tok fileIndex="0" linenr="44" column="24" str="("/>
+    <tok fileIndex="0" linenr="44" column="25" str="void"/>
+    <tok fileIndex="0" linenr="44" column="29" str=")"/>
+    <tok fileIndex="0" linenr="45" column="1" str="{"/>
+    <tok fileIndex="0" linenr="46" column="5" str="// printf(&quot;addr err_thread_memory 0x%x\n&quot;, (unsigned int)&amp;err_thread_memory);"/>
+    <tok fileIndex="0" linenr="48" column="5" str="xTaskNotifyWait"/>
+    <tok fileIndex="0" linenr="48" column="20" str="("/>
+    <tok fileIndex="0" linenr="48" column="21" str="0u"/>
+    <tok fileIndex="0" linenr="48" column="23" str=","/>
+    <tok fileIndex="0" linenr="48" column="25" str="0u"/>
+    <tok fileIndex="0" linenr="48" column="27" str=","/>
+    <tok fileIndex="0" linenr="48" column="29" str="&amp;"/>
+    <tok fileIndex="0" linenr="48" column="30" str="notification_memory"/>
+    <tok fileIndex="0" linenr="48" column="49" str=","/>
+    <tok fileIndex="0" linenr="48" column="51" str="portMAX_DELAY"/>
+    <tok fileIndex="0" linenr="48" column="64" str=")"/>
+    <tok fileIndex="0" linenr="48" column="65" str=";"/>
+    <tok fileIndex="0" linenr="49" column="5" str="if"/>
+    <tok fileIndex="0" linenr="49" column="8" str="("/>
+    <tok fileIndex="0" linenr="49" column="9" str="("/>
+    <tok fileIndex="0" linenr="49" column="10" str="notification_memory"/>
+    <tok fileIndex="0" linenr="49" column="30" str="&amp;"/>
+    <tok fileIndex="0" linenr="49" column="32" str="NOTIFICATION_TO_MEMORY_REQ_INIT"/>
+    <tok fileIndex="0" linenr="49" column="63" str=")"/>
+    <tok fileIndex="0" linenr="49" column="65" str="=="/>
+    <tok fileIndex="0" linenr="49" column="68" str="0u"/>
+    <tok fileIndex="0" linenr="49" column="70" str=")"/>
+    <tok fileIndex="0" linenr="50" column="5" str="{"/>
+    <tok fileIndex="0" linenr="51" column="9" str="return"/>
+    <tok fileIndex="0" linenr="51" column="16" str="false"/>
+    <tok fileIndex="0" linenr="51" column="21" str=";"/>
+    <tok fileIndex="0" linenr="52" column="5" str="}"/>
+    <tok fileIndex="0" linenr="54" column="5" str="ulTaskNotifyValueClear"/>
+    <tok fileIndex="0" linenr="54" column="27" str="("/>
+    <tok fileIndex="0" linenr="54" column="28" str="handle_memory"/>
+    <tok fileIndex="0" linenr="54" column="41" str=","/>
+    <tok fileIndex="0" linenr="54" column="43" str="NOTIFICATION_TO_MEMORY_REQ_INIT"/>
+    <tok fileIndex="0" linenr="54" column="74" str=")"/>
+    <tok fileIndex="0" linenr="54" column="75" str=";"/>
+    <tok fileIndex="0" linenr="56" column="5" str="if"/>
+    <tok fileIndex="0" linenr="56" column="8" str="("/>
+    <tok fileIndex="0" linenr="56" column="9" str="true"/>
+    <tok fileIndex="0" linenr="56" column="14" str="!="/>
+    <tok fileIndex="0" linenr="56" column="17" str="nvm_init"/>
+    <tok fileIndex="0" linenr="56" column="25" str="("/>
+    <tok fileIndex="0" linenr="56" column="26" str=")"/>
+    <tok fileIndex="0" linenr="56" column="27" str=")"/>
+    <tok fileIndex="0" linenr="57" column="5" str="{"/>
+    <tok fileIndex="0" linenr="58" column="9" str="return"/>
+    <tok fileIndex="0" linenr="58" column="16" str="false"/>
+    <tok fileIndex="0" linenr="58" column="21" str=";"/>
+    <tok fileIndex="0" linenr="59" column="5" str="}"/>
+    <tok fileIndex="0" linenr="61" column="5" str="if"/>
+    <tok fileIndex="0" linenr="61" column="8" str="("/>
+    <tok fileIndex="0" linenr="61" column="9" str="pdPASS"/>
+    <tok fileIndex="0" linenr="61" column="16" str="!="/>
+    <tok fileIndex="0" linenr="61" column="19" str="xTaskNotify"/>
+    <tok fileIndex="0" linenr="61" column="30" str="("/>
+    <tok fileIndex="0" linenr="61" column="31" str="handle_app"/>
+    <tok fileIndex="0" linenr="61" column="41" str=","/>
+    <tok fileIndex="0" linenr="61" column="43" str="NOTIFICATION_TO_APP_RES_INIT_MEMORY"/>
+    <tok fileIndex="0" linenr="61" column="78" str=","/>
+    <tok fileIndex="0" linenr="61" column="80" str="eSetBits"/>
+    <tok fileIndex="0" linenr="61" column="88" str=")"/>
+    <tok fileIndex="0" linenr="61" column="89" str=")"/>
+    <tok fileIndex="0" linenr="62" column="5" str="{"/>
+    <tok fileIndex="0" linenr="63" column="9" str="return"/>
+    <tok fileIndex="0" linenr="63" column="16" str="false"/>
+    <tok fileIndex="0" linenr="63" column="21" str=";"/>
+    <tok fileIndex="0" linenr="64" column="5" str="}"/>
+    <tok fileIndex="0" linenr="66" column="5" str="/* TODO: read mode from nvm */"/>
+    <tok fileIndex="0" linenr="67" column="5" str="if"/>
+    <tok fileIndex="0" linenr="67" column="8" str="("/>
+    <tok fileIndex="0" linenr="67" column="9" str="true"/>
+    <tok fileIndex="0" linenr="67" column="14" str="!="/>
+    <tok fileIndex="0" linenr="67" column="17" str="nvm_handle_read"/>
+    <tok fileIndex="0" linenr="67" column="32" str="("/>
+    <tok fileIndex="0" linenr="67" column="33" str=")"/>
+    <tok fileIndex="0" linenr="67" column="34" str=")"/>
+    <tok fileIndex="0" linenr="68" column="5" str="{"/>
+    <tok fileIndex="0" linenr="69" column="9" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="69" column="17" str="("/>
+    <tok fileIndex="0" linenr="69" column="18" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="69" column="25" str=","/>
+    <tok fileIndex="0" linenr="69" column="27" str="&quot;nrf&quot;"/>
+    <tok fileIndex="0" linenr="69" column="32" str=")"/>
+    <tok fileIndex="0" linenr="69" column="33" str=";"/>
+    <tok fileIndex="0" linenr="70" column="5" str="}"/>
+    <tok fileIndex="0" linenr="72" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="72" column="13" str="("/>
+    <tok fileIndex="0" linenr="72" column="14" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="72" column="21" str=","/>
+    <tok fileIndex="0" linenr="72" column="23" str="&quot;i&quot;"/>
+    <tok fileIndex="0" linenr="72" column="26" str=")"/>
+    <tok fileIndex="0" linenr="72" column="27" str=";"/>
+    <tok fileIndex="0" linenr="74" column="5" str="/* Give some time to other tasks to prevent WDT reset */"/>
+    <tok fileIndex="0" linenr="75" column="5" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="75" column="15" str="("/>
+    <tok fileIndex="0" linenr="75" column="16" str="1"/>
+    <tok fileIndex="0" linenr="75" column="17" str=")"/>
+    <tok fileIndex="0" linenr="75" column="18" str=";"/>
+    <tok fileIndex="0" linenr="77" column="5" str="return"/>
+    <tok fileIndex="0" linenr="77" column="12" str="true"/>
+    <tok fileIndex="0" linenr="77" column="16" str=";"/>
+    <tok fileIndex="0" linenr="78" column="1" str="}"/>
+    <tok fileIndex="0" linenr="80" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="80" column="6" str="thread_memory_handle"/>
+    <tok fileIndex="0" linenr="80" column="26" str="("/>
+    <tok fileIndex="0" linenr="80" column="27" str="void"/>
+    <tok fileIndex="0" linenr="80" column="31" str=")"/>
+    <tok fileIndex="0" linenr="81" column="1" str="{"/>
+    <tok fileIndex="0" linenr="82" column="5" str="if"/>
+    <tok fileIndex="0" linenr="82" column="8" str="("/>
+    <tok fileIndex="0" linenr="82" column="9" str="pdTRUE"/>
+    <tok fileIndex="0" linenr="82" column="16" str="=="/>
+    <tok fileIndex="0" linenr="82" column="19" str="xTaskNotifyWait"/>
+    <tok fileIndex="0" linenr="82" column="34" str="("/>
+    <tok fileIndex="0" linenr="82" column="35" str="0u"/>
+    <tok fileIndex="0" linenr="82" column="37" str=","/>
+    <tok fileIndex="0" linenr="82" column="39" str="0u"/>
+    <tok fileIndex="0" linenr="82" column="41" str=","/>
+    <tok fileIndex="0" linenr="82" column="43" str="&amp;"/>
+    <tok fileIndex="0" linenr="82" column="44" str="notification_memory"/>
+    <tok fileIndex="0" linenr="82" column="63" str=","/>
+    <tok fileIndex="0" linenr="82" column="65" str="1u"/>
+    <tok fileIndex="0" linenr="82" column="67" str=")"/>
+    <tok fileIndex="0" linenr="82" column="68" str=")"/>
+    <tok fileIndex="0" linenr="83" column="5" str="{"/>
+    <tok fileIndex="0" linenr="84" column="9" str="if"/>
+    <tok fileIndex="0" linenr="84" column="12" str="("/>
+    <tok fileIndex="0" linenr="84" column="13" str="0u"/>
+    <tok fileIndex="0" linenr="84" column="16" str="!="/>
+    <tok fileIndex="0" linenr="84" column="19" str="("/>
+    <tok fileIndex="0" linenr="84" column="20" str="notification_memory"/>
+    <tok fileIndex="0" linenr="84" column="40" str="&amp;"/>
+    <tok fileIndex="0" linenr="84" column="42" str="NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR"/>
+    <tok fileIndex="0" linenr="84" column="80" str=")"/>
+    <tok fileIndex="0" linenr="84" column="82" str="||"/>
+    <tok fileIndex="0" linenr="85" column="17" str="0u"/>
+    <tok fileIndex="0" linenr="85" column="20" str="!="/>
+    <tok fileIndex="0" linenr="85" column="23" str="("/>
+    <tok fileIndex="0" linenr="85" column="24" str="notification_memory"/>
+    <tok fileIndex="0" linenr="85" column="44" str="&amp;"/>
+    <tok fileIndex="0" linenr="85" column="46" str="NOTIFICATION_TO_MEMORY_REQ_WRITE_PARAMETERS"/>
+    <tok fileIndex="0" linenr="85" column="89" str=")"/>
+    <tok fileIndex="0" linenr="85" column="90" str=")"/>
+    <tok fileIndex="0" linenr="86" column="9" str="{"/>
+    <tok fileIndex="0" linenr="87" column="13" str="if"/>
+    <tok fileIndex="0" linenr="87" column="16" str="("/>
+    <tok fileIndex="0" linenr="87" column="17" str="true"/>
+    <tok fileIndex="0" linenr="87" column="22" str="!="/>
+    <tok fileIndex="0" linenr="87" column="25" str="nvm_handle_write"/>
+    <tok fileIndex="0" linenr="87" column="41" str="("/>
+    <tok fileIndex="0" linenr="87" column="42" str=")"/>
+    <tok fileIndex="0" linenr="87" column="43" str=")"/>
+    <tok fileIndex="0" linenr="88" column="13" str="{"/>
+    <tok fileIndex="0" linenr="89" column="17" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="89" column="25" str="("/>
+    <tok fileIndex="0" linenr="89" column="26" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="89" column="33" str=","/>
+    <tok fileIndex="0" linenr="89" column="35" str="&quot;nwf&quot;"/>
+    <tok fileIndex="0" linenr="89" column="40" str=")"/>
+    <tok fileIndex="0" linenr="89" column="41" str=";"/>
+    <tok fileIndex="0" linenr="90" column="13" str="}"/>
+    <tok fileIndex="0" linenr="91" column="13" str="else"/>
+    <tok fileIndex="0" linenr="92" column="13" str="{"/>
+    <tok fileIndex="0" linenr="93" column="17" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="93" column="25" str="("/>
+    <tok fileIndex="0" linenr="93" column="26" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="93" column="33" str=","/>
+    <tok fileIndex="0" linenr="93" column="35" str="&quot;nwo&quot;"/>
+    <tok fileIndex="0" linenr="93" column="40" str=")"/>
+    <tok fileIndex="0" linenr="93" column="41" str=";"/>
+    <tok fileIndex="0" linenr="94" column="13" str="}"/>
+    <tok fileIndex="0" linenr="96" column="13" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="96" column="21" str="("/>
+    <tok fileIndex="0" linenr="96" column="22" str="tag_t_m"/>
+    <tok fileIndex="0" linenr="96" column="29" str=","/>
+    <tok fileIndex="0" linenr="96" column="31" str="&quot;h&quot;"/>
+    <tok fileIndex="0" linenr="96" column="34" str=")"/>
+    <tok fileIndex="0" linenr="96" column="35" str=";"/>
+    <tok fileIndex="0" linenr="97" column="9" str="}"/>
+    <tok fileIndex="0" linenr="98" column="5" str="}"/>
+    <tok fileIndex="0" linenr="100" column="5" str="vTaskDelay"/>
+    <tok fileIndex="0" linenr="100" column="15" str="("/>
+    <tok fileIndex="0" linenr="100" column="16" str="DELAY_HANDLE_THREAD_MEMORY"/>
+    <tok fileIndex="0" linenr="100" column="42" str=")"/>
+    <tok fileIndex="0" linenr="100" column="43" str=";"/>
+    <tok fileIndex="0" linenr="102" column="5" str="return"/>
+    <tok fileIndex="0" linenr="102" column="12" str="true"/>
+    <tok fileIndex="0" linenr="102" column="16" str=";"/>
+    <tok fileIndex="0" linenr="103" column="1" str="}"/>
+    <tok fileIndex="0" linenr="105" column="1" str="/* ---------------------------- Private functions ---------------------------- */"/>
+    <tok fileIndex="0" linenr="108" column="1" str="/* ---------------------------- Interrupt callbacks ---------------------------- */"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/src/thread_memory.c" linenr="3" str="#include &quot;thread_memory.h&quot;"/>
+  </directivelist>
+  <tokenlist>
+    <token id="55b119255f80" file="../plant_boss/src/thread_memory.c" linenr="8" column="1" str="uint32_t" scope="55b119236100" type="name"/>
+    <token id="55b1193dc680" file="../plant_boss/src/thread_memory.c" linenr="8" column="10" str="err_thread_memory" scope="55b119236100" type="name" varId="1" exprId="1" variable="55b1194ba390" values="55b11945a920" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1193dc440" file="../plant_boss/src/thread_memory.c" linenr="8" column="28" str=";" scope="55b119236100" isSplittedVarDeclEq="true"/>
+    <token id="55b119482980" file="../plant_boss/src/thread_memory.c" linenr="8" column="10" str="err_thread_memory" scope="55b119236100" type="name" varId="1" exprId="1" variable="55b1194ba390" values="55b119230cf0" astParent="55b1194829e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1194829e0" file="../plant_boss/src/thread_memory.c" linenr="8" column="28" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119230200" astOperand1="55b119482980" astOperand2="55b119484390" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119484390" file="../plant_boss/src/thread_memory.c" linenr="8" column="30" str="0u" scope="55b119236100" type="number" isInt="true" values="55b1192515e0" astParent="55b1194829e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119484090" file="../plant_boss/src/thread_memory.c" linenr="8" column="32" str=";" scope="55b119236100"/>
+    <token id="55b119484750" file="../plant_boss/src/thread_memory.c" linenr="10" column="1" str="uint32_t" scope="55b119236100" type="name"/>
+    <token id="55b119484450" file="../plant_boss/src/thread_memory.c" linenr="10" column="10" str="notification_memory" scope="55b119236100" type="name" varId="2" exprId="2" variable="55b119482210" values="55b11924d810" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119491e30" file="../plant_boss/src/thread_memory.c" linenr="10" column="30" str=";" scope="55b119236100" isSplittedVarDeclEq="true"/>
+    <token id="55b1192372d0" file="../plant_boss/src/thread_memory.c" linenr="10" column="10" str="notification_memory" scope="55b119236100" type="name" varId="2" exprId="2" variable="55b119482210" values="55b119226420" astParent="55b1192373e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192373e0" file="../plant_boss/src/thread_memory.c" linenr="10" column="30" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119225f70" astOperand1="55b1192372d0" astOperand2="55b119239080" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119239080" file="../plant_boss/src/thread_memory.c" linenr="10" column="32" str="0u" scope="55b119236100" type="number" isInt="true" values="55b119230240" astParent="55b1192373e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119483760" file="../plant_boss/src/thread_memory.c" linenr="10" column="34" str=";" scope="55b119236100"/>
+    <token id="55b1193f7320" file="../plant_boss/src/thread_memory.c" linenr="13" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b1192377a0" file="../plant_boss/src/thread_memory.c" linenr="13" column="8" str="QueueHandle_t" scope="55b119236100" type="name"/>
+    <token id="55b119237800" file="../plant_boss/src/thread_memory.c" linenr="13" column="22" str="queue_memory_to_app" scope="55b119236100" type="name" varId="3" exprId="3" variable="55b1194b7240"/>
+    <token id="55b119244360" file="../plant_boss/src/thread_memory.c" linenr="13" column="41" str=";" scope="55b119236100"/>
+    <token id="55b1192443c0" file="../plant_boss/src/thread_memory.c" linenr="15" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b119254200" file="../plant_boss/src/thread_memory.c" linenr="15" column="8" str="TaskHandle_t" scope="55b119236100" type="name"/>
+    <token id="55b119254260" file="../plant_boss/src/thread_memory.c" linenr="15" column="21" str="handle_app" scope="55b119236100" type="name" varId="4" exprId="4" variable="55b11946f1c0"/>
+    <token id="55b11925dbc0" file="../plant_boss/src/thread_memory.c" linenr="15" column="31" str=";" scope="55b119236100"/>
+    <token id="55b11925dc20" file="../plant_boss/src/thread_memory.c" linenr="16" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b1193de560" file="../plant_boss/src/thread_memory.c" linenr="16" column="8" str="TaskHandle_t" scope="55b119236100" type="name"/>
+    <token id="55b119454930" file="../plant_boss/src/thread_memory.c" linenr="16" column="21" str="handle_memory" scope="55b119236100" type="name" varId="5" exprId="5" variable="55b119451f10"/>
+    <token id="55b119491db0" file="../plant_boss/src/thread_memory.c" linenr="16" column="34" str=";" scope="55b119236100"/>
+    <token id="55b119244a60" file="../plant_boss/src/thread_memory.c" linenr="18" column="1" str="uint8_t" scope="55b119236100" type="name"/>
+    <token id="55b119491ae0" file="../plant_boss/src/thread_memory.c" linenr="18" column="9" str="buf_rx_queue_app_to_memory" scope="55b119236100" type="name" varId="6" exprId="6" variable="55b119237870" astParent="55b119244b70" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119244b70" file="../plant_boss/src/thread_memory.c" linenr="18" column="35" str="[" scope="55b119236100" link="55b11945ae00" astOperand1="55b119491ae0" astOperand2="55b119244c80" valueType-type="char" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119244c80" file="../plant_boss/src/thread_memory.c" linenr="18" column="36" str="10" scope="55b119236100" type="number" isInt="true" values="55b119225fb0" astParent="55b119244b70" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11945ae00" file="../plant_boss/src/thread_memory.c" linenr="18" column="38" str="]" scope="55b119236100" link="55b119244b70"/>
+    <token id="55b11945b1d0" file="../plant_boss/src/thread_memory.c" linenr="18" column="39" str=";" scope="55b119236100"/>
+    <token id="55b119405cd0" file="../plant_boss/src/thread_memory.c" linenr="20" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b119244840" file="../plant_boss/src/thread_memory.c" linenr="20" column="8" str="uint32_t" scope="55b119236100" type="name"/>
+    <token id="55b119405a20" file="../plant_boss/src/thread_memory.c" linenr="20" column="17" str="delay_handle_thread_app" scope="55b119236100" type="name" varId="7" exprId="7" variable="55b11945a9b0" values="55b119250b30" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119454500" file="../plant_boss/src/thread_memory.c" linenr="20" column="40" str=";" scope="55b119236100"/>
+    <token id="55b119454560" file="../plant_boss/src/thread_memory.c" linenr="21" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b1192452c0" file="../plant_boss/src/thread_memory.c" linenr="21" column="8" str="uint16_t" scope="55b119236100" type="name"/>
+    <token id="55b119245320" file="../plant_boss/src/thread_memory.c" linenr="21" column="17" str="threshold_voltage_battery" scope="55b119236100" type="name" varId="8" exprId="8" variable="55b11924adf0" values="55b119452050" valueType-type="short" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119245440" file="../plant_boss/src/thread_memory.c" linenr="21" column="42" str=";" scope="55b119236100"/>
+    <token id="55b1193de6b0" file="../plant_boss/src/thread_memory.c" linenr="22" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b1192454a0" file="../plant_boss/src/thread_memory.c" linenr="22" column="8" str="uint8_t" scope="55b119236100" type="name"/>
+    <token id="55b1193c9ef0" file="../plant_boss/src/thread_memory.c" linenr="22" column="16" str="device_mode" scope="55b119236100" type="name" varId="9" exprId="9" variable="55b11924af20" values="55b11924be90" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1193c9f50" file="../plant_boss/src/thread_memory.c" linenr="22" column="27" str=";" scope="55b119236100"/>
+    <token id="55b1193ca070" file="../plant_boss/src/thread_memory.c" linenr="23" column="1" str="extern" scope="55b119236100" type="name"/>
+    <token id="55b1193ca0d0" file="../plant_boss/src/thread_memory.c" linenr="23" column="8" str="uint8_t" scope="55b119236100" type="name"/>
+    <token id="55b1193ca1f0" file="../plant_boss/src/thread_memory.c" linenr="23" column="16" str="device_id" scope="55b119236100" type="name" varId="10" exprId="10" variable="55b11924a750" values="55b119230810" valueType-type="char" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119226640" file="../plant_boss/src/thread_memory.c" linenr="23" column="25" str=";" scope="55b119236100"/>
+    <token id="55b1193ca300" file="../plant_boss/src/thread_memory.c" linenr="25" column="1" str="static" scope="55b119236100" type="name"/>
+    <token id="55b1193ca410" file="../plant_boss/src/thread_memory.c" linenr="25" column="8" str="const" scope="55b119236100" type="name"/>
+    <token id="55b119244200" file="../plant_boss/src/thread_memory.c" linenr="25" column="14" str="char" scope="55b119236100" type="name"/>
+    <token id="55b119244440" file="../plant_boss/src/thread_memory.c" linenr="25" column="18" str="*" scope="55b119236100" type="op" isArithmeticalOp="true"/>
+    <token id="55b119244550" file="../plant_boss/src/thread_memory.c" linenr="25" column="20" str="tag_t_m" scope="55b119236100" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b1192445b0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192445b0" file="../plant_boss/src/thread_memory.c" linenr="25" column="28" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b11925a3d0" astOperand1="55b119244550" astOperand2="55b1194ba900" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1194ba900" file="../plant_boss/src/thread_memory.c" linenr="25" column="30" str="&quot;t_m&quot;" scope="55b119236100" type="string" strlen="3" values="55b11924c780" astParent="55b1192445b0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1194ba960" file="../plant_boss/src/thread_memory.c" linenr="25" column="35" str=";" scope="55b119236100"/>
+    <token id="55b119256700" file="../plant_boss/src/thread_memory.c" linenr="28" column="1" str="void" scope="55b119236100" type="name"/>
+    <token id="55b119256760" file="../plant_boss/src/thread_memory.c" linenr="28" column="6" str="thread_memory" scope="55b119236100" type="name" function="55b1194bac90"/>
+    <token id="55b1192529b0" file="../plant_boss/src/thread_memory.c" linenr="28" column="19" str="(" scope="55b119236100" link="55b11923fb20" valueType-type="void" valueType-reference="None"/>
+    <token id="55b119242410" file="../plant_boss/src/thread_memory.c" linenr="28" column="20" str="void" scope="55b119236100" type="name"/>
+    <token id="55b119242520" file="../plant_boss/src/thread_memory.c" linenr="28" column="25" str="*" scope="55b119236100" type="op" isArithmeticalOp="true"/>
+    <token id="55b119242630" file="../plant_boss/src/thread_memory.c" linenr="28" column="26" str="arg" scope="55b119236100" type="name" varId="12" exprId="12" variable="55b119406430" valueType-type="void" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11923fb20" file="../plant_boss/src/thread_memory.c" linenr="28" column="29" str=")" scope="55b119236100" link="55b1192529b0"/>
+    <token id="55b11923fb80" file="../plant_boss/src/thread_memory.c" linenr="29" column="1" str="{" scope="55b119235e90" link="55b1193f71e0"/>
+    <token id="55b11923fca0" file="../plant_boss/src/thread_memory.c" linenr="30" column="5" str="if" scope="55b119235e90" type="name" astParent="55b11923fd00"/>
+    <token id="55b11923fd00" file="../plant_boss/src/thread_memory.c" linenr="30" column="8" str="(" scope="55b119235e90" link="55b119240200" astOperand1="55b11923fca0" astOperand2="55b119252790"/>
+    <token id="55b11923fe20" file="../plant_boss/src/thread_memory.c" linenr="30" column="9" str="true" scope="55b119235e90" type="name" exprId="13" astParent="55b119252790" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119252790" file="../plant_boss/src/thread_memory.c" linenr="30" column="14" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741840" values="55b119249a50" astParent="55b11923fd00" astOperand1="55b11923fe20" astOperand2="55b119240040" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923ff30" file="../plant_boss/src/thread_memory.c" linenr="30" column="17" str="thread_memory_init" scope="55b119235e90" type="name" function="55b1194bb020" astParent="55b119240040"/>
+    <token id="55b119240040" file="../plant_boss/src/thread_memory.c" linenr="30" column="35" str="(" scope="55b119235e90" link="55b1192400a0" exprId="1073741839" values="55b119258ed0" astParent="55b119252790" astOperand1="55b11923ff30" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192400a0" file="../plant_boss/src/thread_memory.c" linenr="30" column="36" str=")" scope="55b119235e90" link="55b119240040"/>
+    <token id="55b119240200" file="../plant_boss/src/thread_memory.c" linenr="30" column="37" str=")" scope="55b119235e90" link="55b11923fd00"/>
+    <token id="55b119240260" file="../plant_boss/src/thread_memory.c" linenr="31" column="5" str="{" scope="55b119235c20" link="55b119240600"/>
+    <token id="55b119240380" file="../plant_boss/src/thread_memory.c" linenr="32" column="9" str="error_handle" scope="55b119235c20" type="name" astParent="55b1194550a0"/>
+    <token id="55b1194550a0" file="../plant_boss/src/thread_memory.c" linenr="32" column="21" str="(" scope="55b119235c20" link="55b119240490" exprId="18" astOperand1="55b119240380"/>
+    <token id="55b119240490" file="../plant_boss/src/thread_memory.c" linenr="32" column="22" str=")" scope="55b119235c20" link="55b1194550a0"/>
+    <token id="55b1192405a0" file="../plant_boss/src/thread_memory.c" linenr="32" column="23" str=";" scope="55b119235c20"/>
+    <token id="55b119240600" file="../plant_boss/src/thread_memory.c" linenr="33" column="5" str="}" scope="55b119235c20" link="55b119240260"/>
+    <token id="55b119240710" file="../plant_boss/src/thread_memory.c" linenr="35" column="5" str="while" scope="55b119235e90" type="name" astParent="55b119226850"/>
+    <token id="55b119226850" file="../plant_boss/src/thread_memory.c" linenr="35" column="11" str="(" scope="55b119235e90" link="55b119240820" astOperand1="55b119240710" astOperand2="55b1193f64c0"/>
+    <token id="55b1193f64c0" file="../plant_boss/src/thread_memory.c" linenr="35" column="12" str="1" scope="55b119235e90" type="number" isInt="true" values="55b119250c50" astParent="55b119226850" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119240820" file="../plant_boss/src/thread_memory.c" linenr="35" column="13" str=")" scope="55b119235e90" link="55b119226850"/>
+    <token id="55b1193f65d0" file="../plant_boss/src/thread_memory.c" linenr="36" column="5" str="{" scope="55b11923a450" link="55b1193f7180"/>
+    <token id="55b1193f66e0" file="../plant_boss/src/thread_memory.c" linenr="37" column="9" str="if" scope="55b11923a450" type="name" astParent="55b1193f6740"/>
+    <token id="55b1193f6740" file="../plant_boss/src/thread_memory.c" linenr="37" column="12" str="(" scope="55b11923a450" link="55b1193f6c60" astOperand1="55b1193f66e0" astOperand2="55b1194552c0"/>
+    <token id="55b1193f6850" file="../plant_boss/src/thread_memory.c" linenr="37" column="13" str="true" scope="55b11923a450" type="name" exprId="13" astParent="55b1194552c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1194552c0" file="../plant_boss/src/thread_memory.c" linenr="37" column="18" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="1073741846" values="55b1194846f0" astParent="55b1193f6740" astOperand1="55b1193f6850" astOperand2="55b1193f69c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1193f68b0" file="../plant_boss/src/thread_memory.c" linenr="37" column="21" str="thread_memory_handle" scope="55b11923a450" type="name" function="55b1194baf60" astParent="55b1193f69c0"/>
+    <token id="55b1193f69c0" file="../plant_boss/src/thread_memory.c" linenr="37" column="41" str="(" scope="55b11923a450" link="55b1193f6ad0" exprId="1073741845" values="55b1192357a0" astParent="55b1194552c0" astOperand1="55b1193f68b0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1193f6ad0" file="../plant_boss/src/thread_memory.c" linenr="37" column="42" str=")" scope="55b11923a450" link="55b1193f69c0"/>
+    <token id="55b1193f6c60" file="../plant_boss/src/thread_memory.c" linenr="37" column="43" str=")" scope="55b11923a450" link="55b1193f6740"/>
+    <token id="55b1193f6cc0" file="../plant_boss/src/thread_memory.c" linenr="38" column="9" str="{" scope="55b11923a110" link="55b1193f7070"/>
+    <token id="55b1193f6de0" file="../plant_boss/src/thread_memory.c" linenr="39" column="13" str="error_handle" scope="55b11923a110" type="name" astParent="55b1193f6e40"/>
+    <token id="55b1193f6e40" file="../plant_boss/src/thread_memory.c" linenr="39" column="25" str="(" scope="55b11923a110" link="55b1193f6f60" exprId="18" astOperand1="55b1193f6de0"/>
+    <token id="55b1193f6f60" file="../plant_boss/src/thread_memory.c" linenr="39" column="26" str=")" scope="55b11923a110" link="55b1193f6e40"/>
+    <token id="55b119455640" file="../plant_boss/src/thread_memory.c" linenr="39" column="27" str=";" scope="55b11923a110"/>
+    <token id="55b1193f7070" file="../plant_boss/src/thread_memory.c" linenr="40" column="9" str="}" scope="55b11923a110" link="55b1193f6cc0"/>
+    <token id="55b1193f7180" file="../plant_boss/src/thread_memory.c" linenr="41" column="5" str="}" scope="55b11923a450" link="55b1193f65d0"/>
+    <token id="55b1193f71e0" file="../plant_boss/src/thread_memory.c" linenr="42" column="1" str="}" scope="55b119235e90" link="55b11923fb80"/>
+    <token id="55b119452600" file="../plant_boss/src/thread_memory.c" linenr="44" column="1" str="bool" scope="55b119236100" type="name"/>
+    <token id="55b119452660" file="../plant_boss/src/thread_memory.c" linenr="44" column="6" str="thread_memory_init" scope="55b119236100" type="name" function="55b1194bb020"/>
+    <token id="55b119452780" file="../plant_boss/src/thread_memory.c" linenr="44" column="24" str="(" scope="55b119236100" isRemovedVoidParameter="true" link="55b119252d30" values="55b11924d550" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119252d30" file="../plant_boss/src/thread_memory.c" linenr="44" column="29" str=")" scope="55b119236100" link="55b119452780"/>
+    <token id="55b1194529e0" file="../plant_boss/src/thread_memory.c" linenr="45" column="1" str="{" scope="55b11923f800" link="55b1193dd710"/>
+    <token id="55b119452a40" file="../plant_boss/src/thread_memory.c" linenr="48" column="5" str="xTaskNotifyWait" scope="55b11923f800" type="name" astParent="55b119452b60"/>
+    <token id="55b119452b60" file="../plant_boss/src/thread_memory.c" linenr="48" column="20" str="(" scope="55b11923f800" link="55b119453240" exprId="1073741856" astOperand1="55b119452a40" astOperand2="55b119453070"/>
+    <token id="55b119452bc0" file="../plant_boss/src/thread_memory.c" linenr="48" column="21" str="0u" scope="55b11923f800" type="number" isInt="true" values="55b119250c90" astParent="55b119452ce0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119452ce0" file="../plant_boss/src/thread_memory.c" linenr="48" column="23" str="," scope="55b11923f800" exprId="1073741851" astParent="55b119452df0" astOperand1="55b119452bc0" astOperand2="55b119453fd0"/>
+    <token id="55b119453fd0" file="../plant_boss/src/thread_memory.c" linenr="48" column="25" str="0u" scope="55b11923f800" type="number" isInt="true" values="55b119244610" astParent="55b119452ce0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119452df0" file="../plant_boss/src/thread_memory.c" linenr="48" column="27" str="," scope="55b11923f800" exprId="1073741853" astParent="55b119453070" astOperand1="55b119452ce0" astOperand2="55b119452f00"/>
+    <token id="55b119452f00" file="../plant_boss/src/thread_memory.c" linenr="48" column="29" str="&amp;" scope="55b11923f800" type="op" exprId="1073741852" values="55b11945ace0" astParent="55b119452df0" astOperand1="55b119452f60" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119452f60" file="../plant_boss/src/thread_memory.c" linenr="48" column="30" str="notification_memory" scope="55b11923f800" type="name" varId="2" exprId="2" variable="55b119482210" values="55b119232260" astParent="55b119452f00" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119453070" file="../plant_boss/src/thread_memory.c" linenr="48" column="49" str="," scope="55b11923f800" exprId="1073741855" astParent="55b119452b60" astOperand1="55b119452df0" astOperand2="55b1194530d0"/>
+    <token id="55b1194530d0" file="../plant_boss/src/thread_memory.c" linenr="48" column="51" str="portMAX_DELAY" scope="55b11923f800" type="name" exprId="1073741854" astParent="55b119453070"/>
+    <token id="55b119453240" file="../plant_boss/src/thread_memory.c" linenr="48" column="64" str=")" scope="55b11923f800" link="55b119452b60"/>
+    <token id="55b1194532a0" file="../plant_boss/src/thread_memory.c" linenr="48" column="65" str=";" scope="55b11923f800"/>
+    <token id="55b1194533c0" file="../plant_boss/src/thread_memory.c" linenr="49" column="5" str="if" scope="55b11923f800" type="name" astParent="55b119226c80"/>
+    <token id="55b119226c80" file="../plant_boss/src/thread_memory.c" linenr="49" column="8" str="(" scope="55b11923f800" link="55b119459830" astOperand1="55b1194533c0" astOperand2="55b1194596c0"/>
+    <token id="55b119459330" file="../plant_boss/src/thread_memory.c" linenr="49" column="9" str="(" scope="55b11923f800" link="55b1194595b0"/>
+    <token id="55b1194534d0" file="../plant_boss/src/thread_memory.c" linenr="49" column="10" str="notification_memory" scope="55b11923f800" type="name" varId="2" exprId="2" variable="55b119482210" values="55b119455cf0" astParent="55b119459440" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119459440" file="../plant_boss/src/thread_memory.c" linenr="49" column="30" str="&amp;" scope="55b11923f800" type="op" exprId="1073741859" astParent="55b1194596c0" astOperand1="55b1194534d0" astOperand2="55b119459550"/>
+    <token id="55b119459550" file="../plant_boss/src/thread_memory.c" linenr="49" column="32" str="NOTIFICATION_TO_MEMORY_REQ_INIT" scope="55b11923f800" type="name" exprId="34" astParent="55b119459440"/>
+    <token id="55b1194595b0" file="../plant_boss/src/thread_memory.c" linenr="49" column="63" str=")" scope="55b11923f800" link="55b119459330"/>
+    <token id="55b1194596c0" file="../plant_boss/src/thread_memory.c" linenr="49" column="65" str="==" scope="55b11923f800" type="op" isComparisonOp="true" exprId="1073741860" values="55b1192594d0" astParent="55b119226c80" astOperand1="55b119459440" astOperand2="55b119459720" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119459720" file="../plant_boss/src/thread_memory.c" linenr="49" column="68" str="0u" scope="55b11923f800" type="number" isInt="true" values="55b119239d50" astParent="55b1194596c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119459830" file="../plant_boss/src/thread_memory.c" linenr="49" column="70" str=")" scope="55b11923f800" link="55b119226c80"/>
+    <token id="55b119459890" file="../plant_boss/src/thread_memory.c" linenr="50" column="5" str="{" scope="55b119236370" link="55b119459c30"/>
+    <token id="55b1194599a0" file="../plant_boss/src/thread_memory.c" linenr="51" column="9" str="return" scope="55b119236370" type="name" values="55b1192464a0" astOperand1="55b119459ab0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119459ab0" file="../plant_boss/src/thread_memory.c" linenr="51" column="16" str="false" scope="55b119236370" type="name" exprId="37" astParent="55b1194599a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119459b10" file="../plant_boss/src/thread_memory.c" linenr="51" column="21" str=";" scope="55b119236370"/>
+    <token id="55b119459c30" file="../plant_boss/src/thread_memory.c" linenr="52" column="5" str="}" scope="55b119236370" link="55b119459890"/>
+    <token id="55b119242330" file="../plant_boss/src/thread_memory.c" linenr="54" column="5" str="ulTaskNotifyValueClear" scope="55b11923f800" type="name" astParent="55b119242390"/>
+    <token id="55b119242390" file="../plant_boss/src/thread_memory.c" linenr="54" column="27" str="(" scope="55b11923f800" link="55b11945a0d0" exprId="1073741864" astOperand1="55b119242330" astOperand2="55b119459f50"/>
+    <token id="55b119459df0" file="../plant_boss/src/thread_memory.c" linenr="54" column="28" str="handle_memory" scope="55b11923f800" type="name" varId="5" exprId="5" variable="55b119451f10" astParent="55b119459f50"/>
+    <token id="55b119459f50" file="../plant_boss/src/thread_memory.c" linenr="54" column="41" str="," scope="55b11923f800" exprId="1073741863" astParent="55b119242390" astOperand1="55b119459df0" astOperand2="55b119459fb0"/>
+    <token id="55b119459fb0" file="../plant_boss/src/thread_memory.c" linenr="54" column="43" str="NOTIFICATION_TO_MEMORY_REQ_INIT" scope="55b11923f800" type="name" exprId="34" astParent="55b119459f50"/>
+    <token id="55b11945a0d0" file="../plant_boss/src/thread_memory.c" linenr="54" column="74" str=")" scope="55b11923f800" link="55b119242390"/>
+    <token id="55b11945a130" file="../plant_boss/src/thread_memory.c" linenr="54" column="75" str=";" scope="55b11923f800"/>
+    <token id="55b11945a250" file="../plant_boss/src/thread_memory.c" linenr="56" column="5" str="if" scope="55b11923f800" type="name" astParent="55b11945a2b0"/>
+    <token id="55b11945a2b0" file="../plant_boss/src/thread_memory.c" linenr="56" column="8" str="(" scope="55b11923f800" link="55b119245100" astOperand1="55b11945a250" astOperand2="55b119248740"/>
+    <token id="55b1192486e0" file="../plant_boss/src/thread_memory.c" linenr="56" column="9" str="true" scope="55b11923f800" type="name" exprId="41" astParent="55b119248740" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119248740" file="../plant_boss/src/thread_memory.c" linenr="56" column="14" str="!=" scope="55b11923f800" type="op" isComparisonOp="true" exprId="1073741868" values="55b11923f650" astParent="55b11945a2b0" astOperand1="55b1192486e0" astOperand2="55b1192488c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119248860" file="../plant_boss/src/thread_memory.c" linenr="56" column="17" str="nvm_init" scope="55b11923f800" type="name" astParent="55b1192488c0"/>
+    <token id="55b1192488c0" file="../plant_boss/src/thread_memory.c" linenr="56" column="25" str="(" scope="55b11923f800" link="55b1192489e0" exprId="1073741867" astParent="55b119248740" astOperand1="55b119248860"/>
+    <token id="55b1192489e0" file="../plant_boss/src/thread_memory.c" linenr="56" column="26" str=")" scope="55b11923f800" link="55b1192488c0"/>
+    <token id="55b119245100" file="../plant_boss/src/thread_memory.c" linenr="56" column="27" str=")" scope="55b11923f800" link="55b11945a2b0"/>
+    <token id="55b119248af0" file="../plant_boss/src/thread_memory.c" linenr="57" column="5" str="{" scope="55b11924b230" link="55b119248e20"/>
+    <token id="55b119248c00" file="../plant_boss/src/thread_memory.c" linenr="58" column="9" str="return" scope="55b11924b230" type="name" values="55b11923a020" astOperand1="55b119245160" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119245160" file="../plant_boss/src/thread_memory.c" linenr="58" column="16" str="false" scope="55b11924b230" type="name" exprId="37" astParent="55b119248c00" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119248d10" file="../plant_boss/src/thread_memory.c" linenr="58" column="21" str=";" scope="55b11924b230"/>
+    <token id="55b119248e20" file="../plant_boss/src/thread_memory.c" linenr="59" column="5" str="}" scope="55b11924b230" link="55b119248af0"/>
+    <token id="55b119248e80" file="../plant_boss/src/thread_memory.c" linenr="61" column="5" str="if" scope="55b11923f800" type="name" astParent="55b119248f90"/>
+    <token id="55b119248f90" file="../plant_boss/src/thread_memory.c" linenr="61" column="8" str="(" scope="55b11923f800" link="55b119254da0" astOperand1="55b119248e80" astOperand2="55b119249100"/>
+    <token id="55b1192490a0" file="../plant_boss/src/thread_memory.c" linenr="61" column="9" str="pdPASS" scope="55b11923f800" type="name" exprId="1073741869" astParent="55b119249100"/>
+    <token id="55b119249100" file="../plant_boss/src/thread_memory.c" linenr="61" column="16" str="!=" scope="55b11923f800" type="op" isComparisonOp="true" exprId="1073741876" values="55b119236990" astParent="55b119248f90" astOperand1="55b1192490a0" astOperand2="55b119249280" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119249220" file="../plant_boss/src/thread_memory.c" linenr="61" column="19" str="xTaskNotify" scope="55b11923f800" type="name" astParent="55b119249280"/>
+    <token id="55b119249280" file="../plant_boss/src/thread_memory.c" linenr="61" column="30" str="(" scope="55b11923f800" link="55b11939f370" exprId="1073741875" astParent="55b119249100" astOperand1="55b119249220" astOperand2="55b119249580"/>
+    <token id="55b1192493a0" file="../plant_boss/src/thread_memory.c" linenr="61" column="31" str="handle_app" scope="55b11923f800" type="name" varId="4" exprId="4" variable="55b11946f1c0" astParent="55b119249400"/>
+    <token id="55b119249400" file="../plant_boss/src/thread_memory.c" linenr="61" column="41" str="," scope="55b11923f800" exprId="1073741872" astParent="55b119249580" astOperand1="55b1192493a0" astOperand2="55b119249520"/>
+    <token id="55b119249520" file="../plant_boss/src/thread_memory.c" linenr="61" column="43" str="NOTIFICATION_TO_APP_RES_INIT_MEMORY" scope="55b11923f800" type="name" exprId="1073741871" astParent="55b119249400"/>
+    <token id="55b119249580" file="../plant_boss/src/thread_memory.c" linenr="61" column="78" str="," scope="55b11923f800" exprId="1073741874" astParent="55b119249280" astOperand1="55b119249400" astOperand2="55b119254c90"/>
+    <token id="55b119254c90" file="../plant_boss/src/thread_memory.c" linenr="61" column="80" str="eSetBits" scope="55b11923f800" type="name" exprId="1073741873" astParent="55b119249580"/>
+    <token id="55b11939f370" file="../plant_boss/src/thread_memory.c" linenr="61" column="88" str=")" scope="55b11923f800" link="55b119249280"/>
+    <token id="55b119254da0" file="../plant_boss/src/thread_memory.c" linenr="61" column="89" str=")" scope="55b11923f800" link="55b119248f90"/>
+    <token id="55b119254eb0" file="../plant_boss/src/thread_memory.c" linenr="62" column="5" str="{" scope="55b11924b4a0" link="55b119255190"/>
+    <token id="55b119254f10" file="../plant_boss/src/thread_memory.c" linenr="63" column="9" str="return" scope="55b11924b4a0" type="name" values="55b11923aef0" astOperand1="55b119255020" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119255020" file="../plant_boss/src/thread_memory.c" linenr="63" column="16" str="false" scope="55b11924b4a0" type="name" exprId="37" astParent="55b119254f10" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119255080" file="../plant_boss/src/thread_memory.c" linenr="63" column="21" str=";" scope="55b11924b4a0"/>
+    <token id="55b119255190" file="../plant_boss/src/thread_memory.c" linenr="64" column="5" str="}" scope="55b11924b4a0" link="55b119254eb0"/>
+    <token id="55b1192551f0" file="../plant_boss/src/thread_memory.c" linenr="67" column="5" str="if" scope="55b11923f800" type="name" astParent="55b119255300"/>
+    <token id="55b119255300" file="../plant_boss/src/thread_memory.c" linenr="67" column="8" str="(" scope="55b11923f800" link="55b119453b10" astOperand1="55b1192551f0" astOperand2="55b119255470"/>
+    <token id="55b119255410" file="../plant_boss/src/thread_memory.c" linenr="67" column="9" str="true" scope="55b11923f800" type="name" exprId="41" astParent="55b119255470" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119255470" file="../plant_boss/src/thread_memory.c" linenr="67" column="14" str="!=" scope="55b11923f800" type="op" isComparisonOp="true" exprId="1073741879" values="55b11924ccb0" astParent="55b119255300" astOperand1="55b119255410" astOperand2="55b1192555f0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119255590" file="../plant_boss/src/thread_memory.c" linenr="67" column="17" str="nvm_handle_read" scope="55b11923f800" type="name" astParent="55b1192555f0"/>
+    <token id="55b1192555f0" file="../plant_boss/src/thread_memory.c" linenr="67" column="32" str="(" scope="55b11923f800" link="55b119255710" exprId="1073741878" astParent="55b119255470" astOperand1="55b119255590"/>
+    <token id="55b119255710" file="../plant_boss/src/thread_memory.c" linenr="67" column="33" str=")" scope="55b11923f800" link="55b1192555f0"/>
+    <token id="55b119453b10" file="../plant_boss/src/thread_memory.c" linenr="67" column="34" str=")" scope="55b11923f800" link="55b119255300"/>
+    <token id="55b119255770" file="../plant_boss/src/thread_memory.c" linenr="68" column="5" str="{" scope="55b11924a1d0" link="55b1193dcb00"/>
+    <token id="55b119255880" file="../plant_boss/src/thread_memory.c" linenr="69" column="9" str="ESP_LOGI" scope="55b11924a1d0" type="name" astParent="55b119255990"/>
+    <token id="55b119255990" file="../plant_boss/src/thread_memory.c" linenr="69" column="17" str="(" scope="55b11924a1d0" link="55b1193dc980" exprId="1073741883" astOperand1="55b119255880" astOperand2="55b119255b00"/>
+    <token id="55b119255aa0" file="../plant_boss/src/thread_memory.c" linenr="69" column="18" str="tag_t_m" scope="55b11924a1d0" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b119255b00" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119255b00" file="../plant_boss/src/thread_memory.c" linenr="69" column="25" str="," scope="55b11924a1d0" exprId="1073741882" astParent="55b119255990" astOperand1="55b119255aa0" astOperand2="55b1193dc920"/>
+    <token id="55b1193dc920" file="../plant_boss/src/thread_memory.c" linenr="69" column="27" str="&quot;nrf&quot;" scope="55b11924a1d0" type="string" strlen="3" exprId="1073741881" values="55b11925dfa0" astParent="55b119255b00" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1193dc980" file="../plant_boss/src/thread_memory.c" linenr="69" column="32" str=")" scope="55b11924a1d0" link="55b119255990"/>
+    <token id="55b1193dcaa0" file="../plant_boss/src/thread_memory.c" linenr="69" column="33" str=";" scope="55b11924a1d0"/>
+    <token id="55b1193dcb00" file="../plant_boss/src/thread_memory.c" linenr="70" column="5" str="}" scope="55b11924a1d0" link="55b119255770"/>
+    <token id="55b1193dcc20" file="../plant_boss/src/thread_memory.c" linenr="72" column="5" str="ESP_LOGI" scope="55b11923f800" type="name" astParent="55b1193dcc80"/>
+    <token id="55b1193dcc80" file="../plant_boss/src/thread_memory.c" linenr="72" column="13" str="(" scope="55b11923f800" link="55b1193dcf80" exprId="1073741886" astOperand1="55b1193dcc20" astOperand2="55b1193dce00"/>
+    <token id="55b1193dcda0" file="../plant_boss/src/thread_memory.c" linenr="72" column="14" str="tag_t_m" scope="55b11923f800" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b1193dce00" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1193dce00" file="../plant_boss/src/thread_memory.c" linenr="72" column="21" str="," scope="55b11923f800" exprId="1073741885" astParent="55b1193dcc80" astOperand1="55b1193dcda0" astOperand2="55b1193dcf20"/>
+    <token id="55b1193dcf20" file="../plant_boss/src/thread_memory.c" linenr="72" column="23" str="&quot;i&quot;" scope="55b11923f800" type="string" strlen="1" exprId="1073741884" values="55b119226290" astParent="55b1193dce00" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1193dcf80" file="../plant_boss/src/thread_memory.c" linenr="72" column="26" str=")" scope="55b11923f800" link="55b1193dcc80"/>
+    <token id="55b1193dd0a0" file="../plant_boss/src/thread_memory.c" linenr="72" column="27" str=";" scope="55b11923f800"/>
+    <token id="55b1194577f0" file="../plant_boss/src/thread_memory.c" linenr="75" column="5" str="vTaskDelay" scope="55b11923f800" type="name" astParent="55b1193dd1b0"/>
+    <token id="55b1193dd1b0" file="../plant_boss/src/thread_memory.c" linenr="75" column="15" str="(" scope="55b11923f800" link="55b1193dd320" exprId="1073741889" astOperand1="55b1194577f0" astOperand2="55b1193dd2c0"/>
+    <token id="55b1193dd2c0" file="../plant_boss/src/thread_memory.c" linenr="75" column="16" str="1" scope="55b11923f800" type="number" isInt="true" values="55b11945afb0" astParent="55b1193dd1b0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1193dd320" file="../plant_boss/src/thread_memory.c" linenr="75" column="17" str=")" scope="55b11923f800" link="55b1193dd1b0"/>
+    <token id="55b1193dd430" file="../plant_boss/src/thread_memory.c" linenr="75" column="18" str=";" scope="55b11923f800"/>
+    <token id="55b1193dd490" file="../plant_boss/src/thread_memory.c" linenr="77" column="5" str="return" scope="55b11923f800" type="name" values="55b119258750" astOperand1="55b1193dd5a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1193dd5a0" file="../plant_boss/src/thread_memory.c" linenr="77" column="12" str="true" scope="55b11923f800" type="name" exprId="41" astParent="55b1193dd490" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1193dd600" file="../plant_boss/src/thread_memory.c" linenr="77" column="16" str=";" scope="55b11923f800"/>
+    <token id="55b1193dd710" file="../plant_boss/src/thread_memory.c" linenr="78" column="1" str="}" scope="55b11923f800" link="55b1194529e0"/>
+    <token id="55b1193dd820" file="../plant_boss/src/thread_memory.c" linenr="80" column="1" str="bool" scope="55b119236100" type="name"/>
+    <token id="55b1193dd880" file="../plant_boss/src/thread_memory.c" linenr="80" column="6" str="thread_memory_handle" scope="55b119236100" type="name" function="55b1194baf60"/>
+    <token id="55b1193dd9a0" file="../plant_boss/src/thread_memory.c" linenr="80" column="26" str="(" scope="55b119236100" isRemovedVoidParameter="true" link="55b119237f20" values="55b11924cd20" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119237f20" file="../plant_boss/src/thread_memory.c" linenr="80" column="31" str=")" scope="55b119236100" link="55b1193dd9a0"/>
+    <token id="55b119237f80" file="../plant_boss/src/thread_memory.c" linenr="81" column="1" str="{" scope="55b11924a440" link="55b119482860"/>
+    <token id="55b1192380a0" file="../plant_boss/src/thread_memory.c" linenr="82" column="5" str="if" scope="55b11924a440" type="name" astParent="55b119259a60"/>
+    <token id="55b119259a60" file="../plant_boss/src/thread_memory.c" linenr="82" column="8" str="(" scope="55b11924a440" link="55b119238c00" astOperand1="55b1192380a0" astOperand2="55b1192382c0"/>
+    <token id="55b1192381b0" file="../plant_boss/src/thread_memory.c" linenr="82" column="9" str="pdTRUE" scope="55b11924a440" type="name" exprId="1073741894" astParent="55b1192382c0"/>
+    <token id="55b1192382c0" file="../plant_boss/src/thread_memory.c" linenr="82" column="16" str="==" scope="55b11924a440" type="op" isComparisonOp="true" exprId="1073741903" values="55b1194b91b0" astParent="55b119259a60" astOperand1="55b1192381b0" astOperand2="55b1192383d0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119259ac0" file="../plant_boss/src/thread_memory.c" linenr="82" column="19" str="xTaskNotifyWait" scope="55b11924a440" type="name" astParent="55b1192383d0"/>
+    <token id="55b1192383d0" file="../plant_boss/src/thread_memory.c" linenr="82" column="34" str="(" scope="55b11924a440" link="55b119238ae0" exprId="1073741902" astParent="55b1192382c0" astOperand1="55b119259ac0" astOperand2="55b119238940"/>
+    <token id="55b1192384e0" file="../plant_boss/src/thread_memory.c" linenr="82" column="35" str="0u" scope="55b11924a440" type="number" isInt="true" values="55b119454030" astParent="55b119238540" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238540" file="../plant_boss/src/thread_memory.c" linenr="82" column="37" str="," scope="55b11924a440" exprId="1073741897" astParent="55b119238760" astOperand1="55b1192384e0" astOperand2="55b119238650"/>
+    <token id="55b119238650" file="../plant_boss/src/thread_memory.c" linenr="82" column="39" str="0u" scope="55b11924a440" type="number" isInt="true" values="55b119255c10" astParent="55b119238540" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238760" file="../plant_boss/src/thread_memory.c" linenr="82" column="41" str="," scope="55b11924a440" exprId="1073741899" astParent="55b119238940" astOperand1="55b119238540" astOperand2="55b1192387c0"/>
+    <token id="55b1192387c0" file="../plant_boss/src/thread_memory.c" linenr="82" column="43" str="&amp;" scope="55b11924a440" type="op" exprId="1073741898" values="55b119451aa0" astParent="55b119238760" astOperand1="55b1192388e0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192388e0" file="../plant_boss/src/thread_memory.c" linenr="82" column="44" str="notification_memory" scope="55b11924a440" type="name" varId="2" exprId="2" variable="55b119482210" values="55b119239200" astParent="55b1192387c0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238940" file="../plant_boss/src/thread_memory.c" linenr="82" column="63" str="," scope="55b11924a440" exprId="1073741901" astParent="55b1192383d0" astOperand1="55b119238760" astOperand2="55b119238a80"/>
+    <token id="55b119238a80" file="../plant_boss/src/thread_memory.c" linenr="82" column="65" str="1u" scope="55b11924a440" type="number" isInt="true" values="55b1194ba9c0" astParent="55b119238940" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238ae0" file="../plant_boss/src/thread_memory.c" linenr="82" column="67" str=")" scope="55b11924a440" link="55b1192383d0"/>
+    <token id="55b119238c00" file="../plant_boss/src/thread_memory.c" linenr="82" column="68" str=")" scope="55b11924a440" link="55b119259a60"/>
+    <token id="55b119238c60" file="../plant_boss/src/thread_memory.c" linenr="83" column="5" str="{" scope="55b119405e20" link="55b1194590c0"/>
+    <token id="55b119238d80" file="../plant_boss/src/thread_memory.c" linenr="84" column="9" str="if" scope="55b119405e20" type="name" astParent="55b1192547b0"/>
+    <token id="55b1192547b0" file="../plant_boss/src/thread_memory.c" linenr="84" column="12" str="(" scope="55b119405e20" link="55b11924eca0" astOperand1="55b119238d80" astOperand2="55b11924e680"/>
+    <token id="55b119238de0" file="../plant_boss/src/thread_memory.c" linenr="84" column="13" str="0u" scope="55b119405e20" type="number" isInt="true" values="55b1193de5c0" astParent="55b119238ef0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119238ef0" file="../plant_boss/src/thread_memory.c" linenr="84" column="16" str="!=" scope="55b119405e20" type="op" isComparisonOp="true" exprId="1073741908" values="55b119239360" astParent="55b11924e680" astOperand1="55b119238de0" astOperand2="55b11924e390" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119239000" file="../plant_boss/src/thread_memory.c" linenr="84" column="19" str="(" scope="55b119405e20" link="55b11924e530"/>
+    <token id="55b11924e330" file="../plant_boss/src/thread_memory.c" linenr="84" column="20" str="notification_memory" scope="55b119405e20" type="name" varId="2" exprId="2" variable="55b119482210" values="55b1192395e0" astParent="55b11924e390" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924e390" file="../plant_boss/src/thread_memory.c" linenr="84" column="40" str="&amp;" scope="55b119405e20" type="op" exprId="1073741907" astParent="55b119238ef0" astOperand1="55b11924e330" astOperand2="55b11924e4d0"/>
+    <token id="55b11924e4d0" file="../plant_boss/src/thread_memory.c" linenr="84" column="42" str="NOTIFICATION_TO_MEMORY_REQ_WRITE_ERROR" scope="55b119405e20" type="name" exprId="1073741906" astParent="55b11924e390"/>
+    <token id="55b11924e530" file="../plant_boss/src/thread_memory.c" linenr="84" column="80" str=")" scope="55b119405e20" link="55b119239000"/>
+    <token id="55b11924e680" file="../plant_boss/src/thread_memory.c" linenr="84" column="82" str="||" scope="55b119405e20" type="op" isLogicalOp="true" exprId="1073741915" values="55b119239740" astParent="55b1192547b0" astOperand1="55b119238ef0" astOperand2="55b11924e800" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924e6e0" file="../plant_boss/src/thread_memory.c" linenr="85" column="17" str="0u" scope="55b119405e20" type="number" isInt="true" values="55b119454990" astParent="55b11924e800" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924e800" file="../plant_boss/src/thread_memory.c" linenr="85" column="20" str="!=" scope="55b119405e20" type="op" isComparisonOp="true" exprId="1073741914" values="55b1192399c0" astParent="55b11924e680" astOperand1="55b11924e6e0" astOperand2="55b11924e9e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924e860" file="../plant_boss/src/thread_memory.c" linenr="85" column="23" str="(" scope="55b119405e20" link="55b11924eb80"/>
+    <token id="55b11924e980" file="../plant_boss/src/thread_memory.c" linenr="85" column="24" str="notification_memory" scope="55b119405e20" type="name" varId="2" exprId="2" variable="55b119482210" values="55b119251810" astParent="55b11924e9e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924e9e0" file="../plant_boss/src/thread_memory.c" linenr="85" column="44" str="&amp;" scope="55b119405e20" type="op" exprId="1073741913" astParent="55b11924e800" astOperand1="55b11924e980" astOperand2="55b11924eb20"/>
+    <token id="55b11924eb20" file="../plant_boss/src/thread_memory.c" linenr="85" column="46" str="NOTIFICATION_TO_MEMORY_REQ_WRITE_PARAMETERS" scope="55b119405e20" type="name" exprId="1073741912" astParent="55b11924e9e0"/>
+    <token id="55b11924eb80" file="../plant_boss/src/thread_memory.c" linenr="85" column="89" str=")" scope="55b119405e20" link="55b11924e860"/>
+    <token id="55b11924eca0" file="../plant_boss/src/thread_memory.c" linenr="85" column="90" str=")" scope="55b119405e20" link="55b1192547b0"/>
+    <token id="55b11924ed00" file="../plant_boss/src/thread_memory.c" linenr="86" column="9" str="{" scope="55b119406090" link="55b119459060"/>
+    <token id="55b11924ee20" file="../plant_boss/src/thread_memory.c" linenr="87" column="13" str="if" scope="55b119406090" type="name" astParent="55b119253ff0"/>
+    <token id="55b119253ff0" file="../plant_boss/src/thread_memory.c" linenr="87" column="16" str="(" scope="55b119406090" link="55b11924f380" astOperand1="55b11924ee20" astOperand2="55b11924f040"/>
+    <token id="55b11924ef30" file="../plant_boss/src/thread_memory.c" linenr="87" column="17" str="true" scope="55b119406090" type="name" exprId="92" astParent="55b11924f040" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924f040" file="../plant_boss/src/thread_memory.c" linenr="87" column="22" str="!=" scope="55b119406090" type="op" isComparisonOp="true" exprId="1073741919" values="55b119251970" astParent="55b119253ff0" astOperand1="55b11924ef30" astOperand2="55b11924f1b0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11924f0a0" file="../plant_boss/src/thread_memory.c" linenr="87" column="25" str="nvm_handle_write" scope="55b119406090" type="name" astParent="55b11924f1b0"/>
+    <token id="55b11924f1b0" file="../plant_boss/src/thread_memory.c" linenr="87" column="41" str="(" scope="55b119406090" link="55b11924f210" exprId="1073741918" astParent="55b11924f040" astOperand1="55b11924f0a0"/>
+    <token id="55b11924f210" file="../plant_boss/src/thread_memory.c" linenr="87" column="42" str=")" scope="55b119406090" link="55b11924f1b0"/>
+    <token id="55b11924f380" file="../plant_boss/src/thread_memory.c" linenr="87" column="43" str=")" scope="55b119406090" link="55b119253ff0"/>
+    <token id="55b11924f3e0" file="../plant_boss/src/thread_memory.c" linenr="88" column="13" str="{" scope="55b11924a910" link="55b1194582e0"/>
+    <token id="55b11924f4f0" file="../plant_boss/src/thread_memory.c" linenr="89" column="17" str="ESP_LOGI" scope="55b11924a910" type="name" astParent="55b119457e60"/>
+    <token id="55b119457e60" file="../plant_boss/src/thread_memory.c" linenr="89" column="25" str="(" scope="55b11924a910" link="55b119458160" exprId="1073741923" astOperand1="55b11924f4f0" astOperand2="55b119457fe0"/>
+    <token id="55b119457ec0" file="../plant_boss/src/thread_memory.c" linenr="89" column="26" str="tag_t_m" scope="55b11924a910" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b119457fe0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119457fe0" file="../plant_boss/src/thread_memory.c" linenr="89" column="33" str="," scope="55b11924a910" exprId="1073741922" astParent="55b119457e60" astOperand1="55b119457ec0" astOperand2="55b119458040"/>
+    <token id="55b119458040" file="../plant_boss/src/thread_memory.c" linenr="89" column="35" str="&quot;nwf&quot;" scope="55b11924a910" type="string" strlen="3" exprId="1073741921" values="55b11945b310" astParent="55b119457fe0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119458160" file="../plant_boss/src/thread_memory.c" linenr="89" column="40" str=")" scope="55b11924a910" link="55b119457e60"/>
+    <token id="55b1194581c0" file="../plant_boss/src/thread_memory.c" linenr="89" column="41" str=";" scope="55b11924a910"/>
+    <token id="55b1194582e0" file="../plant_boss/src/thread_memory.c" linenr="90" column="13" str="}" scope="55b11924a910" link="55b11924f3e0"/>
+    <token id="55b119458340" file="../plant_boss/src/thread_memory.c" linenr="91" column="13" str="else" scope="55b119406090" type="name"/>
+    <token id="55b119458460" file="../plant_boss/src/thread_memory.c" linenr="92" column="13" str="{" scope="55b11924ab80" link="55b1194589c0"/>
+    <token id="55b11922b7d0" file="../plant_boss/src/thread_memory.c" linenr="93" column="17" str="ESP_LOGI" scope="55b11924ab80" type="name" astParent="55b119458570"/>
+    <token id="55b119458570" file="../plant_boss/src/thread_memory.c" linenr="93" column="25" str="(" scope="55b11924ab80" link="55b119458850" exprId="1073741926" astOperand1="55b11922b7d0" astOperand2="55b1194586e0"/>
+    <token id="55b119458680" file="../plant_boss/src/thread_memory.c" linenr="93" column="26" str="tag_t_m" scope="55b11924ab80" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b1194586e0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1194586e0" file="../plant_boss/src/thread_memory.c" linenr="93" column="33" str="," scope="55b11924ab80" exprId="1073741925" astParent="55b119458570" astOperand1="55b119458680" astOperand2="55b1194587f0"/>
+    <token id="55b1194587f0" file="../plant_boss/src/thread_memory.c" linenr="93" column="35" str="&quot;nwo&quot;" scope="55b11924ab80" type="string" strlen="3" exprId="1073741924" values="55b1192515a0" astParent="55b1194586e0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119458850" file="../plant_boss/src/thread_memory.c" linenr="93" column="40" str=")" scope="55b11924ab80" link="55b119458570"/>
+    <token id="55b119458960" file="../plant_boss/src/thread_memory.c" linenr="93" column="41" str=";" scope="55b11924ab80"/>
+    <token id="55b1194589c0" file="../plant_boss/src/thread_memory.c" linenr="94" column="13" str="}" scope="55b11924ab80" link="55b119458460"/>
+    <token id="55b119458ad0" file="../plant_boss/src/thread_memory.c" linenr="96" column="13" str="ESP_LOGI" scope="55b119406090" type="name" astParent="55b119458be0"/>
+    <token id="55b119458be0" file="../plant_boss/src/thread_memory.c" linenr="96" column="21" str="(" scope="55b119406090" link="55b119458ee0" exprId="1073741929" astOperand1="55b119458ad0" astOperand2="55b119458d60"/>
+    <token id="55b119458c40" file="../plant_boss/src/thread_memory.c" linenr="96" column="22" str="tag_t_m" scope="55b119406090" type="name" varId="11" exprId="11" variable="55b119406300" astParent="55b119458d60" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119458d60" file="../plant_boss/src/thread_memory.c" linenr="96" column="29" str="," scope="55b119406090" exprId="1073741928" astParent="55b119458be0" astOperand1="55b119458c40" astOperand2="55b119458dc0"/>
+    <token id="55b119458dc0" file="../plant_boss/src/thread_memory.c" linenr="96" column="31" str="&quot;h&quot;" scope="55b119406090" type="string" strlen="1" exprId="1073741927" values="55b119403270" astParent="55b119458d60" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b119458ee0" file="../plant_boss/src/thread_memory.c" linenr="96" column="34" str=")" scope="55b119406090" link="55b119458be0"/>
+    <token id="55b119458f40" file="../plant_boss/src/thread_memory.c" linenr="96" column="35" str=";" scope="55b119406090"/>
+    <token id="55b119459060" file="../plant_boss/src/thread_memory.c" linenr="97" column="9" str="}" scope="55b119406090" link="55b11924ed00"/>
+    <token id="55b1194590c0" file="../plant_boss/src/thread_memory.c" linenr="98" column="5" str="}" scope="55b119405e20" link="55b119238c60"/>
+    <token id="55b119482290" file="../plant_boss/src/thread_memory.c" linenr="100" column="5" str="vTaskDelay" scope="55b11924a440" type="name" astParent="55b11924faf0"/>
+    <token id="55b11924faf0" file="../plant_boss/src/thread_memory.c" linenr="100" column="15" str="(" scope="55b11924a440" link="55b1194824b0" exprId="1073741933" astOperand1="55b119482290" astOperand2="55b1194823a0"/>
+    <token id="55b1194823a0" file="../plant_boss/src/thread_memory.c" linenr="100" column="16" str="DELAY_HANDLE_THREAD_MEMORY" scope="55b11924a440" type="name" exprId="1073741932" astParent="55b11924faf0"/>
+    <token id="55b1194824b0" file="../plant_boss/src/thread_memory.c" linenr="100" column="42" str=")" scope="55b11924a440" link="55b11924faf0"/>
+    <token id="55b119482510" file="../plant_boss/src/thread_memory.c" linenr="100" column="43" str=";" scope="55b11924a440"/>
+    <token id="55b119482680" file="../plant_boss/src/thread_memory.c" linenr="102" column="5" str="return" scope="55b11924a440" type="name" values="55b119251bf0" astOperand1="55b1194826e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1194826e0" file="../plant_boss/src/thread_memory.c" linenr="102" column="12" str="true" scope="55b11924a440" type="name" exprId="92" astParent="55b119482680" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119482800" file="../plant_boss/src/thread_memory.c" linenr="102" column="16" str=";" scope="55b11924a440"/>
+    <token id="55b119482860" file="../plant_boss/src/thread_memory.c" linenr="103" column="1" str="}" scope="55b11924a440" link="55b119237f80"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b119236100" type="Global">
+      <functionList>
+        <function id="55b1194bac90" token="55b119256760" tokenDef="55b119256760" name="thread_memory" type="Function" access="Public">
+          <arg nr="1" variable="55b119406430"/>
+        </function>
+        <function id="55b1194bb020" token="55b119452660" tokenDef="55b119452660" name="thread_memory_init" type="Function" access="Public"/>
+        <function id="55b1194baf60" token="55b1193dd880" tokenDef="55b1193dd880" name="thread_memory_handle" type="Function" access="Public"/>
+      </functionList>
+      <varlist>
+        <var id="55b1194ba390"/>
+        <var id="55b119482210"/>
+        <var id="55b1194b7240"/>
+        <var id="55b11946f1c0"/>
+        <var id="55b119451f10"/>
+        <var id="55b119237870"/>
+        <var id="55b11945a9b0"/>
+        <var id="55b11924adf0"/>
+        <var id="55b11924af20"/>
+        <var id="55b11924a750"/>
+        <var id="55b119406300"/>
+      </varlist>
+    </scope>
+    <scope id="55b119235e90" type="Function" className="thread_memory" bodyStart="55b11923fb80" bodyEnd="55b1193f71e0" nestedIn="55b119236100" function="55b1194bac90"/>
+    <scope id="55b119235c20" type="If" bodyStart="55b119240260" bodyEnd="55b119240600" nestedIn="55b119235e90"/>
+    <scope id="55b11923a450" type="While" bodyStart="55b1193f65d0" bodyEnd="55b1193f7180" nestedIn="55b119235e90"/>
+    <scope id="55b11923a110" type="If" bodyStart="55b1193f6cc0" bodyEnd="55b1193f7070" nestedIn="55b11923a450"/>
+    <scope id="55b11923f800" type="Function" className="thread_memory_init" bodyStart="55b1194529e0" bodyEnd="55b1193dd710" nestedIn="55b119236100" function="55b1194bb020"/>
+    <scope id="55b119236370" type="If" bodyStart="55b119459890" bodyEnd="55b119459c30" nestedIn="55b11923f800"/>
+    <scope id="55b11924b230" type="If" bodyStart="55b119248af0" bodyEnd="55b119248e20" nestedIn="55b11923f800"/>
+    <scope id="55b11924b4a0" type="If" bodyStart="55b119254eb0" bodyEnd="55b119255190" nestedIn="55b11923f800"/>
+    <scope id="55b11924a1d0" type="If" bodyStart="55b119255770" bodyEnd="55b1193dcb00" nestedIn="55b11923f800"/>
+    <scope id="55b11924a440" type="Function" className="thread_memory_handle" bodyStart="55b119237f80" bodyEnd="55b119482860" nestedIn="55b119236100" function="55b1194baf60"/>
+    <scope id="55b119405e20" type="If" bodyStart="55b119238c60" bodyEnd="55b1194590c0" nestedIn="55b11924a440"/>
+    <scope id="55b119406090" type="If" bodyStart="55b11924ed00" bodyEnd="55b119459060" nestedIn="55b119405e20"/>
+    <scope id="55b11924a910" type="If" bodyStart="55b11924f3e0" bodyEnd="55b1194582e0" nestedIn="55b119406090"/>
+    <scope id="55b11924ab80" type="Else" bodyStart="55b119458460" bodyEnd="55b1194589c0" nestedIn="55b119406090"/>
+  </scopes>
+  <variables>
+    <var id="55b119237870" nameToken="55b119491ae0" typeStartToken="55b119244a60" typeEndToken="55b119244a60" access="Global" scope="55b119236100" constness="0" isArray="true" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924a750" nameToken="55b1193ca1f0" typeStartToken="55b1193ca0d0" typeEndToken="55b1193ca0d0" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924adf0" nameToken="55b119245320" typeStartToken="55b1192452c0" typeEndToken="55b1192452c0" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924af20" nameToken="55b1193c9ef0" typeStartToken="55b1192454a0" typeEndToken="55b1192454a0" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119406300" nameToken="55b119244550" typeStartToken="55b119244200" typeEndToken="55b119244440" access="Global" scope="55b119236100" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b119406430" nameToken="55b119242630" typeStartToken="55b119242410" typeEndToken="55b119242520" access="Argument" scope="55b119235e90" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119451f10" nameToken="55b119454930" typeStartToken="55b1193de560" typeEndToken="55b1193de560" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11945a9b0" nameToken="55b119405a20" typeStartToken="55b119244840" typeEndToken="55b119244840" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11946f1c0" nameToken="55b119254260" typeStartToken="55b119254200" typeEndToken="55b119254200" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119482210" nameToken="55b119484450" typeStartToken="55b119484750" typeEndToken="55b119484750" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1194b7240" nameToken="55b119237800" typeStartToken="55b1192377a0" typeEndToken="55b1192377a0" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="true" isConst="false" isExtern="true" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b1194ba390" nameToken="55b1193dc680" typeStartToken="55b119255f80" typeEndToken="55b119255f80" access="Global" scope="55b119236100" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b11945a920">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230cf0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230200">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192515e0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924d810">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119226420">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119225f70">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119230240">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119225fb0">
+      <value intvalue="10" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119250b30">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119452050">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924be90">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925a3d0">
+      <value tokvalue="55b1194ba900" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924c780">
+      <value tokvalue="55b1194ba900" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119249a50">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119258ed0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119250c50">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1194846f0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192357a0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924d550">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119250c90">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119244610">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11945ace0">
+      <value lifetime="55b119452f60" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119232260">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119455cf0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192594d0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239d50">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192464a0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923f650">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923a020">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119236990">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923aef0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924ccb0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925dfa0">
+      <value tokvalue="55b1193dc920" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119226290">
+      <value tokvalue="55b1193dcf20" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11945afb0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119258750">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924cd20">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1194b91b0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119454030">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119255c10">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119451aa0">
+      <value lifetime="55b1192388e0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239200">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1194ba9c0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1193de5c0">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119239360">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192395e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239740">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119454990">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192399c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119251810">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119251970">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11945b310">
+      <value tokvalue="55b119458040" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192515a0">
+      <value tokvalue="55b1194587f0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119403270">
+      <value tokvalue="55b119458dc0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119251bf0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+</dump>
+</dumps>

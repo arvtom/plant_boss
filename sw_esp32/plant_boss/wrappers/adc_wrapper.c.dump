@@ -1,0 +1,931 @@
+<?xml version="1.0"?>
+<dumps language="c">
+  <platform name="native" char_bit="8" short_bit="16" int_bit="32" long_bit="64" long_long_bit="64" pointer_bit="64"/>
+  <rawtokens>
+    <file index="0" name="../plant_boss/wrappers/adc_wrapper.c"/>
+    <file index="1" name="../plant_boss/wrappers/adc_wrapper.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x*  \file    adc_wrapper.cx*  \brief   This file wraps around esp32 adc driver.x*  \author  arvtomx*/"/>
+    <tok fileIndex="0" linenr="7" column="1" str="/*------------------------------Includes------------------------------*/"/>
+    <tok fileIndex="0" linenr="8" column="1" str="#"/>
+    <tok fileIndex="0" linenr="8" column="2" str="include"/>
+    <tok fileIndex="0" linenr="8" column="10" str="&quot;adc_wrapper.h&quot;"/>
+    <tok fileIndex="0" linenr="10" column="1" str="/*------------------------------Defines------------------------------*/"/>
+    <tok fileIndex="0" linenr="12" column="1" str="/*------------------------------Variables / Macro calls------------------------------*/"/>
+    <tok fileIndex="0" linenr="13" column="1" str="int"/>
+    <tok fileIndex="0" linenr="13" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="13" column="17" str="="/>
+    <tok fileIndex="0" linenr="13" column="19" str="0"/>
+    <tok fileIndex="0" linenr="13" column="20" str=";"/>
+    <tok fileIndex="0" linenr="14" column="1" str="uint32_t"/>
+    <tok fileIndex="0" linenr="14" column="10" str="err_adc"/>
+    <tok fileIndex="0" linenr="14" column="18" str="="/>
+    <tok fileIndex="0" linenr="14" column="20" str="0u"/>
+    <tok fileIndex="0" linenr="14" column="22" str=";"/>
+    <tok fileIndex="0" linenr="16" column="1" str="adc_oneshot_unit_handle_t"/>
+    <tok fileIndex="0" linenr="16" column="27" str="adc1_handle"/>
+    <tok fileIndex="0" linenr="16" column="38" str=";"/>
+    <tok fileIndex="0" linenr="18" column="1" str="static"/>
+    <tok fileIndex="0" linenr="18" column="8" str="const"/>
+    <tok fileIndex="0" linenr="18" column="14" str="char"/>
+    <tok fileIndex="0" linenr="18" column="18" str="*"/>
+    <tok fileIndex="0" linenr="18" column="20" str="tag_adc"/>
+    <tok fileIndex="0" linenr="18" column="28" str="="/>
+    <tok fileIndex="0" linenr="18" column="30" str="&quot;adc&quot;"/>
+    <tok fileIndex="0" linenr="18" column="35" str=";"/>
+    <tok fileIndex="0" linenr="20" column="1" str="/*------------------------------Public functions------------------------------*/"/>
+    <tok fileIndex="0" linenr="21" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="21" column="6" str="adc_init"/>
+    <tok fileIndex="0" linenr="21" column="14" str="("/>
+    <tok fileIndex="0" linenr="21" column="15" str="void"/>
+    <tok fileIndex="0" linenr="21" column="19" str=")"/>
+    <tok fileIndex="0" linenr="22" column="1" str="{"/>
+    <tok fileIndex="0" linenr="23" column="5" str="ESP_LOGI"/>
+    <tok fileIndex="0" linenr="23" column="13" str="("/>
+    <tok fileIndex="0" linenr="23" column="14" str="tag_adc"/>
+    <tok fileIndex="0" linenr="23" column="21" str=","/>
+    <tok fileIndex="0" linenr="23" column="23" str="&quot;addr err_adc 0x%x\n&quot;"/>
+    <tok fileIndex="0" linenr="23" column="44" str=","/>
+    <tok fileIndex="0" linenr="23" column="46" str="("/>
+    <tok fileIndex="0" linenr="23" column="47" str="unsigned"/>
+    <tok fileIndex="0" linenr="23" column="56" str="int"/>
+    <tok fileIndex="0" linenr="23" column="59" str=")"/>
+    <tok fileIndex="0" linenr="23" column="60" str="&amp;"/>
+    <tok fileIndex="0" linenr="23" column="61" str="err_adc"/>
+    <tok fileIndex="0" linenr="23" column="68" str=")"/>
+    <tok fileIndex="0" linenr="23" column="69" str=";"/>
+    <tok fileIndex="0" linenr="25" column="5" str="adc_oneshot_unit_init_cfg_t"/>
+    <tok fileIndex="0" linenr="25" column="33" str="init_config1"/>
+    <tok fileIndex="0" linenr="25" column="46" str="="/>
+    <tok fileIndex="0" linenr="26" column="5" str="{"/>
+    <tok fileIndex="0" linenr="27" column="9" str="."/>
+    <tok fileIndex="0" linenr="27" column="10" str="unit_id"/>
+    <tok fileIndex="0" linenr="27" column="18" str="="/>
+    <tok fileIndex="0" linenr="27" column="20" str="ADC_UNIT_1"/>
+    <tok fileIndex="0" linenr="27" column="30" str=","/>
+    <tok fileIndex="0" linenr="28" column="9" str="."/>
+    <tok fileIndex="0" linenr="28" column="10" str="ulp_mode"/>
+    <tok fileIndex="0" linenr="28" column="19" str="="/>
+    <tok fileIndex="0" linenr="28" column="21" str="ADC_ULP_MODE_DISABLE"/>
+    <tok fileIndex="0" linenr="28" column="41" str=","/>
+    <tok fileIndex="0" linenr="29" column="5" str="}"/>
+    <tok fileIndex="0" linenr="29" column="6" str=";"/>
+    <tok fileIndex="0" linenr="31" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="31" column="17" str="="/>
+    <tok fileIndex="0" linenr="31" column="19" str="adc_oneshot_new_unit"/>
+    <tok fileIndex="0" linenr="31" column="39" str="("/>
+    <tok fileIndex="0" linenr="31" column="40" str="&amp;"/>
+    <tok fileIndex="0" linenr="31" column="41" str="init_config1"/>
+    <tok fileIndex="0" linenr="31" column="53" str=","/>
+    <tok fileIndex="0" linenr="31" column="55" str="&amp;"/>
+    <tok fileIndex="0" linenr="31" column="56" str="adc1_handle"/>
+    <tok fileIndex="0" linenr="31" column="67" str=")"/>
+    <tok fileIndex="0" linenr="31" column="68" str=";"/>
+    <tok fileIndex="0" linenr="32" column="5" str="if"/>
+    <tok fileIndex="0" linenr="32" column="8" str="("/>
+    <tok fileIndex="0" linenr="32" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="32" column="16" str="!="/>
+    <tok fileIndex="0" linenr="32" column="19" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="32" column="30" str=")"/>
+    <tok fileIndex="0" linenr="33" column="5" str="{"/>
+    <tok fileIndex="0" linenr="34" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="34" column="22" str="("/>
+    <tok fileIndex="0" linenr="34" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="34" column="24" str="err_adc"/>
+    <tok fileIndex="0" linenr="34" column="31" str=","/>
+    <tok fileIndex="0" linenr="34" column="33" str="ADC_ERROR_INIT_UNIT"/>
+    <tok fileIndex="0" linenr="34" column="52" str=")"/>
+    <tok fileIndex="0" linenr="34" column="53" str=";"/>
+    <tok fileIndex="0" linenr="36" column="9" str="return"/>
+    <tok fileIndex="0" linenr="36" column="16" str="false"/>
+    <tok fileIndex="0" linenr="36" column="21" str=";"/>
+    <tok fileIndex="0" linenr="37" column="5" str="}"/>
+    <tok fileIndex="0" linenr="39" column="5" str="return"/>
+    <tok fileIndex="0" linenr="39" column="12" str="true"/>
+    <tok fileIndex="0" linenr="39" column="16" str=";"/>
+    <tok fileIndex="0" linenr="40" column="1" str="}"/>
+    <tok fileIndex="0" linenr="42" column="1" str="// bool adc_handle(void)"/>
+    <tok fileIndex="0" linenr="43" column="1" str="// {"/>
+    <tok fileIndex="0" linenr="45" column="1" str="//     return true;"/>
+    <tok fileIndex="0" linenr="46" column="1" str="// }"/>
+    <tok fileIndex="0" linenr="48" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="48" column="6" str="adc_init_channel"/>
+    <tok fileIndex="0" linenr="48" column="22" str="("/>
+    <tok fileIndex="0" linenr="48" column="23" str="adc_oneshot_chan_cfg_t"/>
+    <tok fileIndex="0" linenr="48" column="45" str="*"/>
+    <tok fileIndex="0" linenr="48" column="47" str="p_channel_config"/>
+    <tok fileIndex="0" linenr="48" column="63" str=","/>
+    <tok fileIndex="0" linenr="48" column="65" str="adc_cali_line_fitting_config_t"/>
+    <tok fileIndex="0" linenr="48" column="95" str="*"/>
+    <tok fileIndex="0" linenr="48" column="97" str="p_calibration_config"/>
+    <tok fileIndex="0" linenr="48" column="117" str=","/>
+    <tok fileIndex="0" linenr="49" column="5" str="adc_cali_handle_t"/>
+    <tok fileIndex="0" linenr="49" column="22" str="*"/>
+    <tok fileIndex="0" linenr="49" column="24" str="p_calibration_handle"/>
+    <tok fileIndex="0" linenr="49" column="44" str=","/>
+    <tok fileIndex="0" linenr="49" column="46" str="adc_channel_t"/>
+    <tok fileIndex="0" linenr="49" column="60" str="channel"/>
+    <tok fileIndex="0" linenr="49" column="67" str=")"/>
+    <tok fileIndex="0" linenr="50" column="1" str="{"/>
+    <tok fileIndex="0" linenr="51" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="51" column="17" str="="/>
+    <tok fileIndex="0" linenr="51" column="19" str="adc_oneshot_config_channel"/>
+    <tok fileIndex="0" linenr="51" column="45" str="("/>
+    <tok fileIndex="0" linenr="51" column="46" str="adc1_handle"/>
+    <tok fileIndex="0" linenr="51" column="57" str=","/>
+    <tok fileIndex="0" linenr="51" column="59" str="channel"/>
+    <tok fileIndex="0" linenr="51" column="66" str=","/>
+    <tok fileIndex="0" linenr="51" column="68" str="p_channel_config"/>
+    <tok fileIndex="0" linenr="51" column="84" str=")"/>
+    <tok fileIndex="0" linenr="51" column="85" str=";"/>
+    <tok fileIndex="0" linenr="52" column="5" str="if"/>
+    <tok fileIndex="0" linenr="52" column="8" str="("/>
+    <tok fileIndex="0" linenr="52" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="52" column="16" str="!="/>
+    <tok fileIndex="0" linenr="52" column="19" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="52" column="30" str=")"/>
+    <tok fileIndex="0" linenr="53" column="5" str="{"/>
+    <tok fileIndex="0" linenr="54" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="54" column="22" str="("/>
+    <tok fileIndex="0" linenr="54" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="54" column="24" str="err_adc"/>
+    <tok fileIndex="0" linenr="54" column="31" str=","/>
+    <tok fileIndex="0" linenr="54" column="33" str="ADC_ERROR_INIT_CHANNEL"/>
+    <tok fileIndex="0" linenr="54" column="55" str=")"/>
+    <tok fileIndex="0" linenr="54" column="56" str=";"/>
+    <tok fileIndex="0" linenr="56" column="9" str="return"/>
+    <tok fileIndex="0" linenr="56" column="16" str="false"/>
+    <tok fileIndex="0" linenr="56" column="21" str=";"/>
+    <tok fileIndex="0" linenr="57" column="5" str="}"/>
+    <tok fileIndex="0" linenr="59" column="5" str="/* Available calibration scheme is ADC_CALI_SCHEME_VER_LINE_FITTING.x        Characterization based on reference voltage stored in eFuse: ADC_CALI_LINE_FITTING_EFUSE_VAL_EFUSE_VREF. */"/>
+    <tok fileIndex="0" linenr="62" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="62" column="17" str="="/>
+    <tok fileIndex="0" linenr="62" column="19" str="adc_cali_create_scheme_line_fitting"/>
+    <tok fileIndex="0" linenr="62" column="54" str="("/>
+    <tok fileIndex="0" linenr="62" column="55" str="p_calibration_config"/>
+    <tok fileIndex="0" linenr="62" column="75" str=","/>
+    <tok fileIndex="0" linenr="62" column="77" str="p_calibration_handle"/>
+    <tok fileIndex="0" linenr="62" column="97" str=")"/>
+    <tok fileIndex="0" linenr="62" column="98" str=";"/>
+    <tok fileIndex="0" linenr="63" column="5" str="if"/>
+    <tok fileIndex="0" linenr="63" column="8" str="("/>
+    <tok fileIndex="0" linenr="63" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="63" column="16" str="!="/>
+    <tok fileIndex="0" linenr="63" column="19" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="63" column="30" str=")"/>
+    <tok fileIndex="0" linenr="64" column="5" str="{"/>
+    <tok fileIndex="0" linenr="65" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="65" column="22" str="("/>
+    <tok fileIndex="0" linenr="65" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="65" column="24" str="err_adc"/>
+    <tok fileIndex="0" linenr="65" column="31" str=","/>
+    <tok fileIndex="0" linenr="65" column="33" str="ADC_ERROR_INIT_CALIBRATION"/>
+    <tok fileIndex="0" linenr="65" column="59" str=")"/>
+    <tok fileIndex="0" linenr="65" column="60" str=";"/>
+    <tok fileIndex="0" linenr="67" column="9" str="return"/>
+    <tok fileIndex="0" linenr="67" column="16" str="false"/>
+    <tok fileIndex="0" linenr="67" column="21" str=";"/>
+    <tok fileIndex="0" linenr="68" column="5" str="}"/>
+    <tok fileIndex="0" linenr="70" column="5" str="return"/>
+    <tok fileIndex="0" linenr="70" column="12" str="true"/>
+    <tok fileIndex="0" linenr="70" column="16" str=";"/>
+    <tok fileIndex="0" linenr="71" column="1" str="}"/>
+    <tok fileIndex="0" linenr="73" column="1" str="bool"/>
+    <tok fileIndex="0" linenr="73" column="6" str="adc_handle_channel"/>
+    <tok fileIndex="0" linenr="73" column="24" str="("/>
+    <tok fileIndex="0" linenr="73" column="25" str="adc_cali_handle_t"/>
+    <tok fileIndex="0" linenr="73" column="42" str="*"/>
+    <tok fileIndex="0" linenr="73" column="44" str="p_calibration_handle"/>
+    <tok fileIndex="0" linenr="73" column="64" str=","/>
+    <tok fileIndex="0" linenr="73" column="66" str="int"/>
+    <tok fileIndex="0" linenr="73" column="69" str="*"/>
+    <tok fileIndex="0" linenr="73" column="71" str="p_adc_voltage"/>
+    <tok fileIndex="0" linenr="73" column="84" str=","/>
+    <tok fileIndex="0" linenr="73" column="86" str="adc_channel_t"/>
+    <tok fileIndex="0" linenr="73" column="100" str="channel"/>
+    <tok fileIndex="0" linenr="73" column="107" str=")"/>
+    <tok fileIndex="0" linenr="74" column="1" str="{"/>
+    <tok fileIndex="0" linenr="75" column="5" str="int"/>
+    <tok fileIndex="0" linenr="75" column="9" str="adc_raw"/>
+    <tok fileIndex="0" linenr="75" column="16" str=";"/>
+    <tok fileIndex="0" linenr="77" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="77" column="17" str="="/>
+    <tok fileIndex="0" linenr="77" column="19" str="adc_oneshot_read"/>
+    <tok fileIndex="0" linenr="77" column="35" str="("/>
+    <tok fileIndex="0" linenr="77" column="36" str="adc1_handle"/>
+    <tok fileIndex="0" linenr="77" column="47" str=","/>
+    <tok fileIndex="0" linenr="77" column="49" str="channel"/>
+    <tok fileIndex="0" linenr="77" column="56" str=","/>
+    <tok fileIndex="0" linenr="77" column="58" str="&amp;"/>
+    <tok fileIndex="0" linenr="77" column="59" str="adc_raw"/>
+    <tok fileIndex="0" linenr="77" column="66" str=")"/>
+    <tok fileIndex="0" linenr="77" column="67" str=";"/>
+    <tok fileIndex="0" linenr="78" column="5" str="if"/>
+    <tok fileIndex="0" linenr="78" column="8" str="("/>
+    <tok fileIndex="0" linenr="78" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="78" column="16" str="!="/>
+    <tok fileIndex="0" linenr="78" column="19" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="78" column="30" str=")"/>
+    <tok fileIndex="0" linenr="79" column="5" str="{"/>
+    <tok fileIndex="0" linenr="80" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="80" column="22" str="("/>
+    <tok fileIndex="0" linenr="80" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="80" column="24" str="err_adc"/>
+    <tok fileIndex="0" linenr="80" column="31" str=","/>
+    <tok fileIndex="0" linenr="80" column="33" str="ADC_ERROR_HANDLE_READ"/>
+    <tok fileIndex="0" linenr="80" column="54" str=")"/>
+    <tok fileIndex="0" linenr="80" column="55" str=";"/>
+    <tok fileIndex="0" linenr="82" column="9" str="return"/>
+    <tok fileIndex="0" linenr="82" column="16" str="false"/>
+    <tok fileIndex="0" linenr="82" column="21" str=";"/>
+    <tok fileIndex="0" linenr="83" column="5" str="}"/>
+    <tok fileIndex="0" linenr="85" column="5" str="/* Use manufacturer provided calibration */"/>
+    <tok fileIndex="0" linenr="86" column="5" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="86" column="17" str="="/>
+    <tok fileIndex="0" linenr="86" column="19" str="adc_cali_raw_to_voltage"/>
+    <tok fileIndex="0" linenr="86" column="42" str="("/>
+    <tok fileIndex="0" linenr="86" column="43" str="*"/>
+    <tok fileIndex="0" linenr="86" column="44" str="p_calibration_handle"/>
+    <tok fileIndex="0" linenr="86" column="64" str=","/>
+    <tok fileIndex="0" linenr="86" column="66" str="adc_raw"/>
+    <tok fileIndex="0" linenr="86" column="73" str=","/>
+    <tok fileIndex="0" linenr="86" column="75" str="p_adc_voltage"/>
+    <tok fileIndex="0" linenr="86" column="88" str=")"/>
+    <tok fileIndex="0" linenr="86" column="89" str=";"/>
+    <tok fileIndex="0" linenr="87" column="5" str="if"/>
+    <tok fileIndex="0" linenr="87" column="8" str="("/>
+    <tok fileIndex="0" linenr="87" column="9" str="ESP_OK"/>
+    <tok fileIndex="0" linenr="87" column="16" str="!="/>
+    <tok fileIndex="0" linenr="87" column="19" str="err_adc_drv"/>
+    <tok fileIndex="0" linenr="87" column="30" str=")"/>
+    <tok fileIndex="0" linenr="88" column="5" str="{"/>
+    <tok fileIndex="0" linenr="89" column="9" str="error_set_u32"/>
+    <tok fileIndex="0" linenr="89" column="22" str="("/>
+    <tok fileIndex="0" linenr="89" column="23" str="&amp;"/>
+    <tok fileIndex="0" linenr="89" column="24" str="err_adc"/>
+    <tok fileIndex="0" linenr="89" column="31" str=","/>
+    <tok fileIndex="0" linenr="89" column="33" str="ADC_ERROR_HANDLE_READ_CALIBRATION"/>
+    <tok fileIndex="0" linenr="89" column="66" str=")"/>
+    <tok fileIndex="0" linenr="89" column="67" str=";"/>
+    <tok fileIndex="0" linenr="91" column="9" str="return"/>
+    <tok fileIndex="0" linenr="91" column="16" str="false"/>
+    <tok fileIndex="0" linenr="91" column="21" str=";"/>
+    <tok fileIndex="0" linenr="92" column="5" str="}"/>
+    <tok fileIndex="0" linenr="94" column="5" str="return"/>
+    <tok fileIndex="0" linenr="94" column="12" str="true"/>
+    <tok fileIndex="0" linenr="94" column="16" str=";"/>
+    <tok fileIndex="0" linenr="95" column="1" str="}"/>
+    <tok fileIndex="0" linenr="97" column="1" str="/*------------------------------Private functions------------------------------*/"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++23"/>
+  </standards>
+  <directivelist>
+    <directive file="../plant_boss/wrappers/adc_wrapper.c" linenr="8" str="#include &quot;adc_wrapper.h&quot;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="7" str="#ifndef ADC_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="8" str="#define ADC_WRAPPER_H"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="11" str="#include &lt;stdbool.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="12" str="#include &lt;math.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="14" str="#include &lt;esp_adc/adc_oneshot.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="15" str="#include &lt;esp_adc/adc_cali.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="16" str="#include &lt;esp_adc/adc_cali_scheme.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="17" str="#include &lt;esp_err.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="18" str="#include &lt;esp_log.h&gt;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="20" str="#include &quot;error.h&quot;"/>
+    <directive file="../plant_boss/wrappers/adc_wrapper.h" linenr="71" str="#endif"/>
+  </directivelist>
+  <macro-usage>
+    <macro name="ADC_WRAPPER_H" file="../plant_boss/wrappers/adc_wrapper.h" line="8" column="9" usefile="../plant_boss/wrappers/adc_wrapper.h" useline="7" usecolumn="9" is-known-value="true"/>
+  </macro-usage>
+  <tokenlist>
+    <token id="55b119228240" file="../plant_boss/wrappers/adc_wrapper.h" linenr="25" column="9" str="enum" scope="55b119236370" type="name"/>
+    <token id="55b119249ec0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="25" column="0" str="adc_error_t" scope="55b119236370" type="name" type-scope="55b119236100"/>
+    <token id="55b119228180" file="../plant_boss/wrappers/adc_wrapper.h" linenr="26" column="1" str="{" scope="55b119236100" link="55b119228390" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b1192280f0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="27" column="5" str="ADC_ERROR_INIT_UNIT" scope="55b119236100" type="name" values="55b119227d20" astParent="55b119247b20" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119247b20" file="../plant_boss/wrappers/adc_wrapper.h" linenr="27" column="41" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119237480" astParent="55b119230200" astOperand1="55b1192280f0" astOperand2="55b119239f50" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119239f50" file="../plant_boss/wrappers/adc_wrapper.h" linenr="27" column="43" str="0x00000001U" scope="55b119236100" type="number" isInt="true" values="55b119252900" astParent="55b119247b20" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119230200" file="../plant_boss/wrappers/adc_wrapper.h" linenr="27" column="54" str="," scope="55b119236100" values="55b119260ae0" astParent="55b119245f60" astOperand1="55b119247b20" astOperand2="55b119227d60"/>
+    <token id="55b119228330" file="../plant_boss/wrappers/adc_wrapper.h" linenr="28" column="5" str="ADC_ERROR_INIT_CHANNEL" scope="55b119236100" type="name" values="55b119237540" astParent="55b119227d60" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119227d60" file="../plant_boss/wrappers/adc_wrapper.h" linenr="28" column="41" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119237500" astParent="55b119230200" astOperand1="55b119228330" astOperand2="55b119227dc0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119227dc0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="28" column="43" str="0x00000002U" scope="55b119236100" type="number" isInt="true" values="55b1192374c0" astParent="55b119227d60" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119245f60" file="../plant_boss/wrappers/adc_wrapper.h" linenr="28" column="54" str="," scope="55b119236100" values="55b11923d220" astParent="55b119250b20" astOperand1="55b119230200" astOperand2="55b119249d30"/>
+    <token id="55b119245fc0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="29" column="5" str="ADC_ERROR_INIT_CALIBRATION" scope="55b119236100" type="name" values="55b1192350e0" astParent="55b119249d30" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119249d30" file="../plant_boss/wrappers/adc_wrapper.h" linenr="29" column="41" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119227f00" astParent="55b119245f60" astOperand1="55b119245fc0" astOperand2="55b119249d90" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119249d90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="29" column="43" str="0x00000004U" scope="55b119236100" type="number" isInt="true" values="55b119231f30" astParent="55b119249d30" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119250b20" file="../plant_boss/wrappers/adc_wrapper.h" linenr="29" column="54" str="," scope="55b119236100" values="55b1192273c0" astParent="55b11924fa80" astOperand1="55b119245f60" astOperand2="55b119227c10"/>
+    <token id="55b119250b80" file="../plant_boss/wrappers/adc_wrapper.h" linenr="30" column="5" str="ADC_ERROR_HANDLE_READ" scope="55b119236100" type="name" values="55b119235000" astParent="55b119227c10" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119227c10" file="../plant_boss/wrappers/adc_wrapper.h" linenr="30" column="41" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b1192334c0" astParent="55b119250b20" astOperand1="55b119250b80" astOperand2="55b1192455a0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b1192455a0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="30" column="43" str="0x00000008U" scope="55b119236100" type="number" isInt="true" values="55b11922a080" astParent="55b119227c10" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924fa80" file="../plant_boss/wrappers/adc_wrapper.h" linenr="30" column="54" str="," scope="55b119236100" values="55b11923cd50" astOperand1="55b119250b20" astOperand2="55b11924fd30"/>
+    <token id="55b11925bee0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="31" column="5" str="ADC_ERROR_HANDLE_READ_CALIBRATION" scope="55b119236100" type="name" values="55b11925a590" astParent="55b11924fd30" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11924fd30" file="../plant_boss/wrappers/adc_wrapper.h" linenr="31" column="41" str="=" scope="55b119236100" type="op" isAssignmentOp="true" values="55b119240870" astParent="55b11924fa80" astOperand1="55b11925bee0" astOperand2="55b11924f270" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11924f270" file="../plant_boss/wrappers/adc_wrapper.h" linenr="31" column="43" str="0x00000010U" scope="55b119236100" type="number" isInt="true" values="55b119246a00" astParent="55b11924fd30" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11924efa0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="31" column="54" str="," scope="55b119236100"/>
+    <token id="55b119228390" file="../plant_boss/wrappers/adc_wrapper.h" linenr="59" column="1" str="}" scope="55b119236100" link="55b119228180"/>
+    <token id="55b1192278f0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="59" column="14" str=";" scope="55b119236370"/>
+    <token id="55b1192549b0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="62" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119254a10" file="../plant_boss/wrappers/adc_wrapper.h" linenr="62" column="6" str="adc_init" scope="55b119236370" type="name" function="55b1192270a0"/>
+    <token id="55b119230080" file="../plant_boss/wrappers/adc_wrapper.h" linenr="62" column="14" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b119237330" values="55b119238d40" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119237330" file="../plant_boss/wrappers/adc_wrapper.h" linenr="62" column="19" str=")" scope="55b119236370" link="55b119230080"/>
+    <token id="55b119237390" file="../plant_boss/wrappers/adc_wrapper.h" linenr="62" column="20" str=";" scope="55b119236370"/>
+    <token id="55b119261400" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119261510" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="6" str="adc_init_channel" scope="55b119236370" type="name" function="55b119226fe0"/>
+    <token id="55b119261570" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="22" str="(" scope="55b119236370" link="55b11924f930" values="55b11922b910" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119250430" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="23" str="adc_oneshot_chan_cfg_t" scope="55b119236370" type="name" astParent="55b119257d90"/>
+    <token id="55b119257d90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="45" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119257f30" astOperand1="55b119250430" astOperand2="55b119257df0"/>
+    <token id="55b119257df0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="47" str="p_channel_config" scope="55b119236370" type="name" varId="1" exprId="1" astParent="55b119257d90"/>
+    <token id="55b119257f30" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="63" str="," scope="55b119236370" astParent="55b119228a50" astOperand1="55b119257d90" astOperand2="55b119250720"/>
+    <token id="55b119257f90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="65" str="adc_cali_line_fitting_config_t" scope="55b119236370" type="name" astParent="55b119250720"/>
+    <token id="55b119250720" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="95" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119257f30" astOperand1="55b119257f90" astOperand2="55b1192289f0"/>
+    <token id="55b1192289f0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="97" str="p_calibration_config" scope="55b119236370" type="name" varId="2" exprId="2" astParent="55b119250720"/>
+    <token id="55b119228a50" file="../plant_boss/wrappers/adc_wrapper.h" linenr="65" column="117" str="," scope="55b119236370" astParent="55b119228df0" astOperand1="55b119257f30" astOperand2="55b119250a70"/>
+    <token id="55b119228b90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="5" str="adc_cali_handle_t" scope="55b119236370" type="name" astParent="55b119250a70"/>
+    <token id="55b119250a70" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="22" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119228a50" astOperand1="55b119228b90" astOperand2="55b119228ca0"/>
+    <token id="55b119228ca0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="24" str="p_calibration_handle" scope="55b119236370" type="name" varId="3" exprId="3" astParent="55b119250a70"/>
+    <token id="55b119228df0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="44" str="," scope="55b119236370" astOperand1="55b119228a50" astOperand2="55b119228f90"/>
+    <token id="55b119228e50" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="46" str="adc_channel_t" scope="55b119236370" type="name"/>
+    <token id="55b119228f90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="60" str="channel" scope="55b119236370" type="name" varId="4" exprId="4" astParent="55b119228df0"/>
+    <token id="55b11924f930" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="67" str=")" scope="55b119236370" link="55b119261570"/>
+    <token id="55b1192290a0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="66" column="68" str=";" scope="55b119236370"/>
+    <token id="55b1192291b0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119229210" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="6" str="adc_handle_channel" scope="55b119236370" type="name" function="55b119227600"/>
+    <token id="55b119229320" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="24" str="(" scope="55b119236370" link="55b119229b80" values="55b119238ff0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119229380" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="25" str="adc_cali_handle_t" scope="55b119236370" type="name" astParent="55b1192294f0"/>
+    <token id="55b1192294f0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="42" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119254f80" astOperand1="55b119229380" astOperand2="55b119229550"/>
+    <token id="55b119229550" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="44" str="p_calibration_handle" scope="55b119236370" type="name" varId="5" exprId="5" astParent="55b1192294f0"/>
+    <token id="55b119254f80" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="64" str="," scope="55b119236370" astParent="55b119229950" astOperand1="55b1192294f0" astOperand2="55b1192297d0"/>
+    <token id="55b119229770" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="66" str="int" scope="55b119236370" type="name" astParent="55b1192297d0"/>
+    <token id="55b1192297d0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="69" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119254f80" astOperand1="55b119229770" astOperand2="55b1192298f0"/>
+    <token id="55b1192298f0" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="71" str="p_adc_voltage" scope="55b119236370" type="name" varId="6" exprId="6" astParent="55b1192297d0"/>
+    <token id="55b119229950" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="84" str="," scope="55b119236370" astOperand1="55b119254f80" astOperand2="55b119261340"/>
+    <token id="55b119229a70" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="86" str="adc_channel_t" scope="55b119236370" type="name"/>
+    <token id="55b119261340" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="100" str="channel" scope="55b119236370" type="name" varId="7" exprId="7" astParent="55b119229950"/>
+    <token id="55b119229b80" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="107" str=")" scope="55b119236370" link="55b119229320"/>
+    <token id="55b119229c90" file="../plant_boss/wrappers/adc_wrapper.h" linenr="67" column="108" str=";" scope="55b119236370"/>
+    <token id="55b119229cf0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="1" str="int" scope="55b119236370" type="name"/>
+    <token id="55b119229e00" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="5" str="err_adc_drv" scope="55b119236370" type="name" varId="8" exprId="8" variable="55b11924a820" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11924ea30" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="17" str=";" scope="55b119236370" isSplittedVarDeclEq="true"/>
+    <token id="55b11939cae0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="5" str="err_adc_drv" scope="55b119236370" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b11939cb40" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11939cb40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="17" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b11923ed30" astOperand1="55b11939cae0" astOperand2="55b119229e60" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119229e60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="19" str="0" scope="55b119236370" type="number" isInt="true" values="55b119225f70" astParent="55b11939cb40" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11925bff0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="13" column="20" str=";" scope="55b119236370"/>
+    <token id="55b11922a020" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="1" str="uint32_t" scope="55b119236370" type="name"/>
+    <token id="55b11925c100" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="10" str="err_adc" scope="55b119236370" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b119239270" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925c210" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="18" str=";" scope="55b119236370" isSplittedVarDeclEq="true"/>
+    <token id="55b119246670" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="10" str="err_adc" scope="55b119236370" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b1192393d0" astParent="55b119246780" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119246780" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="18" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b11924d810" astOperand1="55b119246670" astOperand2="55b11925c270" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925c270" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="20" str="0u" scope="55b119236370" type="number" isInt="true" values="55b11922a230" astParent="55b119246780" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925c380" file="../plant_boss/wrappers/adc_wrapper.c" linenr="14" column="22" str=";" scope="55b119236370"/>
+    <token id="55b11925c490" file="../plant_boss/wrappers/adc_wrapper.c" linenr="16" column="1" str="adc_oneshot_unit_handle_t" scope="55b119236370" type="name"/>
+    <token id="55b11925c4f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="16" column="27" str="adc1_handle" scope="55b119236370" type="name" varId="10" exprId="10" variable="55b1192365e0"/>
+    <token id="55b11925c640" file="../plant_boss/wrappers/adc_wrapper.c" linenr="16" column="38" str=";" scope="55b119236370"/>
+    <token id="55b1192454e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="1" str="static" scope="55b119236370" type="name"/>
+    <token id="55b11925c750" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="8" str="const" scope="55b119236370" type="name"/>
+    <token id="55b11925c860" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="14" str="char" scope="55b119236370" type="name"/>
+    <token id="55b11925c8c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="18" str="*" scope="55b119236370" type="op" isArithmeticalOp="true"/>
+    <token id="55b11925c9d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="20" str="tag_adc" scope="55b119236370" type="name" varId="11" exprId="11" variable="55b1192326d0" astParent="55b1192551a0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b1192551a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="28" str="=" scope="55b119236370" type="op" isAssignmentOp="true" values="55b11924fcf0" astOperand1="55b11925c9d0" astOperand2="55b11925ca30" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925ca30" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="30" str="&quot;adc&quot;" scope="55b119236370" type="string" strlen="3" values="55b11924e200" astParent="55b1192551a0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925cb40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="18" column="35" str=";" scope="55b119236370"/>
+    <token id="55b11925cc50" file="../plant_boss/wrappers/adc_wrapper.c" linenr="21" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11925cd60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="21" column="6" str="adc_init" scope="55b119236370" type="name" function="55b1192270a0"/>
+    <token id="55b11925ce80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="21" column="14" str="(" scope="55b119236370" isRemovedVoidParameter="true" link="55b11925d000" values="55b119239530" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925d000" file="../plant_boss/wrappers/adc_wrapper.c" linenr="21" column="19" str=")" scope="55b119236370" link="55b11925ce80"/>
+    <token id="55b11925d060" file="../plant_boss/wrappers/adc_wrapper.c" linenr="22" column="1" str="{" scope="55b119235e90" link="55b11923ba60"/>
+    <token id="55b11925d180" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="5" str="ESP_LOGI" scope="55b119235e90" type="name" astParent="55b119244f40"/>
+    <token id="55b119244f40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="13" str="(" scope="55b119235e90" link="55b1192328d0" exprId="1073741856" astOperand1="55b11925d180" astOperand2="55b11925d510"/>
+    <token id="55b11925d290" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="14" str="tag_adc" scope="55b119235e90" type="name" varId="11" exprId="11" variable="55b1192326d0" astParent="55b11925d3a0" valueType-type="char" valueType-sign="signed" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925d3a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="21" str="," scope="55b119235e90" exprId="1073741852" astParent="55b11925d510" astOperand1="55b11925d290" astOperand2="55b11925d400"/>
+    <token id="55b11925d400" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="23" str="&quot;addr err_adc 0x%x\n&quot;" scope="55b119235e90" type="string" strlen="18" exprId="1073741851" values="55b119226420" astParent="55b11925d3a0" valueType-type="char" valueType-pointer="1" valueType-constness="1" valueType-reference="None"/>
+    <token id="55b11925d510" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="44" str="," scope="55b119235e90" exprId="1073741855" astParent="55b119244f40" astOperand1="55b11925d3a0" astOperand2="55b11925d570"/>
+    <token id="55b11925d570" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="46" str="(" scope="55b119235e90" isCast="true" link="55b11925d7f0" exprId="1073741854" values="55b119256780" astParent="55b11925d510" astOperand1="55b119232750" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11925d6e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="56" str="int" scope="55b119235e90" type="name" isUnsigned="true"/>
+    <token id="55b11925d7f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="59" str=")" scope="55b119235e90" link="55b11925d570"/>
+    <token id="55b119232750" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="60" str="&amp;" scope="55b119235e90" type="op" exprId="29" values="55b119249a50" astParent="55b11925d570" astOperand1="55b1192327b0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192327b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="61" str="err_adc" scope="55b119235e90" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b119239b10" astParent="55b119232750" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192328d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="68" str=")" scope="55b119235e90" link="55b119244f40"/>
+    <token id="55b119232930" file="../plant_boss/wrappers/adc_wrapper.c" linenr="23" column="69" str=";" scope="55b119235e90"/>
+    <token id="55b119232a50" file="../plant_boss/wrappers/adc_wrapper.c" linenr="25" column="5" str="adc_oneshot_unit_init_cfg_t" scope="55b119235e90" type="name"/>
+    <token id="55b119254cb0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="25" column="33" str="init_config1" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11925dfb0"/>
+    <token id="55b119232b60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="25" column="46" str=";" scope="55b119235e90" isSplittedVarDeclEq="true"/>
+    <token id="55b119246890" file="../plant_boss/wrappers/adc_wrapper.c" linenr="25" column="33" str="init_config1" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11925dfb0" astParent="55b1192469a0"/>
+    <token id="55b1192469a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="25" column="46" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741863" astOperand1="55b119246890" astOperand2="55b119232cc0"/>
+    <token id="55b119232cc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="26" column="5" str="{" scope="55b119235e90" link="55b119233520" exprId="1073741862" astParent="55b1192469a0" astOperand1="55b119227360"/>
+    <token id="55b119232d20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="27" column="9" str="." scope="55b119235e90" exprId="1073741857" astParent="55b119232ea0" astOperand1="55b119232e40"/>
+    <token id="55b119232e40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="27" column="10" str="unit_id" scope="55b119235e90" type="name" varId="13" exprId="13" astParent="55b119232d20"/>
+    <token id="55b119232ea0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="27" column="18" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741858" astParent="55b119227360" astOperand1="55b119232d20" astOperand2="55b119232fc0"/>
+    <token id="55b119232fc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="27" column="20" str="ADC_UNIT_1" scope="55b119235e90" type="name" exprId="1073741847" astParent="55b119232ea0"/>
+    <token id="55b119227360" file="../plant_boss/wrappers/adc_wrapper.c" linenr="27" column="30" str="," scope="55b119235e90" exprId="1073741861" astParent="55b119232cc0" astOperand1="55b119232ea0" astOperand2="55b119233240"/>
+    <token id="55b1192330d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="28" column="9" str="." scope="55b119235e90" exprId="1073741859" astParent="55b119233240" astOperand1="55b1192331e0"/>
+    <token id="55b1192331e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="28" column="10" str="ulp_mode" scope="55b119235e90" type="name" varId="14" exprId="14" astParent="55b1192330d0"/>
+    <token id="55b119233240" file="../plant_boss/wrappers/adc_wrapper.c" linenr="28" column="19" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741860" astParent="55b119227360" astOperand1="55b1192330d0" astOperand2="55b119233350"/>
+    <token id="55b119233350" file="../plant_boss/wrappers/adc_wrapper.c" linenr="28" column="21" str="ADC_ULP_MODE_DISABLE" scope="55b119235e90" type="name" exprId="1073741848" astParent="55b119233240"/>
+    <token id="55b1192333b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="28" column="41" str="," scope="55b119235e90"/>
+    <token id="55b119233520" file="../plant_boss/wrappers/adc_wrapper.c" linenr="29" column="5" str="}" scope="55b119235e90" link="55b119232cc0"/>
+    <token id="55b119240b10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="29" column="6" str=";" scope="55b119235e90"/>
+    <token id="55b119233630" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="5" str="err_adc_drv" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119233740" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119233740" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="17" str="=" scope="55b119235e90" type="op" isAssignmentOp="true" exprId="1073741869" astOperand1="55b119233630" astOperand2="55b1192338b0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192337a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="19" str="adc_oneshot_new_unit" scope="55b119235e90" type="name" astParent="55b1192338b0"/>
+    <token id="55b1192338b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="39" str="(" scope="55b119235e90" link="55b119233d10" exprId="1073741868" astParent="55b119233740" astOperand1="55b1192337a0" astOperand2="55b119233ae0"/>
+    <token id="55b119233910" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="40" str="&amp;" scope="55b119235e90" type="op" exprId="1073741865" values="55b119232260" astParent="55b119233ae0" astOperand1="55b119233a80"/>
+    <token id="55b119233a80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="41" str="init_config1" scope="55b119235e90" type="name" varId="12" exprId="12" variable="55b11925dfb0" astParent="55b119233910"/>
+    <token id="55b119233ae0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="53" str="," scope="55b119235e90" exprId="1073741867" astParent="55b1192338b0" astOperand1="55b119233910" astOperand2="55b119233c00"/>
+    <token id="55b119233c00" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="55" str="&amp;" scope="55b119235e90" type="op" exprId="1073741866" values="55b119230810" astParent="55b119233ae0" astOperand1="55b1192501e0"/>
+    <token id="55b1192501e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="56" str="adc1_handle" scope="55b119235e90" type="name" varId="10" exprId="10" variable="55b1192365e0" astParent="55b119233c00"/>
+    <token id="55b119233d10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="67" str=")" scope="55b119235e90" link="55b1192338b0"/>
+    <token id="55b119233e20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="31" column="68" str=";" scope="55b119235e90"/>
+    <token id="55b119233e80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="5" str="if" scope="55b119235e90" type="name" astParent="55b119233f90"/>
+    <token id="55b119233f90" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="8" str="(" scope="55b119235e90" link="55b119234160" astOperand1="55b119233e80" astOperand2="55b119234100"/>
+    <token id="55b119233ff0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="9" str="ESP_OK" scope="55b119235e90" type="name" exprId="1073741870" astParent="55b119234100"/>
+    <token id="55b119234100" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="16" str="!=" scope="55b119235e90" type="op" isComparisonOp="true" exprId="1073741871" values="55b119239d90" astParent="55b119233f90" astOperand1="55b119233ff0" astOperand2="55b1192267d0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192267d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="19" str="err_adc_drv" scope="55b119235e90" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119234100" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119234160" file="../plant_boss/wrappers/adc_wrapper.c" linenr="32" column="30" str=")" scope="55b119235e90" link="55b119233f90"/>
+    <token id="55b119234270" file="../plant_boss/wrappers/adc_wrapper.c" linenr="33" column="5" str="{" scope="55b119235c20" link="55b11923b780"/>
+    <token id="55b119234380" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="9" str="error_set_u32" scope="55b119235c20" type="name" astParent="55b1192343e0"/>
+    <token id="55b1192343e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="22" str="(" scope="55b119235c20" link="55b11923b3e0" exprId="1073741875" astOperand1="55b119234380" astOperand2="55b11923b260"/>
+    <token id="55b11923b0e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="23" str="&amp;" scope="55b119235c20" type="op" exprId="29" values="55b119246af0" astParent="55b11923b260" astOperand1="55b11923b140" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11923b140" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="24" str="err_adc" scope="55b119235c20" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b119256ab0" astParent="55b11923b0e0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11923b260" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="31" str="," scope="55b119235c20" exprId="1073741874" astParent="55b1192343e0" astOperand1="55b11923b0e0" astOperand2="55b11923b2c0"/>
+    <token id="55b11923b2c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="33" str="ADC_ERROR_INIT_UNIT" scope="55b119235c20" type="name" exprId="1073741873" values="55b119230cf0" astParent="55b11923b260" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11923b3e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="52" str=")" scope="55b119235c20" link="55b1192343e0"/>
+    <token id="55b11923b440" file="../plant_boss/wrappers/adc_wrapper.c" linenr="34" column="53" str=";" scope="55b119235c20"/>
+    <token id="55b11923b560" file="../plant_boss/wrappers/adc_wrapper.c" linenr="36" column="9" str="return" scope="55b119235c20" type="name" values="55b119256c10" astOperand1="55b119244c60" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119244c60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="36" column="16" str="false" scope="55b119235c20" type="name" exprId="1073741876" astParent="55b11923b560" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923b670" file="../plant_boss/wrappers/adc_wrapper.c" linenr="36" column="21" str=";" scope="55b119235c20"/>
+    <token id="55b11923b780" file="../plant_boss/wrappers/adc_wrapper.c" linenr="37" column="5" str="}" scope="55b119235c20" link="55b119234270"/>
+    <token id="55b11923b7e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="39" column="5" str="return" scope="55b119235e90" type="name" values="55b119256e90" astOperand1="55b11923b8f0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923b8f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="39" column="12" str="true" scope="55b119235e90" type="name" exprId="1073741877" astParent="55b11923b7e0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923b950" file="../plant_boss/wrappers/adc_wrapper.c" linenr="39" column="16" str=";" scope="55b119235e90"/>
+    <token id="55b11923ba60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="40" column="1" str="}" scope="55b119235e90" link="55b11925d060"/>
+    <token id="55b11923bac0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b11923bbd0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="6" str="adc_init_channel" scope="55b119236370" type="name" function="55b119226fe0"/>
+    <token id="55b11923bce0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="22" str="(" scope="55b119236370" link="55b11923c8a0" values="55b119257110" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923bd40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="23" str="adc_oneshot_chan_cfg_t" scope="55b119236370" type="name" astParent="55b11923be80"/>
+    <token id="55b11923be80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="45" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119255680" astOperand1="55b11923bd40" astOperand2="55b11923bee0"/>
+    <token id="55b11923bee0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="47" str="p_channel_config" scope="55b119236370" type="name" varId="15" exprId="15" variable="55b119260b30" astParent="55b11923be80"/>
+    <token id="55b119255680" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="63" str="," scope="55b119236370" astParent="55b11923c310" astOperand1="55b11923be80" astOperand2="55b11923c160"/>
+    <token id="55b11923c100" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="65" str="adc_cali_line_fitting_config_t" scope="55b119236370" type="name" astParent="55b11923c160"/>
+    <token id="55b11923c160" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="95" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b119255680" astOperand1="55b11923c100" astOperand2="55b11923c2b0"/>
+    <token id="55b11923c2b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="97" str="p_calibration_config" scope="55b119236370" type="name" varId="16" exprId="16" variable="55b11925edd0" astParent="55b11923c160"/>
+    <token id="55b11923c310" file="../plant_boss/wrappers/adc_wrapper.c" linenr="48" column="117" str="," scope="55b119236370" astParent="55b11924ee60" astOperand1="55b119255680" astOperand2="55b11923c4b0"/>
+    <token id="55b11923c450" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="5" str="adc_cali_handle_t" scope="55b119236370" type="name" astParent="55b11923c4b0"/>
+    <token id="55b11923c4b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="22" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b11923c310" astOperand1="55b11923c450" astOperand2="55b11923c5f0"/>
+    <token id="55b11923c5f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="24" str="p_calibration_handle" scope="55b119236370" type="name" varId="17" exprId="17" variable="55b11925ef00" astParent="55b11923c4b0"/>
+    <token id="55b11924ee60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="44" str="," scope="55b119236370" astOperand1="55b11923c310" astOperand2="55b11923c700"/>
+    <token id="55b11923c790" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="46" str="adc_channel_t" scope="55b119236370" type="name"/>
+    <token id="55b11923c700" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="60" str="channel" scope="55b119236370" type="name" varId="18" exprId="18" variable="55b11925f030" astParent="55b11924ee60"/>
+    <token id="55b11923c8a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="49" column="67" str=")" scope="55b119236370" link="55b11923bce0"/>
+    <token id="55b11923c9b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="50" column="1" str="{" scope="55b11923a450" link="55b119262e40"/>
+    <token id="55b11923ca10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="5" str="err_adc_drv" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b11923cb20" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923cb20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="17" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741883" astOperand1="55b11923ca10" astOperand2="55b11923cc90" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923cb80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="19" str="adc_oneshot_config_channel" scope="55b11923a450" type="name" astParent="55b11923cc90"/>
+    <token id="55b11923cc90" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="45" str="(" scope="55b11923a450" link="55b119226d20" exprId="1073741882" astParent="55b11923cb20" astOperand1="55b11923cb80" astOperand2="55b11923d000"/>
+    <token id="55b11923ccf0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="46" str="adc1_handle" scope="55b11923a450" type="name" varId="10" exprId="10" variable="55b1192365e0" astParent="55b11923ce80"/>
+    <token id="55b11923ce80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="57" str="," scope="55b11923a450" exprId="1073741880" astParent="55b11923d000" astOperand1="55b11923ccf0" astOperand2="55b11923cee0"/>
+    <token id="55b11923cee0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="59" str="channel" scope="55b11923a450" type="name" varId="18" exprId="18" variable="55b11925f030" astParent="55b11923ce80"/>
+    <token id="55b11923d000" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="66" str="," scope="55b11923a450" exprId="1073741881" astParent="55b11923cc90" astOperand1="55b11923ce80" astOperand2="55b119226cc0"/>
+    <token id="55b119226cc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="68" str="p_channel_config" scope="55b11923a450" type="name" varId="15" exprId="15" variable="55b119260b30" astParent="55b11923d000"/>
+    <token id="55b119226d20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="84" str=")" scope="55b11923a450" link="55b11923cc90"/>
+    <token id="55b11923d1c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="51" column="85" str=";" scope="55b11923a450"/>
+    <token id="55b11923d320" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="5" str="if" scope="55b11923a450" type="name" astParent="55b11923d380"/>
+    <token id="55b11923d380" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="8" str="(" scope="55b11923a450" link="55b11923d680" astOperand1="55b11923d320" astOperand2="55b11923d500"/>
+    <token id="55b11923d4a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="9" str="ESP_OK" scope="55b11923a450" type="name" exprId="60" astParent="55b11923d500"/>
+    <token id="55b11923d500" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="16" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="61" values="55b119257390" astParent="55b11923d380" astOperand1="55b11923d4a0" astOperand2="55b11923d620" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923d620" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="19" str="err_adc_drv" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b11923d500" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923d680" file="../plant_boss/wrappers/adc_wrapper.c" linenr="52" column="30" str=")" scope="55b11923a450" link="55b11923d380"/>
+    <token id="55b11923d7a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="53" column="5" str="{" scope="55b11923a110" link="55b11923e060"/>
+    <token id="55b11923d800" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="9" str="error_set_u32" scope="55b11923a110" type="name" astParent="55b11923d920"/>
+    <token id="55b11923d920" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="22" str="(" scope="55b11923a110" link="55b11923dcb0" exprId="1073741890" astOperand1="55b11923d800" astOperand2="55b11923da90"/>
+    <token id="55b11922ff10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="23" str="&amp;" scope="55b11923a110" type="op" exprId="63" values="55b11922a4f0" astParent="55b11923da90" astOperand1="55b11923d980" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b11923d980" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="24" str="err_adc" scope="55b11923a110" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b119257730" astParent="55b11922ff10" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b11923da90" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="31" str="," scope="55b11923a110" exprId="1073741889" astParent="55b11923d920" astOperand1="55b11922ff10" astOperand2="55b11923dba0"/>
+    <token id="55b11923dba0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="33" str="ADC_ERROR_INIT_CHANNEL" scope="55b11923a110" type="name" exprId="1073741888" values="55b119258ed0" astParent="55b11923da90" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b11923dcb0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="55" str=")" scope="55b11923a110" link="55b11923d920"/>
+    <token id="55b11923dd10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="54" column="56" str=";" scope="55b11923a110"/>
+    <token id="55b11923de80" file="../plant_boss/wrappers/adc_wrapper.c" linenr="56" column="9" str="return" scope="55b11923a110" type="name" values="55b119257890" astOperand1="55b11923dee0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923dee0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="56" column="16" str="false" scope="55b11923a110" type="name" exprId="67" astParent="55b11923de80" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923e000" file="../plant_boss/wrappers/adc_wrapper.c" linenr="56" column="21" str=";" scope="55b11923a110"/>
+    <token id="55b11923e060" file="../plant_boss/wrappers/adc_wrapper.c" linenr="57" column="5" str="}" scope="55b11923a110" link="55b11923d7a0"/>
+    <token id="55b11923e180" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="5" str="err_adc_drv" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b11923e1e0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923e1e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="17" str="=" scope="55b11923a450" type="op" isAssignmentOp="true" exprId="1073741895" astOperand1="55b11923e180" astOperand2="55b11923e360" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923e300" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="19" str="adc_cali_create_scheme_line_fitting" scope="55b11923a450" type="name" astParent="55b11923e360"/>
+    <token id="55b11923e360" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="54" str="(" scope="55b11923a450" link="55b11923e5c0" exprId="1073741894" astParent="55b11923e1e0" astOperand1="55b11923e300" astOperand2="55b11925fb10"/>
+    <token id="55b11923e4b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="55" str="p_calibration_config" scope="55b11923a450" type="name" varId="16" exprId="16" variable="55b11925edd0" astParent="55b11925fb10"/>
+    <token id="55b11925fb10" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="75" str="," scope="55b11923a450" exprId="1073741893" astParent="55b11923e360" astOperand1="55b11923e4b0" astOperand2="55b11925fb70"/>
+    <token id="55b11925fb70" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="77" str="p_calibration_handle" scope="55b11923a450" type="name" varId="17" exprId="17" variable="55b11925ef00" astParent="55b11925fb10"/>
+    <token id="55b11923e5c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="97" str=")" scope="55b11923a450" link="55b11923e360"/>
+    <token id="55b11923e7f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="62" column="98" str=";" scope="55b11923a450"/>
+    <token id="55b11923e850" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="5" str="if" scope="55b11923a450" type="name" astParent="55b11923e970"/>
+    <token id="55b11923e970" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="8" str="(" scope="55b11923a450" link="55b11923ec70" astOperand1="55b11923e850" astOperand2="55b11923eaf0"/>
+    <token id="55b11923e9d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="9" str="ESP_OK" scope="55b11923a450" type="name" exprId="60" astParent="55b11923eaf0"/>
+    <token id="55b11923eaf0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="16" str="!=" scope="55b11923a450" type="op" isComparisonOp="true" exprId="61" values="55b119257b10" astParent="55b11923e970" astOperand1="55b11923e9d0" astOperand2="55b11923eb50" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11923eb50" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="19" str="err_adc_drv" scope="55b11923a450" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b11923eaf0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b11923ec70" file="../plant_boss/wrappers/adc_wrapper.c" linenr="63" column="30" str=")" scope="55b11923a450" link="55b11923e970"/>
+    <token id="55b11923ecd0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="64" column="5" str="{" scope="55b11923f800" link="55b119262b40"/>
+    <token id="55b1192622d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="9" str="error_set_u32" scope="55b11923f800" type="name" astParent="55b119262330"/>
+    <token id="55b119262330" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="22" str="(" scope="55b11923f800" link="55b1192626e0" exprId="1073741898" astOperand1="55b1192622d0" astOperand2="55b1192625d0"/>
+    <token id="55b119262450" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="23" str="&amp;" scope="55b11923f800" type="op" exprId="63" values="55b11925dbc0" astParent="55b1192625d0" astOperand1="55b1192624b0" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192624b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="24" str="err_adc" scope="55b11923f800" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b11939d2e0" astParent="55b119262450" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b1192625d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="31" str="," scope="55b11923f800" exprId="1073741897" astParent="55b119262330" astOperand1="55b119262450" astOperand2="55b11924e820"/>
+    <token id="55b11924e820" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="33" str="ADC_ERROR_INIT_CALIBRATION" scope="55b11923f800" type="name" exprId="1073741896" values="55b11923aef0" astParent="55b1192625d0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b1192626e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="59" str=")" scope="55b11923f800" link="55b119262330"/>
+    <token id="55b119262840" file="../plant_boss/wrappers/adc_wrapper.c" linenr="65" column="60" str=";" scope="55b11923f800"/>
+    <token id="55b1192628a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="67" column="9" str="return" scope="55b11923f800" type="name" values="55b11939d440" astOperand1="55b1192629c0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192629c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="67" column="16" str="false" scope="55b11923f800" type="name" exprId="67" astParent="55b1192628a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119262a20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="67" column="21" str=";" scope="55b11923f800"/>
+    <token id="55b119262b40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="68" column="5" str="}" scope="55b11923f800" link="55b11923ecd0"/>
+    <token id="55b119262ba0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="70" column="5" str="return" scope="55b11923a450" type="name" values="55b11939d6c0" astOperand1="55b119262cc0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119262cc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="70" column="12" str="true" scope="55b11923a450" type="name" exprId="1073741899" astParent="55b119262ba0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119262d20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="70" column="16" str=";" scope="55b11923a450"/>
+    <token id="55b119262e40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="71" column="1" str="}" scope="55b11923a450" link="55b11923c9b0"/>
+    <token id="55b119262ea0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="1" str="bool" scope="55b119236370" type="name"/>
+    <token id="55b119262fc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="6" str="adc_handle_channel" scope="55b119236370" type="name" function="55b119227600"/>
+    <token id="55b119263020" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="24" str="(" scope="55b119236370" link="55b1192638c0" values="55b11939d940" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119263160" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="25" str="adc_cali_handle_t" scope="55b119236370" type="name" astParent="55b119261080"/>
+    <token id="55b119261080" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="42" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b1192633c0" astOperand1="55b119263160" astOperand2="55b119263270"/>
+    <token id="55b119263270" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="44" str="p_calibration_handle" scope="55b119236370" type="name" varId="19" exprId="19" variable="55b11925f160" astParent="55b119261080"/>
+    <token id="55b1192633c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="64" str="," scope="55b119236370" astParent="55b1192636e0" astOperand1="55b119261080" astOperand2="55b119263560"/>
+    <token id="55b119263420" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="66" str="int" scope="55b119236370" type="name" astParent="55b119263560"/>
+    <token id="55b119263560" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="69" str="*" scope="55b119236370" type="op" isArithmeticalOp="true" astParent="55b1192633c0" astOperand1="55b119263420" astOperand2="55b1192635c0"/>
+    <token id="55b1192635c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="71" str="p_adc_voltage" scope="55b119236370" type="name" varId="20" exprId="20" variable="55b11925f290" astParent="55b119263560" valueType-type="int" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192636e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="84" str="," scope="55b119236370" astOperand1="55b1192633c0" astOperand2="55b119263860"/>
+    <token id="55b119263740" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="86" str="adc_channel_t" scope="55b119236370" type="name"/>
+    <token id="55b119263860" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="100" str="channel" scope="55b119236370" type="name" varId="21" exprId="21" variable="55b11925f3c0" astParent="55b1192636e0"/>
+    <token id="55b1192638c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="73" column="107" str=")" scope="55b119236370" link="55b119263020"/>
+    <token id="55b1192639e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="74" column="1" str="{" scope="55b11924a1d0" link="55b11939c9c0"/>
+    <token id="55b119263a40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="75" column="5" str="int" scope="55b11924a1d0" type="name"/>
+    <token id="55b119263b60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="75" column="9" str="adc_raw" scope="55b11924a1d0" type="name" varId="22" exprId="22" variable="55b11925d940" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119263bc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="75" column="16" str=";" scope="55b11924a1d0"/>
+    <token id="55b119263ce0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="5" str="err_adc_drv" scope="55b11924a1d0" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119263d40" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119263d40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="17" str="=" scope="55b11924a1d0" type="op" isAssignmentOp="true" exprId="1073741906" astOperand1="55b119263ce0" astOperand2="55b119240810" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119263e60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="19" str="adc_oneshot_read" scope="55b11924a1d0" type="name" astParent="55b119240810"/>
+    <token id="55b119240810" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="35" str="(" scope="55b11924a1d0" link="55b119264420" exprId="1073741905" astParent="55b119263d40" astOperand1="55b119263e60" astOperand2="55b119264240"/>
+    <token id="55b119263f70" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="36" str="adc1_handle" scope="55b11924a1d0" type="name" varId="10" exprId="10" variable="55b1192365e0" astParent="55b1192640c0"/>
+    <token id="55b1192640c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="47" str="," scope="55b11924a1d0" exprId="1073741902" astParent="55b119264240" astOperand1="55b119263f70" astOperand2="55b119264120"/>
+    <token id="55b119264120" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="49" str="channel" scope="55b11924a1d0" type="name" varId="21" exprId="21" variable="55b11925f3c0" astParent="55b1192640c0"/>
+    <token id="55b119264240" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="56" str="," scope="55b11924a1d0" exprId="1073741904" astParent="55b119240810" astOperand1="55b1192640c0" astOperand2="55b1192642a0"/>
+    <token id="55b1192642a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="58" str="&amp;" scope="55b11924a1d0" type="op" exprId="1073741903" values="55b11922b230" astParent="55b119264240" astOperand1="55b1192643c0" valueType-type="int" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b1192643c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="59" str="adc_raw" scope="55b11924a1d0" type="name" varId="22" exprId="22" variable="55b11925d940" values="55b119249630" astParent="55b1192642a0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119264420" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="66" str=")" scope="55b11924a1d0" link="55b119240810"/>
+    <token id="55b119264540" file="../plant_boss/wrappers/adc_wrapper.c" linenr="77" column="67" str=";" scope="55b11924a1d0"/>
+    <token id="55b1192645a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="5" str="if" scope="55b11924a1d0" type="name" astParent="55b1192646c0"/>
+    <token id="55b1192646c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="8" str="(" scope="55b11924a1d0" link="55b1192649c0" astOperand1="55b1192645a0" astOperand2="55b119264840"/>
+    <token id="55b119264720" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="9" str="ESP_OK" scope="55b11924a1d0" type="name" exprId="83" astParent="55b119264840"/>
+    <token id="55b119264840" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="16" str="!=" scope="55b11924a1d0" type="op" isComparisonOp="true" exprId="84" values="55b11939dce0" astParent="55b1192646c0" astOperand1="55b119264720" astOperand2="55b1192648a0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192648a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="19" str="err_adc_drv" scope="55b11924a1d0" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119264840" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192649c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="78" column="30" str=")" scope="55b11924a1d0" link="55b1192646c0"/>
+    <token id="55b119264a20" file="../plant_boss/wrappers/adc_wrapper.c" linenr="79" column="5" str="{" scope="55b11924a440" link="55b1192653a0"/>
+    <token id="55b119264b40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="9" str="error_set_u32" scope="55b11924a440" type="name" astParent="55b119264ba0"/>
+    <token id="55b119264ba0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="22" str="(" scope="55b11924a440" link="55b119264f40" exprId="1073741913" astOperand1="55b119264b40" astOperand2="55b119264dd0"/>
+    <token id="55b119264cc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="23" str="&amp;" scope="55b11924a440" type="op" exprId="86" values="55b11922b3d0" astParent="55b119264dd0" astOperand1="55b119253980" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119253980" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="24" str="err_adc" scope="55b11924a440" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b11939e080" astParent="55b119264cc0" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119264dd0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="31" str="," scope="55b11924a440" exprId="1073741912" astParent="55b119264ba0" astOperand1="55b119264cc0" astOperand2="55b119264ee0"/>
+    <token id="55b119264ee0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="33" str="ADC_ERROR_HANDLE_READ" scope="55b11924a440" type="name" exprId="1073741911" values="55b11924be90" astParent="55b119264dd0" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119264f40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="54" str=")" scope="55b11924a440" link="55b119264ba0"/>
+    <token id="55b1192650a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="80" column="55" str=";" scope="55b11924a440"/>
+    <token id="55b119265100" file="../plant_boss/wrappers/adc_wrapper.c" linenr="82" column="9" str="return" scope="55b11924a440" type="name" values="55b11939e1e0" astOperand1="55b119265220" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119265220" file="../plant_boss/wrappers/adc_wrapper.c" linenr="82" column="16" str="false" scope="55b11924a440" type="name" exprId="90" astParent="55b119265100" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119265280" file="../plant_boss/wrappers/adc_wrapper.c" linenr="82" column="21" str=";" scope="55b11924a440"/>
+    <token id="55b1192653a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="83" column="5" str="}" scope="55b11924a440" link="55b119264a20"/>
+    <token id="55b119265400" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="5" str="err_adc_drv" scope="55b11924a1d0" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119265520" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119265520" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="17" str="=" scope="55b11924a1d0" type="op" isAssignmentOp="true" exprId="1073741920" astOperand1="55b119265400" astOperand2="55b1192656a0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119265580" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="19" str="adc_cali_raw_to_voltage" scope="55b11924a1d0" type="name" astParent="55b1192656a0"/>
+    <token id="55b1192656a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="42" str="(" scope="55b11924a1d0" link="55b119265bc0" exprId="1073741919" astParent="55b119265520" astOperand1="55b119265580" astOperand2="55b119265a40"/>
+    <token id="55b119265700" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="43" str="*" scope="55b11924a1d0" type="op" isArithmeticalOp="true" exprId="1073741916" astParent="55b1192658a0" astOperand1="55b119265840"/>
+    <token id="55b119265840" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="44" str="p_calibration_handle" scope="55b11924a1d0" type="name" varId="19" exprId="19" variable="55b11925f160" astParent="55b119265700"/>
+    <token id="55b1192658a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="64" str="," scope="55b11924a1d0" exprId="1073741917" astParent="55b119265a40" astOperand1="55b119265700" astOperand2="55b1192659e0"/>
+    <token id="55b1192659e0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="66" str="adc_raw" scope="55b11924a1d0" type="name" varId="22" exprId="22" variable="55b11925d940" astParent="55b1192658a0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b119265a40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="73" str="," scope="55b11924a1d0" exprId="1073741918" astParent="55b1192656a0" astOperand1="55b1192658a0" astOperand2="55b119265b60"/>
+    <token id="55b119265b60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="75" str="p_adc_voltage" scope="55b11924a1d0" type="name" varId="20" exprId="20" variable="55b11925f290" astParent="55b119265a40" valueType-type="int" valueType-sign="signed" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119265bc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="88" str=")" scope="55b11924a1d0" link="55b1192656a0"/>
+    <token id="55b119265ce0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="86" column="89" str=";" scope="55b11924a1d0"/>
+    <token id="55b119265d40" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="5" str="if" scope="55b11924a1d0" type="name" astParent="55b119265e60"/>
+    <token id="55b119265e60" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="8" str="(" scope="55b11924a1d0" link="55b1192660f0" astOperand1="55b119265d40" astOperand2="55b119265fe0"/>
+    <token id="55b119265ec0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="9" str="ESP_OK" scope="55b11924a1d0" type="name" exprId="83" astParent="55b119265fe0"/>
+    <token id="55b119265fe0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="16" str="!=" scope="55b11924a1d0" type="op" isComparisonOp="true" exprId="84" values="55b11939e460" astParent="55b119265e60" astOperand1="55b119265ec0" astOperand2="55b11925bca0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11925bca0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="19" str="err_adc_drv" scope="55b11924a1d0" type="name" varId="8" exprId="8" variable="55b11924a820" astParent="55b119265fe0" valueType-type="int" valueType-sign="signed" valueType-reference="None"/>
+    <token id="55b1192660f0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="87" column="30" str=")" scope="55b11924a1d0" link="55b119265e60"/>
+    <token id="55b119266200" file="../plant_boss/wrappers/adc_wrapper.c" linenr="88" column="5" str="{" scope="55b11925eb60" link="55b119266b50"/>
+    <token id="55b11925bd00" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="9" str="error_set_u32" scope="55b11925eb60" type="name" astParent="55b119266310"/>
+    <token id="55b119266310" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="22" str="(" scope="55b11925eb60" link="55b119266700" exprId="1073741923" astOperand1="55b11925bd00" astOperand2="55b119266590"/>
+    <token id="55b119266420" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="23" str="&amp;" scope="55b11925eb60" type="op" exprId="86" values="55b11922b570" astParent="55b119266590" astOperand1="55b119266480" valueType-type="int" valueType-sign="unsigned" valueType-pointer="1" valueType-reference="None"/>
+    <token id="55b119266480" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="24" str="err_adc" scope="55b11925eb60" type="name" varId="9" exprId="9" variable="55b11923fa70" values="55b11939e800" astParent="55b119266420" valueType-type="int" valueType-sign="unsigned" valueType-reference="None"/>
+    <token id="55b119266590" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="31" str="," scope="55b11925eb60" exprId="1073741922" astParent="55b119266310" astOperand1="55b119266420" astOperand2="55b1192666a0"/>
+    <token id="55b1192666a0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="33" str="ADC_ERROR_HANDLE_READ_CALIBRATION" scope="55b11925eb60" type="name" exprId="1073741921" values="55b11924bbd0" astParent="55b119266590" valueType-type="int" valueType-sign="signed" valueType-reference="None" valueType-typeScope="55b119236100"/>
+    <token id="55b119266700" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="66" str=")" scope="55b11925eb60" link="55b119266310"/>
+    <token id="55b119266850" file="../plant_boss/wrappers/adc_wrapper.c" linenr="89" column="67" str=";" scope="55b11925eb60"/>
+    <token id="55b1192668b0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="91" column="9" str="return" scope="55b11925eb60" type="name" values="55b11939e960" astOperand1="55b1192669d0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b1192669d0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="91" column="16" str="false" scope="55b11925eb60" type="name" exprId="90" astParent="55b1192668b0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119266a30" file="../plant_boss/wrappers/adc_wrapper.c" linenr="91" column="21" str=";" scope="55b11925eb60"/>
+    <token id="55b119266b50" file="../plant_boss/wrappers/adc_wrapper.c" linenr="92" column="5" str="}" scope="55b11925eb60" link="55b119266200"/>
+    <token id="55b119266bb0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="94" column="5" str="return" scope="55b11924a1d0" type="name" values="55b11939ebe0" astOperand1="55b119266cc0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b119266cc0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="94" column="12" str="true" scope="55b11924a1d0" type="name" exprId="1073741924" astParent="55b119266bb0" valueType-type="bool" valueType-reference="None"/>
+    <token id="55b11939c960" file="../plant_boss/wrappers/adc_wrapper.c" linenr="94" column="16" str=";" scope="55b11924a1d0"/>
+    <token id="55b11939c9c0" file="../plant_boss/wrappers/adc_wrapper.c" linenr="95" column="1" str="}" scope="55b11924a1d0" link="55b1192639e0"/>
+  </tokenlist>
+  <scopes>
+    <scope id="55b119236370" type="Global">
+      <functionList>
+        <function id="55b1192270a0" token="55b11925cd60" tokenDef="55b119254a10" name="adc_init" type="Function" access="Public"/>
+        <function id="55b119226fe0" token="55b11923bbd0" tokenDef="55b119261510" name="adc_init_channel" type="Function" access="Public">
+          <arg nr="1" variable="55b119260b30"/>
+          <arg nr="2" variable="55b11925edd0"/>
+          <arg nr="3" variable="55b11925ef00"/>
+          <arg nr="4" variable="55b11925f030"/>
+        </function>
+        <function id="55b119227600" token="55b119262fc0" tokenDef="55b119229210" name="adc_handle_channel" type="Function" access="Public">
+          <arg nr="1" variable="55b11925f160"/>
+          <arg nr="2" variable="55b11925f290"/>
+          <arg nr="3" variable="55b11925f3c0"/>
+        </function>
+      </functionList>
+      <varlist>
+        <var id="55b11924a820"/>
+        <var id="55b11923fa70"/>
+        <var id="55b1192365e0"/>
+        <var id="55b1192326d0"/>
+      </varlist>
+    </scope>
+    <scope id="55b119236100" type="Enum" className="adc_error_t" bodyStart="55b119228180" bodyEnd="55b119228390" nestedIn="55b119236370" definedType="55b11925fe90"/>
+    <scope id="55b119235e90" type="Function" className="adc_init" bodyStart="55b11925d060" bodyEnd="55b11923ba60" nestedIn="55b119236370" function="55b1192270a0">
+      <varlist>
+        <var id="55b11925dfb0"/>
+      </varlist>
+    </scope>
+    <scope id="55b119235c20" type="If" bodyStart="55b119234270" bodyEnd="55b11923b780" nestedIn="55b119235e90"/>
+    <scope id="55b11923a450" type="Function" className="adc_init_channel" bodyStart="55b11923c9b0" bodyEnd="55b119262e40" nestedIn="55b119236370" function="55b119226fe0"/>
+    <scope id="55b11923a110" type="If" bodyStart="55b11923d7a0" bodyEnd="55b11923e060" nestedIn="55b11923a450"/>
+    <scope id="55b11923f800" type="If" bodyStart="55b11923ecd0" bodyEnd="55b119262b40" nestedIn="55b11923a450"/>
+    <scope id="55b11924a1d0" type="Function" className="adc_handle_channel" bodyStart="55b1192639e0" bodyEnd="55b11939c9c0" nestedIn="55b119236370" function="55b119227600">
+      <varlist>
+        <var id="55b11925d940"/>
+      </varlist>
+    </scope>
+    <scope id="55b11924a440" type="If" bodyStart="55b119264a20" bodyEnd="55b1192653a0" nestedIn="55b11924a1d0"/>
+    <scope id="55b11925eb60" type="If" bodyStart="55b119266200" bodyEnd="55b119266b50" nestedIn="55b11924a1d0"/>
+  </scopes>
+  <types>
+    <type id="55b11925fe90" classScope="55b119236100"/>
+  </types>
+  <variables>
+    <var id="55b1192326d0" nameToken="55b11925c9d0" typeStartToken="55b11925c860" typeEndToken="55b11925c8c0" access="Global" scope="55b119236370" constness="1" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="true" isVolatile="false"/>
+    <var id="55b1192365e0" nameToken="55b11925c4f0" typeStartToken="55b11925c490" typeEndToken="55b11925c490" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11923fa70" nameToken="55b11925c100" typeStartToken="55b11922a020" typeEndToken="55b11922a020" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11924a820" nameToken="55b119229e00" typeStartToken="55b119229cf0" typeEndToken="55b119229cf0" access="Global" scope="55b119236370" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925d940" nameToken="55b119263b60" typeStartToken="55b119263a40" typeEndToken="55b119263a40" access="Local" scope="55b11924a1d0" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925dfb0" nameToken="55b119254cb0" typeStartToken="55b119232a50" typeEndToken="55b119232a50" access="Local" scope="55b119235e90" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925edd0" nameToken="55b11923c2b0" typeStartToken="55b11923c100" typeEndToken="55b11923c160" access="Argument" scope="55b11923a450" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925ef00" nameToken="55b11923c5f0" typeStartToken="55b11923c450" typeEndToken="55b11923c4b0" access="Argument" scope="55b11923a450" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925f030" nameToken="55b11923c700" typeStartToken="55b11923c790" typeEndToken="55b11923c790" access="Argument" scope="55b11923a450" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925f160" nameToken="55b119263270" typeStartToken="55b119263160" typeEndToken="55b119261080" access="Argument" scope="55b11924a1d0" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925f290" nameToken="55b1192635c0" typeStartToken="55b119263420" typeEndToken="55b119263560" access="Argument" scope="55b11924a1d0" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b11925f3c0" nameToken="55b119263860" typeStartToken="55b119263740" typeEndToken="55b119263740" access="Argument" scope="55b11924a1d0" constness="0" isArray="false" isClass="true" isConst="false" isExtern="false" isPointer="false" isReference="false" isStatic="false" isVolatile="false"/>
+    <var id="55b119260b30" nameToken="55b11923bee0" typeStartToken="55b11923bd40" typeEndToken="55b11923be80" access="Argument" scope="55b11923a450" constness="0" isArray="false" isClass="false" isConst="false" isExtern="false" isPointer="true" isReference="false" isStatic="false" isVolatile="false"/>
+  </variables>
+  <valueflow>
+    <values id="55b119227d20">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119237480">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119252900">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119260ae0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119237540">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119237500">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192374c0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923d220">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192350e0">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119227f00">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119231f30">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192273c0">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119235000">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b1192334c0">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922a080">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11923cd50">
+      <value intvalue="16" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11925a590">
+      <value intvalue="16" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119240870">
+      <value intvalue="16" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119246a00">
+      <value intvalue="16" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119238d40">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b910">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119238ff0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923ed30">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119225f70">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119239270">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b1192393d0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924d810">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11922a230">
+      <value intvalue="0" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924fcf0">
+      <value tokvalue="55b11925ca30" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11924e200">
+      <value tokvalue="55b11925ca30" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119239530">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119226420">
+      <value tokvalue="55b11925d400" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119256780">
+      <value lifetime="55b1192327b0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119249a50">
+      <value lifetime="55b1192327b0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239b10">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119232260">
+      <value lifetime="55b119233a80" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230810">
+      <value lifetime="55b1192501e0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119239d90">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119246af0">
+      <value lifetime="55b11923b140" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119256ab0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119230cf0">
+      <value intvalue="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119256c10">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119256e90">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119257110">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119257390">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922a4f0">
+      <value lifetime="55b11923d980" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b119257730">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b119258ed0">
+      <value intvalue="2" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119257890">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b119257b10">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11925dbc0">
+      <value lifetime="55b1192624b0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939d2e0">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11923aef0">
+      <value intvalue="4" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11939d440">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939d6c0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939d940">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b230">
+      <value lifetime="55b1192643c0" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b119249630">
+      <value uninit="1" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11939dce0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b3d0">
+      <value lifetime="55b119253980" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939e080">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924be90">
+      <value intvalue="8" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11939e1e0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939e460">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11922b570">
+      <value lifetime="55b119266480" lifetime-scope="Local" lifetime-kind="Address" bound="Point" possible="true" path="0"/>
+      <value intvalue="0" bound="Point" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939e800">
+      <value intvalue="18446744073709551615" bound="Upper" impossible="true" path="0"/>
+    </values>
+    <values id="55b11924bbd0">
+      <value intvalue="16" bound="Point" known="true" path="0"/>
+    </values>
+    <values id="55b11939e960">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+    <values id="55b11939ebe0">
+      <value intvalue="-1" bound="Upper" impossible="true" path="0"/>
+      <value intvalue="2" bound="Lower" impossible="true" path="0"/>
+    </values>
+  </valueflow>
+  <typedef-info>
+    <info name="adc_error_t" file="../plant_boss/wrappers/adc_wrapper.h" line="25" column="1" used="0"/>
+  </typedef-info>
+</dump>
+</dumps>
