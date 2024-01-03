@@ -48,7 +48,8 @@ Telegram bot is used to:
 	* Calibration constants in nvs.
 	* Read device id from nvs.
 	* Write and read errors from nvs.
-	* Check flash crc.
+ * OTA update.
+	* Check image crc/hash.
 	* Choose correct flash size.
 	* Add possibility to change device id using telegram.
 	* Add battery critical voltage detection, after which esp32 would go to sleep infinitely.
