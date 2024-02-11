@@ -1,21 +1,4 @@
 {
-    "C_Cpp.intelliSenseEngine": "default",
-    "idf.adapterTargetName": "esp32",
-    "idf.customExtraPaths": "/root/.espressif/tools/xtensa-esp-elf-gdb/12.1_20221002/xtensa-esp-elf-gdb/bin:/root/.espressif/tools/riscv32-esp-elf-gdb/12.1_20221002/riscv32-esp-elf-gdb/bin:/root/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:/root/.espressif/tools/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:/root/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:/root/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:/root/.espressif/tools/esp32ulp-elf/2.35_20220830/esp32ulp-elf/bin:/root/.espressif/tools/cmake/3.24.0/bin:/root/.espressif/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/bin:/root/.espressif/tools/ninja/1.10.2:/root/.espressif/tools/esp-rom-elfs/20230320",
-    "idf.customExtraVars": {
-        "OPENOCD_SCRIPTS": "/root/.espressif/tools/openocd-esp32/v0.12.0-esp32-20230921/openocd-esp32/share/openocd/scripts",
-        "ESP_ROM_ELF_DIR": "/root/.espressif/tools/esp-rom-elfs/20230320/"
-    },
-    "idf.espIdfPath": "/root/esp/esp-idf",
-    "idf.openOcdConfigs": [
-        "interface/ftdi/esp32_devkitj_v1.cfg",
-        "target/esp32.cfg"
-    ],
-    "idf.pythonBinPath": "/root/.espressif/python_env/idf5.1_py3.10_env/bin/python",
-    "idf.toolsPath": "/root/.espressif",
-    "files.associations": {
-        "wifi_wrapper.h": "c"
-    },
     "idf.flashType": "JTAG",
-    "idf.port":"/dev/ttyUSB1"
+    "idf.adapterTargetName": "esp32"
 }
