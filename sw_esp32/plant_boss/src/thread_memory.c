@@ -43,6 +43,38 @@ void thread_memory(void *arg)
 
 bool thread_memory_init(void)
 {
+    uint32_t out_size = 0u;
+    uint32_t flash_size = 0u;
+    
+    if (ESP_OK != esp_flash_get_size(esp_flash_default_chip, &out_size))
+    {
+        printf("err out_size r\n");
+    }
+
+    printf("out_size=0x%lX\n", out_size);
+
+    if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
+    {
+        printf("err flash_size r\n");
+    }
+
+    printf("flash_size=0x%lX\n", flash_size);
+
+    uint32_t buf_flash = 0u;
+
+    printf("flash content: addr;value\n");
+
+    for (uint32_t i = 0u; i < out_size; i++)
+    {
+        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, i, 1))
+        {
+            printf("err flash r\n");
+        }
+
+        printf("%lx;%lX\n", i, buf_flash);
+    }
+
+
     // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
     xTaskNotifyWait(0u, 0u, &notification_memory, portMAX_DELAY);

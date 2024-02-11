@@ -8,6 +8,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <esp_log.h>
+#include <esp_flash_spi_init.h>
 
 #include "error.h"
 #include "nvm_wrapper.h"
