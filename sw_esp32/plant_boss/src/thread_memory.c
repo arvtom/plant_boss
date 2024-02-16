@@ -43,37 +43,10 @@ void thread_memory(void *arg)
 
 bool thread_memory_init(void)
 {
-    uint32_t out_size = 0u;
-    uint32_t flash_size = 0u;
-    
-    if (ESP_OK != esp_flash_get_size(esp_flash_default_chip, &out_size))
+    if (true != thread_memory_init_check_flash_crc())
     {
-        printf("err out_size r\n");
+        ESP_LOGI(tag_t_m, "fcf");
     }
-
-    printf("out_size=0x%lX\n", out_size);
-
-    if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
-    {
-        printf("err flash_size r\n");
-    }
-
-    printf("flash_size=0x%lX\n", flash_size);
-
-    uint32_t buf_flash = 0u;
-
-    printf("flash content: addr;value\n");
-
-    for (uint32_t i = 0u; i < out_size; i++)
-    {
-        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, i, 1))
-        {
-            printf("err flash r\n");
-        }
-
-        printf("%lx;%lX\n", i, buf_flash);
-    }
-
 
     // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
 
@@ -135,7 +108,62 @@ bool thread_memory_handle(void)
 }
 
 /* ---------------------------- Private functions ---------------------------- */
+bool thread_memory_init_check_flash_crc(void)
+{
+    /*
+    * CRC-16/CCITT, poly = 0x1021, init = 0x0000, refin = true, refout = true, xorout = 0x0000
+    *     crc = ~crc16_le((uint16_t)~0x0000, buf, length);
+    */
 
+    uint32_t out_size = 0u;
+    uint32_t flash_size = 0u;
+    uint8_t buf_flash = 0u;
+    uint32_t flash_crc_value = 0u;
+    
+    if (ESP_OK != esp_flash_get_size(esp_flash_default_chip, &out_size))
+    {
+        printf("err out_size r\n");
+    }
+
+    printf("out_size=0x%lX\n", out_size);
+
+    if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
+    {
+        printf("err flash_size r\n");
+    }
+
+    printf("flash_size=0x%lX\n", flash_size);
+
+    printf("flash content: addr;value\n");
+
+    #define INITIAL_MEM_ADDR        (20000u)
+    #define BYTES_TO_CHECK          (10u)
+
+    if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, INITIAL_MEM_ADDR, 1))
+    {
+        printf("err flash r\n");
+    }
+
+    flash_crc_value = crc32_le(~0u, &buf_flash, 1u);
+
+    for (uint32_t i = INITIAL_MEM_ADDR+1; i < INITIAL_MEM_ADDR + 1 + BYTES_TO_CHECK; i++)
+    {
+        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, i, 1))
+        {
+            printf("err flash r\n");
+        }
+
+        flash_crc_value = crc32_le(flash_crc_value, &buf_flash, 1u);
+
+        printf("%lX;%X\n", i, buf_flash);
+    }
+
+    flash_crc_value = ~flash_crc_value;
+
+    printf("flash_crc_value=%lX\n", flash_crc_value);
+
+    return true;
+}
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
 

@@ -3,6 +3,7 @@
     "idf.adapterTargetName": "esp32",
     "files.associations": {
         "esp_flash_spi_init.h": "c",
-        "esp_flash.h": "c"
+        "esp_flash.h": "c",
+        "crc.h": "c"
     }
 }

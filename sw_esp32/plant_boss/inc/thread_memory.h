@@ -9,6 +9,7 @@
 #include <freertos/task.h>
 #include <esp_log.h>
 #include <esp_flash_spi_init.h>
+#include <rom/crc.h>
 
 #include "error.h"
 #include "nvm_wrapper.h"
@@ -23,6 +24,7 @@ bool thread_memory_init(void);
 bool thread_memory_handle(void);
 
 /* ---------------------------- Private functions ---------------------------- */
+bool thread_memory_init_check_flash_crc(void);
 
 /* ---------------------------- Interrupt callbacks ---------------------------- */
 
