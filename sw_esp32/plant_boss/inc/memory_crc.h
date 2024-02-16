@@ -20,6 +20,10 @@
 #define CRC32_REFLECT_IN_TRUE                           /* already used in source code */
 #define CRC32_REFLECT_OUT_TRUE                          /* already used in source code */
 
+#define FLASH_OFFSET_FACTORY_APP    (0x10000)           /* defined by toolchain */
+#define FLASH_SIZE_FACTORY_APP      (0x100000)          /* 1 MB, defined by toolchain */
+#define FLASH_SIZE_TEST             (0x400)             /* 1 kB */
+
 /*------------------------------Structures / enumerators------------------------------*/
 // typedef enum
 // {

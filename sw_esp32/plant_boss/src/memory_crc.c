@@ -28,7 +28,7 @@ bool memory_crc_check_image(void)
     printf("flash_size=0x%lX\n", flash_size);
 
     /* Calculate first CRC iteration using CRC init value */
-    if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, 0u, 1))
+    if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, FLASH_OFFSET_FACTORY_APP, 1))
     {
         printf("err flash r\n");
     }
@@ -39,7 +39,7 @@ bool memory_crc_check_image(void)
     printf("start calc flash crc\n");
 
     /* Calculate remaining CRC iterations byte by byte */
-    for (uint32_t i = 1u; i < flash_size; i++)
+    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST; i++)
     {
         if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, i, 1))
         {
