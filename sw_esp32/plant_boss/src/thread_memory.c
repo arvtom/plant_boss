@@ -110,30 +110,9 @@ bool thread_memory_handle(void)
 /* ---------------------------- Private functions ---------------------------- */
 bool thread_memory_init_check_flash_crc(void)
 {
-    /*
-    * CRC-16/CCITT, poly = 0x1021, init = 0x0000, refin = true, refout = true, xorout = 0x0000
-    *     crc = ~crc16_le((uint16_t)~0x0000, buf, length);
-    */
-
-    /* 
-        polynome 0x04c11db7 
-        init 0x00
-        reflect input false
-        reflect output false
-        xor output 0x00
-    */
-
-    uint32_t out_size = 0u;
     uint32_t flash_size = 0u;
-    uint8_t buf_flash = 0u;
+    uint8_t flash_byte = 0u;
     uint32_t flash_crc_value = 0u;
-    
-    if (ESP_OK != esp_flash_get_size(esp_flash_default_chip, &out_size))
-    {
-        printf("err out_size r\n");
-    }
-
-    printf("out_size=0x%lX\n", out_size);
 
     if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
     {
@@ -142,41 +121,30 @@ bool thread_memory_init_check_flash_crc(void)
 
     printf("flash_size=0x%lX\n", flash_size);
 
-    printf("flash content: addr;value\n");
-
-    #define INITIAL_MEM_ADDR            (20000u)
-    #define BYTES_TO_CHECK              (10u)
-    #define CRC32_INIT_VALUE            (0x00000000)
-    #define CRC32_XOR_VALUE             (0xffffffff)
-    #define CRC32_POLYNOME              (0x04c11db7)        /* already used by crc32_le function from esp lib. */
-    #define CRC32_REFLECT_IN_TRUE                           /* already used in source code */
-    #define CRC32_REFLECT_OUT_TRUE                          /* already used in source code */
-
-    if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, INITIAL_MEM_ADDR, 1))
+    /* Calculate first CRC iteration using CRC init value */
+    if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, 0u, 1))
     {
         printf("err flash r\n");
     }
 
-    /* * CRC-16/X25, poly = 0x1021, init = 0xffff, refin = true, refout = true, xorout = 0xffff
- *     crc = (~crc16_le((uint16_t)~(0xffff), buf, length))^0xffff;*/
+    /* Apply reflection of input */
+    flash_crc_value = crc32_le(~CRC32_INIT_VALUE, &flash_byte, 1u);
 
-    flash_crc_value = crc32_le(~CRC32_INIT_VALUE, &buf_flash, 1u);
-    printf("%X;%X\n", INITIAL_MEM_ADDR, buf_flash);
-    printf("flash_crc_value=%lX\n", flash_crc_value);
+    printf("start calc flash crc\n");
 
-    for (uint32_t i = INITIAL_MEM_ADDR+1; i < INITIAL_MEM_ADDR + 1 + BYTES_TO_CHECK; i++)
+    /* Calculate remaining CRC iterations byte by byte */
+    for (uint32_t i = 1u; i < flash_size; i++)
     {
-        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &buf_flash, i, 1))
+        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, i, 1))
         {
-            printf("err flash r\n");
+            printf("err flash r idx %lu\n", i);
         }
 
-        flash_crc_value = crc32_le(flash_crc_value, &buf_flash, 1u);
-
-        printf("%lX;%X\n", i, buf_flash);
-        printf("flash_crc_value=%lX\n", flash_crc_value);
+        flash_crc_value = crc32_le(flash_crc_value, &flash_byte, 1u);
+        printf("%lu\n", i);
     }
 
+    /* Apply reflection of output and final xor */
     flash_crc_value = (~flash_crc_value) ^ CRC32_XOR_VALUE;
 
     printf("flash_crc_value=%lX\n", flash_crc_value);
