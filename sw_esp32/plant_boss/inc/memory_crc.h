@@ -12,6 +12,8 @@
 #include <esp_log.h>
 #include <esp_flash_spi_init.h>
 #include <rom/crc.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
 
 /*------------------------------Defines------------------------------*/
 #define CRC32_INIT_VALUE            (0x00000000)
