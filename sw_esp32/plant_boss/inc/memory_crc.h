@@ -64,7 +64,8 @@
 // } battery_error_t;
 
 /*------------------------------Public function prototypes------------------------------*/
-bool memory_crc_check_image(void);
+bool memory_crc_check_image_8bit(void);
+bool memory_crc_check_image_32bit(void);
 
 /*------------------------------Private function prototypes------------------------------*/
 

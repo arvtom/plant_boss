@@ -8,6 +8,7 @@
         "esp_flash.h": "c",
         "crc.h": "c",
         "freertos.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "memory_crc.h": "c"
     }
 }
