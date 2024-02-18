@@ -46,9 +46,9 @@ bool memory_crc_check_image_8bit(void)
     tick_start = xTaskGetTickCount();
 
     /* Calculate remaining CRC iterations byte by byte */
-    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
+    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
     {
-        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST - i - 1u;
+        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP - i - 1u;
 
         if (remaining_bytes > FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
         {
@@ -73,7 +73,7 @@ bool memory_crc_check_image_8bit(void)
     tick_finish = xTaskGetTickCount();
     tick_diff = tick_finish - tick_start;
 
-    crc_speed = (float)FLASH_SIZE_TEST / ((float)tick_diff / 100.0f);
+    crc_speed = (float)FLASH_SIZE_FACTORY_APP / ((float)tick_diff / 100.0f);
 
     printf("flash_crc_value 8bit=%X, calc took %lu ticks at %.1fB/s\n", flash_crc_value, tick_diff, crc_speed);
 
@@ -112,9 +112,9 @@ bool memory_crc_check_image_32bit(void)
     tick_start = xTaskGetTickCount();
 
     /* Calculate remaining CRC iterations byte by byte */
-    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
+    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
     {
-        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST - i - 1u;
+        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP - i - 1u;
 
         if (remaining_bytes > FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
         {
@@ -139,7 +139,7 @@ bool memory_crc_check_image_32bit(void)
     tick_finish = xTaskGetTickCount();
     tick_diff = tick_finish - tick_start;
 
-    crc_speed = (float)FLASH_SIZE_TEST / ((float)tick_diff / 100.0f);
+    crc_speed = (float)FLASH_SIZE_FACTORY_APP / ((float)tick_diff / 100.0f);
 
     printf("flash_crc_value 32bit=%lX, calc took %lu ticks at %.1fB/s\n", flash_crc_value, tick_diff, crc_speed);
 
