@@ -22,7 +22,7 @@
 #define CRC32_POLYNOME              (0x04c11db7)        /* already used by crc32_le function from esp lib. */
 #define CRC32_REFLECT_IN_TRUE                           /* already used in source code */
 #define CRC32_REFLECT_OUT_TRUE                          /* already used in source code */
-#define FLASH_SEQUENTIAL_CRC_CHECK_LENGTH   (4u)
+#define FLASH_SEQUENTIAL_CRC_CHECK_LENGTH   (1024u)
 
 #define FLASH_OFFSET_FACTORY_APP    (0x10000)           /* defined by toolchain */
 #define FLASH_SIZE_FACTORY_APP      (0x100000)          /* 1 MB, defined by toolchain */
