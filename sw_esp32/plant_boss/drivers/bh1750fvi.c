@@ -57,7 +57,7 @@ bool bh1750fvi_handle(void)
 
     i2c_handle_read(BH1750FVI_I2C_ADDR_RESULT, (uint8_t *)buf_rx, 2, BH1750FVI_I2C_TIMEOUT);
 
-    light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[2]) / 1.2;
+    light = (float)(((uint16_t)buf_rx[0] << 8) | (uint16_t)buf_rx[1]) / 1.2;
 
     return true;
 }
