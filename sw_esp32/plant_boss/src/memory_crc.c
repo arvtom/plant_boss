@@ -83,12 +83,15 @@ bool memory_crc_check_image_8bit(void)
 bool memory_crc_check_image_32bit(void)
 {
     uint32_t flash_size = 0u;
-    uint8_t flash_byte = 0u;
+    uint8_t flash_byte[FLASH_SEQUENTIAL_CRC_CHECK_LENGTH];
+    memset(&flash_byte, 0u, FLASH_SEQUENTIAL_CRC_CHECK_LENGTH);
     uint32_t flash_crc_value = 0u;
     TickType_t tick_start = 0u;
     TickType_t tick_finish = 0u;
     TickType_t tick_diff = 0u;
     float crc_speed = 0.0f;
+    uint32_t bytes_to_read = 0u;
+    uint32_t remaining_bytes = 0u;
 
     if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
     {
@@ -104,19 +107,30 @@ bool memory_crc_check_image_32bit(void)
     }
 
     /* Apply reflection of input */
-    flash_crc_value = crc32_le(~CRC32_INIT_VALUE, &flash_byte, 1u);
+    flash_crc_value = crc32_le(~CRC32_INIT_VALUE, &flash_byte[0], 1u);
 
     tick_start = xTaskGetTickCount();
 
     /* Calculate remaining CRC iterations byte by byte */
-    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST; i++)
+    for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
     {
-        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte, i, 1))
+        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_TEST - i - 1u;
+
+        if (remaining_bytes > FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
+        {
+            bytes_to_read = FLASH_SEQUENTIAL_CRC_CHECK_LENGTH;
+        }
+        else
+        {
+            bytes_to_read = remaining_bytes;
+        }
+        
+        if (ESP_OK != esp_flash_read(esp_flash_default_chip , &flash_byte[0], i, bytes_to_read))
         {
             printf("err flash r idx %lu\n", i);
         }
 
-        flash_crc_value = crc32_le(flash_crc_value, &flash_byte, 1u);
+        flash_crc_value = crc32_le(flash_crc_value, &flash_byte[0], bytes_to_read);
     }
 
     /* Apply reflection of output and final xor */
