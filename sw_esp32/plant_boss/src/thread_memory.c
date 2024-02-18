@@ -53,7 +53,7 @@ bool thread_memory_init(void)
         ESP_LOGI(tag_t_m, "fcf 32bit");
     }
 
-    // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory);
+    // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory); 
 
     xTaskNotifyWait(0u, 0u, &notification_memory, portMAX_DELAY);
     if ((notification_memory & NOTIFICATION_TO_MEMORY_REQ_INIT) == 0u)
