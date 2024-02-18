@@ -22,6 +22,7 @@ bool memory_crc_check_image(void)
     TickType_t tick_start = 0u;
     TickType_t tick_finish = 0u;
     TickType_t tick_diff = 0u;
+    float crc_speed = 0.0f;
 
     if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
     {
@@ -58,7 +59,9 @@ bool memory_crc_check_image(void)
     tick_finish = xTaskGetTickCount();
     tick_diff = tick_finish - tick_start;
 
-    printf("flash_crc_value=%lX, calc took %lu ticks\n", flash_crc_value, tick_diff);
+    crc_speed = (float)FLASH_SIZE_TEST / ((float)tick_diff / 100.0f);
+
+    printf("flash_crc_value=%lX, calc took %lu ticks at %.1fB/s\n", flash_crc_value, tick_diff, crc_speed);
 
     return true;
 }
