@@ -13,6 +13,9 @@ config = Configuration(
     reverse_output=True,
 )
 
+test_bytes = bytes(
+    [0x8c, 0xad, 0x08, 0xa5, 0x96, 0xff, 0x48, 0x61, 0x98, 0x61, 0x68])
+
 print("python start")
 
 # with open(PATH_TO_IMAGE, 'r') as fp:
@@ -30,7 +33,7 @@ print("first 10 bytes of image: " + str(image[:10]))
 print("last 10 bytes of image: " + str(image[image_size-10:]))
 
 calculator = Calculator(config, optimized=True)
-crc32_value = calculator.checksum(image)
+crc32_value = calculator.checksum(test_bytes)
 crc32_value_hex = hex(crc32_value)
 
 print("crc32_value_hex=" + crc32_value_hex)
