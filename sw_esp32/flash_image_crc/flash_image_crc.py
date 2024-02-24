@@ -33,7 +33,7 @@ print("first 10 bytes of image: " + str(image[:10]))
 print("last 10 bytes of image: " + str(image[image_size-10:]))
 
 calculator = Calculator(config, optimized=True)
-crc32_value = calculator.checksum(image)
+crc32_value = calculator.checksum(image[0:899999])
 crc32_value_hex = hex(crc32_value)
 
 print("crc32_value_hex=" + crc32_value_hex)
