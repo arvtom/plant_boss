@@ -1,4 +1,4 @@
-# The purpose of this python script is to calculate esp32 flash image CRC and embed it's value in image.
+# The purpose of this python script is to calculate esp32 flash image CRC.
 
 from crc import Calculator, Configuration
 
@@ -33,7 +33,7 @@ print("first 10 bytes of image: " + str(image[:10]))
 print("last 10 bytes of image: " + str(image[image_size-10:]))
 
 calculator = Calculator(config, optimized=True)
-crc32_value = calculator.checksum(test_bytes)
+crc32_value = calculator.checksum(image)
 crc32_value_hex = hex(crc32_value)
 
 print("crc32_value_hex=" + crc32_value_hex)

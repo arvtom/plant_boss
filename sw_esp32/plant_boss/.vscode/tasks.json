@@ -2,6 +2,17 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "flash_image_crc",
+        "type": "shell",
+        "command": "bash flash_image_crc.sh",
+        "options": {
+          "cwd": "../flash_image_crc"
+        },
+        "group": {
+          "kind": "build",
+        }
+      },
+      {
         "label": "Build - Build project",
         "type": "shell",
         "command": "${config:idf.pythonBinPath} ${config:idf.espIdfPath}/tools/idf.py build",
@@ -37,7 +48,6 @@
         ],
         "group": {
           "kind": "build",
-          "isDefault": true
         }
       },
       {
