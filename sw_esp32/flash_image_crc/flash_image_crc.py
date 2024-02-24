@@ -27,13 +27,21 @@ file = open(PATH_TO_IMAGE, 'rb')
 
 image = file.read()
 image_size = len(image)
+print("size of image: " + str(image_size) + ", image type: " + str(type(image)))
 
-print("size of image: " + str(image_size))
+paddings = 1048576 - image_size + 1
+
+for i in range(0, paddings):
+    image += bytes([0xFF])
+
+image_size = len(image)
+print("size of image: " + str(image_size) + ", image type: " + str(type(image)))
+
 print("first 10 bytes of image: " + str(image[:10]))
 print("last 10 bytes of image: " + str(image[image_size-10:]))
 
 calculator = Calculator(config, optimized=True)
-crc32_value = calculator.checksum(image[0:899999])
+crc32_value = calculator.checksum(image)
 crc32_value_hex = hex(crc32_value)
 
 print("crc32_value_hex=" + crc32_value_hex)

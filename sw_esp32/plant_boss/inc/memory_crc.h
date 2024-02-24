@@ -25,7 +25,7 @@
 #define FLASH_SEQUENTIAL_CRC_CHECK_LENGTH   (1024u)
 
 #define FLASH_OFFSET_FACTORY_APP    (0x10000u)           /* defined by toolchain */
-#define FLASH_SIZE_FACTORY_APP      (900000u)          /* 1 MB, defined by toolchain */
+#define FLASH_SIZE_FACTORY_APP      (0x100000u)          /* 1 MB, defined by toolchain */
 #define FLASH_SIZE_TEST             (0x400u)             /* 1 kB */
 
 /*------------------------------Structures / enumerators------------------------------*/
