@@ -18,4 +18,19 @@ print("size of image: " + str(image_size))
 print("first 10 bytes of image: " + str(image[:10]))
 print("last 10 bytes of image: " + str(image[image_size-10:]))
 
+from crc import Calculator, Configuration
+
+config = Configuration(
+    width=8,
+    polynomial=0x07,
+    init_value=0x00,
+    final_xor_value=0x00,
+    reverse_input=False,
+    reverse_output=False,
+)
+
+calculator = Calculator(config, optimized=True)
+
+crc32_value = calculator.checksum(image)
+
 print("python finish")
