@@ -18,18 +18,13 @@ test_bytes = bytes(
 
 print("python start")
 
-# with open(PATH_TO_IMAGE, 'r') as fp:
-#     hex_list = ["{:02x}".format(ord(c)) for c in fp.read()]
-
-# print("hexlist=" + hex_list[:10])
-
 file = open(PATH_TO_IMAGE, 'rb')
 
 image = file.read()
 image_size = len(image)
 print("size of image: " + str(image_size) + ", image type: " + str(type(image)))
 
-paddings = 1048576 - image_size + 1
+paddings = 1048576 - image_size
 
 for i in range(0, paddings):
     image += bytes([0xFF])

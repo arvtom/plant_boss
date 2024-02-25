@@ -96,6 +96,7 @@ bool memory_crc_check_image_32bit(void)
     uint32_t bytes_to_read = 0u;
     uint32_t remaining_bytes = 0u;
 
+
     if (ESP_OK != esp_flash_get_physical_size(esp_flash_default_chip, &flash_size))
     {
         printf("err flash_size r\n");
@@ -119,7 +120,7 @@ bool memory_crc_check_image_32bit(void)
     /* Calculate remaining CRC iterations byte by byte */
     for (uint32_t i = FLASH_OFFSET_FACTORY_APP + 1u; i < FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP; i += FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
     {
-        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP - i - 1u;
+        remaining_bytes = FLASH_OFFSET_FACTORY_APP + FLASH_SIZE_FACTORY_APP - i;
 
         if (remaining_bytes > FLASH_SEQUENTIAL_CRC_CHECK_LENGTH)
         {
