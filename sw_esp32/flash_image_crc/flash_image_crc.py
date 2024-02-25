@@ -16,29 +16,21 @@ config = Configuration(
 test_bytes = bytes(
     [0x8c, 0xad, 0x08, 0xa5, 0x96, 0xff, 0x48, 0x61, 0x98, 0x61, 0x68])
 
-print("python start")
-
 file = open(PATH_TO_IMAGE, 'rb')
 
 image = file.read()
 image_size = len(image)
-print("size of image: " + str(image_size) + ", image type: " + str(type(image)))
+padding_size = 1048576 - image_size
+padding = bytes([])
 
-paddings = 1048576 - image_size
+for i in range(0, padding_size):
+    padding += bytes([0xFF])
 
-for i in range(0, paddings):
-    image += bytes([0xFF])
-
-image_size = len(image)
-print("size of image: " + str(image_size) + ", image type: " + str(type(image)))
-
-print("first 10 bytes of image: " + str(image[:10]))
-print("last 10 bytes of image: " + str(image[image_size-10:]))
+image += padding
 
 calculator = Calculator(config, optimized=True)
 crc32_value = calculator.checksum(image)
 crc32_value_hex = hex(crc32_value)
-
 print("crc32_value_hex=" + crc32_value_hex)
 
 print("python finish")

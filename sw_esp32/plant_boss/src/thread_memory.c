@@ -43,19 +43,9 @@ void thread_memory(void *arg)
 
 bool thread_memory_init(void)
 {
-    if (true != memory_crc_check_image_8bit())
-    {
-        ESP_LOGI(tag_t_m, "fcf 8bit");
-    }
-
     if (true != memory_crc_check_image_32bit())
     {
         ESP_LOGI(tag_t_m, "fcf 32bit");
-    }
-
-    if (true != memory_crc_print_some_bytes_from_image())
-    {
-        ESP_LOGI(tag_t_m, "fpsb");
     }
 
     // printf("addr err_thread_memory 0x%x\n", (unsigned int)&err_thread_memory); 
