@@ -1,0 +1,6 @@
+esptool.py -p PORT -b 460800 read_flash 0 0x200000 flash_contents.bin
+PS C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition_generator> python nvs_partition_gen.py generate nvs_parameters.csv nvs_parameters.bin 0x3000
+PS C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition_generator> python nvs_partition_gen.py generate nvs_parameters.csv nvs_parameters.bin 0x6000
+esptool.py --chip esp32 image_info plant_boss.bin
+esptool.py --chip esp32 image_info --version 2 plant_boss.bin
+idf.py partition-table
