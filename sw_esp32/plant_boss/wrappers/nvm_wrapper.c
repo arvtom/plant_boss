@@ -16,7 +16,7 @@ uint32_t err_nvm = 0U;
 static const char* tag_nvm = "nvm";
 nvs_handle_t handle_nvs;
 nvm_contents_t nvm_contents = {0};
-size_t buf_len = 0u;
+esp_err_t ret = ESP_OK;
 
 /*------------------------------Public functions------------------------------*/
 bool nvm_init(void)
@@ -147,44 +147,72 @@ bool nvm_handle_read(void)
     if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_CRC_SW, &nvm_contents.crc_sw))
     {
         ESP_LOGI(tag_nvm, "11f");
-
         nvs_close(handle_nvs);
-
         return false;
     }
 
     if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_SERIAL_NUMBER, &nvm_contents.serial_number))
     {
         ESP_LOGI(tag_nvm, "12f");
-
         nvs_close(handle_nvs);
-
         return false;
     }
 
-    buf_len = sizeof(nvm_contents.wifi_ssid);
-    if (ESP_OK != nvs_get_str(handle_nvs, KEY_NVS_WIFI_SSID, &nvm_contents.wifi_ssid[0], &buf_len))
+    /* get string len */
+    ret = nvs_get_str(handle_nvs, KEY_NVS_WIFI_SSID, &nvm_contents.wifi_ssid[0], &nvm_contents.len_wifi_ssid);
+    if (ESP_ERR_NVS_INVALID_LENGTH != ret)
     {
-        ESP_LOGI(tag_nvm, "13f");
-
+        ESP_LOGI(tag_nvm, "13f len ret%d", ret);
         nvs_close(handle_nvs);
-
         return false;
     }
 
-    buf_len = sizeof(nvm_contents.wifi_pass);
-    if (ESP_OK != nvs_get_str(handle_nvs, KEY_NVS_WIFI_PASS, &nvm_contents.wifi_pass[0], &buf_len))
+    /* check that some string exists */
+    if (0u == nvm_contents.len_wifi_ssid)
     {
-        ESP_LOGI(tag_nvm, "14f");
-
+        ESP_LOGI(tag_nvm, "13f len");
         nvs_close(handle_nvs);
+        return false;
+    }
 
+    /* get string */
+    ret = nvs_get_str(handle_nvs, KEY_NVS_WIFI_SSID, &nvm_contents.wifi_ssid[0], &nvm_contents.len_wifi_ssid);
+    if (ESP_OK != ret)
+    {
+        ESP_LOGI(tag_nvm, "13f val ret %d", ret);
+        nvs_close(handle_nvs);
+        return false;
+    }
+
+    /* get string len */
+    ret = nvs_get_str(handle_nvs, KEY_NVS_WIFI_PASS, &nvm_contents.wifi_pass[0], &nvm_contents.len_wifi_pass);
+    if (ESP_ERR_NVS_INVALID_LENGTH != ret)
+    {
+        ESP_LOGI(tag_nvm, "14f len ret%d", ret);
+        nvs_close(handle_nvs);
+        return false;
+    }
+
+    /* check that some string exists */
+    if (0u == nvm_contents.len_wifi_pass)
+    {
+        ESP_LOGI(tag_nvm, "14f len");
+        nvs_close(handle_nvs);
+        return false;
+    }
+
+    /* get string */
+    ret = nvs_get_str(handle_nvs, KEY_NVS_WIFI_PASS, &nvm_contents.wifi_pass[0], &nvm_contents.len_wifi_pass);
+    if (ESP_OK != ret)
+    {
+        ESP_LOGI(tag_nvm, "14f val ret %d", ret);
+        nvs_close(handle_nvs);
         return false;
     }
 
     nvs_close(handle_nvs);
 
-    ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx,%lx,%lx,%s,%s",
+    ESP_LOGI(tag_nvm, "%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx,%lx,%lx,%s,%s",
         nvm_contents.id,
         nvm_contents.mode,
         nvm_contents.bat_threshold,
