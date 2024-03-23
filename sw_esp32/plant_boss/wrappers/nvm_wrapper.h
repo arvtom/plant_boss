@@ -29,6 +29,7 @@
 #define KEY_NVS_ERROR_NETWORK                 "9"
 #define KEY_NVS_ERROR_MEMORY                  "10"
 #define KEY_NVS_CRC_SW                        "11"
+#define KEY_NVS_SERIAL_NUMBER                 "12"
 
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
