@@ -20,3 +20,6 @@ python C:/Users/Arvydas/esp/v5.1.2/esp-idf/components/nvs_flash/nvs_partition_ge
 
 python libs:
 /mnt/c/Users/Arvydas/.espressif/python_env/idf5.1_py3.11_env/Lib
+
+env vars:
+Get-Item Env:
