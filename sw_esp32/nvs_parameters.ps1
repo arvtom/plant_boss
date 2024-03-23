@@ -1,2 +1,1 @@
-
-python nvs_partition_gen.py generate nvs_parameters.csv nvs_parameters.bin 0x3000
+python C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition_generator\nvs_partition_gen.py generate C:\repo\plant_boss\sw_esp32\nvs_parameters.csv C:\repo\plant_boss\sw_esp32\nvs_parameters.bin 0x6000
