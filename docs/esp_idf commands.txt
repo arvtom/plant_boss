@@ -17,3 +17,6 @@ python C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition
 
 vscode embedded esp-idf:
 python C:/Users/Arvydas/esp/v5.1.2/esp-idf/components/nvs_flash/nvs_partition_generator/nvs_partition_gen.py generate C:\repo\plant_boss\sw_esp32\nvs_parameters.csv C:\repo\plant_boss\sw_esp32\nvs_parameters.bin 0x6000
+
+python libs:
+/mnt/c/Users/Arvydas/.espressif/python_env/idf5.1_py3.11_env/Lib
