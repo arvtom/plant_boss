@@ -30,6 +30,8 @@
 #define KEY_NVS_ERROR_MEMORY                  "10"
 #define KEY_NVS_CRC_SW                        "11"
 #define KEY_NVS_SERIAL_NUMBER                 "12"
+#define KEY_NVS_WIFI_SSID                     "13"
+#define KEY_NVS_WIFI_PASS                     "14"
 
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
