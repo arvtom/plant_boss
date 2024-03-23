@@ -9,6 +9,7 @@
         "crc.h": "c",
         "freertos.h": "c",
         "task.h": "c",
-        "memory_crc.h": "c"
+        "memory_crc.h": "c",
+        "nvm_wrapper.h": "c"
     }
 }

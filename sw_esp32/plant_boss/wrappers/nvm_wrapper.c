@@ -16,6 +16,7 @@ uint32_t err_nvm = 0U;
 static const char* tag_nvm = "nvm";
 nvs_handle_t handle_nvs;
 nvm_contents_t nvm_contents = {0};
+size_t buf_len = 0u;
 
 /*------------------------------Public functions------------------------------*/
 bool nvm_init(void)
@@ -152,9 +153,38 @@ bool nvm_handle_read(void)
         return false;
     }
 
+    if (ESP_OK != nvs_get_u32(handle_nvs, KEY_NVS_SERIAL_NUMBER, &nvm_contents.serial_number))
+    {
+        ESP_LOGI(tag_nvm, "12f");
+
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    buf_len = sizeof(nvm_contents.wifi_ssid);
+    if (ESP_OK != nvs_get_str(handle_nvs, KEY_NVS_WIFI_SSID, &nvm_contents.wifi_ssid[0], &buf_len))
+    {
+        ESP_LOGI(tag_nvm, "13f");
+
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
+    buf_len = sizeof(nvm_contents.wifi_pass);
+    if (ESP_OK != nvs_get_str(handle_nvs, KEY_NVS_WIFI_PASS, &nvm_contents.wifi_pass[0], &buf_len))
+    {
+        ESP_LOGI(tag_nvm, "14f");
+
+        nvs_close(handle_nvs);
+
+        return false;
+    }
+
     nvs_close(handle_nvs);
 
-    ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx,%lx",
+    ESP_LOGI(tag_nvm, "nvs%x,%x,%x,%lx,%lx,%lx,%llx,%lx,%lx,%lx,%lx,%lx,%s,%s",
         nvm_contents.id,
         nvm_contents.mode,
         nvm_contents.bat_threshold,
@@ -165,7 +195,10 @@ bool nvm_handle_read(void)
         nvm_contents.err_input,
         nvm_contents.err_output,
         nvm_contents.err_network,
-        nvm_contents.err_memory
+        nvm_contents.err_memory,
+        nvm_contents.crc_sw,
+        nvm_contents.wifi_ssid,
+        nvm_contents.wifi_pass
         );
 
     return true;

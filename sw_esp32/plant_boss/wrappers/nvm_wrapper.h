@@ -33,6 +33,9 @@
 #define KEY_NVS_WIFI_SSID                     "13"
 #define KEY_NVS_WIFI_PASS                     "14"
 
+#define WIFI_SSID_MAX_LENGTH                    (32u)
+#define WIFI_PASS_MAX_LENGTH                    (63u)
+
 /*------------------------------Structures / enumerators------------------------------*/
 typedef enum
 {
@@ -90,6 +93,9 @@ typedef struct
     uint32_t err_network;
     uint32_t err_memory;
     uint32_t crc_sw;
+    uint32_t serial_number;
+    char wifi_ssid[WIFI_SSID_MAX_LENGTH];
+    char wifi_pass[WIFI_PASS_MAX_LENGTH];
 } nvm_contents_t;
 
 /*------------------------------Public function prototypes------------------------------*/

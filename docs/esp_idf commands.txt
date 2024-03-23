@@ -1,6 +1,13 @@
+esptool.py read_flash 0 0x400000 plant_boss_all_flash.bin
 esptool.py -p PORT -b 460800 read_flash 0 0x200000 flash_contents.bin
 PS C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition_generator> python nvs_partition_gen.py generate nvs_parameters.csv nvs_parameters.bin 0x3000
 PS C:\Espressif\frameworks\esp-idf-v5.1.2\components\nvs_flash\nvs_partition_generator> python nvs_partition_gen.py generate nvs_parameters.csv nvs_parameters.bin 0x6000
 esptool.py --chip esp32 image_info plant_boss.bin
 esptool.py --chip esp32 image_info --version 2 plant_boss.bin
 idf.py partition-table
+esptool.py erase_flash
+esptool.py erase_region 0x20000 0x4000
+
+PS C:\repo\plant_boss\sw_esp32\plant_boss\build> esptool.py write_flash 0x10000 plant_boss.bin
+PS C:\repo\plant_boss\sw_esp32> esptool.py write_flash 0x9000 nvs_parameters.bin
+PS C:\Users\Arvydas\Documents\Arvydas> esptool.py read_flash 0x9000 0x6000 nvs_parameters_read_20240323.bin
