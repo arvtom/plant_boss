@@ -2,6 +2,8 @@
     "idf.toolsPath": "C:/Users/Arvydas/.espressif",
     "idf.espIdfPath": "C:/Users/Arvydas/esp/v5.1.2/esp-idf",
     "idf.flashType": "JTAG",
+    // "idf.flashType": "UART",
+    // "idf.portWin": "COM7",
     "idf.adapterTargetName": "esp32",
     "files.associations": {
         "esp_flash_spi_init.h": "c",
