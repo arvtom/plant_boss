@@ -31,6 +31,4 @@ image += padding
 calculator = Calculator(config, optimized=True)
 crc32_value = calculator.checksum(image)
 crc32_value_hex = hex(crc32_value)
-print("crc32_value_hex=" + crc32_value_hex)
-
-print("python finish")
+print(crc32_value)

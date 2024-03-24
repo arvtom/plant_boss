@@ -23,6 +23,8 @@ ERROR=1
 CSV_ROW_CRC=13
 CSV_COLUMN_CRC=4
 
+crc="255"
+
 # generated with chat gpt
 update_csv() {
     local csv_file=$1
@@ -60,15 +62,17 @@ update_csv() {
 }
 
 # Calculate flash image crc
-$LOCAL_PYTHON $HERE_WSL/flash_image_crc.py
+crc=$($LOCAL_PYTHON $HERE_WSL/flash_image_crc.py)
 if [[ $? -ne $NO_ERROR ]]; then
 	echo "err flash_image_crc.py"
 	exit $ERROR
 fi
 
+echo "crc=$crc"
+
 # # write crc value to nvs partition .csv
 # cat $nvs_partition_def
-update_csv "$HERE_WSL/nvs_parameters.csv" $CSV_ROW_CRC $CSV_COLUMN_CRC "1111"
+update_csv "$HERE_WSL/nvs_parameters.csv" $CSV_ROW_CRC $CSV_COLUMN_CRC $crc
 if [[ $? -ne $NO_ERROR ]]; then
 	echo "err embed crc"
 	exit $ERROR
