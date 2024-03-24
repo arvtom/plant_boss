@@ -2,22 +2,11 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "flash_image_crc",
-        "type": "shell",
-        "command": "bash flash_image_crc.sh",
-        "options": {
-          "cwd": "../flash_image_crc"
-        },
-        "group": {
-          "kind": "build",
-        }
-      },
-      {
         "label": "nvs_parameters",
         "type": "shell",
         "command": "bash nvs_parameters.sh",
         "options": {
-          "cwd": "../"
+          "cwd": "../scripts"
         },
         "group": {
           "kind": "build",
