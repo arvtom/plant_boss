@@ -21,7 +21,7 @@ NO_ERROR=0
 ERROR=1
 
 CSV_ROW_CRC=13
-CSV_COLUMN_CRC=3
+CSV_COLUMN_CRC=4
 
 # generated with chat gpt
 update_csv() {
@@ -44,11 +44,13 @@ update_csv() {
             row_data[$((column-1))]=$value
             # Reconstruct the line with updated values
             modified_line=$(IFS=,; echo "${row_data[*]}")
-            echo "$modified_line" >> "$temp_file"
+            echo -n "$modified_line" >> "$temp_file"
         else
             # Write the line unchanged to the temporary file
-            echo "$line" >> "$temp_file"
+            echo -n "$line" >> "$temp_file"
         fi
+        # Ensure LF line endings
+        echo -n $'\n' >> "$temp_file"
     done < "$csv_file"
 
     # Replace the original file with the updated one
@@ -66,7 +68,7 @@ fi
 
 # # write crc value to nvs partition .csv
 # cat $nvs_partition_def
-update_csv "$HERE_WSL/nvs_parameters.csv" $CSV_ROW_CRC $CSV_COLUMN_CRC "New Value"
+update_csv "$HERE_WSL/nvs_parameters.csv" $CSV_ROW_CRC $CSV_COLUMN_CRC "1111"
 if [[ $? -ne $NO_ERROR ]]; then
 	echo "err embed crc"
 	exit $ERROR
