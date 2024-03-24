@@ -8,6 +8,7 @@
 # Constants
 ESPIDF_PYTHON="/mnt/c/Users/Arvydas/.espressif/python_env/idf5.1_py3.11_env/Scripts/python.exe"
 ESPIDF_NVS_PARTITION_GEN="C:/Users/Arvydas/esp/v5.1.2/esp-idf/components/nvs_flash/nvs_partition_generator/nvs_partition_gen.py"
+ESPTOOL="C:/Users/Arvydas/.espressif/python_env/idf5.1_py3.11_env/Scripts/esptool.py"
 
 LOCAL_PYTHON="python3"
 
@@ -16,6 +17,7 @@ HERE_WSL="/mnt/c/repo/plant_boss/sw_esp32/scripts"
 NVS_PARTITION_DEF="$HERE_WIN/nvs_parameters.csv"
 NVS_PARTITION_OUT="$HERE_WIN/nvs_parameters.bin"
 NVS_PARTITION_SIZE_DEFAULT="0x6000"
+NVS_PARTITION_OFFSET_DEFAULT="0x9000"
 
 NO_ERROR=0
 ERROR=1
@@ -86,11 +88,11 @@ if [[ $? -ne $NO_ERROR ]]; then
 fi
 
 # Flash nvs partition
-
-# if [[ $? -ne $NO_ERROR ]]; then
-	# echo "err flash partition"
-	# exit $ERROR
-# fi
+$ESPIDF_PYTHON $ESPTOOL write_flash $NVS_PARTITION_OFFSET_DEFAULT $NVS_PARTITION_OUT
+if [[ $? -ne $NO_ERROR ]]; then
+	echo "err flash partition"
+	exit $ERROR
+fi
 
 echo "nvs_parameters finish"
 exit $NO_ERROR
